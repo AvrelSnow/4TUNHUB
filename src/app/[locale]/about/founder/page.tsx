@@ -113,7 +113,7 @@ export default async function FounderPage({ params }: Params) {
       {/* Experience — CAMRAIL flagship, links to the dedicated deep page */}
       <section className="border-y border-border bg-surface">
         <Container className="py-16">
-          <p className="eyebrow">{s.experience}</p>
+          <h2 className="eyebrow">{s.experience}</h2>
           <Reveal>
             <Link
               href={localizeHref(locale, "/about/founder/camrail")}
@@ -145,7 +145,8 @@ export default async function FounderPage({ params }: Params) {
       </section>
 
       {/* Education */}
-      <Section eyebrow={s.education} className="pb-0">
+      <Section className="pb-0">
+        <h2 className="eyebrow">{s.education}</h2>
         <ul className="mt-8 space-y-5">
           {founder.education.map((ed) => (
             <li key={ed.period} className="grid gap-1 sm:grid-cols-[1fr_auto]">
@@ -201,7 +202,7 @@ export default async function FounderPage({ params }: Params) {
       <section className="border-t border-border bg-surface/50">
         <Container className="grid gap-12 py-16 lg:grid-cols-[1.2fr_1fr]">
           <div>
-            <p className="eyebrow">{s.skills}</p>
+            <h2 className="eyebrow">{s.skills}</h2>
             <div className="mt-6 space-y-5">
               {(["software", "technical", "workshop"] as const).map((group) => (
                 <div key={group}>
@@ -220,7 +221,7 @@ export default async function FounderPage({ params }: Params) {
               ))}
             </div>
 
-            <p className="eyebrow mt-10">{s.awards}</p>
+            <h2 className="eyebrow mt-10">{s.awards}</h2>
             <ul className="mt-5 space-y-3">
               {founder.awards.map((a) => (
                 <li key={a.title.en + a.year} className="flex items-baseline justify-between gap-4">
@@ -235,7 +236,7 @@ export default async function FounderPage({ params }: Params) {
           </div>
 
           <div>
-            <p className="eyebrow">{s.certifications}</p>
+            <h2 className="eyebrow">{s.certifications}</h2>
             <ul className="mt-6 space-y-3">
               {founder.certifications.map((c) => (
                 <li
@@ -251,7 +252,7 @@ export default async function FounderPage({ params }: Params) {
               ))}
             </ul>
 
-            <p className="eyebrow mt-10">{s.connect}</p>
+            <h2 className="eyebrow mt-10">{s.connect}</h2>
             <FounderConnect className="mt-5" links={founder.links} />
           </div>
         </Container>

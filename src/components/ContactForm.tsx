@@ -28,7 +28,10 @@ function ContactFormFields({ t, onReset }: { t: ContactCopy; onReset: () => void
 
   if (state.status === "success") {
     return (
-      <div className="rounded-2xl border border-brand-500/40 bg-brand-50/60 p-8 dark:bg-brand-500/5">
+      <div
+        role="status"
+        className="rounded-2xl border border-brand-500/40 bg-brand-50/60 p-8 dark:bg-brand-500/5"
+      >
         <span
           aria-hidden="true"
           className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-500 text-xl font-bold text-ink-900"
