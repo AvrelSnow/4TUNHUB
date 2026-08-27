@@ -1,23 +1,33 @@
 {
-  "name": "fortunhub",
+  "name": "4tunhub",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "analyze": "cross-env ANALYZE=true next build",
+    "perf:budget": "node scripts/check-bundle-size.mjs",
+    "perf": "next build && node scripts/check-bundle-size.mjs",
+    "lint:tokens": "node scripts/check-design-tokens.mjs",
+    "check": "eslint && node scripts/check-design-tokens.mjs && next build && node scripts/check-bundle-size.mjs",
+    "lhci": "lhci autorun"
   },
   "dependencies": {
+    "geist": "^1.7.2",
     "next": "16.2.10",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.15.1",
+    "@next/bundle-analyzer": "^16.2.10",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
     "tailwindcss": "^4",

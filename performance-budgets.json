@@ -1,0 +1,17 @@
+{
+  "$comment": "R3 — performance budgets, single source of truth. The build gate (scripts/check-bundle-size.mjs) enforces the JS sizes on every build; Lighthouse CI (.lighthouserc.json) enforces the Web Vitals at deploy. Numbers are current + headroom: today passes, regressions fail.",
+  "clientJs": {
+    "totalGzipKB": 220,
+    "largestChunkGzipKB": 90
+  },
+  "webVitals": {
+    "lcpMs": 2500,
+    "clsScore": 0.1,
+    "inpMs": 200,
+    "tbtMs": 200,
+    "performanceScore": 0.9,
+    "accessibilityScore": 0.95,
+    "seoScore": 0.95,
+    "bestPracticesScore": 0.95
+  }
+}
