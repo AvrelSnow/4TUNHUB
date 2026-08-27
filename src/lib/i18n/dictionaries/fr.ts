@@ -477,6 +477,211 @@ const fr: Dictionary = {
     live: "En ligne",
   },
 
+  academy: {
+    eyebrow: "4TUN Hub Academy",
+    title: "Apprendre une ingénierie qui se concrétise.",
+    subtitle:
+      "Une formation pratique en CAO, simulation et systèmes énergétiques — enseignée à partir de projets réellement livrés, pour les ingénieurs et les étudiants au Cameroun et au-delà.",
+    primaryCta: "Rejoindre la liste d'attente",
+    secondaryCta: "Rencontrer le formateur",
+
+    catalogEyebrow: "Catalogue",
+    catalogTitle: "Des parcours immédiatement applicables.",
+    catalogIntro:
+      "Chaque parcours est pratique et aboutit à une compétence démontrable — une pièce modélisée, une conception validée, un composant reconstruit — pas seulement une vidéo regardée.",
+    levelLabel: "Niveau",
+    formatLabel: "Format",
+    proofLabel: "Voir l'application",
+    levels: {
+      beginner: "Débutant",
+      intermediate: "Intermédiaire",
+      advanced: "Avancé",
+      "all-levels": "Tous niveaux",
+    } as Record<string, string>,
+    formats: {
+      online: "En ligne",
+      "in-person": "En présentiel",
+      hybrid: "En ligne + présentiel",
+      workshop: "Atelier pratique",
+    } as Record<string, string>,
+    courses: {
+      "solidworks-cad": {
+        title: "SolidWorks & fondamentaux de la CAO",
+        outcome:
+          "Modéliser des pièces et des assemblages et produire des plans de fabrication propres — la compétence centrale derrière chaque machine du portfolio.",
+        who: "Pour les étudiants et jeunes ingénieurs qui débutent en conception mécanique.",
+      },
+      "fea-simulation": {
+        title: "FEA & validation de conception",
+        outcome:
+          "Réaliser des analyses par éléments finis pour tester la résistance et les contraintes, et repérer les points de rupture à l'écran avant toute découpe.",
+        who: "Pour les concepteurs qui veulent valider une pièce avant de s'engager dans la fabrication.",
+      },
+      "reverse-engineering": {
+        title: "Rétro-ingénierie & fabrication",
+        outcome:
+          "Reconstituer des plans précis de pièces sans documentation, et les amener vers une conception constructible localement.",
+        who: "Pour les techniciens et ingénieurs qui maintiennent des équipements sans pièces de rechange.",
+      },
+      "energy-systems": {
+        title: "Systèmes d'énergie renouvelable",
+        outcome:
+          "Dimensionner et analyser des systèmes solaires et hors réseau pour des conditions réelles de pénurie d'énergie.",
+        who: "Pour les ingénieurs et entrepreneurs travaillant sur l'énergie hors réseau et durable.",
+      },
+    } as Record<string, { title: string; outcome: string; who: string }>,
+
+    formatsEyebrow: "Comment vous apprenez",
+    formatsTitle: "Conçu selon la façon dont les ingénieurs apprennent vraiment.",
+    formatsList: [
+      {
+        title: "Cours en ligne",
+        desc: "Des modules à votre rythme avec de vrais exercices réalisés dans des logiciels de CAO et de simulation.",
+      },
+      {
+        title: "Ateliers en direct",
+        desc: "Des séances pratiques par projet — en présentiel quand c'est possible, à distance sinon.",
+      },
+      {
+        title: "Mentorat en cohorte",
+        desc: "De petits groupes guidés d'un cahier des charges jusqu'à un livrable d'ingénierie présentable.",
+      },
+    ],
+
+    instructorEyebrow: "Qui enseigne",
+    instructorTitle: "Enseigné par un ingénieur en exercice et éducateur accrédité.",
+    instructorBody:
+      "Chaque parcours est animé par Donfack Fortune — ingénieur mécanicien et éducateur accrédité par l'État, qui a touché plus de 300 étudiants et anime le groupe SolidWorks de Douala. Vous apprenez les méthodes derrière de vrais projets livrés, pas des abstractions de manuel.",
+    instructorCta: "Rencontrer le fondateur",
+
+    cta: {
+      title: "Soyez dans la prochaine cohorte.",
+      subtitle:
+        "L'Academy ouvre par étapes. Rejoignez la liste d'attente et nous vous contacterons dès qu'un parcours démarre.",
+      primary: "Rejoindre la liste d'attente",
+      secondary: "Voir les projets",
+    },
+  },
+
+  research: {
+    eyebrow: "Recherche & R&D",
+    title: "Une recherche à finalité industrielle.",
+    subtitle:
+      "Une recherche appliquée en énergies renouvelables, durabilité et systèmes industriels — ancrée dans les réalités d'infrastructure d'Afrique de l'Ouest et centrale, pas dans des abstractions.",
+    primaryCta: "Collaborer sur un projet de recherche",
+    secondaryCta: "Voir les projets",
+
+    focusEyebrow: "Axes de recherche",
+    focusTitle: "Là où nous concentrons le travail.",
+    focusIntro:
+      "Trois fronts où la recherche en ingénierie change ce qui est réellement construit et utilisé.",
+    whyLabel: "Pourquoi c'est important",
+    doingLabel: "Ce que nous faisons",
+    proofLabel: "Voir les travaux liés",
+    areas: {
+      "renewable-energy": {
+        title: "Énergie renouvelable & hors réseau",
+        why: "En Afrique de l'Ouest et centrale, une électricité peu fiable et hors réseau conditionne chaque décision d'ingénierie. Bien concevoir les systèmes énergétiques fait la différence entre une conception qui marche sur le papier et une qui marche sur le terrain.",
+        doing: "Analyse technique des systèmes solaires, de stockage et hors réseau — traduite en éclairages utiles aux politiques via la newsletter The REM.",
+      },
+      "sustainable-machinery": {
+        title: "Machines agricoles durables",
+        why: "Les déchets post-récolte et le coût des équipements importés freinent les petits producteurs. Des machines constructibles localement transforment les déchets en valeur et l'effort en production.",
+        doing: "Concevoir et valider en laboratoire des machines — comme le broyeur de pseudo-troncs de bananier — construites avec des matériaux et outils disponibles localement.",
+      },
+      "industrial-rd": {
+        title: "R&D industrielle & rétro-ingénierie",
+        why: "Les équipements industriels vieillissants tombent en panne quand les pièces disparaissent du marché. Reproduire les pièces localement maintient les infrastructures critiques en service.",
+        doing: "Rétro-concevoir et re-fabriquer des composants — comme les triangles de frein de locomotives à CAMRAIL — aux tolérances d'origine.",
+      },
+    } as Record<string, { title: string; why: string; doing: string }>,
+
+    pubEyebrow: "Publications",
+    pubTitle: "The REM — Renewable Energy Mall & Engineering Review.",
+    pubBody:
+      "Une newsletter suivie par plus de 3 200 ingénieurs et décideurs, qui traduit la recherche technique sur l'énergie en éclairages pour l'Afrique de l'Ouest et centrale. Des analyses détaillées, fondées sur les premiers principes, publiées régulièrement.",
+    pubReadRem: "Lire The REM sur Medium",
+    pubFollow: "Suivre la newsletter sur LinkedIn",
+
+    initiativesEyebrow: "Initiatives",
+    initiativesTitle: "Une recherche qui quitte le papier.",
+    initiativesBody:
+      "Les résultats reviennent directement dans les services, les machines et les cours de 4TUN Hub — la recherche se justifie par des livrables réels, pas seulement par des publications.",
+
+    cta: {
+      title: "Un problème de recherche qui mérite d'être résolu ?",
+      subtitle:
+        "Nous collaborons avec des chercheurs, des partenaires et l'industrie sur des travaux d'énergie et de durabilité. Dites-nous sur quoi vous travaillez.",
+      primary: "Collaborer sur un projet de recherche",
+      secondary: "Voir les projets",
+    },
+  },
+
+  products: {
+    eyebrow: "Produits",
+    title: "Les logiciels que 4TUN Hub construit.",
+    subtitle:
+      "Des outils d'ingénierie et d'éducation pour les réalités africaines — en développement actif. Rien ici n'est vendu avant d'être prêt ; voici la feuille de route, présentée honnêtement.",
+    primaryCta: "Rejoindre la liste d'attente",
+    secondaryCta: "Nous parler",
+
+    cardsEyebrow: "En préparation",
+    cardsTitle: "Trois produits, présentés honnêtement.",
+    cardsIntro:
+      "Chacun résout un problème que nous avons rencontré de première main. Le stade de développement est indiqué clairement — concept, planifié ou en développement.",
+    statusLabel: "Statut",
+    problemLabel: "Le problème",
+    whoLabel: "Pour qui",
+    statuses: {
+      "in-development": "En développement",
+      planned: "Planifié",
+      concept: "Concept",
+    } as Record<string, string>,
+    items: {
+      "edu-assistant": {
+        title: "Assistant éducatif du Cameroun",
+        desc: "Un tuteur IA conçu autour du programme camerounais — qui explique, interroge et guide les élèves dans leur propre contexte d'examen.",
+        problem:
+          "Les élèves préparant le GCE O- et A-Level ont rarement accès à un tutorat abordable et adapté au programme en sciences et en ingénierie.",
+        who: "Pour les élèves camerounais du secondaire et du pré-universitaire.",
+      },
+      "digital-twin": {
+        title: "Plateforme de jumeau numérique",
+        desc: "Des outils de jumeau numérique 3D pour les installations et les équipements — apportant une vision de niveau simulation aux opérations quotidiennes.",
+        problem:
+          "Les exploitants industriels manquent d'outils abordables pour modéliser, surveiller et planifier la maintenance de leurs équipements et installations.",
+        who: "Pour les exploitants industriels et d'infrastructures.",
+      },
+      "mech-ai": {
+        title: "Assistant IA en mécanique",
+        desc: "Un copilote IA pour la conception mécanique, la FEA et les calculs d'ingénierie.",
+        problem:
+          "Les ingénieurs mécaniciens passent des heures sur des dimensionnements, calculs et configurations FEA répétitifs qu'un assistant spécialisé pourrait accélérer.",
+        who: "Pour les concepteurs mécaniques et les ingénieurs en simulation.",
+      },
+    } as Record<string, { title: string; desc: string; problem: string; who: string }>,
+
+    roadmapEyebrow: "Comment nous livrons",
+    roadmapTitle: "Construit à découvert, publié une fois prêt.",
+    roadmapBody:
+      "De nouveaux outils s'intègrent à ce pilier sans refonte — 4TUN Hub est conçu comme un écosystème extensible. Nous préférons livrer un produit qui fonctionne que trois qui ne fonctionnent pas.",
+
+    detail: {
+      status: "Statut",
+      backToProducts: "Tous les produits",
+      waitlist: "Rejoindre la liste d'attente",
+      body: "Ce produit figure sur la feuille de route de 4TUN Hub. Rejoignez la liste d'attente et nous vous contacterons dès qu'il y aura quelque chose de concret à essayer.",
+    },
+
+    cta: {
+      title: "Vous voulez un accès anticipé ?",
+      subtitle:
+        "Rejoignez la liste d'attente et aidez à décider ce que nous construisons en premier. Nous ne vous écrirons que lorsqu'il y aura quelque chose de concret à essayer.",
+      primary: "Rejoindre la liste d'attente",
+      secondary: "Nous parler",
+    },
+  },
+
   stub: {
     badge: "En cours",
     beingBuilt: "Cette partie de l'écosystème est en construction.",

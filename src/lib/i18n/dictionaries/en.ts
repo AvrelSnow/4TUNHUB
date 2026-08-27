@@ -479,6 +479,211 @@ const en = {
     live: "Live now",
   },
 
+  academy: {
+    eyebrow: "4TUN Hub Academy",
+    title: "Learn engineering that actually ships.",
+    subtitle:
+      "Practical training in CAD, simulation and energy systems — taught from real delivered projects, built for engineers and students across Cameroon and beyond.",
+    primaryCta: "Join the waitlist",
+    secondaryCta: "Meet the instructor",
+
+    catalogEyebrow: "Catalog",
+    catalogTitle: "Tracks you can put to work immediately.",
+    catalogIntro:
+      "Every track is hands-on and ends in a skill you can show — a part modelled, a design validated, a component rebuilt — not just a video watched.",
+    levelLabel: "Level",
+    formatLabel: "Format",
+    proofLabel: "See it applied",
+    levels: {
+      beginner: "Beginner",
+      intermediate: "Intermediate",
+      advanced: "Advanced",
+      "all-levels": "All levels",
+    } as Record<string, string>,
+    formats: {
+      online: "Online",
+      "in-person": "In person",
+      hybrid: "Online + in person",
+      workshop: "Hands-on workshop",
+    } as Record<string, string>,
+    courses: {
+      "solidworks-cad": {
+        title: "SolidWorks & CAD fundamentals",
+        outcome:
+          "Model parts and assemblies and produce clean manufacturing drawings — the core skill behind every machine in the portfolio.",
+        who: "For students and junior engineers starting out in mechanical design.",
+      },
+      "fea-simulation": {
+        title: "FEA & design validation",
+        outcome:
+          "Run finite-element analysis to test strength and stress, and catch failure points on screen before anything is cut.",
+        who: "For designers who want confidence in a part before committing to fabrication.",
+      },
+      "reverse-engineering": {
+        title: "Reverse engineering & fabrication",
+        outcome:
+          "Rebuild accurate drawings of parts that have no documentation, and take them to a design that can be built locally.",
+        who: "For technicians and engineers keeping equipment running without spares.",
+      },
+      "energy-systems": {
+        title: "Renewable energy systems",
+        outcome:
+          "Size and analyse solar and off-grid systems for real, energy-scarce conditions.",
+        who: "For engineers and entrepreneurs working on off-grid and sustainable energy.",
+      },
+    } as Record<string, { title: string; outcome: string; who: string }>,
+
+    formatsEyebrow: "How you learn",
+    formatsTitle: "Built around how engineers actually learn.",
+    formatsList: [
+      {
+        title: "Online courses",
+        desc: "Self-paced modules with real exercises you complete in CAD and simulation software.",
+      },
+      {
+        title: "Live workshops",
+        desc: "Hands-on, project-based sessions — in person where possible, remote where not.",
+      },
+      {
+        title: "Cohort mentoring",
+        desc: "Small groups guided from a brief to a finished, presentable engineering deliverable.",
+      },
+    ],
+
+    instructorEyebrow: "Who teaches",
+    instructorTitle: "Taught by a working engineer and accredited educator.",
+    instructorBody:
+      "Every track is led by Donfack Fortune — a mechanical engineer and state-accredited educator who has reached 300+ students and leads the Douala SolidWorks user group. You learn the methods behind real delivered projects, not textbook abstractions.",
+    instructorCta: "Meet the founder",
+
+    cta: {
+      title: "Be first into the next cohort.",
+      subtitle:
+        "The Academy is opening in stages. Join the waitlist and we'll reach out as each track goes live.",
+      primary: "Join the waitlist",
+      secondary: "See the projects",
+    },
+  },
+
+  research: {
+    eyebrow: "Research & R&D",
+    title: "Research with industrial purpose.",
+    subtitle:
+      "Applied engineering research in renewable energy, sustainability and industrial systems — grounded in West and Central African infrastructure realities, not abstractions.",
+    primaryCta: "Collaborate on research",
+    secondaryCta: "See the projects",
+
+    focusEyebrow: "Focus areas",
+    focusTitle: "Where we put the work.",
+    focusIntro:
+      "Three fronts where engineering research changes what actually gets built and used.",
+    whyLabel: "Why it matters",
+    doingLabel: "What we're doing",
+    proofLabel: "See related work",
+    areas: {
+      "renewable-energy": {
+        title: "Renewable & off-grid energy",
+        why: "Across West and Central Africa, unreliable and off-grid power shapes every engineering decision. Getting energy systems right is the difference between a design that works on paper and one that works in the field.",
+        doing: "Technical analysis of solar, storage and off-grid systems — translated into policy-relevant insight through The REM newsletter.",
+      },
+      "sustainable-machinery": {
+        title: "Sustainable agricultural machinery",
+        why: "Post-harvest waste and unaffordable imported equipment hold back small producers. Locally buildable machines turn waste into value and effort into output.",
+        doing: "Designing and lab-validating machines — like the banana-pseudostem shredder — built from locally available materials and tooling.",
+      },
+      "industrial-rd": {
+        title: "Industrial R&D & reverse engineering",
+        why: "Ageing industrial equipment fails when spares leave the market. Reproducing parts locally keeps critical infrastructure running.",
+        doing: "Reverse-engineering and re-manufacturing components — like locomotive brake triangles at CAMRAIL — to original tolerances.",
+      },
+    } as Record<string, { title: string; why: string; doing: string }>,
+
+    pubEyebrow: "Publications",
+    pubTitle: "The REM — Renewable Energy Mall & Engineering Review.",
+    pubBody:
+      "A newsletter read by 3,200+ engineers and policymakers, translating technical energy research into insight for West and Central Africa. Detailed, first-principles analysis, published regularly.",
+    pubReadRem: "Read The REM on Medium",
+    pubFollow: "Follow the newsletter on LinkedIn",
+
+    initiativesEyebrow: "Initiatives",
+    initiativesTitle: "Research that leaves the page.",
+    initiativesBody:
+      "Findings feed straight back into 4TUN Hub's services, machines and courses — so research earns its keep in real deliverables, not just publications.",
+
+    cta: {
+      title: "Have a research problem worth solving?",
+      subtitle:
+        "We collaborate with researchers, partners and industry on energy and sustainability work. Tell us what you're working on.",
+      primary: "Collaborate on research",
+      secondary: "See the projects",
+    },
+  },
+
+  products: {
+    eyebrow: "Products",
+    title: "The software 4TUN Hub is building.",
+    subtitle:
+      "Engineering and education tools for African realities — in active development. Nothing here is sold before it's ready; this is the roadmap, honestly staged.",
+    primaryCta: "Join the waitlist",
+    secondaryCta: "Talk to us",
+
+    cardsEyebrow: "In the pipeline",
+    cardsTitle: "Three products, honestly staged.",
+    cardsIntro:
+      "Each one solves a problem we've hit first-hand. The build stage is stated plainly — concept, planned, or in development.",
+    statusLabel: "Status",
+    problemLabel: "The problem",
+    whoLabel: "Who it's for",
+    statuses: {
+      "in-development": "In development",
+      planned: "Planned",
+      concept: "Concept",
+    } as Record<string, string>,
+    items: {
+      "edu-assistant": {
+        title: "Cameroon Educational Assistant",
+        desc: "An AI tutor built around the Cameroonian curriculum — explaining, quizzing and guiding students in their own exam context.",
+        problem:
+          "Students preparing for the GCE O- and A-Levels rarely have access to affordable, curriculum-specific tutoring in science and engineering subjects.",
+        who: "For Cameroonian secondary and pre-university students.",
+      },
+      "digital-twin": {
+        title: "Digital Twin Platform",
+        desc: "3D digital-twin tooling for facilities and equipment — bringing simulation-grade insight to day-to-day operations.",
+        problem:
+          "Industrial operators lack affordable tools to model, monitor and plan maintenance for their equipment and facilities.",
+        who: "For industrial and infrastructure operators.",
+      },
+      "mech-ai": {
+        title: "Mechanical AI Assistant",
+        desc: "An AI copilot for mechanical design, FEA and engineering calculations.",
+        problem:
+          "Mechanical engineers spend hours on repetitive sizing, calculations and FEA setup that a domain-aware assistant could accelerate.",
+        who: "For mechanical designers and simulation engineers.",
+      },
+    } as Record<string, { title: string; desc: string; problem: string; who: string }>,
+
+    roadmapEyebrow: "How we ship",
+    roadmapTitle: "Built in the open, released when ready.",
+    roadmapBody:
+      "New tools slot into this pillar without a redesign — 4TUN Hub is built as an expandable ecosystem. We'd rather ship one product that works than three that don't.",
+
+    detail: {
+      status: "Status",
+      backToProducts: "All products",
+      waitlist: "Join the waitlist",
+      body: "This product is on the 4TUN Hub roadmap. Join the waitlist and we'll reach out the moment there's something real to try.",
+    },
+
+    cta: {
+      title: "Want early access?",
+      subtitle:
+        "Join the waitlist and help shape what we build first. We'll only email you when there's something real to try.",
+      primary: "Join the waitlist",
+      secondary: "Talk to us",
+    },
+  },
+
   stub: {
     badge: "In progress",
     beingBuilt: "This part of the ecosystem is being built.",

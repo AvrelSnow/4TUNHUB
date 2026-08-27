@@ -20,6 +20,10 @@ export const WHATSAPP_COMMUNITY_URL =
 export const LINKEDIN_URL =
   "https://www.linkedin.com/in/donfack-fortune-476904231";
 
+/** The REM — Renewable Energy Mall & Engineering Review. Episodes are
+ * published on Medium; the newsletter itself runs on LinkedIn. */
+export const MEDIUM_URL = "https://donfackfortune.medium.com";
+
 export const SITE_DESCRIPTION =
   "4TUNHub is an engineering ecosystem in Cameroon — mechanical design, FEA simulation, renewable-energy consulting, technical training, and engineering research, founded by Donfack Fortune.";
 

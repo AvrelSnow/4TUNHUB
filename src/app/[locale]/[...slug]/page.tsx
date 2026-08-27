@@ -18,7 +18,16 @@ type Params = { params: Promise<{ locale: string; slug: string[] }> };
  * Routes that now have real pages — excluded so they don't collide with
  * this catch-all's static params. Add to this as each pillar ships.
  */
-const BUILT_ROUTES = new Set(["projects", "services", "about", "contact", "blueprint"]);
+const BUILT_ROUTES = new Set([
+  "projects",
+  "services",
+  "about",
+  "contact",
+  "blueprint",
+  "academy",
+  "research",
+  "products",
+]);
 
 /** Pre-render every remaining sitemap path (× each locale via the parent). */
 export function generateStaticParams() {
