@@ -67,20 +67,19 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
           <div className="lg:max-w-md lg:text-right">
             <p className="eyebrow lg:text-right">{dict.footer.affiliations}</p>
-            {/* Full-colour logos on uniform white chips — keeps each mark's
-                identity while blending cleanly into the page. */}
+            {/* One treatment for six marks that share nothing — a wide
+                wordmark, a square emblem, and (see note in
+                docs/art-direction.md) one asset that is a photograph
+                rather than a logo. They are drawn for white grounds and
+                break under a knock-out, so what gets made uniform is the
+                plate: identical size for every mark, recessed against the
+                ground, full strength on hover. */}
             <ul className="mt-4 flex flex-wrap items-center gap-2.5 lg:justify-end">
               {founderAffiliations.map((a) => (
                 <li key={a.name}>
-                  <span className="flex h-11 w-14 items-center justify-center rounded-lg border border-border bg-white p-1.5 shadow-e1 transition-transform duration-200 hover:-translate-y-0.5">
+                  <span className="chip-logo">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={a.logo}
-                      alt={a.name}
-                      title={a.name}
-                      loading="lazy"
-                      className="max-h-full max-w-full object-contain"
-                    />
+                    <img src={a.logo} alt={a.name} title={a.name} loading="lazy" />
                   </span>
                 </li>
               ))}

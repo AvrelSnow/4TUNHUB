@@ -100,7 +100,7 @@ export default async function ProjectDetail({ params }: Params) {
                   alt={copy.title}
                   label={t.detail.zoom}
                   closeLabel={t.detail.close}
-                  className="aspect-[4/3] w-full rounded-xl border border-border bg-ink-950"
+                  className="aspect-[4/3] w-full rounded-xl border border-border"
                 />
                 {project.imageIllustrative && (
                   <p className="mt-2 text-3xs text-muted">{t.detail.illustrativeNote}</p>
@@ -177,7 +177,7 @@ export default async function ProjectDetail({ params }: Params) {
             {project.gallery.map((src, i) => (
               <figure
                 key={src}
-                className="overflow-hidden rounded-2xl border border-border bg-white"
+                className="overflow-hidden rounded-xl border border-border"
               >
                 <Zoomable
                   src={src}
@@ -185,7 +185,7 @@ export default async function ProjectDetail({ params }: Params) {
                   label={t.detail.zoom}
                   closeLabel={t.detail.close}
                   fit="contain"
-                  className="aspect-[4/3] w-full bg-white"
+                  className="aspect-[4/3] w-full"
                 />
                 {gallery[i] && (
                   <figcaption className="border-t border-border bg-background px-4 py-3 text-sm text-muted">

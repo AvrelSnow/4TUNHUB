@@ -80,14 +80,16 @@ export default async function AboutPage({ params }: Params) {
       <Container className="pb-24">
         <Reveal>
           <div className="grid items-center gap-8 rounded-2xl border border-border bg-surface p-8 sm:grid-cols-[auto_1fr] sm:p-10">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={founder.portrait}
-              alt={founder.name}
-              width={128}
-              height={128}
-              className="h-28 w-28 rounded-2xl object-cover sm:h-32 sm:w-32"
-            />
+            <span className="plate block h-28 w-28 shrink-0 rounded-xl border border-border sm:h-32 sm:w-32">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={founder.portrait}
+                alt={founder.name}
+                width={128}
+                height={128}
+                className="h-full w-full object-cover"
+              />
+            </span>
             <div>
               <p className="eyebrow">{t.founderEyebrow}</p>
               <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">

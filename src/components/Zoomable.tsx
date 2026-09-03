@@ -47,7 +47,14 @@ export function Zoomable({
         aria-label={label}
         aria-haspopup="dialog"
         className={cn(
-          "group relative block cursor-zoom-in overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          // `plate` carries the one image treatment. It lifts on hover and
+          // on keyboard focus, so the graded state never hides detail from
+          // someone inspecting the work.
+          "plate group block cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          // `contain` means "show the whole sheet" — a drawing, a BOM, a
+          // schematic. Those are read, so they take the document variant
+          // rather than the photographic grade.
+          fit === "contain" && "plate-doc",
           className,
         )}
       >
@@ -61,7 +68,7 @@ export function Zoomable({
         />
         <span
           aria-hidden="true"
-          className="absolute bottom-2 right-2 flex h-8 w-8 items-center justify-center rounded-full bg-ink-950/70 text-white opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100"
+          className="absolute bottom-2 right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-ink-950/70 text-white opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100"
         >
           <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
             <circle cx="9" cy="9" r="6" />
@@ -88,6 +95,9 @@ export function Zoomable({
               <path d="M5 5 L15 15 M15 5 L5 15" />
             </svg>
           </button>
+          {/* Deliberately outside `.plate`: the lightbox shows the photograph
+              ungraded. The treatment is presentation; the evidence stays
+              available at full fidelity. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={src}

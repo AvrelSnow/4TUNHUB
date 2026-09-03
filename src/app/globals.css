@@ -263,6 +263,156 @@
     }
   }
 
+  /* ============================================================
+     THE PLATE — one image treatment, no exceptions.
+     (art-direction §"imagery")
+
+     The photography is uncontrolled: phone shots from workshops and
+     yards, warm indoor tungsten next to cool overcast daylight,
+     cluttered backgrounds, no two crops alike. Ungraded, a grid of
+     them reads as a jumble rather than one body of work.
+
+     So every photograph is graded toward the ink ground: temperature
+     pulled to one neutral, edges dissolved into the page, contrast
+     seated. Applied as a class rather than baked into the files, so
+     the originals stay untouched on disk.
+
+     The grade is PRESENTATION, never evidence. It lifts on hover and
+     on keyboard focus, and the lightbox shows the photograph
+     completely untouched — this is an engineering-proof site, and the
+     proof has to remain available at full fidelity.
+
+     `.plate` owns ::before/::after, so it must not share an element
+     with `.ticks`. Put the ticks on a wrapper.
+     ============================================================ */
+  .plate {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate; /* contains the blend — never leaks to the page */
+    background: var(--color-ink-975);
+  }
+
+  .plate img {
+    filter: saturate(0.82) contrast(1.06) brightness(0.86);
+    transition: filter 0.45s var(--ease-out-quart);
+  }
+
+  /* Temperature — pulls warm indoor and cool outdoor casts toward one
+     engineering neutral, so a mixed set stops looking mixed. */
+  .plate::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--color-flow-1);
+    mix-blend-mode: color;
+    opacity: 0.14;
+    pointer-events: none;
+    transition: opacity 0.45s var(--ease-out-quart);
+  }
+
+  /* Seat — cluttered edges dissolve into the ground instead of ending
+     at a hard rectangle of someone else's workshop. */
+  .plate::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: radial-gradient(
+      ellipse 82% 82% at 50% 42%,
+      transparent 26%,
+      rgb(8 9 11 / 0.62) 100%
+    );
+    pointer-events: none;
+    transition: opacity 0.45s var(--ease-out-quart);
+  }
+
+  .plate:hover img,
+  .plate:focus-within img {
+    filter: none;
+  }
+
+  .plate:hover::before,
+  .plate:focus-within::before {
+    opacity: 0;
+  }
+
+  .plate:hover::after,
+  .plate:focus-within::after {
+    opacity: 0.2;
+  }
+
+  /* --- Documents: drawings, BOMs, schematics ---------------------
+     A drawing is READ, not looked at. The vignette and the temperature
+     tint attack exactly the corners and the small type where a title
+     block and a parts table live, so a document gets the same family
+     treatment with the grading removed: dimmed just enough that a white
+     sheet stops glaring against the ground, and restored in full on
+     hover, on focus, and in the lightbox.
+
+     The signal is the fit: `contain` means "show the whole sheet",
+     which is what a document needs and a photograph never asks for.
+     Hover/focus selectors are repeated at full specificity so the
+     photographic rules above cannot win them back. */
+  .plate-doc {
+    background: var(--color-ink-100);
+  }
+
+  .plate-doc img {
+    filter: brightness(0.9) contrast(1.02);
+  }
+
+  .plate-doc::before,
+  .plate-doc::after,
+  .plate-doc:hover::before,
+  .plate-doc:hover::after,
+  .plate-doc:focus-within::before,
+  .plate-doc:focus-within::after {
+    opacity: 0;
+  }
+
+  .plate-doc:hover img,
+  .plate-doc:focus-within img {
+    filter: none;
+  }
+
+  /* ============================================================
+     LOGO CHIP — the affiliations row.
+     These marks are opaque assets drawn for white grounds, in three
+     unrelated shapes (a wide wordmark, a square emblem, a
+     photograph). They cannot take a knock-out or a tint without
+     breaking, so the treatment is the one thing that CAN be made
+     uniform: an identical recessed plate for every mark, dimmed so
+     the row never glares against the ground, full strength on hover.
+     ============================================================ */
+  .chip-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 84px;
+    height: 48px;
+    padding: 7px;
+    border-radius: var(--radius-lg);
+    background: var(--color-ink-100);
+    border: 1px solid var(--color-border);
+    opacity: 0.7;
+    transition:
+      opacity 0.3s var(--ease-out-quart),
+      transform 0.3s var(--ease-out-quart);
+  }
+
+  .chip-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .chip-logo:hover,
+  .chip-logo:focus-visible {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
   /* Signature link: the amber sweep. Kept from the previous system —
      it is correct, it just was never the whole identity. */
   .link-sweep {

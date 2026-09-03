@@ -92,9 +92,34 @@ padding is the single strongest signal of a template.
 can actually see, or it is not applied. A pattern masked to invisibility is a
 pattern you should delete.
 
-**Imagery.** One treatment, no exceptions: graded toward the ink ground, framed
-in an instrument frame, captioned with a mono readout. A photo that can't take
-the treatment doesn't ship.
+**Imagery.** One treatment, applied as a class (`.plate`) so the originals stay
+untouched on disk. Photographs are graded toward the ink ground: temperature
+pulled to one neutral, contrast seated, edges dissolved into the page — because
+the source material is uncontrolled phone photography, warm workshop tungsten
+next to cool overcast daylight, and ungraded it reads as a jumble rather than
+one body of work.
+
+Three rules govern it:
+
+1. **The grade is presentation, never evidence.** It lifts on hover and on
+   keyboard focus, and the lightbox shows the photograph completely untouched.
+   This is an engineering-proof site; the proof stays available at full
+   fidelity.
+2. **Documents are not photographs.** Drawings, BOMs and schematics are *read*.
+   The vignette and the tint attack exactly the corners and small type where a
+   title block and a parts table live, so documents take `.plate-doc` — same
+   family, grading removed, dimmed only enough that a white sheet stops glaring.
+   The signal is the fit: `contain` means "show the whole sheet", which a
+   document needs and a photograph never asks for.
+3. **A mark that can't take the treatment doesn't get forced through it.** The
+   affiliation logos are opaque assets drawn for white grounds, in three
+   unrelated shapes; a knock-out or a tint breaks them. So what gets made
+   uniform is the plate, not the mark.
+
+**Known asset debt.** `public/images/logos/rem.webp` is a photograph of a
+lightbulb, not a logo, and sits in a row of logos. `solidworks-ug.webp` is
+illegible at chip size. No treatment fixes either — they need real vector
+marks.
 
 **Motion.** Motion demonstrates or it doesn't exist. Reveals must never leave
 content invisible on load — anything above the fold renders immediately.

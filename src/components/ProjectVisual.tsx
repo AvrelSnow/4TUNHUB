@@ -90,7 +90,7 @@ export function ProjectVisual({
 }) {
   if (image) {
     return (
-      <div className={cn("relative overflow-hidden rounded-xl border border-border bg-ink-950", className)}>
+      <div className={cn("plate rounded-xl border border-border", className)}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={image}

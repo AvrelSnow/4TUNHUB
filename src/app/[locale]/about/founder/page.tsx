@@ -65,14 +65,16 @@ export default async function FounderPage({ params }: Params) {
           ← {t.back}
         </Link>
         <div className="mt-8 grid gap-8 sm:grid-cols-[auto_1fr] sm:items-start">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={founder.portrait}
-            alt={founder.name}
-            width={176}
-            height={176}
-            className="h-36 w-36 rounded-2xl border border-border object-cover sm:h-44 sm:w-44"
-          />
+          <span className="plate block h-36 w-36 shrink-0 rounded-xl border border-border sm:h-44 sm:w-44">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={founder.portrait}
+              alt={founder.name}
+              width={176}
+              height={176}
+              className="h-full w-full object-cover"
+            />
+          </span>
           <div>
             <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
               {founder.name}
@@ -131,13 +133,15 @@ export default async function FounderPage({ params }: Params) {
                     {founder.camrail.cta[locale]} →
                   </span>
                 </div>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/camrail/portrait.webp"
-                  alt=""
-                  aria-hidden="true"
-                  className="hidden h-40 w-32 rounded-xl object-cover sm:block"
-                />
+                <span className="plate hidden h-40 w-32 shrink-0 rounded-xl border border-border sm:block">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/camrail/portrait.webp"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-full w-full object-cover"
+                  />
+                </span>
               </div>
             </Link>
           </Reveal>
