@@ -210,10 +210,10 @@ export default async function Home({
               const isCommunity = o.key === "community";
               const card = (
                 <div
-                  className={`h-full rounded-2xl border p-6 ${
+                  className={`h-full rounded-2xl border p-6 transition-colors ${
                     isCommunity
-                      ? "border-brand-300 bg-brand-50/50 transition-colors hover:border-brand-500"
-                      : "border-dashed border-ink-300"
+                      ? "border-brand-300 bg-brand-50/50 hover:border-brand-500"
+                      : "border-dashed border-ink-300 hover:border-ink-400"
                   }`}
                 >
                   <div className="flex items-center justify-between gap-3">
@@ -223,11 +223,9 @@ export default async function Home({
                     </Badge>
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted">{o.desc}</p>
-                  {isCommunity && (
-                    <span className="link-sweep mt-4 inline-block text-sm font-medium text-brand-800">
-                      {dict.community.join} →
-                    </span>
-                  )}
+                  <span className="link-sweep mt-4 inline-block text-sm font-medium text-brand-800">
+                    {isCommunity ? dict.community.join : t.learnMore} →
+                  </span>
                 </div>
               );
               return (
@@ -242,7 +240,9 @@ export default async function Home({
                       {card}
                     </a>
                   ) : (
-                    card
+                    <Link href={href(o.key)} className="block h-full">
+                      {card}
+                    </Link>
                   )}
                 </Reveal>
               );

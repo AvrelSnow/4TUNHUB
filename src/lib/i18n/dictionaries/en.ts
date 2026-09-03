@@ -474,9 +474,64 @@ const en = {
   },
 
   community: {
+    // Shared micro-copy — also used by the home outlook + route placeholder.
     join: "Join the WhatsApp community",
     note: "Open group · engineers, students and makers",
     live: "Live now",
+
+    eyebrow: "Community · Live now",
+    title: "Engineers, students and makers — already building together.",
+    subtitle:
+      "4TUN Hub isn't only a studio. It's a growing community across Cameroon and beyond — an open WhatsApp group, a 3,200-reader engineering newsletter and a SolidWorks user group. Everyone's welcome.",
+    primaryCta: "Join the WhatsApp community",
+    secondaryCta: "Follow on LinkedIn",
+
+    channelsEyebrow: "Where we gather",
+    channelsTitle: "Ways to plug in.",
+    channelsIntro: "Pick the space that fits — every one of them is active today.",
+    channels: {
+      whatsapp: {
+        title: "WhatsApp community",
+        desc: "The day-to-day hub — questions, feedback, project help and announcements. An open group for engineers, students and makers.",
+        action: "Join the group",
+      },
+      rem: {
+        title: "The REM newsletter",
+        desc: "Renewable Energy Mall & Engineering Review — first-principles energy and engineering analysis, read by 3,200+ engineers and policymakers.",
+        action: "Read The REM",
+      },
+      linkedin: {
+        title: "LinkedIn",
+        desc: "Follow the founder for project write-ups, engineering insight and community updates.",
+        action: "Follow on LinkedIn",
+      },
+    } as Record<string, { title: string; desc: string; action: string }>,
+
+    whoEyebrow: "Who's here",
+    whoTitle: "A community grounded in real practice.",
+    whoBody:
+      "Students sharpening CAD and simulation skills, working engineers comparing notes, and makers turning ideas into hardware — all in one place, from Douala outward.",
+    whoStats: [
+      { value: "3,200+", label: "readers of The REM newsletter" },
+      { value: "300+", label: "in the Douala SolidWorks user group" },
+      { value: "Open", label: "WhatsApp group, free to join" },
+    ],
+
+    ethosEyebrow: "How it works",
+    ethosTitle: "A few simple principles.",
+    ethos: [
+      { title: "Real help, real work", desc: "Share what you're building and get concrete engineering feedback — not vague encouragement." },
+      { title: "Everyone teaches", desc: "The community compounds when people pass on what they know. Ask freely, answer generously." },
+      { title: "Respect first", desc: "Students, professionals and hobbyists share the space. Keep it welcoming and on-topic." },
+    ],
+
+    cta: {
+      title: "Come build with us.",
+      subtitle:
+        "The group is open and active. Join the conversation and introduce what you're working on.",
+      primary: "Join the WhatsApp community",
+      secondary: "Reach out directly",
+    },
   },
 
   academy: {
@@ -681,6 +736,113 @@ const en = {
         "Join the waitlist and help shape what we build first. We'll only email you when there's something real to try.",
       primary: "Join the waitlist",
       secondary: "Talk to us",
+    },
+  },
+
+  resources: {
+    eyebrow: "Resources",
+    title: "Engineering resources, free and practical.",
+    subtitle:
+      "References, CAD models, case studies and publications from real 4TUN Hub work — some available today, more on the way. Built to be useful, not gated.",
+    primaryCta: "Read The REM",
+    secondaryCta: "Join the community",
+
+    availableEyebrow: "Available now",
+    availableTitle: "Start with what's already open.",
+    availableIntro: "Real, published material you can use today — no sign-up wall.",
+    plannedEyebrow: "On the way",
+    plannedTitle: "In preparation.",
+    plannedIntro:
+      "Resources in production. Join the community and we'll share them as they land.",
+    availableBadge: "Available",
+    plannedBadge: "In progress",
+    open: "Open",
+    kinds: {
+      publication: "Publication",
+      cad: "CAD models",
+      "case-studies": "Case studies",
+      ebook: "E-book",
+      template: "Templates",
+      reference: "Reference",
+    } as Record<string, string>,
+    items: {
+      rem: {
+        title: "The REM newsletter",
+        desc: "Renewable Energy Mall & Engineering Review — first-principles energy and engineering analysis, read by 3,200+ engineers and policymakers.",
+      },
+      grabcad: {
+        title: "CAD models on GrabCAD",
+        desc: "Public 3D models and assemblies from real projects — free to download, study and reuse.",
+      },
+      "case-studies": {
+        title: "Project case studies",
+        desc: "Six fully documented engineering projects — problem, approach, results, drawings and analysis. A working reference library.",
+      },
+      ebooks: {
+        title: "Engineering e-books & guides",
+        desc: "Practical guides on CAD, FEA and design-for-manufacture — distilled from delivered work.",
+      },
+      templates: {
+        title: "CAD & calculation templates",
+        desc: "Reusable drawing templates, sizing sheets and checklists to speed up real design work.",
+      },
+      references: {
+        title: "Engineering reference sheets",
+        desc: "Quick-reference material for common mechanical and energy-system calculations.",
+      },
+    } as Record<string, { title: string; desc: string }>,
+
+    commerceNote: {
+      eyebrow: "Free and paid",
+      title: "Most resources are free. Some will be paid.",
+      body: "As deeper courses, e-books and toolkits arrive, a few will be paid — always sold in context, right where you find them. There's no separate paywall to navigate.",
+      cta: "See how the store works",
+    },
+
+    cta: {
+      title: "Want the next resource first?",
+      subtitle:
+        "Join the community and we'll share new resources — free and paid — as they're published.",
+      primary: "Join the community",
+      secondary: "Read The REM",
+    },
+  },
+
+  store: {
+    eyebrow: "Store",
+    title: "Commerce, sold where it makes sense.",
+    subtitle:
+      "4TUN Hub has no separate shop. When something's for sale — a course, an e-book, a tool — you buy it right where you find it. This page simply gathers everything purchasable in one view.",
+    primaryCta: "Explore the ecosystem",
+    secondaryCta: "Get notified",
+
+    emptyEyebrow: "Current status",
+    emptyTitle: "Nothing's on sale yet — and that's deliberate.",
+    emptyBody:
+      "We won't list anything here until it's genuinely ready and worth paying for. The moment the first course, e-book or tool ships, it appears in its pillar and in this view automatically.",
+
+    contextEyebrow: "Where commerce lives",
+    contextTitle: "Buy things in context.",
+    contextIntro:
+      "Each purchasable item is sold inside the pillar it belongs to — no separate checkout silo.",
+    context: {
+      academy: { title: "Academy", desc: "Paid courses and workshops — bought alongside the free tracks." },
+      resources: { title: "Resources", desc: "E-books, templates and toolkits — some free, some paid." },
+      products: { title: "Products", desc: "Software licences and subscriptions when the tools ship." },
+    } as Record<string, { title: string; desc: string }>,
+    explore: "Explore",
+
+    // When the catalog fills, these label the live grid.
+    catalogEyebrow: "For sale now",
+    catalogTitle: "Available to buy.",
+    priceFrom: "From",
+
+    cta: {
+      title: "Want to know when something ships?",
+      subtitle:
+        "Join the community or drop us a line — we'll tell you the moment there's something worth buying.",
+      primary: "Join the community",
+      secondary: "Get in touch",
     },
   },
 

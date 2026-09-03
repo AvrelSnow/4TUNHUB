@@ -24,6 +24,9 @@ export const LINKEDIN_URL =
  * published on Medium; the newsletter itself runs on LinkedIn. */
 export const MEDIUM_URL = "https://donfackfortune.medium.com";
 
+/** Public CAD models & assemblies from real projects. */
+export const GRABCAD_URL = "https://grabcad.com/donfack.fortune-1";
+
 export const SITE_DESCRIPTION =
   "4TUNHub is an engineering ecosystem in Cameroon — mechanical design, FEA simulation, renewable-energy consulting, technical training, and engineering research, founded by Donfack Fortune.";
 

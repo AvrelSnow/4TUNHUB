@@ -472,9 +472,64 @@ const fr: Dictionary = {
   },
 
   community: {
+    // Micro-copie partagée — aussi utilisée par la page d'accueil et le gabarit de route.
     join: "Rejoindre la communauté WhatsApp",
     note: "Groupe ouvert · ingénieurs, étudiants et créateurs",
     live: "En ligne",
+
+    eyebrow: "Communauté · En ligne",
+    title: "Ingénieurs, étudiants et créateurs — déjà à l'œuvre ensemble.",
+    subtitle:
+      "4TUN Hub n'est pas qu'un studio. C'est une communauté grandissante, au Cameroun et au-delà — un groupe WhatsApp ouvert, une infolettre d'ingénierie suivie par 3 200 lecteurs et un groupe d'utilisateurs SolidWorks. Chacun y est le bienvenu.",
+    primaryCta: "Rejoindre la communauté WhatsApp",
+    secondaryCta: "Suivre sur LinkedIn",
+
+    channelsEyebrow: "Où l'on se retrouve",
+    channelsTitle: "Comment nous rejoindre.",
+    channelsIntro: "Choisissez l'espace qui vous convient — tous sont actifs aujourd'hui.",
+    channels: {
+      whatsapp: {
+        title: "Communauté WhatsApp",
+        desc: "Le point de rencontre au quotidien — questions, retours, entraide sur les projets et annonces. Un groupe ouvert aux ingénieurs, étudiants et créateurs.",
+        action: "Rejoindre le groupe",
+      },
+      rem: {
+        title: "L'infolettre The REM",
+        desc: "Renewable Energy Mall & Engineering Review — analyses d'énergie et d'ingénierie fondées sur les premiers principes, lues par plus de 3 200 ingénieurs et décideurs.",
+        action: "Lire The REM",
+      },
+      linkedin: {
+        title: "LinkedIn",
+        desc: "Suivez le fondateur pour des comptes rendus de projets, des analyses d'ingénierie et l'actualité de la communauté.",
+        action: "Suivre sur LinkedIn",
+      },
+    } as Record<string, { title: string; desc: string; action: string }>,
+
+    whoEyebrow: "Qui en fait partie",
+    whoTitle: "Une communauté ancrée dans la pratique réelle.",
+    whoBody:
+      "Des étudiants qui affûtent leurs compétences en CAO et en simulation, des ingénieurs en exercice qui échangent, et des créateurs qui transforment leurs idées en machines — tous au même endroit, depuis Douala et bien au-delà.",
+    whoStats: [
+      { value: "3 200+", label: "lecteurs de l'infolettre The REM" },
+      { value: "300+", label: "au sein du groupe SolidWorks de Douala" },
+      { value: "Ouvert", label: "groupe WhatsApp, gratuit" },
+    ],
+
+    ethosEyebrow: "Comment ça marche",
+    ethosTitle: "Quelques principes simples.",
+    ethos: [
+      { title: "De la vraie aide, du vrai travail", desc: "Partagez ce que vous concevez et recevez des retours d'ingénierie concrets — pas des encouragements vagues." },
+      { title: "Chacun transmet", desc: "La communauté se renforce quand chacun partage ce qu'il sait. Demandez librement, répondez généreusement." },
+      { title: "Le respect d'abord", desc: "Étudiants, professionnels et amateurs partagent l'espace. Gardons-le accueillant et pertinent." },
+    ],
+
+    cta: {
+      title: "Venez construire avec nous.",
+      subtitle:
+        "Le groupe est ouvert et actif. Rejoignez la conversation et présentez ce sur quoi vous travaillez.",
+      primary: "Rejoindre la communauté WhatsApp",
+      secondary: "Nous écrire directement",
+    },
   },
 
   academy: {
@@ -679,6 +734,113 @@ const fr: Dictionary = {
         "Rejoignez la liste d'attente et aidez à décider ce que nous construisons en premier. Nous ne vous écrirons que lorsqu'il y aura quelque chose de concret à essayer.",
       primary: "Rejoindre la liste d'attente",
       secondary: "Nous parler",
+    },
+  },
+
+  resources: {
+    eyebrow: "Ressources",
+    title: "Des ressources d'ingénierie, gratuites et concrètes.",
+    subtitle:
+      "Références, modèles CAO, études de cas et publications issus du travail réel de 4TUN Hub — certaines disponibles dès aujourd'hui, d'autres à venir. Pensées pour être utiles, pas verrouillées.",
+    primaryCta: "Lire The REM",
+    secondaryCta: "Rejoindre la communauté",
+
+    availableEyebrow: "Disponibles maintenant",
+    availableTitle: "Commencez par ce qui est déjà ouvert.",
+    availableIntro: "Du matériel réel et publié, utilisable dès aujourd'hui — sans inscription.",
+    plannedEyebrow: "À venir",
+    plannedTitle: "En préparation.",
+    plannedIntro:
+      "Des ressources en production. Rejoignez la communauté et nous les partagerons dès qu'elles seront prêtes.",
+    availableBadge: "Disponible",
+    plannedBadge: "En cours",
+    open: "Ouvrir",
+    kinds: {
+      publication: "Publication",
+      cad: "Modèles CAO",
+      "case-studies": "Études de cas",
+      ebook: "E-book",
+      template: "Modèles",
+      reference: "Référence",
+    } as Record<string, string>,
+    items: {
+      rem: {
+        title: "L'infolettre The REM",
+        desc: "Renewable Energy Mall & Engineering Review — analyses d'énergie et d'ingénierie fondées sur les premiers principes, lues par plus de 3 200 ingénieurs et décideurs.",
+      },
+      grabcad: {
+        title: "Modèles CAO sur GrabCAD",
+        desc: "Modèles 3D et assemblages publics issus de projets réels — libres de téléchargement, d'étude et de réutilisation.",
+      },
+      "case-studies": {
+        title: "Études de cas des projets",
+        desc: "Six projets d'ingénierie entièrement documentés — problème, approche, résultats, plans et analyses. Une véritable bibliothèque de référence.",
+      },
+      ebooks: {
+        title: "E-books et guides d'ingénierie",
+        desc: "Des guides pratiques sur la CAO, la simulation par éléments finis et la conception pour la fabrication — tirés de travaux livrés.",
+      },
+      templates: {
+        title: "Modèles CAO et de calcul",
+        desc: "Modèles de plans réutilisables, feuilles de dimensionnement et check-lists pour accélérer le travail de conception réel.",
+      },
+      references: {
+        title: "Fiches de référence d'ingénierie",
+        desc: "Du matériel de référence rapide pour les calculs mécaniques et de systèmes énergétiques courants.",
+      },
+    } as Record<string, { title: string; desc: string }>,
+
+    commerceNote: {
+      eyebrow: "Gratuit et payant",
+      title: "La plupart des ressources sont gratuites. Certaines seront payantes.",
+      body: "À mesure qu'arrivent des cours, e-books et boîtes à outils plus poussés, quelques-uns seront payants — toujours vendus en contexte, là où vous les trouvez. Aucun paywall séparé à franchir.",
+      cta: "Voir comment fonctionne la boutique",
+    },
+
+    cta: {
+      title: "Vous voulez la prochaine ressource en avant-première ?",
+      subtitle:
+        "Rejoignez la communauté et nous partagerons les nouvelles ressources — gratuites et payantes — dès leur publication.",
+      primary: "Rejoindre la communauté",
+      secondary: "Lire The REM",
+    },
+  },
+
+  store: {
+    eyebrow: "Boutique",
+    title: "Le commerce, vendu là où c'est logique.",
+    subtitle:
+      "4TUN Hub n'a pas de boutique séparée. Quand quelque chose est en vente — un cours, un e-book, un outil — vous l'achetez là où vous le trouvez. Cette page réunit simplement tout ce qui est achetable en une seule vue.",
+    primaryCta: "Explorer l'écosystème",
+    secondaryCta: "Être prévenu",
+
+    emptyEyebrow: "État actuel",
+    emptyTitle: "Rien n'est encore en vente — et c'est volontaire.",
+    emptyBody:
+      "Nous n'afficherons rien ici tant que ce ne sera pas réellement prêt et digne d'être payé. Dès que le premier cours, e-book ou outil sera lancé, il apparaîtra dans son pilier et dans cette vue, automatiquement.",
+
+    contextEyebrow: "Où vit le commerce",
+    contextTitle: "Acheter en contexte.",
+    contextIntro:
+      "Chaque article achetable est vendu au sein du pilier auquel il appartient — pas de silo de paiement séparé.",
+    context: {
+      academy: { title: "Academy", desc: "Cours et ateliers payants — achetés aux côtés des parcours gratuits." },
+      resources: { title: "Ressources", desc: "E-books, modèles et boîtes à outils — certains gratuits, d'autres payants." },
+      products: { title: "Produits", desc: "Licences logicielles et abonnements dès que les outils seront lancés." },
+    } as Record<string, { title: string; desc: string }>,
+    explore: "Explorer",
+
+    // Quand le catalogue se remplira, ces libellés décriront la grille en vente.
+    catalogEyebrow: "En vente maintenant",
+    catalogTitle: "Disponible à l'achat.",
+    priceFrom: "À partir de",
+
+    cta: {
+      title: "Vous voulez savoir dès qu'un article sort ?",
+      subtitle:
+        "Rejoignez la communauté ou écrivez-nous — nous vous préviendrons dès qu'il y aura quelque chose qui vaut la peine d'être acheté.",
+      primary: "Rejoindre la communauté",
+      secondary: "Nous contacter",
     },
   },
 

@@ -27,6 +27,9 @@ const BUILT_ROUTES = new Set([
   "academy",
   "research",
   "products",
+  "community",
+  "resources",
+  "store",
 ]);
 
 /** Pre-render every remaining sitemap path (× each locale via the parent). */
