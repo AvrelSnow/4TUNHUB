@@ -30,7 +30,7 @@ function ContactFormFields({ t, onReset }: { t: ContactCopy; onReset: () => void
     return (
       <div
         role="status"
-        className="rounded-2xl border border-brand-500/40 bg-brand-50/60 p-8 dark:bg-brand-500/5"
+        className="rounded-2xl border border-brand-500/40 bg-brand-500/10/60 p-8"
       >
         <span
           aria-hidden="true"
@@ -43,7 +43,7 @@ function ContactFormFields({ t, onReset }: { t: ContactCopy; onReset: () => void
         <button
           type="button"
           onClick={onReset}
-          className="link-sweep mt-5 w-fit text-sm font-medium text-brand-800"
+          className="link-sweep mt-5 w-fit text-sm font-medium text-accent"
         >
           {t.success.again}
         </button>

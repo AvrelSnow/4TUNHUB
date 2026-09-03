@@ -37,7 +37,7 @@ export default async function CamrailPage({ params }: Params) {
       <Section pattern="diamond" className="pb-14 pt-14 sm:pt-16">
         <Link
           href={localizeHref(locale, "/about/founder")}
-          className="link-sweep text-sm font-medium text-brand-800"
+          className="link-sweep text-sm font-medium text-accent"
         >
           ← {founder.name}
         </Link>
@@ -67,7 +67,7 @@ export default async function CamrailPage({ params }: Params) {
               closeLabel={dict.projects.detail.close}
               className="aspect-[3/4] w-full max-w-sm rounded-2xl border border-border bg-ink-950 sm:mx-auto"
             />
-            <figcaption className="mt-2 font-mono text-3xs uppercase tracking-widest text-ink-500">
+            <figcaption className="mt-2 font-mono text-3xs uppercase tracking-widest text-muted">
               {t.portraitCaption[locale]}
             </figcaption>
           </figure>
@@ -105,7 +105,7 @@ export default async function CamrailPage({ params }: Params) {
               <div className="mt-6 grid gap-8 lg:grid-cols-3">
                 {c.blocks.map((b) => (
                   <div key={b.label.en}>
-                    <p className="font-mono text-3xs uppercase tracking-wider text-brand-800">
+                    <p className="font-mono text-3xs uppercase tracking-wider text-accent">
                       {b.label[locale]}
                     </p>
                     <p className="mt-2 text-sm leading-6 text-muted">{b.body[locale]}</p>

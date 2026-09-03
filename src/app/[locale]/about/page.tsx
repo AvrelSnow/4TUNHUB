@@ -65,7 +65,7 @@ export default async function AboutPage({ params }: Params) {
           {t.principles.map((p, i) => (
             <Reveal key={p.title} delay={i * 70}>
               <div className="h-full rounded-2xl border border-border bg-surface p-6">
-                <span className="font-mono text-xs font-bold text-brand-800">
+                <span className="font-mono text-xs font-bold text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="mt-3 text-base font-semibold text-foreground">{p.title}</h3>

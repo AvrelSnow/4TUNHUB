@@ -93,7 +93,7 @@ export function ProjectGrid({
                 />
                 <div className="mt-4 flex items-center justify-between gap-3">
                   <Badge variant="amber">{categories[p.category] ?? p.category}</Badge>
-                  <span className="font-mono text-3xs text-ink-500">{p.year}</span>
+                  <span className="font-mono text-3xs text-muted">{p.year}</span>
                 </div>
                 <h2 className="mt-3 text-lg font-semibold text-foreground">{copy.title}</h2>
                 <p className="mt-2 flex-1 text-sm leading-6 text-muted">{copy.outcome}</p>

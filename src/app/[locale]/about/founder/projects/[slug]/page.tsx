@@ -78,7 +78,7 @@ export default async function ProjectDetail({ params }: Params) {
       <Section pattern="diamond" className="pb-12 pt-16">
         <Link
           href={localizeHref(locale, "/about/founder")}
-          className="link-sweep text-sm font-medium text-brand-800"
+          className="link-sweep text-sm font-medium text-accent"
         >
           ← {dict.founderPage.sections.portfolio}
         </Link>
@@ -103,7 +103,7 @@ export default async function ProjectDetail({ params }: Params) {
                   className="aspect-[4/3] w-full rounded-xl border border-border bg-ink-950"
                 />
                 {project.imageIllustrative && (
-                  <p className="mt-2 text-3xs text-ink-500">{t.detail.illustrativeNote}</p>
+                  <p className="mt-2 text-3xs text-muted">{t.detail.illustrativeNote}</p>
                 )}
               </>
             ) : (
@@ -113,25 +113,25 @@ export default async function ProjectDetail({ params }: Params) {
                   index={index}
                   className="aspect-[4/3] w-full"
                 />
-                <p className="mt-2 text-3xs text-ink-500">{t.detail.visualNote}</p>
+                <p className="mt-2 text-3xs text-muted">{t.detail.visualNote}</p>
               </>
             )}
 
             <dl className="mt-6 divide-y divide-border border-t border-border">
               <div className="flex justify-between gap-4 py-3">
-                <dt className="font-mono text-3xs uppercase tracking-wider text-ink-500">
+                <dt className="font-mono text-3xs uppercase tracking-wider text-muted">
                   {t.detail.year}
                 </dt>
                 <dd className="text-sm text-foreground">{project.year}</dd>
               </div>
               <div className="flex justify-between gap-4 py-3">
-                <dt className="font-mono text-3xs uppercase tracking-wider text-ink-500">
+                <dt className="font-mono text-3xs uppercase tracking-wider text-muted">
                   {t.detail.category}
                 </dt>
                 <dd className="text-sm text-foreground">{t.categories[project.category]}</dd>
               </div>
               <div className="py-3">
-                <dt className="font-mono text-3xs uppercase tracking-wider text-ink-500">
+                <dt className="font-mono text-3xs uppercase tracking-wider text-muted">
                   {t.detail.tools}
                 </dt>
                 <dd className="mt-2 flex flex-wrap gap-1.5">
@@ -157,7 +157,7 @@ export default async function ProjectDetail({ params }: Params) {
             {blocks.map((b, i) => (
               <div key={b.label}>
                 <div className="flex items-baseline gap-3">
-                  <span className="font-mono text-xs font-bold text-brand-800">
+                  <span className="font-mono text-xs font-bold text-accent">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h2 className="text-lg font-semibold text-foreground">{b.label}</h2>

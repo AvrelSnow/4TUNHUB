@@ -54,16 +54,16 @@ function StatusDot({ status }: { status: NodeStatus }) {
     status === "active"
       ? "bg-brand-500"
       : status === "building"
-        ? "bg-ink-400"
-        : "bg-transparent border border-ink-300";
+        ? "bg-muted"
+        : "bg-transparent border border-hairline";
   return <span className={`inline-block h-2 w-2 shrink-0 rounded-full ${color}`} />;
 }
 
 function StatusBadge({ status }: { status: NodeStatus }) {
   const styles: Record<NodeStatus, string> = {
-    active: "bg-brand-100 text-brand-800 border-brand-300",
-    building: "bg-ink-100 text-ink-700 border-ink-300",
-    planned: "border-dashed bg-transparent text-ink-500 border-ink-300",
+    active: "bg-brand-500/15 text-accent border-brand-500/40",
+    building: "bg-surface-2 text-foreground border-hairline",
+    planned: "border-dashed bg-transparent text-muted border-hairline",
   };
   return (
     <span
@@ -77,8 +77,8 @@ function StatusBadge({ status }: { status: NodeStatus }) {
 function PriorityBadge({ priority }: { priority: Priority }) {
   const styles: Record<Priority, string> = {
     P0: "bg-brand-500 text-ink-900",
-    P1: "bg-ink-800 text-white",
-    P2: "bg-ink-200 text-ink-700",
+    P1: "bg-surface-2 text-white",
+    P2: "bg-surface-2 text-foreground",
   };
   return (
     <span
@@ -125,12 +125,12 @@ function RuleGrid({ rules, accent = false }: { rules: Rule[]; accent?: boolean }
           key={r.t}
           className={`rounded-2xl border p-5 ${
             accent && r.t.includes("✓")
-              ? "border-brand-300/60 bg-brand-50/40"
+              ? "border-brand-500/40 bg-brand-500/10/40"
               : "border-border bg-surface"
           }`}
         >
           <div className="flex items-start gap-3">
-            <span className="font-mono text-xs font-bold text-brand-800">
+            <span className="font-mono text-xs font-bold text-accent">
               {String(i + 1).padStart(2, "0")}
             </span>
             <div>
@@ -165,22 +165,22 @@ const toc = [
 const reviewPriorityStyles: Record<ReviewPriority, string> = {
   Critical: "bg-red-600 text-white",
   High: "bg-brand-500 text-ink-900",
-  Medium: "bg-ink-700 text-white",
-  Defer: "bg-ink-200 text-ink-700",
+  Medium: "bg-surface-2 text-white",
+  Defer: "bg-surface-2 text-foreground",
 };
 
 const recStatusStyles: Record<Recommendation["status"], string> = {
-  approved: "border-ink-300 text-ink-600",
-  "in-progress": "border-brand-400 text-brand-800 bg-brand-50",
-  done: "border-brand-500 text-brand-800 bg-brand-100",
-  deferred: "border-dashed border-ink-300 text-ink-400",
+  approved: "border-hairline text-muted",
+  "in-progress": "border-brand-400 text-accent bg-brand-500/10",
+  done: "border-brand-500 text-accent bg-brand-500/15",
+  deferred: "border-dashed border-hairline text-muted",
 };
 
 function RecCard({ rec }: { rec: Recommendation }) {
   return (
     <article className="rounded-2xl border border-border bg-surface p-5">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="font-mono text-xs font-bold text-ink-500">{rec.id}</span>
+        <span className="font-mono text-xs font-bold text-muted">{rec.id}</span>
         <span
           className={`rounded-md px-2 py-0.5 font-mono text-3xs font-bold ${reviewPriorityStyles[rec.priority]}`}
         >
@@ -198,20 +198,20 @@ function RecCard({ rec }: { rec: Recommendation }) {
       <h3 className="mt-3 text-base font-semibold text-foreground">{rec.area}</h3>
       <dl className="mt-3 space-y-2 text-sm">
         <div>
-          <dt className="font-mono text-3xs uppercase tracking-wider text-ink-500">Problem</dt>
+          <dt className="font-mono text-3xs uppercase tracking-wider text-muted">Problem</dt>
           <dd className="text-muted">{rec.problem}</dd>
         </div>
         <div>
-          <dt className="font-mono text-3xs uppercase tracking-wider text-ink-500">Solution</dt>
+          <dt className="font-mono text-3xs uppercase tracking-wider text-muted">Solution</dt>
           <dd className="text-foreground">{rec.solution}</dd>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2 pt-1">
           <div className="min-w-[45%] flex-1">
-            <dt className="font-mono text-3xs uppercase tracking-wider text-ink-500">Impact</dt>
+            <dt className="font-mono text-3xs uppercase tracking-wider text-muted">Impact</dt>
             <dd className="text-muted">{rec.impact}</dd>
           </div>
           <div className="min-w-[45%] flex-1">
-            <dt className="font-mono text-3xs uppercase tracking-wider text-ink-500">Trade-off</dt>
+            <dt className="font-mono text-3xs uppercase tracking-wider text-muted">Trade-off</dt>
             <dd className="text-muted">{rec.tradeoff}</dd>
           </div>
         </div>
@@ -236,7 +236,7 @@ function TreeBranch({ node, depth = 0 }: { node: SiteNode; depth?: number }) {
         >
           {node.label}
         </span>
-        <code className="font-mono text-2xs text-ink-500">{node.href}</code>
+        <code className="font-mono text-2xs text-muted">{node.href}</code>
       </div>
       {node.children && (
         <ul className="ml-3 border-l border-border pl-4">
@@ -255,7 +255,7 @@ function NodeCard({ node }: { node: SiteNode }) {
       <div className="flex items-start justify-between gap-3">
         <div>
           <h3 className="text-base font-semibold text-foreground">{node.label}</h3>
-          <code className="font-mono text-2xs text-ink-500">{node.href}</code>
+          <code className="font-mono text-2xs text-muted">{node.href}</code>
         </div>
         <StatusBadge status={node.status} />
       </div>
@@ -279,7 +279,7 @@ function NodeCard({ node }: { node: SiteNode }) {
 function MetaRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="grid grid-cols-[7rem_1fr] gap-3 py-2">
-      <dt className="font-mono text-2xs uppercase tracking-wider text-ink-500">
+      <dt className="font-mono text-2xs uppercase tracking-wider text-muted">
         {label}
       </dt>
       <dd className="text-sm text-foreground">{children}</dd>
@@ -295,7 +295,7 @@ function SpecCard({ spec, status }: { spec: PageSpec; status: NodeStatus }) {
           <PriorityBadge priority={spec.priority} />
           <div>
             <h3 className="text-lg font-semibold text-foreground">{spec.title}</h3>
-            <code className="font-mono text-2xs text-ink-500">{spec.route}</code>
+            <code className="font-mono text-2xs text-muted">{spec.route}</code>
           </div>
         </div>
         <StatusBadge status={status} />
@@ -303,7 +303,7 @@ function SpecCard({ spec, status }: { spec: PageSpec; status: NodeStatus }) {
 
       <div className="grid gap-6 p-6 lg:grid-cols-[1.1fr_1fr]">
         <div>
-          <p className="text-2xs font-mono uppercase tracking-wider text-brand-800">
+          <p className="text-2xs font-mono uppercase tracking-wider text-accent">
             Objective
           </p>
           <p className="mt-1.5 text-sm leading-6 text-foreground">{spec.objective}</p>
@@ -311,7 +311,7 @@ function SpecCard({ spec, status }: { spec: PageSpec; status: NodeStatus }) {
           <dl className="mt-4 divide-y divide-border border-t border-border">
             <MetaRow label="Audience">{spec.audience}</MetaRow>
             <MetaRow label="Primary CTA">
-              <span className="font-medium text-brand-800">{spec.primaryCTA}</span>
+              <span className="font-medium text-accent">{spec.primaryCTA}</span>
             </MetaRow>
             <MetaRow label="Content">{spec.contentSource}</MetaRow>
             <MetaRow label="Depends on">
@@ -331,13 +331,13 @@ function SpecCard({ spec, status }: { spec: PageSpec; status: NodeStatus }) {
 
         <div className="space-y-5">
           <div>
-            <p className="text-2xs font-mono uppercase tracking-wider text-ink-500">
+            <p className="text-2xs font-mono uppercase tracking-wider text-muted">
               Required sections (top → bottom)
             </p>
             <ol className="mt-2 space-y-1.5">
               {spec.sections.map((s, i) => (
                 <li key={s} className="flex gap-2 text-sm text-foreground">
-                  <span className="font-mono text-xs text-brand-800">
+                  <span className="font-mono text-xs text-accent">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="text-muted">{s}</span>
@@ -346,14 +346,14 @@ function SpecCard({ spec, status }: { spec: PageSpec; status: NodeStatus }) {
             </ol>
           </div>
 
-          <div className="rounded-xl border border-brand-300/60 bg-brand-50/50 p-4">
-            <p className="text-2xs font-mono uppercase tracking-wider text-brand-800">
+          <div className="rounded-xl border border-brand-500/40 bg-brand-500/10/50 p-4">
+            <p className="text-2xs font-mono uppercase tracking-wider text-accent">
               Definition of done
             </p>
             <ul className="mt-2 space-y-1.5">
               {spec.acceptance.map((a) => (
                 <li key={a} className="flex gap-2 text-sm text-foreground">
-                  <span className="mt-0.5 text-brand-800">✓</span>
+                  <span className="mt-0.5 text-accent">✓</span>
                   <span>{a}</span>
                 </li>
               ))}
@@ -448,9 +448,9 @@ export default function BlueprintPage() {
             design, precision, craft, security, SEO — and a testable spec for
             every page. Any engineer can pick up any page and build it right
             without asking a question. Generated from{" "}
-            <code className="font-mono text-sm text-brand-800">src/lib/sitemap.ts</code>{" "}
+            <code className="font-mono text-sm text-accent">src/lib/sitemap.ts</code>{" "}
             and{" "}
-            <code className="font-mono text-sm text-brand-800">src/lib/blueprint.ts</code>.
+            <code className="font-mono text-sm text-accent">src/lib/blueprint.ts</code>.
           </p>
 
           <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-5">
@@ -575,7 +575,7 @@ export default function BlueprintPage() {
                     {typeScale.map((t) => (
                       <li key={t.name} className="flex items-baseline justify-between gap-4 border-b border-border pb-3 last:border-0">
                         <span className={`${t.cls} text-foreground`}>{t.name}</span>
-                        <span className="shrink-0 font-mono text-2xs text-ink-500">
+                        <span className="shrink-0 font-mono text-2xs text-muted">
                           {t.use}
                         </span>
                       </li>
@@ -639,15 +639,15 @@ export default function BlueprintPage() {
                   <div className="mt-4 flex flex-wrap items-end gap-6">
                     <div className="flex flex-col items-start gap-2">
                       <Logo href={null} size="lg" />
-                      <span className="font-mono text-3xs text-ink-500">full · lg 48px</span>
+                      <span className="font-mono text-3xs text-muted">full · lg 48px</span>
                     </div>
                     <div className="flex flex-col items-start gap-2">
                       <Logo href={null} size="sm" />
-                      <span className="font-mono text-3xs text-ink-500">full · sm 28px (floor)</span>
+                      <span className="font-mono text-3xs text-muted">full · sm 28px (floor)</span>
                     </div>
                     <div className="flex flex-col items-start gap-2">
                       <Logo href={null} variant="mark" size="lg" />
-                      <span className="font-mono text-3xs text-ink-500">mark · roundel</span>
+                      <span className="font-mono text-3xs text-muted">mark · roundel</span>
                     </div>
                   </div>
                 </div>
@@ -663,8 +663,8 @@ export default function BlueprintPage() {
                               f.verdict === "primary"
                                 ? "rounded bg-brand-500 px-1.5 py-0.5 text-3xs font-bold uppercase text-ink-900"
                                 : f.verdict === "raster-only"
-                                  ? "rounded bg-ink-200 px-1.5 py-0.5 text-3xs font-bold uppercase text-ink-700"
-                                  : "rounded border border-dashed border-ink-300 px-1.5 py-0.5 text-3xs font-bold uppercase text-ink-500"
+                                  ? "rounded bg-surface-2 px-1.5 py-0.5 text-3xs font-bold uppercase text-foreground"
+                                  : "rounded border border-dashed border-hairline px-1.5 py-0.5 text-3xs font-bold uppercase text-muted"
                             }
                           >
                             {f.verdict}
@@ -716,15 +716,15 @@ export default function BlueprintPage() {
                 <div className="rounded-2xl border border-border bg-surface p-6">
                   <p className="text-sm font-semibold text-foreground">Conventions</p>
                   <ul className="mt-4 space-y-2.5 text-sm text-muted">
-                    <li><span className="font-mono text-xs text-brand-800">app/&lt;route&gt;/page.tsx</span> — one folder per route (App Router)</li>
-                    <li><span className="font-mono text-xs text-brand-800">app/&lt;route&gt;/[slug]/page.tsx</span> — dynamic detail pages</li>
-                    <li><span className="font-mono text-xs text-brand-800">components/ui/</span> — primitives · <span className="font-mono text-xs text-brand-800">components/</span> — composed blocks</li>
-                    <li><span className="font-mono text-xs text-brand-800">lib/</span> — data & logic (sitemap, blueprint, site constants)</li>
+                    <li><span className="font-mono text-xs text-accent">app/&lt;route&gt;/page.tsx</span> — one folder per route (App Router)</li>
+                    <li><span className="font-mono text-xs text-accent">app/&lt;route&gt;/[slug]/page.tsx</span> — dynamic detail pages</li>
+                    <li><span className="font-mono text-xs text-accent">components/ui/</span> — primitives · <span className="font-mono text-xs text-accent">components/</span> — composed blocks</li>
+                    <li><span className="font-mono text-xs text-accent">lib/</span> — data & logic (sitemap, blueprint, site constants)</li>
                     <li>Routes <span className="text-foreground">kebab-case</span>; components <span className="text-foreground">PascalCase</span></li>
-                    <li>Every page exports <span className="font-mono text-xs text-brand-800">metadata</span> (title + description)</li>
+                    <li>Every page exports <span className="font-mono text-xs text-accent">metadata</span> (title + description)</li>
                   </ul>
                 </div>
-                <div className="rounded-2xl border border-brand-300/60 bg-brand-50/40 p-6">
+                <div className="rounded-2xl border border-brand-500/40 bg-brand-500/10/40 p-6">
                   <p className="text-sm font-semibold text-foreground">
                     Recipe: add a new page
                   </p>
@@ -760,7 +760,7 @@ export default function BlueprintPage() {
               />
 
               <div className="mt-8 grid gap-6 lg:grid-cols-2">
-                <div className="rounded-2xl border-2 border-brand-500/40 bg-brand-50/40 p-6">
+                <div className="rounded-2xl border-2 border-brand-500/40 bg-brand-500/10/40 p-6">
                   <div className="flex items-center justify-between">
                     <p className="text-sm font-semibold text-foreground">Header (primary)</p>
                     <span className="font-mono text-xs text-muted">{primaryNav.length} + CTA</span>
@@ -870,7 +870,7 @@ export default function BlueprintPage() {
                     className="rounded-2xl border-l-2 border-brand-500 bg-surface p-5"
                   >
                     <div className="flex items-start gap-3">
-                      <span className="font-mono text-xs font-bold text-brand-800">
+                      <span className="font-mono text-xs font-bold text-accent">
                         C{i + 1}
                       </span>
                       <div>
@@ -919,7 +919,7 @@ export default function BlueprintPage() {
                       ? "bg-brand-500 text-ink-900"
                       : p.status === "next"
                         ? "bg-ink-900 text-white ring-4 ring-brand-500/30"
-                        : "bg-surface-2 text-ink-500";
+                        : "bg-surface-2 text-muted";
                   return (
                     <li
                       key={p.id}
@@ -970,8 +970,8 @@ export default function BlueprintPage() {
                     <span
                       className={`inline-flex h-fit shrink-0 items-center rounded-full px-2.5 py-0.5 text-3xs font-semibold uppercase tracking-wider ${
                         d.status === "locked"
-                          ? "bg-brand-100 text-brand-800"
-                          : "border border-dashed border-ink-300 text-ink-500"
+                          ? "bg-brand-500/15 text-accent"
+                          : "border border-dashed border-hairline text-muted"
                       }`}
                     >
                       {d.status}
@@ -1005,17 +1005,17 @@ export default function BlueprintPage() {
                         {s.aspect}
                       </h3>
                       <p className="font-mono text-sm tabular-nums text-foreground">
-                        <span className="font-bold text-brand-800">{s.current}</span>
+                        <span className="font-bold text-accent">{s.current}</span>
                         <span className="text-muted"> / target {s.target}</span>
                       </p>
                     </div>
-                    <div className="relative mt-3 h-2 overflow-hidden rounded-full bg-ink-100">
+                    <div className="relative mt-3 h-2 overflow-hidden rounded-full bg-surface-2">
                       <div
                         className="absolute inset-y-0 left-0 rounded-full bg-brand-500"
                         style={{ width: `${s.current}%` }}
                       />
                       <div
-                        className="absolute inset-y-0 w-0.5 bg-ink-700"
+                        className="absolute inset-y-0 w-0.5 bg-surface-2"
                         style={{ left: `${s.target}%` }}
                         title={`Target ${s.target}`}
                       />
@@ -1024,7 +1024,7 @@ export default function BlueprintPage() {
                   </div>
                 ))}
               </div>
-              <p className="mt-6 rounded-2xl border border-dashed border-ink-300 p-5 text-sm leading-6 text-muted">
+              <p className="mt-6 rounded-2xl border border-dashed border-hairline p-5 text-sm leading-6 text-muted">
                 Reading this honestly: the <span className="font-medium text-foreground">system</span> (architecture,
                 tokens, contracts, security, SEO plumbing) is elite-ready. The{" "}
                 <span className="font-medium text-foreground">substance</span> (real pages, real imagery, motion) is

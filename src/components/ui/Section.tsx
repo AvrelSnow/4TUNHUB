@@ -4,12 +4,28 @@ import { Container } from "./Container";
 export type PatternVariant = "grid" | "dots" | "diamond" | "rings" | "hatch";
 
 /**
+ * Three rhythms, and only three (art-direction §"rhythm"). A page must not
+ * use the same one three times running — uniform vertical padding is the
+ * single strongest signal of a template.
+ */
+export type Rhythm = "compressed" | "normal" | "cinematic";
+
+const rhythms: Record<Rhythm, string> = {
+  compressed: "py-12 sm:py-16",
+  normal: "py-20 sm:py-28",
+  cinematic: "py-32 sm:py-44",
+};
+
+/**
  * Section shell — the repeatable vertical unit of the whole site.
- * eyebrow = small mono label, title = section heading, intro = lead text.
+ * eyebrow = mono readout label, title = section heading, intro = lead text.
  *
- * `pattern` adds a decorative geometry layer behind the content. The layer
- * is masked so it dissolves across the middle — content always stays
- * readable — and each page uses a different geometry for its own identity.
+ * The header carries the instrument treatment: the eyebrow sits on a ticked
+ * hairline that runs to the edge of the measure, so a section reads as a
+ * labelled panel on a drawing rather than as a text block.
+ *
+ * `pattern` adds the lattice behind the content — one texture, at a density
+ * you can actually see. `rings` is reserved for in-progress surfaces.
  */
 export function Section({
   id,
@@ -17,6 +33,7 @@ export function Section({
   title,
   intro,
   pattern,
+  rhythm = "normal",
   className,
   containerClassName,
   children,
@@ -26,6 +43,7 @@ export function Section({
   title?: string;
   intro?: string;
   pattern?: PatternVariant;
+  rhythm?: Rhythm;
   className?: string;
   containerClassName?: string;
   children?: React.ReactNode;
@@ -33,21 +51,22 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("py-20 sm:py-28", pattern && "relative overflow-hidden", className)}
+      className={cn(rhythms[rhythm], pattern && "relative overflow-hidden", className)}
     >
       {pattern && <div aria-hidden="true" className={cn("pattern", `pattern-${pattern}`)} />}
       <Container className={cn(pattern && "relative", containerClassName)}>
         {(eyebrow || title || intro) && (
           <div className="max-w-2xl">
-            {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+            {eyebrow && (
+              <div className="flex items-center gap-3">
+                <p className="eyebrow shrink-0">{eyebrow}</p>
+                <span aria-hidden="true" className="h-px flex-1 bg-border" />
+              </div>
+            )}
             {title && (
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                {title}
-              </h2>
+              <h2 className="mt-5 text-display-sm text-foreground">{title}</h2>
             )}
-            {intro && (
-              <p className="mt-4 text-lg leading-8 text-muted">{intro}</p>
-            )}
+            {intro && <p className="mt-5 text-lg leading-8 text-muted">{intro}</p>}
           </div>
         )}
         {children}

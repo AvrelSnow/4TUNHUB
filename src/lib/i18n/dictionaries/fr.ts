@@ -45,6 +45,8 @@ const fr: Dictionary = {
   home: {
     eyebrow: "Écosystème d'ingénierie · Douala, Cameroun",
     title: "Le savoir en ingénierie, transformé en solutions concrètes.",
+    titleLead: "Le savoir en ingénierie, transformé en ",
+    titleAccent: "solutions concrètes.",
     subtitle:
       "4TUN Hub réunit services d'ingénierie, formation, recherche et produits au sein d'un même écosystème — ancré dans la pratique réelle, depuis Douala et au-delà.",
     primaryCta: "Travailler avec nous",

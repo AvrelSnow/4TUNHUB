@@ -73,20 +73,20 @@ export default async function ResearchPage({ params }: Params) {
               <Reveal key={area.key} delay={i * 70}>
                 <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8">
                   <div className="flex items-baseline gap-3">
-                    <span className="font-mono text-xs font-bold text-brand-800">
+                    <span className="font-mono text-xs font-bold text-accent">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h2 className="text-xl font-semibold text-foreground">{copy.title}</h2>
                   </div>
                   <div className="mt-5 grid gap-6 sm:grid-cols-2">
                     <div>
-                      <p className="font-mono text-3xs uppercase tracking-wider text-ink-500">
+                      <p className="font-mono text-3xs uppercase tracking-wider text-muted">
                         {t.whyLabel}
                       </p>
                       <p className="mt-2 text-sm leading-6 text-muted">{copy.why}</p>
                     </div>
                     <div>
-                      <p className="font-mono text-3xs uppercase tracking-wider text-ink-500">
+                      <p className="font-mono text-3xs uppercase tracking-wider text-muted">
                         {t.doingLabel}
                       </p>
                       <p className="mt-2 text-sm leading-6 text-foreground">{copy.doing}</p>
@@ -95,7 +95,7 @@ export default async function ResearchPage({ params }: Params) {
                   {project && (
                     <Link
                       href={localizeHref(locale, `/about/founder/projects/${project.slug}`)}
-                      className="link-sweep mt-5 inline-block text-sm font-medium text-brand-800"
+                      className="link-sweep mt-5 inline-block text-sm font-medium text-accent"
                     >
                       {t.proofLabel} →
                     </Link>

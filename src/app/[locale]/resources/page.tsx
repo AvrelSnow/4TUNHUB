@@ -60,14 +60,14 @@ function ResourceCard({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="link-sweep mt-5 inline-block text-sm font-medium text-brand-800"
+            className="link-sweep mt-5 inline-block text-sm font-medium text-accent"
           >
             {t.open} →
           </a>
         ) : (
           <Link
             href={href}
-            className="link-sweep mt-5 inline-block text-sm font-medium text-brand-800"
+            className="link-sweep mt-5 inline-block text-sm font-medium text-accent"
           >
             {t.open} →
           </Link>
@@ -148,7 +148,7 @@ export default async function ResourcesPage({ params }: Params) {
         <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">{t.commerceNote.body}</p>
         <Link
           href={localizeHref(locale, "/store")}
-          className="link-sweep mt-5 inline-block text-sm font-medium text-brand-800"
+          className="link-sweep mt-5 inline-block text-sm font-medium text-accent"
         >
           {t.commerceNote.cta} →
         </Link>

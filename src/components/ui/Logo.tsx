@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
  * ============================================================
  * Standards enforced here so usage stays consistent:
  *  - SVG-only artwork (infinite scale, crisp at every density).
- *  - Theme swap: light lockup by default, dark lockup under `.dark`.
+ *  - Dark is the only theme, so the dark lockup is the lockup.
  *  - `variant`: "full" wordmark, or "mark" (roundel) for tight spaces.
  *  - `size`: fixed heights — the minimum (sm = 28px) is the floor;
  *    never render the logo smaller.
@@ -27,8 +27,13 @@ const sizeHeights: Record<Size, string> = {
   lg: "h-12", // 48px — hero / large surfaces
 };
 
+/**
+ * Dark is the only theme (art-direction §"colour"), so the dark lockup is
+ * the lockup. The light asset stays on disk for print, export and any
+ * future light surface — it is simply never the default any more.
+ */
 const sources: Record<Variant, { light: string; dark: string }> = {
-  full: { light: "/4tunhub-logo.svg", dark: "/4tunhub-logo-dark.svg" },
+  full: { light: "/4tunhub-logo-dark.svg", dark: "/4tunhub-logo-dark.svg" },
   // The mark reads on any background, so one asset serves both themes.
   mark: { light: "/4tunhub-mark.svg", dark: "/4tunhub-mark.svg" },
 };
@@ -48,22 +53,8 @@ export function Logo({
   const src = sources[variant];
 
   const art = (
-    <>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src.light}
-        alt="4TUN Hub"
-        className={cn(height, "w-auto", variant === "full" && "dark:hidden", className)}
-      />
-      {variant === "full" && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={src.dark}
-          alt="4TUN Hub"
-          className={cn("hidden w-auto dark:block", height, className)}
-        />
-      )}
-    </>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src.light} alt="4TUN Hub" className={cn(height, "w-auto", className)} />
   );
 
   if (href === null) {

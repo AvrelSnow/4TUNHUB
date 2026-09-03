@@ -83,7 +83,7 @@ export default async function CommunityPage({ params }: Params) {
                 <Card
                   interactive
                   className={`flex h-full flex-col ${
-                    channel.live ? "border-brand-300 bg-brand-50/40" : ""
+                    channel.live ? "border-brand-500/40 bg-brand-500/10/40" : ""
                   }`}
                 >
                   <div className="flex items-center justify-between gap-3">
@@ -95,7 +95,7 @@ export default async function CommunityPage({ params }: Params) {
                     href={channel.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-sweep mt-5 inline-block text-sm font-medium text-brand-800"
+                    className="link-sweep mt-5 inline-block text-sm font-medium text-accent"
                   >
                     {copy.action} →
                   </a>
@@ -117,7 +117,7 @@ export default async function CommunityPage({ params }: Params) {
           <dl className="mt-10 grid gap-8 sm:grid-cols-3">
             {t.whoStats.map((stat) => (
               <div key={stat.label}>
-                <dt className="text-3xl font-semibold tracking-tight text-brand-800 sm:text-4xl">
+                <dt className="text-3xl font-semibold tracking-tight text-accent sm:text-4xl">
                   {stat.value}
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-muted">{stat.label}</dd>
@@ -133,7 +133,7 @@ export default async function CommunityPage({ params }: Params) {
           {t.ethos.map((item, i) => (
             <Reveal key={item.title} delay={i * 70}>
               <div className="h-full rounded-2xl border border-border bg-surface p-6">
-                <span className="font-mono text-xs font-bold text-brand-800">
+                <span className="font-mono text-xs font-bold text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="mt-3 text-base font-semibold text-foreground">{item.title}</h3>

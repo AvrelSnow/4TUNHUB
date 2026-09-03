@@ -47,7 +47,7 @@ export default async function ProductDetail({ params }: Params) {
     <Section pattern="diamond" className="flex flex-1 flex-col py-20 sm:py-24">
       <Link
         href={localizeHref(locale, "/products")}
-        className="link-sweep text-sm font-medium text-brand-800"
+        className="link-sweep text-sm font-medium text-accent"
       >
         ← {t.detail.backToProducts}
       </Link>
@@ -66,13 +66,13 @@ export default async function ProductDetail({ params }: Params) {
 
       <div className="mt-8 grid max-w-3xl gap-6 sm:grid-cols-2">
         <div className="rounded-2xl border border-border bg-surface p-6">
-          <p className="font-mono text-3xs uppercase tracking-wider text-ink-500">
+          <p className="font-mono text-3xs uppercase tracking-wider text-muted">
             {t.problemLabel}
           </p>
           <p className="mt-2 text-sm leading-6 text-foreground">{copy.problem}</p>
         </div>
         <div className="rounded-2xl border border-border bg-surface p-6">
-          <p className="font-mono text-3xs uppercase tracking-wider text-ink-500">
+          <p className="font-mono text-3xs uppercase tracking-wider text-muted">
             {t.whoLabel}
           </p>
           <p className="mt-2 text-sm leading-6 text-foreground">{copy.who}</p>

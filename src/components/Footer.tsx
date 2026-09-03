@@ -59,7 +59,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </p>
             <Link
               href={localizeHref(locale, "/about/founder")}
-              className="link-sweep mt-3 inline-block text-sm font-medium text-brand-800"
+              className="link-sweep mt-3 inline-block text-sm font-medium text-accent"
             >
               {dict.footer.meetFounder}
             </Link>
@@ -85,7 +85,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 </li>
               ))}
             </ul>
-            <p className="mt-3 text-xs text-ink-500 lg:text-right">
+            <p className="mt-3 text-xs text-muted lg:text-right">
               {dict.footer.affiliationsNote}
             </p>
           </div>

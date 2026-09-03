@@ -78,19 +78,19 @@ export default async function ProductsPage({ params }: Params) {
                   <h2 className="mt-4 text-xl font-semibold text-foreground">{copy.title}</h2>
                   <p className="mt-3 text-sm leading-6 text-muted">{copy.desc}</p>
 
-                  <p className="mt-5 font-mono text-3xs uppercase tracking-wider text-ink-500">
+                  <p className="mt-5 font-mono text-3xs uppercase tracking-wider text-muted">
                     {t.problemLabel}
                   </p>
                   <p className="mt-1.5 text-sm leading-6 text-foreground">{copy.problem}</p>
 
-                  <p className="mt-4 font-mono text-3xs uppercase tracking-wider text-ink-500">
+                  <p className="mt-4 font-mono text-3xs uppercase tracking-wider text-muted">
                     {t.whoLabel}
                   </p>
                   <p className="mt-1.5 text-sm leading-6 text-foreground">{copy.who}</p>
 
                   <Link
                     href={localizeHref(locale, `/products/${p.slug}`)}
-                    className="link-sweep mt-auto w-fit pt-5 text-sm font-medium text-brand-800"
+                    className="link-sweep mt-auto w-fit pt-5 text-sm font-medium text-accent"
                   >
                     {t.primaryCta} →
                   </Link>

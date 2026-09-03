@@ -9,7 +9,7 @@ import { cn } from "@/lib/cn";
  */
 
 const controlBase =
-  "w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-ink-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background aria-[invalid=true]:border-red-600";
+  "w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background aria-[invalid=true]:border-red-600";
 
 type CommonProps = {
   label: string;

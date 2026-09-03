@@ -111,7 +111,7 @@ export function ProjectVisual({
       )}
       aria-hidden="true"
     >
-      <span className="absolute left-4 top-3 font-mono text-3xs tracking-widest text-ink-400">
+      <span className="absolute left-4 top-3 font-mono text-3xs tracking-widest text-muted">
         {String(index + 1).padStart(2, "0")}
       </span>
       <svg viewBox="0 0 52 52" className="h-16 w-16 text-brand-600" role="presentation">

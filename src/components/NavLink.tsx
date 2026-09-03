@@ -29,7 +29,9 @@ export function NavLink({
       aria-current={active ? "page" : undefined}
       onClick={onNavigate}
       className={cn(
-        "link-sweep text-sm font-medium transition-colors",
+        // Mono micro-label: the nav is a row of instrument switches, not
+        // a sentence (art-direction §"type").
+        "link-sweep font-mono text-2xs font-medium uppercase tracking-[0.14em] transition-colors",
         active ? "text-foreground" : "text-muted hover:text-foreground",
         className,
       )}

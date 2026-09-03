@@ -80,7 +80,7 @@ export default async function ServicesPage({ params }: Params) {
                   {project && (
                     <Link
                       href={localizeHref(locale, `/about/founder/projects/${project.slug}`)}
-                      className="link-sweep mt-4 w-fit text-sm font-medium text-brand-800"
+                      className="link-sweep mt-4 w-fit text-sm font-medium text-accent"
                     >
                       {t.proofLabel} →
                     </Link>
@@ -146,7 +146,7 @@ export default async function ServicesPage({ params }: Params) {
         <div className="mt-8">
           <Link
             href={localizeHref(locale, "/projects")}
-            className="link-sweep text-sm font-medium text-brand-800"
+            className="link-sweep text-sm font-medium text-accent"
           >
             {t.proof.cta} →
           </Link>

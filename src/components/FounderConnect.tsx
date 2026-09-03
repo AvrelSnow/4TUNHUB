@@ -59,7 +59,7 @@ export function FounderConnect({
           target={l.href.startsWith("http") ? "_blank" : undefined}
           rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
           aria-label={l.label}
-          className="group flex w-20 flex-col items-center gap-2 rounded-xl border border-border bg-background px-2 py-3 text-muted transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-500 hover:text-brand-800 hover:shadow-e1"
+          className="group flex w-20 flex-col items-center gap-2 rounded-xl border border-border bg-background px-2 py-3 text-muted transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-500 hover:text-accent hover:shadow-e1"
         >
           <Glyph icon={l.icon} />
           <span className="text-3xs font-medium">{l.label}</span>

@@ -1,0 +1,108 @@
+# 4TUN Hub — Art Direction
+
+> This document governs every visual decision on the site. If a change can't be
+> justified against it, the change is wrong. Written before the redesign, on
+> purpose: direction first, code second.
+
+---
+
+## The sentence
+
+**4TUN Hub renders like an engineering instrument — a dark measurement surface
+where the only colour is real data from real work.**
+
+Everything below is a consequence of that sentence.
+
+## Three adjectives
+
+**Instrumented.** Every surface behaves like a viewport with a readout. Corner
+ticks, dimension rules, mono labels, tabular figures. Nothing is decorative that
+couldn't plausibly be a measurement.
+
+**Grave.** Near-black ground, enormous type, long silences between sections.
+The work is serious infrastructure — 560 km of railway, not a landing page.
+
+**Evidential.** Claims are shown, not asserted. The CFD render, the shredder in
+the workshop, the FCFA figure. Proof is the design system's payload.
+
+## References
+
+| Site | What we take |
+|---|---|
+| **Anduril** | Gravity. Dark ground, enormous type, full-bleed technical imagery, total absence of stock-photo cheer. |
+| **Linear** | Precision. Motion that demonstrates a claim rather than decorating one. Designed easing curves. |
+| **Vercel** | Dark-first information density that stays warm and legible. |
+| **Oracle Red Bull Racing** | Telemetry as decoration — data readouts used as visual texture. |
+
+Deliberately **not** taken: WebGL spectacle (Igloo Inc, Lando Norris). Our
+audience includes engineers and students in Cameroon on variable mobile
+connections. Elite here means art direction, not payload.
+
+---
+
+## The two signature moves
+
+Exactly two. Repeated everywhere. Nothing else gets to be a signature.
+
+### 1. The flow ramp
+
+The pressure-map gradient from our own CFD output — deep blue → cyan → green →
+amber → red — becomes the brand's data language. It is the *only* place
+multi-colour appears.
+
+Used for: section rules, active/hover states, stat underlines, progress and
+status indicators, clipped display type on the single most important word per
+page.
+
+Never used for: backgrounds behind text, decorative fills, or anything that
+isn't standing in for a measured quantity.
+
+Rationale: no competitor can copy it, because it is derived from our actual
+simulation work. It is the one asset nobody else has.
+
+### 2. The instrument frame
+
+Technical-drawing chrome applied to panels and imagery: hairline borders with
+corner ticks, a mono readout in the frame's gutter, dimension rules with tick
+marks.
+
+Every card, figure and panel is a *viewport onto something measured*, and it is
+labelled as such. This is what turns a generic rounded card into an instrument.
+
+---
+
+## Rules
+
+**Colour.** Dark is home. `--color-background` is near-black and the light
+surfaces are gone. Amber is action and brand — buttons, links, the mark. The
+flow ramp is data. There is no fourth colour. Every foreground/background pair
+clears WCAG AA at its rendered size, verified, not assumed.
+
+**Type.** One family (Geist) worked hard, rather than three families worked
+lightly. Display sizes run to ~136px with tracking tightened to -0.04em; mono
+carries every label, figure and readout at 10–12px with wide tracking. The gap
+between the largest and smallest type on a page should be violent. If a page's
+biggest element is 48px, that page has no hero.
+
+**Rhythm.** Three section rhythms only — `compressed`, `normal`, `cinematic` —
+and a page must not use the same one three times consecutively. Uniform vertical
+padding is the single strongest signal of a template.
+
+**Texture.** One texture: the instrument lattice. It is applied at a density you
+can actually see, or it is not applied. A pattern masked to invisibility is a
+pattern you should delete.
+
+**Imagery.** One treatment, no exceptions: graded toward the ink ground, framed
+in an instrument frame, captioned with a mono readout. A photo that can't take
+the treatment doesn't ship.
+
+**Motion.** Motion demonstrates or it doesn't exist. Reveals must never leave
+content invisible on load — anything above the fold renders immediately.
+Curves come from the token set; `ease` and `linear` are not on the menu.
+
+## What this does not change
+
+The engineering contract stays intact: static per-locale rendering, full EN/FR
+parity, self-hosted fonts with no network dependency, the design-token lint, the
+bundle budget, and WCAG AA. The redesign is judged on all of those *and* on
+whether it stops people scrolling.

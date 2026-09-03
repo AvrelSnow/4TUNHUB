@@ -60,7 +60,7 @@ export default async function FounderPage({ params }: Params) {
       <Section pattern="dots" className="pb-14 pt-14 sm:pt-16">
         <Link
           href={localizeHref(locale, "/about")}
-          className="link-sweep text-sm font-medium text-brand-800"
+          className="link-sweep text-sm font-medium text-accent"
         >
           ← {t.back}
         </Link>
@@ -77,7 +77,7 @@ export default async function FounderPage({ params }: Params) {
             <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
               {founder.name}
             </h1>
-            <p className="mt-3 font-mono text-sm text-brand-800">{founder.title[locale]}</p>
+            <p className="mt-3 font-mono text-sm text-accent">{founder.title[locale]}</p>
             <p className="mt-1 text-sm text-muted">{founder.location[locale]}</p>
             <p className="mt-5 max-w-2xl text-base leading-7 text-muted">{founder.bio[locale]}</p>
             <div className="mt-6 flex flex-wrap gap-3">
@@ -127,7 +127,7 @@ export default async function FounderPage({ params }: Params) {
                   <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
                     {founder.camrail.blurb[locale]}
                   </p>
-                  <span className="link-sweep mt-4 inline-block text-sm font-medium text-brand-800">
+                  <span className="link-sweep mt-4 inline-block text-sm font-medium text-accent">
                     {founder.camrail.cta[locale]} →
                   </span>
                 </div>
@@ -156,7 +156,7 @@ export default async function FounderPage({ params }: Params) {
                   {ed.school} · {ed.note}
                 </p>
               </div>
-              <span className="font-mono text-xs text-ink-500 sm:text-right">{ed.period}</span>
+              <span className="font-mono text-xs text-muted sm:text-right">{ed.period}</span>
             </li>
           ))}
         </ul>
@@ -182,11 +182,11 @@ export default async function FounderPage({ params }: Params) {
                     <div className="flex flex-1 flex-col p-5">
                       <div className="flex items-center justify-between gap-2">
                         <Badge variant="amber">{dict.projects.categories[p.category]}</Badge>
-                        <span className="font-mono text-3xs text-ink-500">{p.year}</span>
+                        <span className="font-mono text-3xs text-muted">{p.year}</span>
                       </div>
                       <h3 className="mt-3 text-base font-semibold text-foreground">{copy.title}</h3>
                       <p className="mt-1.5 flex-1 text-sm leading-6 text-muted">{copy.outcome}</p>
-                      <span className="link-sweep mt-3 w-fit text-sm font-medium text-brand-800">
+                      <span className="link-sweep mt-3 w-fit text-sm font-medium text-accent">
                         {t.viewProject} →
                       </span>
                     </div>
@@ -229,7 +229,7 @@ export default async function FounderPage({ params }: Params) {
                     <span className="font-medium">{a.title[locale]}</span>
                     <span className="text-muted"> · {a.place}</span>
                   </span>
-                  <span className="font-mono text-xs text-ink-500">{a.year}</span>
+                  <span className="font-mono text-xs text-muted">{a.year}</span>
                 </li>
               ))}
             </ul>
@@ -247,7 +247,7 @@ export default async function FounderPage({ params }: Params) {
                     <span className="font-medium text-foreground">{c.name}</span>
                     <span className="text-muted"> — {c.issuer}</span>
                   </span>
-                  <span className="font-mono text-xs text-ink-500">{c.year}</span>
+                  <span className="font-mono text-xs text-muted">{c.year}</span>
                 </li>
               ))}
             </ul>

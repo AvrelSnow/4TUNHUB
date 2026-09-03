@@ -85,7 +85,7 @@ export default async function AcademyPage({ params }: Params) {
                     {c.proof && (
                       <Link
                         href={localizeHref(locale, `/about/founder/projects/${c.proof}`)}
-                        className="link-sweep text-sm font-medium text-brand-800"
+                        className="link-sweep text-sm font-medium text-accent"
                       >
                         {t.proofLabel} →
                       </Link>
@@ -122,7 +122,7 @@ export default async function AcademyPage({ params }: Params) {
           <p className="text-lg leading-8 text-muted">{t.instructorBody}</p>
           <Link
             href={localizeHref(locale, "/about/founder")}
-            className="link-sweep mt-6 inline-block text-sm font-medium text-brand-800"
+            className="link-sweep mt-6 inline-block text-sm font-medium text-accent"
           >
             {t.instructorCta} →
           </Link>

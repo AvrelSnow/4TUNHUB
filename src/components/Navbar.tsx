@@ -18,7 +18,7 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }));
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
       <Container>
         <div className="flex h-16 items-center justify-between gap-6">
           <Logo href={localizeHref(locale, "/")} />

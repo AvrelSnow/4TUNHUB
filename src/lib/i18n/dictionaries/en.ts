@@ -45,6 +45,8 @@ const en = {
   home: {
     eyebrow: "Engineering ecosystem · Douala, Cameroon",
     title: "Engineering knowledge, built into real solutions.",
+    titleLead: "Engineering knowledge, built into ",
+    titleAccent: "real solutions.",
     subtitle:
       "4TUN Hub brings engineering services, education, research and products together in one ecosystem — grounded in real practice, from Douala outward.",
     primaryCta: "Work with us",

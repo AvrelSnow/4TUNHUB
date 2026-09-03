@@ -3,9 +3,9 @@ import { cn } from "@/lib/cn";
 type Variant = "amber" | "neutral" | "outline";
 
 const variants: Record<Variant, string> = {
-  amber: "bg-brand-100 text-brand-800 border-brand-300",
-  neutral: "bg-ink-100 text-ink-700 border-ink-300",
-  outline: "border-dashed bg-transparent text-ink-500 border-ink-300",
+  amber: "bg-brand-500/15 text-accent border-brand-500/40",
+  neutral: "bg-surface-2 text-foreground border-hairline",
+  outline: "border-dashed bg-transparent text-muted border-hairline",
 };
 
 /** Small status/category chip. One family, three intents. */

@@ -72,7 +72,7 @@ export default async function StorePage({ params }: Params) {
                 <Card interactive className="flex h-full flex-col">
                   <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-6 text-muted">{item.format}</p>
-                  <p className="mt-4 font-mono text-sm font-semibold text-brand-800">
+                  <p className="mt-4 font-mono text-sm font-semibold text-accent">
                     {t.priceFrom} {item.price.amount.toLocaleString()} {item.price.currency}
                   </p>
                 </Card>
@@ -83,7 +83,7 @@ export default async function StorePage({ params }: Params) {
       ) : (
         <Container className="pt-0">
           <Reveal>
-            <div className="rounded-2xl border border-dashed border-ink-300 bg-surface p-8 sm:p-12">
+            <div className="rounded-2xl border border-dashed border-hairline bg-surface p-8 sm:p-12">
               <Badge variant="outline" className="w-fit">
                 {t.emptyEyebrow}
               </Badge>
@@ -112,7 +112,7 @@ export default async function StorePage({ params }: Params) {
                   <Card interactive className="flex h-full flex-col">
                     <h3 className="text-lg font-semibold text-foreground">{copy.title}</h3>
                     <p className="mt-2 flex-1 text-sm leading-6 text-muted">{copy.desc}</p>
-                    <span className="link-sweep mt-5 inline-block text-sm font-medium text-brand-800">
+                    <span className="link-sweep mt-5 inline-block text-sm font-medium text-accent">
                       {t.explore} →
                     </span>
                   </Card>
