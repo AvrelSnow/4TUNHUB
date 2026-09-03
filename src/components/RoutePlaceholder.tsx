@@ -29,7 +29,7 @@ export function RoutePlaceholder({
   const isCommunity = node.key === "community";
 
   return (
-    <Section pattern="rings" className="flex flex-1 flex-col justify-center py-24">
+    <Section field="wave" className="flex flex-1 flex-col justify-center py-24">
       <Badge variant="amber" className="w-fit">
         {isCommunity ? dict.community.live : dict.stub.badge}
       </Badge>

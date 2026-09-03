@@ -106,7 +106,7 @@ export function ProjectVisual({
   return (
     <div
       className={cn(
-        "pattern-diamond relative flex items-center justify-center overflow-hidden rounded-xl border border-border bg-surface-2",
+        "ticks relative flex items-center justify-center overflow-hidden rounded-xl border border-border bg-surface-2",
         className,
       )}
       aria-hidden="true"
@@ -117,7 +117,7 @@ export function ProjectVisual({
       <svg viewBox="0 0 52 52" className="h-16 w-16 text-brand-600" role="presentation">
         <Glyph category={category} />
       </svg>
-      <span className="absolute bottom-0 left-0 h-0.5 w-12 bg-brand-500" />
+      <span className="flow-rule absolute bottom-0 left-0 h-0.5 w-12" />
     </div>
   );
 }

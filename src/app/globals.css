@@ -263,14 +263,33 @@
     }
   }
 
-  /* The live flow layer. Sits beneath the lattice and fades out before
-     the section ends, so the two read as one instrument — a measurement
-     grid over moving flow — and the field never competes with the copy
-     sitting on top of it. */
-  .flow-field {
-    opacity: 0.7;
-    -webkit-mask-image: linear-gradient(to bottom, #000, transparent 88%);
-    mask-image: linear-gradient(to bottom, #000, transparent 88%);
+  /* The live field layer. Fades out before the section ends so the
+     simulation never competes with the copy sitting on top of it. */
+  .field {
+    opacity: 0.9;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 96%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 96%);
+  }
+
+  /* Field scrim — the structural guarantee that copy stays readable.
+     Content lives inside a centred measure, so the ground is lifted back
+     up through the middle of the section and left alone at the edges.
+     That lets the simulation run at full strength exactly where nobody
+     is reading, instead of forcing every field to be timid everywhere.
+     Contrast is then measured against real canvas pixels; see
+     docs/art-direction.md. */
+  .field-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 56% 76% at 50% 50%,
+      rgb(8 9 11 / 0.94) 0%,
+      rgb(8 9 11 / 0.86) 46%,
+      rgb(8 9 11 / 0.52) 70%,
+      transparent 86%
+    );
   }
 
   /* Local scrim for copy sitting over the live field.
@@ -473,53 +492,6 @@
   .link-sweep:focus-visible::after,
   .link-sweep[aria-current="page"]::after {
     transform: scaleX(1);
-  }
-
-  /* ============================================================
-     THE LATTICE — one texture, applied at a density you can see.
-     Replaces the five masked patterns of the previous system, which
-     were dissolved to invisibility exactly where the eye lands.
-     ============================================================ */
-  .pattern {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Default: the instrument lattice. A fine grid that fades downward so
-     it reads as a measurement field the content sits on top of. */
-  .pattern-grid,
-  .pattern-dots,
-  .pattern-diamond,
-  .pattern-hatch {
-    background-image:
-      linear-gradient(var(--color-border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
-    background-size: 64px 64px;
-    -webkit-mask-image: linear-gradient(to bottom, #000, transparent 82%);
-    mask-image: linear-gradient(to bottom, #000, transparent 82%);
-  }
-
-  /* Radar rings — reserved for in-progress / placeholder surfaces, where
-     "still scanning" is the actual message. */
-  .pattern-rings {
-    background-image: repeating-radial-gradient(
-      circle at 50% 45%,
-      transparent 0 78px,
-      var(--color-border) 78px 79px
-    );
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000, transparent 78%);
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000, transparent 78%);
-  }
-
-  /* Legacy alias — small decorative panels that want the raw lattice with
-     no fade (used inside dark figure frames). */
-  .grid-texture {
-    background-image:
-      linear-gradient(var(--color-border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
-    background-size: 32px 32px;
   }
 
   @media (prefers-reduced-motion: reduce) {

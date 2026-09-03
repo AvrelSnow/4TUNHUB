@@ -86,7 +86,7 @@ export default async function ResourcesPage({ params }: Params) {
   return (
     <>
       {/* 1 · HERO */}
-      <Section pattern="hatch" className="pb-14 pt-16 sm:pt-20">
+      <Section field="draft" className="pb-14 pt-16 sm:pt-20">
         <Reveal>
           <p className="eyebrow">{t.eyebrow}</p>
           <h1 className="mt-4 max-w-2xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">

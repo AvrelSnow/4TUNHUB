@@ -44,7 +44,7 @@ export default async function ProductDetail({ params }: Params) {
   if (!copy) notFound();
 
   return (
-    <Section pattern="diamond" className="flex flex-1 flex-col py-20 sm:py-24">
+    <Section field="signal" className="flex flex-1 flex-col py-20 sm:py-24">
       <Link
         href={localizeHref(locale, "/products")}
         className="link-sweep text-sm font-medium text-accent"

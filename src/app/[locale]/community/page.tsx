@@ -34,7 +34,7 @@ export default async function CommunityPage({ params }: Params) {
   return (
     <>
       {/* 1 · HERO */}
-      <Section pattern="rings" className="pb-14 pt-16 sm:pt-20">
+      <Section field="network" className="pb-14 pt-16 sm:pt-20">
         <Reveal>
           <Badge variant="amber" className="w-fit">
             {t.live}

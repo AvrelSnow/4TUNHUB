@@ -34,7 +34,7 @@ export default async function CamrailPage({ params }: Params) {
   return (
     <>
       {/* Hero */}
-      <Section pattern="diamond" className="pb-14 pt-14 sm:pt-16">
+      <Section field="kinematic" className="pb-14 pt-14 sm:pt-16">
         <Link
           href={localizeHref(locale, "/about/founder")}
           className="link-sweep text-sm font-medium text-accent"

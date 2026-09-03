@@ -88,9 +88,31 @@ biggest element is 48px, that page has no hero.
 and a page must not use the same one three times consecutively. Uniform vertical
 padding is the single strongest signal of a template.
 
-**Texture.** One texture: the instrument lattice. It is applied at a density you
-can actually see, or it is not applied. A pattern masked to invisibility is a
-pattern you should delete.
+**Backgrounds.** No patterns. No lattice. A square grid is the laziest signal a
+technical site can send, and we shipped one briefly before admitting it.
+
+Every background is a real engineering phenomenon being simulated, chosen so
+each page runs the physics of what that page is actually about:
+
+| Field | Phenomenon | Where |
+|---|---|---|
+| `flow` | fluid velocity field | home — the hero is a CFD pressure map |
+| `stress` | load paths through a truss | services · simulation case studies |
+| `wave` | interference of emitters | research · human-factors work · in-progress pages |
+| `draft` | a drawing constructing itself | academy · about · resources · blueprint |
+| `signal` | oscilloscope traces | products · electronics work |
+| `growth` | branching biomass | sustainability work |
+| `kinematic` | linkages turning and tracing | projects · mechanical work · founder |
+| `network` | a graph finding its edges | community · store · contact |
+
+No two neighbouring pages share a field, and a project case study takes the
+field of its own discipline — so the shredder page grows biomass and the
+braking-analysis page carries load through a truss.
+
+All eight share one canvas engine and one colour ramp, so the site reads as one
+instrument showing different measurements rather than eight unrelated toys.
+Colour inside a field always encodes something measured: local speed, load,
+height, distance travelled.
 
 **Imagery.** One treatment, applied as a class (`.plate`) so the originals stay
 untouched on disk. Photographs are graded toward the ink ground: temperature

@@ -57,7 +57,7 @@ export default async function FounderPage({ params }: Params) {
       />
 
       {/* Hero */}
-      <Section pattern="dots" className="pb-14 pt-14 sm:pt-16">
+      <Section field="kinematic" className="pb-14 pt-14 sm:pt-16">
         <Link
           href={localizeHref(locale, "/about")}
           className="link-sweep text-sm font-medium text-accent"

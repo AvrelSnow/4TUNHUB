@@ -31,7 +31,7 @@ export default async function AboutPage({ params }: Params) {
   return (
     <>
       {/* Hero */}
-      <Section pattern="grid" className="pb-14 pt-16 sm:pt-20">
+      <Section field="draft" className="pb-14 pt-16 sm:pt-20">
         <Reveal>
           <p className="eyebrow">{t.eyebrow}</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">

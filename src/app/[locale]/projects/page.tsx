@@ -27,7 +27,7 @@ export default async function ProjectsPage({ params }: Params) {
   const t = dict.projects;
 
   return (
-    <Section pattern="dots" className="py-20">
+    <Section field="kinematic" className="py-20">
       <p className="eyebrow">{t.eyebrow}</p>
       <h1 className="mt-4 max-w-2xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
         {t.title}

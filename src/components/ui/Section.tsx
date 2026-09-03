@@ -1,7 +1,8 @@
 import { cn } from "@/lib/cn";
 import { Container } from "./Container";
+import { Field, type FieldVariant } from "../Field";
 
-export type PatternVariant = "grid" | "dots" | "diamond" | "rings" | "hatch";
+export type { FieldVariant };
 
 /**
  * Three rhythms, and only three (art-direction §"rhythm"). A page must not
@@ -24,16 +25,18 @@ const rhythms: Record<Rhythm, string> = {
  * hairline that runs to the edge of the measure, so a section reads as a
  * labelled panel on a drawing rather than as a text block.
  *
- * `pattern` adds the lattice behind the content — one texture, at a density
- * you can actually see. `rings` is reserved for in-progress surfaces.
+ * `field` runs a live simulation behind the section — each page gets the
+ * phenomenon it is actually about (see fields/renderers.ts). When one is
+ * present the header automatically takes `.copy-scrim`, so text contrast
+ * over the field is guaranteed by the primitive rather than remembered by
+ * whoever writes the next page.
  */
 export function Section({
   id,
   eyebrow,
   title,
   intro,
-  pattern,
-  backdrop,
+  field,
   rhythm = "normal",
   className,
   containerClassName,
@@ -43,36 +46,30 @@ export function Section({
   eyebrow?: string;
   title?: string;
   intro?: string;
-  pattern?: PatternVariant;
-  /** Live layer rendered beneath the pattern — e.g. <FlowField />. */
-  backdrop?: React.ReactNode;
+  field?: FieldVariant;
   rhythm?: Rhythm;
   className?: string;
   containerClassName?: string;
   children?: React.ReactNode;
 }) {
-  const layered = Boolean(pattern || backdrop);
+  const hasHeader = Boolean(eyebrow || title || intro);
   return (
     <section
       id={id}
-      className={cn(rhythms[rhythm], layered && "relative overflow-hidden", className)}
+      className={cn(rhythms[rhythm], field && "relative overflow-hidden", className)}
     >
-      {/* Order matters: the live field sits underneath the lattice, so the
-          two read as one instrument — a measurement grid over moving flow. */}
-      {backdrop}
-      {pattern && <div aria-hidden="true" className={cn("pattern", `pattern-${pattern}`)} />}
-      <Container className={cn(layered && "relative", containerClassName)}>
-        {(eyebrow || title || intro) && (
-          <div className="max-w-2xl">
+      {field && <Field variant={field} />}
+      {field && <div aria-hidden="true" className="field-scrim" />}
+      <Container className={cn(field && "relative", containerClassName)}>
+        {hasHeader && (
+          <div className={cn("max-w-2xl", field && "copy-scrim")}>
             {eyebrow && (
               <div className="flex items-center gap-3">
                 <p className="eyebrow shrink-0">{eyebrow}</p>
                 <span aria-hidden="true" className="h-px flex-1 bg-border" />
               </div>
             )}
-            {title && (
-              <h2 className="mt-5 text-display-sm text-foreground">{title}</h2>
-            )}
+            {title && <h2 className="mt-5 text-display-sm text-foreground">{title}</h2>}
             {intro && <p className="mt-5 text-lg leading-8 text-muted">{intro}</p>}
           </div>
         )}

@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/Reveal";
 import { Logo } from "@/components/ui/Logo";
 import { ProjectVisual } from "@/components/ProjectVisual";
-import { FlowField } from "@/components/FlowField";
 import { Counter } from "@/components/ui/Counter";
 import { flattenTree } from "@/lib/sitemap";
 import { projects, featuredProjects } from "@/lib/projects";
@@ -38,8 +37,7 @@ export default async function Home({
           underneath it, framed as an instrument viewport rather than
           floated beside the text as an illustration. */}
       <Section
-        pattern="grid"
-        backdrop={<FlowField />}
+        field="flow"
         rhythm="cinematic"
         className="pt-20 pb-0 sm:pt-28"
       >
@@ -69,7 +67,6 @@ export default async function Home({
         {/* Simulation viewport — the instrument frame: hairline, corner
             ticks, mono readouts in the gutter. */}
         <figure className="ticks relative mt-16 overflow-hidden rounded-xl border border-border bg-ink-975 p-4 sm:mt-20 sm:p-6">
-          <div className="grid-texture absolute inset-0 opacity-[0.35]" aria-hidden="true" />
           <div
             aria-hidden="true"
             className="flow-rule absolute inset-x-0 top-0 h-px"

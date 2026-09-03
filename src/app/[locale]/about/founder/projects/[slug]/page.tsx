@@ -8,12 +8,27 @@ import { Badge } from "@/components/ui/Badge";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import { Zoomable } from "@/components/Zoomable";
 import { projects, getProject, projectDetailPath } from "@/lib/projects";
+import type { ProjectCategory } from "@/lib/projects";
+import type { FieldVariant } from "@/components/ui/Section";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
 import { SITE_URL } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string; slug: string }> };
+
+/**
+ * Each case study runs the phenomenon of its own discipline behind it, so
+ * no two project pages share a background. A shredder page grows biomass;
+ * a braking-analysis page carries load through a truss.
+ */
+const CATEGORY_FIELD: Record<ProjectCategory, FieldVariant> = {
+  simulation: "stress",
+  sustainability: "growth",
+  mechanical: "kinematic",
+  electronics: "signal",
+  "user-centered": "wave",
+};
 
 /** One static page per project (× each locale). */
 export function generateStaticParams() {
@@ -75,7 +90,7 @@ export default async function ProjectDetail({ params }: Params) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Section pattern="diamond" className="pb-12 pt-16">
+      <Section field={CATEGORY_FIELD[project.category]} className="pb-12 pt-16">
         <Link
           href={localizeHref(locale, "/about/founder")}
           className="link-sweep text-sm font-medium text-accent"

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
+import { Field } from "@/components/Field";
 import { Logo } from "@/components/ui/Logo";
 import {
   siteTree,
@@ -430,7 +431,7 @@ export default function BlueprintPage() {
     <>
       {/* ============ COVER ============ */}
       <section className="relative overflow-hidden border-b border-border bg-surface">
-        <div aria-hidden="true" className="pattern pattern-grid" />
+        <Field variant="draft" />
         <Container className="relative py-16">
           <div className="flex items-center justify-between gap-4">
             <Logo href={null} />
