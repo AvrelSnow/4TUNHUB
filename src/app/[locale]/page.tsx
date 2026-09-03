@@ -8,6 +8,8 @@ import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/Reveal";
 import { Logo } from "@/components/ui/Logo";
 import { ProjectVisual } from "@/components/ProjectVisual";
+import { FlowField } from "@/components/FlowField";
+import { Counter } from "@/components/ui/Counter";
 import { flattenTree } from "@/lib/sitemap";
 import { projects, featuredProjects } from "@/lib/projects";
 import { WHATSAPP_COMMUNITY_URL } from "@/lib/site";
@@ -35,8 +37,13 @@ export default async function Home({
           display scale and the CFD result is the full-bleed evidence
           underneath it, framed as an instrument viewport rather than
           floated beside the text as an illustration. */}
-      <Section pattern="grid" rhythm="cinematic" className="pt-20 pb-0 sm:pt-28">
-        <div className="max-w-5xl">
+      <Section
+        pattern="grid"
+        backdrop={<FlowField />}
+        rhythm="cinematic"
+        className="pt-20 pb-0 sm:pt-28"
+      >
+        <div className="copy-scrim max-w-5xl">
           <div className="flex items-center gap-3">
             <span aria-hidden="true" className="flow-rule h-px w-10 shrink-0" />
             <p className="eyebrow">{t.eyebrow}</p>
@@ -101,7 +108,7 @@ export default async function Home({
                 />
                 <dt className="flex items-baseline gap-1.5">
                   <span className="font-mono text-4xl font-semibold tabular-nums tracking-tight text-foreground sm:text-5xl">
-                    {s.value}
+                    <Counter value={s.value} />
                   </span>
                   {s.unit && (
                     <span className="font-mono text-sm font-medium text-accent">{s.unit}</span>

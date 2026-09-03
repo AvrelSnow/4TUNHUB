@@ -263,6 +263,43 @@
     }
   }
 
+  /* The live flow layer. Sits beneath the lattice and fades out before
+     the section ends, so the two read as one instrument — a measurement
+     grid over moving flow — and the field never competes with the copy
+     sitting on top of it. */
+  .flow-field {
+    opacity: 0.7;
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent 88%);
+    mask-image: linear-gradient(to bottom, #000, transparent 88%);
+  }
+
+  /* Local scrim for copy sitting over the live field.
+     Measured, not guessed: without it a bright streak passing behind the
+     lead paragraph drops muted text to 3.2:1, which fails AA. Dimming the
+     whole field would fix the contrast and kill the effect, so instead the
+     ground is pulled back up only underneath the copy, with a falloff wide
+     enough that no edge is visible and the field still runs at full
+     strength everywhere else. */
+  .copy-scrim {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .copy-scrim::before {
+    content: "";
+    position: absolute;
+    inset: -10% -14%;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 64% 60% at 34% 50%,
+      rgb(8 9 11 / 0.94) 0%,
+      rgb(8 9 11 / 0.86) 42%,
+      rgb(8 9 11 / 0.55) 66%,
+      transparent 80%
+    );
+  }
+
   /* ============================================================
      THE PLATE — one image treatment, no exceptions.
      (art-direction §"imagery")

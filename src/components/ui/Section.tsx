@@ -33,6 +33,7 @@ export function Section({
   title,
   intro,
   pattern,
+  backdrop,
   rhythm = "normal",
   className,
   containerClassName,
@@ -43,18 +44,24 @@ export function Section({
   title?: string;
   intro?: string;
   pattern?: PatternVariant;
+  /** Live layer rendered beneath the pattern — e.g. <FlowField />. */
+  backdrop?: React.ReactNode;
   rhythm?: Rhythm;
   className?: string;
   containerClassName?: string;
   children?: React.ReactNode;
 }) {
+  const layered = Boolean(pattern || backdrop);
   return (
     <section
       id={id}
-      className={cn(rhythms[rhythm], pattern && "relative overflow-hidden", className)}
+      className={cn(rhythms[rhythm], layered && "relative overflow-hidden", className)}
     >
+      {/* Order matters: the live field sits underneath the lattice, so the
+          two read as one instrument — a measurement grid over moving flow. */}
+      {backdrop}
       {pattern && <div aria-hidden="true" className={cn("pattern", `pattern-${pattern}`)} />}
-      <Container className={cn(pattern && "relative", containerClassName)}>
+      <Container className={cn(layered && "relative", containerClassName)}>
         {(eyebrow || title || intro) && (
           <div className="max-w-2xl">
             {eyebrow && (

@@ -121,9 +121,32 @@ lightbulb, not a logo, and sits in a row of logos. `solidworks-ug.webp` is
 illegible at chip size. No treatment fixes either — they need real vector
 marks.
 
-**Motion.** Motion demonstrates or it doesn't exist. Reveals must never leave
-content invisible on load — anything above the fold renders immediately.
-Curves come from the token set; `ease` and `linear` are not on the menu.
+**Motion.** Motion demonstrates or it doesn't exist. The background flow field
+is the case in point: the hero image is a CFD pressure map, so the live field is
+the site's own subject matter running, not a particle effect borrowed from
+somewhere else. Colour in it still encodes local speed — the ramp never becomes
+decoration.
+
+Reveals must never leave content invisible on load; anything above the fold
+renders immediately. Figures count up like a gauge settling, from a
+server-rendered final value, so they are correct without JS. Curves come from
+the token set; `ease` and `linear` are not on the menu.
+
+Three hard rules for any live layer:
+
+1. **Measure the contrast, don't assume it.** A bright streak passing behind
+   muted body copy measured 3.2:1 — a fail. The fix is `.copy-scrim`, which
+   lifts the ground back up under the text only, so the field keeps running at
+   full strength everywhere else. Any new live layer behind text gets sampled
+   the same way before it ships.
+2. **It stops when nobody is looking.** Offscreen and hidden-tab both pause the
+   loop outright. Verified, not asserted.
+3. **Reduced motion gets a still frame, not an empty box.** The simulation runs
+   forward a bounded number of steps and then stops for good.
+
+**Budget.** Live layers are hand-rolled on canvas. A particle library would cost
+more than the entire remaining client-JS headroom; the flow field and the
+counters together cost 1.9 KB gzipped.
 
 ## What this does not change
 
