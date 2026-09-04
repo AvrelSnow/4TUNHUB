@@ -487,8 +487,8 @@ export const reviewChallenges: Rule[] = [
     d: "Sponsors, awards and partner logos we don't have would be fabrication (craft §1). Build the structure; populate real-only; attribute founder affiliations to the founder, never as org partnerships.",
   },
   {
-    t: "Animated backgrounds are the highest-risk item",
-    d: "Seven per-section animation engines threaten the perf budget AND read as generic tech-startup noise — the opposite of engineering restraint. One restrained, GPU-cheap motif, disciplined, reduced-motion-safe.",
+    t: "Animated backgrounds were the highest-risk item — revisited",
+    d: "The original call was one restrained motif: multiple per-section engines threatened the perf budget AND risked reading as generic tech-startup noise. Deliberately superseded — eight fields now ship, one per context. Both risks were answered rather than assumed away. Payload: the simulations are dynamically imported so they never sit on the critical path — 205.8 KB of a 220 KB budget, +7.3 KB for all eight, versus 20 KB+ for any particle library. Noise: each field is the actual phenomenon its page is about (CFD flow on home, load paths on services, branching biomass on the shredder case study), so it argues for the work instead of decorating it. Contrast over every field is measured against real canvas pixels, the loop stops offscreen and on tab-hide, and reduced motion renders a still frame.",
   },
   {
     t: "Only i18n is expensive to retrofit",

@@ -78,8 +78,8 @@ function StatusBadge({ status }: { status: NodeStatus }) {
 function PriorityBadge({ priority }: { priority: Priority }) {
   const styles: Record<Priority, string> = {
     P0: "bg-brand-500 text-ink-900",
-    P1: "bg-surface-2 text-white",
-    P2: "bg-surface-2 text-foreground",
+    P1: "bg-ink-300 text-ink-900",
+    P2: "border border-hairline bg-transparent text-muted",
   };
   return (
     <span
@@ -109,7 +109,7 @@ function SectionHeading({
       <p className="eyebrow">
         {index} · {eyebrow}
       </p>
-      <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+      <h2 className="mt-5 text-display-sm text-foreground">
         {title}
       </h2>
       {intro && <p className="mt-3 max-w-2xl text-muted">{intro}</p>}
@@ -126,7 +126,7 @@ function RuleGrid({ rules, accent = false }: { rules: Rule[]; accent?: boolean }
           key={r.t}
           className={`rounded-2xl border p-5 ${
             accent && r.t.includes("✓")
-              ? "border-brand-500/40 bg-brand-500/10/40"
+              ? "border-brand-500/40 bg-brand-500/10"
               : "border-border bg-surface"
           }`}
         >
@@ -163,11 +163,13 @@ const toc = [
   { id: "scorecard", label: "12 · Scorecard" },
 ];
 
+// Severity reads on the flow ramp — the system's own language for a
+// measured quantity — instead of a stray Tailwind red.
 const reviewPriorityStyles: Record<ReviewPriority, string> = {
-  Critical: "bg-red-600 text-white",
+  Critical: "bg-flow-5 text-ink-900",
   High: "bg-brand-500 text-ink-900",
-  Medium: "bg-surface-2 text-white",
-  Defer: "bg-surface-2 text-foreground",
+  Medium: "bg-ink-300 text-ink-900",
+  Defer: "border border-hairline bg-transparent text-muted",
 };
 
 const recStatusStyles: Record<Recommendation["status"], string> = {
@@ -347,7 +349,7 @@ function SpecCard({ spec, status }: { spec: PageSpec; status: NodeStatus }) {
             </ol>
           </div>
 
-          <div className="rounded-xl border border-brand-500/40 bg-brand-500/10/50 p-4">
+          <div className="rounded-xl border border-brand-500/40 bg-brand-500/10 p-4">
             <p className="text-2xs font-mono uppercase tracking-wider text-accent">
               Definition of done
             </p>
@@ -730,7 +732,7 @@ export default function BlueprintPage() {
                     <li>Every page exports <span className="font-mono text-xs text-accent">metadata</span> (title + description)</li>
                   </ul>
                 </div>
-                <div className="rounded-2xl border border-brand-500/40 bg-brand-500/10/40 p-6">
+                <div className="rounded-2xl border border-brand-500/40 bg-brand-500/10 p-6">
                   <p className="text-sm font-semibold text-foreground">
                     Recipe: add a new page
                   </p>
@@ -766,7 +768,7 @@ export default function BlueprintPage() {
               />
 
               <div className="mt-8 grid gap-6 lg:grid-cols-2">
-                <div className="rounded-2xl border-2 border-brand-500/40 bg-brand-500/10/40 p-6">
+                <div className="rounded-2xl border-2 border-brand-500/40 bg-brand-500/10 p-6">
                   <div className="flex items-center justify-between">
                     <p className="text-sm font-semibold text-foreground">Header (primary)</p>
                     <span className="font-mono text-xs text-muted">{primaryNav.length} + CTA</span>
@@ -924,8 +926,8 @@ export default function BlueprintPage() {
                     p.status === "done"
                       ? "bg-brand-500 text-ink-900"
                       : p.status === "next"
-                        ? "bg-ink-900 text-white ring-4 ring-brand-500/30"
-                        : "bg-surface-2 text-muted";
+                        ? "bg-ink-100 text-ink-900 ring-4 ring-brand-500/30"
+                        : "border border-hairline bg-transparent text-muted";
                   return (
                     <li
                       key={p.id}
@@ -1015,13 +1017,15 @@ export default function BlueprintPage() {
                         <span className="text-muted"> / target {s.target}</span>
                       </p>
                     </div>
+                    {/* Track, fill, and a target tick that has to read
+                        AGAINST the track — not share its colour. */}
                     <div className="relative mt-3 h-2 overflow-hidden rounded-full bg-surface-2">
                       <div
                         className="absolute inset-y-0 left-0 rounded-full bg-brand-500"
                         style={{ width: `${s.current}%` }}
                       />
                       <div
-                        className="absolute inset-y-0 w-0.5 bg-surface-2"
+                        className="absolute inset-y-0 w-0.5 bg-foreground"
                         style={{ left: `${s.target}%` }}
                         title={`Target ${s.target}`}
                       />

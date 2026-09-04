@@ -236,7 +236,7 @@ export default async function Home({
                 <div
                   className={`h-full rounded-2xl border p-6 transition-colors ${
                     isCommunity
-                      ? "border-brand-500/40 bg-brand-500/10/50 hover:border-brand-500"
+                      ? "border-brand-500/40 bg-brand-500/10 hover:border-brand-500"
                       : "border-dashed border-hairline hover:border-hairline"
                   }`}
                 >

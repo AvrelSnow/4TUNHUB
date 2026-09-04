@@ -83,7 +83,7 @@ export default async function CommunityPage({ params }: Params) {
                 <Card
                   interactive
                   className={`flex h-full flex-col ${
-                    channel.live ? "border-brand-500/40 bg-brand-500/10/40" : ""
+                    channel.live ? "border-brand-500/40 bg-brand-500/10" : ""
                   }`}
                 >
                   <div className="flex items-center justify-between gap-3">
