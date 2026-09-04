@@ -138,7 +138,7 @@ export const siteTree: SiteNode[] = [
     key: "blog",
     label: "Blog",
     href: "/blog",
-    status: "planned",
+    status: "active",
     placement: "footer",
     desc: "Engineering insight, project write-ups & thought leadership.",
   },

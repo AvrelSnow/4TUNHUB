@@ -846,6 +846,65 @@ const fr: Dictionary = {
     },
   },
 
+  blog: {
+    eyebrow: "Publications",
+    title: "La réflexion derrière l'ingénierie.",
+    subtitle:
+      "Analyses sur l'énergie, la simulation et les systèmes industriels en Afrique de l'Ouest et centrale — écrites à partir de projets livrés, pas de communiqués.",
+    primaryCta: "Lire The REM",
+    secondaryCta: "Travailler avec nous",
+
+    emptyEyebrow: "État actuel",
+    emptyTitle: "Rien n'est republié ici pour l'instant — et c'est délibéré.",
+    emptyBody:
+      "Ces textes ont déjà un lectorat ailleurs, et une copie appauvrie ici concurrencerait l'original dans les moteurs de recherche au lieu de le servir. Les articles paraîtront sur cette page lorsqu'ils seront écrits pour elle, l'original restant toujours crédité comme source canonique.",
+
+    hubEyebrow: "Où paraissent les textes",
+    hubTitle: "Deux publications, toutes deux actives.",
+    hubIntro:
+      "Tant que cette page ne porte pas ses propres articles, voici les publications réelles — et non l'annonce de publications à venir.",
+    publications: {
+      rem: {
+        title: "The REM",
+        desc: "Renewable Energy Mall & Engineering Review. Analyses de fond sur le solaire, le stockage et les systèmes hors réseau, traduites pour les ingénieurs et les décideurs.",
+        cta: "Suivre sur LinkedIn",
+      },
+      medium: {
+        title: "Medium",
+        desc: "Essais techniques plus longs sur la simulation, la conception mécanique et l'enseignement de l'ingénierie.",
+        cta: "Lire sur Medium",
+      },
+    } as Record<string, { title: string; desc: string; cta: string }>,
+    readers: "lecteurs",
+
+    // Utilisé lorsque l'index portera de vrais articles.
+    indexEyebrow: "Derniers",
+    indexTitle: "Publications récentes.",
+    readMore: "Lire",
+    minRead: "min de lecture",
+    originallyOn: "Publié à l'origine sur",
+    sources: {
+      native: "4TUN Hub",
+      medium: "Medium",
+      rem: "The REM",
+    } as Record<string, string>,
+
+    cta: {
+      title: "Envie d'appliquer cette analyse à votre problème ?",
+      subtitle:
+        "Ces textes naissent de projets réels. Si l'un d'eux ressemble au vôtre, engageons la conversation.",
+      primary: "Travailler avec nous",
+      secondary: "Voir les réalisations",
+    },
+  },
+
+  /**
+   * Prose de chaque article, indexée par slug. Vide tant qu'aucun article
+   * réel n'existe — les faits structurels vivent dans lib/blog.ts, les
+   * mots ici, et TypeScript maintient EN et FR alignés.
+   */
+  blogPosts: {} as Record<string, { title: string; excerpt: string }>,
+
   stub: {
     badge: "En cours",
     beingBuilt: "Cette partie de l'écosystème est en construction.",

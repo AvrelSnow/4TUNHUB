@@ -848,6 +848,65 @@ const en = {
     },
   },
 
+  blog: {
+    eyebrow: "Writing",
+    title: "The thinking behind the engineering.",
+    subtitle:
+      "Analysis of energy, simulation and industrial systems in West and Central Africa — written from delivered work, not from press releases.",
+    primaryCta: "Read The REM",
+    secondaryCta: "Work with us",
+
+    emptyEyebrow: "Current status",
+    emptyTitle: "Nothing is republished here yet — and that is deliberate.",
+    emptyBody:
+      "The writing already has an audience elsewhere, and a thin copy of it here would compete with the original in search rather than help it. Articles will appear on this page when they are written for it, with the original always credited as the canonical source.",
+
+    hubEyebrow: "Where the writing lives",
+    hubTitle: "Two places, both active.",
+    hubIntro:
+      "Until this page carries its own articles, these are the real publications — not announcements of future ones.",
+    publications: {
+      rem: {
+        title: "The REM",
+        desc: "Renewable Energy Mall & Engineering Review. First-principles analysis of solar, storage and off-grid systems, translated into insight for engineers and policymakers.",
+        cta: "Follow on LinkedIn",
+      },
+      medium: {
+        title: "Medium",
+        desc: "Longer technical essays on simulation, mechanical design and engineering education.",
+        cta: "Read on Medium",
+      },
+    } as Record<string, { title: string; desc: string; cta: string }>,
+    readers: "readers",
+
+    // Used once the index carries real articles.
+    indexEyebrow: "Latest",
+    indexTitle: "Recent writing.",
+    readMore: "Read",
+    minRead: "min read",
+    originallyOn: "Originally published on",
+    sources: {
+      native: "4TUN Hub",
+      medium: "Medium",
+      rem: "The REM",
+    } as Record<string, string>,
+
+    cta: {
+      title: "Want this analysis applied to your problem?",
+      subtitle:
+        "The writing comes out of real projects. If one of them looks like yours, start a conversation.",
+      primary: "Work with us",
+      secondary: "See the work",
+    },
+  },
+
+  /**
+   * Per-post prose, keyed by slug. Empty until a real article exists —
+   * the structural facts live in lib/blog.ts, the words live here, and
+   * TypeScript keeps EN and FR in step.
+   */
+  blogPosts: {} as Record<string, { title: string; excerpt: string }>,
+
   stub: {
     badge: "In progress",
     beingBuilt: "This part of the ecosystem is being built.",
