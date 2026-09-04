@@ -18,7 +18,7 @@ export default function GlobalError({
   return (
     <Container className="flex flex-1 flex-col items-start justify-center py-28">
       <p className="eyebrow">Error · Something failed</p>
-      <h1 className="mt-4 max-w-xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+      <h1 className="mt-5 max-w-2xl text-display text-foreground">
         A component didn&apos;t hold.
       </h1>
       <p className="mt-4 max-w-md text-lg leading-8 text-muted">

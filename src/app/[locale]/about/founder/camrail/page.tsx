@@ -44,7 +44,7 @@ export default async function CamrailPage({ params }: Params) {
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
           <div>
             <p className="eyebrow">{t.eyebrow[locale]}</p>
-            <h1 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            <h1 className="mt-5 text-display text-foreground">
               {t.title[locale]}
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-8 text-muted">{t.intro[locale]}</p>
@@ -78,7 +78,7 @@ export default async function CamrailPage({ params }: Params) {
       <section className="border-y border-border bg-surface">
         <Container className="py-16">
           <p className="eyebrow">{t.overviewEyebrow[locale]}</p>
-          <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-5 max-w-2xl text-display-sm text-foreground">
             {t.overviewTitle[locale]}
           </h2>
           <div className="mt-6 grid max-w-4xl gap-5 lg:grid-cols-2">
@@ -121,7 +121,7 @@ export default async function CamrailPage({ params }: Params) {
       <section className="border-t border-border bg-surface/50">
         <Container className="py-16">
           <p className="eyebrow">{t.galleryEyebrow[locale]}</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-5 text-display-sm text-foreground">
             {t.galleryTitle[locale]}
           </h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

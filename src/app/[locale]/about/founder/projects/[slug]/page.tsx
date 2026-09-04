@@ -101,7 +101,7 @@ export default async function ProjectDetail({ params }: Params) {
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
             <Badge variant="amber">{t.categories[project.category]}</Badge>
-            <h1 className="mt-4 max-w-xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            <h1 className="mt-5 max-w-2xl text-display text-foreground">
               {copy.title}
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-8 text-muted">{copy.outcome}</p>

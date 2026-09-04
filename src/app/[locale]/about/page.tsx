@@ -34,7 +34,7 @@ export default async function AboutPage({ params }: Params) {
       <Section field="draft" className="pb-14 pt-16 sm:pt-20">
         <Reveal>
           <p className="eyebrow">{t.eyebrow}</p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+          <h1 className="mt-5 max-w-4xl text-display text-foreground">
             {t.title}
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">{t.lead}</p>

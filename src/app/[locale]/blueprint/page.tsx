@@ -368,13 +368,18 @@ function SpecCard({ spec, status }: { spec: PageSpec; status: NodeStatus }) {
 
 /* ---------- design standards data ---------- */
 
+// The display tokens carry their own weight and tracking, so nothing here
+// needs font-semibold or tracking-tight bolted on. Sizes are fluid: each
+// clamps between a mobile floor and a desktop ceiling.
 const typeScale = [
-  { name: "Display", cls: "text-5xl font-semibold tracking-tight", use: "Hero H1" },
-  { name: "H2", cls: "text-3xl font-semibold tracking-tight", use: "Section titles" },
+  { name: "Display LG", cls: "text-display-lg", use: "Short statements only — 52→136px" },
+  { name: "Display", cls: "text-display", use: "Page H1 — 44→88px" },
+  { name: "Display SM", cls: "text-display-sm", use: "Section H2 — 36→52px" },
   { name: "H3", cls: "text-xl font-semibold", use: "Card / block titles" },
   { name: "Body", cls: "text-base leading-7", use: "Paragraphs" },
   { name: "Small", cls: "text-sm", use: "Meta, captions" },
-  { name: "Eyebrow", cls: "eyebrow", use: "Mono labels" },
+  { name: "Readout", cls: "readout", use: "Mono gutter labels — 10px" },
+  { name: "Eyebrow", cls: "eyebrow", use: "Mono section labels — 12px" },
 ];
 
 const brandRamp = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
@@ -441,7 +446,7 @@ export default function BlueprintPage() {
           </div>
 
           <p className="eyebrow mt-12">Execution Blueprint</p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+          <h1 className="mt-5 max-w-4xl text-display text-foreground">
             One document. Zero ambiguity.
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">

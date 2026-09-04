@@ -33,7 +33,7 @@ export function RoutePlaceholder({
       <Badge variant="amber" className="w-fit">
         {isCommunity ? dict.community.live : dict.stub.badge}
       </Badge>
-      <h1 className="mt-5 max-w-2xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+      <h1 className="mt-5 max-w-3xl text-display text-foreground">
         {title}
       </h1>
       {purpose && <p className="mt-4 max-w-xl text-lg leading-8 text-foreground">{purpose}</p>}

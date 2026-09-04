@@ -59,7 +59,7 @@ export default async function ProductDetail({ params }: Params) {
         {t.detail.status}: {t.statuses[product.status]}
       </Badge>
 
-      <h1 className="mt-5 max-w-2xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+      <h1 className="mt-5 max-w-3xl text-display text-foreground">
         {copy.title}
       </h1>
       <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">{copy.desc}</p>

@@ -39,7 +39,7 @@ export default async function CommunityPage({ params }: Params) {
           <Badge variant="amber" className="w-fit">
             {t.live}
           </Badge>
-          <h1 className="mt-5 max-w-2xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+          <h1 className="mt-5 max-w-3xl text-display text-foreground">
             {t.title}
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">{t.subtitle}</p>
@@ -110,14 +110,14 @@ export default async function CommunityPage({ params }: Params) {
       <section className="border-y border-border bg-surface">
         <Container className="py-20 sm:py-24">
           <p className="eyebrow">{t.whoEyebrow}</p>
-          <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-5 max-w-2xl text-display-sm text-foreground">
             {t.whoTitle}
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">{t.whoBody}</p>
           <dl className="mt-10 grid gap-8 sm:grid-cols-3">
             {t.whoStats.map((stat) => (
               <div key={stat.label}>
-                <dt className="text-3xl font-semibold tracking-tight text-accent sm:text-4xl">
+                <dt className="text-display-sm text-accent">
                   {stat.value}
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-muted">{stat.label}</dd>
@@ -148,7 +148,7 @@ export default async function CommunityPage({ params }: Params) {
       <Container className="pb-24">
         <Reveal>
           <div className="rounded-2xl border border-border bg-surface p-8 text-center sm:p-12">
-            <h2 className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-display-sm text-foreground">
               {t.cta.title}
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted">

@@ -76,7 +76,7 @@ export default async function FounderPage({ params }: Params) {
             />
           </span>
           <div>
-            <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            <h1 className="text-display text-foreground">
               {founder.name}
             </h1>
             <p className="mt-3 font-mono text-sm text-accent">{founder.title[locale]}</p>
