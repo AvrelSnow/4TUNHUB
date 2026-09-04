@@ -50,6 +50,16 @@
   --color-flow-4: #ffd23f; /* amber */
   --color-flow-5: #ff4b2e; /* high — red */
 
+  /* --- THIRD-PARTY MARK COLOURS ---
+         The one bounded exception to "there is no fourth colour". These
+         are not our palette: they are quotations of someone else's brand,
+         used only inside that brand's own icon. Never on our surfaces,
+         our type, or our controls.
+         Both clear the 3:1 WCAG 1.4.11 threshold for non-text graphics on
+         the ground: LinkedIn 3.5:1, Gmail 5.1:1. */
+  --color-mark-linkedin: #0a66c2;
+  --color-mark-gmail: #ea4335;
+
   /* --- Semantic tokens. Dark is the default and the only theme. --- */
   --color-background: #08090b;
   --color-surface: #101317;
