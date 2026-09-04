@@ -25,8 +25,9 @@ export type { FieldVariant };
  *  - reduced motion pre-runs the simulation and renders a still frame
  *  - the loop stops outright when scrolled offscreen or the tab hides
  *  - DPR is capped at 2 and every renderer scales its work to area
- *  - copy over a field is protected by `.field-scrim`, and contrast is
- *    measured against real canvas pixels before shipping
+ *  - the `.field-scrim` ships with the field, so copy over it is
+ *    protected by construction; contrast is measured against real canvas
+ *    pixels before shipping
  */
 export function Field({
   variant,
@@ -142,10 +143,15 @@ export function Field({
   }, [variant]);
 
   return (
-    <canvas
-      ref={ref}
-      aria-hidden="true"
-      className={cn("field pointer-events-none absolute inset-0 h-full w-full", className)}
-    />
+    <>
+      <canvas
+        ref={ref}
+        aria-hidden="true"
+        className={cn("field pointer-events-none absolute inset-0 h-full w-full", className)}
+      />
+      {/* The scrim ships WITH the field, never separately. Anything that
+          renders a Field is contrast-safe by construction. */}
+      <div aria-hidden="true" className="field-scrim" />
+    </>
   );
 }

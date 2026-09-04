@@ -59,7 +59,6 @@ export function Section({
       className={cn(rhythms[rhythm], field && "relative overflow-hidden", className)}
     >
       {field && <Field variant={field} />}
-      {field && <div aria-hidden="true" className="field-scrim" />}
       <Container className={cn(field && "relative", containerClassName)}>
         {hasHeader && (
           <div className={cn("max-w-2xl", field && "copy-scrim")}>

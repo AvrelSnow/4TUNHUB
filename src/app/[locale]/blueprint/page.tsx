@@ -39,8 +39,8 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false }, // internal spec — never in search
 };
 
-const BLUEPRINT_VERSION = "v2.1";
-const LAST_UPDATED = "20 Jul 2026";
+const BLUEPRINT_VERSION = "v2.3";
+const LAST_UPDATED = "4 Sep 2026";
 
 /* ---------- small primitives ---------- */
 

@@ -294,11 +294,11 @@
     z-index: 0;
     pointer-events: none;
     background: radial-gradient(
-      ellipse 56% 76% at 50% 50%,
+      ellipse 72% 82% at 50% 50%,
       rgb(8 9 11 / 0.94) 0%,
-      rgb(8 9 11 / 0.86) 46%,
-      rgb(8 9 11 / 0.52) 70%,
-      transparent 86%
+      rgb(8 9 11 / 0.88) 52%,
+      rgb(8 9 11 / 0.58) 74%,
+      transparent 92%
     );
   }
 
