@@ -28,13 +28,20 @@ const sizeHeights: Record<Size, string> = {
 };
 
 /**
- * Dark is the only theme (art-direction §"colour"), so the dark lockup is
- * the lockup. The light asset stays on disk for print, export and any
- * future light surface — it is simply never the default any more.
+ * The site now runs two grounds, so the lockup is drawn twice: the dark
+ * lockup sets its wordmark in #A8B0B8 for the night surface, the light one
+ * in #14181D for the day sheet. Both ship in the markup and CSS picks with
+ * `.only-light` / `.only-dark`, rather than JavaScript swapping a `src`
+ * after mount — a logo that arrives one frame late is the most conspicuous
+ * possible place to put a flash.
+ *
+ * They are two drawn files and not one recoloured file on purpose: a mark
+ * is not a token, and pushing it through a filter is precisely what
+ * art-direction §"imagery" rule 3 forbids.
  */
 const sources: Record<Variant, { light: string; dark: string }> = {
-  full: { light: "/4tunhub-logo-dark.svg", dark: "/4tunhub-logo-dark.svg" },
-  // The mark reads on any background, so one asset serves both themes.
+  full: { light: "/4tunhub-logo.svg", dark: "/4tunhub-logo-dark.svg" },
+  // The mark reads on either ground, so one asset serves both.
   mark: { light: "/4tunhub-mark.svg", dark: "/4tunhub-mark.svg" },
 };
 
@@ -52,10 +59,29 @@ export function Logo({
   const height = sizeHeights[size];
   const src = sources[variant];
 
-  const art = (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img src={src.light} alt="4TUN Hub" className={cn(height, "w-auto", className)} />
-  );
+  // One alt text between them: this is one logo shown two ways, so a screen
+  // reader must not hear the brand twice. The hidden copy is display:none,
+  // which takes it out of the accessibility tree along with its alt.
+  const art =
+    src.light === src.dark ? (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img src={src.dark} alt="4TUN Hub" className={cn(height, "w-auto", className)} />
+    ) : (
+      <>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src.dark}
+          alt="4TUN Hub"
+          className={cn("only-dark", height, "w-auto", className)}
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src.light}
+          alt="4TUN Hub"
+          className={cn("only-light", height, "w-auto", className)}
+        />
+      </>
+    );
 
   if (href === null) {
     return <span className="inline-flex items-center">{art}</span>;

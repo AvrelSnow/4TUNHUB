@@ -65,8 +65,18 @@ export default async function Home({
         </div>
 
         {/* Simulation viewport — the instrument frame: hairline, corner
-            ticks, mono readouts in the gutter. */}
-        <figure className="ticks relative mt-16 overflow-hidden rounded-xl border border-border bg-ink-975 p-4 sm:mt-20 sm:p-6">
+            ticks, mono readouts in the gutter.
+
+            `bg-surface`, not `bg-ink-975`. The old value was the night
+            ground itself, chosen so the frame dissolved into the page — and
+            it did not follow the ground, so on the day sheet the gutter
+            readouts below measured 2.39:1 and 3.27:1, dark ink on a
+            near-black plate, on the most important element of the most
+            important page. `surface` is what every other panel on the site
+            already uses, so the frame now reads as a panel on both grounds
+            and the CFD render keeps its own black inside it — which is what
+            a viewport onto a simulation should look like anyway. */}
+        <figure className="ticks relative mt-16 overflow-hidden rounded-xl border border-border bg-surface p-4 sm:mt-20 sm:p-6">
           <div
             aria-hidden="true"
             className="flow-rule absolute inset-x-0 top-0 h-px"

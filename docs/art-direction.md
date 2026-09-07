@@ -8,10 +8,16 @@
 
 ## The sentence
 
-**4TUN Hub renders like an engineering instrument — a dark measurement surface
-where the only colour is real data from real work.**
+**4TUN Hub renders like an engineering instrument — a measurement surface where
+the only colour is real data from real work.**
 
 Everything below is a consequence of that sentence.
+
+*One word was struck from it: "dark". The surface now has two states — a screen
+by night, a drafting sheet by day — and the sentence had to stop naming one of
+them as though it were the whole idea. Nothing else in it moved, because nothing
+else needed to: the instrument, the measurement and the rule that colour has to
+mean something are all untouched. See "The two grounds".*
 
 ## Three adjectives
 
@@ -19,8 +25,10 @@ Everything below is a consequence of that sentence.
 ticks, dimension rules, mono labels, tabular figures. Nothing is decorative that
 couldn't plausibly be a measurement.
 
-**Grave.** Near-black ground, enormous type, long silences between sections.
-The work is serious infrastructure — 560 km of railway, not a landing page.
+**Grave.** Enormous type, long silences between sections, a ground that gets out
+of the way — near-black by night, near-white by day, and never anything in
+between. The work is serious infrastructure — 560 km of railway, not a landing
+page.
 
 **Evidential.** Claims are shown, not asserted. The CFD render, the shredder in
 the workshop, the FCFA figure. Proof is the design system's payload.
@@ -39,6 +47,60 @@ audience includes engineers and students in Cameroon on variable mobile
 connections. Elite here means art direction, not payload.
 
 ---
+
+## The two grounds
+
+*Amended. This document previously said dark was home and that there was no
+light theme; the code said the same in three places. That is no longer true,
+and the amendment is written here rather than quietly dropped, because a
+governing document that revises itself silently stops governing anything.*
+
+The site runs two grounds, and the visitor's own clock chooses: the **day
+sheet** from 06:00 to 18:00 local, the **night ground** outside those hours.
+
+This is not a light theme bolted onto a dark one. It is a surface the system
+already contained. `.plate-doc` has always laid drawings, BOMs and schematics
+on a pale sheet, on the stated grounds that **a document is read and a readout
+is watched**. By day the whole instrument becomes that sheet — a drafting
+surface — and by night it is the measurement screen it has always been. Same
+two signature moves, same ramp, same mono furniture. Only the ground changes.
+
+**Night is still home**, and it is the fallback in every failure mode: no
+JavaScript, storage refused, an exception thrown, no stated preference and no
+clock. The degraded state is the designed state.
+
+Three rules govern it.
+
+1. **The ground is decided before first paint, never after.** Every page is
+   static per locale, so the server cannot know a visitor's local hour. A
+   blocking inline resolver sets one attribute on `<html>` before the
+   stylesheet paints. No markup anywhere depends on the theme, so there is
+   nothing to hydrate and nothing that can mismatch — and no flash of the
+   wrong ground, which would be worse than having no day sheet at all.
+2. **The clock is a default, not a sentence.** Anyone can pin Day or Night and
+   is then obeyed permanently. A site that insists it knows the visitor's room
+   better than they do has stopped being an instrument and started being an
+   opinion.
+3. **Both grounds are measured, and the ramp is inked for paper.** Two failures
+   were found by measuring rather than by looking, and both are recorded in
+   `globals.css` with their ratios rather than fixed silently. The vivid brand
+   amber cannot be *text* on a pale ground (1.6:1), so links deepen to
+   `#8a5700` and the amber that *fills* a control keeps `#ffb000` with a
+   `#b87400` edge for WCAG 1.4.11. And the flow ramp clipped to display type
+   fails outright by day — cyan 1.97:1, green 1.50:1, amber 1.25:1 — on the
+   largest word on the page. So `.flow-text` and `.flow-rule` read a separate
+   inked ramp by day: identical hue order, every stop and midpoint between
+   4.68:1 and 6.83:1. The raw `--color-flow-*` tokens are untouched, because
+   deepening them would break filled chips that already pass.
+
+**Why the clock and not `prefers-color-scheme`.** The OS setting is a stated
+preference on the machines of people who have stated one, and a factory default
+everywhere else — and a site obeying a factory default is obeying nobody. The
+clock at least tracks something real about the room. The hours are 06:00–18:00
+because 4TUN Hub's audience is in Cameroon, three degrees off the equator,
+where sunrise sits near 06:00 and sunset near 18:20 in every month of the year:
+genuinely accurate for the people the site is for, merely conventional for
+everyone else, which is the right way round.
 
 ## The two signature moves
 
@@ -73,10 +135,10 @@ labelled as such. This is what turns a generic rounded card into an instrument.
 
 ## Rules
 
-**Colour.** Dark is home. `--color-background` is near-black and the light
-surfaces are gone. Amber is action and brand — buttons, links, the mark. The
-flow ramp is data. There is no fourth colour. Every foreground/background pair
-clears WCAG AA at its rendered size, verified, not assumed.
+**Colour.** Night is home and day is the sheet — see "The two grounds" above.
+Amber is action and brand — buttons, links, the mark. The flow ramp is data.
+There is no fourth colour. Every foreground/background pair clears WCAG AA at
+its rendered size, verified, not assumed, **on both grounds**.
 
 **Type.** One family (Geist) worked hard, rather than three families worked
 lightly. Display sizes run to ~136px with tracking tightened to -0.04em; mono
@@ -97,13 +159,13 @@ each page runs the physics of what that page is actually about:
 | Field | Phenomenon | Where |
 |---|---|---|
 | `flow` | fluid velocity field | home — the hero is a CFD pressure map |
-| `stress` | load paths through a truss | services · simulation case studies |
+| `stress` | load paths through a truss | services · store · simulation case studies |
 | `wave` | interference of emitters | research · human-factors work · in-progress pages |
 | `draft` | a drawing constructing itself | academy · about · resources · blueprint |
 | `signal` | oscilloscope traces | products · electronics work |
 | `growth` | branching biomass | sustainability work |
 | `kinematic` | linkages turning and tracing | projects · mechanical work · founder |
-| `network` | a graph finding its edges | community · store · contact |
+| `network` | a graph finding its edges | community · contact |
 
 No two neighbouring pages share a field, and a project case study takes the
 field of its own discipline — so the shredder page grows biomass and the
@@ -165,6 +227,11 @@ Three hard rules for any live layer:
    loop outright. Verified, not asserted.
 3. **Reduced motion gets a still frame, not an empty box.** The simulation runs
    forward a bounded number of steps and then stops for good.
+4. **A ground change re-draws it.** A canvas cannot resolve `var()`, so the
+   neutral it strokes guide lines with is pushed in from CSS and the field
+   re-initialises when `data-theme` changes. Without that, the still frame a
+   reduced-motion visitor gets at 17:59 would keep the night ground's greys
+   baked into it for the rest of the session.
 
 **Budget.** Live layers are hand-rolled on canvas. A particle library would cost
 more than the entire remaining client-JS headroom; the flow field and the
@@ -174,5 +241,6 @@ counters together cost 1.9 KB gzipped.
 
 The engineering contract stays intact: static per-locale rendering, full EN/FR
 parity, self-hosted fonts with no network dependency, the design-token lint, the
-bundle budget, and WCAG AA. The redesign is judged on all of those *and* on
+bundle budget, and WCAG AA — the last of these now owed on both grounds, not
+one. The redesign is judged on all of those *and* on
 whether it stops people scrolling.

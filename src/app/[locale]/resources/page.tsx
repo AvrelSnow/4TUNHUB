@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/ui/Reveal";
+import { CtaPanel } from "@/components/ui/CtaPanel";
 import { availableResources, plannedResources, type Resource } from "@/lib/resources";
 import { MEDIUM_URL } from "@/lib/site";
 import { isLocale, type Locale } from "@/lib/i18n/config";
@@ -155,33 +156,12 @@ export default async function ResourcesPage({ params }: Params) {
       </Section>
 
       {/* 5 · CTA */}
-      <Container className="pb-24">
-        <Reveal>
-          <div className="rounded-2xl border border-border bg-surface p-8 text-center sm:p-12">
-            <h2 className="mx-auto max-w-3xl text-display-sm text-foreground">
-              {t.cta.title}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted">
-              {t.cta.subtitle}
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button as="a" href={localizeHref(locale, "/community")} size="lg">
-                {t.cta.primary}
-              </Button>
-              <Button
-                as="a"
-                href={MEDIUM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                size="lg"
-                variant="secondary"
-              >
-                {t.cta.secondary}
-              </Button>
-            </div>
-          </div>
-        </Reveal>
-      </Container>
+      <CtaPanel
+        title={t.cta.title}
+        subtitle={t.cta.subtitle}
+        primary={{ label: t.cta.primary, href: localizeHref(locale, "/community") }}
+        secondary={{ label: t.cta.secondary, href: MEDIUM_URL, external: true }}
+      />
     </>
   );
 }

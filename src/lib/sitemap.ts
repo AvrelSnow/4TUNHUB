@@ -170,7 +170,12 @@ export const siteTree: SiteNode[] = [
       { key: "vision", label: "Vision", href: "/about#vision", status: "active" },
       { key: "team", label: "Team", href: "/about/team", status: "planned" },
       { key: "partners", label: "Partners", href: "/about/partners", status: "planned" },
-      { key: "timeline", label: "Timeline", href: "/about/timeline", status: "active" },
+      // NOT "active": there is no /about/timeline page and no timeline
+      // section on /about. Marked active, it was emitted into sitemap.xml,
+      // which handed search engines two guaranteed 404s (en + fr) — the
+      // /about subtree is owned by real files, so the catch-all placeholder
+      // never covers it. `planned` is the honest status until one is built.
+      { key: "timeline", label: "Timeline", href: "/about/timeline", status: "planned" },
       {
         key: "founder",
         label: "Founder — Donfack Fortune",

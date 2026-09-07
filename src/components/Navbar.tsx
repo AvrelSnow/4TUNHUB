@@ -4,6 +4,7 @@ import { Button } from "./ui/Button";
 import { NavLink } from "./NavLink";
 import { MobileNav } from "./MobileNav";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ThemeControl } from "./ThemeControl";
 import { primaryNav } from "@/lib/sitemap";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -33,6 +34,10 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
           <div className="flex items-center gap-3">
             <LanguageSwitcher locale={locale} label={dict.nav.language} />
+            {/* Visible at every width, unlike the EN·FR switcher: the ground
+                changes under the reader on its own, so the way to say "no"
+                has to be reachable on the device most of them are holding. */}
+            <ThemeControl strings={dict.theme} />
             <Button
               as="a"
               href={localizeHref(locale, "/contact")}

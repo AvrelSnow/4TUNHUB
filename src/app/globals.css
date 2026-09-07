@@ -60,7 +60,10 @@
   --color-mark-linkedin: #0a66c2;
   --color-mark-gmail: #ea4335;
 
-  /* --- Semantic tokens. Dark is the default and the only theme. --- */
+  /* --- Semantic tokens — NIGHT. The instrument ground, and the site's
+         home. These stay in @theme because dark is what the page falls
+         back to with no JS, no stored preference and no clock: see the
+         `:root[data-theme="light"]` block below for the day ground. --- */
   --color-background: #08090b;
   --color-surface: #101317;
   --color-surface-2: #171c22;
@@ -70,6 +73,11 @@
   --color-hairline: #2c333d; /* visible rules; border is the quiet one */
   --color-primary: #ffb000; /* 10.8:1 on background */
   --color-primary-foreground: #0b0d10; /* 10.6:1 on primary */
+  /* The edge of a filled control. On the night ground the amber fill is
+     10.8:1 against the page and needs no help, so this matches the fill
+     and draws nothing; on the day ground it becomes the darker amber that
+     carries WCAG 1.4.11 (see below). One token, so Button never branches. */
+  --color-primary-edge: #ffb000;
   --color-accent: #ffc01f; /* 12.2:1 — links, eyebrows, inline emphasis */
 
   /* --- Typography --- */
@@ -121,6 +129,98 @@
   --animate-sweep: sweep 3.2s var(--ease-in-out-quart) infinite;
 }
 
+/* ============================================================
+   THE TWO GROUNDS — night is home, day is the sheet.
+   (art-direction §"colour", amended)
+   ============================================================
+   The site now has a second ground, and it is not a "light theme"
+   bolted onto a dark one. It is the surface this design system
+   already contained: `.plate-doc` has always laid drawings, BOMs
+   and schematics on a pale sheet, because a document is READ and a
+   readout is WATCHED. By day the whole instrument becomes that
+   sheet — a drafting surface — and by night it is the measurement
+   screen it has always been. Same two signature moves, same ramp,
+   same mono furniture; only the ground changes.
+
+   Which one runs is decided by the visitor's local clock, before
+   first paint, by the inline resolver in src/lib/theme.ts. Night is
+   the fallback in every failure mode: no JS, no storage, a thrown
+   exception. So `@theme` above holds the night values and this block
+   overrides them — never the reverse.
+
+   Every pair below was MEASURED, not chosen by eye. Ratios are
+   against the day ground #eceff2 unless stated.
+
+   RESIDUAL, stated rather than hidden: the vivid brand amber
+   (#ffb000) cannot be text on a pale ground — it reads 1.6:1. So on
+   the day sheet the amber that carries TEXT is deepened to #8a5700
+   (5.28:1) while the amber that FILLS a control stays #ffb000, with
+   a #b87400 edge (3.29:1) so the control's boundary clears WCAG
+   1.4.11. Links are therefore a darker amber by day. That is the
+   honest cost of a legible pale ground, and it is paid in the one
+   place where a wrong call is only a shade, not a failure. */
+:root {
+  /* The ground, as a raw triple, for the scrims that pull it back up
+     underneath copy. Every scrim in this file reads it, so neither
+     ground can end up with the other's fog sitting over it. */
+  --scrim-rgb: 8 9 11;
+  /* THE RAMP AS INK. `.flow-rule` and `.flow-text` read these rather than
+     --color-flow-* directly, because on the day sheet the ramp has to be
+     inked rather than emitted (see the light block) — while the raw
+     --color-flow-* tokens stay untouched for filled chips and the plate
+     tint, where deepening them would break a contrast pair that already
+     passes. Same five steps, two renderings. */
+  --ramp-1: var(--color-flow-1);
+  --ramp-2: var(--color-flow-2);
+  --ramp-3: var(--color-flow-3);
+  --ramp-4: var(--color-flow-4);
+  --ramp-5: var(--color-flow-5);
+  /* The neutral the field renderers stroke with. Read by Field.tsx and
+     handed to renderers.ts, because a canvas cannot resolve var(). */
+  --field-neutral: 168 176 184;
+  /* How hard the live field runs against its ground. */
+  --field-opacity: 0.9;
+  --field-filter: none;
+}
+
+:root[data-theme="light"] {
+  --color-background: #eceff2; /* the sheet */
+  --color-surface: #f6f8f9; /* a panel lifted off it */
+  --color-surface-2: #ffffff; /* lifted again */
+  --color-foreground: #14181d; /* 15.4:1 on background */
+  --color-muted: #454f5a; /*  7.2:1 on background — AA at every size */
+  --color-border: #d0d7dd; /* the quiet one, as at night */
+  --color-hairline: #aab4bd; /* visible rules, ticks, dimension lines */
+  --color-primary: #ffb000; /* the brand amber, unchanged as a FILL */
+  --color-primary-foreground: #0b0d10; /* 10.6:1 on primary */
+  --color-primary-edge: #b87400; /* 3.29:1 on background — WCAG 1.4.11 */
+  --color-accent: #8a5700; /* 5.28:1 — links, eyebrows, inline emphasis */
+
+  --scrim-rgb: 236 239 242;
+
+  /* THE RAMP, INKED. On the night ground the ramp is light emitted by a
+     screen and every step reads. On paper the same five values are a
+     WCAG failure and not a subtle one: measured against #eceff2, cyan is
+     1.97:1, green 1.50:1 and amber 1.25:1 — and `.flow-text` clips this
+     gradient to the single largest word on the page, so the failure lands
+     on the headline. Deepened here to the values the same pressure map
+     would take as printer's ink: identical hue order, so it is still
+     visibly the ramp, with every stop AND every midpoint between 4.68:1
+     and 6.83:1 — AA at any size, not merely at display size. */
+  --ramp-1: #1b3bd8; /* 6.83:1 — deep blue, unchanged; it was already ink */
+  --ramp-2: #00699a; /* 5.22:1 — cyan */
+  --ramp-3: #0f7a45; /* 4.68:1 — green */
+  --ramp-4: #8a6300; /* 4.71:1 — amber */
+  --ramp-5: #c62d12; /* 4.81:1 — red */
+
+  --field-neutral: 90 100 111;
+  /* The ramp is the data language and does not get a second palette. It
+     is seated onto paper instead: the same colours, run a shade deeper so
+     flow-4 (#ffd23f) does not disappear into a pale ground. */
+  --field-opacity: 0.62;
+  --field-filter: saturate(1.15) brightness(0.72);
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -156,8 +256,16 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Pinned to dark before; the resolver now sets `style.color-scheme` on
+       <html> before first paint so form controls, scrollbars and the
+       browser's own canvas match whichever ground is running. This stays as
+       the value that applies if that script never runs. */
     color-scheme: dark;
     background: var(--color-background);
+  }
+
+  html[data-theme="light"] {
+    color-scheme: light;
   }
 
   body {
@@ -242,11 +350,11 @@
   .flow-rule {
     background-image: linear-gradient(
       90deg,
-      var(--color-flow-1),
-      var(--color-flow-2),
-      var(--color-flow-3),
-      var(--color-flow-4),
-      var(--color-flow-5)
+      var(--ramp-1),
+      var(--ramp-2),
+      var(--ramp-3),
+      var(--ramp-4),
+      var(--ramp-5)
     );
   }
 
@@ -254,10 +362,10 @@
   .flow-text {
     background-image: linear-gradient(
       100deg,
-      var(--color-flow-2),
-      var(--color-flow-3) 34%,
-      var(--color-flow-4) 66%,
-      var(--color-flow-5)
+      var(--ramp-2),
+      var(--ramp-3) 34%,
+      var(--ramp-4) 66%,
+      var(--ramp-5)
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -276,7 +384,8 @@
   /* The live field layer. Fades out before the section ends so the
      simulation never competes with the copy sitting on top of it. */
   .field {
-    opacity: 0.9;
+    opacity: var(--field-opacity);
+    filter: var(--field-filter);
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 96%);
     mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 96%);
   }
@@ -295,9 +404,9 @@
     pointer-events: none;
     background: radial-gradient(
       ellipse 72% 82% at 50% 50%,
-      rgb(8 9 11 / 0.94) 0%,
-      rgb(8 9 11 / 0.88) 52%,
-      rgb(8 9 11 / 0.58) 74%,
+      rgb(var(--scrim-rgb) / 0.94) 0%,
+      rgb(var(--scrim-rgb) / 0.88) 52%,
+      rgb(var(--scrim-rgb) / 0.58) 74%,
       transparent 92%
     );
   }
@@ -322,9 +431,9 @@
     pointer-events: none;
     background: radial-gradient(
       ellipse 64% 60% at 34% 50%,
-      rgb(8 9 11 / 0.94) 0%,
-      rgb(8 9 11 / 0.86) 42%,
-      rgb(8 9 11 / 0.55) 66%,
+      rgb(var(--scrim-rgb) / 0.94) 0%,
+      rgb(var(--scrim-rgb) / 0.86) 42%,
+      rgb(var(--scrim-rgb) / 0.55) 66%,
       transparent 80%
     );
   }
@@ -387,7 +496,7 @@
     background: radial-gradient(
       ellipse 82% 82% at 50% 42%,
       transparent 26%,
-      rgb(8 9 11 / 0.62) 100%
+      rgb(var(--scrim-rgb) / 0.62) 100%
     );
     pointer-events: none;
     transition: opacity 0.45s var(--ease-out-quart);
@@ -406,6 +515,26 @@
   .plate:hover::after,
   .plate:focus-within::after {
     opacity: 0.2;
+  }
+
+  /* --- The plate on the day sheet ------------------------------
+     Same treatment, opposite direction. At night a photograph is
+     dimmed and seated INTO the ground; on paper the ground is above
+     the photograph, so knocking brightness down only makes a bright
+     page look like it has a hole in it. The temperature pull that
+     unifies the mixed source material stays — that is the part doing
+     the real work — and the seat is already reading --scrim-rgb, so
+     it dissolves into the sheet without further help. */
+  :root[data-theme="light"] .plate {
+    background: var(--color-ink-100);
+  }
+
+  :root[data-theme="light"] .plate img {
+    filter: saturate(0.86) contrast(1.03);
+  }
+
+  :root[data-theme="light"] .plate::before {
+    opacity: 0.1;
   }
 
   /* --- Documents: drawings, BOMs, schematics ---------------------
@@ -477,6 +606,35 @@
   .chip-logo:focus-visible {
     opacity: 1;
     transform: translateY(-2px);
+  }
+
+  /* On the day sheet these marks are already sitting on the surface they
+     were drawn for, so the recessed plate stops being a correction and the
+     dimming just makes a legible logo worse. The plate keeps its border so
+     the row still reads as a row of chips. */
+  :root[data-theme="light"] .chip-logo {
+    background: var(--color-surface-2);
+    opacity: 0.88;
+  }
+
+  /* The live chip, inked for paper. The tint that reads as a glow on the
+     night ground measures 1.09:1 against a panel on the day sheet — legible
+     text inside an invisible shape. So on paper it is filled, and the edge
+     carries the boundary at 3.29:1 against the ground, which is the same
+     move the primary button makes for the same reason. */
+  :root[data-theme="light"] .badge-amber {
+    background: var(--color-primary);
+    border-color: var(--color-primary-edge);
+    color: var(--color-primary-foreground); /* 10.6:1 on the fill */
+  }
+
+  /* Theme-scoped artwork. Used by the logo lockup, which exists as two
+     drawn files rather than one recolourable one — a mark is not a token,
+     and forcing it through a filter is exactly what art-direction
+     §"imagery" rule 3 forbids. Both are in the markup; CSS picks. */
+  :root[data-theme="light"] .only-dark,
+  :root:not([data-theme="light"]) .only-light {
+    display: none;
   }
 
   /* Signature link: the amber sweep. Kept from the previous system —

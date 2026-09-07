@@ -28,7 +28,11 @@ export function LanguageSwitcher({
         const href = `/${l}${rest === "/" ? "" : rest}`;
         return (
           <span key={l} className="flex items-center">
-            {i > 0 && <span className="mx-1 text-ink-300" aria-hidden="true">·</span>}
+            {/* A semantic token, not a palette step: `ink-300` was picked when
+                there was one ground and measures 1.9:1 on the day sheet, so
+                the separator all but disappeared. `hairline` is what this
+                actually is — a rule — and it follows the ground. */}
+            {i > 0 && <span className="mx-1 text-hairline" aria-hidden="true">·</span>}
             <Link
               href={href}
               hrefLang={l}

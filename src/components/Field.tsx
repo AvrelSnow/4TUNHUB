@@ -47,10 +47,28 @@ export function Field({
     let cancelled = false;
     let teardown: (() => void) | null = null;
 
-    void import("./fields/renderers").then(({ renderers }) => {
+    void import("./fields/renderers").then(({ renderers, setFieldNeutral }) => {
       if (cancelled) return;
       const r = renderers[variant];
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /**
+       * The ground can change under a running simulation — at 06:00 or
+       * 18:00, or the moment someone presses the theme control. A canvas
+       * cannot resolve `var()`, so the neutral is read off <html> here and
+       * pushed into the renderer module; a repaint alone would keep drawing
+       * the old ground's grey on the new one.
+       */
+      const syncNeutral = () => {
+        const raw = getComputedStyle(document.documentElement)
+          .getPropertyValue("--field-neutral")
+          .trim();
+        const parts = raw.split(/[\s,]+/).map(Number);
+        if (parts.length === 3 && parts.every((n) => Number.isFinite(n))) {
+          setFieldNeutral([parts[0], parts[1], parts[2]]);
+        }
+      };
+      syncNeutral();
 
       let w = 0;
       let h = 0;
@@ -128,10 +146,24 @@ export function Field({
       };
       document.addEventListener("visibilitychange", onVisibility);
 
+      // Watch the ground. `resize` re-reads the neutral and re-inits, which
+      // also clears the trail buffer — under reduced motion that matters,
+      // because the still frame is composed once and would otherwise keep
+      // the old ground's strokes baked into it forever.
+      const themeWatch = new MutationObserver(() => {
+        syncNeutral();
+        resize();
+      });
+      themeWatch.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme"],
+      });
+
       teardown = () => {
         stop();
         ro.disconnect();
         io.disconnect();
+        themeWatch.disconnect();
         document.removeEventListener("visibilitychange", onVisibility);
       };
     });

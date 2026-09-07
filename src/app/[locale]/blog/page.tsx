@@ -6,6 +6,8 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/Reveal";
+import { EmptyState } from "@/components/ui/EmptyState";
+import { CtaPanel } from "@/components/ui/CtaPanel";
 import { publishedPosts, publications } from "@/lib/blog";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -95,15 +97,12 @@ export default async function BlogPage({ params }: Params) {
       ) : (
         <Container className="pt-0">
           <Reveal>
-            <div className="rounded-2xl border border-dashed border-hairline bg-surface p-8 sm:p-12">
-              <Badge variant="outline" className="w-fit">
-                {t.emptyEyebrow}
-              </Badge>
-              <h2 className="mt-4 max-w-2xl text-display-sm text-foreground">
-                {t.emptyTitle}
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-muted">{t.emptyBody}</p>
-            </div>
+            <EmptyState
+              readout={t.emptyReadout}
+              eyebrow={t.emptyEyebrow}
+              title={t.emptyTitle}
+              body={t.emptyBody}
+            />
           </Reveal>
         </Container>
       )}
@@ -144,28 +143,13 @@ export default async function BlogPage({ params }: Params) {
       </Section>
 
       {/* 4 · CONVERSION */}
-      <Section rhythm="compressed" className="pb-24">
-        <Reveal>
-          <div className="ticks relative rounded-2xl border border-border bg-surface p-8 sm:p-10">
-            <span aria-hidden="true" className="flow-rule absolute inset-x-0 top-0 h-px" />
-            <h2 className="max-w-2xl text-display-sm text-foreground">{t.cta.title}</h2>
-            <p className="mt-4 max-w-xl text-base leading-7 text-muted">{t.cta.subtitle}</p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
-                {t.cta.primary}
-              </Button>
-              <Button
-                as="a"
-                href={localizeHref(locale, "/projects")}
-                size="lg"
-                variant="secondary"
-              >
-                {t.cta.secondary}
-              </Button>
-            </div>
-          </div>
-        </Reveal>
-      </Section>
+      <CtaPanel
+        rhythm="compressed"
+        title={t.cta.title}
+        subtitle={t.cta.subtitle}
+        primary={{ label: t.cta.primary, href: localizeHref(locale, "/contact") }}
+        secondary={{ label: t.cta.secondary, href: localizeHref(locale, "/projects") }}
+      />
     </>
   );
 }

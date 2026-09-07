@@ -7,13 +7,13 @@
  * physics of what that page is actually about:
  *
  *   flow       fluid velocity field           home
- *   stress     load paths through a truss     services · simulation work
+ *   stress     load paths through a truss     services · store · simulation work
  *   wave       interference of emitters       research · human factors
  *   draft      a drawing constructing itself  academy · about · resources
  *   signal     oscilloscope traces            products · electronics work
  *   growth     branching biomass              sustainability work
  *   kinematic  linkages turning, tracing      projects · mechanical work
- *   network    a graph finding its edges      community · store · contact
+ *   network    a graph finding its edges      community · contact
  *
  * All eight share one canvas engine (see Field.tsx) and one colour
  * ramp, so the site reads as one instrument with different
@@ -66,6 +66,29 @@ export function ramp(t: number, a: number): string {
   return `rgba(${Math.round(p[0] + (q[0] - p[0]) * f)},${Math.round(
     p[1] + (q[1] - p[1]) * f,
   )},${Math.round(p[2] + (q[2] - p[2]) * f)},${a})`;
+}
+
+/**
+ * The neutral every field strokes its unmeasured geometry with — guide
+ * lines, construction edges, the parts of a drawing that are not carrying
+ * a value. It has to change with the ground: #a8b0b8 is a pale grey that
+ * reads on the night surface and vanishes on the day sheet.
+ *
+ * A canvas cannot resolve `var()`, so the value is pushed in from
+ * Field.tsx, which reads `--field-neutral` off <html> and calls this on
+ * mount and on every theme change. The default is the night value, so a
+ * renderer that somehow runs before the push still draws correctly on the
+ * ground the site falls back to.
+ */
+let NEUTRAL: readonly [number, number, number] = [168, 176, 184];
+
+export function setFieldNeutral(rgb: readonly [number, number, number]) {
+  NEUTRAL = rgb;
+}
+
+/** The neutral at a given alpha. Never a measured quantity — that is `ramp`. */
+function neutral(a: number): string {
+  return `rgba(${NEUTRAL[0]},${NEUTRAL[1]},${NEUTRAL[2]},${a})`;
 }
 
 const rand = (a: number, b: number) => a + Math.random() * (b - a);
@@ -291,7 +314,7 @@ const draft: Renderer = {
       }
       // Quiet by default with the occasional accent — a drawing, not a
       // light show. Amber marks the member currently being drawn.
-      ctx.strokeStyle = d.accent ? ramp(0.72, 0.62) : `rgba(168,176,184,0.42)`;
+      ctx.strokeStyle = d.accent ? ramp(0.72, 0.62) : neutral(0.42);
       ctx.beginPath();
       if (d.kind === 1) {
         ctx.arc(d.x, d.y, d.r, d.a0, d.a0 + (d.a1 - d.a0) * d.p);
@@ -517,7 +540,7 @@ const kinematic: Renderer = {
       ctx.lineTo(sx, m.cy);
       ctx.stroke();
 
-      ctx.strokeStyle = `rgba(168,176,184,0.3)`;
+      ctx.strokeStyle = neutral(0.3);
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.arc(m.cx, m.cy, m.crank, 0, TAU);

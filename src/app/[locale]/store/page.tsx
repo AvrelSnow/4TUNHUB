@@ -4,9 +4,10 @@ import Link from "next/link";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/ui/Reveal";
+import { EmptyState } from "@/components/ui/EmptyState";
+import { CtaPanel } from "@/components/ui/CtaPanel";
 import { storefront } from "@/lib/commerce";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -24,6 +25,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: dict.routes.store,
     description: dict.store.subtitle,
+    // An empty shop has nothing to rank. While `catalog` holds no sellable
+    // item the page is followed but not indexed, so the first impression
+    // "4TUN Hub store" ever makes in a search result is of a store that
+    // actually sells something. Derived from the same call the sitemap
+    // uses (src/app/sitemap.ts), so the two can never disagree.
+    robots: storefront().length > 0 ? undefined : { index: false, follow: true },
     alternates: { canonical: `/${locale}/store` },
   };
 }
@@ -39,8 +46,13 @@ export default async function StorePage({ params }: Params) {
 
   return (
     <>
-      {/* 1 · HERO */}
-      <Section field="network" className="pb-14 pt-16 sm:pt-20">
+      {/* 1 · HERO — `stress`: load paths through a truss. Not decoration:
+          this page's whole argument is that commercial load is carried by
+          the pillars rather than by a store standing on its own, so the
+          field is the thesis running as physics. It also breaks the
+          `network` collision with /community and /contact, which this page
+          links to in every section (art-direction §"backgrounds"). */}
+      <Section field="stress" className="pb-14 pt-16 sm:pt-20">
         <Reveal>
           <p className="eyebrow">{t.eyebrow}</p>
           <h1 className="mt-5 max-w-3xl text-display text-foreground">
@@ -83,15 +95,12 @@ export default async function StorePage({ params }: Params) {
       ) : (
         <Container className="pt-0">
           <Reveal>
-            <div className="rounded-2xl border border-dashed border-hairline bg-surface p-8 sm:p-12">
-              <Badge variant="outline" className="w-fit">
-                {t.emptyEyebrow}
-              </Badge>
-              <h2 className="mt-4 max-w-2xl text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                {t.emptyTitle}
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-muted">{t.emptyBody}</p>
-            </div>
+            <EmptyState
+              readout={t.emptyReadout}
+              eyebrow={t.emptyEyebrow}
+              title={t.emptyTitle}
+              body={t.emptyBody}
+            />
           </Reveal>
         </Container>
       )}
@@ -124,31 +133,12 @@ export default async function StorePage({ params }: Params) {
       </Section>
 
       {/* 4 · CTA */}
-      <Container className="pb-24">
-        <Reveal>
-          <div className="rounded-2xl border border-border bg-surface p-8 text-center sm:p-12">
-            <h2 className="mx-auto max-w-3xl text-display-sm text-foreground">
-              {t.cta.title}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted">
-              {t.cta.subtitle}
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button as="a" href={localizeHref(locale, "/community")} size="lg">
-                {t.cta.primary}
-              </Button>
-              <Button
-                as="a"
-                href={localizeHref(locale, "/contact")}
-                size="lg"
-                variant="secondary"
-              >
-                {t.cta.secondary}
-              </Button>
-            </div>
-          </div>
-        </Reveal>
-      </Container>
+      <CtaPanel
+        title={t.cta.title}
+        subtitle={t.cta.subtitle}
+        primary={{ label: t.cta.primary, href: localizeHref(locale, "/community") }}
+        secondary={{ label: t.cta.secondary, href: localizeHref(locale, "/contact") }}
+      />
     </>
   );
 }

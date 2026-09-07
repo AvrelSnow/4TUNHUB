@@ -42,6 +42,22 @@ const en = {
     language: "Language",
   },
 
+  /**
+   * The ground control. `options` are rendered through `.readout`, which
+   * uppercases them — so they are written in sentence case here and read
+   * as mono labels on the page.
+   */
+  theme: {
+    label: "Theme",
+    options: {
+      auto: "Auto",
+      light: "Day",
+      dark: "Night",
+    },
+    next: "Switch to",
+    autoHint: "Follows your local clock — the day sheet from 06:00, the night ground from 18:00.",
+  },
+
   home: {
     eyebrow: "Engineering ecosystem · Douala, Cameroon",
     title: "Engineering knowledge, built into real solutions.",
@@ -818,6 +834,10 @@ const en = {
     primaryCta: "Explore the ecosystem",
     secondaryCta: "Get notified",
 
+    // The gauge label on the empty panel. Names the quantity being measured,
+    // so the store, blog and careers zeros read as three different readings
+    // rather than one template printed three times.
+    emptyReadout: "0 items listed",
     emptyEyebrow: "Current status",
     emptyTitle: "Nothing's on sale yet — and that's deliberate.",
     emptyBody:
@@ -856,6 +876,7 @@ const en = {
     primaryCta: "Read The REM",
     secondaryCta: "Work with us",
 
+    emptyReadout: "0 posts published",
     emptyEyebrow: "Current status",
     emptyTitle: "Nothing is republished here yet — and that is deliberate.",
     emptyBody:
@@ -915,6 +936,7 @@ const en = {
     primaryCta: "Join the community",
     secondaryCta: "Propose a collaboration",
 
+    emptyReadout: "0 roles open",
     emptyEyebrow: "Open positions",
     emptyTitle: "Zero — and that is the honest number.",
     emptyBody:
@@ -937,6 +959,15 @@ const en = {
       contract: "Contract",
       internship: "Internship",
     } as Record<string, string>,
+
+    /**
+     * Per-role prose, keyed by the slug in lib/careers.ts. Empty because
+     * `roles` is empty — but it exists so a role CANNOT be posted without
+     * a title and a summary written in both languages. The index used to
+     * render the raw slug, which would have shipped the first real advert
+     * as "simulation-engineer" in EN and in FR alike.
+     */
+    roles: {} as Record<string, { title: string; summary: string }>,
 
     principlesEyebrow: "The terms, set in advance",
     principlesTitle: "How hiring will work when it starts.",

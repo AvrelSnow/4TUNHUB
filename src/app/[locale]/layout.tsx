@@ -8,6 +8,7 @@ import "../globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SITE_URL, SITE_NAME, SITE_KEYWORDS, organizationJsonLd } from "@/lib/site";
+import { themeResolverScript } from "@/lib/theme";
 import { locales, isLocale, localeTag, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -53,11 +54,16 @@ export async function generateMetadata({
   };
 }
 
+/**
+ * One tag, not a media-switched pair. The ground is chosen by the visitor's
+ * clock, not by `prefers-color-scheme`, so a media query cannot answer this
+ * — the old pair promised a white chrome to anyone whose OS was set to
+ * light, on a site that had no light theme at all. This is the night value
+ * (the fallback), and ThemeControl rewrites it to the live
+ * `--color-background` whenever the ground changes.
+ */
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b0d10" },
-  ],
+  themeColor: "#08090b",
 };
 
 export default async function LocaleLayout({
@@ -76,7 +82,20 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       className={`${GeistSans.variable} ${GeistMono.variable} h-full antialiased`}
+      // No `data-theme` is server-rendered. The page is static per locale and
+      // cannot know a visitor's local hour, so guessing here would either
+      // ship the wrong ground or force the page off the static path. The
+      // resolver below sets it before first paint instead, and no markup
+      // anywhere depends on it — which is why there is nothing to hydrate
+      // and nothing that can mismatch.
+      suppressHydrationWarning
     >
+      <head>
+        {/* BLOCKING, and first. It must run before the stylesheet paints,
+            or the visitor sees the night ground flash to the day sheet.
+            See src/lib/theme.ts for what it does and why it falls to dark. */}
+        <script dangerouslySetInnerHTML={{ __html: themeResolverScript }} />
+      </head>
       <body className="flex min-h-full flex-col">
         <script
           type="application/ld+json"

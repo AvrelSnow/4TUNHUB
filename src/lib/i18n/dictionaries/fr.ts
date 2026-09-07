@@ -42,6 +42,21 @@ const fr: Dictionary = {
     language: "Langue",
   },
 
+  /**
+   * Le contrôle du fond. `options` passe par `.readout`, qui met en
+   * capitales — d'où la casse normale ici.
+   */
+  theme: {
+    label: "Thème",
+    options: {
+      auto: "Auto",
+      light: "Jour",
+      dark: "Nuit",
+    },
+    next: "Basculer vers",
+    autoHint: "Suit votre horloge locale — la feuille de jour dès 06 h, le fond de nuit dès 18 h.",
+  },
+
   home: {
     eyebrow: "Écosystème d'ingénierie · Douala, Cameroun",
     title: "Le savoir en ingénierie, transformé en solutions concrètes.",
@@ -816,6 +831,10 @@ const fr: Dictionary = {
     primaryCta: "Explorer l'écosystème",
     secondaryCta: "Être prévenu",
 
+    // Étiquette de jauge du panneau vide. Nomme la quantité mesurée, pour que
+    // les zéros de la boutique, du blog et des carrières se lisent comme trois
+    // relevés distincts et non comme un gabarit répété trois fois.
+    emptyReadout: "0 article en vente",
     emptyEyebrow: "État actuel",
     emptyTitle: "Rien n'est encore en vente — et c'est volontaire.",
     emptyBody:
@@ -854,6 +873,7 @@ const fr: Dictionary = {
     primaryCta: "Lire The REM",
     secondaryCta: "Travailler avec nous",
 
+    emptyReadout: "0 article publié",
     emptyEyebrow: "État actuel",
     emptyTitle: "Rien n'est republié ici pour l'instant — et c'est délibéré.",
     emptyBody:
@@ -913,6 +933,7 @@ const fr: Dictionary = {
     primaryCta: "Rejoindre la communauté",
     secondaryCta: "Proposer une collaboration",
 
+    emptyReadout: "0 poste ouvert",
     emptyEyebrow: "Postes ouverts",
     emptyTitle: "Zéro — et c'est le chiffre honnête.",
     emptyBody:
@@ -935,6 +956,15 @@ const fr: Dictionary = {
       contract: "Prestation",
       internship: "Stage",
     } as Record<string, string>,
+
+    /**
+     * Texte propre à chaque poste, indexé par le slug de lib/careers.ts.
+     * Vide parce que `roles` est vide — mais l'objet existe pour qu'un poste
+     * NE PUISSE PAS être publié sans un intitulé et un résumé rédigés dans
+     * les deux langues. L'index affichait le slug brut, ce qui aurait publié
+     * la première annonce réelle sous la forme « simulation-engineer ».
+     */
+    roles: {} as Record<string, { title: string; summary: string }>,
 
     principlesEyebrow: "Les règles, posées à l'avance",
     principlesTitle: "Comment le recrutement se fera, le moment venu.",
