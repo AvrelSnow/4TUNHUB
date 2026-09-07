@@ -905,6 +905,92 @@ const fr: Dictionary = {
    */
   blogPosts: {} as Record<string, { title: string; excerpt: string }>,
 
+  careers: {
+    eyebrow: "Carrières",
+    title: "Personne n'y travaille encore.",
+    subtitle:
+      "4TUN Hub repose aujourd'hui sur son seul fondateur et ne génère pas encore de revenus. Aucun salaire à proposer, donc aucune candidature à déposer — et inventer des postes pour paraître plus grand ferait perdre leur temps à ceux qui en ont le moins à perdre. Voici donc la situation réelle, et les trois portes qui sont véritablement ouvertes.",
+    primaryCta: "Rejoindre la communauté",
+    secondaryCta: "Proposer une collaboration",
+
+    emptyEyebrow: "Postes ouverts",
+    emptyTitle: "Zéro — et c'est le chiffre honnête.",
+    emptyBody:
+      "Le jour où le conseil et l'académie pourront rémunérer correctement une deuxième personne, le premier poste paraîtra ici avec son périmètre, son lieu et sa fourchette de rémunération inscrits dans l'annonce elle-même. D'ici là, cette page reste vide plutôt que de collecter des candidatures pour un emploi qui n'existe pas.",
+
+    // Utilisé dès qu'un poste réel est publié.
+    rolesEyebrow: "Ouvert maintenant",
+    rolesTitle: "Les postes à pourvoir.",
+    apply: "Lire le poste",
+    posted: "Publié le",
+    kinds: {
+      engineering: "Ingénierie",
+      education: "Formation",
+      research: "Recherche",
+      operations: "Opérations",
+    } as Record<string, string>,
+    commitments: {
+      "full-time": "Temps plein",
+      "part-time": "Temps partiel",
+      contract: "Prestation",
+      internship: "Stage",
+    } as Record<string, string>,
+
+    principlesEyebrow: "Les règles, posées à l'avance",
+    principlesTitle: "Comment le recrutement se fera, le moment venu.",
+    principlesIntro:
+      "Écrites maintenant, alors qu'il n'y a rien à y gagner — le seul moment où de tels engagements ont une valeur.",
+    principles: {
+      paid: {
+        title: "Rémunéré, toujours",
+        desc: "Pas de stage non payé, pas de travail échangé contre de la visibilité, pas de parts offertes à la place d'un salaire. Si une tâche mérite d'être faite, elle porte un tarif, convenu par écrit avant de commencer.",
+      },
+      proof: {
+        title: "La preuve avant le diplôme",
+        desc: "Un modèle que vous pouvez ouvrir, une simulation que vous savez défendre, un cours que vous avez réellement enseigné : cela pèse ici plus lourd qu'une attestation. Le dossier du fondateur lui-même est fait de travaux livrés ; le vôtre sera lu de la même manière.",
+      },
+      local: {
+        title: "Le Cameroun d'abord, le distanciel par défaut",
+        desc: "Le recrutement commencera là où l'écosystème se trouve déjà. Le travail se fait à distance aujourd'hui et continuera ainsi : la localisation ne ferme la porte à personne dans le pays.",
+      },
+      open: {
+        title: "Le périmètre est public",
+        desc: "Chaque annonce précisera d'emblée les responsabilités, le rattachement hiérarchique et la fourchette de rémunération. Un poste qu'on ne sait pas décrire simplement n'est pas prêt à être pourvu.",
+      },
+    } as Record<string, { title: string; desc: string }>,
+
+    entryEyebrow: "Ouvert aujourd'hui",
+    entryTitle: "Trois portes, toutes réelles.",
+    entryIntro:
+      "Aucune n'est une liste d'attente. Chacune est un espace vivant où vous pouvez entrer cette semaine, et c'est ainsi que la première équipe se constituera réellement.",
+    entry: {
+      community: {
+        title: "La communauté",
+        desc: "Un groupe WhatsApp ouvert d'ingénieurs et d'étudiants — sans candidature ni filtrage. L'essentiel de ce que deviendra 4TUN Hub viendra de ceux qui s'y trouvent déjà.",
+        cta: "Rejoindre sur WhatsApp",
+      },
+      academy: {
+        title: "L'Académie",
+        desc: "Formez-vous avec nous. Les ateliers sont la porte d'entrée de la plupart des membres de cet écosystème, et ceux qui vont le plus loin sont les premiers appelés lorsqu'un poste s'ouvre.",
+        cta: "Voir les formations",
+      },
+      collaborate: {
+        title: "Votre propre projet",
+        desc: "Un projet, un article ou un enseignement que vous voulez construire ensemble : apportez-le. Une première équipe se trouve par la collaboration, pas par une boîte à CV.",
+        cta: "Engager la conversation",
+      },
+    } as Record<string, { title: string; desc: string; cta: string }>,
+    live: "Ouvert maintenant",
+
+    cta: {
+      title: "Vous voulez savoir quand le premier poste s'ouvrira ?",
+      subtitle:
+        "Dites-nous ce que vous faites et ce que vous voulez bâtir. Quand il y aura enfin un emploi à publier, ceux qui auront écrit les premiers seront ceux à qui nous écrirons.",
+      primary: "Nous écrire",
+      secondary: "Voir les travaux",
+    },
+  },
+
   stub: {
     badge: "En cours",
     beingBuilt: "Cette partie de l'écosystème est en construction.",

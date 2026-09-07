@@ -907,6 +907,92 @@ const en = {
    */
   blogPosts: {} as Record<string, { title: string; excerpt: string }>,
 
+  careers: {
+    eyebrow: "Careers",
+    title: "No one works here yet.",
+    subtitle:
+      "4TUN Hub is founder-led and pre-revenue. There is no salary to offer, so there is nothing to apply for — and inventing openings to look larger would waste the time of the people least able to spare it. So here is the real position, and the three doors that are genuinely open.",
+    primaryCta: "Join the community",
+    secondaryCta: "Propose a collaboration",
+
+    emptyEyebrow: "Open positions",
+    emptyTitle: "Zero — and that is the honest number.",
+    emptyBody:
+      "When the consulting and academy work can pay a second person properly, the first role appears here with its scope, its location and its pay range stated in the advert itself. Until then this page stays empty rather than collecting applications against a job that does not exist.",
+
+    // Used the moment a real role is posted.
+    rolesEyebrow: "Open now",
+    rolesTitle: "Roles we are hiring for.",
+    apply: "Read the role",
+    posted: "Posted",
+    kinds: {
+      engineering: "Engineering",
+      education: "Education",
+      research: "Research",
+      operations: "Operations",
+    } as Record<string, string>,
+    commitments: {
+      "full-time": "Full-time",
+      "part-time": "Part-time",
+      contract: "Contract",
+      internship: "Internship",
+    } as Record<string, string>,
+
+    principlesEyebrow: "The terms, set in advance",
+    principlesTitle: "How hiring will work when it starts.",
+    principlesIntro:
+      "Written down now, while there is nothing to be gained by writing them — which is the only moment such commitments are worth anything.",
+    principles: {
+      paid: {
+        title: "Paid, always",
+        desc: "No unpaid internships, no work traded for exposure, no equity offered in place of a wage. If a task is worth doing it carries a rate, agreed in writing before it starts.",
+      },
+      proof: {
+        title: "Proof over credentials",
+        desc: "A model you can open, a simulation you can defend, a class you have actually taught — these weigh more here than a certificate. The founder's own case is built from delivered work, and yours will be read the same way.",
+      },
+      local: {
+        title: "Cameroonian first, remote by default",
+        desc: "Hiring starts where the ecosystem already is. The work runs remotely today and will keep running that way, so location limits nobody inside the country.",
+      },
+      open: {
+        title: "The scope is public",
+        desc: "Every advert will state the responsibilities, who you report to and the pay range, up front. A role that cannot be described plainly is not ready to be filled.",
+      },
+    } as Record<string, { title: string; desc: string }>,
+
+    entryEyebrow: "Open today",
+    entryTitle: "Three doors, all of them real.",
+    entryIntro:
+      "None of these is a waiting list. Each one is a live surface you can walk into this week, and each is how the first team will actually be found.",
+    entry: {
+      community: {
+        title: "The community",
+        desc: "An open WhatsApp group of engineers and students — no application, no gatekeeping. Most of what 4TUN Hub becomes will come from the people already in it.",
+        cta: "Join on WhatsApp",
+      },
+      academy: {
+        title: "The Academy",
+        desc: "Train with us. The workshops are how most people meet this ecosystem, and the ones who go deepest are the ones who get the first call when a role does open.",
+        cta: "See the training",
+      },
+      collaborate: {
+        title: "A brief of your own",
+        desc: "A project, a paper or a piece of teaching you want to build together — bring it. Collaboration is how a first team gets found, not a CV inbox.",
+        cta: "Start a conversation",
+      },
+    } as Record<string, { title: string; desc: string; cta: string }>,
+    live: "Open now",
+
+    cta: {
+      title: "Want to know when the first role opens?",
+      subtitle:
+        "Tell us what you do and what you want to build. When there is finally a job to post, the people who wrote first are the people we write to.",
+      primary: "Get in touch",
+      secondary: "See the work",
+    },
+  },
+
   stub: {
     badge: "In progress",
     beingBuilt: "This part of the ecosystem is being built.",

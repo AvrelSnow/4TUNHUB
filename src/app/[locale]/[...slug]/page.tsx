@@ -31,6 +31,7 @@ const BUILT_ROUTES = new Set([
   "resources",
   "store",
   "blog",
+  "careers",
 ]);
 
 /** Pre-render every remaining sitemap path (× each locale via the parent). */

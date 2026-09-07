@@ -154,7 +154,7 @@ export const siteTree: SiteNode[] = [
     key: "careers",
     label: "Careers",
     href: "/careers",
-    status: "planned",
+    status: "active",
     placement: "footer",
     desc: "Grow the team as the ecosystem expands.",
   },
