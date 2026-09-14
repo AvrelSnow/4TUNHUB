@@ -322,16 +322,16 @@ export const phases: Phase[] = [
   {
     id: "5",
     name: "Ecosystem growth (P2)",
-    status: "next",
+    status: "done",
     goal: "Expand without redesign.",
-    items: ["Resources ✓", "Community ✓", "Store ✓", "Blog", "Careers"],
+    items: ["Resources ✓", "Community ✓", "Store ✓", "Blog ✓", "Careers ✓"],
   },
   {
     id: "6",
     name: "Hardening",
-    status: "later",
+    status: "active",
     goal: "Make it unbreakable before it ships.",
-    items: ["Responsive QA", "Accessibility (AA)", "Performance budget", "SEO/metadata"],
+    items: ["Responsive QA ✓", "Accessibility (AA)", "Performance budget", "SEO/metadata"],
   },
   {
     id: "7",

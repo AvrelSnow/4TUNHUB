@@ -24,7 +24,10 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         <div className="flex h-16 items-center justify-between gap-6">
           <Logo href={localizeHref(locale, "/")} />
 
-          <nav aria-label={dict.nav.primary} className="hidden items-center gap-5 md:flex lg:gap-7">
+          {/* From lg, not md: at 768px the six mono labels plus logo, EN·FR,
+              the theme readout and the CTA need ~786px, so every page
+              scrolled sideways by 18px. Tablets get the menu instead. */}
+          <nav aria-label={dict.nav.primary} className="hidden items-center gap-6 lg:flex xl:gap-7">
             {items.map((p) => (
               <NavLink key={p.key} href={p.href}>
                 {p.label}
@@ -46,7 +49,12 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             >
               {dict.nav.workWithUs}
             </Button>
-            <MobileNav items={items} dict={dict} ctaHref={localizeHref(locale, "/contact")} />
+            <MobileNav
+              items={items}
+              dict={dict}
+              ctaHref={localizeHref(locale, "/contact")}
+              locale={locale}
+            />
           </div>
         </div>
       </Container>

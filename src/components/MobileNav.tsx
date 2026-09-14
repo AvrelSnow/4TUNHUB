@@ -3,6 +3,8 @@
 import { useEffect, useId, useState } from "react";
 import { NavLink } from "./NavLink";
 import { Button } from "./ui/Button";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Item = { key: string; label: string; href: string };
@@ -11,15 +13,20 @@ type Item = { key: string; label: string; href: string };
  * Mobile navigation — accessible disclosure panel below the header.
  * Escape closes; navigating closes; body scroll locks while open;
  * the toggle reports state via aria-expanded / aria-controls.
+ *
+ * The panel carries EN·FR because the header switcher is hidden below
+ * sm — without it a phone visitor had no way into the other language.
  */
 export function MobileNav({
   items,
   dict,
   ctaHref,
+  locale,
 }: {
   items: Item[];
   dict: Dictionary;
   ctaHref: string;
+  locale: Locale;
 }) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
@@ -38,7 +45,7 @@ export function MobileNav({
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         aria-expanded={open}
@@ -80,7 +87,10 @@ export function MobileNav({
                 </li>
               ))}
             </ul>
-            <div className="mt-5 border-t border-border pt-5">
+            <div className="mt-5 border-t border-border pt-4">
+              <LanguageSwitcher locale={locale} label={dict.nav.language} inMenu />
+            </div>
+            <div className="mt-4 border-t border-border pt-5">
               <Button as="a" href={ctaHref} size="lg" className="w-full">
                 {dict.nav.workWithUs}
               </Button>

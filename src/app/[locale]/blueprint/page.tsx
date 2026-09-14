@@ -228,7 +228,7 @@ function RecCard({ rec }: { rec: Recommendation }) {
 function TreeBranch({ node, depth = 0 }: { node: SiteNode; depth?: number }) {
   return (
     <li>
-      <div className="flex items-center gap-2 py-1">
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 py-1">
         <StatusDot status={node.status} />
         <span
           className={
@@ -239,7 +239,7 @@ function TreeBranch({ node, depth = 0 }: { node: SiteNode; depth?: number }) {
         >
           {node.label}
         </span>
-        <code className="font-mono text-2xs text-muted">{node.href}</code>
+        <code className="min-w-0 break-all font-mono text-2xs text-muted">{node.href}</code>
       </div>
       {node.children && (
         <ul className="ml-3 border-l border-border pl-4">
@@ -576,13 +576,16 @@ export default function BlueprintPage() {
                 </div>
               </div>
 
-              <div className="mt-10 grid gap-6 lg:grid-cols-2">
+              {/* Stacked, not two columns: the Display LG sample renders at its
+                  real 134px, which measured 435px wide inside a 354px half-width
+                  card at 1280. Shrinking the sample would misstate the scale. */}
+              <div className="mt-10 grid gap-6">
                 <div className="rounded-2xl border border-border bg-surface p-6">
                   <p className="text-sm font-semibold text-foreground">Type scale</p>
                   <ul className="mt-4 space-y-3">
                     {typeScale.map((t) => (
-                      <li key={t.name} className="flex items-baseline justify-between gap-4 border-b border-border pb-3 last:border-0">
-                        <span className={`${t.cls} text-foreground`}>{t.name}</span>
+                      <li key={t.name} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border pb-3 last:border-0">
+                        <span className={`${t.cls} min-w-0 text-foreground`}>{t.name}</span>
                         <span className="shrink-0 font-mono text-2xs text-muted">
                           {t.use}
                         </span>
@@ -925,7 +928,7 @@ export default function BlueprintPage() {
                   const dot =
                     p.status === "done"
                       ? "bg-brand-500 text-ink-900"
-                      : p.status === "next"
+                      : p.status === "active" || p.status === "next"
                         ? "bg-ink-100 text-ink-900 ring-4 ring-brand-500/30"
                         : "border border-hairline bg-transparent text-muted";
                   return (

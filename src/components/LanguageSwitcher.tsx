@@ -14,15 +14,22 @@ import { cn } from "@/lib/cn";
 export function LanguageSwitcher({
   locale,
   label,
+  inMenu = false,
 }: {
   locale: Locale;
   label: string;
+  /** Rendered inside the mobile panel: always visible, thumb-sized targets. */
+  inMenu?: boolean;
 }) {
   const pathname = usePathname();
   const rest = stripLocale(pathname);
 
   return (
-    <div role="group" aria-label={label} className="hidden items-center gap-1 sm:flex">
+    <div
+      role="group"
+      aria-label={label}
+      className={inMenu ? "flex items-center gap-1" : "hidden items-center gap-1 sm:flex"}
+    >
       {locales.map((l, i) => {
         const active = l === locale;
         const href = `/${l}${rest === "/" ? "" : rest}`;
@@ -40,6 +47,7 @@ export function LanguageSwitcher({
               aria-label={localeName[l]}
               className={cn(
                 "font-mono text-xs uppercase transition-colors",
+                inMenu && "inline-flex min-h-11 min-w-11 items-center justify-center text-sm",
                 active
                   ? "font-bold text-foreground"
                   : "text-muted hover:text-foreground",

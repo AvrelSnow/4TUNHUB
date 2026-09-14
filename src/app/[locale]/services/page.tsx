@@ -168,7 +168,7 @@ export default async function ServicesPage({ params }: Params) {
       {/* 6 · CONVERSION */}
       <Container className="pb-24">
         <Reveal>
-          <div className="relative overflow-hidden rounded-2xl px-8 py-16 text-center sm:px-12">
+          <div className="relative overflow-hidden rounded-2xl px-6 py-16 text-center sm:px-12">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/texture-ridges.webp"
@@ -180,7 +180,10 @@ export default async function ServicesPage({ params }: Params) {
             />
             <div className="absolute inset-0 bg-ink-950/85" aria-hidden="true" />
             <div className="relative">
-              <h2 className="mx-auto max-w-3xl text-display text-white">
+              {/* 44px display type inside two sets of gutters leaves ~250px at
+                  360px — "engineering" alone measured 254. Hyphenate rather
+                  than shrink the scale. */}
+              <h2 className="mx-auto max-w-3xl text-display text-white hyphens-auto">
                 {t.cta.title}
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base font-medium leading-7 text-white/90">
