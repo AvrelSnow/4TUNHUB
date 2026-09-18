@@ -11,12 +11,11 @@ import { ProjectVisual } from "@/components/ProjectVisual";
 import { Counter } from "@/components/ui/Counter";
 import { flattenTree } from "@/lib/sitemap";
 import { projects, featuredProjects } from "@/lib/projects";
-import { WHATSAPP_COMMUNITY_URL } from "@/lib/site";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
 
-const OFFERING_PILLARS = ["services", "academy", "research", "products"] as const;
+const OFFERING_PILLARS = ["services", "academy", "research", "community"] as const;
 
 export default async function Home({
   params,
@@ -226,64 +225,6 @@ export default async function Home({
           </div>
         </Reveal>
       </Section>
-
-      {/* 6 · ECOSYSTEM OUTLOOK — ambient mech watermark, kept far from text */}
-      <div className="relative overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/mech-figure.webp"
-          alt=""
-          aria-hidden="true"
-          width={700}
-          height={1227}
-          className="pointer-events-none absolute -right-16 bottom-0 hidden h-[480px] w-auto opacity-[0.06] lg:block"
-        />
-        <Section eyebrow={t.outlook.eyebrow} title={t.outlook.title} intro={t.outlook.intro} className="relative pt-0">
-          <div className="mt-10 grid gap-5 sm:grid-cols-3">
-            {t.outlook.items.map((o, i) => {
-              const isCommunity = o.key === "community";
-              const card = (
-                <div
-                  className={`h-full rounded-2xl border p-6 transition-colors ${
-                    isCommunity
-                      ? "border-brand-500/40 bg-brand-500/10 hover:border-brand-500"
-                      : "border-dashed border-hairline hover:border-hairline"
-                  }`}
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <h3 className="text-base font-semibold text-foreground">{o.title}</h3>
-                    <Badge variant={isCommunity ? "amber" : "outline"}>
-                      {isCommunity ? dict.community.live : dict.stub.badge}
-                    </Badge>
-                  </div>
-                  <p className="mt-2 text-sm leading-6 text-muted">{o.desc}</p>
-                  <span className="link-sweep mt-4 inline-block text-sm font-medium text-accent">
-                    {isCommunity ? dict.community.join : t.learnMore} →
-                  </span>
-                </div>
-              );
-              return (
-                <Reveal key={o.key} delay={i * 70}>
-                  {isCommunity ? (
-                    <a
-                      href={WHATSAPP_COMMUNITY_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block h-full"
-                    >
-                      {card}
-                    </a>
-                  ) : (
-                    <Link href={href(o.key)} className="block h-full">
-                      {card}
-                    </Link>
-                  )}
-                </Reveal>
-              );
-            })}
-          </div>
-        </Section>
-      </div>
 
       {/* 7 · CONVERSION BAND — ridged texture + heavy overlay so white
           bold type keeps a very high contrast ratio. */}

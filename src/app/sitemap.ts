@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const withheld = new Set(emptyPillars());
   const paths = new Set<string>();
   for (const node of flattenTree()) {
-    if (node.status !== "active") continue;
+    if (node.status !== "active" || node.hidden) continue;
     if (node.href.includes("#")) continue;
     if (withheld.has(node.href)) continue;
     paths.add(node.href === "/" ? "" : node.href);

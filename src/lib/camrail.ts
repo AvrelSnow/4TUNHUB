@@ -8,11 +8,11 @@ import type { Loc } from "./founder";
 const IMG = "/images/camrail";
 
 export const camrail = {
-  eyebrow: { en: "Professional experience · Senior role", fr: "Expérience professionnelle · Poste senior" } as Loc,
+  eyebrow: { en: "Professional experience · Former senior role", fr: "Expérience professionnelle · Ancien poste senior" } as Loc,
   title: { en: "Senior Mechanical Engineer at CAMRAIL", fr: "Ingénieur mécanicien senior à CAMRAIL" } as Loc,
   intro: {
-    en: "Contributing to the operation and modernisation of Cameroon's 1,010 km national rail network — from locomotive compressor systems to structural brake-support design validated through FEA.",
-    fr: "Contribution à l'exploitation et à la modernisation du réseau ferré national camerounais de 1 010 km — des systèmes de compresseurs de locomotives à la conception de supports de frein validés par FEA.",
+    en: "Contributed to the operation and modernisation of Cameroon's 1,010 km national rail network — from locomotive compressor systems to structural brake-support design validated through FEA.",
+    fr: "A contribué à l'exploitation et à la modernisation du réseau ferré national camerounais de 1 010 km — des systèmes de compresseurs de locomotives à la conception de supports de frein validés par FEA.",
   } as Loc,
   portrait: `${IMG}/portrait.webp`,
   portraitCaption: { en: "FIG. 03 — On site · CAMRAIL workshop, Douala", fr: "FIG. 03 — Sur site · Atelier CAMRAIL, Douala" } as Loc,

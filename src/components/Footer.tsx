@@ -101,7 +101,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
       {/* Navigation + brand */}
       <Container className="py-16">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-[1.7fr_repeat(3,1fr)]">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-[2fr_1fr_1fr]">
           <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <Logo href={localizeHref(locale, "/")} />
             <p className="mt-5 max-w-xs text-sm leading-6 text-muted">
@@ -118,7 +118,10 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </div>
           </div>
 
-          {groups.map((group) => (
+          {groups
+            .map((group) => ({ ...group, keys: group.keys.filter((k) => !byKey.get(k)?.hidden) }))
+            .filter((group) => group.keys.length > 0)
+            .map((group) => (
             <nav key={group.titleKey} aria-label={dict.footer.groups[group.titleKey]}>
               <p className="eyebrow">{dict.footer.groups[group.titleKey]}</p>
               <ul className="mt-5 space-y-3">

@@ -9,7 +9,7 @@ const fr: Dictionary = {
   meta: {
     title: "4TUN Hub — Écosystème d'ingénierie",
     description:
-      "4TUN Hub est un écosystème d'ingénierie à Douala, au Cameroun — conception mécanique, simulation par éléments finis, conseil en énergies renouvelables, formation technique et recherche en ingénierie, fondé par Donfack Fortune.",
+      "4TUN Hub est un écosystème d'ingénierie à Dschang, au Cameroun — conception mécanique, simulation par éléments finis, conseil en énergies renouvelables, formation technique et recherche en ingénierie, fondé par Donfack Fortune.",
   },
 
   a11y: {
@@ -58,22 +58,22 @@ const fr: Dictionary = {
   },
 
   home: {
-    eyebrow: "Écosystème d'ingénierie · Douala, Cameroun",
+    eyebrow: "Écosystème d'ingénierie · Dschang, Cameroun",
     title: "Le savoir en ingénierie, transformé en solutions concrètes.",
     titleLead: "Le savoir en ingénierie, transformé en ",
     titleAccent: "solutions concrètes.",
     subtitle:
-      "4TUN Hub réunit services d'ingénierie, formation, recherche et produits au sein d'un même écosystème — ancré dans la pratique réelle, depuis Douala et au-delà.",
+      "4TUN Hub réunit services d'ingénierie, formation, recherche et produits au sein d'un même écosystème — ancré dans la pratique réelle, depuis Dschang et au-delà.",
     primaryCta: "Travailler avec nous",
     secondaryCta: "Découvrir les services",
     learnMore: "En savoir plus",
 
     trust: {
-      label: "Bâti sur de l'ingénierie réelle",
+      label: "Le parcours du fondateur",
       stats: [
-        { value: "319 Md", unit: "FCFA", label: "programme de modernisation ferroviaire" },
-        { value: "560+", unit: "km", label: "de voie en cours de modernisation" },
-        { value: "6+", unit: "", label: "projets d'ingénierie livrés" },
+        { value: "6", unit: "", label: "projets d'ingénierie livrés" },
+        { value: "300+", unit: "", label: "étudiants formés" },
+        { value: "3 200+", unit: "", label: "lecteurs de la newsletter The REM" },
         { value: "2", unit: "", label: "universités où il enseigne" },
       ],
     },
@@ -84,8 +84,8 @@ const fr: Dictionary = {
       "Chacune est un pan actif de 4TUN Hub aujourd'hui — pas une promesse. Explorez celle qu'il vous faut.",
 
     pillars: {
-      products:
-        "Logiciels et outils d'IA en cours de développement — à utiliser ou à acquérir.",
+      community:
+        "Ingénieurs et étudiants qui apprennent ensemble — une communauté WhatsApp ouverte, active dès aujourd'hui.",
       services:
         "Conception mécanique, simulation par éléments finis et systèmes d'énergie renouvelable pour les entreprises et les équipes.",
       academy:
@@ -106,7 +106,7 @@ const fr: Dictionary = {
 
     founder: {
       eyebrow: "Le fondateur",
-      line: "4TUN Hub est fondé par Donfack Fortune — ingénieur mécanicien, spécialiste de l'énergie et enseignant, qui bâtit aujourd'hui l'avenir ferroviaire du Cameroun chez CAMRAIL.",
+      line: "4TUN Hub est fondé par Donfack Fortune — ingénieur mécanicien, spécialiste de l'énergie et enseignant, ancien ingénieur mécanicien senior chez CAMRAIL, le chemin de fer national du Cameroun.",
       cta: "Lire son parcours",
     },
 
@@ -525,7 +525,7 @@ const fr: Dictionary = {
     whoEyebrow: "Qui en fait partie",
     whoTitle: "Une communauté ancrée dans la pratique réelle.",
     whoBody:
-      "Des étudiants qui affûtent leurs compétences en CAO et en simulation, des ingénieurs en exercice qui échangent, et des créateurs qui transforment leurs idées en machines — tous au même endroit, depuis Douala et bien au-delà.",
+      "Des étudiants qui affûtent leurs compétences en CAO et en simulation, des ingénieurs en exercice qui échangent, et des créateurs qui transforment leurs idées en machines — tous au même endroit, depuis Dschang et bien au-delà.",
     whoStats: [
       { value: "3 200+", label: "lecteurs de l'infolettre The REM" },
       { value: "300+", label: "au sein du groupe SolidWorks de Douala" },
@@ -1034,7 +1034,7 @@ const fr: Dictionary = {
   footer: {
     trustEyebrow: "L'ingénierie derrière 4TUN Hub",
     founderLine:
-      "Fondé par Donfack Fortune — ingénieur mécanicien actif dans les secteurs ferroviaire, énergétique et de la formation en ingénierie au Cameroun.",
+      "Fondé par Donfack Fortune — ingénieur mécanicien passé par les secteurs ferroviaire, énergétique et de la formation en ingénierie au Cameroun.",
     meetFounder: "Découvrir le fondateur →",
     affiliations: "Affiliations",
     affiliationsNote: "Affiliations du fondateur — et non des partenariats d'entreprise.",

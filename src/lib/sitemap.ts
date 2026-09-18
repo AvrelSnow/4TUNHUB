@@ -15,6 +15,13 @@
  *   primary  = appears in the top navigation bar (keep to ~6)
  *   footer   = appears in the footer / utility nav
  *   utility  = contact / legal style links
+ *
+ * hidden:
+ *   the page still exists at its URL, but nothing links to it and it is
+ *   left out of sitemap.xml. For pillars with nothing real in them yet
+ *   (Products, Store, Resources, Blog, Careers): an empty room in the
+ *   menu makes the whole organisation read as a plan. Delete the flag
+ *   the day a pillar has something real in it.
  * ============================================================
  */
 
@@ -27,6 +34,7 @@ export type SiteNode = {
   href: string;
   status: NodeStatus;
   placement?: Placement;
+  hidden?: boolean;
   desc?: string;
   children?: SiteNode[];
 };
@@ -45,6 +53,7 @@ export const siteTree: SiteNode[] = [
     label: "Products",
     href: "/products",
     status: "building",
+    hidden: true,
     placement: "primary",
     desc: "Software & AI 4TUN Hub is building. Things you use or buy.",
     children: [
@@ -115,6 +124,7 @@ export const siteTree: SiteNode[] = [
     label: "Solutions",
     href: "/solutions",
     status: "planned",
+    hidden: true,
     placement: "footer",
     desc: "Industry-framed outcomes (energy, manufacturing, education). Deferred until multiple products exist.",
   },
@@ -123,6 +133,7 @@ export const siteTree: SiteNode[] = [
     label: "Resources",
     href: "/resources",
     status: "active",
+    hidden: true,
     placement: "footer",
     desc: "E-books, templates, engineering references & downloadable tools.",
   },
@@ -139,6 +150,7 @@ export const siteTree: SiteNode[] = [
     label: "Blog",
     href: "/blog",
     status: "active",
+    hidden: true,
     placement: "footer",
     desc: "Engineering insight, project write-ups & thought leadership.",
   },
@@ -147,6 +159,7 @@ export const siteTree: SiteNode[] = [
     label: "Store",
     href: "/store",
     status: "active",
+    hidden: true,
     placement: "footer",
     desc: "Not a silo — a deferred aggregated view over every item flagged `purchasable` across the pillars. Commerce lives in context (Academy, Resources, Products) until then.",
   },
@@ -155,6 +168,7 @@ export const siteTree: SiteNode[] = [
     label: "Careers",
     href: "/careers",
     status: "active",
+    hidden: true,
     placement: "footer",
     desc: "Grow the team as the ecosystem expands.",
   },
@@ -209,5 +223,7 @@ export function flattenTree(nodes: SiteNode[] = siteTree): SiteNode[] {
   return nodes.flatMap((n) => [n, ...(n.children ? flattenTree(n.children) : [])]);
 }
 
-export const primaryNav = siteTree.filter((n) => n.placement === "primary" && n.key !== "home");
-export const footerNav = siteTree.filter((n) => n.placement === "footer");
+export const primaryNav = siteTree.filter(
+  (n) => n.placement === "primary" && n.key !== "home" && !n.hidden,
+);
+export const footerNav = siteTree.filter((n) => n.placement === "footer" && !n.hidden);

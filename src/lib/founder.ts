@@ -17,7 +17,7 @@ export const founder = {
     en: "Mechanical Engineer · FEA Specialist · Technical Educator",
     fr: "Ingénieur mécanicien · Spécialiste FEA · Formateur technique",
   } as Loc,
-  location: { en: "Dschang & Douala, Cameroon", fr: "Dschang & Douala, Cameroun" } as Loc,
+  location: { en: "Dschang, Cameroon", fr: "Dschang, Cameroun" } as Loc,
   portrait: "/images/founder-portrait.webp",
   bio: {
     en: "A simulation-driven mechanical engineer with hands-on experience in FEA, CAD modelling and industrial systems design — from braking components at CAMRAIL to sustainable machinery and off-grid energy. Alongside the engineering, a state-accredited educator and SolidWorks group leader who has reached 300+ students, and the founder of The REM, a renewable-energy newsletter read by 3,200+ engineers and policymakers.",
@@ -35,8 +35,8 @@ export const founder = {
   camrail: {
     role: { en: "Senior Mechanical Engineer at CAMRAIL", fr: "Ingénieur mécanicien senior à CAMRAIL" } as Loc,
     blurb: {
-      en: "Contributing to the operation and modernisation of Cameroon's 1,010 km national rail network — from locomotive compressor test-bench optimisation to FEA-validated brake support design.",
-      fr: "Contribution à l'exploitation et à la modernisation du réseau ferré national camerounais de 1 010 km — de l'optimisation du banc d'essai des compresseurs à la conception de supports de frein validés par FEA.",
+      en: "Contributed to the operation and modernisation of Cameroon's 1,010 km national rail network — from locomotive compressor test-bench optimisation to FEA-validated brake support design.",
+      fr: "A contribué à l'exploitation et à la modernisation du réseau ferré national camerounais de 1 010 km — de l'optimisation du banc d'essai des compresseurs à la conception de supports de frein validés par FEA.",
     } as Loc,
     cta: { en: "Read the CAMRAIL story", fr: "Lire l'expérience CAMRAIL" } as Loc,
   },

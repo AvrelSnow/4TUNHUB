@@ -85,7 +85,7 @@ export default function OpengraphImage() {
               maxWidth: 900,
             }}
           >
-            Engineering services, education, research &amp; products — Douala,
+            Engineering services, education, research &amp; products — Dschang,
             Cameroon.
           </div>
         </div>

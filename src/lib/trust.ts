@@ -19,7 +19,7 @@ export type Affiliation = { name: string; role: string; logo?: string };
  * Dschang) are presented on the Founder page instead.
  */
 export const founderAffiliations: Affiliation[] = [
-  { name: "CAMRAIL", role: "Senior Engineer", logo: "/images/logos/camrail.webp" },
+  { name: "CAMRAIL", role: "Former Senior Engineer", logo: "/images/logos/camrail.webp" },
   { name: "University of Douala", role: "Lecturer", logo: "/images/logos/univ-douala.webp" },
   { name: "ENSET Douala", role: "Lecturer", logo: "/images/logos/enset.webp" },
   { name: "Institut Universitaire de la Côte", role: "Lecturer", logo: "/images/logos/iuc.webp" },

@@ -8,7 +8,7 @@ const en = {
   meta: {
     title: "4TUN Hub — Engineering Ecosystem",
     description:
-      "4TUN Hub is an engineering ecosystem in Douala, Cameroon — mechanical design, FEA simulation, renewable-energy consulting, technical training, and engineering research, founded by Donfack Fortune.",
+      "4TUN Hub is an engineering ecosystem in Dschang, Cameroon — mechanical design, FEA simulation, renewable-energy consulting, technical training, and engineering research, founded by Donfack Fortune.",
   },
 
   a11y: {
@@ -59,22 +59,22 @@ const en = {
   },
 
   home: {
-    eyebrow: "Engineering ecosystem · Douala, Cameroon",
+    eyebrow: "Engineering ecosystem · Dschang, Cameroon",
     title: "Engineering knowledge, built into real solutions.",
     titleLead: "Engineering knowledge, built into ",
     titleAccent: "real solutions.",
     subtitle:
-      "4TUN Hub brings engineering services, education, research and products together in one ecosystem — grounded in real practice, from Douala outward.",
+      "4TUN Hub brings engineering services, education, research and products together in one ecosystem — grounded in real practice, from Dschang outward.",
     primaryCta: "Work with us",
     secondaryCta: "Explore services",
     learnMore: "Learn more",
 
     trust: {
-      label: "Built on real engineering",
+      label: "The founder's track record",
       stats: [
-        { value: "319B", unit: "FCFA", label: "rail modernization programme" },
-        { value: "560+", unit: "km", label: "of track being modernized" },
-        { value: "6+", unit: "", label: "engineering projects delivered" },
+        { value: "6", unit: "", label: "engineering projects delivered" },
+        { value: "300+", unit: "", label: "students taught" },
+        { value: "3,200+", unit: "", label: "readers of The REM newsletter" },
         { value: "2", unit: "", label: "universities taught at" },
       ],
     },
@@ -85,7 +85,8 @@ const en = {
       "Each is a working part of 4TUN Hub today — not a promise. Explore the one you need.",
 
     pillars: {
-      products: "Software and AI tools we're building — things you use or buy.",
+      community:
+        "Engineers and students learning together — an open WhatsApp community, live today.",
       services:
         "Mechanical design, FEA simulation and renewable-energy systems for companies and teams.",
       academy:
@@ -105,7 +106,7 @@ const en = {
 
     founder: {
       eyebrow: "The founder",
-      line: "4TUN Hub is founded by Donfack Fortune — mechanical engineer, energy specialist and educator, currently engineering Cameroon's railway future at CAMRAIL.",
+      line: "4TUN Hub is founded by Donfack Fortune — mechanical engineer, energy specialist and educator, and formerly a senior mechanical engineer at CAMRAIL, Cameroon's national railway.",
       cta: "Read his story",
     },
 
@@ -528,7 +529,7 @@ const en = {
     whoEyebrow: "Who's here",
     whoTitle: "A community grounded in real practice.",
     whoBody:
-      "Students sharpening CAD and simulation skills, working engineers comparing notes, and makers turning ideas into hardware — all in one place, from Douala outward.",
+      "Students sharpening CAD and simulation skills, working engineers comparing notes, and makers turning ideas into hardware — all in one place, from Dschang outward.",
     whoStats: [
       { value: "3,200+", label: "readers of The REM newsletter" },
       { value: "300+", label: "in the Douala SolidWorks user group" },
@@ -1037,7 +1038,7 @@ const en = {
   footer: {
     trustEyebrow: "The engineering behind 4TUN Hub",
     founderLine:
-      "Founded by Donfack Fortune — a mechanical engineer working across Cameroon's railway, energy and engineering-education sectors.",
+      "Founded by Donfack Fortune — a mechanical engineer who has worked across Cameroon's railway, energy and engineering-education sectors.",
     meetFounder: "Meet the founder →",
     affiliations: "Affiliations",
     affiliationsNote: "Founder affiliations — not corporate partnerships.",

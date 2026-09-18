@@ -65,10 +65,10 @@ function organizationNode() {
     url: SITE_URL,
     logo: `${SITE_URL}/4tunhub-logo.svg`,
     description: SITE_DESCRIPTION,
-    email: "fortunedonfack05@gmail.com",
+    email: CONTACT_EMAIL,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Douala",
+      addressLocality: "Dschang",
       addressCountry: "CM",
     },
     founder: {
@@ -76,7 +76,7 @@ function organizationNode() {
       name: "Donfack Fortune",
       jobTitle: "Mechanical Engineer · Energy Specialist · Technical Educator",
       description:
-        "Senior Engineer, lecturer at Institut Universitaire de la cote, renewable-energy analyst, and founder of 4TUNHub.",
+        "Former senior engineer at CAMRAIL, lecturer at Institut Universitaire de la cote, renewable-energy analyst, and founder of 4TUNHub.",
     },
     knowsAbout: [
       "Mechanical Engineering",

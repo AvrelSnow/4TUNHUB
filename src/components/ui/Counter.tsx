@@ -31,11 +31,12 @@ export function Counter({ value }: { value: string }) {
     const el = ref.current;
     if (!el) return;
 
-    const match = /^(\d[\d.,]*)(.*)$/.exec(value);
+    // Digits may be grouped with commas or (French) spaces: "3,200+" / "3 200+".
+    const match = /^(\d(?:[\d.,   ]*\d)?)(.*)$/.exec(value);
     if (!match) return; // no leading number — nothing to count
 
     const [, numeric, suffix] = match;
-    const target = Number(numeric.replace(/,/g, ""));
+    const target = Number(numeric.replace(/[,   ]/g, ""));
     if (!Number.isFinite(target) || target <= 0) return;
 
     const decimals = numeric.includes(".") ? numeric.split(".")[1].length : 0;

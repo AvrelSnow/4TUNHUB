@@ -183,11 +183,11 @@ export const pageSpecs: PageSpec[] = [
     sections: [
       "Hero — invitation + expectation (48h response)",
       "Contact form — name, email, topic, message",
-      "Direct channels — email, LinkedIn, WhatsApp, location (Douala, Cameroon)",
+      "Direct channels — email, LinkedIn, WhatsApp, location (Dschang, Cameroon)",
       "Response SLA — within 48 hours",
     ],
     primaryCTA: "Send message",
-    contentSource: "fortunedonfack05@gmail.com; LinkedIn/GrabCAD/WhatsApp; Douala.",
+    contentSource: "4tunhub@gmail.com (CONTACT_EMAIL); LinkedIn/GrabCAD/WhatsApp; Dschang.",
     dependencies: ["Form handler / email endpoint (post-local)"],
     acceptance: [
       "Form validates required fields and shows inline errors",
@@ -787,7 +787,7 @@ export const seoRules: Rule[] = [
   },
   {
     t: "Structured data — ✓ IMPLEMENTED",
-    d: "Organization + founder Person JSON-LD sitewide (name, Douala address, expertise). As pillars ship: Course schema (Academy), Article (Research/Blog), Product (Products), CreativeWork (Projects).",
+    d: "Organization + founder Person JSON-LD sitewide (name, Dschang address, expertise). As pillars ship: Course schema (Academy), Article (Research/Blog), Product (Products), CreativeWork (Projects).",
   },
   {
     t: "Metadata discipline — ✓ IMPLEMENTED",
@@ -799,7 +799,7 @@ export const seoRules: Rule[] = [
   },
   {
     t: "One page, one query",
-    d: "Each pillar owns a primary query: Services → 'mechanical engineering services Cameroon'; Academy → 'SolidWorks training Douala'; Research → 'renewable energy Cameroon'; Projects → long-tail engineering case studies. Home owns the brand.",
+    d: "Each pillar owns a primary query: Services → 'mechanical engineering services Cameroon'; Academy → 'SolidWorks training Cameroon'; Research → 'renewable energy Cameroon'; Projects → long-tail engineering case studies. Home owns the brand.",
   },
   {
     t: "E-E-A-T is our moat",
