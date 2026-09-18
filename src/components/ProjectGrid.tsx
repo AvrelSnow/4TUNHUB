@@ -41,7 +41,7 @@ export function ProjectGrid({
   );
 
   const chip =
-    "rounded-full border px-4 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+    "rounded-lg border px-4 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
   return (
     <div>
@@ -83,7 +83,11 @@ export function ProjectGrid({
           if (!copy) return null;
           return (
             <Link key={p.slug} href={`${basePath}/${p.slug}`} className="block h-full">
-              <Card interactive className="flex h-full flex-col bg-background">
+              <Card
+                interactive
+                readout={`PRJ · ${String(projects.indexOf(p) + 1).padStart(2, "0")}`}
+                className="flex h-full flex-col bg-background"
+              >
                 <ProjectVisual
                   category={p.category}
                   index={projects.indexOf(p)}

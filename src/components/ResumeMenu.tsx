@@ -40,7 +40,7 @@ export function ResumeMenu({ label, items }: { label: string; items: Item[] }) {
         aria-haspopup="true"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-border bg-background px-5 text-sm font-medium text-foreground transition-all duration-200 hover:border-brand-500 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-border bg-background px-5 text-sm font-medium text-foreground transition-all duration-200 hover:border-brand-500 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
         {label}
         <svg viewBox="0 0 12 12" className={`h-3 w-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">

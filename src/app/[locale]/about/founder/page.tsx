@@ -121,7 +121,7 @@ export default async function FounderPage({ params }: Params) {
               href={localizeHref(locale, "/about/founder/camrail")}
               className="mt-8 block"
             >
-              <div className="group grid gap-8 overflow-hidden rounded-2xl border border-border bg-background p-6 transition-all duration-300 hover:border-brand-500/60 hover:shadow-e2 sm:grid-cols-[1fr_auto] sm:items-center sm:p-8">
+              <div className="ticks relative group grid gap-8 overflow-hidden rounded-2xl border border-border bg-background p-6 transition-all duration-300 hover:border-brand-500/60 hover:shadow-e2 sm:grid-cols-[1fr_auto] sm:items-center sm:p-8">
                 <div>
                   <h3 className="text-xl font-semibold text-foreground sm:text-2xl">
                     {founder.camrail.role[locale]}
@@ -175,7 +175,7 @@ export default async function FounderPage({ params }: Params) {
             return (
               <Reveal key={p.slug} delay={i * 60}>
                 <Link href={localizeHref(locale, `/about/founder/projects/${p.slug}`)} className="block h-full">
-                  <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/60 hover:shadow-e2">
+                  <div className="ticks relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/60 hover:shadow-e2">
                     <ProjectVisual
                       category={p.category}
                       index={i}
@@ -215,7 +215,7 @@ export default async function FounderPage({ params }: Params) {
                     {founder.skills[group].map((skill) => (
                       <span
                         key={skill}
-                        className="rounded-full border border-border bg-background px-3 py-1 text-xs text-muted"
+                        className="rounded-lg border border-border bg-background px-3 py-1 text-xs text-muted"
                       >
                         {skill}
                       </span>

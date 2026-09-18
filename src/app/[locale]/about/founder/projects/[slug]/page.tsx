@@ -214,7 +214,7 @@ export default async function ProjectDetail({ params }: Params) {
       )}
 
       <Container className="py-16">
-        <div className="rounded-2xl border border-border bg-surface p-8 text-center sm:p-10">
+        <div className="ticks relative rounded-2xl border border-border bg-surface p-8 text-center sm:p-10">
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">
             {t.detail.ctaTitle}
           </h2>

@@ -133,7 +133,7 @@ export default async function CommunityPage({ params }: Params) {
         <div className="mt-10 grid gap-6 sm:grid-cols-3">
           {t.ethos.map((item, i) => (
             <Reveal key={item.title} delay={i * 70}>
-              <div className="h-full rounded-2xl border border-border bg-surface p-6">
+              <div className="ticks relative h-full rounded-2xl border border-border bg-surface p-6">
                 <span className="font-mono text-xs font-bold text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>

@@ -141,6 +141,11 @@ marks.
 Every card, figure and panel is a *viewport onto something measured*, and it is
 labelled as such. This is what turns a generic rounded card into an instrument.
 
+*Amended 2026-09-18:* the frame is now permanent, not a hover state. Every
+card draws its ticks at rest, and project cards carry a `PRJ · 01` readout.
+Corners tightened to 3–5px, and badges and chips went from pills to square
+tags, because an instrument is machined, not moulded.
+
 ---
 
 ## Rules
@@ -150,8 +155,13 @@ Amber is action and brand — buttons, links, the mark. The flow ramp is data.
 There is no fourth colour. Every foreground/background pair clears WCAG AA at
 its rendered size, verified, not assumed, **on both grounds**.
 
-**Type.** One family (Geist) worked hard, rather than three families worked
-lightly. Display sizes run to ~136px with tracking tightened to -0.04em; mono
+**Type.** One sans family worked hard, rather than three families worked
+lightly: **Archivo**, with IBM Plex Mono for readouts. *Amended 2026-09-18:*
+it was Geist, which is the Next.js default and read as template to anyone who
+has seen a few startup sites. Archivo is a grotesque with a width axis; display
+sizes run at 112% from 640px up, which gives headlines the planted stance of a
+maker's plate, and phones keep 100% so long words still fit. Both fonts are
+self-hosted and together weigh less than the two Geist files they replaced. Display sizes run to ~136px with tracking tightened to -0.04em; mono
 carries every label, figure and readout at 10–12px with wide tracking. The gap
 between the largest and smallest type on a page should be violent. If a page's
 biggest element is 48px, that page has no hero.

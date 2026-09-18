@@ -81,8 +81,8 @@
   --color-accent: #ffc01f; /* 12.2:1 — links, eyebrows, inline emphasis */
 
   /* --- Typography --- */
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
   /* Micro type scale — the floor for mono labels/badges. Below text-xs (12px). */
   --text-3xs: 0.625rem; /* 10px */
@@ -108,10 +108,12 @@
   --text-display-lg--letter-spacing: -0.045em;
   --text-display-lg--font-weight: 600;
 
-  /* --- Radii. Instruments are not pill-shaped; the scale tightens. --- */
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
+  /* --- Radii. Instruments are machined, not moulded: corners are near
+     square. Tightened 2026-09-18 from 8/12/16px, which read as a SaaS
+     template and fought the corner ticks drawn just inside them. --- */
+  --radius-lg: 0.1875rem; /* 3px — buttons, fields, chips */
+  --radius-xl: 0.25rem; /* 4px — cards, figures */
+  --radius-2xl: 0.3125rem; /* 5px — large panels */
 
   /* --- Elevation. On a dark ground, elevation is a lighter surface and a
          hairline — not a drop shadow. Two levels, as before. --- */
@@ -287,6 +289,19 @@
   h2,
   h3 {
     text-wrap: balance;
+  }
+
+  /* Display type runs wide. Archivo's width axis is where the typeface's
+     character lives: at 100% it is a clean grotesque, at 112% it has the
+     planted, engineered stance of a plate stamped on a machine. Phones
+     keep the normal width, because at 360px a long French or English
+     word ("ingénierie", "engineering") already fills the measure. */
+  @media (min-width: 640px) {
+    .text-display-sm,
+    .text-display,
+    .text-display-lg {
+      font-stretch: 112%;
+    }
   }
 
   p {

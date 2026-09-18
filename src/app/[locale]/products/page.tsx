@@ -115,7 +115,7 @@ export default async function ProductsPage({ params }: Params) {
       {/* 4 · EARLY-ACCESS CTA */}
       <Container className="py-24">
         <Reveal>
-          <div className="rounded-2xl border border-border bg-surface p-8 text-center sm:p-12">
+          <div className="ticks relative rounded-2xl border border-border bg-surface p-8 text-center sm:p-12">
             <h2 className="mx-auto max-w-3xl text-display-sm text-foreground">
               {t.cta.title}
             </h2>

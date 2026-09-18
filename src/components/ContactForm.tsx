@@ -30,7 +30,7 @@ function ContactFormFields({ t, onReset }: { t: ContactCopy; onReset: () => void
     return (
       <div
         role="status"
-        className="rounded-2xl border border-brand-500/40 bg-brand-500/15 p-8"
+        className="ticks relative rounded-2xl border border-brand-500/40 bg-brand-500/15 p-8"
       >
         <span
           aria-hidden="true"

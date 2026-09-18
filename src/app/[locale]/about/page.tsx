@@ -64,7 +64,7 @@ export default async function AboutPage({ params }: Params) {
         <div className="mt-10 grid gap-5 sm:grid-cols-3">
           {t.principles.map((p, i) => (
             <Reveal key={p.title} delay={i * 70}>
-              <div className="h-full rounded-2xl border border-border bg-surface p-6">
+              <div className="ticks relative h-full rounded-2xl border border-border bg-surface p-6">
                 <span className="font-mono text-xs font-bold text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -79,7 +79,7 @@ export default async function AboutPage({ params }: Params) {
       {/* Founder teaser — org first, founder as proof */}
       <Container className="pb-24">
         <Reveal>
-          <div className="grid items-center gap-8 rounded-2xl border border-border bg-surface p-8 sm:grid-cols-[auto_1fr] sm:p-10">
+          <div className="ticks relative grid items-center gap-8 rounded-2xl border border-border bg-surface p-8 sm:grid-cols-[auto_1fr] sm:p-10">
             <span className="plate block h-28 w-28 shrink-0 rounded-xl border border-border sm:h-32 sm:w-32">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

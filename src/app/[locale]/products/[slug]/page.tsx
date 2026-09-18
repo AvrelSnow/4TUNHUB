@@ -65,13 +65,13 @@ export default async function ProductDetail({ params }: Params) {
       <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">{copy.desc}</p>
 
       <div className="mt-8 grid max-w-3xl gap-6 sm:grid-cols-2">
-        <div className="rounded-2xl border border-border bg-surface p-6">
+        <div className="ticks relative rounded-2xl border border-border bg-surface p-6">
           <p className="font-mono text-3xs uppercase tracking-wider text-muted">
             {t.problemLabel}
           </p>
           <p className="mt-2 text-sm leading-6 text-foreground">{copy.problem}</p>
         </div>
-        <div className="rounded-2xl border border-border bg-surface p-6">
+        <div className="ticks relative rounded-2xl border border-border bg-surface p-6">
           <p className="font-mono text-3xs uppercase tracking-wider text-muted">
             {t.whoLabel}
           </p>

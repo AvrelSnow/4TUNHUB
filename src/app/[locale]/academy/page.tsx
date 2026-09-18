@@ -107,7 +107,7 @@ export default async function AcademyPage({ params }: Params) {
           </h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {t.formatsList.map((f) => (
-              <div key={f.title} className="rounded-2xl border border-border bg-background p-6">
+              <div key={f.title} className="ticks relative rounded-2xl border border-border bg-background p-6">
                 <h3 className="text-base font-semibold text-foreground">{f.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{f.desc}</p>
               </div>
@@ -132,7 +132,7 @@ export default async function AcademyPage({ params }: Params) {
       {/* 5 · ENROLLMENT CTA */}
       <Container className="py-24">
         <Reveal>
-          <div className="rounded-2xl border border-border bg-surface p-8 text-center sm:p-12">
+          <div className="ticks relative rounded-2xl border border-border bg-surface p-8 text-center sm:p-12">
             <h2 className="mx-auto max-w-3xl text-display-sm text-foreground">
               {t.cta.title}
             </h2>

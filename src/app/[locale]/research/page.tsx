@@ -71,7 +71,7 @@ export default async function ResearchPage({ params }: Params) {
             const project = area.proof ? getProject(area.proof) : undefined;
             return (
               <Reveal key={area.key} delay={i * 70}>
-                <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8">
+                <div className="ticks relative rounded-2xl border border-border bg-surface p-6 sm:p-8">
                   <div className="flex items-baseline gap-3">
                     <span className="font-mono text-xs font-bold text-accent">
                       {String(i + 1).padStart(2, "0")}
@@ -147,7 +147,7 @@ export default async function ResearchPage({ params }: Params) {
       {/* 5 · COLLABORATE CTA */}
       <Container className="pb-24">
         <Reveal>
-          <div className="rounded-2xl border border-border bg-surface p-8 text-center sm:p-12">
+          <div className="ticks relative rounded-2xl border border-border bg-surface p-8 text-center sm:p-12">
             <h2 className="mx-auto max-w-3xl text-display-sm text-foreground">
               {t.cta.title}
             </h2>

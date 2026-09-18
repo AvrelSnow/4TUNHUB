@@ -102,7 +102,7 @@ export default async function ServicesPage({ params }: Params) {
           </h2>
           <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {t.process.steps.map((step, i) => (
-              <li key={step.title} className="rounded-2xl border border-border bg-background p-6">
+              <li key={step.title} className="ticks relative rounded-2xl border border-border bg-background p-6">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-500 font-mono text-sm font-bold text-ink-900">
                   {i + 1}
                 </span>
@@ -158,7 +158,7 @@ export default async function ServicesPage({ params }: Params) {
       <Section eyebrow={t.models.eyebrow} title={t.models.title} className="pt-0">
         <div className="mt-10 grid gap-5 sm:grid-cols-3">
           {t.models.items.map((m) => (
-            <div key={m.title} className="rounded-2xl border border-border bg-surface p-6">
+            <div key={m.title} className="ticks relative rounded-2xl border border-border bg-surface p-6">
               <h3 className="text-base font-semibold text-foreground">{m.title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted">{m.desc}</p>
             </div>

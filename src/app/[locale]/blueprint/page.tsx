@@ -593,7 +593,7 @@ export default function BlueprintPage() {
                     ))}
                   </ul>
                   <p className="mt-4 font-mono text-xs text-muted">
-                    Sans: Geist · Mono: Geist Mono (eyebrows, code, data)
+                    Sans: Archivo (wider at display sizes) · Mono: IBM Plex Mono (eyebrows, code, data)
                   </p>
                 </div>
 

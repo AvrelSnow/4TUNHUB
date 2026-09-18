@@ -181,7 +181,11 @@ export default async function Home({
                     href={localizeHref(locale, `/about/founder/projects/${p.slug}`)}
                     className="block h-full"
                   >
-                    <Card interactive className="flex h-full flex-col bg-background">
+                    <Card
+                      interactive
+                      readout={`PRJ · ${String(i + 1).padStart(2, "0")}`}
+                      className="flex h-full flex-col bg-background"
+                    >
                       <ProjectVisual
                         category={p.category}
                         index={projects.indexOf(p)}
@@ -211,7 +215,7 @@ export default async function Home({
       {/* 5 · FOUNDER TEASER (org-first, one line) */}
       <Section rhythm="compressed">
         <Reveal>
-          <div className="flex flex-col gap-6 rounded-2xl border border-border bg-surface p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
+          <div className="ticks relative flex flex-col gap-6 rounded-2xl border border-border bg-surface p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
             <div className="max-w-2xl">
               <p className="eyebrow">{t.founder.eyebrow}</p>
               <p className="mt-3 text-xl leading-8 text-foreground">{t.founder.line}</p>

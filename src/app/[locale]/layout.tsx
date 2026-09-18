@@ -1,9 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-// Self-hosted Geist (Vercel's `geist` package) — no runtime fetch to
-// fonts.gstatic.com, so dev/build never depend on network font access.
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+// Self-hosted type (Fontsource packages): no runtime fetch to Google, so
+// dev and build never depend on network font access. Each file carries
+// unicode-range, so a page only downloads the subsets it uses; French
+// needs latin, plus latin-ext for œ.
+// Archivo: a grotesque with a width axis (62–125%), used wider at display
+// sizes. Replaced Geist, which is the Next.js default and read as template.
+import "@fontsource-variable/archivo/standard.css";
+// IBM Plex Mono: every label, figure and readout.
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
+import "@fontsource/ibm-plex-mono/600.css";
 import "../globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -81,7 +88,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${GeistSans.variable} ${GeistMono.variable} h-full antialiased`}
+      className="h-full antialiased"
       // No `data-theme` is server-rendered. The page is static per locale and
       // cannot know a visitor's local hour, so guessing here would either
       // ship the wrong ground or force the page off the static path. The
