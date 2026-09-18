@@ -4,7 +4,6 @@ import { Button } from "./ui/Button";
 import { NavLink } from "./NavLink";
 import { MobileNav } from "./MobileNav";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { ThemeControl } from "./ThemeControl";
 import { primaryNav } from "@/lib/sitemap";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -24,8 +23,8 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         <div className="flex h-16 items-center justify-between gap-6">
           <Logo href={localizeHref(locale, "/")} />
 
-          {/* From lg, not md: at 768px the six mono labels plus logo, EN·FR,
-              the theme readout and the CTA need ~786px, so every page
+          {/* From lg, not md: at 768px the six mono labels plus logo, EN·FR
+              and the CTA need ~786px, so every page
               scrolled sideways by 18px. Tablets get the menu instead. */}
           <nav aria-label={dict.nav.primary} className="hidden items-center gap-6 lg:flex xl:gap-7">
             {items.map((p) => (
@@ -37,10 +36,6 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
           <div className="flex items-center gap-3">
             <LanguageSwitcher locale={locale} label={dict.nav.language} />
-            {/* Visible at every width, unlike the EN·FR switcher: the ground
-                changes under the reader on its own, so the way to say "no"
-                has to be reachable on the device most of them are holding. */}
-            <ThemeControl strings={dict.theme} />
             <Button
               as="a"
               href={localizeHref(locale, "/contact")}

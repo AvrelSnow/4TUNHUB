@@ -22,10 +22,8 @@ for (const dir of [OUT, join(OUT, "projects"), join(OUT, "logos"), join(OUT, "ca
 
 /** [sourceDir, file, outPath, maxWidth, opts] */
 const JOBS = [
-  // --- Decorative art ---
+  // --- Decorative art (stock; cfd-vehicle is replaced when his own simulation hero lands) ---
   [DOWNLOADS, "pngwing.com.png", "cfd-vehicle.webp", 1000, { alpha: true, q: 82 }],
-  [DOWNLOADS, "pngwing.com (1).png", "mech-figure.webp", 700, { alpha: true, q: 80 }],
-  [DOWNLOADS, "pexels-adrien-olichon-1257089-2387532.jpg", "texture-ridges.webp", 1920, { q: 68 }],
 
   // === PROJECT IMAGES — curated set, one hero + gallery per project ===
 

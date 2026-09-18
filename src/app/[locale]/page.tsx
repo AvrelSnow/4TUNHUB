@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { CtaPanel } from "@/components/ui/CtaPanel";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/Reveal";
 import { Logo } from "@/components/ui/Logo";
@@ -226,46 +227,14 @@ export default async function Home({
         </Reveal>
       </Section>
 
-      {/* 7 · CONVERSION BAND — ridged texture + heavy overlay so white
-          bold type keeps a very high contrast ratio. */}
-      <Container className="pb-24">
-        <Reveal>
-          <div className="relative overflow-hidden rounded-2xl px-6 py-16 text-center sm:px-12">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/texture-ridges.webp"
-              alt=""
-              aria-hidden="true"
-              width={1920}
-              height={1280}
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-ink-950/85" aria-hidden="true" />
-            <div className="relative">
-              <h2 className="mx-auto max-w-3xl text-display text-white hyphens-auto">
-                {t.conversion.title}
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-base font-medium leading-7 text-white/90">
-                {t.conversion.subtitle}
-              </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-3">
-                <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
-                  {t.conversion.primaryCta}
-                </Button>
-                <Button
-                  as="a"
-                  href={localizeHref(locale, "/services")}
-                  size="lg"
-                  variant="secondary"
-                  className="border-white/40 bg-transparent text-white hover:border-brand-500 hover:bg-white/5 hover:text-brand-400"
-                >
-                  {t.conversion.secondaryCta}
-                </Button>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </Container>
+      {/* 7 · CONVERSION — the ticked instrument panel every pillar page
+          closes on. It replaced a stock ridged-texture photo. */}
+      <CtaPanel
+        title={t.conversion.title}
+        subtitle={t.conversion.subtitle}
+        primary={{ label: t.conversion.primaryCta, href: localizeHref(locale, "/contact") }}
+        secondary={{ label: t.conversion.secondaryCta, href: localizeHref(locale, "/services") }}
+      />
     </>
   );
 }

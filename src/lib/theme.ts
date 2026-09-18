@@ -2,11 +2,19 @@
  * ============================================================
  * THEME — night is home, day is the sheet.
  * ============================================================
- * The site runs two grounds and the visitor's own clock decides
- * which. Between DAY_START and DAY_END local time the instrument
- * becomes a drafting sheet; outside those hours it is the dark
- * measurement surface it has always been. The palettes, and the
+ * The site runs two grounds. Night is the default for everyone:
+ * it is the art direction's home and the stronger rendering of the
+ * brand. The day sheet is a choice, made from the footer, and so is
+ * `auto`, which hands the decision to the visitor's clock (the sheet
+ * between DAY_START and DAY_END local time). The palettes, and the
  * argument for having two at all, live in src/app/globals.css.
+ *
+ * WHY NIGHT BY DEFAULT, NOT THE CLOCK (changed 2026-09-18)
+ * The clock used to be the default. That meant every client browsing
+ * during office hours in Cameroon, the people the site most needs to
+ * convince, saw the day sheet: the weaker ground, where the live
+ * fields barely show and the long section rhythms read as empty
+ * space. The clock is still offered. It is just no longer imposed.
  *
  * WHY THE CLOCK AND NOT `prefers-color-scheme`
  * The OS preference is a stated preference and it wins whenever the
@@ -52,10 +60,14 @@ export const THEME_STORAGE_KEY = "4tun.theme";
 /** The ground that renders when nothing else can be determined. */
 export const FALLBACK_THEME: Theme = "dark";
 
+/** What a visitor who has never chosen gets. */
+export const DEFAULT_PREFERENCE: ThemePreference = "dark";
+
+/** Cycle order of the control: from the default, one press reaches Day. */
 export const THEME_PREFERENCES: readonly ThemePreference[] = [
-  "auto",
-  "light",
   "dark",
+  "light",
+  "auto",
 ] as const;
 
 export function isThemePreference(v: unknown): v is ThemePreference {
@@ -114,6 +126,6 @@ export function msUntilNextSwitch(now: Date = new Date()): number {
  */
 export const themeResolverScript = `(function(){try{var p=localStorage.getItem(${JSON.stringify(
   THEME_STORAGE_KEY,
-)});if(p!=="light"&&p!=="dark")p="auto";var t=p;if(p==="auto"){var h=new Date().getHours();t=(h>=${DAY_START_HOUR}&&h<${DAY_END_HOUR})?"light":"dark"}var r=document.documentElement;r.setAttribute("data-theme",t);r.style.colorScheme=t}catch(e){document.documentElement.setAttribute("data-theme",${JSON.stringify(
+)});if(p!=="light"&&p!=="dark"&&p!=="auto")p=${JSON.stringify(DEFAULT_PREFERENCE)};var t=p;if(p==="auto"){var h=new Date().getHours();t=(h>=${DAY_START_HOUR}&&h<${DAY_END_HOUR})?"light":"dark"}var r=document.documentElement;r.setAttribute("data-theme",t);r.style.colorScheme=t}catch(e){document.documentElement.setAttribute("data-theme",${JSON.stringify(
   FALLBACK_THEME,
 )})}})()`;

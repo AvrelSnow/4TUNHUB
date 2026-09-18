@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "./ui/Container";
 import { Logo } from "./ui/Logo";
+import { ThemeControl } from "./ThemeControl";
 import { flattenTree } from "@/lib/sitemap";
 import { CONTACT_EMAIL, SITE_LOCATION } from "@/lib/site";
 import {
@@ -146,7 +147,12 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
         <div className="mt-16 flex flex-col gap-3 border-t border-border pt-8 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} 4TUN Hub. {dict.footer.rights}</p>
-          <p className="font-mono uppercase tracking-widest">{dict.footer.motto}</p>
+          <div className="flex items-center gap-4">
+            <p className="font-mono uppercase tracking-widest">{dict.footer.motto}</p>
+            {/* The ground is a setting, so it sits with the other fine print.
+                Night is the default; this is where Day and Auto are chosen. */}
+            <ThemeControl strings={dict.theme} />
+          </div>
         </div>
       </Container>
     </footer>

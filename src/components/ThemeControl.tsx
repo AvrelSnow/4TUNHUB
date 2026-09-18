@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useSyncExternalStore } from "react";
 import {
+  DEFAULT_PREFERENCE,
   THEME_PREFERENCES,
   THEME_STORAGE_KEY,
   isThemePreference,
@@ -22,12 +23,12 @@ import { cn } from "@/lib/cn";
  * for one behaviour.
  *
  * WHY A MANUAL OVERRIDE EXISTS AT ALL
- * "Light by day" is a good default and a terrible law. Someone
- * reading a CFD render at noon in a dark workshop, or anyone who
- * simply prefers the instrument ground, must be able to say so and
- * be obeyed — otherwise the site is telling a visitor it knows their
- * room better than they do. `auto` is the default; the other two are
- * a stated preference and outrank the clock permanently.
+ * Night is a good default and a terrible law. Someone reading a
+ * drawing in bright sunlight, or anyone who simply prefers a pale
+ * sheet, must be able to say so and be obeyed. Day and Auto are
+ * stated preferences, remembered permanently. The control lives in
+ * the footer: it is a setting, not something every visitor needs in
+ * the header on every page.
  *
  * WHAT IT DOES NOT DO
  * It does not decide the theme on first paint. That already happened,
@@ -93,7 +94,7 @@ const PREFERENCE_EVENT = "4tun:theme";
  * Here the choice survives the session and is simply forgotten on the next
  * page load, which is the most a browser that refuses storage will allow.
  */
-let inMemoryPreference: ThemePreference = "auto";
+let inMemoryPreference: ThemePreference = DEFAULT_PREFERENCE;
 
 function readPreference(): ThemePreference {
   try {
@@ -127,11 +128,11 @@ function subscribePreference(onChange: () => void) {
 }
 
 /**
- * The server has no clock and no storage, so it renders `auto` — the
- * default — and React swaps in the real value on the client. Only this
+ * The server has no clock and no storage, so it renders the default
+ * (night) and React swaps in a stated preference on the client. Only this
  * control's own label is involved; no page content depends on the ground.
  */
-const serverPreference = (): ThemePreference => "auto";
+const serverPreference = (): ThemePreference => DEFAULT_PREFERENCE;
 
 export function ThemeControl({ strings }: { strings: ThemeStrings }) {
   const preference = useSyncExternalStore(
@@ -141,7 +142,7 @@ export function ThemeControl({ strings }: { strings: ThemeStrings }) {
   );
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // The clockwork. While the preference is `auto`, wake exactly once at the
+  // The clockwork. Only runs for visitors who chose `auto`. While the preference is `auto`, wake exactly once at the
   // next boundary, repaint, and re-arm from the new time — never a polling
   // interval, which would wake a backgrounded tab all night to learn
   // nothing. A stated preference cancels it: there is no boundary to cross.

@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { CtaPanel } from "@/components/ui/CtaPanel";
 import { Reveal } from "@/components/ui/Reveal";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import { services } from "@/lib/services";
@@ -166,47 +167,12 @@ export default async function ServicesPage({ params }: Params) {
       </Section>
 
       {/* 6 · CONVERSION */}
-      <Container className="pb-24">
-        <Reveal>
-          <div className="relative overflow-hidden rounded-2xl px-6 py-16 text-center sm:px-12">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/texture-ridges.webp"
-              alt=""
-              aria-hidden="true"
-              width={1920}
-              height={1280}
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-ink-950/85" aria-hidden="true" />
-            <div className="relative">
-              {/* 44px display type inside two sets of gutters leaves ~250px at
-                  360px — "engineering" alone measured 254. Hyphenate rather
-                  than shrink the scale. */}
-              <h2 className="mx-auto max-w-3xl text-display text-white hyphens-auto">
-                {t.cta.title}
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-base font-medium leading-7 text-white/90">
-                {t.cta.subtitle}
-              </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-3">
-                <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
-                  {t.cta.primary}
-                </Button>
-                <Button
-                  as="a"
-                  href={localizeHref(locale, "/projects")}
-                  size="lg"
-                  variant="secondary"
-                  className="border-white/40 bg-transparent text-white hover:border-brand-500 hover:bg-white/5 hover:text-brand-400"
-                >
-                  {t.cta.secondary}
-                </Button>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </Container>
+      <CtaPanel
+        title={t.cta.title}
+        subtitle={t.cta.subtitle}
+        primary={{ label: t.cta.primary, href: localizeHref(locale, "/contact") }}
+        secondary={{ label: t.cta.secondary, href: localizeHref(locale, "/projects") }}
+      />
     </>
   );
 }

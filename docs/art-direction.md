@@ -55,8 +55,18 @@ light theme; the code said the same in three places. That is no longer true,
 and the amendment is written here rather than quietly dropped, because a
 governing document that revises itself silently stops governing anything.*
 
-The site runs two grounds, and the visitor's own clock chooses: the **day
-sheet** from 06:00 to 18:00 local, the **night ground** outside those hours.
+The site runs two grounds: the **night ground**, which every visitor gets
+by default, and the **day sheet**, which they can choose from the footer.
+A third choice, *Auto*, follows the visitor's clock (the sheet from 06:00
+to 18:00 local).
+
+*Amended again, 2026-09-18.* The clock used to be the default. The audit
+found the cost: every client browsing during office hours saw the day
+sheet, which is the weaker ground. The live fields barely show on it, and
+the long section rhythms read as empty space. So night is now the
+default for everyone, and the clock is an option rather than a rule. The
+theme control moved from the header to the footer for the same reason: it
+is a setting, not navigation.
 
 This is not a light theme bolted onto a dark one. It is a surface the system
 already contained. `.plate-doc` has always laid drawings, BOMs and schematics
@@ -77,7 +87,7 @@ Three rules govern it.
    stylesheet paints. No markup anywhere depends on the theme, so there is
    nothing to hydrate and nothing that can mismatch — and no flash of the
    wrong ground, which would be worse than having no day sheet at all.
-2. **The clock is a default, not a sentence.** Anyone can pin Day or Night and
+2. **Night is a default, not a sentence.** Anyone can pin Day or Auto and
    is then obeyed permanently. A site that insists it knows the visitor's room
    better than they do has stopped being an instrument and started being an
    opinion.
@@ -93,7 +103,7 @@ Three rules govern it.
    4.68:1 and 6.83:1. The raw `--color-flow-*` tokens are untouched, because
    deepening them would break filled chips that already pass.
 
-**Why the clock and not `prefers-color-scheme`.** The OS setting is a stated
+**Why Auto follows the clock and not `prefers-color-scheme`.** The OS setting is a stated
 preference on the machines of people who have stated one, and a factory default
 everywhere else — and a site obeying a factory default is obeying nobody. The
 clock at least tracks something real about the room. The hours are 06:00–18:00
