@@ -68,6 +68,10 @@ this order. Do not start the next rung until the one before has sold.**
 
 ### Rung 1: first sale within 90 days
 
+> **Changed 2026-09-18:** Fortune decided the first cohort is **free**, and
+> it launches next week. See `docs/launch-plan.md`. The paid cohort below
+> becomes Cohort 1, sold on Cohort 0's results.
+
 **A. CSWA preparation cohort, in French.** *(first product)*
 - Why first: he holds the CSWP and the CSWE, so he is overqualified to teach
   it. The outcome is binary and valuable: the student passes or fails a
