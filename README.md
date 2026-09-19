@@ -1,38 +1,39 @@
 # 4TUNHUB
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+The website of 4TUN Hub, an engineering organisation in Dschang, Cameroon:
+mechanical design, FEA simulation and hands-on CAD training. Live at
+[4tunhub.com](https://4tunhub.com), in English and French.
 
-## Getting Started
+Next.js 16 (App Router) + Tailwind CSS 4. Every page is static per locale;
+the forms are server actions.
 
-First, run the development server:
+## Work on it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run check      # lint + design tokens + production build + JS budget
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+After a production build, delete `.next` before running `npm run dev` again.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Where things are
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `docs/art-direction.md`: governs every visual decision. Read it first.
+- `docs/strategy.md`, `docs/launch-plan.md`: what the site is for.
+- `src/lib/i18n/dictionaries/`: all copy. `en.ts` is the source; `fr.ts` must
+  match its shape, or the build fails.
+- `src/lib/sitemap.ts`: the site map, navigation and `sitemap.xml`.
+- `src/lib/cohort.ts`: Cohort 0 dates. The banner and panels hide
+  themselves after `APPLICATIONS_CLOSE`.
 
-## Learn More
+## Deploy
 
-To learn more about Next.js, take a look at the following resources:
+Netlify builds `main` automatically (`netlify.toml`). Set these in
+Netlify → Site configuration → Environment variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Variable | Needed | What it does |
+|---|---|---|
+| `RESEND_API_KEY` | yes | Delivers the contact form and Cohort 0 applications. Without it, the forms say they could not send and offer a ready-written email instead. |
+| `MAIL_TO` | no | Where submissions go. Defaults to `4tunhub@gmail.com`. |
+| `MAIL_FROM` | no | Sender. Defaults to Resend's test sender, which only delivers to the Resend account's own address. Use `4TUN Hub <hello@4tunhub.com>` once the domain is verified in Resend. |

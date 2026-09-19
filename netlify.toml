@@ -1,0 +1,16 @@
+# Netlify builds and serves the site from `main`. Netlify's Next.js runtime
+# is detected and added automatically; it handles the server actions (the
+# forms), the proxy (language redirects) and the headers in next.config.ts.
+#
+# Environment variables are set in the Netlify UI, never here:
+#   RESEND_API_KEY  required for the forms to deliver (see src/lib/mailer.ts)
+#   MAIL_TO         optional, defaults to CONTACT_EMAIL
+#   MAIL_FROM       optional, e.g. "4TUN Hub <hello@4tunhub.com>" once the
+#                   domain is verified in Resend
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
