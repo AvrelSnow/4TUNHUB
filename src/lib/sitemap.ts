@@ -226,6 +226,14 @@ export const siteTree: SiteNode[] = [
     desc: "Start a project, a partnership, or a conversation.",
   },
   {
+    key: "waitlist",
+    label: "Waitlist",
+    href: "/waitlist",
+    status: "active",
+    placement: "utility",
+    desc: "One address, for the Lab, the next cohorts, the REM or the tools — whichever you choose.",
+  },
+  {
     key: "privacy",
     label: "Privacy",
     href: "/privacy",

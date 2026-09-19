@@ -78,7 +78,7 @@ export default async function ProductDetail({ params }: Params) {
 
         <div className="mx-auto mt-14 max-w-xl text-center">
           <p className="text-muted">{t.detail.body}</p>
-          <Button as="a" href={localizeHref(locale, "/contact")} size="lg" className="mt-8">
+          <Button as="a" href={localizeHref(locale, "/waitlist?track=products")} size="lg" className="mt-8">
             {t.detail.waitlist}
           </Button>
         </div>

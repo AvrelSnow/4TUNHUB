@@ -34,6 +34,7 @@ const fr: Dictionary = {
     careers: "Carrières",
     contact: "Contact",
     cohort: "Cohorte 0",
+    waitlist: "Liste d'attente",
     privacy: "Confidentialité",
   },
 
@@ -1203,6 +1204,77 @@ const fr: Dictionary = {
       title: "Donfack Fortune",
       body: "Ingénieur mécanicien et enseignant agréé par l'État : certifié CSWP, candidat CSWE, et animateur du groupe d'utilisateurs SolidWorks de Douala. Il a formé plus de 300 étudiants.",
       cta: "Lire son parcours",
+    },
+  },
+
+  waitlist: {
+    eyebrow: "Liste d'attente",
+    title: "Être prévenu à l'ouverture.",
+    subtitle:
+      "L'essentiel de l'écosystème 4TUN Hub est encore en construction. Choisissez ce qui vous intéresse et nous écrirons quand ce sera prêt — pas avant.",
+
+    openNow: {
+      badge: "Ouvert maintenant",
+      title: "Bootcamp CSWA · Cohorte 0 reçoit les candidatures.",
+      body: "Gratuit, 20 places, huit soirées en direct en octobre. N'attendez pas une liste — candidatez.",
+      cta: "Candidater pour une place",
+    },
+
+    insteadCta: "Vous préférez parler à quelqu'un ? Écrivez-nous",
+
+    success: {
+      title: "Vous êtes sur la liste.",
+      body: "Vous aurez de nos nouvelles quand quelque chose ouvrira vraiment — et rien entre-temps.",
+    },
+
+    form: {
+      tracksLabel: "Sur quoi voulez-vous être prévenu ?",
+      tracksHint:
+        "Choisissez-en autant que vous voulez. Nous n'écrivons que sur ce que vous cochez ici.",
+      tracks: {
+        lab: {
+          title: "4TUN Hub Lab",
+          desc: "Une salle de sport de l'ingénierie : un vrai problème de conception avec vos propres chiffres, résolu à la main, modélisé en CAO, puis corrigé sur la géométrie du fichier que vous déposez.",
+          when: "Bêta en décembre 2026",
+        },
+        academy: {
+          title: "Cohortes de l'Académie",
+          desc: "Le prochain bootcamp CSWA après la Cohorte 0, et le cours de GD&T et dessin technique qui suivra.",
+          when: "À partir de janvier 2027",
+        },
+        rem: {
+          title: "REM — la revue d'ingénierie",
+          desc: "Renewable Energy Mall : un épisode d'ingénierie écrit à la fois, sur les systèmes énergétiques qui doivent fonctionner là où le réseau n'arrive pas.",
+          when: "En cours",
+        },
+        products: {
+          title: "Les outils en construction",
+          desc: "Le tuteur IA pour le programme camerounais d'ingénierie, l'assistant de conception mécanique, et le travail de jumeau numérique derrière eux.",
+          when: "Pas encore de date",
+        },
+      },
+      email: { label: "E-mail", placeholder: "vous@exemple.com" },
+      name: {
+        label: "Nom",
+        placeholder: "Jeanne Dupont",
+        hint: "Facultatif — cela nous permet simplement de vous écrire par votre nom.",
+      },
+      submit: "Rejoindre la liste d'attente",
+      submitting: "Inscription…",
+      emailInstead: "Envoyer plutôt par e-mail",
+      promise:
+        "Une adresse, rien d'autre. Aucune newsletter que vous n'avez pas choisie, aucun partage avec qui que ce soit, et un lien de désabonnement dans chaque message.",
+      privacy: "Lire la note de confidentialité",
+      errors: {
+        required: "Ce champ est obligatoire.",
+        emailInvalid: "Saisissez une adresse e-mail valide.",
+        tracksRequired: "Choisissez au moins un sujet.",
+        rateLimited: "Trop de tentatives. Réessayez dans quelques minutes.",
+        failed:
+          "Une erreur est survenue lors de votre inscription. Réessayez, ou écrivez-nous directement.",
+        unavailable:
+          "La liste est injoignable pour le moment. Écrivez-nous et nous vous ajouterons à la main.",
+      },
     },
   },
 

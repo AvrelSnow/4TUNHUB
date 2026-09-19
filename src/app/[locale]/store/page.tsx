@@ -54,7 +54,9 @@ export default async function StorePage({ params }: Params) {
             <Button as="a" href={localizeHref(locale, "/products")} size="lg">
               {t.primaryCta}
             </Button>
-            <ArrowLink href={localizeHref(locale, "/community")}>{t.secondaryCta}</ArrowLink>
+            <ArrowLink href={localizeHref(locale, "/waitlist?track=products")}>
+              {t.secondaryCta}
+            </ArrowLink>
           </>
         }
       />

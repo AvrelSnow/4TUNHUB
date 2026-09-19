@@ -40,7 +40,7 @@ export default async function ProductsPage({ params }: Params) {
         title={t.title}
         intro={t.subtitle}
         actions={
-          <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
+          <Button as="a" href={localizeHref(locale, "/waitlist?track=products")} size="lg">
             {t.primaryCta}
           </Button>
         }
@@ -90,7 +90,7 @@ export default async function ProductsPage({ params }: Params) {
       <CtaPanel
         title={t.cta.title}
         subtitle={t.cta.subtitle}
-        primary={{ label: t.cta.primary, href: localizeHref(locale, "/contact") }}
+        primary={{ label: t.cta.primary, href: localizeHref(locale, "/waitlist?track=products") }}
         secondary={{ label: t.cta.secondary, href: localizeHref(locale, "/contact") }}
       />
     </>

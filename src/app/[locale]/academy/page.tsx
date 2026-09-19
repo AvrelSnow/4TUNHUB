@@ -60,7 +60,7 @@ export default async function AcademyPage({ params }: Params) {
                 {dict.home.cohort.cta}
               </Button>
             ) : (
-              <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
+              <Button as="a" href={localizeHref(locale, "/waitlist?track=academy")} size="lg">
                 {t.primaryCta}
               </Button>
             )}
@@ -109,7 +109,7 @@ export default async function AcademyPage({ params }: Params) {
                     {copy.who}
                   </p>
                   <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8">
-                    <Button as="a" href={localizeHref(locale, "/contact")}>
+                    <Button as="a" href={localizeHref(locale, "/waitlist?track=academy")}>
                       {t.primaryCta}
                     </Button>
                     {c.proof && (
@@ -167,7 +167,7 @@ export default async function AcademyPage({ params }: Params) {
       <CtaPanel
         title={t.cta.title}
         subtitle={t.cta.subtitle}
-        primary={{ label: t.cta.primary, href: localizeHref(locale, "/contact") }}
+        primary={{ label: t.cta.primary, href: localizeHref(locale, "/waitlist?track=academy") }}
         secondary={{ label: t.cta.secondary, href: localizeHref(locale, "/projects") }}
       />
     </>

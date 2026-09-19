@@ -34,6 +34,7 @@ const en = {
     careers: "Careers",
     contact: "Contact",
     cohort: "Cohort 0",
+    waitlist: "Waitlist",
     privacy: "Privacy",
   } as Record<string, string>,
 
@@ -1206,6 +1207,74 @@ const en = {
       title: "Donfack Fortune",
       body: "Mechanical engineer and state-accredited educator: CSWP-certified, CSWE candidate, and organiser of the Douala SolidWorks user group. He has taught more than 300 students.",
       cta: "Read his story",
+    },
+  },
+
+  waitlist: {
+    eyebrow: "Waitlist",
+    title: "Be told when it opens.",
+    subtitle:
+      "Most of the 4TUN Hub ecosystem is still being built. Choose what you want to hear about and we'll write when it's ready — not before.",
+
+    openNow: {
+      badge: "Open now",
+      title: "CSWA Bootcamp · Cohort 0 is taking applications.",
+      body: "Free, 20 seats, eight live evenings in October. Don't wait for a list — apply.",
+      cta: "Apply for a seat",
+    },
+
+    insteadCta: "Rather talk to a person? Write to us",
+
+    success: {
+      title: "You're on the list.",
+      body: "You'll hear from us when there's something real to open — and nothing in between.",
+    },
+
+    form: {
+      tracksLabel: "What should we tell you about?",
+      tracksHint: "Pick as many as you like. We only email about what you tick here.",
+      tracks: {
+        lab: {
+          title: "4TUN Hub Lab",
+          desc: "An engineering gym: a real design problem with your own numbers, worked by hand, modelled in CAD, then graded on the geometry of the file you upload.",
+          when: "Beta December 2026",
+        },
+        academy: {
+          title: "Academy cohorts",
+          desc: "The next CSWA bootcamp after Cohort 0, and the GD&T and technical-drawing course that follows it.",
+          when: "From January 2027",
+        },
+        rem: {
+          title: "REM — the engineering review",
+          desc: "Renewable Energy Mall: one written engineering episode at a time, on energy systems that have to work where the grid doesn't.",
+          when: "Running now",
+        },
+        products: {
+          title: "Tools we're building",
+          desc: "The AI tutor for the Cameroonian engineering curriculum, the mechanical-design assistant, and the digital-twin work behind them.",
+          when: "No date yet",
+        },
+      } as Record<string, { title: string; desc: string; when: string }>,
+      email: { label: "Email", placeholder: "you@example.com" },
+      name: {
+        label: "Name",
+        placeholder: "Jane Doe",
+        hint: "Optional — it just lets us write to you by name.",
+      },
+      submit: "Join the waitlist",
+      submitting: "Adding you…",
+      emailInstead: "Send it by email instead",
+      promise:
+        "One address, nothing else. No newsletter you didn't choose, no sharing with anyone, and every email has an unsubscribe link.",
+      privacy: "Read the privacy note",
+      errors: {
+        required: "This field is required.",
+        emailInvalid: "Enter a valid email address.",
+        tracksRequired: "Choose at least one thing to hear about.",
+        rateLimited: "Too many attempts. Please try again in a few minutes.",
+        failed: "Something went wrong adding you to the list. Please try again, or email us directly.",
+        unavailable: "The list isn't reachable right now. Email us and we'll add you by hand.",
+      } as Record<string, string>,
     },
   },
 

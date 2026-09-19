@@ -24,7 +24,7 @@ import { localizeHref } from "@/lib/i18n/routing";
 
 const groups: { titleKey: "ecosystem" | "company" | "resources"; keys: string[] }[] = [
   { titleKey: "ecosystem", keys: ["products", "services", "academy", "research", "projects"] },
-  { titleKey: "company", keys: ["about", "community", "careers", "contact"] },
+  { titleKey: "company", keys: ["about", "community", "careers", "contact", "waitlist"] },
   { titleKey: "resources", keys: ["resources", "blog", "store", "solutions"] },
 ];
 
