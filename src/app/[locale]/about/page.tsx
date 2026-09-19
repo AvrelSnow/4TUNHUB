@@ -36,27 +36,33 @@ export default async function AboutPage({ params }: Params) {
     <>
       <PageHero eyebrow={t.eyebrow} title={t.title} intro={t.lead} />
 
-      {/* Mission and vision, each given the whole measure. */}
-      <section className="bg-surface py-24 sm:py-32">
-        <Container size="narrow" className="space-y-20 sm:space-y-28">
-          <Reveal>
-            <div id="mission">
-              <p className="eyebrow">{t.missionEyebrow}</p>
-              <p className="mt-4 text-display-sm text-foreground">{t.mission}</p>
-            </div>
-          </Reveal>
-          <Reveal>
-            <div id="vision">
-              <p className="eyebrow">{t.visionEyebrow}</p>
-              <p className="mt-4 text-display-sm text-foreground">{t.vision}</p>
-            </div>
-          </Reveal>
+      {/* Mission and vision. The label sits in its own rail so the sentence
+          itself gets the full width of the page: three lines across, not
+          seven down a narrow column — and the longer French keeps the shape. */}
+      <section className="bg-surface py-20 sm:py-28">
+        <Container size="wide" className="divide-y divide-border">
+          {[
+            { id: "mission", label: t.missionEyebrow, body: t.mission },
+            { id: "vision", label: t.visionEyebrow, body: t.vision },
+          ].map((item) => (
+            <Reveal key={item.id}>
+              <div
+                id={item.id}
+                className="grid gap-3 py-10 lg:grid-cols-[8rem_1fr] lg:gap-12 lg:py-14"
+              >
+                <p className="eyebrow lg:pt-4">{item.label}</p>
+                <p className="text-4xl leading-[1.14] font-bold tracking-tight text-foreground sm:text-5xl">
+                  {item.body}
+                </p>
+              </div>
+            </Reveal>
+          ))}
         </Container>
       </section>
 
       {/* Principles */}
       <Section eyebrow={t.principlesEyebrow} title={t.principlesTitle}>
-        <div className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-3">
+        <div className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-3">
           {t.principles.map((p) => (
             <div key={p.title} className="border-t border-foreground pt-6">
               <h3 className="text-headline text-foreground">{p.title}</h3>

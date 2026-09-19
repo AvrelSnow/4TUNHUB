@@ -61,7 +61,7 @@ export default async function ServicesPage({ params }: Params) {
           </>
         }
       >
-        <div className="mt-16 grid animate-fade-up gap-4 [animation-delay:240ms] sm:mt-20 sm:grid-cols-2">
+        <div className="mt-12 grid animate-fade-up gap-4 [animation-delay:240ms] sm:mt-14 sm:grid-cols-2">
           <figure>
             <Media
               src="/images/projects/braking-3.webp"
@@ -90,7 +90,7 @@ export default async function ServicesPage({ params }: Params) {
         title={t.offeringsTitle}
         intro={t.offeringsIntro}
       >
-        <div className="mt-16 space-y-6">
+        <div className="mt-12 space-y-6">
           {services.map((s, i) => {
             const o = t.offerings[s.key];
             const media = OFFERING_MEDIA[s.key];
@@ -100,6 +100,10 @@ export default async function ServicesPage({ params }: Params) {
             return (
               <Reveal key={s.key}>
                 <article className="grid items-center overflow-hidden rounded-3xl bg-surface-2 lg:grid-cols-2">
+                  {/* `lg:aspect-auto` matters: with a ratio still set, a
+                      100%-height frame takes its width from that ratio and
+                      overflows its column — which is why the longer French
+                      copy pushed each picture across the text beside it. */}
                   {media && (
                     <Media
                       src={media.src}
@@ -108,21 +112,24 @@ export default async function ServicesPage({ params }: Params) {
                       responsive={!media.doc}
                       sizes="(min-width: 1024px) 50vw, 100vw"
                       position={media.position}
-                      className={cn("aspect-[4/3] lg:h-full", flip && "lg:order-2")}
+                      className={cn(
+                        "aspect-[4/3] w-full lg:aspect-auto lg:h-full lg:min-h-[26rem]",
+                        flip && "lg:order-2",
+                      )}
                     />
                   )}
-                  <div className="p-8 sm:p-12 lg:p-14">
+                  <div className="p-8 sm:p-10 lg:p-12">
                     <h3 className="text-3xl font-semibold tracking-tight text-foreground">
                       {o.title}
                     </h3>
-                    <p className="mt-4 text-lead text-muted">{o.outcome}</p>
-                    <p className="mt-5 border-t border-border pt-5 text-sm leading-6 text-foreground">
+                    <p className="mt-3 text-lead text-muted">{o.outcome}</p>
+                    <p className="mt-4 border-t border-border pt-4 text-sm leading-6 text-foreground">
                       {o.who}
                     </p>
                     {project && (
                       <ArrowLink
                         href={localizeHref(locale, projectDetailPath(project.slug))}
-                        className="mt-6"
+                        className="mt-5"
                       >
                         {t.proofLabel}
                       </ArrowLink>
@@ -140,7 +147,7 @@ export default async function ServicesPage({ params }: Params) {
 
       {/* 3 · HOW WE WORK — four steps, in order, because they happen in order. */}
       <Section eyebrow={t.process.eyebrow} title={t.process.title}>
-        <ol className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {t.process.steps.map((step, i) => (
             <li key={step.title} className="border-t border-foreground pt-6">
               <p className="figure text-sm font-medium text-muted">

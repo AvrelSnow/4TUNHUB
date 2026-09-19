@@ -100,7 +100,7 @@ export default async function CamrailPage({ params }: Params) {
 
       {/* CASE STUDIES */}
       <Section eyebrow={t.caseStudiesEyebrow[locale]} title={t.caseStudiesTitle[locale]}>
-        <div className="mt-16 space-y-20">
+        <div className="mt-12 space-y-20">
           {t.cases.map((c) => (
             <Reveal key={c.n}>
               <article>
@@ -128,7 +128,7 @@ export default async function CamrailPage({ params }: Params) {
         title={t.galleryTitle[locale]}
         className="border-t border-border"
       >
-        <div className="mt-14 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {t.gallery.map((g, i) => (
             <Reveal key={g.img} delay={(i % 3) * 60}>
               <figure>

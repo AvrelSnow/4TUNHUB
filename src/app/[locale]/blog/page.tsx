@@ -55,7 +55,7 @@ export default async function BlogPage({ params }: Params) {
       {/* The index, or the honest empty state: nothing is listed until it exists. */}
       {items.length > 0 ? (
         <Section tone="surface" eyebrow={t.indexEyebrow} title={t.indexTitle}>
-          <div className="mt-14 grid gap-5 lg:grid-cols-2">
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
             {items.map((p, i) => (
               <Reveal key={p.slug} delay={i * 70}>
                 <a
@@ -95,7 +95,7 @@ export default async function BlogPage({ params }: Params) {
       )}
 
       <Section eyebrow={t.hubEyebrow} title={t.hubTitle} intro={t.hubIntro}>
-        <div className="mt-14 grid gap-5 sm:grid-cols-2">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2">
           {publications.map((pub, i) => {
             const copy = t.publications[pub.key];
             if (!copy) return null;

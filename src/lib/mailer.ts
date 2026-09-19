@@ -59,7 +59,18 @@ export async function sendMail({
   });
 
   if (!res.ok) {
-    // Status only: the response body can echo the payload.
+    // The host's log gets the provider's own reason — an unverified domain,
+    // a revoked key — because "something went wrong" in the browser is not
+    // enough to fix a form that has stopped delivering. Only the provider's
+    // name and message are read: never the body, which echoes the payload.
+    const reason = await res
+      .json()
+      .then((b: { name?: string; message?: string }) =>
+        [b?.name, b?.message].filter(Boolean).join(": "),
+      )
+      .catch(() => "");
+    console.error(`[mail] Resend responded ${res.status}${reason ? ` — ${reason}` : ""}`);
+    // Status only to the caller: the response body can echo the payload.
     throw new Error(`Mail provider responded ${res.status}`);
   }
 }

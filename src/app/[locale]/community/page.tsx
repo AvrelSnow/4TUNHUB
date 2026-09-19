@@ -79,7 +79,7 @@ export default async function CommunityPage({ params }: Params) {
 
       {/* 3 · CHANNELS — the live one first and largest. */}
       <Section eyebrow={t.channelsEyebrow} title={t.channelsTitle} intro={t.channelsIntro}>
-        <div className="mt-14 grid gap-5 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {communityChannels.map((channel, i) => {
             const copy = t.channels[channel.key];
             if (!copy) return null;
@@ -147,7 +147,7 @@ export default async function CommunityPage({ params }: Params) {
 
       {/* 5 · ETHOS */}
       <Section eyebrow={t.ethosEyebrow} title={t.ethosTitle}>
-        <div className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-3">
+        <div className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-3">
           {t.ethos.map((item) => (
             <div key={item.title} className="border-t border-foreground pt-6">
               <h3 className="text-headline text-foreground">{item.title}</h3>

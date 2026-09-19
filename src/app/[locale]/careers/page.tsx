@@ -57,7 +57,7 @@ export default async function CareersPage({ params }: Params) {
 
       {roles.length > 0 ? (
         <Section tone="surface" eyebrow={t.rolesEyebrow} title={t.rolesTitle}>
-          <div className="mt-14 grid gap-5 lg:grid-cols-2">
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
             {roles.map((role, i) => (
               <Reveal key={role.slug} delay={i * 70}>
                 <Link
@@ -102,7 +102,7 @@ export default async function CareersPage({ params }: Params) {
 
       {/* The terms, committed to now, while committing still costs nothing. */}
       <Section eyebrow={t.principlesEyebrow} title={t.principlesTitle} intro={t.principlesIntro}>
-        <div className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2">
+        <div className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2">
           {hiringPrinciples.map((key) => {
             const copy = t.principles[key];
             if (!copy) return null;
@@ -118,7 +118,7 @@ export default async function CareersPage({ params }: Params) {
 
       {/* The doors that are open today. */}
       <Section tone="surface" eyebrow={t.entryEyebrow} title={t.entryTitle} intro={t.entryIntro}>
-        <div className="mt-14 grid gap-5 sm:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-3">
           {entryPoints.map((point, i) => {
             const copy = t.entry[point.key];
             if (!copy) return null;

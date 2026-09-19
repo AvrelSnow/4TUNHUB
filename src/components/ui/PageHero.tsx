@@ -34,7 +34,7 @@ export function PageHero({
           {intro && (
             <p
               className={cn(
-                "mt-6 animate-fade-up text-lead text-muted [animation-delay:80ms]",
+                "mt-5 animate-fade-up text-lead text-muted [animation-delay:80ms]",
                 centered ? "mx-auto max-w-2xl" : "max-w-2xl",
               )}
             >
@@ -44,7 +44,7 @@ export function PageHero({
           {actions && (
             <div
               className={cn(
-                "mt-9 flex animate-fade-up flex-wrap items-center gap-x-6 gap-y-4 [animation-delay:160ms]",
+                "mt-8 flex animate-fade-up flex-wrap items-center gap-x-6 gap-y-4 [animation-delay:160ms]",
                 centered && "justify-center",
               )}
             >

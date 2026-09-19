@@ -61,7 +61,7 @@ export default async function StorePage({ params }: Params) {
 
       {items.length > 0 ? (
         <Section tone="surface" eyebrow={t.catalogEyebrow} title={t.catalogTitle}>
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((item, i) => (
               <Reveal key={item.sku} delay={i * 70}>
                 <Card tone="raised" interactive className="flex h-full flex-col">
@@ -86,7 +86,7 @@ export default async function StorePage({ params }: Params) {
       )}
 
       <Section eyebrow={t.contextEyebrow} title={t.contextTitle} intro={t.contextIntro}>
-        <div className="mt-14 grid gap-5 sm:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-3">
           {CONTEXT_PILLARS.map((key, i) => {
             const copy = t.context[key];
             if (!copy) return null;

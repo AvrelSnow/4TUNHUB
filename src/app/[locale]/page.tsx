@@ -138,7 +138,7 @@ export default async function Home({
         <Container>
           <SectionHeader eyebrow={t.doEyebrow} title={t.doTitle} intro={t.doIntro} />
 
-          <div className="mt-14 grid gap-5 lg:grid-cols-2">
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
             {/* Services: wide, the stress plot beside the words. */}
             <Reveal className="lg:col-span-2">
               <Link

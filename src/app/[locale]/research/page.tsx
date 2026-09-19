@@ -72,7 +72,7 @@ export default async function ResearchPage({ params }: Params) {
 
       {/* 2 · FOCUS AREAS */}
       <Section tone="surface" eyebrow={t.focusEyebrow} title={t.focusTitle} intro={t.focusIntro}>
-        <div className="mt-14 grid gap-5 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {focusAreas.map((area, i) => {
             const copy = t.areas[area.key];
             const media = AREA_MEDIA[area.key];

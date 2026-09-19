@@ -105,7 +105,7 @@ export default async function CohortPage({ params }: Params) {
           </div>
 
           {/* The facts, at a glance. */}
-          <dl className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-border sm:grid-cols-3">
+          <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-border sm:grid-cols-3">
             {t.facts.map((f) => (
               <div key={f.label} className="bg-surface p-6">
                 <dt className="text-2xs font-medium text-muted">{f.label}</dt>
@@ -139,7 +139,7 @@ export default async function CohortPage({ params }: Params) {
 
       {/* SYLLABUS */}
       <Section eyebrow={t.syllabus.eyebrow} title={t.syllabus.title}>
-        <ol className="mt-14 divide-y divide-border border-y border-border">
+        <ol className="mt-10 divide-y divide-border border-y border-border">
           {t.syllabus.weeks.map((w) => (
             <li key={w.label} className="grid gap-4 py-8 lg:grid-cols-[10rem_1fr_1fr_1fr] lg:gap-8">
               <div>
@@ -187,7 +187,7 @@ export default async function CohortPage({ params }: Params) {
 
       {/* BEFORE YOU APPLY + KEY DATES */}
       <Section tone="surface" eyebrow={t.before.eyebrow} title={t.before.title}>
-        <div className="mt-14 grid gap-5 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {t.before.items.map((item, i) => (
             <Reveal key={item.title} delay={i * 70}>
               <div className="h-full rounded-3xl bg-surface-2 p-8">

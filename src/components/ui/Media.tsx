@@ -4,7 +4,9 @@ import { cn } from "@/lib/cn";
  * A photograph or drawing in the system's frame: clipped to its corners,
  * on a quiet tone while it loads, never tinted. `doc` shows the whole
  * sheet on white; photographs fill the frame. Give the frame its size and
- * corner radius with `className` (e.g. "aspect-[4/3] rounded-3xl").
+ * corner radius with `className` (e.g. "aspect-[4/3] rounded-3xl") — the
+ * frame is always what decides the size. The picture is laid out on top of
+ * it, so a tall original can never stretch the row it sits in.
  *
  * `responsive` offers the 720px "-sm.webp" beside the original (made by
  * scripts/make-thumbnails.mjs), so a phone on mobile data downloads the
@@ -49,7 +51,7 @@ export function Media({
         decoding="async"
         style={position ? { objectPosition: position } : undefined}
         className={cn(
-          "h-full w-full",
+          "absolute inset-0 h-full w-full",
           doc ? "object-contain p-3" : "object-cover",
           imgClassName,
         )}

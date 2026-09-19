@@ -32,7 +32,7 @@ export default async function PrivacyPage({ params }: Params) {
         <h1 className="mt-3 text-display text-foreground">{t.title}</h1>
         <p className="mt-6 text-lead text-muted">{t.intro}</p>
 
-        <div className="mt-16 divide-y divide-border border-y border-border">
+        <div className="mt-12 divide-y divide-border border-y border-border">
           {t.sections.map((s) => (
             <div key={s.title} className="grid gap-3 py-8 sm:grid-cols-[12rem_1fr] sm:gap-10">
               <h2 className="font-semibold text-foreground">{s.title}</h2>

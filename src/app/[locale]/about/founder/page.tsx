@@ -175,7 +175,7 @@ export default async function FounderPage({ params }: Params) {
         title={dict.routes.projects}
         intro={t.portfolioIntro}
       >
-        <div className="mt-14 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => {
             const copy = dict.projects.items[p.slug];
             if (!copy) return null;

@@ -47,7 +47,7 @@ export default async function ProductsPage({ params }: Params) {
       />
 
       <Section id="future" tone="surface" eyebrow={t.cardsEyebrow} title={t.cardsTitle} intro={t.cardsIntro}>
-        <div className="mt-14 grid gap-5 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {products.map((p, i) => {
             const copy = t.items[p.key];
             if (!copy) return null;

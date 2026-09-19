@@ -102,7 +102,7 @@ export default async function ResourcesPage({ params }: Params) {
       />
 
       <Section tone="surface" eyebrow={t.availableEyebrow} title={t.availableTitle} intro={t.availableIntro}>
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {availableResources.map((resource, i) => (
             <Reveal key={resource.key} delay={i * 70}>
               <ResourceCard resource={resource} locale={locale} t={t} />
@@ -112,7 +112,7 @@ export default async function ResourcesPage({ params }: Params) {
       </Section>
 
       <Section eyebrow={t.plannedEyebrow} title={t.plannedTitle} intro={t.plannedIntro}>
-        <div className="mt-14 grid gap-5 sm:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-3">
           {plannedResources.map((resource, i) => (
             <Reveal key={resource.key} delay={i * 70}>
               <ResourceCard resource={resource} locale={locale} t={t} />

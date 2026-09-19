@@ -92,7 +92,7 @@ export function SectionHeader({
       {intro && (
         <p
           className={cn(
-            "mt-5 text-lead text-muted",
+            "mt-4 text-lead text-muted",
             centered ? "mx-auto max-w-2xl" : "max-w-2xl",
           )}
         >
