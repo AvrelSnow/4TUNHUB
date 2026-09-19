@@ -94,6 +94,8 @@ export default async function FounderPage({ params }: Params) {
               src={founder.portrait}
               alt={founder.name}
               priority
+              responsive
+              sizes="(min-width: 1024px) 45vw, 100vw"
               position="50% 18%"
               className="order-1 aspect-[4/5] animate-fade-up rounded-3xl lg:order-2"
             />
@@ -134,6 +136,8 @@ export default async function FounderPage({ params }: Params) {
                 src="/images/camrail/portrait.webp"
                 alt=""
                 zoom
+                responsive
+                sizes="(min-width: 1024px) 40vw, 100vw"
                 position="50% 30%"
                 className="aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[26rem]"
               />
@@ -179,7 +183,14 @@ export default async function FounderPage({ params }: Params) {
               <Reveal key={p.slug} delay={(i % 3) * 70}>
                 <Link href={localizeHref(locale, projectDetailPath(p.slug))} className="group block">
                   {p.image && (
-                    <Media src={p.image} alt={copy.title} zoom className="aspect-[4/3] rounded-3xl" />
+                    <Media
+                      src={p.image}
+                      alt={copy.title}
+                      zoom
+                      responsive
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="aspect-[4/3] rounded-3xl"
+                    />
                   )}
                   <p className="mt-5 text-2xs font-medium text-muted">
                     {dict.projects.categories[p.category]} · <span className="figure">{p.year}</span>

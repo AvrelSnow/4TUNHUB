@@ -8,8 +8,10 @@ import { Badge } from "@/components/ui/Badge";
 import { CtaPanel } from "@/components/ui/CtaPanel";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
+import { CohortFeature } from "@/components/CohortFeature";
 import { courses } from "@/lib/academy";
 import { projectDetailPath } from "@/lib/projects";
+import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -52,9 +54,16 @@ export default async function AcademyPage({ params }: Params) {
         intro={t.subtitle}
         actions={
           <>
-            <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
-              {t.primaryCta}
-            </Button>
+            {/* While Cohort 0 is recruiting, the hero sends people there. */}
+            {applicationsOpen() ? (
+              <Button as="a" href={localizeHref(locale, COHORT_PATH)} size="lg">
+                {dict.home.cohort.cta}
+              </Button>
+            ) : (
+              <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
+                {t.primaryCta}
+              </Button>
+            )}
             <ArrowLink href={localizeHref(locale, "/about/founder")}>{t.secondaryCta}</ArrowLink>
           </>
         }
@@ -66,6 +75,8 @@ export default async function AcademyPage({ params }: Params) {
                 src={s.src}
                 alt={s.caption}
                 doc={s.doc}
+                responsive={!s.doc}
+                sizes="(min-width: 640px) 33vw, 100vw"
                 priority={i === 0}
                 className="aspect-[4/3] rounded-3xl"
               />
@@ -74,6 +85,10 @@ export default async function AcademyPage({ params }: Params) {
           ))}
         </div>
       </PageHero>
+
+      <CohortFeature locale={locale} dict={dict} />
+
+      
 
       {/* 2 · CATALOG */}
       <Section tone="surface" eyebrow={t.catalogEyebrow} title={t.catalogTitle} intro={t.catalogIntro}>
@@ -129,6 +144,8 @@ export default async function AcademyPage({ params }: Params) {
             <Media
               src="/images/founder-portrait.webp"
               alt="Donfack Fortune"
+              responsive
+              sizes="(min-width: 1024px) 50vw, 100vw"
               position="50% 20%"
               className="aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[30rem]"
             />

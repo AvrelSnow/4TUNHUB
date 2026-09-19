@@ -33,6 +33,8 @@ const fr: Dictionary = {
     store: "Boutique",
     careers: "Carrières",
     contact: "Contact",
+    cohort: "Cohorte 0",
+    privacy: "Confidentialité",
   },
 
   nav: {
@@ -57,11 +59,17 @@ const fr: Dictionary = {
 
   home: {
     eyebrow: "Écosystème d'ingénierie · Dschang, Cameroun",
-    title: "Le savoir en ingénierie, transformé en solutions concrètes.",
-    titleLead: "Le savoir en ingénierie, transformé en ",
-    titleAccent: "solutions concrètes.",
+    title: "Nous concevons des machines. Apprenez à le faire.",
     subtitle:
-      "4TUN Hub réunit services d'ingénierie, formation, recherche et produits au sein d'un même écosystème — ancré dans la pratique réelle, depuis Dschang et au-delà.",
+      "Conception mécanique, simulation par éléments finis et formation pratique en CAO, depuis Dschang au Cameroun. Chaque leçon vient d'une machine réellement construite.",
+
+    cohort: {
+      eyebrow: "Candidatures ouvertes",
+      title: "Bootcamp CSWA · Cohorte 0",
+      body: "Huit soirées en direct en octobre pour se préparer à l'examen Certified SolidWorks Associate. Gratuit pour 20 personnes sélectionnées. Cours en français.",
+      cta: "Postuler avant le 1er octobre",
+      more: "Voir le programme",
+    },
     primaryCta: "Travailler avec nous",
     secondaryCta: "Découvrir les services",
     learnMore: "En savoir plus",
@@ -425,7 +433,10 @@ const fr: Dictionary = {
         messageTooLong: "C'est un peu trop long — veuillez raccourcir.",
         rateLimited: "Trop de messages depuis cette connexion. Patientez un instant et réessayez.",
         failed: "L'envoi de votre message a échoué. Réessayez, ou écrivez-nous directement.",
+        unavailable:
+          "Notre service de messagerie n'est pas encore activé : le message n'est pas parti. Votre texte est conservé ; envoyez-le plutôt par e-mail.",
       } as Record<string, string>,
+      emailInstead: "L'envoyer par e-mail",
     },
 
     success: {
@@ -1019,6 +1030,216 @@ const fr: Dictionary = {
     },
   },
 
+  /** Le bandeau d'annonce au-dessus de l'en-tête, tant que les candidatures sont ouvertes. */
+  ribbon: {
+    text: "Bootcamp CSWA · Cohorte 0 : gratuit, 20 places. Candidatures jusqu'au 1er octobre.",
+    short: "Bootcamp CSWA gratuit · Cohorte 0",
+    cta: "Postuler",
+  },
+
+  cohort: {
+    metaTitle: "Bootcamp CSWA · Cohorte 0",
+    metaDescription:
+      "Un bootcamp gratuit de huit séances pour préparer le CSWA, en direct et en français, animé par Donfack Fortune. 20 places sur candidature, octobre 2026.",
+    back: "Académie",
+    eyebrow: "Académie 4TUN Hub · Cohorte 0",
+    title: "Bootcamp CSWA. Cohorte 0.",
+    subtitle:
+      "Huit soirées en direct pour vous préparer à l'examen Certified SolidWorks Associate. Gratuit pour les 20 personnes que nous sélectionnerons. Cours en français.",
+    apply: "Postuler",
+    closesOn: "Candidatures jusqu'au jeudi 1er octobre.",
+    closed:
+      "Les candidatures pour la Cohorte 0 sont closes. Rejoignez la communauté pour savoir en premier quand la Cohorte 1 ouvrira.",
+    closedCta: "Rejoindre la communauté",
+    facts: [
+      { label: "Prix", value: "Gratuit" },
+      { label: "Places", value: "20, sur candidature" },
+      { label: "Dates", value: "Du 7 au 30 octobre 2026" },
+      { label: "Horaires", value: "Mer. et ven., 19 h 30 – 20 h 30" },
+      { label: "Où", value: "Google Meet, avec rediffusions" },
+      { label: "Langue", value: "Français" },
+    ],
+    outcome: {
+      eyebrow: "Ce que vous en retirez",
+      title: "Prêt à passer le CSWA.",
+      body: "Au dernier vendredi, vous aurez modélisé des pièces au format de l'examen, construit un assemblage, répondu aux questions de propriétés de masse dans le format que l'examen vérifie, et réussi deux examens blancs chronométrés. Entre les séances, un exercice par semaine dans un petit groupe WhatsApp.",
+    },
+    syllabus: {
+      eyebrow: "Le programme",
+      title: "Quatre semaines, calées sur ce que l'examen évalue.",
+      wednesday: "Mercredi",
+      friday: "Vendredi",
+      exercise: "Exercice",
+      weeks: [
+        {
+          label: "Semaine 1",
+          dates: "7–9 oct.",
+          wed: "Esquisses, relations et esquisses entièrement contraintes",
+          fri: "Extrusion, révolution et enlèvement : une première pièce type examen",
+          ex: "Deux pièces à partir de mises en plan",
+        },
+        {
+          label: "Semaine 2",
+          dates: "14–16 oct.",
+          wed: "Congés, répétitions, coques et nervures",
+          fri: "Matériaux et propriétés de masse, au format de réponse que vérifie le CSWA",
+          ex: "Trois pièces de propriétés de masse",
+        },
+        {
+          label: "Semaine 3",
+          dates: "21–23 oct.",
+          wed: "Assemblages et contraintes",
+          fri: "Systèmes de coordonnées et centre de masse d'un assemblage",
+          ex: "Un assemblage, trois questions",
+        },
+        {
+          label: "Semaine 4",
+          dates: "28–30 oct.",
+          wed: "Mises en plan, puis stratégie et gestion du temps d'examen",
+          fri: "Un examen blanc chronométré, corrigé en direct",
+          ex: "Examen blanc n° 2, à la maison",
+        },
+      ],
+    },
+    deal: {
+      eyebrow: "Le contrat",
+      title: "Gratuit, mais pas en dilettante.",
+      intro:
+        "La place est gratuite parce que nous voulons que les premiers résultats soient réels. En retour, nous demandons trois choses.",
+      items: [
+        { title: "Être présent", desc: "Assister à au moins 6 des 8 séances." },
+        { title: "Faire le travail", desc: "Rendre l'exercice de chaque semaine." },
+        {
+          title: "Partager le résultat",
+          desc: "Passer l'examen blanc final, partager votre note et donner un court témoignage.",
+        },
+      ],
+      note: "Si l'engagement n'est pas tenu, la place revient à la personne suivante sur la liste d'attente.",
+    },
+    before: {
+      eyebrow: "Avant de postuler",
+      title: "Ce qu'il vous faut.",
+      items: [
+        {
+          title: "SolidWorks sur votre ordinateur",
+          desc: "Toute version récente. L'édition étudiante convient.",
+        },
+        {
+          title: "Une heure, deux fois par semaine",
+          desc: "Le mercredi et le vendredi soir, avec une connexion suffisante pour un appel vidéo. Les rediffusions couvrent une séance manquée.",
+        },
+        {
+          title: "À propos des frais d'examen",
+          desc: "La formation est gratuite. L'examen CSWA coûte 99 $, sauf si vous avez un bon d'examen. L'édition étudiante de SOLIDWORKS en inclut un gratuitement, et certaines écoles peuvent en délivrer. Passer l'examen reste votre choix.",
+        },
+      ],
+    },
+    timeline: {
+      eyebrow: "Dates clés",
+      items: [
+        { date: "Jeu. 1er oct.", label: "Clôture des candidatures" },
+        { date: "Ven. 2 oct.", label: "Réponse à chaque candidat" },
+        { date: "Mer. 7 oct.", label: "Première séance" },
+        { date: "Ven. 30 oct.", label: "Examen blanc chronométré" },
+      ],
+    },
+    form: {
+      heading: "Postuler à la Cohorte 0.",
+      intro: "Cinq minutes. Nous lisons chaque candidature et répondons à tous avant le vendredi 2 octobre.",
+      name: { label: "Nom complet", placeholder: "Jeanne Dupont" },
+      email: { label: "E-mail", placeholder: "vous@exemple.com" },
+      whatsapp: {
+        label: "Numéro WhatsApp",
+        placeholder: "+237 6XX XX XX XX",
+        hint: "Avec l'indicatif du pays. Les exercices de la cohorte se font dans un groupe WhatsApp.",
+      },
+      org: {
+        label: "École ou employeur",
+        placeholder: "Université de Dschang, IUC, votre entreprise…",
+      },
+      sw: {
+        label: "Votre version de SolidWorks",
+        placeholder: "Choisissez",
+        options: {
+          "2025": "SolidWorks 2025",
+          "2024": "SolidWorks 2024",
+          "2023": "SolidWorks 2023",
+          older: "2022 ou antérieure",
+          student: "Édition étudiante",
+          none: "Pas encore installé",
+        } as Record<string, string>,
+      },
+      why: {
+        label: "Pourquoi voulez-vous une place ?",
+        placeholder: "Où vous en êtes avec SolidWorks aujourd'hui, et ce que le CSWA changerait pour vous.",
+        hint: "Deux ou trois phrases suffisent.",
+      },
+      consent: "J'accepte que 4TUN Hub conserve ces informations pour étudier ma candidature.",
+      privacy: "Lire la note de confidentialité",
+      submit: "Envoyer ma candidature",
+      submitting: "Envoi…",
+      emailInstead: "L'envoyer par e-mail",
+      errors: {
+        required: "Ce champ est obligatoire.",
+        emailInvalid: "Saisissez une adresse e-mail valide.",
+        whatsappInvalid: "Saisissez un numéro WhatsApp avec l'indicatif, par ex. +237 6XX XX XX XX.",
+        choose: "Veuillez choisir une option.",
+        tooShort: "Ajoutez un peu plus de détails : deux ou trois phrases.",
+        tooLong: "C'est un peu long. Merci de raccourcir.",
+        consent: "Cochez la case pour continuer.",
+        closed: "Les candidatures pour la Cohorte 0 sont closes.",
+        rateLimited: "Trop d'envois depuis cette connexion. Patientez un instant puis réessayez.",
+        failed: "L'envoi de votre candidature a échoué. Réessayez, ou envoyez-la par e-mail.",
+        unavailable:
+          "Notre service de candidatures n'est pas encore activé : l'envoi n'a pas eu lieu. Vos réponses sont conservées ; envoyez-les plutôt par e-mail.",
+      } as Record<string, string>,
+    },
+    success: {
+      title: "Candidature reçue.",
+      body: "Merci. Nous répondons à chaque candidat avant le vendredi 2 octobre, par e-mail et sur WhatsApp.",
+    },
+    instructor: {
+      eyebrow: "Qui enseigne",
+      title: "Donfack Fortune",
+      body: "Ingénieur mécanicien et enseignant agréé par l'État : certifié CSWP, candidat CSWE, et animateur du groupe d'utilisateurs SolidWorks de Douala. Il a formé plus de 300 étudiants.",
+      cta: "Lire son parcours",
+    },
+  },
+
+  privacy: {
+    title: "Confidentialité",
+    updated: "Dernière mise à jour : 19 septembre 2026",
+    intro:
+      "Ce site ne recueille des informations personnelles que lorsque vous nous les envoyez par un formulaire. Cette note dit ce que nous conservons, pourquoi, combien de temps, et comment le faire supprimer.",
+    sections: [
+      {
+        title: "Ce que nous recueillons",
+        body: "Le formulaire de contact demande votre nom, votre e-mail et votre message. Une candidature à la Cohorte 0 demande aussi votre numéro WhatsApp, votre école ou employeur, votre version de SolidWorks et pourquoi vous voulez une place.",
+      },
+      {
+        title: "Pourquoi",
+        body: "Pour vous répondre. Pour les candidatures, aussi pour sélectionner la cohorte et la faire fonctionner : les exercices hebdomadaires se font dans un groupe WhatsApp réservé aux participants retenus.",
+      },
+      {
+        title: "Où cela va",
+        body: "Les envois sont remis à notre boîte de réception par un service d'e-mail, Resend. Nous ne vendons ni ne partageons vos informations, et nous ne vous inscrivons jamais à une liste de diffusion sans vous le demander.",
+      },
+      {
+        title: "Combien de temps",
+        body: "Les candidatures non retenues sont supprimées dans les trois mois. Les informations des participants sont conservées pendant la cohorte et douze mois après, sauf si vous demandez leur suppression plus tôt.",
+      },
+      {
+        title: "Cookies et suivi",
+        body: "Aucun. Le site enregistre un seul réglage dans votre navigateur, votre choix Clair, Sombre ou Auto, et il ne quitte jamais votre appareil. Il n'y a ni outil d'analyse ni traceur publicitaire.",
+      },
+      {
+        title: "Vos droits",
+        body: "Demandez-nous à tout moment de consulter, corriger ou supprimer ce que nous détenons sur vous.",
+      },
+    ],
+    contact: "Écrire à",
+  },
+
   stub: {
     badge: "En cours",
     beingBuilt: "Cette partie de l'écosystème est en construction.",
@@ -1033,11 +1254,11 @@ const fr: Dictionary = {
     trustEyebrow: "L'ingénierie derrière 4TUN Hub",
     founderLine:
       "Fondé par Donfack Fortune — ingénieur mécanicien passé par les secteurs ferroviaire, énergétique et de la formation en ingénierie au Cameroun.",
-    meetFounder: "Découvrir le fondateur →",
+    meetFounder: "Découvrir le fondateur",
     affiliations: "Affiliations",
     affiliationsNote: "Affiliations du fondateur — et non des partenariats d'entreprise.",
     blurb:
-      "Un écosystème d'ingénierie — services, formation, recherche et produits, conçu pour les ingénieurs, les étudiants et les entreprises.",
+      "Conception mécanique, simulation et formation en ingénierie, pour les ingénieurs, les étudiants et les entreprises.",
     groups: {
       ecosystem: "Écosystème",
       company: "Entreprise",

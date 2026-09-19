@@ -28,7 +28,9 @@ export type ErrorCode =
   | "messageTooShort"
   | "messageTooLong"
   | "rateLimited"
-  | "failed";
+  | "failed"
+  /** No mail provider on this host: the client offers email instead. */
+  | "unavailable";
 
 export type ContactState = {
   status: "idle" | "success" | "error";

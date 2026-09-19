@@ -77,7 +77,14 @@ export function ProjectGrid({
           return (
             <Link key={p.slug} href={`${basePath}/${p.slug}`} className="group block">
               {p.image ? (
-                <Media src={p.image} alt={copy.title} zoom className="aspect-[4/3] rounded-3xl" />
+                <Media
+                  src={p.image}
+                  alt={copy.title}
+                  zoom
+                  responsive
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="aspect-[4/3] rounded-3xl"
+                />
               ) : (
                 <div className="aspect-[4/3] rounded-3xl bg-surface" aria-hidden="true" />
               )}

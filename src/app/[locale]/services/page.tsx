@@ -105,6 +105,8 @@ export default async function ServicesPage({ params }: Params) {
                       src={media.src}
                       alt={o.title}
                       doc={media.doc}
+                      responsive={!media.doc}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
                       position={media.position}
                       className={cn("aspect-[4/3] lg:h-full", flip && "lg:order-2")}
                     />

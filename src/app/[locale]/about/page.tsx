@@ -73,6 +73,8 @@ export default async function AboutPage({ params }: Params) {
             <Media
               src={founder.portrait}
               alt={founder.name}
+              responsive
+              sizes="(min-width: 1024px) 50vw, 100vw"
               position="50% 20%"
               className="aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[30rem]"
             />

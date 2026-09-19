@@ -8,6 +8,9 @@ import "@fontsource-variable/instrument-sans/wght.css";
 import "../globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { CohortRibbon } from "@/components/CohortRibbon";
+import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
+import { localizeHref } from "@/lib/i18n/routing";
 import { SITE_URL, SITE_NAME, SITE_KEYWORDS, organizationJsonLd } from "@/lib/site";
 import { themeResolverScript } from "@/lib/theme";
 import { locales, isLocale, localeTag, type Locale } from "@/lib/i18n/config";
@@ -101,6 +104,14 @@ export default async function LocaleLayout({
         >
           {dict.a11y.skipToContent}
         </a>
+        {applicationsOpen() && (
+          <CohortRibbon
+            href={localizeHref(typedLocale, COHORT_PATH)}
+            text={dict.ribbon.text}
+            short={dict.ribbon.short}
+            cta={dict.ribbon.cta}
+          />
+        )}
         <Navbar locale={typedLocale} dict={dict} />
         <main id="main" className="flex flex-1 flex-col">
           {children}

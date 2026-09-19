@@ -9,6 +9,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
 import { Rail, RailItem } from "@/components/ui/Rail";
 import { SectionHeader } from "@/components/ui/Section";
+import { CohortFeature } from "@/components/CohortFeature";
 import { flattenTree } from "@/lib/sitemap";
 import { projects, featuredProjects, projectDetailPath } from "@/lib/projects";
 import { WHATSAPP_COMMUNITY_URL } from "@/lib/site";
@@ -90,6 +91,8 @@ export default async function Home({
                     src={shot.src}
                     alt={alt}
                     priority={i === 2}
+                    responsive
+                    sizes="(min-width: 1024px) 20vw, 33vw"
                     className="aspect-[3/4] rounded-2xl sm:rounded-3xl"
                   />
                 </div>
@@ -99,7 +102,13 @@ export default async function Home({
         </div>
       </section>
 
-      {/* 2 · TRACK RECORD */}
+      {/* 2 · COHORT 0, while applications are open. */}
+
+      <CohortFeature locale={locale} dict={dict} />
+
+      
+
+      {/* 3 · TRACK RECORD */}
       <section className="py-24 sm:py-32">
         <Container>
           <Reveal>
@@ -226,7 +235,14 @@ export default async function Home({
             return (
               <RailItem key={p.slug}>
                 <Link href={localizeHref(locale, projectDetailPath(p.slug))} className="group block">
-                  <Media src={p.image} alt={copy.title} zoom className="aspect-[4/5] rounded-3xl" />
+                  <Media
+                    src={p.image}
+                    alt={copy.title}
+                    zoom
+                    responsive
+                    sizes="(min-width: 1024px) 384px, 78vw"
+                    className="aspect-[4/5] rounded-3xl"
+                  />
                   <p className="mt-5 text-2xs font-medium text-muted">
                     {dict.projects.categories[p.category]} · <span className="figure">{p.year}</span>
                   </p>
@@ -247,6 +263,8 @@ export default async function Home({
               <Media
                 src="/images/founder-portrait.webp"
                 alt="Donfack Fortune"
+                responsive
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 position="50% 20%"
                 className="aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[32rem]"
               />

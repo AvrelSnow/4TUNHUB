@@ -86,6 +86,8 @@ export default async function ResearchPage({ params }: Params) {
                       src={media.src}
                       alt={copy.title}
                       position={media.position}
+                      responsive
+                      sizes="(min-width: 1024px) 33vw, 100vw"
                       className="aspect-[4/3]"
                     />
                   )}

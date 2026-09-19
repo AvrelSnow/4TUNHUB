@@ -33,6 +33,8 @@ const en = {
     store: "Store",
     careers: "Careers",
     contact: "Contact",
+    cohort: "Cohort 0",
+    privacy: "Privacy",
   } as Record<string, string>,
 
   nav: {
@@ -57,11 +59,17 @@ const en = {
 
   home: {
     eyebrow: "Engineering ecosystem · Dschang, Cameroon",
-    title: "Engineering knowledge, built into real solutions.",
-    titleLead: "Engineering knowledge, built into ",
-    titleAccent: "real solutions.",
+    title: "We design machines. And teach you how.",
     subtitle:
-      "4TUN Hub brings engineering services, education, research and products together in one ecosystem — grounded in real practice, from Dschang outward.",
+      "Mechanical design, FEA simulation and hands-on CAD training from Dschang, Cameroon. Every lesson comes from a machine that was actually built.",
+
+    cohort: {
+      eyebrow: "Applications open",
+      title: "CSWA Bootcamp · Cohort 0",
+      body: "Eight live evenings in October to get ready for the Certified SolidWorks Associate exam. Free for 20 selected people. Taught in French.",
+      cta: "Apply by 1 October",
+      more: "See the programme",
+    },
     primaryCta: "Work with us",
     secondaryCta: "Explore services",
     learnMore: "Learn more",
@@ -428,7 +436,10 @@ const en = {
         messageTooLong: "That's a bit too long — please shorten it.",
         rateLimited: "Too many messages from this connection. Please wait a moment and try again.",
         failed: "Something went wrong sending your message. Please try again, or email us directly.",
+        unavailable:
+          "Our message service isn't switched on yet, so this didn't send. Your text is kept: send it by email instead.",
       } as Record<string, string>,
+      emailInstead: "Send it by email",
     },
 
     success: {
@@ -1022,6 +1033,216 @@ const en = {
     },
   },
 
+  /** The announcement bar above the header while Cohort 0 applications are open. */
+  ribbon: {
+    text: "CSWA Bootcamp · Cohort 0 is free, with 20 seats. Applications close 1 October.",
+    short: "Free CSWA Bootcamp · Cohort 0",
+    cta: "Apply",
+  },
+
+  cohort: {
+    metaTitle: "CSWA Bootcamp · Cohort 0",
+    metaDescription:
+      "A free, eight-session CSWA preparation bootcamp, taught live in French by Donfack Fortune. 20 seats by application, October 2026.",
+    back: "Academy",
+    eyebrow: "4TUN Hub Academy · Cohort 0",
+    title: "CSWA Bootcamp. Cohort 0.",
+    subtitle:
+      "Eight live evenings to get you ready for the Certified SolidWorks Associate exam. Free for the 20 people we select. Taught in French.",
+    apply: "Apply for a seat",
+    closesOn: "Applications close Thursday 1 October.",
+    closed:
+      "Applications for Cohort 0 are closed. Join the community to hear first when Cohort 1 opens.",
+    closedCta: "Join the community",
+    facts: [
+      { label: "Price", value: "Free" },
+      { label: "Seats", value: "20, by application" },
+      { label: "Dates", value: "7–30 October 2026" },
+      { label: "Schedule", value: "Wed & Fri, 19:30–20:30" },
+      { label: "Where", value: "Google Meet, with replays" },
+      { label: "Language", value: "French" },
+    ],
+    outcome: {
+      eyebrow: "What you leave with",
+      title: "Ready to sit the CSWA.",
+      body: "By the last Friday you will have modelled exam-style parts, built an assembly, answered mass-property questions in the format the exam checks, and passed two timed mock exams. Between sessions, one exercise a week in a small WhatsApp group.",
+    },
+    syllabus: {
+      eyebrow: "The programme",
+      title: "Four weeks, mapped to what the exam tests.",
+      wednesday: "Wednesday",
+      friday: "Friday",
+      exercise: "Exercise",
+      weeks: [
+        {
+          label: "Week 1",
+          dates: "7–9 Oct",
+          wed: "Sketching, relations and fully defined sketches",
+          fri: "Extrude, revolve and cut: a first exam-style part",
+          ex: "Two parts from drawings",
+        },
+        {
+          label: "Week 2",
+          dates: "14–16 Oct",
+          wed: "Fillets, patterns, shells and ribs",
+          fri: "Materials and mass properties, in the answer format the CSWA checks",
+          ex: "Three mass-property parts",
+        },
+        {
+          label: "Week 3",
+          dates: "21–23 Oct",
+          wed: "Assemblies and mates",
+          fri: "Coordinate systems and the centre of mass of an assembly",
+          ex: "One assembly, three questions",
+        },
+        {
+          label: "Week 4",
+          dates: "28–30 Oct",
+          wed: "Drawings, then exam strategy and timing",
+          fri: "A timed mock exam, reviewed live",
+          ex: "Mock exam 2, at home",
+        },
+      ],
+    },
+    deal: {
+      eyebrow: "The deal",
+      title: "Free, not casual.",
+      intro:
+        "A seat is free because we want the first results to be real. In return, we ask for three things.",
+      items: [
+        { title: "Be there", desc: "Attend at least 6 of the 8 sessions." },
+        { title: "Do the work", desc: "Hand in the weekly exercise." },
+        {
+          title: "Share the result",
+          desc: "Sit the final mock exam, share your score, and give a short testimonial.",
+        },
+      ],
+      note: "Miss the commitment and the seat goes to the next person on the waiting list.",
+    },
+    before: {
+      eyebrow: "Before you apply",
+      title: "What you need.",
+      items: [
+        {
+          title: "SolidWorks on your computer",
+          desc: "Any recent version. The Student Edition works.",
+        },
+        {
+          title: "One hour, twice a week",
+          desc: "Wednesday and Friday evenings, on a connection good enough for a video call. Replays cover a missed session.",
+        },
+        {
+          title: "About the exam fee",
+          desc: "The course is free. The CSWA exam itself costs $99 unless you have a voucher. The SOLIDWORKS Student Edition includes a free CSWA voucher, and some schools can issue them. Sitting the exam is your choice.",
+        },
+      ],
+    },
+    timeline: {
+      eyebrow: "Key dates",
+      items: [
+        { date: "Thu 1 Oct", label: "Applications close" },
+        { date: "Fri 2 Oct", label: "Every applicant gets a reply" },
+        { date: "Wed 7 Oct", label: "First session" },
+        { date: "Fri 30 Oct", label: "Timed mock exam" },
+      ],
+    },
+    form: {
+      heading: "Apply for Cohort 0.",
+      intro: "Five minutes. We read every application and reply to everyone by Friday 2 October.",
+      name: { label: "Full name", placeholder: "Jane Doe" },
+      email: { label: "Email", placeholder: "you@example.com" },
+      whatsapp: {
+        label: "WhatsApp number",
+        placeholder: "+237 6XX XX XX XX",
+        hint: "With the country code. The cohort's exercises run in a WhatsApp group.",
+      },
+      org: {
+        label: "School or employer",
+        placeholder: "University of Dschang, IUC, your company…",
+      },
+      sw: {
+        label: "Your SolidWorks version",
+        placeholder: "Choose one",
+        options: {
+          "2025": "SolidWorks 2025",
+          "2024": "SolidWorks 2024",
+          "2023": "SolidWorks 2023",
+          older: "2022 or older",
+          student: "Student Edition",
+          none: "Not installed yet",
+        } as Record<string, string>,
+      },
+      why: {
+        label: "Why do you want a seat?",
+        placeholder: "Where you are with SolidWorks today, and what the CSWA would change for you.",
+        hint: "Two or three sentences is enough.",
+      },
+      consent: "I agree that 4TUN Hub keeps these details to review my application.",
+      privacy: "Read the privacy note",
+      submit: "Send my application",
+      submitting: "Sending…",
+      emailInstead: "Send it by email",
+      errors: {
+        required: "This field is required.",
+        emailInvalid: "Enter a valid email address.",
+        whatsappInvalid: "Enter a WhatsApp number with its country code, e.g. +237 6XX XX XX XX.",
+        choose: "Please choose one.",
+        tooShort: "Please add a little more: two or three sentences.",
+        tooLong: "That's a bit long. Please shorten it.",
+        consent: "Please tick the box to continue.",
+        closed: "Applications for Cohort 0 are closed.",
+        rateLimited: "Too many submissions from this connection. Please wait a moment and try again.",
+        failed: "Something went wrong sending your application. Please try again, or send it by email.",
+        unavailable:
+          "Our application service isn't switched on yet, so this didn't send. Your answers are kept: send them by email instead.",
+      } as Record<string, string>,
+    },
+    success: {
+      title: "Application received.",
+      body: "Thank you. We reply to every applicant by Friday 2 October, by email and on WhatsApp.",
+    },
+    instructor: {
+      eyebrow: "Who teaches",
+      title: "Donfack Fortune",
+      body: "Mechanical engineer and state-accredited educator: CSWP-certified, CSWE candidate, and organiser of the Douala SolidWorks user group. He has taught more than 300 students.",
+      cta: "Read his story",
+    },
+  },
+
+  privacy: {
+    title: "Privacy",
+    updated: "Last updated 19 September 2026",
+    intro:
+      "This site collects personal details only when you send them through a form. This note says what we keep, why, for how long, and how to have it deleted.",
+    sections: [
+      {
+        title: "What we collect",
+        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat.",
+      },
+      {
+        title: "Why",
+        body: "To reply to you. For applications, also to select the cohort and to run it: the weekly exercises happen in a WhatsApp group of accepted participants.",
+      },
+      {
+        title: "Where it goes",
+        body: "Submissions are delivered to our inbox by an email service, Resend. We do not sell or share your details, and we never add you to a mailing list without asking.",
+      },
+      {
+        title: "How long we keep it",
+        body: "Applications that are not selected are deleted within three months. Participants' details are kept while the cohort runs and for twelve months after it, unless you ask us to delete them sooner.",
+      },
+      {
+        title: "Cookies and tracking",
+        body: "None. The site stores one setting in your browser, your Light, Dark or Auto choice, and it never leaves your device. There are no analytics or advertising trackers.",
+      },
+      {
+        title: "Your rights",
+        body: "Ask us at any time to see, correct or delete what we hold about you.",
+      },
+    ],
+    contact: "Write to",
+  },
+
   stub: {
     badge: "In progress",
     beingBuilt: "This part of the ecosystem is being built.",
@@ -1036,11 +1257,11 @@ const en = {
     trustEyebrow: "The engineering behind 4TUN Hub",
     founderLine:
       "Founded by Donfack Fortune — a mechanical engineer who has worked across Cameroon's railway, energy and engineering-education sectors.",
-    meetFounder: "Meet the founder →",
+    meetFounder: "Meet the founder",
     affiliations: "Affiliations",
     affiliationsNote: "Founder affiliations — not corporate partnerships.",
     blurb:
-      "An engineering ecosystem — services, education, research and products, built for engineers, students and companies.",
+      "Mechanical design, simulation and engineering training, for engineers, students and companies.",
     groups: {
       ecosystem: "Ecosystem",
       company: "Company",

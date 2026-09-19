@@ -102,6 +102,15 @@ export const siteTree: SiteNode[] = [
     status: "active",
     placement: "primary",
     desc: "Technical training, CAD/SolidWorks workshops, courses & professional development.",
+    children: [
+      {
+        key: "cohort",
+        label: "CSWA Bootcamp · Cohort 0",
+        href: "/academy/cohort-0",
+        status: "active",
+        desc: "The free first cohort: 20 seats by application, 8 evening sessions in October.",
+      },
+    ],
   },
   {
     key: "research",
@@ -215,6 +224,14 @@ export const siteTree: SiteNode[] = [
     status: "active",
     placement: "utility",
     desc: "Start a project, a partnership, or a conversation.",
+  },
+  {
+    key: "privacy",
+    label: "Privacy",
+    href: "/privacy",
+    status: "active",
+    placement: "utility",
+    desc: "What the forms collect, why, for how long, and how to have it deleted.",
   },
 ];
 

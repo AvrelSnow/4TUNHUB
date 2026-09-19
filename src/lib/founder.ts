@@ -84,7 +84,8 @@ export const founder = {
   },
 
   certifications: [
-    { name: "CSWE — Certified SolidWorks Expert", issuer: "SOLIDWORKS", year: "2026" },
+    // Candidate until the exam is passed (docs/launch-plan.md, launch gates).
+    { name: "CSWE candidate — Certified SolidWorks Expert", issuer: "SOLIDWORKS", year: "2026" },
     { name: "CSWP — Certified SolidWorks Professional", issuer: "SOLIDWORKS", year: "2024" },
     { name: "Additive Manufacturing Certified", issuer: "SOLIDWORKS", year: "2024" },
     { name: "User Certified", issuer: "ANSYS", year: "2024" },

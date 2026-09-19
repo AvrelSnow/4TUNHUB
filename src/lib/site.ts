@@ -1,14 +1,13 @@
 /**
  * Site-wide constants — identity, canonical URL, and the facts
  * search engines are told about the organization (JSON-LD).
- * One place to update when the domain is purchased.
  */
 
-export const SITE_URL = "https://4tunhub.com"; // final domain (pre-purchase placeholder)
+export const SITE_URL = "https://4tunhub.com";
 
 export const SITE_NAME = "4TUN Hub";
 
-/** Branded display address (placeholder until the domain is live). */
+/** Where the forms deliver and visitors write. Move to hello@4tunhub.com once forwarding is set up. */
 export const CONTACT_EMAIL = "4tunhub@gmail.com";
 export const SITE_LOCATION = "Dschang, Cameroon";
 

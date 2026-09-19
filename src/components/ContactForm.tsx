@@ -5,6 +5,7 @@ import { InputField, SelectField, TextareaField } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { submitContact } from "@/lib/contact-action";
 import { initialContactState, TOPIC_VALUES } from "@/lib/contact";
+import { CONTACT_EMAIL } from "@/lib/site";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 
 type ContactCopy = Dictionary["contact"];
@@ -114,11 +115,28 @@ function ContactFormFields({ t, onReset }: { t: ContactCopy; onReset: () => void
         </label>
       </div>
 
-      {state.formError && (
-        <p role="alert" className="text-sm font-medium text-danger">
-          {err(state.formError)}
-        </p>
-      )}
+      {state.formError &&
+        (state.formError === "unavailable" || state.formError === "failed" ? (
+          // Delivery failed: hand the visitor a ready-written email so the
+          // message can't be lost.
+          <div role="alert" className="rounded-2xl bg-surface-2 p-5 text-sm text-foreground">
+            <p className="font-medium">{err(state.formError)}</p>
+            <Button
+              as="a"
+              size="md"
+              className="mt-4"
+              href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+                `[4TUN Hub] ${state.values?.topic ?? ""}: ${state.values?.name ?? ""}`,
+              )}&body=${encodeURIComponent(state.values?.message ?? "")}`}
+            >
+              {f.emailInstead}
+            </Button>
+          </div>
+        ) : (
+          <p role="alert" className="text-sm font-medium text-danger">
+            {err(state.formError)}
+          </p>
+        ))}
 
       <div>
         <Button type="submit" size="lg" disabled={pending} className="w-full sm:w-auto">

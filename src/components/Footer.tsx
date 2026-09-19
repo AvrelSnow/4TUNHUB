@@ -135,7 +135,12 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             © {new Date().getFullYear()} 4TUN Hub. {dict.footer.rights}
             <span className="hidden md:inline"> · {dict.footer.motto}</span>
           </p>
-          <ThemeControl strings={dict.theme} />
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Link href={localizeHref(locale, "/privacy")} className="transition-colors hover:text-foreground">
+              {dict.routes.privacy}
+            </Link>
+            <ThemeControl strings={dict.theme} />
+          </div>
         </div>
       </Container>
     </footer>
