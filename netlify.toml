@@ -1,6 +1,9 @@
-# Netlify builds and serves the site from `main`. Netlify's Next.js runtime
-# is detected and added automatically; it handles the server actions (the
-# forms), the proxy (language redirects) and the headers in next.config.ts.
+# Netlify builds and serves the site from `main`. The Next.js runtime is
+# requested explicitly below: with a build command and a publish directory
+# set here, Netlify skipped its own framework detection and published the
+# raw .next folder as static files, so every route 404'd. The runtime turns
+# that build into pages, server actions (the forms), the proxy (language
+# redirects) and the headers from next.config.ts.
 #
 # Environment variables are set in the Netlify UI, never here:
 #   RESEND_API_KEY  required for the forms to deliver (see src/lib/mailer.ts)
@@ -14,3 +17,6 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
