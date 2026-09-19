@@ -13,6 +13,8 @@ const en = {
 
   a11y: {
     skipToContent: "Skip to content",
+    previous: "Previous",
+    next: "Next",
   },
 
   /** Display labels for every route, keyed by sitemap node key. */
@@ -42,20 +44,15 @@ const en = {
     language: "Language",
   },
 
-  /**
-   * The ground control. `options` are rendered through `.readout`, which
-   * uppercases them — so they are written in sentence case here and read
-   * as mono labels on the page.
-   */
+  /** The appearance control in the footer. */
   theme: {
-    label: "Theme",
+    label: "Appearance",
     options: {
       auto: "Auto",
-      light: "Day",
-      dark: "Night",
+      light: "Light",
+      dark: "Dark",
     },
-    next: "Switch to",
-    autoHint: "Follows your local clock — the day sheet from 06:00, the night ground from 18:00.",
+    autoHint: "Follows your clock: light from 06:00, dark from 18:00.",
   },
 
   home: {

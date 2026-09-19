@@ -4,12 +4,10 @@ import { cn } from "@/lib/cn";
  * Brand glyphs for the founder's connect links. Inline SVG so they scale
  * crisply and can carry their own colour.
  *
- * Each mark wears its OWN brand colour rather than the site's muted grey —
- * a bounded exception to "there is no fourth colour" (art-direction
- * §"colour"). These are quotations of someone else's brand, confined to
- * that brand's own icon; they never touch our surfaces, type or controls.
+ * Each mark wears its OWN brand colour: a quotation of someone else's
+ * brand, confined to that brand's own icon, never our surfaces or type.
  * Icons are non-text graphics, so the bar is WCAG 1.4.11's 3:1 rather than
- * 4.5:1 — LinkedIn measures 3.5:1 on the ground and Gmail 5.1:1.
+ * 4.5:1: LinkedIn and Gmail both clear it on white and on black.
  */
 const tones: Record<string, string> = {
   // Medium's mark is black on light grounds and white on dark ones. White
@@ -80,14 +78,14 @@ export function FounderConnect({
           target={l.href.startsWith("http") ? "_blank" : undefined}
           rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
           aria-label={l.label}
-          className="group flex w-20 flex-col items-center gap-2 rounded-xl border border-border bg-background px-2 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-500 hover:shadow-e1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="group flex w-24 flex-col items-center gap-2.5 rounded-2xl bg-surface px-2 py-4 transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-border"
         >
           {/* The glyph keeps its own brand colour; only the label responds
               to hover, so the marks stay recognisable at rest. */}
           <span className={cn("transition-transform duration-200 group-hover:scale-110", tones[l.icon] ?? "text-muted")}>
             <Glyph icon={l.icon} />
           </span>
-          <span className="text-3xs font-medium text-muted transition-colors group-hover:text-accent">
+          <span className="text-2xs font-medium text-muted transition-colors group-hover:text-foreground">
             {l.label}
           </span>
         </a>

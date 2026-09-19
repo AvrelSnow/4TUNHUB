@@ -1,22 +1,35 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { ArrowLink, Chevron } from "@/components/ui/ArrowLink";
 import { CtaPanel } from "@/components/ui/CtaPanel";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/Reveal";
-import { Logo } from "@/components/ui/Logo";
-import { ProjectVisual } from "@/components/ProjectVisual";
-import { Counter } from "@/components/ui/Counter";
+import { Media } from "@/components/ui/Media";
+import { Rail, RailItem } from "@/components/ui/Rail";
+import { SectionHeader } from "@/components/ui/Section";
 import { flattenTree } from "@/lib/sitemap";
-import { projects, featuredProjects } from "@/lib/projects";
+import { projects, featuredProjects, projectDetailPath } from "@/lib/projects";
+import { WHATSAPP_COMMUNITY_URL } from "@/lib/site";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
+import { cn } from "@/lib/cn";
 
-const OFFERING_PILLARS = ["services", "academy", "research", "community"] as const;
+/**
+ * The hero is a fan of five real photographs: machines designed and built
+ * by the founder, and the founder on site. No render, no stock: the first
+ * thing a visitor sees is evidence. Offsets make the row read as a set
+ * rather than a grid; phones keep the middle three.
+ */
+const HERO_SHOTS = [
+  { src: "/images/projects/banana-hero.webp", key: "banana-pseudostem-shredder", offset: "lg:mt-20", mobile: false },
+  { src: "/images/projects/pedal-hero.webp", key: "pedal-power-charger", offset: "mt-8 lg:mt-8", mobile: true },
+  { src: "/images/projects/braking-hero.webp", key: "locomotive-braking-analysis", offset: "mt-0", mobile: true },
+  { src: "/images/projects/beans-hero.webp", key: "beans-unwrapping-machine", offset: "mt-8 lg:mt-8", mobile: true },
+  { src: "/images/camrail/portrait.webp", key: "founder", offset: "lg:mt-20", mobile: false },
+] as const;
 
 export default async function Home({
   params,
@@ -30,209 +43,226 @@ export default async function Home({
   const byKey = new Map(flattenTree().map((n) => [n.key, n]));
   const href = (key: string) => localizeHref(locale, byKey.get(key)?.href ?? "/");
 
+  // Featured work first, then the rest. Reference photos (a project with no
+  // photograph of its own) stay on their case study, out of the proof rail.
+  const ordered = [...featuredProjects, ...projects.filter((p) => !p.featured)].filter(
+    (p) => p.image && !p.imageIllustrative,
+  );
+
   return (
     <>
-      {/* 1 · HERO — cinematic rhythm. The headline runs to the top of the
-          display scale and the CFD result is the full-bleed evidence
-          underneath it, framed as an instrument viewport rather than
-          floated beside the text as an illustration. */}
-      <Section
-        field="flow"
-        rhythm="cinematic"
-        className="pt-20 pb-0 sm:pt-28"
-      >
-        <div className="copy-scrim max-w-5xl">
-          <div className="flex items-center gap-3">
-            <span aria-hidden="true" className="flow-rule h-px w-10 shrink-0" />
-            <p className="eyebrow">{t.eyebrow}</p>
-          </div>
-          {/* `display`, not `display-lg`: the headline is a full sentence and
-              the French copy is longer again. display-lg is held in reserve
-              for short statements, where it belongs. */}
-          <h1 className="mt-7 text-display text-foreground">
-            {t.titleLead}
-            <span className="flow-text">{t.titleAccent}</span>
-          </h1>
-          <p className="mt-8 max-w-xl text-lg leading-8 text-muted">{t.subtitle}</p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
-              {t.primaryCta}
-            </Button>
-            <Button as="a" href={localizeHref(locale, "/services")} size="lg" variant="secondary">
-              {t.secondaryCta}
-            </Button>
-          </div>
-        </div>
-
-        {/* Simulation viewport — the instrument frame: hairline, corner
-            ticks, mono readouts in the gutter.
-
-            `bg-surface`, not `bg-ink-975`. The old value was the night
-            ground itself, chosen so the frame dissolved into the page — and
-            it did not follow the ground, so on the day sheet the gutter
-            readouts below measured 2.39:1 and 3.27:1, dark ink on a
-            near-black plate, on the most important element of the most
-            important page. `surface` is what every other panel on the site
-            already uses, so the frame now reads as a panel on both grounds
-            and the CFD render keeps its own black inside it — which is what
-            a viewport onto a simulation should look like anyway. */}
-        <figure className="ticks relative mt-16 overflow-hidden rounded-xl border border-border bg-surface p-4 sm:mt-20 sm:p-6">
-          <div
-            aria-hidden="true"
-            className="flow-rule absolute inset-x-0 top-0 h-px"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/cfd-vehicle.webp"
-            alt="Computational fluid dynamics pressure distribution across a race-car body"
-            width={1000}
-            height={941}
-            fetchPriority="high"
-            className="relative mx-auto h-auto w-full max-w-3xl"
-          />
-          <figcaption className="relative mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-4">
-            <span className="readout">{t.heroCaption}</span>
-            <span className="readout text-accent">4TUN HUB</span>
-          </figcaption>
-        </figure>
-      </Section>
-
-      {/* 2 · TRUST STRIP — compressed rhythm, but the figures are the
-          largest mono on the site. This is the rarest material we have;
-          it gets treated as the headline it is. */}
-      <section className="border-y border-border bg-surface">
-        <Container className="py-14 sm:py-16">
-          <div className="flex items-center gap-3">
-            <p className="eyebrow shrink-0">{t.trust.label}</p>
-            <span aria-hidden="true" className="h-px flex-1 bg-border" />
-          </div>
-          <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4">
-            {t.trust.stats.map((s) => (
-              <div key={s.label} className="relative pt-5">
-                <span
-                  aria-hidden="true"
-                  className="flow-rule absolute inset-x-0 top-0 h-0.5 w-10"
-                />
-                <dt className="flex items-baseline gap-1.5">
-                  <span className="font-mono text-4xl font-semibold tabular-nums tracking-tight text-foreground sm:text-5xl">
-                    <Counter value={s.value} />
-                  </span>
-                  {s.unit && (
-                    <span className="font-mono text-sm font-medium text-accent">{s.unit}</span>
-                  )}
-                </dt>
-                <dd className="mt-3 text-sm leading-5 text-muted">{s.label}</dd>
-              </div>
-            ))}
-          </dl>
-        </Container>
-      </section>
-
-      {/* 3 · WHAT WE DO */}
-      <Section eyebrow={t.doEyebrow} title={t.doTitle} intro={t.doIntro}>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {OFFERING_PILLARS.map((key, i) => (
-            <Reveal key={key} delay={i * 70}>
-              <Link href={href(key)} className="group block h-full">
-                <Card interactive className="flex h-full flex-col">
-                  <p className="eyebrow">{String(i + 1).padStart(2, "0")}</p>
-                  <h3 className="mt-4 text-lg font-semibold text-foreground">
-                    {dict.routes[key]}
-                  </h3>
-                  <p className="mt-2 flex-1 text-sm leading-6 text-muted">
-                    {t.pillars[key]}
-                  </p>
-                  <span className="link-sweep mt-4 w-fit text-sm font-medium text-accent">
-                    {t.learnMore} →
-                  </span>
-                </Card>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      {/* 4 · PROOF */}
-      <section className="border-t border-border bg-surface/50">
-        <Container className="py-32 sm:py-44">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div className="max-w-2xl">
-              <p className="eyebrow">{t.proof.eyebrow}</p>
-              <h2 className="mt-5 text-display-sm text-foreground">
-                {t.proof.title}
-              </h2>
-              <p className="mt-4 text-lg leading-8 text-muted">{t.proof.intro}</p>
+      {/* 1 · HERO */}
+      <section className="overflow-hidden pt-16 sm:pt-24">
+        <Container>
+          <div className="mx-auto max-w-5xl text-center">
+            <p className="eyebrow animate-fade-in">{t.eyebrow}</p>
+            <h1 className="mt-4 animate-fade-up text-display-lg text-foreground">{t.title}</h1>
+            <p className="mx-auto mt-7 max-w-2xl animate-fade-up text-lead text-muted [animation-delay:90ms]">
+              {t.subtitle}
+            </p>
+            <div className="mt-10 flex animate-fade-up flex-wrap items-center justify-center gap-x-7 gap-y-4 [animation-delay:180ms]">
+              <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
+                {t.primaryCta}
+              </Button>
+              <ArrowLink href={localizeHref(locale, "/services")}>{t.secondaryCta}</ArrowLink>
             </div>
-            <Link
-              href={localizeHref(locale, "/projects")}
-              className="link-sweep text-sm font-medium text-accent"
-            >
-              {t.proof.viewAll} →
-            </Link>
           </div>
+        </Container>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {featuredProjects.map((p, i) => {
-              const copy = dict.projects.items[p.slug];
-              if (!copy) return null;
+        <div className="mx-auto mt-16 max-w-7xl px-3 sm:mt-20 sm:px-6">
+          <div className="grid grid-cols-3 items-start gap-2.5 sm:gap-4 lg:grid-cols-5">
+            {HERO_SHOTS.map((shot, i) => {
+              const alt =
+                shot.key === "founder"
+                  ? dict.about.founderTitle
+                  : dict.projects.items[shot.key]?.title ?? "";
               return (
-                <Reveal key={p.slug} delay={i * 80}>
-                  <Link
-                    href={localizeHref(locale, `/about/founder/projects/${p.slug}`)}
-                    className="block h-full"
-                  >
-                    <Card
-                      interactive
-                      readout={`PRJ · ${String(i + 1).padStart(2, "0")}`}
-                      className="flex h-full flex-col bg-background"
-                    >
-                      <ProjectVisual
-                        category={p.category}
-                        index={projects.indexOf(p)}
-                        image={p.image}
-                        alt={copy.title}
-                        className="h-32 w-full"
-                      />
-                      <div className="mt-4 flex items-center justify-between gap-3">
-                        <Badge variant="amber">
-                          {dict.projects.categories[p.category]}
-                        </Badge>
-                        <span className="font-mono text-3xs text-muted">{p.year}</span>
-                      </div>
-                      <h3 className="mt-3 text-lg font-semibold text-foreground">
-                        {copy.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-6 text-muted">{copy.outcome}</p>
-                    </Card>
-                  </Link>
-                </Reveal>
+                <div
+                  key={shot.src}
+                  className={cn(
+                    "animate-fade-up",
+                    shot.offset,
+                    !shot.mobile && "hidden lg:block",
+                  )}
+                  style={{ animationDelay: `${240 + Math.abs(2 - i) * 90}ms` }}
+                >
+                  <Media
+                    src={shot.src}
+                    alt={alt}
+                    priority={i === 2}
+                    className="aspect-[3/4] rounded-2xl sm:rounded-3xl"
+                  />
+                </div>
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* 2 · TRACK RECORD */}
+      <section className="py-24 sm:py-32">
+        <Container>
+          <Reveal>
+            <p className="text-center text-sm font-medium text-muted">{t.trust.label}</p>
+            <dl className="mt-10 grid grid-cols-2 gap-y-12 lg:grid-cols-4 lg:divide-x lg:divide-border">
+              {t.trust.stats.map((s) => (
+                <div key={s.label} className="px-4 text-center">
+                  <dt className="sr-only">{s.label}</dt>
+                  <dd>
+                    <span className="figure block text-display-sm text-foreground">
+                      {s.value}
+                      {s.unit}
+                    </span>
+                    <span className="mx-auto mt-3 block max-w-44 text-sm leading-6 text-muted">
+                      {s.label}
+                    </span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
         </Container>
       </section>
 
-      {/* 5 · FOUNDER TEASER (org-first, one line) */}
-      <Section rhythm="compressed">
-        <Reveal>
-          <div className="ticks relative flex flex-col gap-6 rounded-2xl border border-border bg-surface p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
-            <div className="max-w-2xl">
-              <p className="eyebrow">{t.founder.eyebrow}</p>
-              <p className="mt-3 text-xl leading-8 text-foreground">{t.founder.line}</p>
-              <Link
-                href={localizeHref(locale, "/about/founder")}
-                className="link-sweep mt-4 inline-block text-sm font-medium text-accent"
-              >
-                {t.founder.cta} →
-              </Link>
-            </div>
-            <Logo href={null} variant="mark" size="lg" className="shrink-0" />
-          </div>
-        </Reveal>
-      </Section>
+      {/* 3 · WHAT WE DO — tiles, each with its own evidence. */}
+      <section className="bg-surface py-24 sm:py-32">
+        <Container>
+          <SectionHeader eyebrow={t.doEyebrow} title={t.doTitle} intro={t.doIntro} />
 
-      {/* 7 · CONVERSION — the ticked instrument panel every pillar page
-          closes on. It replaced a stock ridged-texture photo. */}
+          <div className="mt-14 grid gap-5 lg:grid-cols-2">
+            {/* Services: wide, the stress plot beside the words. */}
+            <Reveal className="lg:col-span-2">
+              <Link
+                href={href("services")}
+                className="group grid h-full overflow-hidden rounded-3xl bg-surface-2 lg:grid-cols-2"
+              >
+                <div className="flex flex-col justify-center p-8 sm:p-12">
+                  <p className="eyebrow">{dict.routes.services}</p>
+                  <h3 className="mt-3 text-display-sm text-foreground">{dict.services.title}</h3>
+                  <p className="mt-4 max-w-md text-muted">{t.pillars.services}</p>
+                  <span className="mt-6 inline-flex items-center gap-1 font-medium text-accent">
+                    {t.learnMore}
+                    <Chevron />
+                  </span>
+                </div>
+                <Media
+                  src="/images/projects/pedal-9.webp"
+                  alt={dict.projects.galleries["pedal-power-charger"]?.[8] ?? ""}
+                  doc
+                  zoom
+                  className="aspect-[4/3] lg:aspect-auto lg:h-full"
+                />
+              </Link>
+            </Reveal>
+
+            <PillarTile
+              href={href("academy")}
+              eyebrow={dict.routes.academy}
+              title={dict.academy.title}
+              body={t.pillars.academy}
+              cta={t.learnMore}
+              image="/images/projects/beans-8.webp"
+              alt={dict.projects.galleries["beans-unwrapping-machine"]?.[7] ?? ""}
+            />
+            <PillarTile
+              href={href("research")}
+              eyebrow={dict.routes.research}
+              title={dict.research.title}
+              body={t.pillars.research}
+              cta={t.learnMore}
+              image="/images/projects/banana-2.webp"
+              alt={dict.projects.galleries["banana-pseudostem-shredder"]?.[1] ?? ""}
+              delay={80}
+            />
+
+            {/* Community: the one pillar that is live today says so. */}
+            <Reveal className="lg:col-span-2">
+              <div className="flex flex-col gap-8 rounded-3xl bg-surface-2 p-8 sm:p-12 lg:flex-row lg:items-end lg:justify-between">
+                <div className="max-w-xl">
+                  <div className="flex items-center gap-3">
+                    <p className="eyebrow">{dict.routes.community}</p>
+                    <Badge variant="amber">
+                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+                      {dict.community.live}
+                    </Badge>
+                  </div>
+                  <h3 className="mt-3 text-display-sm text-foreground">{dict.community.cta.title}</h3>
+                  <p className="mt-4 text-muted">{t.pillars.community}</p>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-7 gap-y-4">
+                  <Button
+                    as="a"
+                    href={WHATSAPP_COMMUNITY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    size="lg"
+                  >
+                    {dict.community.join}
+                  </Button>
+                  <ArrowLink href={href("community")}>{t.learnMore}</ArrowLink>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* 4 · PROOF — a rail of real projects. */}
+      <section className="py-24 sm:py-32">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeader eyebrow={t.proof.eyebrow} title={t.proof.title} intro={t.proof.intro} />
+            <ArrowLink href={localizeHref(locale, "/projects")}>{t.proof.viewAll}</ArrowLink>
+          </div>
+        </Container>
+
+        <Rail
+          className="mt-12"
+          labels={{ previous: dict.a11y.previous, next: dict.a11y.next, region: t.proof.eyebrow }}
+        >
+          {ordered.map((p) => {
+            const copy = dict.projects.items[p.slug];
+            if (!copy || !p.image) return null;
+            return (
+              <RailItem key={p.slug}>
+                <Link href={localizeHref(locale, projectDetailPath(p.slug))} className="group block">
+                  <Media src={p.image} alt={copy.title} zoom className="aspect-[4/5] rounded-3xl" />
+                  <p className="mt-5 text-2xs font-medium text-muted">
+                    {dict.projects.categories[p.category]} · <span className="figure">{p.year}</span>
+                  </p>
+                  <h3 className="mt-1.5 text-headline text-foreground">{copy.title}</h3>
+                  <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted">{copy.outcome}</p>
+                </Link>
+              </RailItem>
+            );
+          })}
+        </Rail>
+      </section>
+
+      {/* 5 · FOUNDER — org first, the person second, but a real person. */}
+      <section className="pb-24 sm:pb-32">
+        <Container>
+          <Reveal>
+            <div className="grid items-center gap-10 overflow-hidden rounded-3xl bg-surface lg:grid-cols-2 lg:gap-0">
+              <Media
+                src="/images/founder-portrait.webp"
+                alt="Donfack Fortune"
+                position="50% 20%"
+                className="aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[32rem]"
+              />
+              <div className="px-8 pb-10 sm:px-12 lg:py-16">
+                <p className="eyebrow">{t.founder.eyebrow}</p>
+                <p className="mt-4 text-2xl leading-snug font-medium tracking-tight text-foreground">{t.founder.line}</p>
+                <ArrowLink href={localizeHref(locale, "/about/founder")} className="mt-7">
+                  {t.founder.cta}
+                </ArrowLink>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* 6 · CONVERSION */}
       <CtaPanel
         title={t.conversion.title}
         subtitle={t.conversion.subtitle}
@@ -240,5 +270,45 @@ export default async function Home({
         secondary={{ label: t.conversion.secondaryCta, href: localizeHref(locale, "/services") }}
       />
     </>
+  );
+}
+
+function PillarTile({
+  href,
+  eyebrow,
+  title,
+  body,
+  cta,
+  image,
+  alt,
+  delay = 0,
+}: {
+  href: string;
+  eyebrow: string;
+  title: string;
+  body: string;
+  cta: string;
+  image: string;
+  alt: string;
+  delay?: number;
+}) {
+  return (
+    <Reveal delay={delay}>
+      <Link
+        href={href}
+        className="group flex h-full flex-col overflow-hidden rounded-3xl bg-surface-2"
+      >
+        <div className="p-8 sm:p-12 sm:pb-8">
+          <p className="eyebrow">{eyebrow}</p>
+          <h3 className="mt-3 text-headline text-foreground">{title}</h3>
+          <p className="mt-3 text-muted">{body}</p>
+          <span className="mt-5 inline-flex items-center gap-1 font-medium text-accent">
+            {cta}
+            <Chevron />
+          </span>
+        </div>
+        <Media src={image} alt={alt} doc zoom className="mt-auto aspect-[16/10]" />
+      </Link>
+    </Reveal>
   );
 }

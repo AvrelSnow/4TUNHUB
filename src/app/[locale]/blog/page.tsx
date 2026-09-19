@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/Section";
+import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { ArrowLink, Chevron } from "@/components/ui/ArrowLink";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/Reveal";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -36,56 +38,44 @@ export default async function BlogPage({ params }: Params) {
 
   return (
     <>
-      {/* 1 · HERO — `wave`: interference of emitters. Writing is ideas
-          propagating outward and meeting each other. */}
-      <Section field="wave" className="pb-14 pt-16 sm:pt-20">
-        <Reveal>
-          <p className="eyebrow">{t.eyebrow}</p>
-          <h1 className="mt-5 max-w-3xl text-display text-foreground">{t.title}</h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">{t.subtitle}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+      <PageHero
+        eyebrow={t.eyebrow}
+        title={t.title}
+        intro={t.subtitle}
+        actions={
+          <>
             <Button as="a" href={publications[0].href} size="lg" target="_blank" rel="noopener noreferrer">
               {t.primaryCta}
             </Button>
-            <Button
-              as="a"
-              href={localizeHref(locale, "/contact")}
-              size="lg"
-              variant="secondary"
-            >
-              {t.secondaryCta}
-            </Button>
-          </div>
-        </Reveal>
-      </Section>
+            <ArrowLink href={localizeHref(locale, "/contact")}>{t.secondaryCta}</ArrowLink>
+          </>
+        }
+      />
 
-      {/* 2 · INDEX, or the honest empty state. Same contract as the store:
-          nothing is listed until something real exists. */}
+      {/* The index, or the honest empty state: nothing is listed until it exists. */}
       {items.length > 0 ? (
-        <Section eyebrow={t.indexEyebrow} title={t.indexTitle} className="pt-0">
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+        <Section tone="surface" eyebrow={t.indexEyebrow} title={t.indexTitle}>
+          <div className="mt-14 grid gap-5 lg:grid-cols-2">
             {items.map((p, i) => (
               <Reveal key={p.slug} delay={i * 70}>
                 <a
                   href={p.canonical ?? localizeHref(locale, `/blog/${p.slug}`)}
                   target={p.canonical ? "_blank" : undefined}
                   rel={p.canonical ? "noopener noreferrer" : undefined}
-                  className="block h-full"
+                  className="group block h-full"
                 >
-                  <Card interactive className="flex h-full flex-col">
+                  <Card tone="raised" interactive className="flex h-full flex-col">
                     <div className="flex items-center justify-between gap-3">
                       <Badge variant={p.source === "native" ? "amber" : "outline"}>
                         {t.sources[p.source]}
                       </Badge>
                       <span className="readout">{formatDate(p.date, locale)}</span>
                     </div>
-                    <h2 className="mt-4 text-lg font-semibold text-foreground">
+                    <h2 className="mt-6 text-headline text-foreground">
                       {dict.blogPosts?.[p.slug]?.title ?? p.slug}
                     </h2>
-                    <p className="mt-2 flex-1 text-sm leading-6 text-muted">
-                      {dict.blogPosts?.[p.slug]?.excerpt ?? ""}
-                    </p>
-                    <span className="readout mt-4">
+                    <p className="mt-3 flex-1 text-muted">{dict.blogPosts?.[p.slug]?.excerpt ?? ""}</p>
+                    <span className="readout mt-5">
                       {p.readingMinutes} {t.minRead}
                     </span>
                   </Card>
@@ -95,44 +85,34 @@ export default async function BlogPage({ params }: Params) {
           </div>
         </Section>
       ) : (
-        <Container className="pt-0">
-          <Reveal>
-            <EmptyState
-              readout={t.emptyReadout}
-              eyebrow={t.emptyEyebrow}
-              title={t.emptyTitle}
-              body={t.emptyBody}
-            />
-          </Reveal>
-        </Container>
+        <section className="pb-8">
+          <Container>
+            <Reveal>
+              <EmptyState eyebrow={t.emptyEyebrow} title={t.emptyTitle} body={t.emptyBody} />
+            </Reveal>
+          </Container>
+        </section>
       )}
 
-      {/* 3 · THE REAL PUBLICATIONS — active surfaces, not announcements. */}
       <Section eyebrow={t.hubEyebrow} title={t.hubTitle} intro={t.hubIntro}>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2">
           {publications.map((pub, i) => {
             const copy = t.publications[pub.key];
             if (!copy) return null;
             return (
               <Reveal key={pub.key} delay={i * 80}>
-                <a
-                  href={pub.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block h-full"
-                >
+                <a href={pub.href} target="_blank" rel="noopener noreferrer" className="group block h-full">
                   <Card interactive className="flex h-full flex-col">
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-lg font-semibold text-foreground">{copy.title}</h3>
-                      {pub.readers && (
-                        <span className="readout text-accent">
-                          {pub.readers} {t.readers}
-                        </span>
-                      )}
-                    </div>
-                    <p className="mt-3 flex-1 text-sm leading-6 text-muted">{copy.desc}</p>
-                    <span className="link-sweep mt-4 w-fit text-sm font-medium text-accent">
-                      {copy.cta} →
+                    <h3 className="text-headline text-foreground">{copy.title}</h3>
+                    {pub.readers && (
+                      <p className="figure mt-2 text-sm font-medium text-muted">
+                        {pub.readers} {t.readers}
+                      </p>
+                    )}
+                    <p className="mt-4 flex-1 text-muted">{copy.desc}</p>
+                    <span className="mt-6 inline-flex items-center gap-1 font-medium text-accent">
+                      {copy.cta}
+                      <Chevron external />
                     </span>
                   </Card>
                 </a>
@@ -142,9 +122,7 @@ export default async function BlogPage({ params }: Params) {
         </div>
       </Section>
 
-      {/* 4 · CONVERSION */}
       <CtaPanel
-        rhythm="compressed"
         title={t.cta.title}
         subtitle={t.cta.subtitle}
         primary={{ label: t.cta.primary, href: localizeHref(locale, "/contact") }}

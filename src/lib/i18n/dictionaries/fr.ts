@@ -14,6 +14,8 @@ const fr: Dictionary = {
 
   a11y: {
     skipToContent: "Aller au contenu",
+    previous: "Précédent",
+    next: "Suivant",
   },
 
   routes: {
@@ -42,19 +44,15 @@ const fr: Dictionary = {
     language: "Langue",
   },
 
-  /**
-   * Le contrôle du fond. `options` passe par `.readout`, qui met en
-   * capitales — d'où la casse normale ici.
-   */
+  /** Le réglage d'apparence, dans le pied de page. */
   theme: {
-    label: "Thème",
+    label: "Apparence",
     options: {
       auto: "Auto",
-      light: "Jour",
-      dark: "Nuit",
+      light: "Clair",
+      dark: "Sombre",
     },
-    next: "Basculer vers",
-    autoHint: "Suit votre horloge locale — la feuille de jour dès 06 h, le fond de nuit dès 18 h.",
+    autoHint: "Suit votre horloge : clair dès 06 h, sombre dès 18 h.",
   },
 
   home: {

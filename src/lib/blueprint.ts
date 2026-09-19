@@ -352,6 +352,13 @@ export type Decision = {
 
 export const decisions: Decision[] = [
   {
+    decision:
+      "Redesign (2026-09-19): light by day, dark by night, Apple-grade restraint. Supersedes the dark instrument panel.",
+    rationale:
+      "Fortune judged the dark instrument site unappealing and asked for a design that reads as world-class, not AI-generated. The clock (06:00–18:00 light) is now the default, with Auto/Light/Dark in the footer. Removed: the eight canvas fields, the flow-ramp gradient text, corner ticks, mono labels and the photo grading. Added: Instrument Sans as the one typeface, a white/#f5f5f7 page with black-and-grey type, pill controls, large rounded media, and real photographs shown as taken. docs/art-direction.md was rewritten to govern it.",
+    status: "locked",
+  },
+  {
     decision: "Header nav limited to 6 items; everything else in the footer.",
     rationale:
       "All five reference companies (Lumafield, Augury, Machina Labs, Prevu3D, Instrumental) run tight nav. Full vision preserved via layering.",
@@ -836,7 +843,7 @@ export const scorecard: Score[] = [
   { aspect: "Layout precision", current: 98, target: 98, note: "AT TARGET. All values on the 4px scale; container measured at exactly 1152px; zero horizontal overflow at any width." },
   { aspect: "Components", current: 96, target: 96, note: "AT TARGET. Primitives now include Field (one canvas engine, eight renderers) and Counter, plus the .plate image treatment and its .plate-doc document variant. The field scrim ships INSIDE Field, so no caller can render a background without its contrast protection." },
   { aspect: "Motion", current: 94, target: 94, note: "AT TARGET, rescoped. Eight canvas field simulations, one per context, dynamically imported so they never touch the critical path. Each pauses offscreen and on tab-hide (verified by frame hashing, not assumed) and renders a still frame under reduced motion. Figures count up from a server-rendered final value. Signature amber sweep retained." },
-  { aspect: "Craft / art direction", current: 95, target: 97, note: "Dark instrument panel shipped sitewide (docs/art-direction.md governs). Two signatures repeated everywhere: the flow ramp derived from our own CFD output, and the instrument frame. Backgrounds are eight simulated engineering phenomena, one per context — no lattice, no pattern. One image treatment across all photography, with a separate variant for drawings. Fixed in the audit pass: project-detail spec labels at 4.25:1 (scrim too narrow for the content measure) and the blueprint cover at 1.01:1 (a field rendered with no scrim at all, because that page bypasses the Section primitive). Remaining: real photography on the remaining pillar pages, and vector logo assets for the affiliations row." },
+  { aspect: "Craft / art direction", current: 95, target: 97, note: "Redesigned 2026-09-19 (docs/art-direction.md governs): light by day and dark by night on the visitor's clock, one typeface, quiet white and grey surfaces, pill controls, large rounded media, and real photographs shown as taken. Remaining: professional photography of the machines, and vector logo assets for the affiliations row." },
   { aspect: "Responsiveness", current: 98, target: 98, note: "AT TARGET. Verified at 360 / 636 / 768 / 1024 / 1440 / 1920 — no overflow, no wraps; mobile nav panel shipped." },
   { aspect: "Accessibility", current: 97, target: 97, note: "AT TARGET. Programmatic re-audit after the inversion and the animated backgrounds: 3,891 text runs across 26 page loads (20 EN routes + 6 FR), each measured against the REAL composited background including live canvas pixels, worst-pixel not average. Zero contrast failures; worst passing run 5.35:1. Single h1 and no heading skips on every page; zero images without alt; zero controls without an accessible name. Two genuine failures found and fixed in this pass — see Craft." },
   { aspect: "Performance", current: 97, target: 97, note: "AT TARGET (pre-deploy). Budgets ENFORCED by the build gate: 205.8 KB of a 220 KB gzip budget, largest chunk 69.3 KB of 90 KB. All eight field simulations together cost 7.3 KB over the pre-field baseline because they are dynamically imported rather than bundled. Routes static; fonts subset. Lighthouse-CI runs at deploy." },

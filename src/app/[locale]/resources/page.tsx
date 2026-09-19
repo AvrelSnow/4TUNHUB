@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Section } from "@/components/ui/Section";
+import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { ArrowLink, Chevron } from "@/components/ui/ArrowLink";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/ui/Reveal";
@@ -42,39 +44,38 @@ function ResourceCard({
   const href =
     resource.href && (resource.external ? resource.href : localizeHref(locale, resource.href));
 
-  return (
+  const body = (
     <Card
+      tone={available ? "raised" : "outline"}
       interactive={available}
-      className={`flex h-full flex-col ${available ? "" : "border-dashed"}`}
+      className="flex h-full flex-col"
     >
-      <div className="flex items-center justify-between gap-3">
-        <Badge variant="neutral">{t.kinds[resource.kind]}</Badge>
+      <div className="flex flex-wrap items-center gap-2">
         <Badge variant={available ? "amber" : "outline"}>
           {available ? t.availableBadge : t.plannedBadge}
         </Badge>
+        <span className="text-2xs text-muted">{t.kinds[resource.kind]}</span>
       </div>
-      <h3 className="mt-4 text-lg font-semibold text-foreground">{copy.title}</h3>
-      <p className="mt-2 flex-1 text-sm leading-6 text-muted">{copy.desc}</p>
+      <h3 className="mt-6 text-headline text-foreground">{copy.title}</h3>
+      <p className="mt-3 flex-1 text-muted">{copy.desc}</p>
       {available && href && (
-        resource.external ? (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-sweep mt-5 inline-block text-sm font-medium text-accent"
-          >
-            {t.open} →
-          </a>
-        ) : (
-          <Link
-            href={href}
-            className="link-sweep mt-5 inline-block text-sm font-medium text-accent"
-          >
-            {t.open} →
-          </Link>
-        )
+        <span className="mt-6 inline-flex items-center gap-1 font-medium text-accent">
+          {t.open}
+          <Chevron external={resource.external} />
+        </span>
       )}
     </Card>
+  );
+
+  if (!available || !href) return body;
+  return resource.external ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="group block h-full">
+      {body}
+    </a>
+  ) : (
+    <Link href={href} className="group block h-full">
+      {body}
+    </Link>
   );
 }
 
@@ -86,38 +87,22 @@ export default async function ResourcesPage({ params }: Params) {
 
   return (
     <>
-      {/* 1 · HERO */}
-      <Section field="draft" className="pb-14 pt-16 sm:pt-20">
-        <Reveal>
-          <p className="eyebrow">{t.eyebrow}</p>
-          <h1 className="mt-5 max-w-3xl text-display text-foreground">
-            {t.title}
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">{t.subtitle}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+      <PageHero
+        eyebrow={t.eyebrow}
+        title={t.title}
+        intro={t.subtitle}
+        actions={
+          <>
             <Button as="a" href={MEDIUM_URL} target="_blank" rel="noopener noreferrer" size="lg">
               {t.primaryCta}
             </Button>
-            <Button
-              as="a"
-              href={localizeHref(locale, "/community")}
-              size="lg"
-              variant="secondary"
-            >
-              {t.secondaryCta}
-            </Button>
-          </div>
-        </Reveal>
-      </Section>
+            <ArrowLink href={localizeHref(locale, "/community")}>{t.secondaryCta}</ArrowLink>
+          </>
+        }
+      />
 
-      {/* 2 · AVAILABLE NOW */}
-      <Section
-        eyebrow={t.availableEyebrow}
-        title={t.availableTitle}
-        intro={t.availableIntro}
-        className="pt-0"
-      >
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <Section tone="surface" eyebrow={t.availableEyebrow} title={t.availableTitle} intro={t.availableIntro}>
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {availableResources.map((resource, i) => (
             <Reveal key={resource.key} delay={i * 70}>
               <ResourceCard resource={resource} locale={locale} t={t} />
@@ -126,36 +111,29 @@ export default async function ResourcesPage({ params }: Params) {
         </div>
       </Section>
 
-      {/* 3 · ON THE WAY */}
-      <section className="border-y border-border bg-surface">
-        <Container className="py-20 sm:py-24">
-          <p className="eyebrow">{t.plannedEyebrow}</p>
-          <h2 className="mt-5 max-w-2xl text-display-sm text-foreground">
-            {t.plannedTitle}
-          </h2>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">{t.plannedIntro}</p>
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {plannedResources.map((resource, i) => (
-              <Reveal key={resource.key} delay={i * 70}>
-                <ResourceCard resource={resource} locale={locale} t={t} />
-              </Reveal>
-            ))}
-          </div>
+      <Section eyebrow={t.plannedEyebrow} title={t.plannedTitle} intro={t.plannedIntro}>
+        <div className="mt-14 grid gap-5 sm:grid-cols-3">
+          {plannedResources.map((resource, i) => (
+            <Reveal key={resource.key} delay={i * 70}>
+              <ResourceCard resource={resource} locale={locale} t={t} />
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      <section className="border-t border-border py-24 sm:py-32">
+        <Container size="narrow">
+          <Reveal className="text-center">
+            <p className="eyebrow">{t.commerceNote.eyebrow}</p>
+            <h2 className="mt-3 text-display-sm text-foreground">{t.commerceNote.title}</h2>
+            <p className="mt-6 text-lead text-muted">{t.commerceNote.body}</p>
+            <ArrowLink href={localizeHref(locale, "/store")} className="mt-7">
+              {t.commerceNote.cta}
+            </ArrowLink>
+          </Reveal>
         </Container>
       </section>
 
-      {/* 4 · COMMERCE NOTE */}
-      <Section eyebrow={t.commerceNote.eyebrow} title={t.commerceNote.title}>
-        <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">{t.commerceNote.body}</p>
-        <Link
-          href={localizeHref(locale, "/store")}
-          className="link-sweep mt-5 inline-block text-sm font-medium text-accent"
-        >
-          {t.commerceNote.cta} →
-        </Link>
-      </Section>
-
-      {/* 5 · CTA */}
       <CtaPanel
         title={t.cta.title}
         subtitle={t.cta.subtitle}

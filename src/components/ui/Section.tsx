@@ -1,79 +1,104 @@
 import { cn } from "@/lib/cn";
 import { Container } from "./Container";
-import { Field, type FieldVariant } from "../Field";
-
-export type { FieldVariant };
 
 /**
- * Three rhythms, and only three (art-direction §"rhythm"). A page must not
- * use the same one three times running — uniform vertical padding is the
- * single strongest signal of a template.
+ * Vertical spacing. Generous by default: the space between sections is
+ * what lets each one be read on its own.
  */
 export type Rhythm = "compressed" | "normal" | "cinematic";
 
 const rhythms: Record<Rhythm, string> = {
-  compressed: "py-12 sm:py-16",
-  normal: "py-20 sm:py-28",
-  cinematic: "py-32 sm:py-44",
+  compressed: "py-14 sm:py-20",
+  normal: "py-20 sm:py-28 lg:py-32",
+  cinematic: "py-24 sm:py-36 lg:py-44",
+};
+
+/** `surface` is the soft grey band that separates one idea from the next. */
+export type Tone = "default" | "surface";
+
+const tones: Record<Tone, string> = {
+  default: "bg-background",
+  surface: "bg-surface",
 };
 
 /**
  * Section shell — the repeatable vertical unit of the whole site.
- * eyebrow = mono readout label, title = section heading, intro = lead text.
- *
- * The header carries the instrument treatment: the eyebrow sits on a ticked
- * hairline that runs to the edge of the measure, so a section reads as a
- * labelled panel on a drawing rather than as a text block.
- *
- * `field` runs a live simulation behind the section — each page gets the
- * phenomenon it is actually about (see fields/renderers.ts). When one is
- * present the header automatically takes `.copy-scrim`, so text contrast
- * over the field is guaranteed by the primitive rather than remembered by
- * whoever writes the next page.
+ * eyebrow = the section's name, title = its claim, intro = one paragraph.
  */
 export function Section({
   id,
   eyebrow,
   title,
   intro,
-  field,
+  align = "left",
+  tone = "default",
   rhythm = "normal",
   className,
   containerClassName,
+  headerClassName,
   children,
 }: {
   id?: string;
   eyebrow?: string;
   title?: string;
   intro?: string;
-  field?: FieldVariant;
+  align?: "left" | "center";
+  tone?: Tone;
   rhythm?: Rhythm;
   className?: string;
   containerClassName?: string;
+  headerClassName?: string;
   children?: React.ReactNode;
 }) {
   const hasHeader = Boolean(eyebrow || title || intro);
+  const centered = align === "center";
   return (
-    <section
-      id={id}
-      className={cn(rhythms[rhythm], field && "relative overflow-hidden", className)}
-    >
-      {field && <Field variant={field} />}
-      <Container className={cn(field && "relative", containerClassName)}>
+    <section id={id} className={cn(rhythms[rhythm], tones[tone], className)}>
+      <Container className={containerClassName}>
         {hasHeader && (
-          <div className={cn("max-w-2xl", field && "copy-scrim")}>
-            {eyebrow && (
-              <div className="flex items-center gap-3">
-                <p className="eyebrow shrink-0">{eyebrow}</p>
-                <span aria-hidden="true" className="h-px flex-1 bg-border" />
-              </div>
-            )}
-            {title && <h2 className="mt-5 text-display-sm text-foreground">{title}</h2>}
-            {intro && <p className="mt-5 text-lg leading-8 text-muted">{intro}</p>}
-          </div>
+          <SectionHeader
+            eyebrow={eyebrow}
+            title={title}
+            intro={intro}
+            centered={centered}
+            className={headerClassName}
+          />
         )}
         {children}
       </Container>
     </section>
+  );
+}
+
+export function SectionHeader({
+  eyebrow,
+  title,
+  intro,
+  centered = false,
+  className,
+}: {
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+  centered?: boolean;
+  className?: string;
+}) {
+  return (
+    <div className={cn(centered ? "mx-auto max-w-3xl text-center" : "max-w-3xl", className)}>
+      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+      {title && (
+        <h2 className={cn("text-display-sm text-foreground", eyebrow && "mt-3")}>{title}</h2>
+      )}
+      {intro && (
+        <p
+          className={cn(
+            "mt-5 text-lead text-muted",
+            centered ? "mx-auto max-w-2xl" : "max-w-2xl",
+          )}
+        >
+          {intro}
+        </p>
+      )}
+    </div>
   );
 }

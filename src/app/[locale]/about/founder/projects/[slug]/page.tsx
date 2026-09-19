@@ -1,34 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import { ProjectVisual } from "@/components/ProjectVisual";
+import { Chevron } from "@/components/ui/ArrowLink";
+import { CtaPanel } from "@/components/ui/CtaPanel";
+import { Reveal } from "@/components/ui/Reveal";
 import { Zoomable } from "@/components/Zoomable";
 import { projects, getProject, projectDetailPath } from "@/lib/projects";
-import type { ProjectCategory } from "@/lib/projects";
-import type { FieldVariant } from "@/components/ui/Section";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
 import { SITE_URL } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string; slug: string }> };
-
-/**
- * Each case study runs the phenomenon of its own discipline behind it, so
- * no two project pages share a background. A shredder page grows biomass;
- * a braking-analysis page carries load through a truss.
- */
-const CATEGORY_FIELD: Record<ProjectCategory, FieldVariant> = {
-  simulation: "stress",
-  sustainability: "growth",
-  mechanical: "kinematic",
-  electronics: "signal",
-  "user-centered": "wave",
-};
 
 /** One static page per project (× each locale). */
 export function generateStaticParams() {
@@ -61,8 +45,6 @@ export default async function ProjectDetail({ params }: Params) {
   const copy = t.items[slug];
   if (!copy) notFound();
 
-  const index = projects.findIndex((p) => p.slug === slug);
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -75,13 +57,13 @@ export default async function ProjectDetail({ params }: Params) {
     keywords: project.tools.join(", "),
   };
 
-  const blocks = [
+  const chapters = [
     { label: t.detail.problem, body: copy.problem },
     { label: t.detail.approach, body: copy.approach },
     { label: t.detail.results, body: copy.results },
   ];
 
-  const gallery = t.galleries[slug] ?? [];
+  const captions = t.galleries[slug] ?? [];
 
   return (
     <>
@@ -90,154 +72,119 @@ export default async function ProjectDetail({ params }: Params) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Section field={CATEGORY_FIELD[project.category]} className="pb-12 pt-16">
-        <Link
-          href={localizeHref(locale, "/about/founder")}
-          className="link-sweep text-sm font-medium text-accent"
-        >
-          ← {dict.founderPage.sections.portfolio}
-        </Link>
+      {/* HEADER */}
+      <section className="pt-10 sm:pt-14">
+        <Container>
+          <Link
+            href={localizeHref(locale, "/about/founder")}
+            className="inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
+          >
+            <span className="rotate-180">
+              <Chevron />
+            </span>
+            {dict.founderPage.sections.portfolio}
+          </Link>
 
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-          <div>
-            <Badge variant="amber">{t.categories[project.category]}</Badge>
-            <h1 className="mt-5 max-w-2xl text-display text-foreground">
-              {copy.title}
-            </h1>
-            <p className="mt-5 max-w-xl text-lg leading-8 text-muted">{copy.outcome}</p>
+          <div className="mx-auto mt-12 max-w-4xl text-center">
+            <p className="eyebrow">
+              {t.categories[project.category]} · <span className="figure">{project.year}</span>
+            </p>
+            <h1 className="mt-3 animate-fade-up text-display text-foreground">{copy.title}</h1>
+            <p className="mx-auto mt-6 max-w-2xl animate-fade-up text-lead text-muted [animation-delay:80ms]">
+              {copy.outcome}
+            </p>
           </div>
 
-          <div>
-            {project.image ? (
-              <>
-                <Zoomable
-                  src={project.image}
-                  alt={copy.title}
-                  label={t.detail.zoom}
-                  closeLabel={t.detail.close}
-                  className="aspect-[4/3] w-full rounded-xl border border-border"
-                />
-                {project.imageIllustrative && (
-                  <p className="mt-2 text-3xs text-muted">{t.detail.illustrativeNote}</p>
-                )}
-              </>
-            ) : (
-              <>
-                <ProjectVisual
-                  category={project.category}
-                  index={index}
-                  className="aspect-[4/3] w-full"
-                />
-                <p className="mt-2 text-3xs text-muted">{t.detail.visualNote}</p>
-              </>
-            )}
+          {project.image && (
+            <figure className="mt-14 animate-fade-up [animation-delay:160ms] sm:mt-16">
+              <Zoomable
+                src={project.image}
+                alt={copy.title}
+                label={t.detail.zoom}
+                closeLabel={t.detail.close}
+                className="aspect-[4/3] rounded-3xl sm:aspect-[16/9]"
+              />
+              {project.imageIllustrative && (
+                <figcaption className="readout mt-3 text-center">{t.detail.illustrativeNote}</figcaption>
+              )}
+            </figure>
+          )}
 
-            <dl className="mt-6 divide-y divide-border border-t border-border">
-              <div className="flex justify-between gap-4 py-3">
-                <dt className="font-mono text-3xs uppercase tracking-wider text-muted">
-                  {t.detail.year}
-                </dt>
-                <dd className="text-sm text-foreground">{project.year}</dd>
-              </div>
-              <div className="flex justify-between gap-4 py-3">
-                <dt className="font-mono text-3xs uppercase tracking-wider text-muted">
-                  {t.detail.category}
-                </dt>
-                <dd className="text-sm text-foreground">{t.categories[project.category]}</dd>
-              </div>
-              <div className="py-3">
-                <dt className="font-mono text-3xs uppercase tracking-wider text-muted">
-                  {t.detail.tools}
-                </dt>
-                <dd className="mt-2 flex flex-wrap gap-1.5">
-                  {project.tools.map((tool) => (
-                    <span
-                      key={tool}
-                      className="rounded-md bg-surface-2 px-2 py-0.5 text-xs text-muted"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-      </Section>
-
-      {/* Problem → Approach → Result */}
-      <section className="border-t border-border bg-surface/50">
-        <Container className="py-16">
-          <div className="grid gap-10 lg:grid-cols-3">
-            {blocks.map((b, i) => (
-              <div key={b.label}>
-                <div className="flex items-baseline gap-3">
-                  <span className="font-mono text-xs font-bold text-accent">
-                    {String(i + 1).padStart(2, "0")}
+          {/* Facts */}
+          <dl className="mt-12 grid gap-8 border-y border-border py-8 sm:grid-cols-[auto_auto_1fr] sm:gap-16">
+            <div>
+              <dt className="text-sm text-muted">{t.detail.year}</dt>
+              <dd className="figure mt-1 font-medium text-foreground">{project.year}</dd>
+            </div>
+            <div>
+              <dt className="text-sm text-muted">{t.detail.category}</dt>
+              <dd className="mt-1 font-medium text-foreground">{t.categories[project.category]}</dd>
+            </div>
+            <div>
+              <dt className="text-sm text-muted">{t.detail.tools}</dt>
+              <dd className="mt-2 flex flex-wrap gap-2">
+                {project.tools.map((tool) => (
+                  <span key={tool} className="rounded-full bg-surface px-3 py-1 text-sm text-foreground">
+                    {tool}
                   </span>
-                  <h2 className="text-lg font-semibold text-foreground">{b.label}</h2>
-                </div>
-                <p className="mt-3 text-base leading-7 text-muted">{b.body}</p>
-              </div>
-            ))}
-          </div>
+                ))}
+              </dd>
+            </div>
+          </dl>
         </Container>
       </section>
 
-      {/* Gallery — every real image for the project, each zoomable */}
-      {project.gallery && project.gallery.length > 0 && (
-        <Container className="py-16">
-          <p className="eyebrow">{t.galleryTitle}</p>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {project.gallery.map((src, i) => (
-              <figure
-                key={src}
-                className="overflow-hidden rounded-xl border border-border"
-              >
-                <Zoomable
-                  src={src}
-                  alt={gallery[i] ?? copy.title}
-                  label={t.detail.zoom}
-                  closeLabel={t.detail.close}
-                  fit="contain"
-                  className="aspect-[4/3] w-full"
-                />
-                {gallery[i] && (
-                  <figcaption className="border-t border-border bg-background px-4 py-3 text-sm text-muted">
-                    {gallery[i]}
-                  </figcaption>
-                )}
-              </figure>
-            ))}
-          </div>
+      {/* THE STORY — problem, approach, result, read top to bottom. */}
+      <section className="py-24 sm:py-32">
+        <Container size="narrow" className="space-y-16 sm:space-y-20">
+          {chapters.map((c) => (
+            <Reveal key={c.label}>
+              <h2 className="text-display-sm text-foreground">{c.label}</h2>
+              <p className="mt-6 text-lead text-muted">{c.body}</p>
+            </Reveal>
+          ))}
         </Container>
+      </section>
+
+      {/* DOCUMENTATION — every real image, each zoomable. */}
+      {project.gallery && project.gallery.length > 0 && (
+        <section className="bg-surface py-24 sm:py-32">
+          <Container>
+            <h2 className="text-display-sm text-foreground">{t.galleryTitle}</h2>
+            <div className="mt-12 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+              {project.gallery.map((src, i) => (
+                <Reveal key={src} delay={(i % 3) * 60}>
+                  <figure>
+                    <Zoomable
+                      src={src}
+                      alt={captions[i] ?? copy.title}
+                      label={t.detail.zoom}
+                      closeLabel={t.detail.close}
+                      fit="contain"
+                      className="aspect-[4/3] rounded-2xl"
+                    />
+                    {captions[i] && (
+                      <figcaption className="mt-3 text-sm leading-6 text-muted">{captions[i]}</figcaption>
+                    )}
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </Container>
+        </section>
       )}
 
-      <Container className="py-16">
-        <div className="ticks relative rounded-2xl border border-border bg-surface p-8 text-center sm:p-10">
-          <h2 className="text-2xl font-semibold tracking-tight text-foreground">
-            {t.detail.ctaTitle}
-          </h2>
-          <p className="mx-auto mt-3 max-w-lg text-muted">{t.detail.ctaBody}</p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
-              {t.detail.cta}
-            </Button>
-            {project.portfolioUrl && (
-              <Button
-                as="a"
-                href={project.portfolioUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                size="lg"
-                variant="secondary"
-              >
-                {t.detail.portfolio} →
-              </Button>
-            )}
-          </div>
-        </div>
-      </Container>
+      <CtaPanel
+        title={t.detail.ctaTitle}
+        subtitle={t.detail.ctaBody}
+        primary={{ label: t.detail.cta, href: localizeHref(locale, "/contact") }}
+        secondary={
+          project.portfolioUrl
+            ? { label: t.detail.portfolio, href: project.portfolioUrl, external: true }
+            : undefined
+        }
+        className={project.gallery && project.gallery.length > 0 ? "border-t border-border" : undefined}
+      />
     </>
   );
 }

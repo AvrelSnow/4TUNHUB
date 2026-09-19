@@ -16,10 +16,10 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
 
 /**
- * Footer — a trust & credibility hub (R5), locale-aware.
- * Trust content is REAL-ONLY: founder affiliations attributed to the
- * founder; partner/award/membership rows render only when populated.
- * No primary CTA here (it lives in the hero + nav — R2).
+ * Footer — small type on the grey band: the map of the site, the
+ * founder's affiliations, and the fine print.
+ * Trust content is REAL-ONLY: affiliations are attributed to the founder,
+ * and partner/award/membership rows render only when populated.
  */
 
 const groups: { titleKey: "ecosystem" | "company" | "resources"; keys: string[] }[] = [
@@ -32,11 +32,11 @@ function CredibilityRow({ title, items }: { title: string; items: Affiliation[] 
   if (items.length === 0) return null;
   return (
     <div>
-      <p className="eyebrow">{title}</p>
+      <p className="font-semibold text-foreground">{title}</p>
       <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
         {items.map((it) => (
-          <li key={it.name} className="text-sm text-muted">
-            <span className="font-medium text-foreground">{it.name}</span>
+          <li key={it.name}>
+            <span className="text-foreground">{it.name}</span>
             {it.role ? ` · ${it.role}` : ""}
           </li>
         ))}
@@ -47,35 +47,68 @@ function CredibilityRow({ title, items }: { title: string; items: Affiliation[] 
 
 export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const byKey = new Map(flattenTree().map((n) => [n.key, n]));
+  const visibleGroups = groups
+    .map((group) => ({ ...group, keys: group.keys.filter((k) => !byKey.get(k)?.hidden) }))
+    .filter((group) => group.keys.length > 0);
 
   return (
-    <footer className="mt-auto border-t border-border bg-surface">
-      {/* Trust band */}
-      <Container className="border-b border-border py-12">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+    <footer className="mt-auto border-t border-border bg-surface text-2xs text-muted">
+      <Container size="wide" className="pt-16 pb-10">
+        <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
+          <div>
+            <Logo href={localizeHref(locale, "/")} size="sm" />
+            <p className="mt-5 max-w-xs text-sm leading-6">{dict.footer.blurb}</p>
+            <div className="mt-5 space-y-1 text-sm">
+              <p>{SITE_LOCATION}</p>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="text-foreground hover:underline hover:underline-offset-4"
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-x-16 gap-y-10 sm:grid-cols-3 lg:flex lg:gap-24">
+            {visibleGroups.map((group) => (
+              <nav key={group.titleKey} aria-label={dict.footer.groups[group.titleKey]}>
+                <p className="font-semibold text-foreground">{dict.footer.groups[group.titleKey]}</p>
+                <ul className="mt-4 space-y-3">
+                  {group.keys.map((key) => {
+                    const node = byKey.get(key);
+                    if (!node) return null;
+                    return (
+                      <li key={key}>
+                        <Link
+                          href={localizeHref(locale, node.href)}
+                          className="text-sm transition-colors hover:text-foreground"
+                        >
+                          {dict.routes[key] ?? node.label}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
+            ))}
+          </div>
+        </div>
+
+        {/* The founder's record, stated as his, never as the Hub's partners. */}
+        <div className="mt-14 flex flex-col gap-8 border-t border-border pt-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-md">
-            <p className="eyebrow">{dict.footer.trustEyebrow}</p>
-            <p className="mt-3 text-lg leading-8 text-foreground">
-              {dict.footer.founderLine}
-            </p>
+            <p className="font-semibold text-foreground">{dict.footer.trustEyebrow}</p>
+            <p className="mt-2 text-sm leading-6">{dict.footer.founderLine}</p>
             <Link
               href={localizeHref(locale, "/about/founder")}
-              className="link-sweep mt-3 inline-block text-sm font-medium text-accent"
+              className="mt-2 inline-block text-sm text-accent hover:underline hover:underline-offset-4"
             >
               {dict.footer.meetFounder}
             </Link>
           </div>
-
-          <div className="lg:max-w-md lg:text-right">
-            <p className="eyebrow lg:text-right">{dict.footer.affiliations}</p>
-            {/* One treatment for six marks that share nothing — a wide
-                wordmark, a square emblem, and (see note in
-                docs/art-direction.md) one asset that is a photograph
-                rather than a logo. They are drawn for white grounds and
-                break under a knock-out, so what gets made uniform is the
-                plate: identical size for every mark, recessed against the
-                ground, full strength on hover. */}
-            <ul className="mt-4 flex flex-wrap items-center gap-2.5 lg:justify-end">
+          <div className="lg:text-right">
+            <p className="font-semibold text-foreground">{dict.footer.affiliations}</p>
+            <ul className="mt-3 flex flex-wrap items-center gap-2 lg:justify-end">
               {founderAffiliations.map((a) => (
                 <li key={a.name}>
                   <span className="chip-logo">
@@ -85,74 +118,24 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 </li>
               ))}
             </ul>
-            <p className="mt-3 text-xs text-muted lg:text-right">
-              {dict.footer.affiliationsNote}
-            </p>
+            <p className="mt-3">{dict.footer.affiliationsNote}</p>
           </div>
         </div>
 
         {(partners.length > 0 || awards.length > 0 || memberships.length > 0) && (
-          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
             <CredibilityRow title="Partners" items={partners} />
             <CredibilityRow title="Awards" items={awards} />
             <CredibilityRow title="Memberships" items={memberships} />
           </div>
         )}
-      </Container>
 
-      {/* Navigation + brand */}
-      <Container className="py-16">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-[2fr_1fr_1fr]">
-          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
-            <Logo href={localizeHref(locale, "/")} />
-            <p className="mt-5 max-w-xs text-sm leading-6 text-muted">
-              {dict.footer.blurb}
-            </p>
-            <div className="mt-6 space-y-1.5 text-sm">
-              <p className="text-muted">{SITE_LOCATION}</p>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="link-sweep inline-block font-medium text-foreground"
-              >
-                {CONTACT_EMAIL}
-              </a>
-            </div>
-          </div>
-
-          {groups
-            .map((group) => ({ ...group, keys: group.keys.filter((k) => !byKey.get(k)?.hidden) }))
-            .filter((group) => group.keys.length > 0)
-            .map((group) => (
-            <nav key={group.titleKey} aria-label={dict.footer.groups[group.titleKey]}>
-              <p className="eyebrow">{dict.footer.groups[group.titleKey]}</p>
-              <ul className="mt-5 space-y-3">
-                {group.keys.map((key) => {
-                  const node = byKey.get(key);
-                  if (!node) return null;
-                  return (
-                    <li key={key}>
-                      <Link
-                        href={localizeHref(locale, node.href)}
-                        className="link-sweep text-sm text-muted transition-colors hover:text-foreground"
-                      >
-                        {dict.routes[key] ?? node.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-          ))}
-        </div>
-
-        <div className="mt-16 flex flex-col gap-3 border-t border-border pt-8 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} 4TUN Hub. {dict.footer.rights}</p>
-          <div className="flex items-center gap-4">
-            <p className="font-mono uppercase tracking-widest">{dict.footer.motto}</p>
-            {/* The ground is a setting, so it sits with the other fine print.
-                Night is the default; this is where Day and Auto are chosen. */}
-            <ThemeControl strings={dict.theme} />
-          </div>
+        <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getFullYear()} 4TUN Hub. {dict.footer.rights}
+            <span className="hidden md:inline"> · {dict.footer.motto}</span>
+          </p>
+          <ThemeControl strings={dict.theme} />
         </div>
       </Container>
     </footer>

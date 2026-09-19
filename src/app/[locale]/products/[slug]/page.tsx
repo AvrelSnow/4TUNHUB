@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Section } from "@/components/ui/Section";
+import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { Chevron } from "@/components/ui/ArrowLink";
 import { Badge } from "@/components/ui/Badge";
 import { products } from "@/lib/products";
 import { isLocale } from "@/lib/i18n/config";
@@ -44,48 +45,44 @@ export default async function ProductDetail({ params }: Params) {
   if (!copy) notFound();
 
   return (
-    <Section field="signal" className="flex flex-1 flex-col py-20 sm:py-24">
-      <Link
-        href={localizeHref(locale, "/products")}
-        className="link-sweep text-sm font-medium text-accent"
-      >
-        ← {t.detail.backToProducts}
-      </Link>
+    <section className="flex-1 pt-10 pb-24 sm:pt-14 sm:pb-32">
+      <Container>
+        <Link
+          href={localizeHref(locale, "/products")}
+          className="inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
+        >
+          <span className="rotate-180">
+            <Chevron />
+          </span>
+          {t.detail.backToProducts}
+        </Link>
 
-      <Badge
-        variant={product.status === "in-development" ? "amber" : "neutral"}
-        className="mt-8 w-fit"
-      >
-        {t.detail.status}: {t.statuses[product.status]}
-      </Badge>
-
-      <h1 className="mt-5 max-w-3xl text-display text-foreground">
-        {copy.title}
-      </h1>
-      <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">{copy.desc}</p>
-
-      <div className="mt-8 grid max-w-3xl gap-6 sm:grid-cols-2">
-        <div className="ticks relative rounded-2xl border border-border bg-surface p-6">
-          <p className="font-mono text-3xs uppercase tracking-wider text-muted">
-            {t.problemLabel}
-          </p>
-          <p className="mt-2 text-sm leading-6 text-foreground">{copy.problem}</p>
+        <div className="mx-auto mt-12 max-w-3xl text-center">
+          <Badge variant={product.status === "in-development" ? "amber" : "outline"}>
+            {t.detail.status}: {t.statuses[product.status]}
+          </Badge>
+          <h1 className="mt-6 animate-fade-up text-display text-foreground">{copy.title}</h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lead text-muted">{copy.desc}</p>
         </div>
-        <div className="ticks relative rounded-2xl border border-border bg-surface p-6">
-          <p className="font-mono text-3xs uppercase tracking-wider text-muted">
-            {t.whoLabel}
-          </p>
-          <p className="mt-2 text-sm leading-6 text-foreground">{copy.who}</p>
+
+        <div className="mx-auto mt-14 grid max-w-4xl gap-5 sm:grid-cols-2">
+          <div className="rounded-3xl bg-surface p-8">
+            <p className="text-sm font-semibold text-foreground">{t.problemLabel}</p>
+            <p className="mt-2 text-muted">{copy.problem}</p>
+          </div>
+          <div className="rounded-3xl bg-surface p-8">
+            <p className="text-sm font-semibold text-foreground">{t.whoLabel}</p>
+            <p className="mt-2 text-muted">{copy.who}</p>
+          </div>
         </div>
-      </div>
 
-      <p className="mt-8 max-w-xl text-base leading-7 text-muted">{t.detail.body}</p>
-
-      <div className="mt-6">
-        <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
-          {t.detail.waitlist}
-        </Button>
-      </div>
-    </Section>
+        <div className="mx-auto mt-14 max-w-xl text-center">
+          <p className="text-muted">{t.detail.body}</p>
+          <Button as="a" href={localizeHref(locale, "/contact")} size="lg" className="mt-8">
+            {t.detail.waitlist}
+          </Button>
+        </div>
+      </Container>
+    </section>
   );
 }

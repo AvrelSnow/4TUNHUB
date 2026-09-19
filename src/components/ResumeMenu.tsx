@@ -40,7 +40,7 @@ export function ResumeMenu({ label, items }: { label: string; items: Item[] }) {
         aria-haspopup="true"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-border bg-background px-5 text-sm font-medium text-foreground transition-all duration-200 hover:border-brand-500 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className="inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-surface px-7 text-base font-medium tracking-tight text-foreground transition-colors duration-200 hover:bg-border"
       >
         {label}
         <svg viewBox="0 0 12 12" className={`h-3 w-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
@@ -49,7 +49,7 @@ export function ResumeMenu({ label, items }: { label: string; items: Item[] }) {
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full z-10 mt-2 w-60 overflow-hidden rounded-xl border border-border bg-background p-1.5 shadow-e2">
+        <div className="absolute left-0 top-full z-10 mt-2 w-64 animate-fade-in overflow-hidden rounded-2xl border border-border bg-surface-2 p-1.5 shadow-e2">
           {items.map((item) => (
             <a
               key={item.key}
@@ -57,7 +57,7 @@ export function ResumeMenu({ label, items }: { label: string; items: Item[] }) {
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noopener noreferrer" : undefined}
               {...(item.external ? {} : { download: "" })}
-              className="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-sm text-foreground transition-colors hover:bg-surface"
+              className="flex items-center justify-between gap-3 rounded-xl px-3.5 py-3 text-sm text-foreground transition-colors hover:bg-surface"
             >
               <span className="font-medium">{item.label}</span>
               <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-accent" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

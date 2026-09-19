@@ -1,48 +1,29 @@
 /**
  * ============================================================
- * THEME — night is home, day is the sheet.
+ * THEME — light by day, dark by night.
  * ============================================================
- * The site runs two grounds. Night is the default for everyone:
- * it is the art direction's home and the stronger rendering of the
- * brand. The day sheet is a choice, made from the footer, and so is
- * `auto`, which hands the decision to the visitor's clock (the sheet
- * between DAY_START and DAY_END local time). The palettes, and the
- * argument for having two at all, live in src/app/globals.css.
- *
- * WHY NIGHT BY DEFAULT, NOT THE CLOCK (changed 2026-09-18)
- * The clock used to be the default. That meant every client browsing
- * during office hours in Cameroon, the people the site most needs to
- * convince, saw the day sheet: the weaker ground, where the live
- * fields barely show and the long section rhythms read as empty
- * space. The clock is still offered. It is just no longer imposed.
+ * Every visitor starts on `auto`: the light page from DAY_START to
+ * DAY_END on their own clock, the dark page the rest of the time.
+ * Anyone can pin Light or Dark from the footer and is then obeyed
+ * permanently.
  *
  * WHY THE CLOCK AND NOT `prefers-color-scheme`
- * The OS preference is a stated preference and it wins whenever the
- * visitor states one here — that is what `ThemePreference` is for.
- * But the majority of people never touch that setting, so on their
- * machines it reports a default rather than a wish, and a site that
- * obeys it is obeying a factory setting. The clock at least tracks
- * something real about the room they are in.
+ * Most people never touch the OS setting, so it reports a factory
+ * default rather than a wish. The clock tracks something real about
+ * the room the visitor is reading in.
  *
  * WHY THESE HOURS
- * 06:00–18:00. Not a guess and not a US-office default: 4TUN Hub's
- * audience is in Cameroon, three degrees off the equator, where
- * sunrise sits near 06:00 and sunset near 18:20 in every month of
- * the year. The boundary is genuinely accurate for the people the
- * site is for, and merely conventional for everyone else — which is
- * the right way round.
+ * 06:00–18:00. The audience is in Cameroon, near the equator, where
+ * sunrise sits near 06:00 and sunset near 18:20 all year.
  *
- * WHY IT IS NOT COMPUTED ON THE SERVER
- * Every page is statically rendered per locale, and a static page
- * cannot know a visitor's local hour. So no markup ever depends on
- * the theme: the resolver only sets an attribute on <html>, before
- * first paint, and CSS does the rest. Nothing to hydrate, nothing to
- * mismatch, and no flash of the wrong ground.
+ * WHY IT IS DECIDED IN THE BROWSER
+ * Pages are static per locale and cannot know a visitor's local hour.
+ * A blocking inline script sets `data-theme` on <html> before first
+ * paint, and CSS does the rest. No markup depends on the theme, so
+ * nothing hydrates differently and nothing flashes.
  *
- * NIGHT IS THE FALLBACK IN EVERY FAILURE MODE — no JavaScript,
- * storage blocked, an exception thrown. That is deliberate: dark is
- * the art direction's home, so the degraded state is the designed
- * state rather than a compromise.
+ * If the script cannot run, the page stays light: the base tokens in
+ * globals.css are the day values.
  */
 
 /** What the visitor asked for. `auto` hands the decision to the clock. */
@@ -57,17 +38,17 @@ export const DAY_END_HOUR = 18;
 /** localStorage key. Namespaced so it cannot collide on a shared origin. */
 export const THEME_STORAGE_KEY = "4tun.theme";
 
-/** The ground that renders when nothing else can be determined. */
-export const FALLBACK_THEME: Theme = "dark";
+/** The page that renders when nothing else can be determined. */
+export const FALLBACK_THEME: Theme = "light";
 
 /** What a visitor who has never chosen gets. */
-export const DEFAULT_PREFERENCE: ThemePreference = "dark";
+export const DEFAULT_PREFERENCE: ThemePreference = "auto";
 
-/** Cycle order of the control: from the default, one press reaches Day. */
+/** Order of the segmented control in the footer. */
 export const THEME_PREFERENCES: readonly ThemePreference[] = [
-  "dark",
-  "light",
   "auto",
+  "light",
+  "dark",
 ] as const;
 
 export function isThemePreference(v: unknown): v is ThemePreference {
@@ -79,7 +60,7 @@ export function themeForHour(hour: number): Theme {
   return hour >= DAY_START_HOUR && hour < DAY_END_HOUR ? "light" : "dark";
 }
 
-/** The ground to render, given a stated preference and a moment. */
+/** The page to render, given a stated preference and a moment. */
 export function resolveTheme(
   preference: ThemePreference,
   now: Date = new Date(),
@@ -88,13 +69,9 @@ export function resolveTheme(
 }
 
 /**
- * Milliseconds until the clock next changes its verdict. Used to flip the
- * ground under a reader who is still on the page at 18:00 — the alternative
- * is a site that is only correct at the moment it loaded.
- *
- * Computed from a real Date rather than by arithmetic on the current time,
- * so it stays right across a DST shift, where "12 hours from now" and
- * "06:00 tomorrow" are not the same instant.
+ * Milliseconds until the clock next changes its verdict, so a reader still
+ * on the page at 18:00 sees it turn. Built from a real Date rather than by
+ * arithmetic, so it stays right across a DST shift.
  */
 export function msUntilNextSwitch(now: Date = new Date()): number {
   const hour = now.getHours();
@@ -113,19 +90,12 @@ export function msUntilNextSwitch(now: Date = new Date()): number {
 }
 
 /**
- * The pre-paint resolver, as source. This runs as a blocking inline script
- * in <head> — before the stylesheet paints anything and long before React
- * arrives — because a theme applied after first paint is a flash of the
- * wrong ground, which is worse than having no day theme at all.
- *
- * It is built from the constants above so the hours cannot drift out of
- * step with the rest of the module, and it is deliberately tiny and
- * dependency-free: it must survive a failed bundle. Everything it touches
- * is in a try/catch, because reading localStorage throws outright in some
- * privacy modes, and the catch lands on night.
+ * The pre-paint resolver, as source. Runs as a blocking inline script in
+ * <head>, before the stylesheet paints. Built from the constants above so
+ * the hours cannot drift, dependency-free so it survives a failed bundle,
+ * and wrapped in try/catch because reading localStorage throws in some
+ * privacy modes.
  */
-export const themeResolverScript = `(function(){try{var p=localStorage.getItem(${JSON.stringify(
+export const themeResolverScript = `(function(){var r=document.documentElement;try{var p=localStorage.getItem(${JSON.stringify(
   THEME_STORAGE_KEY,
-)});if(p!=="light"&&p!=="dark"&&p!=="auto")p=${JSON.stringify(DEFAULT_PREFERENCE)};var t=p;if(p==="auto"){var h=new Date().getHours();t=(h>=${DAY_START_HOUR}&&h<${DAY_END_HOUR})?"light":"dark"}var r=document.documentElement;r.setAttribute("data-theme",t);r.style.colorScheme=t}catch(e){document.documentElement.setAttribute("data-theme",${JSON.stringify(
-  FALLBACK_THEME,
-)})}})()`;
+)});if(p!=="light"&&p!=="dark"&&p!=="auto")p=${JSON.stringify(DEFAULT_PREFERENCE)};var t=p;if(p==="auto"){var h=new Date().getHours();t=(h>=${DAY_START_HOUR}&&h<${DAY_END_HOUR})?"light":"dark"}r.setAttribute("data-theme",t);r.style.colorScheme=t}catch(e){var n=new Date().getHours();var f=(n>=${DAY_START_HOUR}&&n<${DAY_END_HOUR})?"light":"dark";r.setAttribute("data-theme",f);r.style.colorScheme=f}})()`;

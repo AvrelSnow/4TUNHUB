@@ -5,9 +5,8 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 
 /**
- * Navigation link with the signature amber sweep and active state.
- * aria-current="page" both announces the active page to screen readers
- * and pins the sweep underline via CSS.
+ * Navigation link. The current page reads in full foreground colour and is
+ * announced with aria-current="page"; the rest sit back in muted grey.
  */
 export function NavLink({
   href,
@@ -29,10 +28,8 @@ export function NavLink({
       aria-current={active ? "page" : undefined}
       onClick={onNavigate}
       className={cn(
-        // Mono micro-label: the nav is a row of instrument switches, not
-        // a sentence (art-direction §"type").
-        "link-sweep font-mono text-2xs font-medium uppercase tracking-[0.14em] transition-colors",
-        active ? "text-foreground" : "text-muted hover:text-foreground",
+        "text-sm transition-colors duration-200",
+        active ? "font-medium text-foreground" : "text-muted hover:text-foreground",
         className,
       )}
     >

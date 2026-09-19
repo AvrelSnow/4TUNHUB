@@ -12,17 +12,15 @@
     "perf": "next build && node scripts/check-bundle-size.mjs",
     "lint:tokens": "node scripts/check-design-tokens.mjs",
     "check": "eslint && node scripts/check-design-tokens.mjs && next build && node scripts/check-bundle-size.mjs",
-    "lhci": "lhci autorun"
+    "lhci": "npx --yes @lhci/cli autorun"
   },
   "dependencies": {
-    "@fontsource-variable/archivo": "^5.3.0",
-    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource-variable/instrument-sans": "^5.3.0",
     "next": "16.2.10",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@lhci/cli": "^0.15.1",
     "@next/bundle-analyzer": "^16.2.10",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

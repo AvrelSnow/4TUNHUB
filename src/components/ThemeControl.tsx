@@ -15,48 +15,25 @@ import { cn } from "@/lib/cn";
 
 /**
  * ============================================================
- * THEME CONTROL — the clock's override, and its clockwork.
+ * THEME CONTROL — Auto · Light · Dark, and the clockwork.
  * ============================================================
- * One component owns both halves on purpose. The scheduling has no
- * UI of its own and the button is useless without it, so splitting
- * them would only mean two client components and two mount costs
- * for one behaviour.
- *
- * WHY A MANUAL OVERRIDE EXISTS AT ALL
- * Night is a good default and a terrible law. Someone reading a
- * drawing in bright sunlight, or anyone who simply prefers a pale
- * sheet, must be able to say so and be obeyed. Day and Auto are
- * stated preferences, remembered permanently. The control lives in
- * the footer: it is a setting, not something every visitor needs in
- * the header on every page.
- *
- * WHAT IT DOES NOT DO
- * It does not decide the theme on first paint. That already happened,
- * in the blocking resolver from src/lib/theme.ts, before this file was
- * downloaded. On mount this component reconciles with what the
- * resolver did rather than re-deciding it, so there is never a second
- * flip a few hundred milliseconds into the page.
+ * First paint is already decided by the blocking resolver in
+ * src/lib/theme.ts. On mount this component reconciles with it rather
+ * than re-deciding, so there is never a second flip. While the
+ * preference is `auto` it wakes once at the next 06:00 or 18:00 and
+ * turns the page, instead of polling.
  */
 
-/** Apply a resolved ground. Kept in one place; called from three. */
+/** Apply a resolved theme. */
 function paint(theme: Theme) {
   const root = document.documentElement;
-
-  // Only write the attribute when it actually changes. Field.tsx watches
-  // `data-theme` and re-initialises its canvas on every mutation, and
-  // setting an attribute to the value it already holds still fires a
-  // MutationObserver — so a blind write would re-seed every simulation on
-  // the page each time the tab regained focus, for no change at all.
   if (root.getAttribute("data-theme") !== theme) {
     root.setAttribute("data-theme", theme);
     root.style.colorScheme = theme;
   }
 
-  // The meta is written unconditionally, because on first mount the
-  // attribute is ALREADY correct — the pre-paint resolver set it — while the
-  // meta still carries the server's night value. Skipping it here alongside
-  // the attribute would leave the browser chrome advertising a dark page
-  // behind a pale one, on exactly the load where it matters most.
+  // The server ships the day colour in <meta name="theme-color">; keep the
+  // browser chrome in step with the page.
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) {
     const ground = getComputedStyle(root).getPropertyValue("--color-background").trim();
@@ -67,33 +44,20 @@ function paint(theme: Theme) {
 }
 
 export type ThemeStrings = {
-  /** Accessible name of the control, e.g. "Theme". */
+  /** Accessible name of the control group, e.g. "Appearance". */
   label: string;
-  /** Visible mono readout + accessible name per preference. */
   options: Record<ThemePreference, string>;
-  /** Appended to the accessible name: "… Switch to {next}." */
-  next: string;
   /** Explains what `auto` follows, for the tooltip. */
   autoHint: string;
 };
 
 /**
- * The stated preference lives in localStorage, not in React state, so it is
- * read as an external store rather than copied into state by an effect.
- * That is what keeps the three readers — this tab, another tab, and the
- * blocking resolver that ran before React existed — looking at one value
- * instead of three drifting copies.
+ * The preference lives in localStorage and is read as an external store,
+ * so this tab, other tabs and the pre-paint resolver all look at one value.
  */
 const PREFERENCE_EVENT = "4tun:theme";
 
-/**
- * Where the preference lives when storage refuses to hold it. Without this
- * the control is genuinely stuck in a private window: the write is thrown
- * away, the next read returns the old value, and every press computes the
- * same "next" — a button that visibly does nothing on the second click.
- * Here the choice survives the session and is simply forgotten on the next
- * page load, which is the most a browser that refuses storage will allow.
- */
+/** Where the choice lives when storage refuses it (private windows). */
 let inMemoryPreference: ThemePreference = DEFAULT_PREFERENCE;
 
 function readPreference(): ThemePreference {
@@ -101,7 +65,6 @@ function readPreference(): ThemePreference {
     const stored = localStorage.getItem(THEME_STORAGE_KEY);
     return isThemePreference(stored) ? stored : inMemoryPreference;
   } catch {
-    // Storage throws outright in some privacy modes.
     return inMemoryPreference;
   }
 }
@@ -116,9 +79,8 @@ function writePreference(chosen: ThemePreference) {
 }
 
 function subscribePreference(onChange: () => void) {
-  // `storage` fires in OTHER tabs only, so same-tab writes announce
-  // themselves. Changing the ground in one tab and leaving the rest
-  // disagreeing is the kind of thing only the person who built it misses.
+  // `storage` fires in other tabs only, so same-tab writes announce
+  // themselves with a custom event.
   window.addEventListener("storage", onChange);
   window.addEventListener(PREFERENCE_EVENT, onChange);
   return () => {
@@ -127,12 +89,38 @@ function subscribePreference(onChange: () => void) {
   };
 }
 
-/**
- * The server has no clock and no storage, so it renders the default
- * (night) and React swaps in a stated preference on the client. Only this
- * control's own label is involved; no page content depends on the ground.
- */
 const serverPreference = (): ThemePreference => DEFAULT_PREFERENCE;
+
+function Icon({ kind }: { kind: ThemePreference }) {
+  const common = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.5,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  if (kind === "light") {
+    return (
+      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" aria-hidden="true" {...common}>
+        <circle cx="8" cy="8" r="3" />
+        <path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1" />
+      </svg>
+    );
+  }
+  if (kind === "dark") {
+    return (
+      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" aria-hidden="true" {...common}>
+        <path d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1Z" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" aria-hidden="true" {...common}>
+      <circle cx="8" cy="8" r="5.75" />
+      <path d="M8 2.25v11.5A5.75 5.75 0 0 0 8 2.25Z" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
 
 export function ThemeControl({ strings }: { strings: ThemeStrings }) {
   const preference = useSyncExternalStore(
@@ -142,10 +130,8 @@ export function ThemeControl({ strings }: { strings: ThemeStrings }) {
   );
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // The clockwork. Only runs for visitors who chose `auto`. While the preference is `auto`, wake exactly once at the
-  // next boundary, repaint, and re-arm from the new time — never a polling
-  // interval, which would wake a backgrounded tab all night to learn
-  // nothing. A stated preference cancels it: there is no boundary to cross.
+  // The clockwork: only for `auto`. Wake exactly once at the next boundary,
+  // repaint, and re-arm. A pinned preference has no boundary to cross.
   useEffect(() => {
     const clear = () => {
       if (timer.current) clearTimeout(timer.current);
@@ -166,8 +152,7 @@ export function ThemeControl({ strings }: { strings: ThemeStrings }) {
     paint(resolveTheme("auto"));
     timer.current = setTimeout(tick, msUntilNextSwitch());
 
-    // A laptop that slept through 18:00 fires the timer late or not at all,
-    // so re-resolve whenever the tab comes back to the foreground.
+    // A laptop that slept through 18:00 fires the timer late or not at all.
     const onVisible = () => {
       if (document.hidden) return;
       paint(resolveTheme("auto"));
@@ -182,39 +167,40 @@ export function ThemeControl({ strings }: { strings: ThemeStrings }) {
     };
   }, [preference]);
 
-  const cycle = useCallback(() => {
-    const current = readPreference();
-    const i = THEME_PREFERENCES.indexOf(current);
-    const chosen = THEME_PREFERENCES[(i + 1) % THEME_PREFERENCES.length];
+  const choose = useCallback((chosen: ThemePreference) => {
     writePreference(chosen);
-    // Paint here rather than waiting for the effect: the visitor pressed a
-    // button and is entitled to see it act, whatever storage decided.
     paint(resolveTheme(chosen));
     window.dispatchEvent(new Event(PREFERENCE_EVENT));
   }, []);
 
-  const i = THEME_PREFERENCES.indexOf(preference);
-  const upcoming = THEME_PREFERENCES[(i + 1) % THEME_PREFERENCES.length];
-
   return (
-    <button
-      type="button"
-      onClick={cycle}
-      // The visible text is the state, so the accessible name has to carry
-      // the state AND the action — a bare "Theme" on a cycling control tells
-      // a screen-reader user nothing about what pressing it will do.
-      aria-label={`${strings.label}: ${strings.options[preference]}. ${strings.next} ${strings.options[upcoming]}.`}
-      title={preference === "auto" ? strings.autoHint : undefined}
-      // `readout` is the system's mono gutter label — the control states the
-      // ground the way every other instrument on the page states a value.
-      className={cn(
-        "readout inline-flex h-8 items-center rounded-lg border border-border px-2.5",
-        "transition-colors hover:border-hairline hover:text-foreground",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500",
-        "focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-      )}
+    <div
+      role="group"
+      aria-label={strings.label}
+      className="inline-flex items-center rounded-full border border-border bg-surface p-0.5"
     >
-      {strings.options[preference]}
-    </button>
+      {THEME_PREFERENCES.map((option) => {
+        const active = option === preference;
+        return (
+          <button
+            key={option}
+            type="button"
+            aria-pressed={active}
+            aria-label={strings.options[option]}
+            onClick={() => choose(option)}
+            title={option === "auto" ? strings.autoHint : undefined}
+            className={cn(
+              "inline-flex h-7 items-center gap-1.5 rounded-full px-3 text-2xs font-medium transition-colors duration-200",
+              active
+                ? "bg-surface-2 text-foreground shadow-e2"
+                : "text-muted hover:text-foreground",
+            )}
+          >
+            <Icon kind={option} />
+            {strings.options[option]}
+          </button>
+        );
+      })}
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
-import { Field } from "@/components/Field";
 import { Logo } from "@/components/ui/Logo";
 import {
   siteTree,
@@ -163,10 +162,9 @@ const toc = [
   { id: "scorecard", label: "12 · Scorecard" },
 ];
 
-// Severity reads on the flow ramp — the system's own language for a
-// measured quantity — instead of a stray Tailwind red.
+// Severity uses the system's own tokens rather than a stray Tailwind red.
 const reviewPriorityStyles: Record<ReviewPriority, string> = {
-  Critical: "bg-flow-5 text-ink-900",
+  Critical: "bg-danger text-white",
   High: "bg-brand-500 text-ink-900",
   Medium: "bg-ink-300 text-ink-900",
   Defer: "border border-hairline bg-transparent text-muted",
@@ -438,7 +436,6 @@ export default function BlueprintPage() {
     <>
       {/* ============ COVER ============ */}
       <section className="relative overflow-hidden border-b border-border bg-surface">
-        <Field variant="draft" />
         <Container className="relative py-16">
           <div className="flex items-center justify-between gap-4">
             <Logo href={null} />
@@ -593,7 +590,7 @@ export default function BlueprintPage() {
                     ))}
                   </ul>
                   <p className="mt-4 font-mono text-xs text-muted">
-                    Sans: Archivo (wider at display sizes) · Mono: IBM Plex Mono (eyebrows, code, data)
+                    One family: Instrument Sans (display, text and figures, tabular numerals for data)
                   </p>
                 </div>
 

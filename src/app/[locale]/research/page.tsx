@@ -1,18 +1,28 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { Section } from "@/components/ui/Section";
+import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { ArrowLink } from "@/components/ui/ArrowLink";
+import { CtaPanel } from "@/components/ui/CtaPanel";
 import { Reveal } from "@/components/ui/Reveal";
+import { Media } from "@/components/ui/Media";
 import { focusAreas } from "@/lib/research";
-import { getProject } from "@/lib/projects";
+import { getProject, projectDetailPath } from "@/lib/projects";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
 import { MEDIUM_URL, LINKEDIN_URL } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
+
+/** The field each area works in, photographed. */
+const AREA_MEDIA: Record<string, { src: string; position?: string }> = {
+  "renewable-energy": { src: "/images/projects/pedal-hero.webp", position: "50% 60%" },
+  "sustainable-machinery": { src: "/images/projects/banana-hero.webp", position: "50% 40%" },
+  "industrial-rd": { src: "/images/camrail/test-bench.webp" },
+};
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
@@ -30,146 +40,115 @@ export default async function ResearchPage({ params }: Params) {
   if (!isLocale(locale)) notFound();
   const dict = await getDictionary(locale);
   const t = dict.research;
+  const banana = dict.projects.galleries["banana-pseudostem-shredder"] ?? [];
 
   return (
     <>
-      {/* 1 · HERO */}
-      <Section field="wave" className="pb-14 pt-16 sm:pt-20">
-        <Reveal>
-          <p className="eyebrow">{t.eyebrow}</p>
-          <h1 className="mt-5 max-w-3xl text-display text-foreground">
-            {t.title}
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">{t.subtitle}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+      {/* 1 · HERO — a lab result, not an illustration of one. */}
+      <PageHero
+        eyebrow={t.eyebrow}
+        title={t.title}
+        intro={t.subtitle}
+        actions={
+          <>
             <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
               {t.primaryCta}
             </Button>
-            <Button
-              as="a"
-              href={localizeHref(locale, "/projects")}
-              size="lg"
-              variant="secondary"
-            >
-              {t.secondaryCta}
-            </Button>
-          </div>
-        </Reveal>
-      </Section>
+            <ArrowLink href={localizeHref(locale, "/projects")}>{t.secondaryCta}</ArrowLink>
+          </>
+        }
+      >
+        <figure className="mx-auto mt-16 max-w-5xl animate-fade-up [animation-delay:240ms] sm:mt-20">
+          <Media
+            src="/images/projects/banana-2.webp"
+            alt={banana[1] ?? ""}
+            doc
+            priority
+            className="aspect-[16/9] rounded-3xl border border-border"
+          />
+          <figcaption className="readout mt-3 text-center">{banana[1]}</figcaption>
+        </figure>
+      </PageHero>
 
       {/* 2 · FOCUS AREAS */}
-      <Section
-        eyebrow={t.focusEyebrow}
-        title={t.focusTitle}
-        intro={t.focusIntro}
-        className="pt-0"
-      >
-        <div className="mt-10 grid gap-6">
+      <Section tone="surface" eyebrow={t.focusEyebrow} title={t.focusTitle} intro={t.focusIntro}>
+        <div className="mt-14 grid gap-5 lg:grid-cols-3">
           {focusAreas.map((area, i) => {
             const copy = t.areas[area.key];
+            const media = AREA_MEDIA[area.key];
             if (!copy) return null;
             const project = area.proof ? getProject(area.proof) : undefined;
             return (
-              <Reveal key={area.key} delay={i * 70}>
-                <div className="ticks relative rounded-2xl border border-border bg-surface p-6 sm:p-8">
-                  <div className="flex items-baseline gap-3">
-                    <span className="font-mono text-xs font-bold text-accent">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h2 className="text-xl font-semibold text-foreground">{copy.title}</h2>
-                  </div>
-                  <div className="mt-5 grid gap-6 sm:grid-cols-2">
-                    <div>
-                      <p className="font-mono text-3xs uppercase tracking-wider text-muted">
-                        {t.whyLabel}
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-muted">{copy.why}</p>
-                    </div>
-                    <div>
-                      <p className="font-mono text-3xs uppercase tracking-wider text-muted">
-                        {t.doingLabel}
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-foreground">{copy.doing}</p>
-                    </div>
-                  </div>
-                  {project && (
-                    <Link
-                      href={localizeHref(locale, `/about/founder/projects/${project.slug}`)}
-                      className="link-sweep mt-5 inline-block text-sm font-medium text-accent"
-                    >
-                      {t.proofLabel} →
-                    </Link>
+              <Reveal key={area.key} delay={i * 80}>
+                <article className="flex h-full flex-col overflow-hidden rounded-3xl bg-surface-2">
+                  {media && (
+                    <Media
+                      src={media.src}
+                      alt={copy.title}
+                      position={media.position}
+                      className="aspect-[4/3]"
+                    />
                   )}
-                </div>
+                  <div className="flex flex-1 flex-col p-8">
+                    <h3 className="text-headline text-foreground">{copy.title}</h3>
+                    <p className="mt-6 text-2xs font-semibold text-foreground">{t.whyLabel}</p>
+                    <p className="mt-1.5 text-sm leading-6 text-muted">{copy.why}</p>
+                    <p className="mt-5 text-2xs font-semibold text-foreground">{t.doingLabel}</p>
+                    <p className="mt-1.5 text-sm leading-6 text-muted">{copy.doing}</p>
+                    {project && (
+                      <ArrowLink
+                        href={localizeHref(locale, projectDetailPath(project.slug))}
+                        className="mt-auto pt-6"
+                      >
+                        {t.proofLabel}
+                      </ArrowLink>
+                    )}
+                  </div>
+                </article>
               </Reveal>
             );
           })}
         </div>
       </Section>
 
-      {/* 3 · PUBLICATIONS — The REM */}
-      <section className="border-y border-border bg-surface">
-        <Container className="py-20 sm:py-24">
-          <p className="eyebrow">{t.pubEyebrow}</p>
-          <h2 className="mt-5 max-w-2xl text-display-sm text-foreground">
-            {t.pubTitle}
-          </h2>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">{t.pubBody}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button
-              as="a"
-              href={MEDIUM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              size="lg"
-            >
-              {t.pubReadRem}
-            </Button>
-            <Button
-              as="a"
-              href={LINKEDIN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              size="lg"
-              variant="secondary"
-            >
-              {t.pubFollow}
-            </Button>
-          </div>
+      {/* 3 · PUBLICATIONS — The REM, set like a masthead. */}
+      <section className="py-24 sm:py-32">
+        <Container>
+          <Reveal className="mx-auto max-w-4xl text-center">
+            <p className="eyebrow">{t.pubEyebrow}</p>
+            <p className="mt-6 text-display-lg text-foreground">The REM</p>
+            <h2 className="mx-auto mt-6 max-w-2xl text-headline text-foreground">{t.pubTitle}</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lead text-muted">{t.pubBody}</p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
+              <Button as="a" href={MEDIUM_URL} target="_blank" rel="noopener noreferrer" size="lg">
+                {t.pubReadRem}
+              </Button>
+              <ArrowLink href={LINKEDIN_URL} external>
+                {t.pubFollow}
+              </ArrowLink>
+            </div>
+          </Reveal>
         </Container>
       </section>
 
-      {/* 4 · INITIATIVES */}
-      <Section eyebrow={t.initiativesEyebrow} title={t.initiativesTitle}>
-        <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">{t.initiativesBody}</p>
-      </Section>
+      {/* 4 · INITIATIVES — one statement, given room. */}
+      <section className="border-t border-border py-24 sm:py-32">
+        <Container size="narrow">
+          <Reveal className="text-center">
+            <p className="eyebrow">{t.initiativesEyebrow}</p>
+            <h2 className="mt-3 text-display-sm text-foreground">{t.initiativesTitle}</h2>
+            <p className="mt-6 text-lead text-muted">{t.initiativesBody}</p>
+          </Reveal>
+        </Container>
+      </section>
 
-      {/* 5 · COLLABORATE CTA */}
-      <Container className="pb-24">
-        <Reveal>
-          <div className="ticks relative rounded-2xl border border-border bg-surface p-8 text-center sm:p-12">
-            <h2 className="mx-auto max-w-3xl text-display-sm text-foreground">
-              {t.cta.title}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted">
-              {t.cta.subtitle}
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
-                {t.cta.primary}
-              </Button>
-              <Button
-                as="a"
-                href={localizeHref(locale, "/projects")}
-                size="lg"
-                variant="secondary"
-              >
-                {t.cta.secondary}
-              </Button>
-            </div>
-          </div>
-        </Reveal>
-      </Container>
+      {/* 5 · COLLABORATE */}
+      <CtaPanel
+        title={t.cta.title}
+        subtitle={t.cta.subtitle}
+        primary={{ label: t.cta.primary, href: localizeHref(locale, "/contact") }}
+        secondary={{ label: t.cta.secondary, href: localizeHref(locale, "/projects") }}
+      />
     </>
   );
 }

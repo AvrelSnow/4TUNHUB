@@ -2,18 +2,16 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Card } from "./ui/Card";
-import { Badge } from "./ui/Badge";
-import { ProjectVisual } from "./ProjectVisual";
+import { Media } from "./ui/Media";
 import type { Project, ProjectCategory } from "@/lib/projects";
 import { cn } from "@/lib/cn";
 
 type Item = { title: string; outcome: string };
 
 /**
- * Filterable project grid. Filters are real <button>s with aria-pressed, so
- * the control works with keyboard, touch and screen readers alike. Filtering
- * is client-side over an already-rendered list — no navigation, no refetch.
+ * Filterable project grid. The filter is a row of real <button>s with
+ * aria-pressed, so it works with keyboard, touch and screen readers alike.
+ * Filtering is client-side over an already-rendered list: no navigation.
  */
 export function ProjectGrid({
   projects,
@@ -25,8 +23,8 @@ export function ProjectGrid({
   projects: Project[];
   items: Record<string, Item>;
   categories: Record<string, string>;
-  labels: { all: string; filterLabel: string };
-  /** e.g. "/en/projects" */
+  labels: { all: string; filterLabel: string; illustrative: string };
+  /** e.g. "/en/about/founder/projects" */
   basePath: string;
 }) {
   const [active, setActive] = useState<ProjectCategory | "all">("all");
@@ -40,68 +38,59 @@ export function ProjectGrid({
     [projects, active],
   );
 
-  const chip =
-    "rounded-lg border px-4 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  const options: { key: ProjectCategory | "all"; label: string }[] = [
+    { key: "all", label: labels.all },
+    ...used.map((c) => ({ key: c, label: categories[c] ?? c })),
+  ];
 
   return (
     <div>
-      <div role="group" aria-label={labels.filterLabel} className="flex flex-wrap gap-2">
-        <button
-          type="button"
-          aria-pressed={active === "all"}
-          onClick={() => setActive("all")}
-          className={cn(
-            chip,
-            active === "all"
-              ? "border-brand-500 bg-brand-500 text-ink-900"
-              : "border-border text-muted hover:border-brand-500 hover:text-foreground",
-          )}
+      <div className="flex justify-center">
+        <div
+          role="group"
+          aria-label={labels.filterLabel}
+          className="rail inline-flex max-w-full gap-1 overflow-x-auto rounded-full bg-surface p-1"
         >
-          {labels.all}
-        </button>
-        {used.map((c) => (
-          <button
-            key={c}
-            type="button"
-            aria-pressed={active === c}
-            onClick={() => setActive(c)}
-            className={cn(
-              chip,
-              active === c
-                ? "border-brand-500 bg-brand-500 text-ink-900"
-                : "border-border text-muted hover:border-brand-500 hover:text-foreground",
-            )}
-          >
-            {categories[c] ?? c}
-          </button>
-        ))}
+          {options.map((o) => (
+            <button
+              key={o.key}
+              type="button"
+              aria-pressed={active === o.key}
+              onClick={() => setActive(o.key)}
+              className={cn(
+                "h-9 shrink-0 whitespace-nowrap rounded-full px-4 text-sm font-medium transition-colors duration-200",
+                active === o.key
+                  ? "bg-surface-2 text-foreground shadow-e2"
+                  : "text-muted hover:text-foreground",
+              )}
+            >
+              {o.label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((p) => {
           const copy = items[p.slug];
           if (!copy) return null;
           return (
-            <Link key={p.slug} href={`${basePath}/${p.slug}`} className="block h-full">
-              <Card
-                interactive
-                readout={`PRJ · ${String(projects.indexOf(p) + 1).padStart(2, "0")}`}
-                className="flex h-full flex-col bg-background"
-              >
-                <ProjectVisual
-                  category={p.category}
-                  index={projects.indexOf(p)}
-                  image={p.image}
-                  alt={copy.title}
-                  className="h-36 w-full"
-                />
-                <div className="mt-4 flex items-center justify-between gap-3">
-                  <Badge variant="amber">{categories[p.category] ?? p.category}</Badge>
-                  <span className="font-mono text-3xs text-muted">{p.year}</span>
-                </div>
-                <h2 className="mt-3 text-lg font-semibold text-foreground">{copy.title}</h2>
-                <p className="mt-2 flex-1 text-sm leading-6 text-muted">{copy.outcome}</p>
-              </Card>
+            <Link key={p.slug} href={`${basePath}/${p.slug}`} className="group block">
+              {p.image ? (
+                <Media src={p.image} alt={copy.title} zoom className="aspect-[4/3] rounded-3xl" />
+              ) : (
+                <div className="aspect-[4/3] rounded-3xl bg-surface" aria-hidden="true" />
+              )}
+              <p className="mt-5 text-2xs font-medium text-muted">
+                {categories[p.category] ?? p.category} · <span className="figure">{p.year}</span>
+              </p>
+              <h2 className="mt-1.5 text-headline text-foreground group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4">
+                {copy.title}
+              </h2>
+              <p className="mt-2 text-sm leading-6 text-muted">{copy.outcome}</p>
+              {p.imageIllustrative && (
+                <p className="mt-2 text-2xs text-muted">{labels.illustrative}</p>
+              )}
             </Link>
           );
         })}

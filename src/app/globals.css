@@ -2,231 +2,156 @@
 
 /* ============================================================
    4TUN HUB — DESIGN FOUNDATION
-   "Renders like an engineering instrument: a dark measurement
-   surface where the only colour is real data from real work."
+   Governed by docs/art-direction.md.
 
-   Governed by docs/art-direction.md. Dark is home — there is no
-   light theme to fall back to. Every pillar reuses these tokens;
-   no bespoke colours per section.
+   Quiet surfaces, one typeface, real photographs, and colour
+   used once: the amber of the logo. Day is a white page and
+   night is a black one, and the visitor's clock decides which
+   (src/lib/theme.ts).
+
+   Every pillar reuses these tokens. Components never carry a
+   raw colour; `npm run lint:tokens` enforces it.
    ============================================================ */
 
-/* `static` forces every token to be emitted as a CSS variable, even ones
-   only read via var() in inline styles (not just via utility classes). */
+/* `static` emits every token as a CSS variable, including ones only
+   read through var() in inline styles. */
 @theme static {
-  /* --- Brand amber (from the logo mark) — action and identity --- */
+  /* --- Brand amber, from the logo. A fill, never small text on white. --- */
   --color-brand-50: #fff8e6;
   --color-brand-100: #ffeebf;
   --color-brand-200: #ffe08a;
   --color-brand-300: #ffcf4d;
   --color-brand-400: #ffc01f;
-  --color-brand-500: #ffb000; /* primary vivid amber */
+  --color-brand-500: #ffb000;
   --color-brand-600: #e69500;
   --color-brand-700: #b87400;
   --color-brand-800: #8a5700;
   --color-brand-900: #5c3a00;
 
-  /* --- Ink / engineering charcoal. Extended downward: the instrument
-         ground is darker than the old ink-950 so panels can sit above it. --- */
-  --color-ink-50: #f5f7f8;
-  --color-ink-100: #e7eaed;
-  --color-ink-200: #cdd3d9;
-  --color-ink-300: #a8b0b8;
-  --color-ink-400: #808a94;
-  --color-ink-500: #5a646f;
-  --color-ink-600: #3d4650;
-  --color-ink-700: #2b333c;
-  --color-ink-800: #1e242b;
-  --color-ink-900: #14181d;
-  --color-ink-950: #0b0d10;
-  --color-ink-975: #08090b; /* the ground */
+  /* --- Neutrals. Warm-free greys, the way good hardware is photographed. --- */
+  --color-ink-50: #f5f5f7;
+  --color-ink-100: #e8e8ed;
+  --color-ink-200: #d2d2d7;
+  --color-ink-300: #aeaeb2;
+  --color-ink-400: #86868b;
+  --color-ink-500: #6e6e73;
+  --color-ink-600: #48484a;
+  --color-ink-700: #3a3a3c;
+  --color-ink-800: #2c2c2e;
+  --color-ink-900: #1d1d1f;
+  --color-ink-950: #141416;
+  --color-ink-975: #000000;
 
-  /* --- THE FLOW RAMP (signature move 1) ---
-         Sampled from our own CFD pressure map. The only multi-colour in
-         the system, and only ever used to stand in for a measured
-         quantity — never as decoration behind text. */
-  --color-flow-1: #1b3bd8; /* low  — deep blue */
-  --color-flow-2: #00b7ff; /* cyan */
-  --color-flow-3: #2fe08a; /* mid  — green */
-  --color-flow-4: #ffd23f; /* amber */
-  --color-flow-5: #ff4b2e; /* high — red */
-
-  /* --- THIRD-PARTY MARK COLOURS ---
-         The one bounded exception to "there is no fourth colour". These
-         are not our palette: they are quotations of someone else's brand,
-         used only inside that brand's own icon. Never on our surfaces,
-         our type, or our controls.
-         Both clear the 3:1 WCAG 1.4.11 threshold for non-text graphics on
-         the ground: LinkedIn 3.5:1, Gmail 5.1:1. */
+  /* Third-party marks, quoted inside their own icons only. */
   --color-mark-linkedin: #0a66c2;
   --color-mark-gmail: #ea4335;
 
-  /* --- Semantic tokens — NIGHT. The instrument ground, and the site's
-         home. These stay in @theme because dark is what the page falls
-         back to with no JS, no stored preference and no clock: see the
-         `:root[data-theme="light"]` block below for the day ground. --- */
-  --color-background: #08090b;
-  --color-surface: #101317;
-  --color-surface-2: #171c22;
-  --color-foreground: #f2f5f7; /* 17.1:1 on background */
-  --color-muted: #949fac; /*  7.4:1 on background — AA at every size */
-  --color-border: #222831;
-  --color-hairline: #2c333d; /* visible rules; border is the quiet one */
-  --color-primary: #ffb000; /* 10.8:1 on background */
-  --color-primary-foreground: #0b0d10; /* 10.6:1 on primary */
-  /* The edge of a filled control. On the night ground the amber fill is
-     10.8:1 against the page and needs no help, so this matches the fill
-     and draws nothing; on the day ground it becomes the darker amber that
-     carries WCAG 1.4.11 (see below). One token, so Button never branches. */
-  --color-primary-edge: #ffb000;
-  --color-accent: #ffc01f; /* 12.2:1 — links, eyebrows, inline emphasis */
+  /* --- Semantic tokens: DAY. Ratios measured against --color-background
+         unless stated; night overrides these below. --- */
+  --color-background: #ffffff;
+  --color-surface: #f5f5f7; /* alternate sections and tiles */
+  --color-surface-2: #ffffff; /* a card lifted off a surface */
+  --color-foreground: #1d1d1f; /* 16.8:1 */
+  --color-muted: #6e6e73; /* 5.07:1, and 4.66:1 on surface */
+  --color-subtle: #86868b; /* decorative only: rules, icons, never body text */
+  --color-border: #e8e8ed;
+  --color-hairline: #d2d2d7;
+  --color-primary: #1d1d1f; /* the button fill */
+  --color-primary-foreground: #ffffff; /* 16.8:1 */
+  --color-primary-hover: #000000;
+  --color-accent: #b25000; /* links. 5.20:1, and 4.77:1 on surface */
+  --color-danger: #c4311b;
+  --color-success: #1f7a3a;
 
-  /* --- Typography --- */
-  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  /* --- Type. One family, worked hard. --- */
+  --font-sans:
+    "Instrument Sans Variable", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* No mono in the system any more; kept so older markup degrades to sans. */
+  --font-mono: var(--font-sans);
 
-  /* Micro type scale — the floor for mono labels/badges. Below text-xs (12px). */
-  --text-3xs: 0.625rem; /* 10px */
-  --text-3xs--line-height: 0.875rem;
-  --text-2xs: 0.6875rem; /* 11px */
-  --text-2xs--line-height: 1rem;
+  --text-3xs: 0.6875rem; /* 11px — legal lines only */
+  --text-3xs--line-height: 1rem;
+  --text-2xs: 0.75rem; /* 12px — captions, footer */
+  --text-2xs--line-height: 1.125rem;
 
-  /* Display scale — the top of the range. The gap between these and the
-     10px mono readouts is the point: a page whose largest element is 48px
-     has no hero. Tracking tightens as size grows, as it must. */
-  --text-display-sm: clamp(2.25rem, 4.2vw, 3.25rem);
-  --text-display-sm--line-height: 1.04;
-  --text-display-sm--letter-spacing: -0.03em;
-  --text-display-sm--font-weight: 600;
+  /* 21px intro copy, the size a page speaks at before it gets detailed. */
+  --text-lead: clamp(1.125rem, 1.6vw, 1.3125rem);
+  --text-lead--line-height: 1.5;
+  --text-lead--letter-spacing: 0.002em;
 
-  --text-display: clamp(2.75rem, 7vw, 5.5rem);
-  --text-display--line-height: 0.98;
-  --text-display--letter-spacing: -0.038em;
-  --text-display--font-weight: 600;
+  /* Card and feature titles. */
+  --text-headline: clamp(1.375rem, 2vw, 1.75rem);
+  --text-headline--line-height: 1.18;
+  --text-headline--letter-spacing: -0.012em;
+  --text-headline--font-weight: 600;
 
-  --text-display-lg: clamp(3.25rem, 10.5vw, 8.5rem);
-  --text-display-lg--line-height: 0.92;
-  --text-display-lg--letter-spacing: -0.045em;
-  --text-display-lg--font-weight: 600;
+  /* Section titles. */
+  --text-display-sm: clamp(2rem, 4.4vw, 3.5rem);
+  --text-display-sm--line-height: 1.07;
+  --text-display-sm--letter-spacing: -0.028em;
+  --text-display-sm--font-weight: 700;
 
-  /* --- Radii. Instruments are machined, not moulded: corners are near
-     square. Tightened 2026-09-18 from 8/12/16px, which read as a SaaS
-     template and fought the corner ticks drawn just inside them. --- */
-  --radius-lg: 0.1875rem; /* 3px — buttons, fields, chips */
-  --radius-xl: 0.25rem; /* 4px — cards, figures */
-  --radius-2xl: 0.3125rem; /* 5px — large panels */
+  /* Page titles. */
+  --text-display: clamp(2.5rem, 6.4vw, 5rem);
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.034em;
+  --text-display--font-weight: 700;
 
-  /* --- Elevation. On a dark ground, elevation is a lighter surface and a
-         hairline — not a drop shadow. Two levels, as before. --- */
-  --shadow-e1: 0 1px 0 0 rgb(255 255 255 / 0.04) inset;
-  --shadow-e2:
-    0 1px 0 0 rgb(255 255 255 / 0.06) inset, 0 24px 48px -24px rgb(0 0 0 / 0.8);
+  /* The home hero, and nothing else. */
+  --text-display-lg: clamp(2.875rem, 8.6vw, 6.5rem);
+  --text-display-lg--line-height: 1;
+  --text-display-lg--letter-spacing: -0.04em;
+  --text-display-lg--font-weight: 700;
 
-  /* --- Motion (restrained, precise — engineering, not flashy) --- */
+  /* --- Shape. Soft, generous corners on large surfaces; pills for
+         controls. --- */
+  --radius-lg: 0.75rem; /* 12px — fields, small media */
+  --radius-xl: 1.125rem; /* 18px — cards */
+  --radius-2xl: 1.75rem; /* 28px — tiles and large media */
+  --radius-3xl: 2.25rem; /* 36px — hero media */
+
+  /* --- Elevation. Almost none: surfaces separate by tone, not shadow. --- */
+  --shadow-e1: 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-e2: 0 2px 6px rgb(0 0 0 / 0.04), 0 18px 48px -18px rgb(0 0 0 / 0.22);
+
+  /* --- Motion. --- */
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-apple: cubic-bezier(0.28, 0.11, 0.32, 1);
 
-  /* --- Keyframes --- */
-  --animate-fade-up: fade-up 0.7s var(--ease-out-quart) both;
+  --animate-fade-up: fade-up 0.9s var(--ease-apple) both;
   --animate-fade-in: fade-in 0.6s var(--ease-out-quart) both;
-  --animate-sweep: sweep 3.2s var(--ease-in-out-quart) infinite;
 }
 
 /* ============================================================
-   THE TWO GROUNDS — night is home, day is the sheet.
-   (art-direction §"colour", amended)
-   ============================================================
-   The site now has a second ground, and it is not a "light theme"
-   bolted onto a dark one. It is the surface this design system
-   already contained: `.plate-doc` has always laid drawings, BOMs
-   and schematics on a pale sheet, because a document is READ and a
-   readout is WATCHED. By day the whole instrument becomes that
-   sheet — a drafting surface — and by night it is the measurement
-   screen it has always been. Same two signature moves, same ramp,
-   same mono furniture; only the ground changes.
+   NIGHT. Applied by the resolver in src/lib/theme.ts when the
+   visitor's clock reads 18:00–06:00, or when they chose Dark.
+   ============================================================ */
+:root[data-theme="dark"] {
+  --color-background: #000000;
+  --color-surface: #141416;
+  --color-surface-2: #1d1d1f;
+  --color-foreground: #f5f5f7; /* 19.3:1 */
+  --color-muted: #a1a1a6; /* 8.16:1, and 6.6:1 on surface-2 */
+  --color-subtle: #6e6e73;
+  --color-border: #2c2c2e;
+  --color-hairline: #424245;
+  --color-primary: #f5f5f7;
+  --color-primary-foreground: #1d1d1f;
+  --color-primary-hover: #ffffff;
+  --color-accent: #ffb340; /* 11.8:1 */
+  --color-danger: #ff6a55;
+  --color-success: #4cc76f;
 
-   Which one runs is decided by the visitor's local clock, before
-   first paint, by the inline resolver in src/lib/theme.ts. Night is
-   the fallback in every failure mode: no JS, no storage, a thrown
-   exception. So `@theme` above holds the night values and this block
-   overrides them — never the reverse.
-
-   Every pair below was MEASURED, not chosen by eye. Ratios are
-   against the day ground #eceff2 unless stated.
-
-   RESIDUAL, stated rather than hidden: the vivid brand amber
-   (#ffb000) cannot be text on a pale ground — it reads 1.6:1. So on
-   the day sheet the amber that carries TEXT is deepened to #8a5700
-   (5.28:1) while the amber that FILLS a control stays #ffb000, with
-   a #b87400 edge (3.29:1) so the control's boundary clears WCAG
-   1.4.11. Links are therefore a darker amber by day. That is the
-   honest cost of a legible pale ground, and it is paid in the one
-   place where a wrong call is only a shade, not a failure. */
-:root {
-  /* The ground, as a raw triple, for the scrims that pull it back up
-     underneath copy. Every scrim in this file reads it, so neither
-     ground can end up with the other's fog sitting over it. */
-  --scrim-rgb: 8 9 11;
-  /* THE RAMP AS INK. `.flow-rule` and `.flow-text` read these rather than
-     --color-flow-* directly, because on the day sheet the ramp has to be
-     inked rather than emitted (see the light block) — while the raw
-     --color-flow-* tokens stay untouched for filled chips and the plate
-     tint, where deepening them would break a contrast pair that already
-     passes. Same five steps, two renderings. */
-  --ramp-1: var(--color-flow-1);
-  --ramp-2: var(--color-flow-2);
-  --ramp-3: var(--color-flow-3);
-  --ramp-4: var(--color-flow-4);
-  --ramp-5: var(--color-flow-5);
-  /* The neutral the field renderers stroke with. Read by Field.tsx and
-     handed to renderers.ts, because a canvas cannot resolve var(). */
-  --field-neutral: 168 176 184;
-  /* How hard the live field runs against its ground. */
-  --field-opacity: 0.9;
-  --field-filter: none;
-}
-
-:root[data-theme="light"] {
-  --color-background: #eceff2; /* the sheet */
-  --color-surface: #f6f8f9; /* a panel lifted off it */
-  --color-surface-2: #ffffff; /* lifted again */
-  --color-foreground: #14181d; /* 15.4:1 on background */
-  --color-muted: #454f5a; /*  7.2:1 on background — AA at every size */
-  --color-border: #d0d7dd; /* the quiet one, as at night */
-  --color-hairline: #aab4bd; /* visible rules, ticks, dimension lines */
-  --color-primary: #ffb000; /* the brand amber, unchanged as a FILL */
-  --color-primary-foreground: #0b0d10; /* 10.6:1 on primary */
-  --color-primary-edge: #b87400; /* 3.29:1 on background — WCAG 1.4.11 */
-  --color-accent: #8a5700; /* 5.28:1 — links, eyebrows, inline emphasis */
-
-  --scrim-rgb: 236 239 242;
-
-  /* THE RAMP, INKED. On the night ground the ramp is light emitted by a
-     screen and every step reads. On paper the same five values are a
-     WCAG failure and not a subtle one: measured against #eceff2, cyan is
-     1.97:1, green 1.50:1 and amber 1.25:1 — and `.flow-text` clips this
-     gradient to the single largest word on the page, so the failure lands
-     on the headline. Deepened here to the values the same pressure map
-     would take as printer's ink: identical hue order, so it is still
-     visibly the ramp, with every stop AND every midpoint between 4.68:1
-     and 6.83:1 — AA at any size, not merely at display size. */
-  --ramp-1: #1b3bd8; /* 6.83:1 — deep blue, unchanged; it was already ink */
-  --ramp-2: #00699a; /* 5.22:1 — cyan */
-  --ramp-3: #0f7a45; /* 4.68:1 — green */
-  --ramp-4: #8a6300; /* 4.71:1 — amber */
-  --ramp-5: #c62d12; /* 4.81:1 — red */
-
-  --field-neutral: 90 100 111;
-  /* The ramp is the data language and does not get a second palette. It
-     is seated onto paper instead: the same colours, run a shade deeper so
-     flow-4 (#ffd23f) does not disappear into a pale ground. */
-  --field-opacity: 0.62;
-  --field-filter: saturate(1.15) brightness(0.72);
+  --shadow-e1: 0 0 0 1px rgb(255 255 255 / 0.04);
+  --shadow-e2: 0 0 0 1px rgb(255 255 255 / 0.06), 0 24px 60px -24px rgb(0 0 0 / 0.9);
 }
 
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -243,372 +168,158 @@
   }
 }
 
-/* Instrument sweep — a readout scanning its range. Used sparingly, on
-   live/active indicators only. */
-@keyframes sweep {
-  0%,
-  100% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(100%);
-  }
-}
-
 @layer base {
   html {
-    scroll-behavior: smooth;
-    /* Pinned to dark before; the resolver now sets `style.color-scheme` on
-       <html> before first paint so form controls, scrollbars and the
-       browser's own canvas match whichever ground is running. This stays as
-       the value that applies if that script never runs. */
-    color-scheme: dark;
+    color-scheme: light;
     background: var(--color-background);
+    -webkit-text-size-adjust: 100%;
   }
 
-  html[data-theme="light"] {
-    color-scheme: light;
+  html[data-theme="dark"] {
+    color-scheme: dark;
   }
 
   body {
     background: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-size: 1.0625rem; /* 17px, the reading size */
+    line-height: 1.53;
+    letter-spacing: -0.003em;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01" off;
+  }
+
+  /* The theme switch is instant, but the page should not strobe: colours
+     ease across when the ground changes under a reader. */
+  body,
+  header,
+  footer,
+  section {
+    transition:
+      background-color 0.5s var(--ease-out-quart),
+      color 0.5s var(--ease-out-quart);
   }
 
   ::selection {
-    background: var(--color-brand-500);
+    background: var(--color-brand-300);
     color: var(--color-ink-900);
   }
 
-  /* Typographic finish: balanced headlines, no ugly rag or orphans in
-     body copy, stable digits in data. */
   h1,
   h2,
   h3 {
     text-wrap: balance;
   }
 
-  /* Display type runs wide. Archivo's width axis is where the typeface's
-     character lives: at 100% it is a clean grotesque, at 112% it has the
-     planted, engineered stance of a plate stamped on a machine. Phones
-     keep the normal width, because at 360px a long French or English
-     word ("ingénierie", "engineering") already fills the measure. */
-  @media (min-width: 640px) {
-    .text-display-sm,
-    .text-display,
-    .text-display-lg {
-      font-stretch: 112%;
-    }
-  }
-
   p {
     text-wrap: pretty;
   }
 
-  /* ============================================================
-     INSTRUMENT CHROME (signature move 2)
-     Technical-drawing furniture. Every panel is a viewport onto
-     something measured, and it says so.
-     ============================================================ */
-
-  /* Mono eyebrow / readout label. 12.2:1 on the ground. */
-  .eyebrow {
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-size: 0.75rem;
-    color: var(--color-accent);
-    font-variant-numeric: tabular-nums;
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
   }
 
-  /* Small instrument readout — the gutter label on frames and figures. */
+  /* Figures in rows of stats and dates never jitter. */
+  .figure {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  /* The small line above a title. Sentence case, semibold, in the accent:
+     a name for the section, not a label stamped on it. */
+  .eyebrow {
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--color-accent);
+  }
+
+  /* Secondary caption on media and tiles. */
   .readout {
-    font-family: var(--font-mono);
-    font-size: var(--text-3xs);
-    line-height: var(--text-3xs--line-height);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    font-size: var(--text-2xs);
+    line-height: var(--text-2xs--line-height);
     color: var(--color-muted);
     font-variant-numeric: tabular-nums;
   }
 
-  /* Corner ticks — the move that turns a box into an instrument.
-     Applied to a relatively-positioned element; draws four L-brackets
-     just inside its corners. */
-  .ticks::before,
-  .ticks::after {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    pointer-events: none;
-    border-color: var(--color-hairline);
-    border-style: solid;
+  /* Inline link: plain until hovered, then underlined. */
+  .link {
+    color: var(--color-accent);
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
   }
 
-  .ticks::before {
-    top: 7px;
-    left: 7px;
-    border-width: 1px 0 0 1px;
+  .link:hover {
+    text-decoration-line: underline;
   }
 
-  .ticks::after {
-    right: 7px;
-    bottom: 7px;
-    border-width: 0 1px 1px 0;
+  /* Kept as an alias so the nav and footer share one hover language. */
+  .link-sweep {
+    text-underline-offset: 0.25em;
+    text-decoration-thickness: 1px;
   }
 
-  /* The flow ramp as a rule — section dividers and stat underlines. */
-  .flow-rule {
-    background-image: linear-gradient(
-      90deg,
-      var(--ramp-1),
-      var(--ramp-2),
-      var(--ramp-3),
-      var(--ramp-4),
-      var(--ramp-5)
-    );
+  .link-sweep:hover,
+  .link-sweep[aria-current="page"] {
+    text-decoration-line: underline;
   }
 
-  /* The flow ramp clipped to type. One word per page, at most. */
-  .flow-text {
-    background-image: linear-gradient(
-      100deg,
-      var(--ramp-2),
-      var(--ramp-3) 34%,
-      var(--ramp-4) 66%,
-      var(--ramp-5)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  /* Forced-colours and print fall back to a solid readable colour —
-     background-clip:text has no meaning there. */
-  @media (forced-colors: active), print {
-    .flow-text {
-      background-image: none;
-      color: var(--color-foreground);
-    }
-  }
-
-  /* The live field layer. Fades out before the section ends so the
-     simulation never competes with the copy sitting on top of it. */
-  .field {
-    opacity: var(--field-opacity);
-    filter: var(--field-filter);
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 96%);
-    mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 96%);
-  }
-
-  /* Field scrim — the structural guarantee that copy stays readable.
-     Content lives inside a centred measure, so the ground is lifted back
-     up through the middle of the section and left alone at the edges.
-     That lets the simulation run at full strength exactly where nobody
-     is reading, instead of forcing every field to be timid everywhere.
-     Contrast is then measured against real canvas pixels; see
-     docs/art-direction.md. */
-  .field-scrim {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background: radial-gradient(
-      ellipse 72% 82% at 50% 50%,
-      rgb(var(--scrim-rgb) / 0.94) 0%,
-      rgb(var(--scrim-rgb) / 0.88) 52%,
-      rgb(var(--scrim-rgb) / 0.58) 74%,
-      transparent 92%
-    );
-  }
-
-  /* Local scrim for copy sitting over the live field.
-     Measured, not guessed: without it a bright streak passing behind the
-     lead paragraph drops muted text to 3.2:1, which fails AA. Dimming the
-     whole field would fix the contrast and kill the effect, so instead the
-     ground is pulled back up only underneath the copy, with a falloff wide
-     enough that no edge is visible and the field still runs at full
-     strength everywhere else. */
-  .copy-scrim {
+  /* ---------- Media ----------
+     Photographs are shown as they were taken. A frame gives them a quiet
+     tone to load against and clips them to the system's corners; it
+     never grades or tints the image. */
+  .media {
     position: relative;
+    overflow: hidden;
+    background: var(--color-surface);
     isolation: isolate;
   }
 
-  .copy-scrim::before {
-    content: "";
-    position: absolute;
-    inset: -10% -14%;
-    z-index: -1;
-    pointer-events: none;
-    background: radial-gradient(
-      ellipse 64% 60% at 34% 50%,
-      rgb(var(--scrim-rgb) / 0.94) 0%,
-      rgb(var(--scrim-rgb) / 0.86) 42%,
-      rgb(var(--scrim-rgb) / 0.55) 66%,
-      transparent 80%
-    );
+  .media > img {
+    transition: transform 0.9s var(--ease-apple);
   }
 
-  /* ============================================================
-     THE PLATE — one image treatment, no exceptions.
-     (art-direction §"imagery")
-
-     The photography is uncontrolled: phone shots from workshops and
-     yards, warm indoor tungsten next to cool overcast daylight,
-     cluttered backgrounds, no two crops alike. Ungraded, a grid of
-     them reads as a jumble rather than one body of work.
-
-     So every photograph is graded toward the ink ground: temperature
-     pulled to one neutral, edges dissolved into the page, contrast
-     seated. Applied as a class rather than baked into the files, so
-     the originals stay untouched on disk.
-
-     The grade is PRESENTATION, never evidence. It lifts on hover and
-     on keyboard focus, and the lightbox shows the photograph
-     completely untouched — this is an engineering-proof site, and the
-     proof has to remain available at full fidelity.
-
-     `.plate` owns ::before/::after, so it must not share an element
-     with `.ticks`. Put the ticks on a wrapper.
-     ============================================================ */
-  .plate {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate; /* contains the blend — never leaks to the page */
-    background: var(--color-ink-975);
+  .group:hover .media-zoom > img,
+  .media-zoom:hover > img {
+    transform: scale(1.035);
   }
 
-  .plate img {
-    filter: saturate(0.82) contrast(1.06) brightness(0.86);
-    transition: filter 0.45s var(--ease-out-quart);
+  /* Drawings and sheets: shown whole, on white, in both themes, because
+     that is the paper they were drawn on. */
+  .media-doc {
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px var(--color-border);
   }
 
-  /* Temperature — pulls warm indoor and cool outdoor casts toward one
-     engineering neutral, so a mixed set stops looking mixed. */
-  .plate::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: var(--color-flow-1);
-    mix-blend-mode: color;
-    opacity: 0.14;
-    pointer-events: none;
-    transition: opacity 0.45s var(--ease-out-quart);
+  /* Translucent chrome over content: the nav bar and the mobile sheet. */
+  .glass {
+    background: rgb(255 255 255 / 0.78);
+    -webkit-backdrop-filter: saturate(1.8) blur(20px);
+    backdrop-filter: saturate(1.8) blur(20px);
   }
 
-  /* Seat — cluttered edges dissolve into the ground instead of ending
-     at a hard rectangle of someone else's workshop. */
-  .plate::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: radial-gradient(
-      ellipse 82% 82% at 50% 42%,
-      transparent 26%,
-      rgb(var(--scrim-rgb) / 0.62) 100%
-    );
-    pointer-events: none;
-    transition: opacity 0.45s var(--ease-out-quart);
+  :root[data-theme="dark"] .glass {
+    background: rgb(22 22 23 / 0.78);
   }
 
-  .plate:hover img,
-  .plate:focus-within img {
-    filter: none;
-  }
-
-  .plate:hover::before,
-  .plate:focus-within::before {
-    opacity: 0;
-  }
-
-  .plate:hover::after,
-  .plate:focus-within::after {
-    opacity: 0.2;
-  }
-
-  /* --- The plate on the day sheet ------------------------------
-     Same treatment, opposite direction. At night a photograph is
-     dimmed and seated INTO the ground; on paper the ground is above
-     the photograph, so knocking brightness down only makes a bright
-     page look like it has a hole in it. The temperature pull that
-     unifies the mixed source material stays — that is the part doing
-     the real work — and the seat is already reading --scrim-rgb, so
-     it dissolves into the sheet without further help. */
-  :root[data-theme="light"] .plate {
-    background: var(--color-ink-100);
-  }
-
-  :root[data-theme="light"] .plate img {
-    filter: saturate(0.86) contrast(1.03);
-  }
-
-  :root[data-theme="light"] .plate::before {
-    opacity: 0.1;
-  }
-
-  /* --- Documents: drawings, BOMs, schematics ---------------------
-     A drawing is READ, not looked at. The vignette and the temperature
-     tint attack exactly the corners and the small type where a title
-     block and a parts table live, so a document gets the same family
-     treatment with the grading removed: dimmed just enough that a white
-     sheet stops glaring against the ground, and restored in full on
-     hover, on focus, and in the lightbox.
-
-     The signal is the fit: `contain` means "show the whole sheet",
-     which is what a document needs and a photograph never asks for.
-     Hover/focus selectors are repeated at full specificity so the
-     photographic rules above cannot win them back. */
-  .plate-doc {
-    background: var(--color-ink-100);
-  }
-
-  .plate-doc img {
-    filter: brightness(0.9) contrast(1.02);
-  }
-
-  .plate-doc::before,
-  .plate-doc::after,
-  .plate-doc:hover::before,
-  .plate-doc:hover::after,
-  .plate-doc:focus-within::before,
-  .plate-doc:focus-within::after {
-    opacity: 0;
-  }
-
-  .plate-doc:hover img,
-  .plate-doc:focus-within img {
-    filter: none;
-  }
-
-  /* ============================================================
-     LOGO CHIP — the affiliations row.
-     These marks are opaque assets drawn for white grounds, in three
-     unrelated shapes (a wide wordmark, a square emblem, a
-     photograph). They cannot take a knock-out or a tint without
-     breaking, so the treatment is the one thing that CAN be made
-     uniform: an identical recessed plate for every mark, dimmed so
-     the row never glares against the ground, full strength on hover.
-     ============================================================ */
+  /* Affiliation logos: drawn for white grounds, so they sit on a white
+     chip in both themes rather than being inverted or tinted. */
   .chip-logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 84px;
-    height: 48px;
-    padding: 7px;
+    width: 88px;
+    height: 52px;
+    padding: 8px;
     border-radius: var(--radius-lg);
-    background: var(--color-ink-100);
+    background: #ffffff;
     border: 1px solid var(--color-border);
-    opacity: 0.7;
-    transition:
-      opacity 0.3s var(--ease-out-quart),
-      transform 0.3s var(--ease-out-quart);
+    transition: transform 0.3s var(--ease-out-quart);
   }
 
   .chip-logo img {
@@ -617,64 +328,21 @@
     object-fit: contain;
   }
 
-  .chip-logo:hover,
-  .chip-logo:focus-visible {
-    opacity: 1;
-    transform: translateY(-2px);
-  }
-
-  /* On the day sheet these marks are already sitting on the surface they
-     were drawn for, so the recessed plate stops being a correction and the
-     dimming just makes a legible logo worse. The plate keeps its border so
-     the row still reads as a row of chips. */
-  :root[data-theme="light"] .chip-logo {
-    background: var(--color-surface-2);
-    opacity: 0.88;
-  }
-
-  /* The live chip, inked for paper. The tint that reads as a glow on the
-     night ground measures 1.09:1 against a panel on the day sheet — legible
-     text inside an invisible shape. So on paper it is filled, and the edge
-     carries the boundary at 3.29:1 against the ground, which is the same
-     move the primary button makes for the same reason. */
-  :root[data-theme="light"] .badge-amber {
-    background: var(--color-primary);
-    border-color: var(--color-primary-edge);
-    color: var(--color-primary-foreground); /* 10.6:1 on the fill */
-  }
-
-  /* Theme-scoped artwork. Used by the logo lockup, which exists as two
-     drawn files rather than one recolourable one — a mark is not a token,
-     and forcing it through a filter is exactly what art-direction
-     §"imagery" rule 3 forbids. Both are in the markup; CSS picks. */
-  :root[data-theme="light"] .only-dark,
-  :root:not([data-theme="light"]) .only-light {
+  /* Theme-scoped artwork (the logo lockup is two drawn files). */
+  :root[data-theme="dark"] .only-light,
+  :root:not([data-theme="dark"]) .only-dark {
     display: none;
   }
 
-  /* Signature link: the amber sweep. Kept from the previous system —
-     it is correct, it just was never the whole identity. */
-  .link-sweep {
-    position: relative;
+  /* Horizontal rails scroll without a visible bar; the arrows and the
+     cut-off card say there is more. */
+  .rail {
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .link-sweep::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -3px;
-    height: 2px;
-    background: var(--color-brand-500);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s var(--ease-out-quart);
-  }
-
-  .link-sweep:hover::after,
-  .link-sweep:focus-visible::after,
-  .link-sweep[aria-current="page"]::after {
-    transform: scaleX(1);
+  .rail::-webkit-scrollbar {
+    display: none;
   }
 
   @media (prefers-reduced-motion: reduce) {

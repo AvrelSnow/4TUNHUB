@@ -1,16 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-// Self-hosted type (Fontsource packages): no runtime fetch to Google, so
-// dev and build never depend on network font access. Each file carries
-// unicode-range, so a page only downloads the subsets it uses; French
-// needs latin, plus latin-ext for œ.
-// Archivo: a grotesque with a width axis (62–125%), used wider at display
-// sizes. Replaced Geist, which is the Next.js default and read as template.
-import "@fontsource-variable/archivo/standard.css";
-// IBM Plex Mono: every label, figure and readout.
-import "@fontsource/ibm-plex-mono/400.css";
-import "@fontsource/ibm-plex-mono/500.css";
-import "@fontsource/ibm-plex-mono/600.css";
+// Self-hosted type (Fontsource): no runtime fetch to Google, and the CSP
+// allows fonts from 'self' only. Each file carries unicode-range, so a page
+// downloads only the subsets it uses; French needs latin plus latin-ext.
+// Instrument Sans, weight axis only: one family for everything.
+import "@fontsource-variable/instrument-sans/wght.css";
 import "../globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -62,15 +56,12 @@ export async function generateMetadata({
 }
 
 /**
- * One tag, not a media-switched pair. The ground is chosen by the visitor's
- * clock, not by `prefers-color-scheme`, so a media query cannot answer this
- * — the old pair promised a white chrome to anyone whose OS was set to
- * light, on a site that had no light theme at all. This is the night value
- * (the fallback), and ThemeControl rewrites it to the live
- * `--color-background` whenever the ground changes.
+ * One tag, not a media-switched pair: the theme follows the visitor's clock,
+ * which a media query cannot see. This is the day value (the fallback), and
+ * ThemeControl rewrites it to the live `--color-background` after mount.
  */
 export const viewport: Viewport = {
-  themeColor: "#08090b",
+  themeColor: "#ffffff",
 };
 
 export default async function LocaleLayout({
@@ -89,18 +80,14 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       className="h-full antialiased"
-      // No `data-theme` is server-rendered. The page is static per locale and
-      // cannot know a visitor's local hour, so guessing here would either
-      // ship the wrong ground or force the page off the static path. The
-      // resolver below sets it before first paint instead, and no markup
-      // anywhere depends on it — which is why there is nothing to hydrate
-      // and nothing that can mismatch.
+      // No `data-theme` is server-rendered: a static page cannot know the
+      // visitor's local hour. The resolver below sets it before first paint,
+      // and no markup depends on it, so nothing can mismatch on hydration.
       suppressHydrationWarning
     >
       <head>
-        {/* BLOCKING, and first. It must run before the stylesheet paints,
-            or the visitor sees the night ground flash to the day sheet.
-            See src/lib/theme.ts for what it does and why it falls to dark. */}
+        {/* BLOCKING, and first, so the page never flashes the wrong theme.
+            See src/lib/theme.ts. */}
         <script dangerouslySetInnerHTML={{ __html: themeResolverScript }} />
       </head>
       <body className="flex min-h-full flex-col">
@@ -110,7 +97,7 @@ export default async function LocaleLayout({
         />
         <a
           href="#main"
-          className="sr-only z-50 rounded-full bg-primary px-5 py-2.5 font-medium text-primary-foreground focus:not-sr-only focus:absolute focus:left-6 focus:top-3"
+          className="sr-only z-50 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground focus:not-sr-only focus:fixed focus:left-4 focus:top-3"
         >
           {dict.a11y.skipToContent}
         </a>

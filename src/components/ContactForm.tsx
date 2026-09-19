@@ -28,22 +28,21 @@ function ContactFormFields({ t, onReset }: { t: ContactCopy; onReset: () => void
 
   if (state.status === "success") {
     return (
-      <div
-        role="status"
-        className="ticks relative rounded-2xl border border-brand-500/40 bg-brand-500/15 p-8"
-      >
+      <div role="status" className="py-10 text-center">
         <span
           aria-hidden="true"
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-500 text-xl font-bold text-ink-900"
+          className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-success text-white"
         >
-          ✓
+          <svg viewBox="0 0 20 20" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4.5 10.5 8 14l7.5-8" />
+          </svg>
         </span>
-        <h3 className="mt-5 text-xl font-semibold text-foreground">{t.success.title}</h3>
-        <p className="mt-2 max-w-md text-sm leading-6 text-muted">{t.success.body}</p>
+        <h3 className="mt-6 text-display-sm text-foreground">{t.success.title}</h3>
+        <p className="mx-auto mt-3 max-w-md text-muted">{t.success.body}</p>
         <button
           type="button"
           onClick={onReset}
-          className="link-sweep mt-5 w-fit text-sm font-medium text-accent"
+          className="mt-6 font-medium text-accent hover:underline hover:underline-offset-4"
         >
           {t.success.again}
         </button>
@@ -52,10 +51,10 @@ function ContactFormFields({ t, onReset }: { t: ContactCopy; onReset: () => void
   }
 
   return (
-    <form action={formAction} noValidate className="flex flex-col gap-5">
-      <h2 className="text-lg font-semibold text-foreground">{f.heading}</h2>
+    <form action={formAction} noValidate className="flex flex-col gap-6">
+      <h2 className="text-headline text-foreground">{f.heading}</h2>
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2">
         <InputField
           label={f.name.label}
           name="name"
@@ -116,13 +115,13 @@ function ContactFormFields({ t, onReset }: { t: ContactCopy; onReset: () => void
       </div>
 
       {state.formError && (
-        <p role="alert" className="text-sm font-medium text-red-700">
+        <p role="alert" className="text-sm font-medium text-danger">
           {err(state.formError)}
         </p>
       )}
 
       <div>
-        <Button type="submit" size="lg" disabled={pending}>
+        <Button type="submit" size="lg" disabled={pending} className="w-full sm:w-auto">
           {pending ? f.submitting : f.submit}
         </Button>
       </div>

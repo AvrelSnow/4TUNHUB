@@ -15,7 +15,7 @@ export const camrail = {
     fr: "A contribué à l'exploitation et à la modernisation du réseau ferré national camerounais de 1 010 km — des systèmes de compresseurs de locomotives à la conception de supports de frein validés par FEA.",
   } as Loc,
   portrait: `${IMG}/portrait.webp`,
-  portraitCaption: { en: "FIG. 03 — On site · CAMRAIL workshop, Douala", fr: "FIG. 03 — Sur site · Atelier CAMRAIL, Douala" } as Loc,
+  portraitCaption: { en: "On site · CAMRAIL workshop, Douala", fr: "Sur site · Atelier CAMRAIL, Douala" } as Loc,
 
   stats: [
     { value: "1,010 km", label: { en: "Rail network", fr: "Réseau ferré" } as Loc },

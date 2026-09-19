@@ -1,28 +1,24 @@
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "secondary" | "ghost";
-type Size = "md" | "lg";
+type Variant = "primary" | "secondary" | "raised" | "ghost";
+type Size = "sm" | "md" | "lg";
 
-// Instruments are not pill-shaped (art-direction §"colour"/radii): the
-// control reads as a machined key, not a bubble.
+// Controls are pills. Focus uses the global :focus-visible outline.
 const base =
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-medium transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium tracking-tight transition-[background-color,color,transform] duration-200 ease-out active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
-  // The edge is a no-op on the night ground (the token equals the fill) and
-  // on the day sheet it becomes the darker amber that carries the control's
-  // boundary at 3.29:1 — WCAG 1.4.11, which a #ffb000 fill on pale paper
-  // fails at 1.6:1. One token, so this string never has to branch on theme.
-  primary:
-    "border border-primary-edge bg-primary text-primary-foreground hover:bg-brand-400 shadow-e1 active:scale-[0.98]",
-  secondary:
-    "border border-hairline bg-surface text-foreground hover:border-brand-500 hover:bg-surface-2 hover:text-accent active:scale-[0.98]",
-  ghost: "text-muted hover:text-foreground hover:bg-surface",
+  primary: "bg-primary text-primary-foreground hover:bg-primary-hover",
+  secondary: "bg-surface text-foreground hover:bg-border",
+  // Secondary for use on a grey band, where `surface` would disappear.
+  raised: "bg-surface-2 text-foreground shadow-e1 hover:bg-border",
+  ghost: "text-accent hover:bg-surface",
 };
 
 const sizes: Record<Size, string> = {
-  md: "h-11 px-5 text-sm",
-  lg: "h-13 px-7 text-base",
+  sm: "h-8 px-4 text-2xs",
+  md: "h-11 px-6 text-sm",
+  lg: "h-12 px-7 text-base",
 };
 
 type ButtonProps = {

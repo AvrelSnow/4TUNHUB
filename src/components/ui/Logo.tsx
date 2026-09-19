@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
  * ============================================================
  * Standards enforced here so usage stays consistent:
  *  - SVG-only artwork (infinite scale, crisp at every density).
- *  - Dark is the only theme, so the dark lockup is the lockup.
+ *  - Two drawn lockups, one per theme; CSS shows the right one.
  *  - `variant`: "full" wordmark, or "mark" (roundel) for tight spaces.
  *  - `size`: fixed heights — the minimum (sm = 28px) is the floor;
  *    never render the logo smaller.
@@ -28,16 +28,15 @@ const sizeHeights: Record<Size, string> = {
 };
 
 /**
- * The site now runs two grounds, so the lockup is drawn twice: the dark
- * lockup sets its wordmark in #A8B0B8 for the night surface, the light one
- * in #14181D for the day sheet. Both ship in the markup and CSS picks with
+ * The lockup is drawn twice: the dark one sets its wordmark in #A8B0B8 for
+ * the black page, the light one in #14181D for the white page. Both ship
+ * in the markup and CSS picks with
  * `.only-light` / `.only-dark`, rather than JavaScript swapping a `src`
  * after mount — a logo that arrives one frame late is the most conspicuous
  * possible place to put a flash.
  *
- * They are two drawn files and not one recoloured file on purpose: a mark
- * is not a token, and pushing it through a filter is precisely what
- * art-direction §"imagery" rule 3 forbids.
+ * Two drawn files, not one recoloured file: a mark is not a token, and
+ * pushing it through a filter distorts it.
  */
 const sources: Record<Variant, { light: string; dark: string }> = {
   full: { light: "/4tunhub-logo.svg", dark: "/4tunhub-logo-dark.svg" },
@@ -91,7 +90,7 @@ export function Logo({
     <Link
       href={href}
       aria-label="4TUN Hub — home"
-      className="inline-flex items-center transition-opacity duration-200 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="inline-flex items-center rounded-md transition-opacity duration-200 hover:opacity-80"
     >
       {art}
     </Link>

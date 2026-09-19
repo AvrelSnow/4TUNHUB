@@ -9,7 +9,7 @@ import { cn } from "@/lib/cn";
  */
 
 const controlBase =
-  "w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background aria-[invalid=true]:border-red-600";
+  "w-full rounded-xl border border-hairline bg-surface-2 px-4 py-3.5 text-base text-foreground placeholder:text-muted transition-[border-color,box-shadow] duration-200 hover:border-subtle focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/15 aria-[invalid=true]:border-danger";
 
 type CommonProps = {
   label: string;
@@ -28,7 +28,7 @@ export function InputField({
   const id = useId();
   const describedBy = error ? `${id}-error` : hint ? `${id}-hint` : undefined;
   return (
-    <div className={cn("flex flex-col gap-1.5", className)}>
+    <div className={cn("flex flex-col gap-2", className)}>
       <label htmlFor={id} className="text-sm font-medium text-foreground">
         {label}
       </label>
@@ -40,12 +40,12 @@ export function InputField({
         {...props}
       />
       {hint && !error && (
-        <p id={`${id}-hint`} className="text-xs text-muted">
+        <p id={`${id}-hint`} className="text-2xs text-muted">
           {hint}
         </p>
       )}
       {error && (
-        <p id={`${id}-error`} className="text-xs font-medium text-red-700">
+        <p id={`${id}-error`} className="text-2xs font-medium text-danger">
           {error}
         </p>
       )}
@@ -65,7 +65,7 @@ export function SelectField({
   const id = useId();
   const describedBy = error ? `${id}-error` : hint ? `${id}-hint` : undefined;
   return (
-    <div className={cn("flex flex-col gap-1.5", className)}>
+    <div className={cn("flex flex-col gap-2", className)}>
       <label htmlFor={id} className="text-sm font-medium text-foreground">
         {label}
       </label>
@@ -84,12 +84,12 @@ export function SelectField({
         {children}
       </select>
       {hint && !error && (
-        <p id={`${id}-hint`} className="text-xs text-muted">
+        <p id={`${id}-hint`} className="text-2xs text-muted">
           {hint}
         </p>
       )}
       {error && (
-        <p id={`${id}-error`} className="text-xs font-medium text-red-700">
+        <p id={`${id}-error`} className="text-2xs font-medium text-danger">
           {error}
         </p>
       )}
@@ -107,7 +107,7 @@ export function TextareaField({
   const id = useId();
   const describedBy = error ? `${id}-error` : hint ? `${id}-hint` : undefined;
   return (
-    <div className={cn("flex flex-col gap-1.5", className)}>
+    <div className={cn("flex flex-col gap-2", className)}>
       <label htmlFor={id} className="text-sm font-medium text-foreground">
         {label}
       </label>
@@ -120,12 +120,12 @@ export function TextareaField({
         {...props}
       />
       {hint && !error && (
-        <p id={`${id}-hint`} className="text-xs text-muted">
+        <p id={`${id}-hint`} className="text-2xs text-muted">
           {hint}
         </p>
       )}
       {error && (
-        <p id={`${id}-error`} className="text-xs font-medium text-red-700">
+        <p id={`${id}-error`} className="text-2xs font-medium text-danger">
           {error}
         </p>
       )}

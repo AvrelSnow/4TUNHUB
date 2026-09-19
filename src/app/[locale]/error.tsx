@@ -4,9 +4,9 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
 /**
- * Global error boundary — brand voice, zero internals leaked
- * (security contract §6). The digest is safe to show: it's an
- * opaque reference for server logs, not a stack trace.
+ * Global error boundary: plain words, zero internals leaked (security
+ * contract §6). The digest is safe to show: an opaque reference for
+ * server logs, not a stack trace.
  */
 export default function GlobalError({
   error,
@@ -16,26 +16,24 @@ export default function GlobalError({
   reset: () => void;
 }) {
   return (
-    <Container className="flex flex-1 flex-col items-start justify-center py-28">
-      <p className="eyebrow">Error · Something failed</p>
-      <h1 className="mt-5 max-w-2xl text-display text-foreground">
-        A component didn&apos;t hold.
-      </h1>
-      <p className="mt-4 max-w-md text-lg leading-8 text-muted">
-        Something went wrong on our side — not yours. Try again; if it
-        persists, tell us and we&apos;ll fix it.
-      </p>
-      {error.digest && (
-        <p className="mt-3 font-mono text-xs text-muted">ref: {error.digest}</p>
-      )}
-      <div className="mt-8 flex flex-wrap gap-3">
-        <Button size="lg" onClick={reset}>
-          Try again
-        </Button>
-        <Button as="a" href="/" size="lg" variant="secondary">
-          Back to home
-        </Button>
-      </div>
-    </Container>
+    <section className="flex flex-1 flex-col justify-center py-28 sm:py-36">
+      <Container size="narrow" className="text-center">
+        <p className="eyebrow">Error</p>
+        <h1 className="mt-3 text-display text-foreground">Something went wrong.</h1>
+        <p className="mx-auto mt-6 max-w-md text-lead text-muted">
+          The fault is on our side, not yours. Try again; if it keeps happening, tell us and
+          we&apos;ll fix it.
+        </p>
+        {error.digest && <p className="mt-4 text-2xs text-muted">Reference: {error.digest}</p>}
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <Button size="lg" onClick={reset}>
+            Try again
+          </Button>
+          <Button as="a" href="/" size="lg" variant="secondary">
+            Back to home
+          </Button>
+        </div>
+      </Container>
+    </section>
   );
 }

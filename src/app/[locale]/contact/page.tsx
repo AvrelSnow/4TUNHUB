@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Section } from "@/components/ui/Section";
+import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/Reveal";
+import { Chevron } from "@/components/ui/ArrowLink";
 import { ContactForm } from "@/components/ContactForm";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -34,84 +35,78 @@ export default async function ContactPage({ params }: Params) {
   const t = dict.contact;
   const c = t.channels;
 
+  const channels = [
+    { label: c.email, value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}`, external: false },
+    {
+      label: c.whatsapp,
+      value: c.whatsappNote,
+      href: WHATSAPP_COMMUNITY_URL,
+      external: true,
+    },
+    { label: c.linkedin, value: "Donfack Fortune", href: LINKEDIN_URL, external: true },
+  ];
+
   return (
     <>
       {/* 1 · HERO */}
-      <Section field="network" className="pb-10 pt-16 sm:pt-20">
-        <Reveal>
-          <p className="eyebrow">{t.eyebrow}</p>
-          <h1 className="mt-5 max-w-3xl text-display text-foreground">
-            {t.title}
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">{t.subtitle}</p>
-          <div className="mt-6">
-            <Badge variant="amber">{t.slaBadge}</Badge>
-          </div>
-        </Reveal>
-      </Section>
+      <PageHero
+        eyebrow={t.eyebrow}
+        title={t.title}
+        intro={t.subtitle}
+        actions={
+          <Badge variant="amber">
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+            {t.slaBadge}
+          </Badge>
+        }
+        className="pb-12 sm:pb-16"
+      />
 
       {/* 2 · FORM + DIRECT CHANNELS */}
-      <Container className="pb-24">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-          {/* Form */}
-          <Reveal className="order-2 lg:order-1">
-            <ContactForm t={t} />
-          </Reveal>
+      <section className="pb-24 sm:pb-32">
+        <Container>
+          <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
+            <Reveal className="order-2 lg:order-1">
+              <div className="rounded-3xl bg-surface p-6 sm:p-10">
+                <ContactForm t={t} />
+              </div>
+            </Reveal>
 
-          {/* Direct channels */}
-          <Reveal className="order-1 lg:order-2" delay={80}>
-            <div className="lg:sticky lg:top-28">
-              <p className="eyebrow">{c.eyebrow}</p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground">
-                {c.title}
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-muted">{c.intro}</p>
+            <Reveal className="order-1 lg:order-2" delay={80}>
+              <div className="lg:sticky lg:top-24">
+                <h2 className="text-headline text-foreground">{c.title}</h2>
+                <p className="mt-2 text-muted">{c.intro}</p>
 
-              <ul className="mt-8 flex flex-col gap-6">
-                <li>
-                  <p className="eyebrow text-muted">{c.email}</p>
-                  <a
-                    href={`mailto:${CONTACT_EMAIL}`}
-                    className="link-sweep mt-1 inline-block text-base font-medium text-foreground"
-                  >
-                    {CONTACT_EMAIL}
-                  </a>
-                </li>
-
-                <li>
-                  <p className="eyebrow text-muted">{c.whatsapp}</p>
-                  <a
-                    href={WHATSAPP_COMMUNITY_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-sweep mt-1 inline-block text-base font-medium text-foreground"
-                  >
-                    {c.whatsapp} →
-                  </a>
-                  <p className="mt-1 text-xs text-muted">{c.whatsappNote}</p>
-                </li>
-
-                <li>
-                  <p className="eyebrow text-muted">{c.linkedin}</p>
-                  <a
-                    href={LINKEDIN_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-sweep mt-1 inline-block text-base font-medium text-foreground"
-                  >
-                    {c.linkedin} →
-                  </a>
-                </li>
-
-                <li>
-                  <p className="eyebrow text-muted">{c.location}</p>
-                  <p className="mt-1 text-base font-medium text-foreground">{SITE_LOCATION}</p>
-                </li>
-              </ul>
-            </div>
-          </Reveal>
-        </div>
-      </Container>
+                <ul className="mt-8 divide-y divide-border border-y border-border">
+                  {channels.map((ch) => (
+                    <li key={ch.label}>
+                      <a
+                        href={ch.href}
+                        {...(ch.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        className="group flex items-center justify-between gap-4 py-5"
+                      >
+                        <span>
+                          <span className="block text-sm text-muted">{ch.label}</span>
+                          <span className="mt-0.5 block font-medium text-foreground group-hover:underline group-hover:underline-offset-4">
+                            {ch.value}
+                          </span>
+                        </span>
+                        <span className="text-accent">
+                          <Chevron external={ch.external} />
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                  <li className="py-5">
+                    <span className="block text-sm text-muted">{c.location}</span>
+                    <span className="mt-0.5 block font-medium text-foreground">{SITE_LOCATION}</span>
+                  </li>
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

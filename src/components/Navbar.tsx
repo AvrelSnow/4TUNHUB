@@ -9,7 +9,11 @@ import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
 
-/** Top-level ecosystem navigation — locale-aware labels, hrefs and CTA. */
+/**
+ * The bar: translucent over whatever scrolls beneath it, 56px tall, the
+ * six pillars in plain text and one small pill for the one action that
+ * matters. Tablets and phones get the menu instead.
+ */
 export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const items = primaryNav.map(({ key, href }) => ({
     key,
@@ -18,15 +22,12 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }));
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
-      <Container>
-        <div className="flex h-16 items-center justify-between gap-6">
-          <Logo href={localizeHref(locale, "/")} />
+    <header className="glass sticky top-0 z-40 border-b border-border">
+      <Container size="wide">
+        <div className="flex h-14 items-center justify-between gap-6">
+          <Logo href={localizeHref(locale, "/")} size="sm" />
 
-          {/* From lg, not md: at 768px the six mono labels plus logo, EN·FR
-              and the CTA need ~786px, so every page
-              scrolled sideways by 18px. Tablets get the menu instead. */}
-          <nav aria-label={dict.nav.primary} className="hidden items-center gap-6 lg:flex xl:gap-7">
+          <nav aria-label={dict.nav.primary} className="hidden items-center gap-8 lg:flex">
             {items.map((p) => (
               <NavLink key={p.key} href={p.href}>
                 {p.label}
@@ -34,12 +35,12 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <LanguageSwitcher locale={locale} label={dict.nav.language} />
             <Button
               as="a"
               href={localizeHref(locale, "/contact")}
-              size="md"
+              size="sm"
               className="hidden sm:inline-flex"
             >
               {dict.nav.workWithUs}
