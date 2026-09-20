@@ -17,6 +17,20 @@
 [build]
   command = "npm run build"
   publish = ".next"
+  # A production deploy costs 15 credits flat, whatever the build takes, so
+  # 300 credits a month is 20 deploys and nothing else. On 2026-09-20 eleven
+  # deploys in two days had eaten 165 of them; every other line on the bill —
+  # compute, bandwidth, 9,354 web requests — came to 7.2 credits together.
+  #
+  # So: skip the deploy when a commit cannot change what is served. `docs/`
+  # and loose markdown are read by people, not shipped. `src/lib/blueprint.ts`
+  # deliberately is NOT excluded — /blueprint renders it.
+  #
+  # Exit 0 skips the build. The guard matters: on the first build after a
+  # cache reset CACHED_COMMIT_REF is empty, and a bare `git diff` would then
+  # compare against nothing, exit 0, and skip a deploy that was needed. With
+  # the guard an empty ref fails open and builds.
+  ignore = '[ -n "$CACHED_COMMIT_REF" ] && git diff --quiet "$CACHED_COMMIT_REF" "$COMMIT_REF" -- . ":(exclude)docs/" ":(exclude)*.md"'
 
 [build.environment]
   NODE_VERSION = "22"
