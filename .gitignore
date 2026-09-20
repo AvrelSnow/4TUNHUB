@@ -42,3 +42,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Generated campaign cards (scripts/make-postcards.mjs)
+/postcards
