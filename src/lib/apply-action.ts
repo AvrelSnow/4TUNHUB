@@ -8,7 +8,7 @@ import {
   type ApplyState,
   type SwVersion,
 } from "./cohort";
-import { rateLimited, clientIp, str, EMAIL_RE, PHONE_RE } from "./form-guard";
+import { rateLimited, clientIp, str, EMAIL_RE, PHONE_RE, LINKEDIN_RE } from "./form-guard";
 import { sendMail, MailNotConfigured } from "./mailer";
 
 /**
@@ -34,11 +34,12 @@ export async function submitApplication(
   const name = str(formData, "name").slice(0, APPLY_LIMITS.nameMax);
   const email = str(formData, "email").slice(0, APPLY_LIMITS.emailMax);
   const whatsapp = str(formData, "whatsapp").slice(0, APPLY_LIMITS.whatsappMax);
+  const linkedin = str(formData, "linkedin").slice(0, APPLY_LIMITS.linkedinMax);
   const org = str(formData, "org").slice(0, APPLY_LIMITS.orgMax);
   const sw = str(formData, "sw");
   const why = str(formData, "why");
   const consent = str(formData, "consent");
-  const values: Partial<Record<ApplyField, string>> = { name, email, whatsapp, org, sw, why };
+  const values: Partial<Record<ApplyField, string>> = { name, email, whatsapp, linkedin, org, sw, why };
 
   const fieldErrors: ApplyState["fieldErrors"] = {};
   if (!name) fieldErrors.name = "required";
@@ -46,6 +47,10 @@ export async function submitApplication(
   else if (!EMAIL_RE.test(email)) fieldErrors.email = "emailInvalid";
   if (!whatsapp) fieldErrors.whatsapp = "required";
   else if (!PHONE_RE.test(whatsapp.replace(/[\s().-]/g, ""))) fieldErrors.whatsapp = "whatsappInvalid";
+  // The LinkedIn profile is how the two follows get checked, so a seat
+  // cannot be awarded without one.
+  if (!linkedin) fieldErrors.linkedin = "required";
+  else if (!LINKEDIN_RE.test(linkedin)) fieldErrors.linkedin = "linkedinInvalid";
   if (!org) fieldErrors.org = "required";
   if (!SW_VERSIONS.includes(sw as SwVersion)) fieldErrors.sw = "choose";
   if (!why) fieldErrors.why = "required";
@@ -64,6 +69,7 @@ export async function submitApplication(
         `Name: ${name}`,
         `Email: ${email}`,
         `WhatsApp: ${whatsapp}`,
+        `LinkedIn: ${linkedin}`,
         `School / employer: ${org}`,
         `SolidWorks: ${sw}`,
         "",

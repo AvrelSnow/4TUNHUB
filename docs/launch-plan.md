@@ -27,14 +27,17 @@ earn a place in. So Cohort 0 is:
 
 | | |
 |---|---|
-| Name | **Bootcamp CSWA · Cohorte 0** (in French) |
+| Name | **CSWA Bootcamp · Cohort 0** |
+| Partner | **Douala City SOLIDWORKS User Group** (483 members on SWUGN's network, verified 20 Sep). Decided 20 Sep: this is what turns a solo launch into one with a 483-member distribution list behind it. |
+| Language | **English** (changed 20 Sep from French) |
 | Price | Free, for 20 selected people |
 | Format | 8 live evening sessions over 4 weeks + exercises in a WhatsApp group |
 | Schedule | **Wednesday and Friday, 19:30–20:30** (Mon/Tue are teaching days and leave no energy; the W37 score showed it) |
-| Tools | Google Meet (60 min fits the free limit). Recorded locally with OBS, so replays exist. |
+| Tools | **Bevy** — the SWUG's own platform, so the sessions sit on the group's calendar and the group's members get them. Record locally with OBS so replays exist. |
 | Prerequisite | SolidWorks installed on their computer (any recent version) |
 | Outcome | Ready to sit the CSWA: two timed mock exams passed |
-| The exam | Costs **$99** unless they have a voucher. **The SOLIDWORKS Student Edition includes a free CSWA voucher**, and schools that are Academic Certification Providers can issue vouchers. The course is free; the exam is the participant's choice. Say this plainly on the page. |
+| The exam | **Confirmed 20 Sep: everyone who finishes gets a free CSWA voucher.** The exam is $99 otherwise. This is now the strongest line in the whole offer — and a promise that has to arrive in November, when the same people are being asked for testimonials. |
+| To be accepted | Join the SWUG on Bevy, follow it on LinkedIn, follow 4TUN Hub on LinkedIn and YouTube, then apply and send a screenshot of each membership. The form asks for a LinkedIn profile so the follows can be checked; the screenshots come by email because the form takes no uploads. |
 
 ### Syllabus (mapped to what the CSWA tests)
 
@@ -104,6 +107,7 @@ is finished during weeks 1–2, never the night before.
 | Privacy note published | The form collects names, emails and phone numbers | Claude, Wed 23 |
 | Host allows commercial use | Vercel's free Hobby plan forbids commercial use. **Netlify's free plan allows it.** | Netlify chosen |
 | `/blueprint` stays out of search | Internal spec page | Already noindex + robots |
+| The two LinkedIn URLs point at the right pages | Both company pages were handed over as admin URLs, which only an admin can open, so which ID is the SWUG and which is 4TUN Hub is a guess from the numbering. A launch post that sends 483 people to the wrong page is not a small error | **Open** — open both and confirm, or swap the two lines in `src/lib/cohort.ts` |
 | Somewhere to leave an address, on every page | Most people who read a page on launch day are not ready to apply, and a visitor who leaves without leaving an address is gone. A one-field waitlist block now sits on Academy, Cohort 0, Research, the Blog and in the footer of every page, each naming the one thing it subscribes you to | Done 20 Sep |
 | Visits counted | Launch-day traffic is the one number that never comes back. Cookieless, no consent banner, and off until the host is configured | Code done 20 Sep — needs `ANALYTICS_PROVIDER` + `ANALYTICS_SITE_ID` in Netlify **and a redeploy** (see README). Umami Cloud's free tier is the cheapest provider that also counts the three conversions |
 

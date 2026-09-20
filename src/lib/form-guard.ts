@@ -44,6 +44,14 @@ export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 /** International phone: optional +, then 8–15 digits once spaces and dashes go. */
 export const PHONE_RE = /^\+?\d{8,15}$/;
 
+/**
+ * A LinkedIn profile, however it was copied: with or without the protocol,
+ * with or without www, a country subdomain (fr.linkedin.com), a trailing
+ * slash or tracking query. We only need it to be a profile on LinkedIn —
+ * whether it is the right person is a human check, not a regex.
+ */
+export const LINKEDIN_RE = /^(https?:\/\/)?([a-z]{2,3}\.)?(www\.)?linkedin\.com\/(in|pub)\/[^\s/?#]{2,}/i;
+
 export function str(formData: FormData, key: string): string {
   const v = formData.get(key);
   return typeof v === "string" ? v.trim() : "";

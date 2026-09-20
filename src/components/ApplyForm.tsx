@@ -28,6 +28,12 @@ export function ApplyForm({ t, privacyHref }: { t: CohortCopy; privacyHref: stri
   const v = state.values ?? {};
   const consentId = useId();
 
+  // Pre-addressed, pre-titled: the two screenshots arrive in one thread we
+  // can match to the application by name.
+  const proofMailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+    "[Cohort 0] Screenshots",
+  )}`;
+
   if (state.status === "success") {
     return (
       <div role="status" className="py-10 text-center">
@@ -41,6 +47,16 @@ export function ApplyForm({ t, privacyHref }: { t: CohortCopy; privacyHref: stri
         </span>
         <h3 className="mt-6 text-display-sm text-foreground">{t.success.title}</h3>
         <p className="mx-auto mt-3 max-w-md text-muted">{t.success.body}</p>
+
+        {/* An application with no proof of membership cannot be selected,
+            so the confirmation is where we ask for it — while they are
+            still at the screen, not in an email they may not open. */}
+        <div className="mx-auto mt-8 max-w-md rounded-2xl bg-surface-2 p-6 text-left">
+          <p className="text-sm leading-6 text-foreground">{t.success.next}</p>
+          <Button as="a" href={proofMailto} size="md" className="mt-5">
+            {t.success.nextCta}
+          </Button>
+        </div>
       </div>
     );
   }
@@ -52,6 +68,7 @@ export function ApplyForm({ t, privacyHref }: { t: CohortCopy; privacyHref: stri
       `${f.name.label}: ${v.name ?? ""}`,
       `${f.email.label}: ${v.email ?? ""}`,
       `${f.whatsapp.label}: ${v.whatsapp ?? ""}`,
+      `${f.linkedin.label}: ${v.linkedin ?? ""}`,
       `${f.org.label}: ${v.org ?? ""}`,
       `${f.sw.label}: ${v.sw ? f.sw.options[v.sw] ?? v.sw : ""}`,
       "",
@@ -98,6 +115,19 @@ export function ApplyForm({ t, privacyHref }: { t: CohortCopy; privacyHref: stri
           hint={f.whatsapp.hint}
           defaultValue={v.whatsapp}
           error={err(state.fieldErrors?.whatsapp)}
+          required
+        />
+        <InputField
+          label={f.linkedin.label}
+          name="linkedin"
+          type="url"
+          inputMode="url"
+          autoComplete="url"
+          maxLength={APPLY_LIMITS.linkedinMax}
+          placeholder={f.linkedin.placeholder}
+          hint={f.linkedin.hint}
+          defaultValue={v.linkedin}
+          error={err(state.fieldErrors?.linkedin)}
           required
         />
         <InputField

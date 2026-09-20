@@ -23,6 +23,9 @@ export const LINKEDIN_URL =
  * published on Medium; the newsletter itself runs on LinkedIn. */
 export const MEDIUM_URL = "https://donfackfortune.medium.com";
 
+/** The channel: LS-DYNA and CAE tutorials. Following it is a condition of a Cohort 0 seat. */
+export const YOUTUBE_URL = "https://www.youtube.com/@4TUNHUB";
+
 /** Public CAD models & assemblies from real projects. */
 export const GRABCAD_URL = "https://grabcad.com/donfack.fortune-1";
 

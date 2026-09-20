@@ -9,9 +9,16 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
 import { ApplyForm } from "@/components/ApplyForm";
 import { EmailCaptureBand } from "@/components/EmailCaptureBand";
-import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
+import {
+  COHORT_PATH,
+  HUB_LINKEDIN_URL,
+  SWUG_BEVY_URL,
+  SWUG_LINKEDIN_URL,
+  SWUG_NAME,
+  applicationsOpen,
+} from "@/lib/cohort";
 import { founder } from "@/lib/founder";
-import { WHATSAPP_COMMUNITY_URL } from "@/lib/site";
+import { CONTACT_EMAIL, WHATSAPP_COMMUNITY_URL, YOUTUBE_URL } from "@/lib/site";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -37,14 +44,44 @@ export default async function CohortPage({ params }: Params) {
   const t = dict.cohort;
   const open = applicationsOpen();
 
+  /**
+   * The conditions of a seat: the words come from the dictionary, the
+   * URLs from src/lib/cohort.ts. A URL that has not been filled in yet
+   * renders as no link at all rather than as a dead one.
+   */
+  const seatSteps = [
+    { key: "bevy" as const, links: [{ label: t.requirements.links.bevy, href: SWUG_BEVY_URL }] },
+    {
+      key: "swugLinkedin" as const,
+      links: [{ label: t.requirements.links.swugLinkedin, href: SWUG_LINKEDIN_URL }],
+    },
+    {
+      key: "follow" as const,
+      links: [
+        { label: t.requirements.links.hubLinkedin, href: HUB_LINKEDIN_URL },
+        { label: t.requirements.links.youtube, href: YOUTUBE_URL },
+      ],
+    },
+    {
+      key: "proof" as const,
+      links: [
+        {
+          label: t.requirements.links.proof,
+          href: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("[Cohort 0] Screenshots")}`,
+        },
+      ],
+    },
+  ];
+
   const courseJsonLd = {
     "@context": "https://schema.org",
     "@type": "Course",
     name: t.metaTitle,
     description: t.metaDescription,
-    inLanguage: "fr",
+    inLanguage: "en",
     isAccessibleForFree: true,
     provider: { "@type": "Organization", name: "4TUN Hub", url: "https://4tunhub.com" },
+    contributor: { "@type": "Organization", name: SWUG_NAME },
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "online",
@@ -77,6 +114,9 @@ export default async function CohortPage({ params }: Params) {
           <div className="mx-auto mt-12 max-w-4xl text-center">
             <p className="eyebrow animate-fade-in">{t.eyebrow}</p>
             <h1 className="mt-3 animate-fade-up text-display-lg text-foreground">{t.title}</h1>
+            <p className="mt-4 animate-fade-up text-sm font-medium text-accent [animation-delay:40ms]">
+              {t.partner}
+            </p>
             <p className="mx-auto mt-7 max-w-2xl animate-fade-up text-lead text-muted [animation-delay:80ms]">
               {t.subtitle}
             </p>
@@ -185,6 +225,41 @@ export default async function CohortPage({ params }: Params) {
           </Reveal>
         </Container>
       </section>
+
+      {/* HOW TO GET A SEAT — the conditions, before the form asks for
+          anything. Someone who reads this page and applies without joining
+          the group has wasted their evening and ours. */}
+      <Section
+        eyebrow={t.requirements.eyebrow}
+        title={t.requirements.title}
+        intro={t.requirements.intro}
+      >
+        <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {seatSteps.map((step, i) => {
+            const copy = t.requirements.steps[step.key];
+            return (
+              <li key={step.key}>
+                <Reveal delay={i * 70} className="h-full">
+                  <div className="flex h-full flex-col rounded-3xl bg-surface p-8">
+                    <p className="figure text-sm font-semibold text-muted">{`0${i + 1}`}</p>
+                    <h3 className="mt-3 text-headline text-foreground">{copy.title}</h3>
+                    <p className="mt-2.5 flex-1 text-sm leading-6 text-muted">{copy.desc}</p>
+                    <div className="mt-6 flex flex-col items-start gap-2">
+                      {step.links
+                        .filter((l) => l.href)
+                        .map((l) => (
+                          <ArrowLink key={l.label} href={l.href} external className="text-sm">
+                            {l.label}
+                          </ArrowLink>
+                        ))}
+                    </div>
+                  </div>
+                </Reveal>
+              </li>
+            );
+          })}
+        </ol>
+      </Section>
 
       {/* BEFORE YOU APPLY + KEY DATES */}
       <Section tone="surface" eyebrow={t.before.eyebrow} title={t.before.title}>

@@ -67,7 +67,7 @@ const en = {
     cohort: {
       eyebrow: "Applications open",
       title: "CSWA Bootcamp · Cohort 0",
-      body: "Eight live evenings in October to get ready for the Certified SolidWorks Associate exam. Free for 20 selected people. Taught in French.",
+      body: "Eight live evenings in October to get ready for the Certified SolidWorks Associate exam, run with Douala City SWUG. Free for 20 selected people, and a free exam voucher for everyone who finishes. In English.",
       cta: "Apply by 1 October",
       more: "See the programme",
     },
@@ -1044,12 +1044,13 @@ const en = {
   cohort: {
     metaTitle: "CSWA Bootcamp · Cohort 0",
     metaDescription:
-      "A free, eight-session CSWA preparation bootcamp, taught live in French by Donfack Fortune. 20 seats by application, October 2026.",
+      "A free, eight-session CSWA preparation bootcamp taught live in English by Donfack Fortune, with Douala City SWUG. 20 seats by application, and a free exam voucher on finishing. October 2026.",
     back: "Academy",
     eyebrow: "4TUN Hub Academy · Cohort 0",
     title: "CSWA Bootcamp. Cohort 0.",
+    partner: "Run with the Douala City SOLIDWORKS User Group",
     subtitle:
-      "Eight live evenings to get you ready for the Certified SolidWorks Associate exam. Free for the 20 people we select. Taught in French.",
+      "Eight live evenings to get you ready for the Certified SolidWorks Associate exam. Free for the 20 people we select — and everyone who finishes leaves with a free exam voucher.",
     apply: "Apply for a seat",
     closesOn: "Applications close Thursday 1 October.",
     closed:
@@ -1060,13 +1061,13 @@ const en = {
       { label: "Seats", value: "20, by application" },
       { label: "Dates", value: "7–30 October 2026" },
       { label: "Schedule", value: "Wed & Fri, 19:30–20:30" },
-      { label: "Where", value: "Google Meet, with replays" },
-      { label: "Language", value: "French" },
+      { label: "Where", value: "Online, on Bevy" },
+      { label: "Language", value: "English" },
     ],
     outcome: {
       eyebrow: "What you leave with",
       title: "Ready to sit the CSWA.",
-      body: "By the last Friday you will have modelled exam-style parts, built an assembly, answered mass-property questions in the format the exam checks, and passed two timed mock exams. Between sessions, one exercise a week in a small WhatsApp group.",
+      body: "By the last Friday you will have modelled exam-style parts, built an assembly, answered mass-property questions in the format the exam checks, and passed two timed mock exams. Between sessions, one exercise a week in a small WhatsApp group. Finish the cohort and you also leave with a free CSWA exam voucher.",
     },
     syllabus: {
       eyebrow: "The programme",
@@ -1120,6 +1121,43 @@ const en = {
       ],
       note: "Miss the commitment and the seat goes to the next person on the waiting list.",
     },
+    /**
+     * The conditions of a seat. Cohort 0 runs with Douala City SWUG, so a
+     * seat goes to someone who has actually joined the group. The words
+     * live here; the URLs live in src/lib/cohort.ts.
+     */
+    requirements: {
+      eyebrow: "How to get a seat",
+      title: "Four things, none of which cost money.",
+      intro:
+        "Cohort 0 runs with Douala City SWUG, and a seat goes to someone who has joined the group and can show it. That is most of the selection, and it takes about five minutes.",
+      steps: {
+        bevy: {
+          title: "Join Douala City SWUG on Bevy",
+          desc: "Register on the group's page. The sessions are hosted there, and the link to each evening goes to members.",
+        },
+        swugLinkedin: {
+          title: "Follow Douala City SWUG on LinkedIn",
+          desc: "Where the group posts its events and the work of its members.",
+        },
+        follow: {
+          title: "Follow 4TUN Hub",
+          desc: "On LinkedIn and on YouTube. Cohort 0's results, and the opening of Cohort 1, are announced there first.",
+        },
+        proof: {
+          title: "Apply, then send two screenshots",
+          desc: "One of your Bevy registration, one showing you follow the group on LinkedIn — under the same name you applied with.",
+        },
+      },
+      links: {
+        bevy: "Open Bevy",
+        swugLinkedin: "Douala City SWUG on LinkedIn",
+        hubLinkedin: "4TUN Hub on LinkedIn",
+        youtube: "4TUN Hub on YouTube",
+        proof: "Send the screenshots",
+      },
+    },
+
     before: {
       eyebrow: "Before you apply",
       title: "What you need.",
@@ -1133,8 +1171,8 @@ const en = {
           desc: "Wednesday and Friday evenings, on a connection good enough for a video call. Replays cover a missed session.",
         },
         {
-          title: "About the exam fee",
-          desc: "The course is free. The CSWA exam itself costs $99 unless you have a voucher. The SOLIDWORKS Student Edition includes a free CSWA voucher, and some schools can issue them. Sitting the exam is your choice.",
+          title: "The exam, paid for",
+          desc: "Sitting the CSWA costs $99. Everyone who finishes Cohort 0 receives a voucher for it, free, at the end of the four weeks. Whether and when you sit the exam is still your choice.",
         },
       ],
     },
@@ -1149,13 +1187,18 @@ const en = {
     },
     form: {
       heading: "Apply for Cohort 0.",
-      intro: "Five minutes. We read every application and reply to everyone by Friday 2 October.",
+      intro: "Five minutes. Do the four steps above first — we check them. We read every application and reply to everyone by Friday 2 October.",
       name: { label: "Full name", placeholder: "Jane Doe" },
       email: { label: "Email", placeholder: "you@example.com" },
       whatsapp: {
         label: "WhatsApp number",
         placeholder: "+237 6XX XX XX XX",
         hint: "With the country code. The cohort's exercises run in a WhatsApp group.",
+      },
+      linkedin: {
+        label: "Your LinkedIn profile",
+        placeholder: "linkedin.com/in/your-name",
+        hint: "We check the two follows against this profile.",
       },
       org: {
         label: "School or employer",
@@ -1186,7 +1229,8 @@ const en = {
       errors: {
         required: "This field is required.",
         emailInvalid: "Enter a valid email address.",
-        whatsappInvalid: "Enter a WhatsApp number with its country code, e.g. +237 6XX XX XX XX.",
+        whatsappInvalid: "Enter a WhatsApp number with its country code, e.g. +237 6XX XX XX XX.",
+        linkedinInvalid: "Paste the address of your LinkedIn profile, e.g. linkedin.com/in/jane-doe.",
         choose: "Please choose one.",
         tooShort: "Please add a little more: two or three sentences.",
         tooLong: "That's a bit long. Please shorten it.",
@@ -1201,11 +1245,13 @@ const en = {
     success: {
       title: "Application received.",
       body: "Thank you. We reply to every applicant by Friday 2 October, by email and on WhatsApp.",
+      next: "One thing left: send us the two screenshots — your Bevy registration and your LinkedIn membership of Douala City SWUG — under the same name you applied with. An application without them cannot be selected.",
+      nextCta: "Send the screenshots",
     },
     instructor: {
       eyebrow: "Who teaches",
       title: "Donfack Fortune",
-      body: "Mechanical engineer and state-accredited educator: CSWP-certified, CSWE candidate, and organiser of the Douala SolidWorks user group. He has taught more than 300 students.",
+      body: "Mechanical engineer and state-accredited educator: CSWP-certified, CSWE candidate, and organiser of Douala City SWUG, the local SOLIDWORKS user group. He has taught more than 300 students.",
       cta: "Read his story",
     },
   },

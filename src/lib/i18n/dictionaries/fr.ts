@@ -67,7 +67,7 @@ const fr: Dictionary = {
     cohort: {
       eyebrow: "Candidatures ouvertes",
       title: "Bootcamp CSWA · Cohorte 0",
-      body: "Huit soirées en direct en octobre pour se préparer à l'examen Certified SolidWorks Associate. Gratuit pour 20 personnes sélectionnées. Cours en français.",
+      body: "Huit soirées en direct en octobre pour se préparer à l'examen Certified SolidWorks Associate, avec Douala City SWUG. Gratuit pour 20 personnes sélectionnées, et un bon d'examen offert à qui va au bout. Cours en anglais.",
       cta: "Postuler avant le 1er octobre",
       more: "Voir le programme",
     },
@@ -1041,12 +1041,13 @@ const fr: Dictionary = {
   cohort: {
     metaTitle: "Bootcamp CSWA · Cohorte 0",
     metaDescription:
-      "Un bootcamp gratuit de huit séances pour préparer le CSWA, en direct et en français, animé par Donfack Fortune. 20 places sur candidature, octobre 2026.",
+      "Un bootcamp gratuit de huit séances pour préparer le CSWA, en direct et en anglais, animé par Donfack Fortune avec Douala City SWUG. 20 places sur candidature et un bon d'examen offert à l'arrivée. Octobre 2026.",
     back: "Académie",
     eyebrow: "Académie 4TUN Hub · Cohorte 0",
     title: "Bootcamp CSWA. Cohorte 0.",
+    partner: "Organisé avec le Douala City SOLIDWORKS User Group",
     subtitle:
-      "Huit soirées en direct pour vous préparer à l'examen Certified SolidWorks Associate. Gratuit pour les 20 personnes que nous sélectionnerons. Cours en français.",
+      "Huit soirées en direct pour vous préparer à l'examen Certified SolidWorks Associate. Gratuit pour les 20 personnes que nous sélectionnerons — et qui va au bout repart avec un bon d'examen offert.",
     apply: "Postuler",
     closesOn: "Candidatures jusqu'au jeudi 1er octobre.",
     closed:
@@ -1057,13 +1058,13 @@ const fr: Dictionary = {
       { label: "Places", value: "20, sur candidature" },
       { label: "Dates", value: "Du 7 au 30 octobre 2026" },
       { label: "Horaires", value: "Mer. et ven., 19 h 30 – 20 h 30" },
-      { label: "Où", value: "Google Meet, avec rediffusions" },
-      { label: "Langue", value: "Français" },
+      { label: "Où", value: "En ligne, sur Bevy" },
+      { label: "Langue", value: "Anglais" },
     ],
     outcome: {
       eyebrow: "Ce que vous en retirez",
       title: "Prêt à passer le CSWA.",
-      body: "Au dernier vendredi, vous aurez modélisé des pièces au format de l'examen, construit un assemblage, répondu aux questions de propriétés de masse dans le format que l'examen vérifie, et réussi deux examens blancs chronométrés. Entre les séances, un exercice par semaine dans un petit groupe WhatsApp.",
+      body: "Au dernier vendredi, vous aurez modélisé des pièces au format de l'examen, construit un assemblage, répondu aux questions de propriétés de masse dans le format que l'examen vérifie, et réussi deux examens blancs chronométrés. Entre les séances, un exercice par semaine dans un petit groupe WhatsApp. Qui termine la cohorte repart aussi avec un bon d'examen CSWA offert.",
     },
     syllabus: {
       eyebrow: "Le programme",
@@ -1117,6 +1118,43 @@ const fr: Dictionary = {
       ],
       note: "Si l'engagement n'est pas tenu, la place revient à la personne suivante sur la liste d'attente.",
     },
+    /**
+     * Les conditions d'une place. La Cohorte 0 est organisée avec Douala
+     * City SWUG : une place revient à quelqu'un qui a réellement rejoint
+     * le groupe. Les mots sont ici, les URL dans src/lib/cohort.ts.
+     */
+    requirements: {
+      eyebrow: "Comment obtenir une place",
+      title: "Quatre choses, et aucune ne coûte d'argent.",
+      intro:
+        "La Cohorte 0 est organisée avec Douala City SWUG, et une place revient à quelqu'un qui a rejoint le groupe et peut le prouver. C'est l'essentiel de la sélection, et cela prend cinq minutes.",
+      steps: {
+        bevy: {
+          title: "Rejoindre Douala City SWUG sur Bevy",
+          desc: "Inscrivez-vous sur la page du groupe. Les séances y sont hébergées, et le lien de chaque soirée part aux membres.",
+        },
+        swugLinkedin: {
+          title: "Suivre Douala City SWUG sur LinkedIn",
+          desc: "C'est là que le groupe publie ses événements et le travail de ses membres.",
+        },
+        follow: {
+          title: "Suivre 4TUN Hub",
+          desc: "Sur LinkedIn et sur YouTube. Les résultats de la Cohorte 0, et l'ouverture de la Cohorte 1, y sont annoncés en premier.",
+        },
+        proof: {
+          title: "Postuler, puis envoyer deux captures d'écran",
+          desc: "Une de votre inscription sur Bevy, une montrant que vous suivez le groupe sur LinkedIn — sous le nom avec lequel vous avez postulé.",
+        },
+      },
+      links: {
+        bevy: "Ouvrir Bevy",
+        swugLinkedin: "Douala City SWUG sur LinkedIn",
+        hubLinkedin: "4TUN Hub sur LinkedIn",
+        youtube: "4TUN Hub sur YouTube",
+        proof: "Envoyer les captures",
+      },
+    },
+
     before: {
       eyebrow: "Avant de postuler",
       title: "Ce qu'il vous faut.",
@@ -1130,8 +1168,8 @@ const fr: Dictionary = {
           desc: "Le mercredi et le vendredi soir, avec une connexion suffisante pour un appel vidéo. Les rediffusions couvrent une séance manquée.",
         },
         {
-          title: "À propos des frais d'examen",
-          desc: "La formation est gratuite. L'examen CSWA coûte 99 $, sauf si vous avez un bon d'examen. L'édition étudiante de SOLIDWORKS en inclut un gratuitement, et certaines écoles peuvent en délivrer. Passer l'examen reste votre choix.",
+          title: "L'examen, payé",
+          desc: "Passer le CSWA coûte 99 $. Toute personne qui termine la Cohorte 0 reçoit un bon d'examen offert, à la fin des quatre semaines. Passer l'examen, et quand, reste votre choix.",
         },
       ],
     },
@@ -1146,13 +1184,18 @@ const fr: Dictionary = {
     },
     form: {
       heading: "Postuler à la Cohorte 0.",
-      intro: "Cinq minutes. Nous lisons chaque candidature et répondons à tous avant le vendredi 2 octobre.",
+      intro: "Cinq minutes. Faites d'abord les quatre étapes ci-dessus — nous les vérifions. Nous lisons chaque candidature et répondons à tous avant le vendredi 2 octobre.",
       name: { label: "Nom complet", placeholder: "Jeanne Dupont" },
       email: { label: "E-mail", placeholder: "vous@exemple.com" },
       whatsapp: {
         label: "Numéro WhatsApp",
         placeholder: "+237 6XX XX XX XX",
         hint: "Avec l'indicatif du pays. Les exercices de la cohorte se font dans un groupe WhatsApp.",
+      },
+      linkedin: {
+        label: "Votre profil LinkedIn",
+        placeholder: "linkedin.com/in/votre-nom",
+        hint: "C'est sur ce profil que nous vérifions les deux abonnements.",
       },
       org: {
         label: "École ou employeur",
@@ -1184,6 +1227,7 @@ const fr: Dictionary = {
         required: "Ce champ est obligatoire.",
         emailInvalid: "Saisissez une adresse e-mail valide.",
         whatsappInvalid: "Saisissez un numéro WhatsApp avec l'indicatif, par ex. +237 6XX XX XX XX.",
+        linkedinInvalid: "Collez l'adresse de votre profil LinkedIn, par ex. linkedin.com/in/jeanne-dupont.",
         choose: "Veuillez choisir une option.",
         tooShort: "Ajoutez un peu plus de détails : deux ou trois phrases.",
         tooLong: "C'est un peu long. Merci de raccourcir.",
@@ -1198,11 +1242,13 @@ const fr: Dictionary = {
     success: {
       title: "Candidature reçue.",
       body: "Merci. Nous répondons à chaque candidat avant le vendredi 2 octobre, par e-mail et sur WhatsApp.",
+      next: "Il reste une chose : envoyez-nous les deux captures d'écran — votre inscription sur Bevy et votre abonnement LinkedIn à Douala City SWUG — sous le nom avec lequel vous avez postulé. Sans elles, une candidature ne peut pas être retenue.",
+      nextCta: "Envoyer les captures",
     },
     instructor: {
       eyebrow: "Qui enseigne",
       title: "Donfack Fortune",
-      body: "Ingénieur mécanicien et enseignant agréé par l'État : certifié CSWP, candidat CSWE, et animateur du groupe d'utilisateurs SolidWorks de Douala. Il a formé plus de 300 étudiants.",
+      body: "Ingénieur mécanicien et enseignant agréé par l'État : certifié CSWP, candidat CSWE, et animateur de Douala City SWUG, le groupe d'utilisateurs SOLIDWORKS local. Il a formé plus de 300 étudiants.",
       cta: "Lire son parcours",
     },
   },
