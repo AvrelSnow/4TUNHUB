@@ -102,6 +102,12 @@ const en = {
       about: "The organization and the founder behind 4TUN Hub.",
     } as Record<string, string>,
 
+    /** Renders only when src/lib/testimonials.ts has real, named quotes. */
+    testimonials: {
+      eyebrow: "In their words",
+      title: "What the people who were there say.",
+    },
+
     proof: {
       eyebrow: "Proof",
       title: "Engineering that shipped, not slideware.",
@@ -1170,11 +1176,22 @@ const en = {
           title: "One hour, twice a week",
           desc: "Wednesday and Friday evenings, on a connection good enough for a video call. Replays cover a missed session.",
         },
-        {
-          title: "The exam, paid for",
-          desc: "Sitting the CSWA costs $99. Everyone who finishes Cohort 0 receives a voucher for it, free, at the end of the four weeks. Whether and when you sit the exam is still your choice.",
-        },
       ],
+    },
+
+    /**
+     * The strongest line in the whole offer, and the reason most of the
+     * students Fortune teaches never sit this exam. It used to be the
+     * third card in "what you need", which is both the wrong section \u2014
+     * it is not a requirement, it is what you get \u2014 and far too quiet
+     * for the one fact that removes the objection.
+     */
+    voucher: {
+      eyebrow: "The best part",
+      title: "The exam, paid for.",
+      body: "Sitting the CSWA costs $99, and that single number is why most of the engineers who could pass it never take it. Everyone who finishes Cohort 0 receives a voucher for it, free, at the end of the four weeks.",
+      note: "Whether and when you sit the exam is still your choice \u2014 the voucher is yours either way.",
+      figure: { from: "$99", to: "$0" },
     },
     timeline: {
       eyebrow: "Key dates",
@@ -1242,6 +1259,55 @@ const en = {
           "Our application service isn't switched on yet, so this didn't send. Your answers are kept: send them by email instead.",
       } as Record<string, string>,
     },
+    /**
+     * The "send the screenshots" page. It exists because a mailto: link
+     * opens nothing on a phone with no mail client, and because an empty
+     * message tells nobody what counts as proof.
+     */
+    screenshots: {
+      back: "Cohort 0",
+      eyebrow: "One step left",
+      title: "Send your two screenshots.",
+      intro:
+        "Your application is in. It cannot be selected until we can see that you have actually joined Douala City SWUG \u2014 which takes two screenshots and about a minute.",
+      shots: {
+        bevy: {
+          title: "Your Bevy registration",
+          desc: "The group's page on SWUGN, signed in, showing you as a member. The top of the page with your name visible is enough.",
+          cta: "Open the group on Bevy",
+        },
+        linkedin: {
+          title: "Your LinkedIn follow",
+          desc: "The group's LinkedIn page showing Following rather than Follow. Your own profile name in the corner is what makes it yours.",
+          cta: "Open the group on LinkedIn",
+        },
+      },
+      send: {
+        title: "Both to one address.",
+        body:
+          "Attach the two images and send. The subject and the text are already written \u2014 put the name you applied with in the message, and nothing else is needed.",
+        cta: "Write the email",
+      },
+      mailSubject: "Screenshots",
+      mailBody:
+        "Name I applied with:\n\nAttached:\n1. My Bevy registration for Douala City SWUG\n2. My LinkedIn follow of Douala City SWUG\n",
+      notes: [
+        {
+          title: "By 11 October",
+          body: "The same deadline as the application itself. Screenshots that arrive after it cannot be counted, because selection will already be under way.",
+        },
+        {
+          title: "Use your own name",
+          body: "Send them under the name you applied with. We match every screenshot to an application by hand, and an address we do not recognise is one we cannot place.",
+        },
+        {
+          title: "If you cannot send them",
+          body: "Write to us anyway and say why. We would rather sort it out than lose someone over a screenshot.",
+        },
+      ],
+      notApplied: "Haven't applied yet? Start there",
+    },
+
     success: {
       title: "Application received.",
       body: "Thank you. Seats are given out as applications come in, and we reply to every applicant by Friday 16 October, by email and on WhatsApp.",

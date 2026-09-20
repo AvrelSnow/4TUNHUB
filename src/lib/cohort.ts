@@ -5,6 +5,8 @@
  */
 
 export const COHORT_PATH = "/academy/cohort-0";
+/** Where an applicant is sent to hand in their proof of membership. */
+export const SCREENSHOTS_PATH = "/academy/cohort-0/screenshots";
 
 /**
  * Cohort 0 runs with the Douala City SWUG, and membership of the group is

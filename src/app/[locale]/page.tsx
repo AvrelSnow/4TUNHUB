@@ -10,6 +10,7 @@ import { Media } from "@/components/ui/Media";
 import { Rail, RailItem } from "@/components/ui/Rail";
 import { SectionHeader } from "@/components/ui/Section";
 import { CohortFeature } from "@/components/CohortFeature";
+import { Testimonials } from "@/components/Testimonials";
 import { flattenTree } from "@/lib/sitemap";
 import { projects, featuredProjects, projectDetailPath } from "@/lib/projects";
 import { WHATSAPP_COMMUNITY_URL } from "@/lib/site";
@@ -19,17 +20,23 @@ import { localizeHref } from "@/lib/i18n/routing";
 import { cn } from "@/lib/cn";
 
 /**
- * The hero is a fan of five real photographs: machines designed and built
- * by the founder, and the founder on site. No render, no stock: the first
- * thing a visitor sees is evidence. Offsets make the row read as a set
- * rather than a grid; phones keep the middle three.
+ * The hero is a fan of five real photographs — all of them machines that
+ * were designed, simulated and built. No render, no stock: the first thing
+ * a visitor sees is evidence. Offsets make the row read as a set rather
+ * than a grid; phones keep the middle three.
+ *
+ * The founder's portrait used to hold the last slot. It came out on
+ * 2026-09-20: with his photograph further down the page as well, the home
+ * page read as one man's portfolio rather than an ecosystem, which is the
+ * one thing the positioning cannot afford. He appears once, below, as the
+ * proof behind the work — never as the work itself.
  */
 const HERO_SHOTS = [
   { src: "/images/projects/banana-hero.webp", key: "banana-pseudostem-shredder", offset: "lg:mt-20", mobile: false },
   { src: "/images/projects/pedal-hero.webp", key: "pedal-power-charger", offset: "mt-8 lg:mt-8", mobile: true },
   { src: "/images/projects/braking-hero.webp", key: "locomotive-braking-analysis", offset: "mt-0", mobile: true },
   { src: "/images/projects/beans-hero.webp", key: "beans-unwrapping-machine", offset: "mt-8 lg:mt-8", mobile: true },
-  { src: "/images/camrail/portrait.webp", key: "founder", offset: "lg:mt-20", mobile: false },
+  { src: "/images/projects/fsae-hero.webp", key: "fsae-race-car", offset: "lg:mt-20", mobile: false },
 ] as const;
 
 export default async function Home({
@@ -73,10 +80,7 @@ export default async function Home({
         <div className="mx-auto mt-16 max-w-7xl px-3 sm:mt-20 sm:px-6">
           <div className="grid grid-cols-3 items-start gap-2.5 sm:gap-4 lg:grid-cols-5">
             {HERO_SHOTS.map((shot, i) => {
-              const alt =
-                shot.key === "founder"
-                  ? dict.about.founderTitle
-                  : dict.projects.items[shot.key]?.title ?? "";
+              const alt = dict.projects.items[shot.key]?.title ?? "";
               return (
                 <div
                   key={shot.src}
@@ -255,7 +259,12 @@ export default async function Home({
         </Rail>
       </section>
 
-      {/* 5 · FOUNDER — org first, the person second, but a real person. */}
+      {/* 5 · WHAT PEOPLE SAY — the work above is ours; this is someone
+          else's word for it, which is the only kind that counts. Renders
+          nothing until there are real, named quotes to print. */}
+      <Testimonials t={t.testimonials} />
+
+      {/* 6 · FOUNDER — org first, the person second, but a real person. */}
       <section className="pb-24 sm:pb-32">
         <Container>
           <Reveal>
@@ -280,7 +289,7 @@ export default async function Home({
         </Container>
       </section>
 
-      {/* 6 · CONVERSION */}
+      {/* 7 · CONVERSION */}
       <CtaPanel
         title={t.conversion.title}
         subtitle={t.conversion.subtitle}

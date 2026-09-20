@@ -19,7 +19,16 @@ type CohortCopy = Dictionary["cohort"];
  * ("unavailable") and the visitor gets a ready-written email instead, so an
  * application can never vanish silently.
  */
-export function ApplyForm({ t, privacyHref }: { t: CohortCopy; privacyHref: string }) {
+export function ApplyForm({
+  t,
+  privacyHref,
+  screenshotsHref,
+}: {
+  t: CohortCopy;
+  privacyHref: string;
+  /** Where the confirmation sends them to hand in their proof. */
+  screenshotsHref: string;
+}) {
   const [state, formAction, pending] = useActionState(submitApplication, initialApplyState);
   // Counted, never identified: the event carries no field of the form.
   useTrackOnce(state.status === "success", ANALYTICS_EVENTS.application);
@@ -28,11 +37,6 @@ export function ApplyForm({ t, privacyHref }: { t: CohortCopy; privacyHref: stri
   const v = state.values ?? {};
   const consentId = useId();
 
-  // Pre-addressed, pre-titled: the two screenshots arrive in one thread we
-  // can match to the application by name.
-  const proofMailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-    "[Cohort 0] Screenshots",
-  )}`;
 
   if (state.status === "success") {
     return (
@@ -53,7 +57,7 @@ export function ApplyForm({ t, privacyHref }: { t: CohortCopy; privacyHref: stri
             still at the screen, not in an email they may not open. */}
         <div className="mx-auto mt-8 max-w-md rounded-2xl bg-surface-2 p-6 text-left">
           <p className="text-sm leading-6 text-foreground">{t.success.next}</p>
-          <Button as="a" href={proofMailto} size="md" className="mt-5">
+          <Button as="a" href={screenshotsHref} size="md" className="mt-5">
             {t.success.nextCta}
           </Button>
         </div>

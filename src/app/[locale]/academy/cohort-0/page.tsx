@@ -14,11 +14,12 @@ import {
   HUB_LINKEDIN_URL,
   SWUG_BEVY_URL,
   SWUG_LINKEDIN_URL,
+  SCREENSHOTS_PATH,
   SWUG_NAME,
   applicationsOpen,
 } from "@/lib/cohort";
 import { founder } from "@/lib/founder";
-import { CONTACT_EMAIL, WHATSAPP_COMMUNITY_URL, YOUTUBE_URL } from "@/lib/site";
+import { WHATSAPP_COMMUNITY_URL, YOUTUBE_URL } from "@/lib/site";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -49,27 +50,28 @@ export default async function CohortPage({ params }: Params) {
    * URLs from src/lib/cohort.ts. A URL that has not been filled in yet
    * renders as no link at all rather than as a dead one.
    */
-  const seatSteps = [
-    { key: "bevy" as const, links: [{ label: t.requirements.links.bevy, href: SWUG_BEVY_URL }] },
+  const seatSteps: {
+    key: keyof typeof t.requirements.steps;
+    links: { label: string; href: string; external?: boolean }[];
+  }[] = [
+    { key: "bevy", links: [{ label: t.requirements.links.bevy, href: SWUG_BEVY_URL }] },
     {
-      key: "swugLinkedin" as const,
+      key: "swugLinkedin",
       links: [{ label: t.requirements.links.swugLinkedin, href: SWUG_LINKEDIN_URL }],
     },
     {
-      key: "follow" as const,
+      key: "follow",
       links: [
         { label: t.requirements.links.hubLinkedin, href: HUB_LINKEDIN_URL },
         { label: t.requirements.links.youtube, href: YOUTUBE_URL },
       ],
     },
     {
-      key: "proof" as const,
-      links: [
-        {
-          label: t.requirements.links.proof,
-          href: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("[Cohort 0] Screenshots")}`,
-        },
-      ],
+      key: "proof",
+      // A page, not a mailto: it shows what counts as proof, and it can be
+      // pasted into WhatsApp, which is where most of this conversation
+      // actually happens.
+      links: [{ label: t.requirements.links.proof, href: localizeHref(locale, SCREENSHOTS_PATH), external: false }],
     },
   ];
 
@@ -178,6 +180,33 @@ export default async function CohortPage({ params }: Params) {
         </Container>
       </section>
 
+      {/* THE VOUCHER — the objection this cohort exists to remove, given
+          its own stage and the brand fill. Amber with ink type is the one
+          loud thing on a quiet site; it is spent here and on the ribbon,
+          nowhere else. */}
+      <section className="py-20 sm:py-24">
+        <Container>
+          <Reveal>
+            <div className="grid gap-10 rounded-3xl bg-brand-500 p-8 text-ink-900 sm:p-12 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-16 lg:p-16">
+              <div className="flex items-baseline gap-5">
+                <span className="figure text-display-lg font-semibold tracking-tight text-ink-900/45 line-through decoration-[0.08em]">
+                  {t.voucher.figure.from}
+                </span>
+                <span className="figure text-display-lg font-semibold tracking-tight text-ink-900">
+                  {t.voucher.figure.to}
+                </span>
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-ink-900/70">{t.voucher.eyebrow}</p>
+                <h2 className="mt-2 text-display-sm text-ink-900">{t.voucher.title}</h2>
+                <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-900/80">{t.voucher.body}</p>
+                <p className="mt-4 text-sm text-ink-900/70">{t.voucher.note}</p>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
       {/* SYLLABUS */}
       <Section eyebrow={t.syllabus.eyebrow} title={t.syllabus.title}>
         <ol className="mt-10 divide-y divide-border border-y border-border">
@@ -248,7 +277,12 @@ export default async function CohortPage({ params }: Params) {
                       {step.links
                         .filter((l) => l.href)
                         .map((l) => (
-                          <ArrowLink key={l.label} href={l.href} external className="text-sm">
+                          <ArrowLink
+                            key={l.label}
+                            href={l.href}
+                            external={l.external !== false}
+                            className="text-sm"
+                          >
                             {l.label}
                           </ArrowLink>
                         ))}
@@ -315,7 +349,11 @@ export default async function CohortPage({ params }: Params) {
 
             <div className="rounded-3xl bg-surface p-6 sm:p-10">
               {open ? (
-                <ApplyForm t={t} privacyHref={localizeHref(locale, "/privacy")} />
+                <ApplyForm
+                  t={t}
+                  privacyHref={localizeHref(locale, "/privacy")}
+                  screenshotsHref={localizeHref(locale, SCREENSHOTS_PATH)}
+                />
               ) : (
                 <p className="py-10 text-center text-foreground">{t.closed}</p>
               )}

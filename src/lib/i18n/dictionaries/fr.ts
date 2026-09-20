@@ -103,6 +103,11 @@ const fr: Dictionary = {
       about: "L'organisation et le fondateur derrière 4TUN Hub.",
     },
 
+    testimonials: {
+      eyebrow: "Leurs mots",
+      title: "Ce qu’en disent ceux qui y étaient.",
+    },
+
     proof: {
       eyebrow: "Preuve",
       title: "De l'ingénierie livrée, pas des diapositives.",
@@ -1167,11 +1172,15 @@ const fr: Dictionary = {
           title: "Une heure, deux fois par semaine",
           desc: "Le mercredi et le vendredi soir, avec une connexion suffisante pour un appel vidéo. Les rediffusions couvrent une séance manquée.",
         },
-        {
-          title: "L'examen, payé",
-          desc: "Passer le CSWA coûte 99 $. Toute personne qui termine la Cohorte 0 reçoit un bon d'examen offert, à la fin des quatre semaines. Passer l'examen, et quand, reste votre choix.",
-        },
       ],
+    },
+
+    voucher: {
+      eyebrow: "Le meilleur",
+      title: "L'examen, payé.",
+      body: "Passer le CSWA coûte 99 $, et ce seul chiffre explique pourquoi la plupart des ingénieurs capables de le réussir ne le passent jamais. Toute personne qui termine la Cohorte 0 reçoit un bon d'examen offert, à la fin des quatre semaines.",
+      note: "Passer l'examen, et quand, reste votre choix — le bon vous appartient dans tous les cas.",
+      figure: { from: "99 $", to: "0 $" },
     },
     timeline: {
       eyebrow: "Dates clés",
@@ -1239,6 +1248,50 @@ const fr: Dictionary = {
           "Notre service de candidatures n'est pas encore activé : l'envoi n'a pas eu lieu. Vos réponses sont conservées ; envoyez-les plutôt par e-mail.",
       } as Record<string, string>,
     },
+    screenshots: {
+      back: "Cohorte 0",
+      eyebrow: "Une \u00e9tape reste",
+      title: "Envoyez vos deux captures d\u2019\u00e9cran.",
+      intro:
+        "Votre candidature est enregistr\u00e9e. Elle ne peut pas \u00eatre retenue tant que nous ne voyons pas que vous avez r\u00e9ellement rejoint Douala City SWUG \u2014 deux captures d\u2019\u00e9cran, une minute.",
+      shots: {
+        bevy: {
+          title: "Votre inscription sur Bevy",
+          desc: "La page du groupe sur SWUGN, connect\u00e9, o\u00f9 l\u2019on voit que vous \u00eates membre. Le haut de la page avec votre nom visible suffit.",
+          cta: "Ouvrir le groupe sur Bevy",
+        },
+        linkedin: {
+          title: "Votre abonnement LinkedIn",
+          desc: "La page LinkedIn du groupe affichant Abonn\u00e9 et non S\u2019abonner. C\u2019est votre nom dans le coin qui en fait la v\u00f4tre.",
+          cta: "Ouvrir le groupe sur LinkedIn",
+        },
+      },
+      send: {
+        title: "Les deux \u00e0 une seule adresse.",
+        body:
+          "Joignez les deux images et envoyez. L\u2019objet et le texte sont d\u00e9j\u00e0 \u00e9crits \u2014 indiquez le nom avec lequel vous avez postul\u00e9, rien de plus n\u2019est n\u00e9cessaire.",
+        cta: "R\u00e9diger l\u2019e-mail",
+      },
+      mailSubject: "Captures d\u2019\u00e9cran",
+      mailBody:
+        "Nom avec lequel j\u2019ai postul\u00e9 :\n\nEn pi\u00e8ces jointes :\n1. Mon inscription Bevy \u00e0 Douala City SWUG\n2. Mon abonnement LinkedIn \u00e0 Douala City SWUG\n",
+      notes: [
+        {
+          title: "Avant le 11 octobre",
+          body: "La m\u00eame date que la candidature. Des captures arriv\u00e9es apr\u00e8s ne peuvent pas \u00eatre prises en compte : la s\u00e9lection sera d\u00e9j\u00e0 en cours.",
+        },
+        {
+          title: "Sous votre nom",
+          body: "Envoyez-les sous le nom avec lequel vous avez postul\u00e9. Nous rapprochons chaque capture d\u2019une candidature \u00e0 la main, et une adresse inconnue est une capture que nous ne pouvons pas rattacher.",
+        },
+        {
+          title: "Si vous ne pouvez pas",
+          body: "\u00c9crivez-nous quand m\u00eame en expliquant pourquoi. Nous pr\u00e9f\u00e9rons trouver une solution que perdre quelqu\u2019un pour une capture d\u2019\u00e9cran.",
+        },
+      ],
+      notApplied: "Pas encore candidat\u00e9 ? Commencez par l\u00e0",
+    },
+
     success: {
       title: "Candidature reçue.",
       body: "Merci. Les places sont attribuées au fil des candidatures, et nous répondons à chaque candidat avant le vendredi 16 octobre, par e-mail et sur WhatsApp.",

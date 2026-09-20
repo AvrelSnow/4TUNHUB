@@ -348,8 +348,10 @@ export const phases: Phase[] = [
       "Netlify + Resend ✓",
       "Email capture on every page ✓",
       "Cookieless analytics ✓ (needs its two env vars on the host)",
+      "Deployed ✓ (pushed 2026-09-20)",
+      "External design review actioned ✓",
       "Confirm the two LinkedIn company URLs",
-      "Go live",
+      "Testimonials: collect three real quotes",
     ],
   },
   {
@@ -498,6 +500,41 @@ export const decisions: Decision[] = [
       "Ten ambassadors, selected by a 48-hour task rather than by interview, holding ten of the twenty Cohort 0 seats, on a four-week term.",
     rationale:
       "Fortune's idea, with one correction: an ambassador who is IN the cohort has something of their own to post every week, which beats anything written about the Hub from outside. Thirty warm candidates are invited directly and asked to share the launch post and send a screenshot within 48 hours; the ten who do it are in. That selects on the only trait that predicts survival \u2014 doing the thing \u2014 and costs no interviews. The reward costs no cash: a guaranteed seat and voucher, a name on the site, a signed letter of recommendation, reposts to the SWUG's 483, and first refusal on a free seat in the paid Cohort 1. Their reveal cards are the campaign, not overhead: ten people sharing a card with their own face on it reaches further than anything posted from one account.",
+    status: "locked",
+  },
+  {
+    decision:
+      "External design review actioned (2026-09-20). Reviewer: a web designer and developer, a friend of Fortune's, on the live site.",
+    rationale:
+      "Verdict was that the design is strong; the fixes were specific. Actioned: the announcement ribbon is amber with ink type instead of a grey surface bar; the hero fan is five machines with the founder's portrait removed; the exam voucher was lifted out of a list into its own band; the screenshots step became a page; the Powered by Netlify badge was switched off in the Netlify project (a hosting setting, not code — it is injected at the edge). Raised and NOT yet done, because each needs content that does not exist yet: a testimonial on the landing page (structure shipped, empty), the founder's conferences and a post per conference for SEO, short video, and a general pass on hierarchy. The reviewer's instinct about the founder appearing twice matched the org-first positioning exactly, which is why it was taken as written.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Amber is the site's one loud colour, and it is spent in exactly two places: the Cohort 0 ribbon and the exam-voucher band.",
+    rationale:
+      "The palette comment has always said the brand amber is a fill, never small text on white. Used as a fill with ink-900 type it measures 9.2:1 and carries the same colours in both themes, which is right for the two things on the site that are time-limited and must not be skipped: the deadline, and the $99 the cohort removes. Spending it anywhere else would make both of them ordinary.",
+    status: "locked",
+  },
+  {
+    decision:
+      "The home page hero is five machines. The founder appears once on the page, below the work, as the proof behind it.",
+    rationale:
+      "His portrait held the fifth slot in the hero fan AND the founder teaser lower down. Two photographs of the same man on one page reads as a personal portfolio, which is the single thing the ecosystem positioning cannot afford — and the per-page spec already says the founder teaser is one line that links into /about, never the headline. The FSAE car took the empty slot.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Testimonials ship as empty structure, and the section renders nothing until there are real, named quotes.",
+    rationale:
+      "Same rule as the trust hub: real-only, no composites, no representative quotes. The reviewer is right that voices build credibility, and the honest sources exist — members of the 483-strong SWUG and the WhatsApp community can speak to the group today, and Cohort 0's participants will speak to the teaching in November with a pass rate attached. An empty frame is better than an invented quote, and a fabricated one is the mistake an engineer in the same city spots first.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Handing in the two membership screenshots is a page (/academy/cohort-0/screenshots), not a mailto: link.",
+    rationale:
+      "A mailto opens nothing on a phone with no mail client, and even where it works the applicant faces an empty message with no idea what counts as proof. The page shows what each screenshot must contain, links to the two places to get them, pre-writes the email, and states the deadline and the name rule. It is also a URL that can be pasted into WhatsApp, which is where this conversation actually happens. Noindexed: it is one step for one person at one moment.",
     status: "locked",
   },
   {
@@ -925,5 +962,5 @@ export const scorecard: Score[] = [
   { aspect: "SEO", current: 92, target: 97, note: "Infrastructure 100% — sitemap/robots/schema graph/OG image (verified 200 png)/canonical. Every primary pillar now has a real, indexable, bilingual page with per-page metadata + canonical (pre-launch product detail + placeholders stay noindex). Final points require live domain + inbound signals." },
   { aspect: "Security", current: 96, target: 96, note: "AT TARGET. Headers verified live, leak-free branded 404/500, no secrets. Contact form (R12) hardened: server-side validation of every field, honeypot, per-IP rate limiting, generic error codes, framework CSRF origin checks. Delivery endpoint live (Resend, keyed on the host); every form fails loudly rather than dropping a submission silently. Remaining pre-launch: security.txt." },
   { aspect: "Content depth", current: 94, target: 95, note: "Every primary pillar ships, bilingual, plus Resources, Community and Store. Remaining: deeper per-item copy, and Blog and Careers, which are still honest placeholders." },
-  { aspect: "Documentation", current: 99, target: 99, note: "AT TARGET. v1.3 (2026-09-20) — current with every locked decision and verified number. Phases 6 and 7 closed out; Cohort 0 opened as phase 8. The launch, the partnership, the ambassador programme and the revised window are in the decision log; the campaign itself is docs/cohort-0-campaign.md, the plan of record docs/launch-plan.md." },
+  { aspect: "Documentation", current: 99, target: 99, note: "AT TARGET. v1.4 (2026-09-20, after the external design review) — current with every locked decision and verified number. Phases 6 and 7 closed out; Cohort 0 opened as phase 8. The launch, the partnership, the ambassador programme and the revised window are in the decision log; the campaign itself is docs/cohort-0-campaign.md, the plan of record docs/launch-plan.md." },
 ];
