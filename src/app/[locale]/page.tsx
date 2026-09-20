@@ -264,23 +264,20 @@ export default async function Home({
           nothing until there are real, named quotes to print. */}
       <Testimonials t={t.testimonials} />
 
-      {/* 6 · FOUNDER — org first, the person second, but a real person.
-          Tighter bottom padding than the usual rhythm on purpose: the CTA
-          band below is the same surface tone, so the standard gap read as
-          a hole between two grey blocks rather than as breathing room. */}
-      <section className="pb-14 sm:pb-20">
+      {/* 6 · FOUNDER — org first, the person second, but a real person. */}
+      <section className="pb-24 sm:pb-32">
         <Container>
           <Reveal>
-            <div className="grid items-center gap-8 rounded-3xl bg-surface p-6 sm:p-8 lg:grid-cols-2 lg:gap-12 lg:p-10">
+            <div className="grid items-center gap-10 overflow-hidden rounded-3xl bg-surface lg:grid-cols-2 lg:gap-0">
               <Media
                 src="/images/founder-portrait.webp"
                 alt="Donfack Fortune"
                 responsive
-                sizes="(min-width: 1024px) 44vw, 90vw"
-                position="50% 25%"
-                className="aspect-[4/3] rounded-2xl sm:aspect-[3/2] lg:aspect-[4/5]"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                position="50% 20%"
+                className="aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[32rem]"
               />
-              <div className="lg:py-2">
+              <div className="px-8 pb-10 sm:px-12 lg:py-16">
                 <p className="eyebrow">{t.founder.eyebrow}</p>
                 <p className="mt-4 text-2xl leading-snug font-medium tracking-tight text-foreground">{t.founder.line}</p>
                 <ArrowLink href={localizeHref(locale, "/about/founder")} className="mt-7">
