@@ -4,13 +4,14 @@ import Link from "next/link";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Chevron } from "@/components/ui/ArrowLink";
+import { ArrowLink, Chevron } from "@/components/ui/ArrowLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
 import { FounderConnect } from "@/components/FounderConnect";
 import { ResumeMenu } from "@/components/ResumeMenu";
 import { founder } from "@/lib/founder";
 import { projects, projectDetailPath } from "@/lib/projects";
+import { talks, TALKS_ARCHIVE_URL, TALKS_VIDEO_URL } from "@/lib/talks";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -165,6 +166,55 @@ export default async function FounderPage({ params }: Params) {
               </li>
             ))}
           </ul>
+        </div>
+      </Section>
+
+      {/* TALKS — the public record: what he has run, co-hosted and been
+          invited onto, each one linked to the page that proves it. This is
+          the part of the founder page a search engine can actually read,
+          and the part a stranger can check. */}
+      <Section title={t.talks.title} intro={t.talks.intro}>
+        <ul className="mt-10 divide-y divide-border border-y border-border">
+          {talks.map((talk) => (
+            <li key={`${talk.title}-${talk.org}`}>
+              <a
+                href={talk.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col gap-2 py-6 sm:flex-row sm:items-baseline sm:gap-8"
+              >
+                <span className="w-32 shrink-0 text-2xs font-semibold tracking-wide text-accent">
+                  {t.talks.roles[talk.role]}
+                </span>
+                <span className="flex-1">
+                  <span className="font-medium text-foreground group-hover:underline group-hover:underline-offset-4">
+                    {talk.title}
+                  </span>
+                  <span className="mt-1 block text-sm text-muted">
+                    {talk.org}
+                    {talk.date ? ` · ${talk.date}` : ""}
+                  </span>
+                  {talk.note && (
+                    <span className="mt-2 block max-w-2xl text-sm leading-6 text-muted">
+                      {talk.note}
+                    </span>
+                  )}
+                </span>
+                <span className="hidden shrink-0 text-muted sm:block">
+                  <Chevron external />
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-3">
+          <ArrowLink href={TALKS_ARCHIVE_URL} external>
+            {t.talks.archive}
+          </ArrowLink>
+          <ArrowLink href={TALKS_VIDEO_URL} external>
+            {t.talks.videos}
+          </ArrowLink>
         </div>
       </Section>
 

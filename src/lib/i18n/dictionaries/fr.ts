@@ -499,6 +499,15 @@ const fr: Dictionary = {
       connect: "Contact",
     },
     portfolioIntro: "Les projets d'ingénierie derrière 4TUN Hub — chacun documenté sous forme d'étude de cas complète.",
+
+    talks: {
+      title: "Conférences & sessions",
+      intro:
+        "Les sessions animées pour le Douala City SOLIDWORKS User Group et ses chapitres frères à travers l'Afrique, et les panels auxquels il est invité. Toutes sont publiques, et chacune renvoie à sa propre page.",
+      roles: { hosted: "Organisée", cohosted: "Co-organisée", spoke: "Intervenant" },
+      archive: "Le programme complet sur SWUGN",
+      videos: "Voir les sessions",
+    },
     skillGroups: { software: "Logiciels", technical: "Technique", workshop: "Atelier" },
     viewProject: "Voir l'étude de cas",
   },

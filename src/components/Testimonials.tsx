@@ -64,8 +64,6 @@ export function Testimonials({ t }: { t: Dictionary["home"]["testimonials"] }) {
                     <Media
                       src={item.photo}
                       alt={item.name}
-                      responsive
-                      sizes="56px"
                       className="h-14 w-14 shrink-0 rounded-full"
                     />
                   )}

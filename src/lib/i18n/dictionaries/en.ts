@@ -503,6 +503,16 @@ const en = {
       connect: "Connect",
     },
     portfolioIntro: "The engineering projects behind 4TUN Hub — each documented as a full case study.",
+
+    /** Every entry links to the event that proves it — see src/lib/talks.ts. */
+    talks: {
+      title: "Talks & conferences",
+      intro:
+        "Sessions run for the Douala City SOLIDWORKS User Group and its sister chapters across Africa, and panels he has been invited onto. Every one is public, and every one links to its own page.",
+      roles: { hosted: "Organised", cohosted: "Co-hosted", spoke: "Speaker" },
+      archive: "The full programme on SWUGN",
+      videos: "Watch the sessions",
+    },
     skillGroups: { software: "Software", technical: "Technical", workshop: "Workshop" },
     viewProject: "View case study",
   },

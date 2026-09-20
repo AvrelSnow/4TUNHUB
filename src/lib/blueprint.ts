@@ -351,7 +351,8 @@ export const phases: Phase[] = [
       "Deployed ✓ (pushed 2026-09-20)",
       "External design review actioned ✓",
       "Confirm the two LinkedIn company URLs",
-      "Testimonials: collect three real quotes",
+      "Testimonials ✓ (three, named, with photographs)",
+      "Talks & conferences on the founder page ✓",
     ],
   },
   {
@@ -521,6 +522,20 @@ export const decisions: Decision[] = [
       "The home page hero is five machines. The founder appears once on the page, below the work, as the proof behind it.",
     rationale:
       "His portrait held the fifth slot in the hero fan AND the founder teaser lower down. Two photographs of the same man on one page reads as a personal portfolio, which is the single thing the ecosystem positioning cannot afford — and the per-page spec already says the founder teaser is one line that links into /about, never the headline. The FSAE car took the empty slot.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Three real testimonials shipped on the home page (2026-09-20): Mikel K. Ngueajio, Tanga Jatsa Lewouhdem Fran\u00e7oise Maelle and Tatsinda Mathias Allan — named, photographed, and each carrying the role that makes the quote mean something.",
+    rationale:
+      "Collected by Fortune the day the reviewer asked for them, which is how fast this can move when the community is real. The card shows ONE sentence, taken whole from the top of what each person wrote, because a card is read in two seconds and three paragraphs on it are three paragraphs nobody finishes; the complete statement is kept in `full` so shortening the card never loses the words. ONE edit was made and is recorded in the file rather than hidden: all three wrote \u201cFortune Hub\u201d, the name people use for him rather than the organisation's, and it is printed as \u201c4TUN Hub\u201d. Worth confirming that substitution with each of them.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Talks & conferences on the founder page: twelve public sessions, each linked to the page that proves it.",
+    rationale:
+      "The reviewer's strongest SEO point, and it turned out to be the most under-used asset on the whole site. Eleven SOLIDWORKS sessions on SWUGN's network — CSWA, CSWP mechanical design, CSWP sheet metal, CSWE, topology optimisation, assembly modelling, essentials, AFRISWUG, plus chapters in Mansoura, Benin and Buea — and the African Young Generation in Nuclear panel on the nuclear fuel cycle, alongside Eskom's Koeberg station, Malawi's regulator and R\u00f6ssing Uranium. `role` distinguishes what he organised from what he co-hosted from what he was invited onto, because claiming the wrong one is what a peer in the same network notices first. Dates are left blank rather than guessed: SWUGN's list view does not carry them and a wrong year is worse than no year. Next, and it needs his writing rather than code: a post per session, which is what turns twelve titles into twelve indexable pages.",
     status: "locked",
   },
   {
@@ -961,6 +976,6 @@ export const scorecard: Score[] = [
   { aspect: "Performance", current: 97, target: 97, note: "AT TARGET (pre-deploy). Budgets ENFORCED by the build gate: 205.8 KB of a 220 KB gzip budget, largest chunk 69.3 KB of 90 KB. All eight field simulations together cost 7.3 KB over the pre-field baseline because they are dynamically imported rather than bundled. Routes static; fonts subset. Lighthouse-CI runs at deploy." },
   { aspect: "SEO", current: 92, target: 97, note: "Infrastructure 100% — sitemap/robots/schema graph/OG image (verified 200 png)/canonical. Every primary pillar now has a real, indexable, bilingual page with per-page metadata + canonical (pre-launch product detail + placeholders stay noindex). Final points require live domain + inbound signals." },
   { aspect: "Security", current: 96, target: 96, note: "AT TARGET. Headers verified live, leak-free branded 404/500, no secrets. Contact form (R12) hardened: server-side validation of every field, honeypot, per-IP rate limiting, generic error codes, framework CSRF origin checks. Delivery endpoint live (Resend, keyed on the host); every form fails loudly rather than dropping a submission silently. Remaining pre-launch: security.txt." },
-  { aspect: "Content depth", current: 94, target: 95, note: "Every primary pillar ships, bilingual, plus Resources, Community and Store. Remaining: deeper per-item copy, and Blog and Careers, which are still honest placeholders." },
-  { aspect: "Documentation", current: 99, target: 99, note: "AT TARGET. v1.4 (2026-09-20, after the external design review) — current with every locked decision and verified number. Phases 6 and 7 closed out; Cohort 0 opened as phase 8. The launch, the partnership, the ambassador programme and the revised window are in the decision log; the campaign itself is docs/cohort-0-campaign.md, the plan of record docs/launch-plan.md." },
+  { aspect: "Content depth", current: 94, target: 95, note: "Every primary pillar ships, bilingual, plus Resources, Community and Store. Three named testimonials with photographs on the home page, and twelve public talks on the founder page, each linked to its own event. Remaining: deeper per-item copy, a post per talk (the SEO lever), and Blog and Careers, which are still honest placeholders." },
+  { aspect: "Documentation", current: 99, target: 99, note: "AT TARGET. v1.5 (2026-09-20, after the review and the first real testimonials) — current with every locked decision and verified number. Phases 6 and 7 closed out; Cohort 0 opened as phase 8. The launch, the partnership, the ambassador programme and the revised window are in the decision log; the campaign itself is docs/cohort-0-campaign.md, the plan of record docs/launch-plan.md." },
 ];
