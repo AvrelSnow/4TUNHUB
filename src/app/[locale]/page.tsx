@@ -264,8 +264,11 @@ export default async function Home({
           nothing until there are real, named quotes to print. */}
       <Testimonials t={t.testimonials} />
 
-      {/* 6 · FOUNDER — org first, the person second, but a real person. */}
-      <section className="pb-24 sm:pb-32">
+      {/* 6 · FOUNDER — org first, the person second, but a real person.
+          Symmetric padding like every other section: with only `pb-` the
+          card hugged the surface band above it and floated over the gap
+          below, instead of sitting centred in its own band. */}
+      <section className="py-24 sm:py-32">
         <Container>
           <Reveal>
             <div className="grid items-center gap-10 overflow-hidden rounded-3xl bg-surface lg:grid-cols-2 lg:gap-0">
