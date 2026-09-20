@@ -559,6 +559,13 @@ export const decisions: Decision[] = [
       "Fortune was right that six days was too short \u2014 four hoops stand in front of that form, and ambassador recruitment had nowhere to live. But the thing to move is the deadline, not the launch: the site is ready, the partnership is real, the cards exist, and 'more time to prepare before anyone sees it' is the exact shape of the twelve scripts written and never shipped. Three and a half weeks of promotion instead of six days, ambassadors recruited OUT of the launch instead of before it, rolling selection to keep urgency in a longer window, and Cohort 1 still opens in January.",
     status: "locked",
   },
+  {
+    decision:
+      "Every section on a page carries symmetric vertical padding (py-24 sm:py-32). A section may not use pb- alone and lean on its neighbour for the space above it.",
+    rationale:
+      "The home page's founder card was the one exception, and it showed: with no top padding it sat flush against the grey testimonials band and floated over 128px of emptiness below, so the gap read as a hole punched under the card rather than as rhythm. Fortune drew the two band edges and asked for the card centred between them, which is what symmetric padding gives for free. Borrowing space from the section above only looks right until that section's padding changes, and it hides the real spacing in a file the reader is not looking at.",
+    status: "locked",
+  },
 ];
 
 /* ============================================================

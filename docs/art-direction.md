@@ -81,6 +81,10 @@ section's name, not a label stamped on it.
 ## Space and shape
 
 - Sections breathe: 96–176px of vertical space on desktop.
+- That space is symmetric — `py-24 sm:py-32`, never `pb-` alone. A section
+  that leans on its neighbour for the space above it sits flush against one
+  band and floats over the gap at the other, and the padding it actually
+  has lives in a file the reader is not looking at.
 - Grey bands (`surface`) separate one idea from the next. Never two grey
   bands in a row without a hairline between them.
 - Corners: 12px on fields, 18px on small cards, 28px on tiles and media,
