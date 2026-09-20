@@ -67,8 +67,8 @@ const en = {
     cohort: {
       eyebrow: "Applications open",
       title: "CSWA Bootcamp · Cohort 0",
-      body: "Eight live evenings in October to get ready for the Certified SolidWorks Associate exam, run with Douala City SWUG. Free for 20 selected people, and a free exam voucher for everyone who finishes. In English.",
-      cta: "Apply by 1 October",
+      body: "Eight live evenings from 21 October to get ready for the Certified SolidWorks Associate exam, run with Douala City SWUG. Free for 20 selected people, and a free exam voucher for everyone who finishes. In English.",
+      cta: "Apply by 11 October",
       more: "See the programme",
     },
     primaryCta: "Work with us",
@@ -1036,7 +1036,7 @@ const en = {
 
   /** The announcement bar above the header while Cohort 0 applications are open. */
   ribbon: {
-    text: "CSWA Bootcamp · Cohort 0 is free, with 20 seats. Applications close 1 October.",
+    text: "CSWA Bootcamp · Cohort 0 is free, with 20 seats. Applications close 11 October.",
     short: "Free CSWA Bootcamp · Cohort 0",
     cta: "Apply",
   },
@@ -1044,7 +1044,7 @@ const en = {
   cohort: {
     metaTitle: "CSWA Bootcamp · Cohort 0",
     metaDescription:
-      "A free, eight-session CSWA preparation bootcamp taught live in English by Donfack Fortune, with Douala City SWUG. 20 seats by application, and a free exam voucher on finishing. October 2026.",
+      "A free, eight-session CSWA preparation bootcamp taught live in English by Donfack Fortune, with Douala City SWUG. 20 seats by application, and a free exam voucher on finishing. October–November 2026.",
     back: "Academy",
     eyebrow: "4TUN Hub Academy · Cohort 0",
     title: "CSWA Bootcamp. Cohort 0.",
@@ -1052,14 +1052,14 @@ const en = {
     subtitle:
       "Eight live evenings to get you ready for the Certified SolidWorks Associate exam. Free for the 20 people we select — and everyone who finishes leaves with a free exam voucher.",
     apply: "Apply for a seat",
-    closesOn: "Applications close Thursday 1 October.",
+    closesOn: "Applications close Sunday 11 October. Seats are given out as applications come in.",
     closed:
       "Applications for Cohort 0 are closed. Join the community to hear first when Cohort 1 opens.",
     closedCta: "Join the community",
     facts: [
       { label: "Price", value: "Free" },
       { label: "Seats", value: "20, by application" },
-      { label: "Dates", value: "7–30 October 2026" },
+      { label: "Dates", value: "21 Oct – 13 Nov 2026" },
       { label: "Schedule", value: "Wed & Fri, 19:30–20:30" },
       { label: "Where", value: "Online, on Bevy" },
       { label: "Language", value: "English" },
@@ -1078,28 +1078,28 @@ const en = {
       weeks: [
         {
           label: "Week 1",
-          dates: "7–9 Oct",
+          dates: "21–23 Oct",
           wed: "Sketching, relations and fully defined sketches",
           fri: "Extrude, revolve and cut: a first exam-style part",
           ex: "Two parts from drawings",
         },
         {
           label: "Week 2",
-          dates: "14–16 Oct",
+          dates: "28–30 Oct",
           wed: "Fillets, patterns, shells and ribs",
           fri: "Materials and mass properties, in the answer format the CSWA checks",
           ex: "Three mass-property parts",
         },
         {
           label: "Week 3",
-          dates: "21–23 Oct",
+          dates: "4–6 Nov",
           wed: "Assemblies and mates",
           fri: "Coordinate systems and the centre of mass of an assembly",
           ex: "One assembly, three questions",
         },
         {
           label: "Week 4",
-          dates: "28–30 Oct",
+          dates: "11–13 Nov",
           wed: "Drawings, then exam strategy and timing",
           fri: "A timed mock exam, reviewed live",
           ex: "Mock exam 2, at home",
@@ -1179,15 +1179,15 @@ const en = {
     timeline: {
       eyebrow: "Key dates",
       items: [
-        { date: "Thu 1 Oct", label: "Applications close" },
-        { date: "Fri 2 Oct", label: "Every applicant gets a reply" },
-        { date: "Wed 7 Oct", label: "First session" },
-        { date: "Fri 30 Oct", label: "Timed mock exam" },
+        { date: "Sun 11 Oct", label: "Applications close" },
+        { date: "Fri 16 Oct", label: "Every applicant gets a reply" },
+        { date: "Wed 21 Oct", label: "First session" },
+        { date: "Fri 13 Nov", label: "Timed mock exam" },
       ],
     },
     form: {
       heading: "Apply for Cohort 0.",
-      intro: "Five minutes. Do the four steps above first — we check them. We read every application and reply to everyone by Friday 2 October.",
+      intro: "Five minutes. Do the four steps above first — we check them. We read every application as it arrives and reply to everyone by Friday 16 October.",
       name: { label: "Full name", placeholder: "Jane Doe" },
       email: { label: "Email", placeholder: "you@example.com" },
       whatsapp: {
@@ -1244,7 +1244,7 @@ const en = {
     },
     success: {
       title: "Application received.",
-      body: "Thank you. We reply to every applicant by Friday 2 October, by email and on WhatsApp.",
+      body: "Thank you. Seats are given out as applications come in, and we reply to every applicant by Friday 16 October, by email and on WhatsApp.",
       next: "One thing left: send us the two screenshots — your Bevy registration and your LinkedIn membership of Douala City SWUG — under the same name you applied with. An application without them cannot be selected.",
       nextCta: "Send the screenshots",
     },
@@ -1265,7 +1265,7 @@ const en = {
     openNow: {
       badge: "Open now",
       title: "CSWA Bootcamp · Cohort 0 is taking applications.",
-      body: "Free, 20 seats, eight live evenings in October. Don't wait for a list — apply.",
+      body: "Free, 20 seats, eight live evenings from 21 October. Don't wait for a list — apply.",
       cta: "Apply for a seat",
     },
 

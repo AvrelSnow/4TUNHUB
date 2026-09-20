@@ -29,8 +29,14 @@ export const SWUG_LINKEDIN_URL = "https://www.linkedin.com/company/105488333/";
 /** The 4TUN Hub company page — not the founder's profile (see site.ts). */
 export const HUB_LINKEDIN_URL = "https://www.linkedin.com/company/111010064/";
 
-/** Applications close at the end of Thursday 1 October, Cameroon time. */
-export const APPLICATIONS_CLOSE = "2026-10-01T23:59:59+01:00";
+/**
+ * Applications close at the end of Sunday 11 October, Cameroon time.
+ * Moved from 1 October on 2026-09-20: six days was too short a window for
+ * a form with four conditions in front of it, and the ambassador
+ * programme had nowhere to live. The LAUNCH date did not move — see the
+ * decision log in blueprint.ts.
+ */
+export const APPLICATIONS_CLOSE = "2026-10-11T23:59:59+01:00";
 
 export const COHORT_SEATS = 20;
 

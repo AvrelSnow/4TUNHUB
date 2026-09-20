@@ -67,8 +67,8 @@ const fr: Dictionary = {
     cohort: {
       eyebrow: "Candidatures ouvertes",
       title: "Bootcamp CSWA · Cohorte 0",
-      body: "Huit soirées en direct en octobre pour se préparer à l'examen Certified SolidWorks Associate, avec Douala City SWUG. Gratuit pour 20 personnes sélectionnées, et un bon d'examen offert à qui va au bout. Cours en anglais.",
-      cta: "Postuler avant le 1er octobre",
+      body: "Huit soirées en direct à partir du 21 octobre pour se préparer à l'examen Certified SolidWorks Associate, avec Douala City SWUG. Gratuit pour 20 personnes sélectionnées, et un bon d'examen offert à qui va au bout. Cours en anglais.",
+      cta: "Postuler avant le 11 octobre",
       more: "Voir le programme",
     },
     primaryCta: "Travailler avec nous",
@@ -1033,7 +1033,7 @@ const fr: Dictionary = {
 
   /** Le bandeau d'annonce au-dessus de l'en-tête, tant que les candidatures sont ouvertes. */
   ribbon: {
-    text: "Bootcamp CSWA · Cohorte 0 : gratuit, 20 places. Candidatures jusqu'au 1er octobre.",
+    text: "Bootcamp CSWA · Cohorte 0 : gratuit, 20 places. Candidatures jusqu'au 11 octobre.",
     short: "Bootcamp CSWA gratuit · Cohorte 0",
     cta: "Postuler",
   },
@@ -1041,7 +1041,7 @@ const fr: Dictionary = {
   cohort: {
     metaTitle: "Bootcamp CSWA · Cohorte 0",
     metaDescription:
-      "Un bootcamp gratuit de huit séances pour préparer le CSWA, en direct et en anglais, animé par Donfack Fortune avec Douala City SWUG. 20 places sur candidature et un bon d'examen offert à l'arrivée. Octobre 2026.",
+      "Un bootcamp gratuit de huit séances pour préparer le CSWA, en direct et en anglais, animé par Donfack Fortune avec Douala City SWUG. 20 places sur candidature et un bon d'examen offert à l'arrivée. Octobre–novembre 2026.",
     back: "Académie",
     eyebrow: "Académie 4TUN Hub · Cohorte 0",
     title: "Bootcamp CSWA. Cohorte 0.",
@@ -1049,14 +1049,14 @@ const fr: Dictionary = {
     subtitle:
       "Huit soirées en direct pour vous préparer à l'examen Certified SolidWorks Associate. Gratuit pour les 20 personnes que nous sélectionnerons — et qui va au bout repart avec un bon d'examen offert.",
     apply: "Postuler",
-    closesOn: "Candidatures jusqu'au jeudi 1er octobre.",
+    closesOn: "Candidatures jusqu'au dimanche 11 octobre. Les places sont attribuées au fil des candidatures.",
     closed:
       "Les candidatures pour la Cohorte 0 sont closes. Rejoignez la communauté pour savoir en premier quand la Cohorte 1 ouvrira.",
     closedCta: "Rejoindre la communauté",
     facts: [
       { label: "Prix", value: "Gratuit" },
       { label: "Places", value: "20, sur candidature" },
-      { label: "Dates", value: "Du 7 au 30 octobre 2026" },
+      { label: "Dates", value: "Du 21 oct. au 13 nov. 2026" },
       { label: "Horaires", value: "Mer. et ven., 19 h 30 – 20 h 30" },
       { label: "Où", value: "En ligne, sur Bevy" },
       { label: "Langue", value: "Anglais" },
@@ -1075,28 +1075,28 @@ const fr: Dictionary = {
       weeks: [
         {
           label: "Semaine 1",
-          dates: "7–9 oct.",
+          dates: "21–23 oct.",
           wed: "Esquisses, relations et esquisses entièrement contraintes",
           fri: "Extrusion, révolution et enlèvement : une première pièce type examen",
           ex: "Deux pièces à partir de mises en plan",
         },
         {
           label: "Semaine 2",
-          dates: "14–16 oct.",
+          dates: "28–30 oct.",
           wed: "Congés, répétitions, coques et nervures",
           fri: "Matériaux et propriétés de masse, au format de réponse que vérifie le CSWA",
           ex: "Trois pièces de propriétés de masse",
         },
         {
           label: "Semaine 3",
-          dates: "21–23 oct.",
+          dates: "4–6 nov.",
           wed: "Assemblages et contraintes",
           fri: "Systèmes de coordonnées et centre de masse d'un assemblage",
           ex: "Un assemblage, trois questions",
         },
         {
           label: "Semaine 4",
-          dates: "28–30 oct.",
+          dates: "11–13 nov.",
           wed: "Mises en plan, puis stratégie et gestion du temps d'examen",
           fri: "Un examen blanc chronométré, corrigé en direct",
           ex: "Examen blanc n° 2, à la maison",
@@ -1176,15 +1176,15 @@ const fr: Dictionary = {
     timeline: {
       eyebrow: "Dates clés",
       items: [
-        { date: "Jeu. 1er oct.", label: "Clôture des candidatures" },
-        { date: "Ven. 2 oct.", label: "Réponse à chaque candidat" },
-        { date: "Mer. 7 oct.", label: "Première séance" },
-        { date: "Ven. 30 oct.", label: "Examen blanc chronométré" },
+        { date: "Dim. 11 oct.", label: "Clôture des candidatures" },
+        { date: "Ven. 16 oct.", label: "Réponse à chaque candidat" },
+        { date: "Mer. 21 oct.", label: "Première séance" },
+        { date: "Ven. 13 nov.", label: "Examen blanc chronométré" },
       ],
     },
     form: {
       heading: "Postuler à la Cohorte 0.",
-      intro: "Cinq minutes. Faites d'abord les quatre étapes ci-dessus — nous les vérifions. Nous lisons chaque candidature et répondons à tous avant le vendredi 2 octobre.",
+      intro: "Cinq minutes. Faites d'abord les quatre étapes ci-dessus — nous les vérifions. Nous lisons chaque candidature dès son arrivée et répondons à tous avant le vendredi 16 octobre.",
       name: { label: "Nom complet", placeholder: "Jeanne Dupont" },
       email: { label: "E-mail", placeholder: "vous@exemple.com" },
       whatsapp: {
@@ -1241,7 +1241,7 @@ const fr: Dictionary = {
     },
     success: {
       title: "Candidature reçue.",
-      body: "Merci. Nous répondons à chaque candidat avant le vendredi 2 octobre, par e-mail et sur WhatsApp.",
+      body: "Merci. Les places sont attribuées au fil des candidatures, et nous répondons à chaque candidat avant le vendredi 16 octobre, par e-mail et sur WhatsApp.",
       next: "Il reste une chose : envoyez-nous les deux captures d'écran — votre inscription sur Bevy et votre abonnement LinkedIn à Douala City SWUG — sous le nom avec lequel vous avez postulé. Sans elles, une candidature ne peut pas être retenue.",
       nextCta: "Envoyer les captures",
     },
@@ -1262,7 +1262,7 @@ const fr: Dictionary = {
     openNow: {
       badge: "Ouvert maintenant",
       title: "Bootcamp CSWA · Cohorte 0 reçoit les candidatures.",
-      body: "Gratuit, 20 places, huit soirées en direct en octobre. N'attendez pas une liste — candidatez.",
+      body: "Gratuit, 20 places, huit soirées en direct à partir du 21 octobre. N'attendez pas une liste — candidatez.",
       cta: "Candidater pour une place",
     },
 

@@ -43,13 +43,26 @@ earn a place in. So Cohort 0 is:
 
 | Week | Wednesday | Friday | Exercise |
 |---|---|---|---|
-| 1 · 7–9 Oct | Sketching, relations, fully defined sketches | Extrude, revolve, cut: first exam-style part | 2 parts from drawings |
-| 2 · 14–16 Oct | Advanced features: fillets, patterns, shells, ribs | **Materials and mass properties**: the answer format the CSWA checks | 3 mass-property parts |
-| 3 · 21–23 Oct | Assemblies and mates | Coordinate systems, centre of mass in an assembly | 1 assembly, 3 questions |
-| 4 · 28–30 Oct | Drawings, plus exam strategy and timing | **Timed mock exam**, reviewed live | Mock exam 2 at home |
+| 1 · 21–23 Oct | Sketching, relations, fully defined sketches | Extrude, revolve, cut: first exam-style part | 2 parts from drawings |
+| 2 · 28–30 Oct | Advanced features: fillets, patterns, shells, ribs | **Materials and mass properties**: the answer format the CSWA checks | 3 mass-property parts |
+| 3 · 4–6 Nov | Assemblies and mates | Coordinate systems, centre of mass in an assembly | 1 assembly, 3 questions |
+| 4 · 11–13 Nov | Drawings, plus exam strategy and timing | **Timed mock exam**, reviewed live | Mock exam 2 at home |
 
-Results and testimonials are collected in the first week of November.
-Cohort 1 (paid) is announced with those results.
+Results and testimonials are collected in the week of 16 November.
+Cohort 1 (paid) is announced with those results, for January.
+
+### The window moved on 20 September
+
+The original plan closed applications on 1 October, six days after
+launch. With four conditions standing in front of the form, and an
+ambassador programme to recruit, that was too short — Fortune said so
+and he was right. What moved is the **deadline**, not the launch: the
+site is ready, the partnership is real, the cards exist, and “more time
+to prepare before anyone sees it” is the exact shape of twelve scripts
+written and never shipped. Three and a half weeks of promotion instead
+of six days, ambassadors recruited out of the launch rather than before
+it, rolling selection to hold urgency across a longer window, and
+Cohort 1 still opens in January. See `docs/ambassadors.md`.
 
 ---
 
@@ -70,17 +83,44 @@ Today is Friday 18 Sep. W39 = 21–27 Sep.
 | **Fri 25** | **LAUNCH.** Site public, applications open. Announce in: the WhatsApp community, the SolidWorks user group, LinkedIn, a YouTube community post, one TikTok Volume slot | Watch the form and fix anything live |
 | **Sat 26–Sun 27** | YouTube Ep 11 · train · score the week | — |
 
-### W40: applications and preparation (28 Sep–4 Oct)
+### W40: the ambassadors (28 Sep–4 Oct)
 
-- Applications close **Thursday 1 Oct**. Select 20, keep a waiting list.
-- **Fri 2 Oct:** acceptance messages, create the WhatsApp group, check
-  everyone has SolidWorks running (a 10-minute "can you open this part" test).
-- Night shifts **Wed 30 Sep and Thu 1 Oct**: session 1–4 material.
+- **Sun 27 Sep:** close the 48-hour task. The ten who did it are the
+  ambassadors. See `docs/ambassadors.md`.
+- **Mon 28 Sep:** ambassador WhatsApp group, the brief, the card pack.
+  Add the ten to `AMBASSADORS` in `scripts/make-postcards.mjs` and
+  generate their reveal cards.
+- **Tue 29 Sep–Sat 3 Oct:** two reveals a day. Each ambassador posts
+  their own; 4TUN Hub and the SWUG repost every one.
+- Applications keep arriving. **Seats go out as they come in** — say so
+  publicly, it is what keeps a three-week window urgent.
 
-### W41–W44: the cohort runs (7 Oct–30 Oct)
+### W41: the push (5–11 Oct)
 
-Two sessions a week, Wednesday and Friday evenings. Material for weeks 3–4
-is finished during weeks 1–2, never the night before.
+- **Tue 6 Oct** and **Thu 8 Oct:** the last two campaign cards.
+- **Fri 9 Oct:** chase the screenshots. Everyone who applied without them
+  gets one WhatsApp message — this is the real bottleneck, not the form.
+- Applications close **Sunday 11 Oct**, end of day, Cameroon time.
+
+### W42: selection and preparation (13–19 Oct)
+
+- Select 20 (ten are already the ambassadors), keep a waiting list.
+- **By Fri 16 Oct:** every applicant gets a reply. Accepted people join
+  the cohort WhatsApp group and pass a 10-minute "can you open this part"
+  check.
+- Night shifts **Wed 14 and Thu 15 Oct**: session 1–4 material.
+
+### W43–W46: the cohort runs (21 Oct–13 Nov)
+
+Two sessions a week, Wednesday and Friday evenings: 21, 23, 28, 30 Oct
+and 4, 6, 11, 13 Nov. Material for weeks 3–4 is finished during weeks
+1–2, never the night before. Ambassadors post their own work weekly —
+that is the content engine for the whole month.
+
+### W47: the evidence (16–22 Nov)
+
+Results, pass rate, testimonials, letters of recommendation for the
+ambassadors. Cohort 1 announced on evidence, for January.
 
 ---
 

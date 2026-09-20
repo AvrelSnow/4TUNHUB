@@ -329,16 +329,42 @@ export const phases: Phase[] = [
   {
     id: "6",
     name: "Hardening",
-    status: "active",
+    status: "done",
     goal: "Make it unbreakable before it ships.",
-    items: ["Responsive QA ✓", "Accessibility (AA)", "Performance budget", "SEO/metadata"],
+    items: [
+      "Responsive QA ✓",
+      "Accessibility (AA) ✓",
+      "Performance budget ✓ (enforced by the build gate)",
+      "SEO/metadata ✓",
+    ],
   },
   {
     id: "7",
     name: "Launch",
-    status: "later",
-    goal: "Only after the experience is mature.",
-    items: ["Buy domain", "Connect infra", "Deploy", "Go live"],
+    status: "active",
+    goal: "Public on Friday 25 September 2026.",
+    items: [
+      "Domain ✓",
+      "Netlify + Resend ✓",
+      "Email capture on every page ✓",
+      "Cookieless analytics ✓ (needs its two env vars on the host)",
+      "Confirm the two LinkedIn company URLs",
+      "Go live",
+    ],
+  },
+  {
+    id: "8",
+    name: "Cohort 0",
+    status: "next",
+    goal:
+      "Turn the launch into twenty seated students and, by mid-November, the first real evidence 4TUN Hub has ever had: a pass rate and testimonials.",
+    items: [
+      "Ambassador programme (10, selected by a 48-hour task)",
+      "Seven campaign cards, one a day ✓",
+      "Applications close 11 October",
+      "Eight sessions, 21 Oct – 13 Nov",
+      "Results, testimonials, then Cohort 1 on evidence",
+    ],
   },
 ];
 
@@ -430,6 +456,55 @@ export const decisions: Decision[] = [
       "Canonical project case studies live in the founder portfolio (/about/founder/projects/[slug]). The /projects pillar, home and services proof cards all link INTO them; the founder portfolio never links back out to /projects.",
     rationale:
       "Fortune's direction: clicking a project anywhere redirects to the founder-portfolio version in the About section, not vice versa. Old /projects/[slug] route retired; one detail page per project, no duplicates.",
+    status: "locked",
+  },
+  {
+    decision:
+      "An address can be left on every page (2026-09-20): a one-field waitlist block in the footer sitewide, and at the foot of Academy, Cohort 0, Research and the Blog.",
+    rationale:
+      "Most people who read a page on launch day are not ready to apply, and a visitor who leaves without leaving an address is gone for good. It posts to the same server action as /waitlist \u2014 one list, one pipeline \u2014 and the track is fixed by the page and named in the copy above the field, which is what keeps the consent honest when there are no checkboxes to tick. The Cohort 0 block matters most: twenty seats, and everyone who misses one is the warmest audience Cohort 1 will ever have.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Analytics is cookieless, provider-agnostic, and off until the host configures it (2026-09-20). Umami or Plausible, cloud or self-hosted, via ANALYTICS_PROVIDER + ANALYTICS_SITE_ID.",
+    rationale:
+      "Launch-day traffic is the one number that never comes back. Unset, no script loads and no third-party origin enters the CSP; set, next.config.ts adds that one origin to script-src and connect-src by itself. Cookieless is the constraint that keeps the privacy note true and means no consent banner. Three named conversions, none carrying anything personal: a waitlist signup, an application, a contact message. The privacy note was rewritten in both languages \u2014 it had promised no analytics at all.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Cohort 0 runs WITH the Douala City SOLIDWORKS User Group (2026-09-20): in English, on Bevy, and every participant who finishes receives a free CSWA exam voucher.",
+    rationale:
+      "The group has 483 members on SWUGN's own network, which turns launch day from a solo post into one with a real distribution list behind it. The voucher, confirmed by Fortune, removes the $99 objection that is the actual reason most students he teaches never sit the exam \u2014 it is now the strongest line in the offer, and a promise that has to arrive in November, when the same people are being asked for testimonials. The site was corrected end to end: language, platform, the exam card, the partnership under the title, and the Course JSON-LD.",
+    status: "locked",
+  },
+  {
+    decision:
+      "A seat has conditions, stated on the page before the form asks for anything: join the SWUG on Bevy, follow it on LinkedIn, follow 4TUN Hub on LinkedIn and YouTube, then apply and send a screenshot of each membership.",
+    rationale:
+      "A free seat that costs nothing to claim is a seat someone does not show up for. The application form takes a LinkedIn profile, because that is what the two follows are checked against, and the confirmation screen asks for the screenshots while the applicant is still looking at it \u2014 an instruction buried in an email nobody opens is not an instruction. Screenshots come by email because the form takes no uploads.",
+    status: "locked",
+  },
+  {
+    decision:
+      "The campaign cards are generated from the site (scripts/make-postcards.mjs), not designed in Canva. Seven cards, one a day, at 1080x1350 and 1080x1920.",
+    rationale:
+      "Same renderer as the site's own share card, so the type, the palette and the amber are the page's rather than an approximation of them. More importantly, several of the facts on those cards are still moving: a card that outlives its facts is worse than no card, and the whole set rebuilds in a minute. The PNGs are gitignored \u2014 they are output, the script is the source. Words in docs/cohort-0-campaign.md.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Ten ambassadors, selected by a 48-hour task rather than by interview, holding ten of the twenty Cohort 0 seats, on a four-week term.",
+    rationale:
+      "Fortune's idea, with one correction: an ambassador who is IN the cohort has something of their own to post every week, which beats anything written about the Hub from outside. Thirty warm candidates are invited directly and asked to share the launch post and send a screenshot within 48 hours; the ten who do it are in. That selects on the only trait that predicts survival \u2014 doing the thing \u2014 and costs no interviews. The reward costs no cash: a guaranteed seat and voucher, a name on the site, a signed letter of recommendation, reposts to the SWUG's 483, and first refusal on a free seat in the paid Cohort 1. Their reveal cards are the campaign, not overhead: ten people sharing a card with their own face on it reaches further than anything posted from one account.",
+    status: "locked",
+  },
+  {
+    decision:
+      "The launch date holds at Friday 25 September; the APPLICATION WINDOW is what moves. Applications close Sunday 11 October, the cohort runs 21 October to 13 November, results mid-November.",
+    rationale:
+      "Fortune was right that six days was too short \u2014 four hoops stand in front of that form, and ambassador recruitment had nowhere to live. But the thing to move is the deadline, not the launch: the site is ready, the partnership is real, the cards exist, and 'more time to prepare before anyone sees it' is the exact shape of the twelve scripts written and never shipped. Three and a half weeks of promotion instead of six days, ambassadors recruited OUT of the launch instead of before it, rolling selection to keep urgency in a longer window, and Cohort 1 still opens in January.",
     status: "locked",
   },
 ];
@@ -848,7 +923,7 @@ export const scorecard: Score[] = [
   { aspect: "Accessibility", current: 97, target: 97, note: "AT TARGET. Programmatic re-audit after the inversion and the animated backgrounds: 3,891 text runs across 26 page loads (20 EN routes + 6 FR), each measured against the REAL composited background including live canvas pixels, worst-pixel not average. Zero contrast failures; worst passing run 5.35:1. Single h1 and no heading skips on every page; zero images without alt; zero controls without an accessible name. Two genuine failures found and fixed in this pass — see Craft." },
   { aspect: "Performance", current: 97, target: 97, note: "AT TARGET (pre-deploy). Budgets ENFORCED by the build gate: 205.8 KB of a 220 KB gzip budget, largest chunk 69.3 KB of 90 KB. All eight field simulations together cost 7.3 KB over the pre-field baseline because they are dynamically imported rather than bundled. Routes static; fonts subset. Lighthouse-CI runs at deploy." },
   { aspect: "SEO", current: 92, target: 97, note: "Infrastructure 100% — sitemap/robots/schema graph/OG image (verified 200 png)/canonical. Every primary pillar now has a real, indexable, bilingual page with per-page metadata + canonical (pre-launch product detail + placeholders stay noindex). Final points require live domain + inbound signals." },
-  { aspect: "Security", current: 96, target: 96, note: "AT TARGET. Headers verified live, leak-free branded 404/500, no secrets. Contact form (R12) hardened: server-side validation of every field, honeypot, per-IP rate limiting, generic error codes, framework CSRF origin checks. Remaining pre-launch: security.txt + real delivery endpoint." },
+  { aspect: "Security", current: 96, target: 96, note: "AT TARGET. Headers verified live, leak-free branded 404/500, no secrets. Contact form (R12) hardened: server-side validation of every field, honeypot, per-IP rate limiting, generic error codes, framework CSRF origin checks. Delivery endpoint live (Resend, keyed on the host); every form fails loudly rather than dropping a submission silently. Remaining pre-launch: security.txt." },
   { aspect: "Content depth", current: 94, target: 95, note: "Every primary pillar ships, bilingual, plus Resources, Community and Store. Remaining: deeper per-item copy, and Blog and Careers, which are still honest placeholders." },
-  { aspect: "Documentation", current: 99, target: 99, note: "AT TARGET. v1.2 — current with every locked decision and verified number." },
+  { aspect: "Documentation", current: 99, target: 99, note: "AT TARGET. v1.3 (2026-09-20) — current with every locked decision and verified number. Phases 6 and 7 closed out; Cohort 0 opened as phase 8. The launch, the partnership, the ambassador programme and the revised window are in the decision log; the campaign itself is docs/cohort-0-campaign.md, the plan of record docs/launch-plan.md." },
 ];

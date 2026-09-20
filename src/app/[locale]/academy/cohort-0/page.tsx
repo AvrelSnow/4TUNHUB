@@ -85,8 +85,8 @@ export default async function CohortPage({ params }: Params) {
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "online",
-      startDate: "2026-10-07",
-      endDate: "2026-10-30",
+      startDate: "2026-10-21",
+      endDate: "2026-11-13",
       instructor: { "@type": "Person", name: founder.name },
     },
   };

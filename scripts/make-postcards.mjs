@@ -154,7 +154,7 @@ function card({ dark = false, eyebrow, body, foot }, size) {
             fontWeight: 600,
             color: dark ? "rgba(255,255,255,0.72)" : MUTED,
           }),
-          text(foot?.right ?? "Applications close 1 October", {
+          text(foot?.right ?? "Applications close 11 October", {
             fontSize: 26,
             fontWeight: 600,
             color: dark ? "rgba(255,255,255,0.72)" : MUTED,
@@ -205,6 +205,26 @@ const listItem = (label, value, dark) =>
 
 const PARTNER = "4TUN Hub × Douala City SWUG";
 
+/**
+ * Seats still open, for the urgency card. Selection is rolling, so this
+ * number moves during the window — change it and rerun; the card takes a
+ * second to rebuild and a stale count is the fastest way to look careless.
+ */
+const SEATS_LEFT = 20;
+
+/**
+ * The ten ambassadors, revealed two a day once they are chosen. Each gets
+ * a card with their own face on it, and posts it themselves: ten networks
+ * instead of one, which is the whole point of the programme.
+ *
+ * Add an entry per person — `photo` is a path to a JPEG or PNG anywhere
+ * under the project (the renderer reads no other formats, and no .webp).
+ * An empty list simply generates no reveal cards.
+ *
+ *   { name: "...", role: "3rd year, Mechanical · IUC Douala", photo: "inbox/ambassadors/name.jpg" }
+ */
+const AMBASSADORS = [];
+
 function cards({ portrait }) {
   return [
     {
@@ -217,11 +237,11 @@ function cards({ portrait }) {
             body: [
               lines(["CSWA Bootcamp.", "Cohort 0."], { key: "t", ...display(false, 104) }),
               text(
-                "Eight live evenings in October to get you ready for the Certified SOLIDWORKS Associate exam. Free, for twenty people.",
+                "Eight live evenings, from 21 October, to get you ready for the Certified SOLIDWORKS Associate exam. Free, for twenty people.",
                 { key: "s", ...lead(false), marginTop: 36 },
               ),
             ],
-            foot: { left: PARTNER, right: "Apply by 1 October" },
+            foot: { left: PARTNER, right: "Apply by 11 October" },
           },
           size,
         ),
@@ -261,10 +281,10 @@ function cards({ portrait }) {
             body: [
               text("Mapped to what the exam actually tests.", { key: "t", ...display(false, 72), marginBottom: 40 }),
               col({ key: "weeks" }, [
-                listItem("7–9 Oct", "Sketches, relations, and a first exam-style part", false),
-                listItem("14–16 Oct", "Features, materials and mass properties", false),
-                listItem("21–23 Oct", "Assemblies, mates and centre of mass", false),
-                listItem("28–30 Oct", "Drawings, then two timed mock exams", false),
+                listItem("21–23 Oct", "Sketches, relations, and a first exam-style part", false),
+                listItem("28–30 Oct", "Features, materials and mass properties", false),
+                listItem("4–6 Nov", "Assemblies, mates and centre of mass", false),
+                listItem("11–13 Nov", "Drawings, then two timed mock exams", false),
               ]),
             ],
             foot: { left: "Wed & Fri, 19:30–20:30 · in English", right: "4tunhub.com" },
@@ -288,14 +308,14 @@ function cards({ portrait }) {
                 listItem("04", "Apply, and send a screenshot of each", false),
               ]),
             ],
-            foot: { left: "4tunhub.com/academy/cohort-0", right: "Closes 1 October" },
+            foot: { left: "4tunhub.com/academy/cohort-0", right: "Closes 11 October" },
           },
           size,
         ),
     },
     {
       slug: "05-who-teaches",
-      day: "Tue 29 Sep",
+      day: "Sun 4 Oct",
       build: (size) =>
         card(
           {
@@ -326,7 +346,7 @@ function cards({ portrait }) {
     },
     {
       slug: "06-one-thing",
-      day: "Wed 30 Sep",
+      day: "Tue 6 Oct",
       build: (size) =>
         card(
           {
@@ -341,14 +361,33 @@ function cards({ portrait }) {
                 { key: "s", ...lead(false), marginTop: 40 },
               ),
             ],
-            foot: { left: PARTNER, right: "Applications close 1 October" },
+            foot: { left: PARTNER, right: "Applications close 11 October" },
+          },
+          size,
+        ),
+    },
+    {
+      slug: "08-seats-left",
+      day: "Thu 8 Oct",
+      build: (size) =>
+        card(
+          {
+            eyebrow: "Rolling selection",
+            body: [
+              lines([`${SEATS_LEFT} seats`, "still open."], { key: "t", ...display(false, 104) }),
+              text(
+                "Seats are given out as applications arrive, not all at the end. The people already in applied in the first week.",
+                { key: "s", ...lead(false), marginTop: 40 },
+              ),
+            ],
+            foot: { left: "4tunhub.com/academy/cohort-0", right: "Closes Sunday 11 October" },
           },
           size,
         ),
     },
     {
       slug: "07-closing",
-      day: "Thu 1 Oct",
+      day: "Sun 11 Oct",
       build: (size) =>
         card(
           {
@@ -357,16 +396,51 @@ function cards({ portrait }) {
             body: [
               lines(["Applications", "close tonight."], { key: "t", ...display(true, 104) }),
               text(
-                "Twenty seats, free, eight live evenings in October, and a CSWA voucher for everyone who finishes. After tonight, the next one is January.",
+                "Twenty seats, free, eight live evenings from 21 October, and a CSWA voucher for everyone who finishes. After tonight, the next one is January.",
                 { key: "s", ...lead(true), marginTop: 40 },
               ),
             ],
-            foot: { left: "4tunhub.com/academy/cohort-0", right: "Thursday 1 October" },
+            foot: { left: "4tunhub.com/academy/cohort-0", right: "Sunday 11 October" },
           },
           size,
         ),
     },
   ];
+}
+
+/** One ambassador, one card, one network. */
+function ambassadorCards(photos) {
+  return AMBASSADORS.map((a, i) => ({
+    slug: `amb-${String(i + 1).padStart(2, "0")}-${a.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    day: "Reveal",
+    build: (size) =>
+      card(
+        {
+          eyebrow: "Cohort 0 ambassador",
+          body: [
+            row({ key: "who", gap: 36 }, [
+              h("img", {
+                key: "p",
+                src: photos[i],
+                width: 220,
+                height: 220,
+                style: { borderRadius: 9999, objectFit: "cover" },
+              }),
+              col({ key: "n", gap: 10 }, [
+                text(a.name, { key: "a", fontSize: 58, fontWeight: 700, letterSpacing: -1.6, color: INK }),
+                text(a.role, { key: "b", fontSize: 30, fontWeight: 600, color: MUTED }),
+              ]),
+            ]),
+            text(
+              "One of ten engineers carrying Cohort 0 to their own circle \u2014 and sitting in it. Ask them anything about the bootcamp.",
+              { key: "s", ...lead(false), marginTop: 48 },
+            ),
+          ],
+          foot: { left: PARTNER, right: "Apply by 11 October" },
+        },
+        size,
+      ),
+  }));
 }
 
 // ---- render --------------------------------------------------------------
@@ -390,7 +464,21 @@ const fonts = [
 
 await mkdir(OUT, { recursive: true });
 
-const all = cards({ portrait: `data:image/jpeg;base64,${portraitBuffer.toString("base64")}` });
+// Ambassador portraits, converted the same way the founder's is.
+const ambassadorPhotos = await Promise.all(
+  AMBASSADORS.map(async (a) => {
+    const buf = await sharp(join(process.cwd(), a.photo))
+      .resize(440, 440, { fit: "cover", position: "top" })
+      .jpeg({ quality: 86 })
+      .toBuffer();
+    return `data:image/jpeg;base64,${buf.toString("base64")}`;
+  }),
+);
+
+const all = [
+  ...cards({ portrait: `data:image/jpeg;base64,${portraitBuffer.toString("base64")}` }),
+  ...ambassadorCards(ambassadorPhotos),
+];
 let count = 0;
 for (const c of all) {
   for (const size of SIZES) {
