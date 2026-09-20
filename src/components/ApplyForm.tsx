@@ -6,6 +6,7 @@ import { InputField, SelectField, TextareaField } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { submitApplication } from "@/lib/apply-action";
 import { APPLY_LIMITS, SW_VERSIONS, initialApplyState } from "@/lib/cohort";
+import { ANALYTICS_EVENTS, useTrackOnce } from "@/lib/track";
 import { CONTACT_EMAIL } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
@@ -20,6 +21,8 @@ type CohortCopy = Dictionary["cohort"];
  */
 export function ApplyForm({ t, privacyHref }: { t: CohortCopy; privacyHref: string }) {
   const [state, formAction, pending] = useActionState(submitApplication, initialApplyState);
+  // Counted, never identified: the event carries no field of the form.
+  useTrackOnce(state.status === "success", ANALYTICS_EVENTS.application);
   const f = t.form;
   const err = (code?: string) => (code ? f.errors[code] : undefined);
   const v = state.values ?? {};

@@ -6,6 +6,7 @@ import { InputField } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { submitWaitlist } from "@/lib/waitlist-action";
 import { TRACK_VALUES, WAITLIST_LIMITS, initialWaitlistState } from "@/lib/waitlist";
+import { ANALYTICS_EVENTS, useTrackOnce } from "@/lib/track";
 import { CONTACT_EMAIL } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
@@ -31,6 +32,9 @@ export function WaitlistForm({
   defaultTrack?: string;
 }) {
   const [state, formAction, pending] = useActionState(submitWaitlist, initialWaitlistState);
+  // `form: "page"` separates this from the one-field blocks, so we can
+  // see which of the two actually brings addresses in.
+  useTrackOnce(state.status === "success", ANALYTICS_EVENTS.waitlist, { form: "page" });
   const f = t.form;
   const err = (code?: string) => (code ? f.errors[code] : undefined);
   const v = state.values ?? {};

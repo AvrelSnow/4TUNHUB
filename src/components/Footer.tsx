@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "./ui/Container";
 import { Logo } from "./ui/Logo";
 import { ThemeControl } from "./ThemeControl";
+import { EmailCapture } from "./EmailCapture";
 import { flattenTree } from "@/lib/sitemap";
 import { CONTACT_EMAIL, SITE_LOCATION } from "@/lib/site";
 import {
@@ -54,7 +55,28 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
     <footer className="mt-auto border-t border-border bg-surface text-2xs text-muted">
       <Container size="wide" className="pt-16 pb-10">
-        <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
+        {/* The list, first: the footer is where a reader lands once the
+            page is over, and this is the one thing we ask for on every
+            page of the site. The track is fixed to `academy` because the
+            line above the field promises course dates, nothing else. */}
+        <div className="flex flex-col gap-6 border-b border-border pb-12 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+          <div className="max-w-md">
+            <p className="text-base font-semibold tracking-tight text-foreground">
+              {dict.waitlist.inline.footer.title}
+            </p>
+            <p className="mt-2 text-sm leading-6">{dict.waitlist.inline.footer.body}</p>
+          </div>
+          <EmailCapture
+            t={dict.waitlist}
+            track="academy"
+            tone="footer"
+            privacyHref={localizeHref(locale, "/privacy")}
+            moreHref={localizeHref(locale, "/waitlist")}
+            className="lg:w-[28rem] lg:shrink-0"
+          />
+        </div>
+
+        <div className="mt-12 flex flex-col gap-12 lg:flex-row lg:justify-between">
           <div>
             <Logo href={localizeHref(locale, "/")} size="sm" />
             <p className="mt-5 max-w-xs text-sm leading-6">{dict.footer.blurb}</p>

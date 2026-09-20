@@ -104,6 +104,8 @@ is finished during weeks 1–2, never the night before.
 | Privacy note published | The form collects names, emails and phone numbers | Claude, Wed 23 |
 | Host allows commercial use | Vercel's free Hobby plan forbids commercial use. **Netlify's free plan allows it.** | Netlify chosen |
 | `/blueprint` stays out of search | Internal spec page | Already noindex + robots |
+| Somewhere to leave an address, on every page | Most people who read a page on launch day are not ready to apply, and a visitor who leaves without leaving an address is gone. A one-field waitlist block now sits on Academy, Cohort 0, Research, the Blog and in the footer of every page, each naming the one thing it subscribes you to | Done 20 Sep |
+| Visits counted | Launch-day traffic is the one number that never comes back. Cookieless, no consent banner, and off until the host is configured | Code done 20 Sep — needs `ANALYTICS_PROVIDER` + `ANALYTICS_SITE_ID` in Netlify **and a redeploy** (see README). Umami Cloud's free tier is the cheapest provider that also counts the three conversions |
 
 **Plan B if the deploy slips:** applications go through a Google Form linked
 from the WhatsApp announcement, and the site follows a few days later. The

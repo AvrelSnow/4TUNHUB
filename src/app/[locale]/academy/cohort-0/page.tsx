@@ -8,6 +8,7 @@ import { ArrowLink, Chevron } from "@/components/ui/ArrowLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
 import { ApplyForm } from "@/components/ApplyForm";
+import { EmailCaptureBand } from "@/components/EmailCaptureBand";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { founder } from "@/lib/founder";
 import { WHATSAPP_COMMUNITY_URL } from "@/lib/site";
@@ -247,6 +248,18 @@ export default async function CohortPage({ params }: Params) {
           </div>
         </Container>
       </section>
+
+      {/* Twenty seats, and more applicants than that if the launch works.
+          The ones who miss out are the warmest audience Cohort 1 will
+          ever have — they don't leave this page without being asked. */}
+      <EmailCaptureBand
+        t={dict.waitlist}
+        band="cohort"
+        track="academy"
+        privacyHref={localizeHref(locale, "/privacy")}
+        moreHref={localizeHref(locale, "/waitlist")}
+        className="border-t border-border"
+      />
     </>
   );
 }

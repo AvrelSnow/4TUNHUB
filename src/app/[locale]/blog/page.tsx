@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/Reveal";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { CtaPanel } from "@/components/ui/CtaPanel";
+import { EmailCaptureBand } from "@/components/EmailCaptureBand";
 import { publishedPosts, publications } from "@/lib/blog";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -121,6 +122,14 @@ export default async function BlogPage({ params }: Params) {
           })}
         </div>
       </Section>
+
+      <EmailCaptureBand
+        t={dict.waitlist}
+        band="rem"
+        track="rem"
+        privacyHref={localizeHref(locale, "/privacy")}
+        moreHref={localizeHref(locale, "/waitlist")}
+      />
 
       <CtaPanel
         title={t.cta.title}

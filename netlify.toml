@@ -10,6 +10,9 @@
 #   MAIL_TO         optional, defaults to CONTACT_EMAIL
 #   MAIL_FROM       optional, e.g. "4TUN Hub <hello@4tunhub.com>" once the
 #                   domain is verified in Resend
+#   ANALYTICS_PROVIDER, ANALYTICS_SITE_ID, ANALYTICS_HOST
+#                   optional, cookieless analytics (see src/lib/analytics.ts).
+#                   Read at build time: add them, then redeploy.
 
 [build]
   command = "npm run build"

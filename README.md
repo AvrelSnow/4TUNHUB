@@ -36,4 +36,12 @@ Netlify → Site configuration → Environment variables:
 |---|---|---|
 | `RESEND_API_KEY` | yes | Delivers the contact form and Cohort 0 applications. Without it, the forms say they could not send and offer a ready-written email instead. |
 | `MAIL_TO` | no | Where submissions go. Defaults to `4tunhub@gmail.com`. |
-| `MAIL_FROM` | no | Sender. Defaults to Resend's test sender, which only delivers to the Resend account's own address. Use `4TUN Hub <hello@4tunhub.com>` once the domain is verified in Resend. |
+| `MAIL_FROM` | no | Sender. Defaults to Resend's test sender, which only delivers to the Resend account's own address. Use `4TUN Hub <hello@4tunhub.com>` once the domain is verified in Resend. |
+| `ANALYTICS_PROVIDER` | no | `umami` or `plausible`. Unset means no analytics at all: no script, no third-party origin in the Content-Security-Policy. |
+| `ANALYTICS_SITE_ID` | with a provider | Umami: the website ID. Plausible: the domain, e.g. `4tunhub.com`. |
+| `ANALYTICS_HOST` | no | Origin of a self-hosted instance, e.g. `https://stats.4tunhub.com`. Defaults to the provider's cloud. |
+
+The analytics variables are read **when the site is built**, not when it is
+served: after adding them, trigger a redeploy or nothing will change. Only
+cookieless providers belong here — the privacy note promises no cookies and
+nothing that follows a visitor between sites. See `src/lib/analytics.ts`.

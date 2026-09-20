@@ -1276,21 +1276,56 @@ const en = {
         unavailable: "The list isn't reachable right now. Email us and we'll add you by hand.",
       } as Record<string, string>,
     },
+
+    /**
+     * The one-field version, dropped at the foot of the pages people
+     * actually land on. Same list, same server action, same promise — it
+     * just doesn't ask anyone to walk to a page called "waitlist" first.
+     * Each heading must name the one track that block signs you up for.
+     */
+    inline: {
+      label: "Email address",
+      placeholder: "you@example.com",
+      submit: "Keep me posted",
+      submitting: "Adding you…",
+      done: "You're on the list. We'll write when it opens.",
+      promise: "One address, and one click to leave.",
+      privacy: "Privacy",
+      more: "Hear about the rest",
+      bands: {
+        academy: {
+          title: "Cohort 1 opens in January.",
+          body: "Leave an address and you'll know the day applications open — for the next CSWA bootcamp, and for the GD&T course that follows it.",
+        },
+        cohort: {
+          title: "Twenty seats. If you don't get one, don't disappear.",
+          body: "Cohort 1 opens in January and this list hears first. One email the day it does — nothing in between.",
+        },
+        rem: {
+          title: "The REM, the day an episode lands.",
+          body: "One written engineering episode at a time, on energy systems that have to work where the grid doesn't. No digest, no filler.",
+        },
+      },
+      footer: {
+        title: "Be told when something opens.",
+        body: "Course dates and cohort openings — one email when there's a seat to take.",
+      },
+    },
   },
 
   privacy: {
     title: "Privacy",
-    updated: "Last updated 19 September 2026",
+    updated: "Last updated 20 September 2026",
     intro:
       "This site collects personal details only when you send them through a form. This note says what we keep, why, for how long, and how to have it deleted.",
     sections: [
       {
         title: "What we collect",
-        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat.",
+        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat. The waitlist asks for an email address, a name if you care to give one, and which subjects you want to hear about.",
       },
       {
         title: "Why",
-        body: "To reply to you. For applications, also to select the cohort and to run it: the weekly exercises happen in a WhatsApp group of accepted participants.",
+        body: "To reply to you. For applications, also to select the cohort and to run it: the weekly exercises happen in a WhatsApp group of accepted participants. For the waitlist, to write to you when the thing you asked about opens — and about nothing else.",
       },
       {
         title: "Where it goes",
@@ -1302,7 +1337,7 @@ const en = {
       },
       {
         title: "Cookies and tracking",
-        body: "None. The site stores one setting in your browser, your Light, Dark or Auto choice, and it never leaves your device. There are no analytics or advertising trackers.",
+        body: "No cookies, and nothing that follows you from one site to another. Your Light, Dark or Auto choice is stored in your browser and never leaves your device. We do count visits: a cookieless analytics tool records the page, the country, the kind of device and the site you came from, plus three anonymous events — a waitlist signup, an application, a message sent. It holds no name, no address and nothing that identifies a person, and none of it is shared with advertisers.",
       },
       {
         title: "Your rights",

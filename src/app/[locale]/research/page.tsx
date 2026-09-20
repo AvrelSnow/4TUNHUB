@@ -8,6 +8,7 @@ import { ArrowLink } from "@/components/ui/ArrowLink";
 import { CtaPanel } from "@/components/ui/CtaPanel";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
+import { EmailCaptureBand } from "@/components/EmailCaptureBand";
 import { focusAreas } from "@/lib/research";
 import { getProject, projectDetailPath } from "@/lib/projects";
 import { isLocale } from "@/lib/i18n/config";
@@ -144,7 +145,16 @@ export default async function ResearchPage({ params }: Params) {
         </Container>
       </section>
 
-      {/* 5 · COLLABORATE */}
+      {/* 5 · THE LIST — the REM is what this audience came for. */}
+      <EmailCaptureBand
+        t={dict.waitlist}
+        band="rem"
+        track="rem"
+        privacyHref={localizeHref(locale, "/privacy")}
+        moreHref={localizeHref(locale, "/waitlist")}
+      />
+
+      {/* 6 · COLLABORATE */}
       <CtaPanel
         title={t.cta.title}
         subtitle={t.cta.subtitle}

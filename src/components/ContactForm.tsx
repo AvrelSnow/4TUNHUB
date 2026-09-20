@@ -5,6 +5,7 @@ import { InputField, SelectField, TextareaField } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { submitContact } from "@/lib/contact-action";
 import { initialContactState, TOPIC_VALUES } from "@/lib/contact";
+import { ANALYTICS_EVENTS, useTrackOnce } from "@/lib/track";
 import { CONTACT_EMAIL } from "@/lib/site";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 
@@ -24,6 +25,7 @@ export function ContactForm({ t }: { t: ContactCopy }) {
 
 function ContactFormFields({ t, onReset }: { t: ContactCopy; onReset: () => void }) {
   const [state, formAction, pending] = useActionState(submitContact, initialContactState);
+  useTrackOnce(state.status === "success", ANALYTICS_EVENTS.contact);
   const f = t.form;
   const err = (code?: string) => (code ? f.errors[code] : undefined);
 

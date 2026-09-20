@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import withBundleAnalyzer from "@next/bundle-analyzer";
+import { analyticsConfig } from "./src/lib/analytics";
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -12,7 +13,14 @@ const bundleAnalyzer = withBundleAnalyzer({
  * Security headers — applied to every route.
  * The CSP is production-only because Next dev mode needs eval/inline for HMR.
  * At launch, tighten script-src with nonces if any inline scripts remain.
+ *
+ * Analytics is the one third party allowed anywhere near the page, and only
+ * when the host has configured it: `analytics` is null otherwise and the
+ * policy below stays first-party. See src/lib/analytics.ts.
  */
+const analytics = analyticsConfig();
+const analyticsOrigin = analytics ? ` ${analytics.origin}` : "";
+
 const securityHeaders = [
   // Never let browsers guess MIME types.
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -36,11 +44,11 @@ const securityHeaders = [
           key: "Content-Security-Policy",
           value: [
             "default-src 'self'",
-            "script-src 'self' 'unsafe-inline'",
+            `script-src 'self' 'unsafe-inline'${analyticsOrigin}`,
             "style-src 'self' 'unsafe-inline'",
             "img-src 'self' data:",
             "font-src 'self'",
-            "connect-src 'self'",
+            `connect-src 'self'${analyticsOrigin}`,
             "frame-ancestors 'none'",
             "base-uri 'self'",
             "form-action 'self'",

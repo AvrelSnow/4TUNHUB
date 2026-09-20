@@ -8,6 +8,7 @@ import "@fontsource-variable/instrument-sans/wght.css";
 import "../globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { Analytics } from "@/components/Analytics";
 import { CohortRibbon } from "@/components/CohortRibbon";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -117,6 +118,7 @@ export default async function LocaleLayout({
           {children}
         </main>
         <Footer locale={typedLocale} dict={dict} />
+        <Analytics />
       </body>
     </html>
   );

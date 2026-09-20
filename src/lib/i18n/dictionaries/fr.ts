@@ -1276,21 +1276,50 @@ const fr: Dictionary = {
           "La liste est injoignable pour le moment. Écrivez-nous et nous vous ajouterons à la main.",
       },
     },
+
+    inline: {
+      label: "Adresse e-mail",
+      placeholder: "vous@exemple.com",
+      submit: "Tenez-moi au courant",
+      submitting: "Inscription…",
+      done: "Vous êtes sur la liste. Nous écrirons à l'ouverture.",
+      promise: "Une adresse, et un clic pour partir.",
+      privacy: "Confidentialité",
+      more: "Être prévenu du reste",
+      bands: {
+        academy: {
+          title: "La Cohorte 1 ouvre en janvier.",
+          body: "Laissez une adresse et vous saurez le jour où les candidatures ouvrent — pour le prochain bootcamp CSWA, et pour le cours de GD&T qui suivra.",
+        },
+        cohort: {
+          title: "Vingt places. Si vous n'en obtenez pas une, ne disparaissez pas.",
+          body: "La Cohorte 1 ouvre en janvier et cette liste est prévenue la première. Un e-mail le jour venu — rien entre-temps.",
+        },
+        rem: {
+          title: "La REM, le jour où un épisode paraît.",
+          body: "Un épisode d'ingénierie écrit à la fois, sur les systèmes énergétiques qui doivent fonctionner là où le réseau n'arrive pas. Pas de digest, pas de remplissage.",
+        },
+      },
+      footer: {
+        title: "Être prévenu à l'ouverture.",
+        body: "Dates des cours et ouvertures de cohortes — un e-mail quand une place se libère.",
+      },
+    },
   },
 
   privacy: {
     title: "Confidentialité",
-    updated: "Dernière mise à jour : 19 septembre 2026",
+    updated: "Dernière mise à jour : 20 septembre 2026",
     intro:
       "Ce site ne recueille des informations personnelles que lorsque vous nous les envoyez par un formulaire. Cette note dit ce que nous conservons, pourquoi, combien de temps, et comment le faire supprimer.",
     sections: [
       {
         title: "Ce que nous recueillons",
-        body: "Le formulaire de contact demande votre nom, votre e-mail et votre message. Une candidature à la Cohorte 0 demande aussi votre numéro WhatsApp, votre école ou employeur, votre version de SolidWorks et pourquoi vous voulez une place.",
+        body: "Le formulaire de contact demande votre nom, votre e-mail et votre message. Une candidature à la Cohorte 0 demande aussi votre numéro WhatsApp, votre école ou employeur, votre version de SolidWorks et pourquoi vous voulez une place. La liste d'attente demande une adresse e-mail, un nom si vous voulez bien le donner, et les sujets dont vous voulez être prévenu.",
       },
       {
         title: "Pourquoi",
-        body: "Pour vous répondre. Pour les candidatures, aussi pour sélectionner la cohorte et la faire fonctionner : les exercices hebdomadaires se font dans un groupe WhatsApp réservé aux participants retenus.",
+        body: "Pour vous répondre. Pour les candidatures, aussi pour sélectionner la cohorte et la faire fonctionner : les exercices hebdomadaires se font dans un groupe WhatsApp réservé aux participants retenus. Pour la liste d'attente, pour vous écrire quand ce que vous avez demandé ouvre — et pour rien d'autre.",
       },
       {
         title: "Où cela va",
@@ -1302,7 +1331,7 @@ const fr: Dictionary = {
       },
       {
         title: "Cookies et suivi",
-        body: "Aucun. Le site enregistre un seul réglage dans votre navigateur, votre choix Clair, Sombre ou Auto, et il ne quitte jamais votre appareil. Il n'y a ni outil d'analyse ni traceur publicitaire.",
+        body: "Aucun cookie, et rien qui vous suive d'un site à l'autre. Votre choix Clair, Sombre ou Auto est enregistré dans votre navigateur et ne quitte jamais votre appareil. Nous comptons en revanche les visites : un outil d'analyse sans cookie enregistre la page, le pays, le type d'appareil et le site d'où vous venez, ainsi que trois événements anonymes — une inscription à la liste, une candidature, un message envoyé. Il ne conserve ni nom, ni adresse, ni rien qui identifie une personne, et rien n'est partagé avec des annonceurs.",
       },
       {
         title: "Vos droits",

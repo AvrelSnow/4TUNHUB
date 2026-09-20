@@ -9,6 +9,7 @@ import { CtaPanel } from "@/components/ui/CtaPanel";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
 import { CohortFeature } from "@/components/CohortFeature";
+import { EmailCaptureBand } from "@/components/EmailCaptureBand";
 import { courses } from "@/lib/academy";
 import { projectDetailPath } from "@/lib/projects";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
@@ -163,11 +164,27 @@ export default async function AcademyPage({ params }: Params) {
         </Reveal>
       </Section>
 
-      {/* 5 · ENROLMENT */}
+      {/* 5 · THE LIST — most people who read this page are not ready to
+          buy a seat today. An address is what keeps them. */}
+      <EmailCaptureBand
+        t={dict.waitlist}
+        band="academy"
+        track="academy"
+        privacyHref={localizeHref(locale, "/privacy")}
+        moreHref={localizeHref(locale, "/waitlist")}
+      />
+
+      {/* 6 · ENROLMENT — with the list right above it, a second "join the
+          waitlist" button would be asking twice for the same thing. While
+          Cohort 0 is open the page closes on the seat instead. */}
       <CtaPanel
         title={t.cta.title}
         subtitle={t.cta.subtitle}
-        primary={{ label: t.cta.primary, href: localizeHref(locale, "/waitlist?track=academy") }}
+        primary={
+          applicationsOpen()
+            ? { label: dict.home.cohort.cta, href: localizeHref(locale, COHORT_PATH) }
+            : { label: t.cta.primary, href: localizeHref(locale, "/waitlist?track=academy") }
+        }
         secondary={{ label: t.cta.secondary, href: localizeHref(locale, "/projects") }}
       />
     </>
