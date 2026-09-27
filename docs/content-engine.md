@@ -68,7 +68,7 @@ on the static postcards, where it carries trust, and nowhere in video.**
 
 - **Postcards with your photo** where trust, story or authority is the
   point: reveals, *why* posts, "who teaches", build-in-public numbers,
-  objections. Use the portrait in `public/images/founder-portrait.webp`.
+  objections. Use the photo he uses on every platform, `docs/content/assets/founder-social.webp`.
   `make-postcards.mjs` already places it (see `00-this-is-4tunhub` and
   `05-who-teaches`).
 - **Videos are screen recordings or engineering footage, with your voice
@@ -87,8 +87,16 @@ on the static postcards, where it carries trust, and nowhere in video.**
 
 ## 6. The same idea, adapted for each platform
 
-The two channels are **LinkedIn and X**, plus WhatsApp and YouTube for
-distribution. There is no TikTok.
+The channels are **LinkedIn and X in English, and Facebook in French**,
+plus WhatsApp and YouTube for distribution. There is no TikTok.
+
+**Facebook (French):** the same postcard, rewritten in French for Facebook,
+never a line-by-line translation. Post from the 4TUNHub page or your
+profile, then share into the engineering groups you're already in. Use the
+French card where one exists (`make-postcards.mjs` makes `-fr` versions),
+link to `4tunhub.com/fr/…` with `utm_source=facebook`, and put a French
+voice-over or French subtitles on videos. Anything about an English-only
+programme says so in the French text.
 
 | | LinkedIn | X |
 |---|---|---|
@@ -133,7 +141,7 @@ thing at a time.
 personal data in the URL):
 
 ```
-?utm_source=linkedin|x|whatsapp|youtube&utm_medium=social&utm_campaign=<campaign>&utm_content=<postcard id, lower case>
+?utm_source=linkedin|x|facebook|whatsapp|youtube&utm_medium=social&utm_campaign=<campaign>&utm_content=<postcard id, lower case>
 ```
 
 Every Sunday, spend 10 minutes filling in the tracker's numbers for the week
@@ -229,7 +237,7 @@ Art direction is governed by `docs/art-direction.md`.
 
 | Element | Rule | Source |
 |---|---|---|
-| Ground | White `#ffffff` or `#f5f5f7` by day. Ink `#1d1d1f` for the dark cards | `src/app/globals.css` |
+| Ground | **Light by default**: white `#ffffff` or `#f5f5f7`. Ink `#1d1d1f` only for the odd contrast card | `src/app/globals.css` |
 | Type | **Instrument Sans**, one family. Bold for display with tight tracking, medium for body | the site |
 | Text colours | Ink `#1d1d1f`, muted `#6e6e73` | globals.css |
 | **Amber** `#ffb000` | **As a fill with ink text, never as small text on white.** Kept for the one thing in a post that must not be missed: the brand word, the deadline, the voucher | decision log: "Amber is the site's one loud colour" |

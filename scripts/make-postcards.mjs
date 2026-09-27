@@ -225,45 +225,67 @@ const SEATS_LEFT = 20;
  */
 const AMBASSADORS = [];
 
+/**
+ * The platform reveal (P01, docs/content/postcards/): the LinkedIn video's
+ * thumbnail, the first post of the X thread, and the image for the French
+ * Facebook post. The founder's face belongs on the cards, never in the
+ * videos, so this is where it goes. Light, like the site by day. No cohort
+ * facts on it, so it never goes stale.
+ */
+const REVEAL = {
+  en: {
+    eyebrow: "Live, and built in public",
+    role: "Founder, 4TUNHub",
+    title: ["The place I wish", "I\u2019d had."],
+    lead: "This is 4TUNHub. Real machines, designed, simulated and built \u2014 and the training, research and engineering services that grow out of them.",
+    tagline: "We design machines, and teach you how.",
+  },
+  fr: {
+    eyebrow: "En ligne, et construit en public",
+    role: "Fondateur, 4TUNHub",
+    title: ["L\u2019endroit que", "j\u2019aurais voulu avoir."],
+    lead: "Voici 4TUNHub. De vraies machines, con\u00e7ues, simul\u00e9es et construites \u2014 et la formation, la recherche et les services d\u2019ing\u00e9nierie qui en d\u00e9coulent.",
+    tagline: "Nous concevons des machines. Apprenez \u00e0 le faire.",
+  },
+};
+
+function revealCard(lang, portrait) {
+  const t = REVEAL[lang];
+  return {
+    slug: lang === "en" ? "00-this-is-4tunhub" : "00-this-is-4tunhub-fr",
+    day: "Sun 27 Sep",
+    build: (size) =>
+      card(
+        {
+          eyebrow: t.eyebrow,
+          body: [
+            row({ key: "who", gap: 28, marginBottom: 48 }, [
+              h("img", {
+                key: "p",
+                src: portrait,
+                width: 150,
+                height: 150,
+                style: { borderRadius: 9999, objectFit: "cover" },
+              }),
+              col({ key: "n", gap: 6 }, [
+                text("Donfack Fortune", { key: "a", fontSize: 40, fontWeight: 700, letterSpacing: -1, color: INK }),
+                text(t.role, { key: "b", fontSize: 28, fontWeight: 600, color: MUTED }),
+              ]),
+            ]),
+            lines(t.title, { key: "t", ...display(false, lang === "fr" ? 88 : 100) }),
+            text(t.lead, { key: "s", ...lead(false), marginTop: 36 }),
+          ],
+          foot: { left: lang === "fr" ? "4tunhub.com/fr" : "4tunhub.com", right: t.tagline },
+        },
+        size,
+      ),
+  };
+}
+
 function cards({ portrait }) {
   return [
-    {
-      // The platform reveal (P01, docs/content/postcards/): the LinkedIn
-      // video's thumbnail and the first post of the X thread. The founder's
-      // face belongs on the cards, never in the videos, so this is where it
-      // goes. No cohort facts on it, so it never goes stale.
-      slug: "00-this-is-4tunhub",
-      day: "Sun 27 Sep",
-      build: (size) =>
-        card(
-          {
-            dark: true,
-            eyebrow: "Live, and built in public",
-            body: [
-              row({ key: "who", gap: 28, marginBottom: 48 }, [
-                h("img", {
-                  key: "p",
-                  src: portrait,
-                  width: 150,
-                  height: 150,
-                  style: { borderRadius: 9999, objectFit: "cover" },
-                }),
-                col({ key: "n", gap: 6 }, [
-                  text("Donfack Fortune", { key: "a", fontSize: 40, fontWeight: 700, letterSpacing: -1, color: "#ffffff" }),
-                  text("Founder, 4TUNHub", { key: "b", fontSize: 28, fontWeight: 600, color: "rgba(255,255,255,0.72)" }),
-                ]),
-              ]),
-              lines(["The place I wish", "I’d had."], { key: "t", ...display(true, 100) }),
-              text(
-                "This is 4TUNHub. Real machines, designed, simulated and built — and the training, research and engineering services that grow out of them.",
-                { key: "s", ...lead(true), marginTop: 36 },
-              ),
-            ],
-            foot: { left: "4tunhub.com", right: "We design machines, and teach you how." },
-          },
-          size,
-        ),
-    },
+    revealCard("en", portrait),
+    revealCard("fr", portrait),
     {
       slug: "01-announcement",
       day: "Fri 25 Sep",
@@ -486,9 +508,12 @@ const [w700, w600, w500, portraitBuffer] = await Promise.all([
   readFile(join(FONTS, "instrument-sans-latin-700-normal.woff")),
   readFile(join(FONTS, "instrument-sans-latin-600-normal.woff")),
   readFile(join(FONTS, "instrument-sans-latin-500-normal.woff")),
-  // The renderer reads PNG and JPEG only, so the site's .webp is converted.
-  sharp(join(process.cwd(), "public/images/founder-portrait.webp"))
-    .resize(440, 440, { fit: "cover", position: "top" })
+  // The renderer reads PNG and JPEG only, so the .webp is converted.
+  // The photo Fortune uses on every platform, cropped to the face so it
+  // reads as the same avatar people already know.
+  sharp(join(process.cwd(), "docs/content/assets/founder-social.webp"))
+    .extract({ left: 40, top: 470, width: 580, height: 580 })
+    .resize(440, 440)
     .jpeg({ quality: 86 })
     .toBuffer(),
 ]);

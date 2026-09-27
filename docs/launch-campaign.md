@@ -112,7 +112,7 @@ Times are Cameroon time (WAT, UTC+1). The reasoning is in
 `docs/content-engine.md` §7. **Mondays and Tuesdays are teaching days**, so
 those posts are recorded on Sunday or are cards that already exist.
 
-**Channels: LinkedIn and X.** No TikTok. **Your face never appears in a
+**Channels: LinkedIn and X in English, Facebook in French.** No TikTok. **Your face never appears in a
 video.** Videos are screen recordings or engineering footage, with your
 voice over them. Your face appears only on **postcards** (the static cards),
 where your photograph carries the trust.
@@ -170,6 +170,88 @@ who reads the answer.
 **P07 · Sat 3 Oct · "Week one, in numbers"**: build in public, as a **card with your photo** and the real numbers from analytics and the form: visits, applications, countries, and whatever broke. Claude generates the card once you have the numbers. **Invent nothing.** If a number is small, say it's small. That is part of the trust this post is building.
 - Hook: *"4TUNHub has been public for a week. Here's what happened."*
 - X: the card, then one reply per number, each with a sentence on what it taught you.
+
+### Facebook, in French
+
+The same postcard each day, written for Facebook in French, not
+translated line by line. Use the French card where there is one (P01:
+`00-this-is-4tunhub-fr`). Cards 01–08 exist only in English for now. Every
+link goes to the French site (`4tunhub.com/fr/…`) with
+`utm_source=facebook`. **The sessions are in English, and every
+cohort post says so.** A French-speaking reader who finds that out on day
+one of the cohort is a seat lost.
+
+**P01 · dim. 27 sept.**: the full text is in `docs/content/postcards/P01-this-is-4tunhub.md`.
+
+**P02 · lun. 28 sept.**
+> Voici ce qui existe déjà sur 4TUNHub, en 60 secondes : six machines
+> documentées de bout en bout — le problème, la démarche, le résultat —, des
+> services d'ingénierie, une Académie, de la recherche, et douze
+> interventions publiques sur la page du fondateur.
+>
+> Tout n'est pas fini. Mais tout ce que vous voyez est réel.
+>
+> Et la première chose que 4TUNHub lance ouvre mardi.
+
+**P03 · mar. 29 sept.**: card `01-announcement`
+> La certification SOLIDWORKS (CSWA) coûte 99 $. C'est pour ça que la
+> plupart des étudiants en ingénierie d'ici ne la passent jamais.
+>
+> Alors 4TUNHub et le Douala City SOLIDWORKS User Group lancent un bootcamp
+> gratuit pour s'y préparer : huit soirées en direct, les mercredis et
+> vendredis de 19h30 à 20h30, du 21 octobre au 13 novembre. **Les sessions
+> sont en anglais**, sur Bevy, et enregistrées.
+>
+> Tous ceux qui terminent la cohorte reçoivent un bon d'examen CSWA
+> gratuit.
+>
+> 20 places, sur candidature. Pour être accepté :
+> 1. Rejoindre le Douala City SWUG sur Bevy
+> 2. Suivre le Douala City SWUG sur LinkedIn
+> 3. Suivre 4TUNHub sur LinkedIn et YouTube
+> 4. Candidater, puis envoyer une capture d'écran de chaque adhésion
+>
+> Il vous faut SOLIDWORKS sur votre ordinateur — n'importe quelle version
+> récente, l'édition étudiante suffit.
+>
+> Candidatures jusqu'au dimanche 11 octobre. Les places sont attribuées au
+> fil des candidatures, pas toutes à la fin.
+>
+> Candidater : https://4tunhub.com/fr/academy/cohort-0?utm_source=facebook&utm_medium=social&utm_campaign=launch-2026&utm_content=p03
+
+**P04 · mer. 30 sept.**: card `02-voucher`
+> Passer la CSWA coûte 99 $. Pour beaucoup de très bons étudiants, c'est la
+> seule raison pour laquelle ils ne la passent jamais.
+>
+> Terminez la Cohorte 0, et le bon d'examen est à vous, gratuitement.
+> 20 places, candidatures jusqu'au 11 octobre. Sessions en anglais.
+
+**P05 · jeu. 1 oct.**: the SOLIDWORKS video, with a French voice-over or subtitles
+> On peut modéliser la pièce parfaitement et quand même échouer à la CSWA.
+>
+> Les trois pièges : les unités, les décimales, et le chrono. L'examen
+> vérifie votre réponse dans le format qu'il demande — pas dans celui de
+> votre document.
+>
+> Enregistrez ce post pour le jour de l'examen. La semaine 2 de la Cohorte 0
+> ne parle que de ça.
+
+**P06 · ven. 2 oct.**: the screen recording plus card `04-how-to-get-a-seat`
+> Une place gratuite qui ne coûte rien à obtenir, c'est une place où
+> personne ne vient.
+>
+> Alors voici ce que coûte une place dans la Cohorte 0 : quatre étapes, et
+> aucune n'est de l'argent. La vidéo les montre dans l'ordre. La plus
+> oubliée, c'est la dernière : les captures d'écran.
+>
+> Faites-les cette semaine, pas le 10.
+
+**P07 · sam. 3 oct.**: a card with your photo and the real numbers
+> 4TUNHub est en ligne depuis une semaine. Voici ce qui s'est passé :
+> [les vrais chiffres — visites, candidatures, pays, et ce qui a cassé].
+>
+> Rien d'inventé. Si un chiffre est petit, il est petit — c'est comme ça
+> qu'on construit en public.
 
 ---
 

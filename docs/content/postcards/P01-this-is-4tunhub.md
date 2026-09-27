@@ -7,7 +7,7 @@
 | **Content pillar** | Platform (with Founder) |
 | **Audience stage** | Discovery |
 | **Primary audience** | Engineering students and young engineers in Cameroon |
-| **Channels** | LinkedIn (personal profile) and X |
+| **Channels** | LinkedIn (personal profile) and X in English · Facebook in French |
 | **Status** | Ready to record, 27 Sep 2026 |
 
 **Hook.** *"I've taught more than three hundred engineering students. Almost
@@ -19,8 +19,8 @@ rather than a course, and it's being built in public.
 **CTA.** Follow, and look at 4tunhub.com.
 
 **Voice and photo.** Your **voice** over the video. Your **face only on the
-postcard** `00-this-is-4tunhub`, which is the LinkedIn thumbnail and the
-first post of the X thread. **No face on camera.**
+postcard** `00-this-is-4tunhub` (light), which is the LinkedIn thumbnail,
+the first post of the X thread, and, in French, the Facebook image. **No face on camera.**
 
 **Length.** One 4:5 video, **45–55 s**, used on both LinkedIn and X.
 
@@ -35,9 +35,10 @@ you would say it, change the line, not the fact.
 
 | Asset | What it is | How it's made |
 |---|---|---|
-| **Postcard** `00-this-is-4tunhub-post.png` (1080×1350) | Your photo, name, "The place I wish I'd had." | Already generated: `node scripts/make-postcards.mjs` |
+| **Postcard** `00-this-is-4tunhub-post.png` (1080×1350) | Light card: your photo (the one you use on every platform), name, "The place I wish I'd had." | Already generated: `node scripts/make-postcards.mjs` |
+| **French postcard** `00-this-is-4tunhub-fr-post.png` (1080×1350) | The same card in French: "L'endroit que j'aurais voulu avoir." | Already generated |
 | **Video** (1080×1350, 45–55 s) | A phone screen recording of 4tunhub.com with your voice over it | Recorded today, below |
-| Story card `00-this-is-4tunhub-story.png` (1080×1920) | For WhatsApp Status | Already generated |
+| Story cards `00-this-is-4tunhub-story.png` / `-fr-story.png` (1080×1920) | For WhatsApp Status | Already generated |
 
 ## Script: voice-over, about 50 s
 
@@ -74,7 +75,7 @@ choice; both work.
 
 ## Editing (CapCut)
 
-1. **Canvas 4:5 (1080×1350)**, background ink `#1d1d1f` or white. Put the phone recording in the centre at about 85 % height. The same file serves LinkedIn and X.
+1. **Canvas 4:5 (1080×1350)**, background white `#ffffff` (light, like the cards). Put the phone recording in the centre at about 85 % height. The same file serves LinkedIn and X.
 2. Lay the voice lines over the recording, and cut the recording to match. Cut every pause longer than 0.3 s.
 3. The **first frame must be moving**: trim the start so the video opens mid-scroll.
 4. Auto captions, then **correct them by hand**. Auto-captioning will write "Fortune Hub" or "four ton hub". The brand is **4TUNHub** in every caption, every time.
@@ -140,9 +141,69 @@ Featured section. Anyone who asks in the comments gets the link as a reply.
 Pin post 1 to your profile for the week. Answer every reply in the first
 hour: X weighs conversations the author takes part in.
 
+## Facebook: in French
+
+The same video, with a **French voice-over** recorded straight after the
+English one (the same five lines, about 10 more minutes) and French burned-in
+captions. If there's no time today, post the English video with French
+subtitles and record the French voice for P02. Image or thumbnail:
+`00-this-is-4tunhub-fr-post.png`.
+
+**French voice-over:**
+
+| Time | Voix |
+|---|---|
+| 0–4 s | « J'ai formé plus de trois cents étudiants en ingénierie. Presque tous se heurtent au même mur. » |
+| 4–11 s | « Ils savent suivre un tutoriel. Mais concevoir une vraie pièce, pour une vraie machine, et prouver qu'elle tient — ça, personne ne le leur apprend. » |
+| 11–30 s | « Alors j'ai construit l'endroit que j'aurais voulu avoir. Ça s'appelle 4TUNHub. De vraies machines, conçues, simulées et construites. De la formation. De la recherche. Des services d'ingénierie. Au même endroit. » |
+| 30–42 s | « C'est en ligne aujourd'hui. Ce n'est pas terminé — je le construis en public, pour que vous puissiez suivre chaque étape. » |
+| 42–50 s | « Allez voir : 4tunhub.com. Et abonnez-vous. La première chose que 4TUNHub lance ouvre mardi. » |
+
+**Burned-in text (FR):** **300+ étudiants. Le même mur.** · Tutoriel ≠
+ingénierie · **Voici 4TUNHub** · En ligne. Pas fini. Construit en public. ·
+**4tunhub.com/fr**
+
+**The post** (the 4TUNHub Facebook page, or your profile, whichever you
+use; then share it into the engineering student groups you're already in):
+
+> J'ai formé plus de 300 étudiants en ingénierie, à l'IUC, à l'ENSET et à
+> l'Université de Douala. Presque tous se heurtent au même mur.
+>
+> Ils savent suivre un tutoriel. Ils savent reproduire un modèle étape par
+> étape. Mais face à un vrai problème — une pièce qui doit supporter une
+> vraie charge, sur une vraie machine — ils ne savent pas par où commencer,
+> ni comment prouver que leur réponse est juste.
+>
+> Ce n'est pas une question de talent. C'est que personne ne leur montre le
+> chemin complet : la conception, la simulation, la fabrication, et le
+> jugement entre les trois.
+>
+> Alors j'ai construit l'endroit que j'aurais voulu avoir quand
+> j'apprenais.
+>
+> Ça s'appelle 4TUNHub. Nous concevons des machines, et nous vous apprenons
+> à le faire. Les six machines que vous y verrez ont été conçues, simulées
+> et construites — pas de simples rendus 3D. La formation, la recherche et
+> les services d'ingénierie viennent tous de ce travail.
+>
+> C'est en ligne aujourd'hui. Ce n'est pas terminé, et je vais construire la
+> suite en public, ici, où vous pourrez voir chaque décision et chaque
+> erreur.
+>
+> La première chose que 4TUNHub lance ouvre mardi.
+>
+> Et vous, quel a été votre mur — ce que l'école ne vous a pas appris ?
+>
+> https://4tunhub.com/fr?utm_source=facebook&utm_medium=social&utm_campaign=launch-2026&utm_content=p01
+
+The link goes in the post. The Facebook link penalty wasn't researched
+here, so treat it as a test: compare reach against P02 with the link in the
+first comment instead.
+
 ## WhatsApp Status
 
-`00-this-is-4tunhub-story.png`, then the first 15 s of the video.
+`00-this-is-4tunhub-story.png` (or `-fr-story.png` for French-speaking
+groups), then the first 15 s of the video.
 
 ## Reuse
 

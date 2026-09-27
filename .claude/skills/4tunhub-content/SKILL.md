@@ -30,7 +30,8 @@ Read these before drafting. Each one is the source of truth for its topic.
    Fortune, is the credibility behind it, not the product.
 3. **Founder-led storytelling, without the founder on camera.** Fortune's
    face **never appears in videos**. His photograph appears **only on the
-   postcards** (static cards: `00-this-is-4tunhub`, `05-who-teaches`), and a
+   postcards** (static cards: `00-this-is-4tunhub`, `05-who-teaches`), always
+   the photo he uses on every platform, `docs/content/assets/founder-social.webp`, and a
    photo card can be the LinkedIn video thumbnail. Videos are screen
    recordings or engineering footage with his **voice** over them, and they
    open on movement with the hook burned in, never on a logo. The balance
@@ -57,12 +58,15 @@ Read these before drafting. Each one is the source of truth for its topic.
     the repo or confirmed by the person it concerns. If a fact is missing,
     leave a visible gap and ask. A build-in-public post that reports small
     real numbers is fine; an inflated one is not.
-11. **Mobile-first and professionally designed**, in the site's identity:
+11. **Mobile-first, light mode by default, and professionally designed**, in the site's identity:
     Instrument Sans, ink and white, amber only as a fill for the one thing
     that must not be missed, real photographs, no stock. Details are in
     `content-engine.md` §12 and `docs/art-direction.md`.
-12. **The channels are LinkedIn and X**, plus WhatsApp and YouTube for
-    distribution. **No TikTok.** Adapt for each platform; never paste the
+12. **The channels are LinkedIn and X in English, and Facebook in French**,
+    plus WhatsApp and YouTube for distribution. **No TikTok.** The French
+    Facebook text is written for French readers, not translated line by
+    line; it links to `4tunhub.com/fr/…` and says so whenever a programme
+    is in English. Adapt for each platform; never paste the
     same post. LinkedIn goes out from the personal profile: professional
     insight, a real question at the end, no links in awareness posts. X is
     a thread: the hook and the asset in post 1, one idea per reply, and the
