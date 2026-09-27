@@ -5,7 +5,7 @@
  * The footer trust hub renders from this data. Rules:
  *  - Nothing here is fabricated. Empty arrays render nothing.
  *  - Founder affiliations are attributed to the FOUNDER, never
- *    implied as 4TUN Hub corporate partnerships/sponsorships.
+ *    implied as 4TUNHub corporate partnerships/sponsorships.
  *  - Populate `partners`, `awards`, `memberships` only when a
  *    genuine, correctly-attributed item exists.
  */

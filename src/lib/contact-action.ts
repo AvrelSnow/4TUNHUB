@@ -54,7 +54,7 @@ export async function submitContact(
   //    the visitor can resend by email without retyping.
   try {
     await sendMail({
-      subject: `[4TUN Hub] ${topic}: ${name}`,
+      subject: `[4TUNHub] ${topic}: ${name}`,
       text: `From: ${name} <${email}>\nTopic: ${topic}\n\n${message}`,
       replyTo: email,
     });

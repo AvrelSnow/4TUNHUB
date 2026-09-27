@@ -46,7 +46,7 @@ export const siteTree: SiteNode[] = [
     href: "/",
     status: "active",
     placement: "primary",
-    desc: "The ecosystem in five seconds: who 4TUN Hub is and the value it creates.",
+    desc: "The ecosystem in five seconds: who 4TUNHub is and the value it creates.",
   },
   {
     key: "products",
@@ -55,7 +55,7 @@ export const siteTree: SiteNode[] = [
     status: "building",
     hidden: true,
     placement: "primary",
-    desc: "Software & AI 4TUN Hub is building. Things you use or buy.",
+    desc: "Software & AI 4TUNHub is building. Things you use or buy.",
     children: [
       {
         key: "edu-assistant",

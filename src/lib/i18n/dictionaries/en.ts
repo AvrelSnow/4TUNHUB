@@ -6,9 +6,9 @@
 
 const en = {
   meta: {
-    title: "4TUN Hub — Engineering Ecosystem",
+    title: "4TUNHub — Engineering Ecosystem",
     description:
-      "4TUN Hub is an engineering ecosystem in Dschang, Cameroon — mechanical design, FEA simulation, renewable-energy consulting, technical training, and engineering research, founded by Donfack Fortune.",
+      "4TUNHub is an engineering ecosystem in Dschang, Cameroon — mechanical design, FEA simulation, renewable-energy consulting, technical training, and engineering research, founded by Donfack Fortune.",
   },
 
   a11y: {
@@ -88,7 +88,7 @@ const en = {
     doEyebrow: "What we do",
     doTitle: "Four ways the ecosystem creates value.",
     doIntro:
-      "Each is a working part of 4TUN Hub today — not a promise. Explore the one you need.",
+      "Each is a working part of 4TUNHub today — not a promise. Explore the one you need.",
 
     pillars: {
       community:
@@ -99,7 +99,7 @@ const en = {
         "Technical training, CAD and SolidWorks workshops, and professional development.",
       research: "Renewable energy, sustainability, and applied R&D from the field.",
       projects: "Real engineering case studies — the proof behind the ecosystem.",
-      about: "The organization and the founder behind 4TUN Hub.",
+      about: "The organization and the founder behind 4TUNHub.",
     } as Record<string, string>,
 
     /** Renders only when src/lib/testimonials.ts has real, named quotes. */
@@ -112,13 +112,13 @@ const en = {
       eyebrow: "Proof",
       title: "Engineering that shipped, not slideware.",
       intro:
-        "A few of the projects behind 4TUN Hub — designed, simulated and built.",
+        "A few of the projects behind 4TUNHub — designed, simulated and built.",
       viewAll: "See all projects",
     },
 
     founder: {
       eyebrow: "The founder",
-      line: "4TUN Hub is founded by Donfack Fortune — mechanical engineer, energy specialist and educator, and formerly a senior mechanical engineer at CAMRAIL, Cameroon's national railway.",
+      line: "4TUNHub is founded by Donfack Fortune — mechanical engineer, energy specialist and educator, and formerly a senior mechanical engineer at CAMRAIL, Cameroon's national railway.",
       cta: "Read his story",
     },
 
@@ -126,7 +126,7 @@ const en = {
       eyebrow: "On the way",
       title: "The ecosystem keeps growing.",
       intro:
-        "New parts of 4TUN Hub open as they're ready — no redesign, just more value.",
+        "New parts of 4TUNHub open as they're ready — no redesign, just more value.",
       items: [
         { key: "resources", title: "Resources", desc: "E-books, templates and engineering references." },
         { key: "community", title: "Community", desc: "A place for engineers and students to build together. The group is already open." },
@@ -139,7 +139,7 @@ const en = {
     conversion: {
       title: "Have an engineering problem worth solving?",
       subtitle:
-        "Start a project with 4TUN Hub — from mechanical design and simulation to energy systems and training.",
+        "Start a project with 4TUNHub — from mechanical design and simulation to energy systems and training.",
       primaryCta: "Start a project",
       secondaryCta: "Explore services",
     },
@@ -468,9 +468,9 @@ const en = {
   },
 
   about: {
-    eyebrow: "About 4TUN Hub",
+    eyebrow: "About 4TUNHub",
     title: "An engineering ecosystem, built from real practice.",
-    lead: "4TUN Hub exists to bring engineering services, education, research and products together in one place — and to make world-class engineering practical in the Cameroonian and wider African context.",
+    lead: "4TUNHub exists to bring engineering services, education, research and products together in one place — and to make world-class engineering practical in the Cameroonian and wider African context.",
     missionEyebrow: "Mission",
     mission:
       "To turn engineering knowledge into solutions that can actually be built, maintained and taught where they're needed most.",
@@ -502,7 +502,7 @@ const en = {
       awards: "Awards & honours",
       connect: "Connect",
     },
-    portfolioIntro: "The engineering projects behind 4TUN Hub — each documented as a full case study.",
+    portfolioIntro: "The engineering projects behind 4TUNHub — each documented as a full case study.",
 
     /** Every entry links to the event that proves it — see src/lib/talks.ts. */
     talks: {
@@ -526,7 +526,7 @@ const en = {
     eyebrow: "Community · Live now",
     title: "Engineers, students and makers — already building together.",
     subtitle:
-      "4TUN Hub isn't only a studio. It's a growing community across Cameroon and beyond — an open WhatsApp group, a 3,200-reader engineering newsletter and a SolidWorks user group. Everyone's welcome.",
+      "4TUNHub isn't only a studio. It's a growing community across Cameroon and beyond — an open WhatsApp group, a 3,200-reader engineering newsletter and a SolidWorks user group. Everyone's welcome.",
     primaryCta: "Join the WhatsApp community",
     secondaryCta: "Follow on LinkedIn",
 
@@ -579,7 +579,7 @@ const en = {
   },
 
   academy: {
-    eyebrow: "4TUN Hub Academy",
+    eyebrow: "4TUNHub Academy",
     title: "Learn engineering that actually ships.",
     subtitle:
       "Practical training in CAD, simulation and energy systems — taught from real delivered projects, built for engineers and students across Cameroon and beyond.",
@@ -707,7 +707,7 @@ const en = {
     initiativesEyebrow: "Initiatives",
     initiativesTitle: "Research that leaves the page.",
     initiativesBody:
-      "Findings feed straight back into 4TUN Hub's services, machines and courses — so research earns its keep in real deliverables, not just publications.",
+      "Findings feed straight back into 4TUNHub's services, machines and courses — so research earns its keep in real deliverables, not just publications.",
 
     cta: {
       title: "Have a research problem worth solving?",
@@ -720,7 +720,7 @@ const en = {
 
   products: {
     eyebrow: "Products",
-    title: "The software 4TUN Hub is building.",
+    title: "The software 4TUNHub is building.",
     subtitle:
       "Engineering and education tools for African realities — in active development. Nothing here is sold before it's ready; this is the roadmap, honestly staged.",
     primaryCta: "Join the waitlist",
@@ -765,13 +765,13 @@ const en = {
     roadmapEyebrow: "How we ship",
     roadmapTitle: "Built in the open, released when ready.",
     roadmapBody:
-      "New tools slot into this pillar without a redesign — 4TUN Hub is built as an expandable ecosystem. We'd rather ship one product that works than three that don't.",
+      "New tools slot into this pillar without a redesign — 4TUNHub is built as an expandable ecosystem. We'd rather ship one product that works than three that don't.",
 
     detail: {
       status: "Status",
       backToProducts: "All products",
       waitlist: "Join the waitlist",
-      body: "This product is on the 4TUN Hub roadmap. Join the waitlist and we'll reach out the moment there's something real to try.",
+      body: "This product is on the 4TUNHub roadmap. Join the waitlist and we'll reach out the moment there's something real to try.",
     },
 
     cta: {
@@ -787,7 +787,7 @@ const en = {
     eyebrow: "Resources",
     title: "Engineering resources, free and practical.",
     subtitle:
-      "References, CAD models, case studies and publications from real 4TUN Hub work — some available today, more on the way. Built to be useful, not gated.",
+      "References, CAD models, case studies and publications from real 4TUNHub work — some available today, more on the way. Built to be useful, not gated.",
     primaryCta: "Read The REM",
     secondaryCta: "Join the community",
 
@@ -856,7 +856,7 @@ const en = {
     eyebrow: "Store",
     title: "Commerce, sold where it makes sense.",
     subtitle:
-      "4TUN Hub has no separate shop. When something's for sale — a course, an e-book, a tool — you buy it right where you find it. This page simply gathers everything purchasable in one view.",
+      "4TUNHub has no separate shop. When something's for sale — a course, an e-book, a tool — you buy it right where you find it. This page simply gathers everything purchasable in one view.",
     primaryCta: "Explore the ecosystem",
     secondaryCta: "Get notified",
 
@@ -933,7 +933,7 @@ const en = {
     minRead: "min read",
     originallyOn: "Originally published on",
     sources: {
-      native: "4TUN Hub",
+      native: "4TUNHub",
       medium: "Medium",
       rem: "The REM",
     } as Record<string, string>,
@@ -958,7 +958,7 @@ const en = {
     eyebrow: "Careers",
     title: "No one works here yet.",
     subtitle:
-      "4TUN Hub is founder-led and pre-revenue. There is no salary to offer, so there is nothing to apply for — and inventing openings to look larger would waste the time of the people least able to spare it. So here is the real position, and the three doors that are genuinely open.",
+      "4TUNHub is founder-led and pre-revenue. There is no salary to offer, so there is nothing to apply for — and inventing openings to look larger would waste the time of the people least able to spare it. So here is the real position, and the three doors that are genuinely open.",
     primaryCta: "Join the community",
     secondaryCta: "Propose a collaboration",
 
@@ -1025,7 +1025,7 @@ const en = {
     entry: {
       community: {
         title: "The community",
-        desc: "An open WhatsApp group of engineers and students — no application, no gatekeeping. Most of what 4TUN Hub becomes will come from the people already in it.",
+        desc: "An open WhatsApp group of engineers and students — no application, no gatekeeping. Most of what 4TUNHub becomes will come from the people already in it.",
         cta: "Join on WhatsApp",
       },
       academy: {
@@ -1062,7 +1062,7 @@ const en = {
     metaDescription:
       "A free, eight-session CSWA preparation bootcamp taught live in English by Donfack Fortune, with Douala City SWUG. 20 seats by application, and a free exam voucher on finishing. October–November 2026.",
     back: "Academy",
-    eyebrow: "4TUN Hub Academy · Cohort 0",
+    eyebrow: "4TUNHub Academy · Cohort 0",
     title: "CSWA Bootcamp. Cohort 0.",
     partner: "Run with the Douala City SOLIDWORKS User Group",
     subtitle:
@@ -1157,7 +1157,7 @@ const en = {
           desc: "Where the group posts its events and the work of its members.",
         },
         follow: {
-          title: "Follow 4TUN Hub",
+          title: "Follow 4TUNHub",
           desc: "On LinkedIn and on YouTube. Cohort 0's results, and the opening of Cohort 1, are announced there first.",
         },
         proof: {
@@ -1168,8 +1168,8 @@ const en = {
       links: {
         bevy: "Open Bevy",
         swugLinkedin: "Douala City SWUG on LinkedIn",
-        hubLinkedin: "4TUN Hub on LinkedIn",
-        youtube: "4TUN Hub on YouTube",
+        hubLinkedin: "4TUNHub on LinkedIn",
+        youtube: "4TUNHub on YouTube",
         proof: "Send the screenshots",
       },
     },
@@ -1248,7 +1248,7 @@ const en = {
         placeholder: "Where you are with SolidWorks today, and what the CSWA would change for you.",
         hint: "Two or three sentences is enough.",
       },
-      consent: "I agree that 4TUN Hub keeps these details to review my application.",
+      consent: "I agree that 4TUNHub keeps these details to review my application.",
       privacy: "Read the privacy note",
       submit: "Send my application",
       submitting: "Sending…",
@@ -1336,7 +1336,7 @@ const en = {
     eyebrow: "Waitlist",
     title: "Be told when it opens.",
     subtitle:
-      "Most of the 4TUN Hub ecosystem is still being built. Choose what you want to hear about and we'll write when it's ready — not before.",
+      "Most of the 4TUNHub ecosystem is still being built. Choose what you want to hear about and we'll write when it's ready — not before.",
 
     openNow: {
       badge: "Open now",
@@ -1357,7 +1357,7 @@ const en = {
       tracksHint: "Pick as many as you like. We only email about what you tick here.",
       tracks: {
         lab: {
-          title: "4TUN Hub Lab",
+          title: "4TUNHub Lab",
           desc: "An engineering gym: a real design problem with your own numbers, worked by hand, modelled in CAD, then graded on the geometry of the file you upload.",
           when: "Beta December 2026",
         },
@@ -1473,14 +1473,14 @@ const en = {
     badge: "In progress",
     beingBuilt: "This part of the ecosystem is being built.",
     intro:
-      "It's part of the 4TUN Hub roadmap and opens as soon as it's ready. In the meantime, let's talk about your project.",
+      "It's part of the 4TUNHub roadmap and opens as soon as it's ready. In the meantime, let's talk about your project.",
     whatsComing: "What's coming here",
     workWithUs: "Work with us",
     backHome: "Back to home",
   },
 
   footer: {
-    trustEyebrow: "The engineering behind 4TUN Hub",
+    trustEyebrow: "The engineering behind 4TUNHub",
     founderLine:
       "Founded by Donfack Fortune — a mechanical engineer who has worked across Cameroon's railway, energy and engineering-education sectors.",
     meetFounder: "Meet the founder",

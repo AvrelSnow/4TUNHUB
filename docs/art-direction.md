@@ -1,4 +1,4 @@
-# 4TUN Hub — Art Direction
+# 4TUNHub — Art Direction
 
 > This document governs every visual decision on the site. If a change can't
 > be justified against it, the change is wrong.

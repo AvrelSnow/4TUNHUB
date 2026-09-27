@@ -10,7 +10,7 @@ import { CONTACT_EMAIL } from "./site";
  *   MAIL_TO         optional, defaults to CONTACT_EMAIL.
  *   MAIL_FROM       optional, defaults to Resend's test sender, which can
  *                   only deliver to the Resend account's own address. Use
- *                   "4TUN Hub <hello@4tunhub.com>" once the domain is
+ *                   "4TUNHub <hello@4tunhub.com>" once the domain is
  *                   verified in Resend.
  *
  * In development with no key, the message is logged and treated as sent,
@@ -49,7 +49,7 @@ export async function sendMail({
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: process.env.MAIL_FROM ?? "4TUN Hub <onboarding@resend.dev>",
+      from: process.env.MAIL_FROM ?? "4TUNHub <onboarding@resend.dev>",
       to: [process.env.MAIL_TO ?? CONTACT_EMAIL],
       subject,
       text,

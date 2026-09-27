@@ -5,13 +5,13 @@
 
 export const SITE_URL = "https://4tunhub.com";
 
-export const SITE_NAME = "4TUN Hub";
+export const SITE_NAME = "4TUNHub";
 
 /** Where the forms deliver and visitors write. Move to hello@4tunhub.com once forwarding is set up. */
 export const CONTACT_EMAIL = "4tunhub@gmail.com";
 export const SITE_LOCATION = "Dschang, Cameroon";
 
-/** The live 4TUN Hub community — an open WhatsApp group. */
+/** The live 4TUNHub community — an open WhatsApp group. */
 export const WHATSAPP_COMMUNITY_URL =
   "https://chat.whatsapp.com/IGhDw4IiqJ0LfM4v8hNXpg?mode=gi_t";
 
@@ -41,6 +41,7 @@ export const SITE_KEYWORDS = [
   "engineering education Cameroon,Africa and abroad",
   "CAD design services",
   "4TUNHub",
+  "4TUN Hub",
   "Donfack Fortune",
 ];
 

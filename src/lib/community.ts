@@ -1,5 +1,5 @@
 /**
- * COMMUNITY — the live spaces where 4TUN Hub's community gathers.
+ * COMMUNITY — the live spaces where 4TUNHub's community gathers.
  * Structure only; all copy lives in the dictionaries (bilingual).
  * REAL-ONLY: every channel points to a space that exists today.
  */

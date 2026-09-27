@@ -44,7 +44,7 @@ export default async function FounderPage({ params }: Params) {
     jobTitle: founder.title.en,
     description: founder.bio.en,
     url: `${SITE_URL}/${locale}/about/founder`,
-    worksFor: { "@type": "Organization", name: "4TUN Hub", url: SITE_URL },
+    worksFor: { "@type": "Organization", name: "4TUNHub", url: SITE_URL },
     alumniOf: "ENSET Douala",
     knowsAbout: [...founder.skills.technical, ...founder.skills.software],
     sameAs: founder.links.filter((l) => l.href.startsWith("http")).map((l) => l.href),

@@ -82,7 +82,7 @@ export default async function CohortPage({ params }: Params) {
     description: t.metaDescription,
     inLanguage: "en",
     isAccessibleForFree: true,
-    provider: { "@type": "Organization", name: "4TUN Hub", url: "https://4tunhub.com" },
+    provider: { "@type": "Organization", name: "4TUNHub", url: "https://4tunhub.com" },
     contributor: { "@type": "Organization", name: SWUG_NAME },
     hasCourseInstance: {
       "@type": "CourseInstance",

@@ -1,5 +1,5 @@
 /**
- * RESOURCES — engineering material 4TUN Hub publishes.
+ * RESOURCES — engineering material 4TUNHub publishes.
  * Structure only; all copy lives in the dictionaries (bilingual).
  *
  * REAL-ONLY: `available` items link to material that genuinely exists

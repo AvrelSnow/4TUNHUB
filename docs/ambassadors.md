@@ -12,7 +12,7 @@ go quiet, and the founder ends up chasing people to do him a favour.
 An ambassador here is **an engineer who wants the CSWA, is given a seat in
 Cohort 0, and tells their own circle what they are learning while they
 learn it.** The daily post is not a favour. It is them talking about their
-own week — which is also better content than anything 4TUN Hub could
+own week — which is also better content than anything 4TUNHub could
 write about itself.
 
 Ten of the twenty seats are theirs. It costs nothing (the same twenty
@@ -84,7 +84,7 @@ programme has no pulse.
 **Answer questions in their circle**, and pass on the ones they cannot.
 
 **Not their job:** teaching, choosing students, touching applications,
-speaking for 4TUN Hub, or promising anyone anything. Anything official
+speaking for 4TUNHub, or promising anyone anything. Anything official
 comes to Fortune.
 
 **Four-week term**, renewable for Cohort 1. Open-ended volunteering dies
@@ -102,7 +102,7 @@ itself is held to.
 | A seat in Cohort 0 | Plus the free CSWA voucher with it |
 | Their name and photo on the site | An Ambassadors section, real credibility both ways |
 | A signed letter of recommendation | From a CSWP engineer and lecturer. On a student CV here, worth real money |
-| The week's best post reposted | By 4TUN Hub *and* the SWUG, to 483 members. Their audience grows — this is why someone with a group says yes |
+| The week's best post reposted | By 4TUNHub *and* the SWUG, to 483 members. Their audience grows — this is why someone with a group says yes |
 | First refusal on Cohort 1 | A free seat in the paid one |
 
 ## The reveal: the announcement *is* the distribution

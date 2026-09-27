@@ -15,7 +15,7 @@ import { ImageResponse } from "next/og";
  * The renderer reads WOFF/TTF and PNG/JPEG only, so the font comes from
  * the static Fontsource package and the photo is converted here.
  */
-export const alt = "4TUN Hub: we design machines, and teach you how.";
+export const alt = "4TUNHub: we design machines, and teach you how.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -73,7 +73,7 @@ export default async function OpengraphImage() {
               4
             </div>
             <div style={{ color: INK, fontSize: 34, fontWeight: 700, letterSpacing: -0.5 }}>
-              4TUN Hub
+              4TUNHub
             </div>
           </div>
 
