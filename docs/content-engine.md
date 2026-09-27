@@ -25,15 +25,15 @@ the order they are published, regardless of the campaign.
 
 ## 2. Pillars and the mix
 
-| Pillar | What it is for | Default face | Share of posts (outside a campaign) |
+| Pillar | What it is for | Default visual | Share of posts (outside a campaign) |
 |---|---|---|---|
 | **Platform** | Features, screens, updates, product decisions | Screen recording | 15 % |
-| **Founder** | Why, decisions, lessons, failures | Face | 15 % |
-| **Build in public** | What changed, broke, improved, and what's next, weekly | Face + screen | 15 % (one a week) |
+| **Founder** | Why, decisions, lessons, failures | Card with your photo; voice-over if it's a video | 15 % |
+| **Build in public** | What changed, broke, improved, and what's next, weekly | Screen + voice-over, or a numbers card with your photo | 15 % (one a week) |
 | **Engineering** | Design, CAD, simulation, manufacturing, judgement | Engineering visuals, and your voice | 25 % |
-| **Education** | Learning, skills, careers, exams | Face + screen | 15 % |
+| **Education** | Learning, skills, careers, exams | SOLIDWORKS screen + voice-over | 15 % |
 | **Community** | Members, SWUGs, events, achievements | Their faces, with permission | 10 % |
-| **Opportunities** / **Partnerships** | Cohorts, workshops, events, partners | Card + face | 5 %, up to ~45 % during a campaign |
+| **Opportunities** / **Partnerships** | Cohorts, workshops, events, partners | Cards (partners' photos only with permission) | 5 %, up to ~45 % during a campaign |
 
 **Rule:** even during a campaign, no more than about half the posts in any
 week ask for something. The rest earn the right to ask.
@@ -54,55 +54,71 @@ week ask for something. The rest earn the right to ask.
 
 | Segment | What they want | Where they are | Best pillars |
 |---|---|---|---|
-| **Engineering students** (IUC, ENSET, Douala, Dschang…) | Skills that get them hired, certificates, not being lost | TikTok, WhatsApp, LinkedIn (growing) | Education, Opportunities |
-| **Young engineers, 0–5 years** | Credibility, real projects, career moves | LinkedIn | Engineering, Founder |
+| **Engineering students** (IUC, ENSET, Douala, Dschang…) | Skills that get them hired, certificates, not being lost | WhatsApp, LinkedIn (growing), X | Education, Opportunities |
+| **Young engineers, 0–5 years** | Credibility, real projects, career moves | LinkedIn, X | Engineering, Founder |
 | **CAD/CAE learners and SOLIDWORKS users** | Techniques, exam prep, community | SWUGs on Bevy, LinkedIn, YouTube | Engineering, Education, Community |
 | **Engineering educators** | Material, methods, collaboration | LinkedIn, WhatsApp | Education, Partnerships |
 | **Partners and companies** | Capability, reliability, reach | LinkedIn | Platform, Engineering, Partnerships |
 | **Potential instructors** | A platform to teach on | LinkedIn | Founder, Vision |
 
-## 5. When your face appears: person → platform → community
+## 5. Where your face appears: on postcards, never in videos
 
-- **Face** where trust, story or authority is the point: reveals, *why*
-  posts, lessons, build-in-public, "who teaches", objections. A face at the
-  start makes the first 3 seconds work on TikTok.
-- **Platform footage** where the platform is the subject. Don't talk over a
-  walkthrough with your face in a corner.
-- **Engineering visuals** where the engineering is the subject: CAD, FEA
-  plots, real parts. Your voice, not your face.
+Fortune's rule (27 Sep 2026): **no face on camera. His photograph appears
+on the static postcards, where it carries trust, and nowhere in video.**
+
+- **Postcards with your photo** where trust, story or authority is the
+  point: reveals, *why* posts, "who teaches", build-in-public numbers,
+  objections. Use the portrait in `public/images/founder-portrait.webp`.
+  `make-postcards.mjs` already places it (see `00-this-is-4tunhub` and
+  `05-who-teaches`).
+- **Videos are screen recordings or engineering footage, with your voice
+  over them.** The platform on a phone, SOLIDWORKS, FEA plots, real parts and
+  machines. With no face, **the first frame has to earn the second**: open
+  on movement or the most striking image, with the hook burned in as text.
+  Never open on a logo.
+- **On LinkedIn, a postcard with your photo is the video's custom
+  thumbnail.** Your face is the first thing people see, and it still never
+  appears in the video.
 - **Other people's faces** for community and social proof: ambassadors,
-  participants, partners. Only with permission, and only real people.
-- Rough balance over any two weeks: **⅓ person, ⅓ platform or engineering,
-  ⅓ community or cards**.
+  participants, partners, on their cards. Only with permission, and only
+  real people.
+- Rough balance over any two weeks: **⅓ postcards with your photo, ⅓
+  platform or engineering video, ⅓ community or fact cards**.
 
 ## 6. The same idea, adapted for each platform
 
-| | LinkedIn | TikTok |
+The two channels are **LinkedIn and X**, plus WhatsApp and YouTube for
+distribution. There is no TikTok.
+
+| | LinkedIn | X |
 |---|---|---|
-| Who posts | **Your personal profile.** The 4TUNHub page reshares with its own line 1–2 h later | The 4TUNHub account (or yours, but pick one and stay with it) |
-| Opening | A line that earns the "…see more" click: a specific number, a tension | A picture plus a sentence in the first 2 s. No logo intro, no "hi guys" |
-| Length | Text 120–250 words. Video 45–90 s. Carousels 6–10 slides | 30–60 s for teaching, 15–25 s for announcements |
-| Tone | Professional insight, the reasoning behind decisions, credibility | Informal but exact. Personality, before and after, speed |
-| Links | None in awareness posts. In conversion posts, the link goes in the text and you accept the cost | One link in the bio, with UTM tags. Say "link in bio" |
-| Ending | A real question that invites a considered comment | A reason to follow ("part 2 tomorrow") or to save |
-| Captions | Burned in (most people watch muted) | Burned in, and kept out of the top and bottom 15 % |
+| Who posts | **Your personal profile.** The 4TUNHub page reshares with its own line 1–2 h later | Your account, with the 4TUNHub account reposting (or the 4TUNHub account alone, but pick one and stay with it) |
+| Shape | One post: text + one asset (video, card or carousel PDF) | **A thread**: hook + asset in post 1, one idea per reply, the link in the last reply |
+| Opening | A line that earns the "…see more" click: a specific number, a tension | The whole point in under 200 characters. The first post has to stand alone |
+| Length | Text 120–250 words. Video 45–90 s. Carousels 6–10 slides | Posts of 1–3 sentences. Threads of 3–6 posts. Video under 60 s |
+| Tone | Professional insight, the reasoning behind decisions, credibility | Sharper and quicker. Opinions, numbers, engineering takes, build-in-public updates |
+| Links | None in awareness posts. In conversion posts, the link goes in the text and you accept the cost | **Never in the first post.** Put it in the last reply, with UTM tags |
+| Ending | A real question that invites a considered comment | A question, or "follow for part 2". Reply to every reply in the first hour |
+| Video format | **1080×1350 (4:5)**: the phone recording centred on a white or ink frame, captions burned in | The same 4:5 file |
 
 **Adapt, don't duplicate.** Record once, then cut and rewrite for each
-platform (see §10).
+platform (see §11). One 4:5 video file serves both feeds, and the text is
+always written separately for each.
 
 ## 7. When to post, and how to replace this with evidence
 
 Starting slots (WAT, UTC+1):
 - **LinkedIn:** Tuesday to Thursday, **12:00–14:00**. Sunday posts are fine
   in a campaign.
-- **TikTok:** **18:30–21:00**, after classes and work.
+- **X:** **12:00–14:00** and **18:30–21:00**. Test both during the first two
+  weeks.
 
 These come from the Sprout and Buffer 2026 datasets, which agree on Tuesday
 to Thursday, late morning into afternoon, but are mostly US and European
-audiences. They are shifted to the evening for TikTok on the **assumption**
-that students here scroll after class. **Replace them** after 14 days of
-posting with the hours your own LinkedIn and TikTok analytics show your
-followers are online. Change one thing at a time.
+audiences. The evening X slot is an **assumption** that students here scroll
+after class. **Replace them** after 14 days of posting with the hours your
+own LinkedIn and X analytics show your followers are online. Change one
+thing at a time.
 
 ## 8. Metrics: what decides the next move
 
@@ -117,7 +133,7 @@ followers are online. Change one thing at a time.
 personal data in the URL):
 
 ```
-?utm_source=linkedin|tiktok|whatsapp|youtube&utm_medium=social&utm_campaign=<campaign>&utm_content=<postcard id, lower case>
+?utm_source=linkedin|x|whatsapp|youtube&utm_medium=social&utm_campaign=<campaign>&utm_content=<postcard id, lower case>
 ```
 
 Every Sunday, spend 10 minutes filling in the tracker's numbers for the week
@@ -147,10 +163,10 @@ tracker.
 **Story / body:**
 **CTA** (one action):
 **Visual assets:**
-**Voice / face:**
+**Voice / photo:** (voice-over in videos; your photo only on cards)
 **Duration:**
 **LinkedIn version:**
-**TikTok version:**
+**X version:** (thread)
 **Reuse opportunities:**
 **Facts to verify before publishing:** (each fact → where it's on record)
 ```
@@ -168,9 +184,9 @@ IDEA → SCRIPT → ASSETS → RECORD → EDIT → CAPTION → REVIEW → PUBLIS
 | Idea | A row in the library, or a note from the week | Anyone | `postcard-library.md` |
 | Script | The template filled in. For cards and simple posts, just the caption | Claude drafts, Fortune rewrites in his own voice | `docs/content/postcards/` |
 | Assets | Cards from `make-postcards.mjs`, screen recordings, photos, partner assets | Claude (cards), Fortune (recordings) | `./postcards` (gitignored), the phone |
-| Record | Batch record on **Sundays** and night shifts (Wed and Thu). Never Monday or Tuesday | Fortune | — |
+| Record | Screen recordings and voice-overs, batched on **Sundays** and night shifts (Wed and Thu). Never Monday or Tuesday. No face on camera | Fortune | — |
 | Edit | CapCut: cut the pauses, fix the captions (**4TUNHub**, spelled right), export 9:16 | Fortune | — |
-| Caption | One for LinkedIn, one for TikTok. Never the same text | Claude drafts | the postcard file |
+| Caption | One for LinkedIn, one X thread. Never the same text | Claude drafts | the postcard file |
 | Review | The check below | Fortune | — |
 | Publish | At the slot in §7. Reply to comments in the first hour | Fortune | — |
 | Measure | Sunday, 10 minutes | Fortune (Claude can summarise) | `tracker.csv` |
@@ -186,12 +202,12 @@ IDEA → SCRIPT → ASSETS → RECORD → EDIT → CAPTION → REVIEW → PUBLIS
 
 ## 11. Repurposing: one idea, eight outputs
 
-**Record once, in a long take:** 3–5 minutes of you talking through the idea,
+**Record once, in a long take:** 3–5 minutes of your voice talking through the idea (audio only, over the screen),
 plus the screen recording that goes with it. Then cut:
 
 | # | Output | From | Time needed |
 |---|---|---|---|
-| 1 | TikTok, 30–45 s | The best 3 s hook plus the core of the take | 20 min |
+| 1 | X thread + video under 60 s | The best line as post 1, the core of the take as the video | 20 min |
 | 2 | LinkedIn native video, 60–90 s | The longer cut | 10 min |
 | 3 | LinkedIn text post | The transcript, rewritten as prose | 15 min |
 | 4 | WhatsApp Status | A 15 s cut, or the story-size card | 5 min |
@@ -201,7 +217,7 @@ plus the screen recording that goes with it. Then cut:
 | 8 | A later offer post | The same idea, ending in a CTA to the next cohort or workshop | 10 min |
 
 **Example.** *"Engineering students need more than tutorials."* → P01
-(TikTok and LinkedIn video), the LinkedIn essay, the 15 s Status, the quote
+(LinkedIn video and X thread), the LinkedIn essay, the 15 s Status, the quote
 card *"They can follow a tutorial. They can't design a real part."*, a
 carousel on "tutorial vs engineering: 5 differences", a 5-minute YouTube
 talk, and in January, the opening line of the Cohort 1 announcement.
@@ -220,7 +236,7 @@ Art direction is governed by `docs/art-direction.md`.
 | Layout | Three bands: who it's from → what it says → where to go. Generous empty space, one idea | `make-postcards.mjs` |
 | Photography | Real photographs of real machines and real people, shown as taken. **No stock, no generic 3D** | craft rules |
 | Shapes | Large rounded media, pill controls, a thin hairline rule | the site |
-| Sizes | 1080×1350 (feeds, LinkedIn), 1080×1920 (Status, TikTok, Shorts) | the script |
+| Sizes | 1080×1350 (feeds, LinkedIn), 1080×1920 (WhatsApp Status, YouTube Shorts) | the script |
 | Voice | First person, direct, specific. Numbers, names, places. No "world-class", "cutting-edge", "seamless", "unlock", "empower". No emoji as section markers | craft rules |
 
 Before making a new card by hand, add it to `make-postcards.mjs`. Generated

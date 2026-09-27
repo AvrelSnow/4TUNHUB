@@ -2,7 +2,9 @@
 
 > **27 September: the schedule below is replaced by `docs/launch-campaign.md`**
 > (written assuming nothing had gone out yet). The captions and cards are still the copy
-> of record. One correction from the research: LinkedIn now penalises links
+> of record, except the TikTok/Shorts section: **there is no TikTok, and
+> Fortune does not appear on camera** (his photo appears on cards only). One
+> correction from the research: LinkedIn now penalises links
 > in the first comment as well as in the post, so conversion posts carry the
 > link in the text and accept the reach cost.
 

@@ -112,19 +112,25 @@ Times are Cameroon time (WAT, UTC+1). The reasoning is in
 `docs/content-engine.md` §7. **Mondays and Tuesdays are teaching days**, so
 those posts are recorded on Sunday or are cards that already exist.
 
-| # | Date | Stage | Postcard | Format | Face? | Screen recording? | Length |
-|---|---|---|---|---|---|---|---|
-| P01 | **Sun 27 Sep** | Discovery | **This is 4TUNHub** | Founder video + screen recording | Yes | Yes, the home page | TikTok 35–45 s · LI 60–75 s |
-| P02 | Mon 28 Sep | Understanding | **60 seconds inside 4TUNHub** | Screen recording + voice-over | No | Yes, 4 pages | 45–60 s |
-| P03 | Tue 29 Sep | Intent | **Cohort 0 is open** | Card `01-announcement` + 30 s to camera | TikTok only | No | 30–35 s |
-| P04 | Wed 30 Sep | Intent | **$99 is why most never sit it** | Card `02-voucher` | No | No | Static |
-| P05 | Thu 1 Oct | Interest | **Why people fail the CSWA with a perfect model** | Founder + SOLIDWORKS screen | Yes, briefly | Yes, SOLIDWORKS | 45–60 s |
-| P06 | Fri 2 Oct | Action | **How to get a seat, in four steps** | Screen recording of Bevy → LinkedIn → form | No | Yes | 40–50 s |
-| P07 | Sat 3 Oct | Trust | **Week one of 4TUNHub, in numbers** | Founder to camera, build-in-public | Yes | Optional | 45–60 s |
+**Channels: LinkedIn and X.** No TikTok. **Your face never appears in a
+video.** Videos are screen recordings or engineering footage, with your
+voice over them. Your face appears only on **postcards** (the static cards),
+where your photograph carries the trust.
 
-Every post needs a comment reply within the first hour. LinkedIn weighs the
-early comments, and a question answered in public often gets an application
-from someone else who reads the answer.
+| # | Date | Stage | Postcard | Video (no face) | Card with your photo? | Length |
+|---|---|---|---|---|---|---|
+| P01 | **Sun 27 Sep** | Discovery | **This is 4TUNHub** | Screen recording of the site + voice-over | **Yes**: `00-this-is-4tunhub` | 40–60 s |
+| P02 | Mon 28 Sep | Understanding | **60 seconds inside 4TUNHub** | Screen recording + voice-over | No | 45–60 s |
+| P03 | Tue 29 Sep | Intent | **Cohort 0 is open** | None | No: `01-announcement` | Static |
+| P04 | Wed 30 Sep | Intent | **$99 is why most never sit it** | None | No: `02-voucher` | Static |
+| P05 | Thu 1 Oct | Interest | **Why people fail the CSWA with a perfect model** | SOLIDWORKS screen + voice-over | No | 45–60 s |
+| P06 | Fri 2 Oct | Action | **How to get a seat, in four steps** | Screen recording of Bevy → LinkedIn → form | No | 40–50 s |
+| P07 | Sat 3 Oct | Trust | **Week one of 4TUNHub, in numbers** | Optional: screen of the analytics | **Yes**: a numbers card with your photo | Static |
+
+Every post needs a reply to its comments within the first hour. LinkedIn
+weighs early comments, X weighs replies that the author answers, and a
+question answered in public often gets an application from someone else
+who reads the answer.
 
 ### Detail for each day
 
@@ -133,34 +139,37 @@ from someone else who reads the answer.
 - Hook: *"I've taught more than three hundred engineering students. Almost all of them hit the same wall."*
 - Message: 4TUNHub exists, it is live, and it is built in public.
 - CTA: follow, and look at 4tunhub.com.
-- LinkedIn: a native video plus a 180-word post, sent from your **personal profile**. Leave the link out of the text; the URL is on the video's end card. The company page reshares it two hours later.
-- TikTok: 40 s, hook in the first 2 s, captions burned in, domain on the end card, link in bio.
+- LinkedIn: from your **personal profile**. A native video (the site on screen, your voice) with card `00` as its **custom thumbnail**, so the first thing people see is your face on a postcard. 180-word post, **no link in the text**. The company page reshares two hours later.
+- X: a three-post thread. (1) The hook plus card `00` with your photo. (2) The video. (3) The link, with UTM tags. X's link penalty applies to the post itself, so the link goes in the reply.
 
 **P02 · Mon 28 Sep · "60 seconds inside 4TUNHub"** (record it on Sunday, straight after P01)
 - Hook: *"This is what an engineering ecosystem looks like when it's one person and a lot of nights."* (Change it if it isn't true in your own words.)
 - Message: what is live today: Projects (six machines), Services, Academy, Research, the founder page with twelve talks.
 - Visuals: a phone screen recording of 4tunhub.com. Scroll the home page, open one project, then Academy → Cohort 0, and stop on the ribbon.
 - Last line: *"And the first thing it runs opens on Tuesday."*
-- LinkedIn: the same video with a 120-word caption listing the five sections in one line each. TikTok: faster cuts, one on-screen label per page.
+- LinkedIn: the video with a 120-word caption listing the five sections in one line each.
+- X: the video in post 1 with a one-line hook, then one reply per section (five short posts), then the link.
 - CTA: follow so you see Tuesday's post.
 
 **P03 · Tue 29 Sep · "Cohort 0 is open"**
-- Reuse the launch copy word for word from `docs/cohort-0-campaign.md` (WhatsApp, LinkedIn, YouTube, TikTok). Every fact in it matches the live site.
+- Reuse the launch copy from `docs/cohort-0-campaign.md` for WhatsApp, LinkedIn and YouTube. Every fact in it matches the live site. Its TikTok to-camera script is dropped.
 - LinkedIn: card `01-announcement` plus the existing LinkedIn caption. This is a conversion post, so **the link goes in the text** and you accept the reach penalty. The research note in section 8 has the numbers.
-- TikTok: the existing 35-second script to camera. Record it Sunday.
+- X: a thread. (1) *"The SOLIDWORKS certification costs $99. That's why most engineering students here never sit it. So we're running a free bootcamp for it."* plus card `01`. (2) Dates, format, the voucher. (3) The four conditions. (4) The deadline and the link.
 - Same day: send the ambassador invites if they haven't gone out (see section 5).
 
-**P04 · Wed 30 Sep · "$99"**: card `02-voucher` with its existing caption. On TikTok, film a 20-second to-camera version: *"The SOLIDWORKS certification costs ninety-nine dollars…"*
+**P04 · Wed 30 Sep · "$99"**: card `02-voucher` with its existing caption on LinkedIn. On X, the card plus one sentence: *"Finish Cohort 0, keep the voucher."* The link goes in the reply.
 
-**P05 · Thu 1 Oct · "A perfect model, a failed exam"**: an engineering lesson. Record SOLIDWORKS showing a mass-properties answer in the wrong units or with the wrong number of decimal places. This is the idea behind the old `06-one-thing` caption, moved earlier because it is the most useful thing in the set.
+**P05 · Thu 1 Oct · "A perfect model, a failed exam"**: an engineering lesson with no face. A SOLIDWORKS screen recording shows a mass-properties answer in the wrong units or with the wrong number of decimal places, with your voice explaining. This is the idea behind the old `06-one-thing` caption, moved earlier because it is the most useful thing in the set.
 - Hook: *"You can model the part perfectly and still fail the CSWA."*
 - CTA: *"Save this for exam day. Week 2 of Cohort 0 is about nothing else."*
+- X: the video plus a 3-post thread of the three traps (units, decimals, the clock). Threads hold attention on X.
 
-**P06 · Fri 2 Oct · "How to get a seat"**: a screen recording of the four steps, in the order the applicant does them. Card `04-how-to-get-a-seat` for LinkedIn.
+**P06 · Fri 2 Oct · "How to get a seat"**: a screen recording of the four steps, in the order the applicant does them. Card `04-how-to-get-a-seat` goes on LinkedIn; the video goes on both.
 - End on the screenshots page (`/academy/cohort-0/screenshots`), because that is the step people forget.
 
-**P07 · Sat 3 Oct · "Week one, in numbers"**: build in public. Report the real numbers from analytics and the form: visits, applications, countries, and whatever broke. **Invent nothing.** If a number is small, say it's small. That is part of the trust this post is building.
+**P07 · Sat 3 Oct · "Week one, in numbers"**: build in public, as a **card with your photo** and the real numbers from analytics and the form: visits, applications, countries, and whatever broke. Claude generates the card once you have the numbers. **Invent nothing.** If a number is small, say it's small. That is part of the trust this post is building.
 - Hook: *"4TUNHub has been public for a week. Here's what happened."*
+- X: the card, then one reply per number, each with a sentence on what it taught you.
 
 ---
 
@@ -171,8 +180,8 @@ from someone else who reads the answer.
 | Sun 4 Oct | Trust | Card `05-who-teaches` + caption (founder) | — |
 | Mon 5 – Wed 7 Oct | **Partner reveal** | Three posts: (1) *why* these groups are teaching together, (2) spotlight on MKV Academy with Celestine Dona, (3) the Benin SWUG. Library L24–L25 | **Only if the gate in §6 is met.** Otherwise put engineering postcards in these slots (L09, L10) and move the reveal as late as Thu 8 Oct |
 | Thu 8 Oct | Action | Card `08-seats-left`, with `SEATS_LEFT` set to the **real** number | Regenerate the card the same morning |
-| Fri 9 Oct | Objections | L21 FAQ video: *"I'm a beginner / I only have the Student Edition / I work evenings."* WhatsApp nudge to everyone who applied without screenshots | — |
-| Sat 10 Oct | Action | TikTok: 20 s "tomorrow night" to camera | — |
+| Fri 9 Oct | Objections | L21 FAQ, as a card with your photo on LinkedIn and a thread on X: *"I'm a beginner / I only have the Student Edition / I work evenings."* WhatsApp nudge to everyone who applied without screenshots | — |
+| Sat 10 Oct | Action | X: "Tomorrow night" post, reposting the P03 thread | — |
 | Sun 11 Oct | Action | Card `07-closing` + caption. Applications close at the end of the day | — |
 | Mon 12 – Fri 16 Oct | Onboarding | Select 20 and keep a waiting list. **Every applicant gets a reply by Fri 16**. Cohort WhatsApp group, 10-minute "can you open this part" check | Night shifts on Wed 14 and Thu 15 for session 1–4 material |
 | Sat 17 – Tue 20 Oct | Onboarding | Reminder with the Bevy link to the 20 selected. A build-in-public post: *"Twenty people start on Wednesday."* | — |
@@ -205,7 +214,7 @@ memory or inferred.
 | The academy's official name and a one- or two-sentence description in their own words | Required | |
 | **What MKV contributes to Cohort 0**, in one sentence they approve | Required | Teaching? Sessions? Materials? Vouchers? Certificates? Don't guess |
 | Does this change anything on the site? Language, dates, seat count, price, curriculum, platform (Bevy) | Required | Section 3 explains why this matters |
-| Social links: LinkedIn page, TikTok, website | Required | For tagging. Check that each one opens |
+| Social links: LinkedIn page, X account, website | Required | For tagging. Check that each one opens |
 | Who approves the joint posts on their side, and how quickly they can | Required | |
 | Relevant achievements (numbers, students trained, accreditations) | Optional | Only what they can support with evidence |
 | Brand requirements: colour, clear space, how their logo sits next to ours | Optional | |
@@ -284,12 +293,17 @@ Sprout, Buffer). Treat their percentages as directions, not constants.
   ([meet-lea](https://meet-lea.com/en/blog/linkedin-algorithm-explained)).
   Text that holds attention for more than 15 seconds and ends with a real
   question does better than a slogan.
-- **On TikTok, the first 3 seconds decide the rest**, completion is the main
-  ranking signal, and a view counts as "qualified" at about 5 seconds.
-  30–60 s is the usual range for educational content, which holds viewers
-  noticeably longer than pure entertainment
-  ([Hootsuite](https://blog.hootsuite.com/tiktok-algorithm/),
-  [Sprout](https://sproutsocial.com/insights/tiktok-algorithm/)).
+- **On X, links in the post itself cost reach.** Estimates run from about
+  30–50 % for one link to more, and posting the link in the first reply
+  is the accepted workaround. Native video under about 60 s gets the most
+  distribution, and threads hold attention longer than single posts
+  ([SocialPilot](https://www.socialpilot.co/blog/twitter-algorithm),
+  [Sprout](https://sproutsocial.com/insights/twitter-algorithm/)). So X
+  posts are threads: the hook and the asset first, the link last.
+- **In any feed video, the first seconds decide whether it's watched.**
+  Without a face, the opening frame has to do that job: move on screen, the
+  hook burned in as text, and the most striking image first (a machine, a
+  red FEA hotspot), never a logo.
 - **Timing.** Sprout (about 2 bn engagements) and Buffer (4.8 m LinkedIn
   posts) disagree on morning versus late afternoon, but agree on Tuesday to
   Thursday, late morning into afternoon

@@ -228,9 +228,10 @@ const AMBASSADORS = [];
 function cards({ portrait }) {
   return [
     {
-      // The platform reveal (P01, docs/content/postcards/): end card for the
-      // video and a static fallback. No cohort facts on it, so it never
-      // goes stale.
+      // The platform reveal (P01, docs/content/postcards/): the LinkedIn
+      // video's thumbnail and the first post of the X thread. The founder's
+      // face belongs on the cards, never in the videos, so this is where it
+      // goes. No cohort facts on it, so it never goes stale.
       slug: "00-this-is-4tunhub",
       day: "Sun 27 Sep",
       build: (size) =>
@@ -239,6 +240,19 @@ function cards({ portrait }) {
             dark: true,
             eyebrow: "Live, and built in public",
             body: [
+              row({ key: "who", gap: 28, marginBottom: 48 }, [
+                h("img", {
+                  key: "p",
+                  src: portrait,
+                  width: 150,
+                  height: 150,
+                  style: { borderRadius: 9999, objectFit: "cover" },
+                }),
+                col({ key: "n", gap: 6 }, [
+                  text("Donfack Fortune", { key: "a", fontSize: 40, fontWeight: 700, letterSpacing: -1, color: "#ffffff" }),
+                  text("Founder, 4TUNHub", { key: "b", fontSize: 28, fontWeight: 600, color: "rgba(255,255,255,0.72)" }),
+                ]),
+              ]),
               lines(["The place I wish", "I’d had."], { key: "t", ...display(true, 100) }),
               text(
                 "This is 4TUNHub. Real machines, designed, simulated and built — and the training, research and engineering services that grow out of them.",

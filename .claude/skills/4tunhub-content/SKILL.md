@@ -1,6 +1,6 @@
 ---
 name: 4tunhub-content
-description: The 4TUNHub content principles and postcard system. Use for ANY 4TUNHub social, marketing or campaign work - LinkedIn or TikTok posts, captions, scripts, postcards/cards, launch or cohort campaigns, partner announcements, content calendars, repurposing, or content metrics. Load before drafting anything that will be published.
+description: The 4TUNHub content principles and postcard system. Use for ANY 4TUNHub social, marketing or campaign work - LinkedIn or X (Twitter) posts and threads, captions, scripts, postcards/cards, launch or cohort campaigns, partner announcements, content calendars, repurposing, or content metrics. Load before drafting anything that will be published.
 ---
 
 # 4TUNHub content
@@ -9,7 +9,7 @@ Read these before drafting. Each one is the source of truth for its topic.
 
 | File | What's in it |
 |---|---|
-| `docs/content-engine.md` | The system: pillars, funnel, audiences, face rules, platform adaptation, timing, metrics, template, pipeline, repurposing, visual system |
+| `docs/content-engine.md` | The system: pillars, funnel, audiences, photo rules, platform adaptation, timing, metrics, template, pipeline, repurposing, visual system |
 | `docs/launch-campaign.md` | The campaign that is running now, and the partner asset gate (§6) |
 | `docs/content/postcard-library.md` | Ideas that are ready to script |
 | `docs/content/tracker.csv` | What was published and how it performed. Append a row per postcard |
@@ -28,13 +28,16 @@ Read these before drafting. Each one is the source of truth for its topic.
 2. 4TUNHub is an **engineering and education ecosystem being built in public**,
    not a personal portfolio and not a course shop. The founder, Donfack
    Fortune, is the credibility behind it, not the product.
-3. **Founder-led storytelling is valuable when it adds trust, story or
-   authority.** Platform footage goes where the platform is the subject, and
-   engineering visuals where the engineering is. The balance to aim for is
-   person → platform → community.
+3. **Founder-led storytelling, without the founder on camera.** Fortune's
+   face **never appears in videos**. His photograph appears **only on the
+   postcards** (static cards: `00-this-is-4tunhub`, `05-who-teaches`), and a
+   photo card can be the LinkedIn video thumbnail. Videos are screen
+   recordings or engineering footage with his **voice** over them, and they
+   open on movement with the hook burned in, never on a logo. The balance
+   to aim for is person (photo cards) → platform → community.
 4. A **postcard** is a reusable short-form asset that says **one idea**, with
    one CTA. It gets a P/L ID and a row in the tracker.
-5. **One idea produces several assets**: TikTok, LinkedIn video, LinkedIn
+5. **One idea produces several assets**: X thread, LinkedIn video, LinkedIn
    text, WhatsApp Status, quote card, carousel, a long video, and a later
    offer post.
 6. **Balance the pillars**: platform, founder, build in public,
@@ -58,10 +61,12 @@ Read these before drafting. Each one is the source of truth for its topic.
     Instrument Sans, ink and white, amber only as a fill for the one thing
     that must not be missed, real photographs, no stock. Details are in
     `content-engine.md` §12 and `docs/art-direction.md`.
-12. **Adapt for each platform; never paste the same post.** LinkedIn goes
-    out from the personal profile: professional insight, a real question at
-    the end, no links in awareness posts. TikTok: a hook in 2 seconds, 30–60 s
-    for teaching, captions burned in, the link in the bio.
+12. **The channels are LinkedIn and X**, plus WhatsApp and YouTube for
+    distribution. **No TikTok.** Adapt for each platform; never paste the
+    same post. LinkedIn goes out from the personal profile: professional
+    insight, a real question at the end, no links in awareness posts. X is
+    a thread: the hook and the asset in post 1, one idea per reply, and the
+    link only in the last reply. One 4:5 video file serves both.
 13. **Measure, then iterate.** Qualified views, completion, profile and site
     visits (with UTM tags), follows, saves, and for offers, visits → started →
     completed applications. **Views alone are not success.** After two weeks,

@@ -7,6 +7,7 @@
 | **Content pillar** | Platform (with Founder) |
 | **Audience stage** | Discovery |
 | **Primary audience** | Engineering students and young engineers in Cameroon |
+| **Channels** | LinkedIn (personal profile) and X |
 | **Status** | Ready to record, 27 Sep 2026 |
 
 **Hook.** *"I've taught more than three hundred engineering students. Almost
@@ -17,11 +18,11 @@ rather than a course, and it's being built in public.
 
 **CTA.** Follow, and look at 4tunhub.com.
 
-**Voice and face.** Your face at the start and the end, where trust comes
-from. Platform footage in the middle, where the platform is the subject.
+**Voice and photo.** Your **voice** over the video. Your **face only on the
+postcard** `00-this-is-4tunhub`, which is the LinkedIn thumbnail and the
+first post of the X thread. **No face on camera.**
 
-**Length.** TikTok 35–45 s. LinkedIn video 60–75 s, the same footage with
-the middle section longer.
+**Length.** One 4:5 video, **45–55 s**, used on both LinkedIn and X.
 
 Every fact in the script is on record in the repository: 300+ students,
 six machines designed, simulated and built, and "We design machines, and
@@ -30,79 +31,63 @@ you would say it, change the line, not the fact.
 
 ---
 
-## Script: TikTok, about 40 s
+## The assets
 
-| Time | Picture | You say | On-screen text |
+| Asset | What it is | How it's made |
+|---|---|---|
+| **Postcard** `00-this-is-4tunhub-post.png` (1080×1350) | Your photo, name, "The place I wish I'd had." | Already generated: `node scripts/make-postcards.mjs` |
+| **Video** (1080×1350, 45–55 s) | A phone screen recording of 4tunhub.com with your voice over it | Recorded today, below |
+| Story card `00-this-is-4tunhub-story.png` (1080×1920) | For WhatsApp Status | Already generated |
+
+## Script: voice-over, about 50 s
+
+With no face on screen, **the first frame has to hold people**. Open on the
+machines already moving, with the hook burned in, not on a logo.
+
+| Time | On screen (no face) | Your voice | Burned-in text |
 |---|---|---|---|
-| 0–3 s | **Face**, tight, in the first frame. No logo intro | "I've taught more than three hundred engineering students. Almost all of them hit the same wall." | **300+ students. Same wall.** |
-| 3–9 s | Face | "They can follow a tutorial. They can't design a real part, for a real machine, and prove it works." | Tutorial ≠ engineering |
-| 9–24 s | **Screen recording**: the home page on your phone, scrolling slowly through the five machines, then one tap into a project | "So I built the place I wish I'd had. It's called 4TUNHub. Real machines, designed, simulated and built. Training. Research. Engineering services." | **This is 4TUNHub** (appears on "It's called") |
-| 24–33 s | Face | "It's live today. It isn't finished, and I'm building it in public, so you can watch every step." | Live. Not finished. Built in public. |
-| 33–40 s | End card: card `00-this-is-4tunhub` (story size), or the home page with the URL over it | "Go and look: 4tunhub.com. And follow. The first thing it runs opens on Tuesday." | **4tunhub.com** |
+| 0–4 s | The home page **already scrolling** through the machines | "I've taught more than three hundred engineering students. Almost all of them hit the same wall." | **300+ students. Same wall.** |
+| 4–11 s | Slow scroll, then tap into one project (FSAE car or shredder) | "They can follow a tutorial. They can't design a real part, for a real machine, and prove it works." | Tutorial ≠ engineering |
+| 11–30 s | Inside the project: images, then back out → Academy → Research → Services | "So I built the place I wish I'd had. It's called 4TUNHub. Real machines, designed, simulated and built. Training. Research. Engineering services. One place." | **This is 4TUNHub** (appears on "It's called") |
+| 30–42 s | Founder page, scrolling the twelve talks | "It's live today. It isn't finished, and I'm building it in public, so you can watch every step." | Live. Not finished. Built in public. |
+| 42–50 s | End card: `00-this-is-4tunhub-post.png` for 3 s, then the home page with the URL | "Go and look: 4tunhub.com. And follow. The first thing it runs opens on Tuesday." | **4tunhub.com** |
 
-## LinkedIn video: 60–75 s
-
-Use the same takes. In the screen-recording section, allow 25–30 s and add
-the Academy page and the founder page with its twelve talks, because
-LinkedIn viewers watch longer for credibility. Captions stay burned in, since
-most LinkedIn video autoplays muted.
+The end card shows your face on the postcard for three seconds. That is a
+postcard inside the frame, not you on camera. If you'd rather the video
+carry no photo at all, end on the home page with the URL instead. Your
+choice; both work.
 
 ---
 
-## Shot list: one setup, about 30 minutes
+## Recording, about 30 minutes
 
-1. **Face takes (A-roll).** Phone at eye level, on a stack of books or a
-   tripod, in **vertical 9:16, 1080×1920**, rear camera. Sit facing a window
-   so the light is on your face, not behind you. Plain wall or your desk with
-   a real part or a drawing on it. Record the three spoken sections as three
-   separate takes, three attempts each, and keep the best one.
-2. **Sound.** Quiet room with the fan off. A clip-on mic if you have one;
-   if not, keep the phone within an arm's length.
-3. **Screen recording (B-roll).** See below.
-4. **End card.** Run `node scripts/make-postcards.mjs` and use
-   `postcards/00-this-is-4tunhub-story.png`.
+**1. Screen recording (phone).**
+- Turn on Do Not Disturb, charge above 50 %, set brightness to maximum. Load 4tunhub.com once so the images are cached.
+- Record in the **light** theme: it reads better in a feed and matches the cards. If it's after 18:00, set Light in the footer theme switch first.
+- The path, slowly, with about 2 s of stillness at each stop: home page top → scroll through the five machines → tap one project → scroll once and hold on an image → back → Academy → Research → Services → the founder page, scrolling the talks.
+- **Record 90 s continuously** and cut it down later. Don't scroll fast: fast scrolling looks like panic, and slow scrolling looks like confidence.
 
-## Screen-recording instructions
+**2. Voice-over.**
+- Record in CapCut's voice-over tool, or with the phone's voice recorder, in a quiet room with the fan off. Hold the phone 20 cm from your mouth, slightly to the side so your breath doesn't hit the mic.
+- Record each of the five lines separately, three attempts each, and keep the best.
+- Speak slightly slower than normal. Without a face on screen, the voice carries all the confidence.
 
-- **Device.** A phone, not a laptop. The audience is on phones, and a phone
-  recording needs no cropping for 9:16.
-- **Before recording:** turn on Do Not Disturb, charge above 50 %, set
-  brightness to maximum, and hide the status bar clutter if you can. Load
-  4tunhub.com once so the images are cached.
-- **Light or dark theme.** The site switches automatically (light 06:00–18:00).
-  Record in **light**: it reads better in a feed and matches the cards. If
-  it's after 18:00, set Light in the footer theme switch first.
-- **Path**, slowly, about 2 s of stillness on each stop:
-  1. Home page, top: hold on the headline and the machines.
-  2. Scroll slowly through the five machines.
-  3. Tap one project (the FSAE car or the shredder), scroll once, and hold on an image.
-  4. For LinkedIn only: back, then Academy, then the founder page, and scroll the talks.
-- **Record 60–90 s continuously**, then cut it down in editing. Don't scroll
-  fast: fast scrolling looks like panic, and slow scrolling looks like
-  confidence.
+## Editing (CapCut)
 
-## On-screen text
-
-Instrument Sans (free on Google Fonts; import it into CapCut), bold, ink
-`#1d1d1f` on a white box, or white on ink. **The only amber is the word
-"4TUNHub"**, as an amber `#ffb000` fill behind ink text, never amber text on
-white (it fails contrast). No more than 6 words at a time, and keep the top
-and bottom 15 % of the frame clear of the TikTok interface.
+1. **Canvas 4:5 (1080×1350)**, background ink `#1d1d1f` or white. Put the phone recording in the centre at about 85 % height. The same file serves LinkedIn and X.
+2. Lay the voice lines over the recording, and cut the recording to match. Cut every pause longer than 0.3 s.
+3. The **first frame must be moving**: trim the start so the video opens mid-scroll.
+4. Auto captions, then **correct them by hand**. Auto-captioning will write "Fortune Hub" or "four ton hub". The brand is **4TUNHub** in every caption, every time.
+5. Burned-in text: Instrument Sans (free on Google Fonts; import it into CapCut), bold. Ink on a white box, or white on ink. **The only amber is the word "4TUNHub"**, as an amber `#ffb000` fill behind ink text, never amber text on white. No more than 6 words at a time.
+6. No music, or music at -25 dB under the voice.
+7. Export 1080×1350 at 30 fps.
 
 ---
 
-## Caption: TikTok
+## LinkedIn: personal profile, native video, **no link in the text**
 
-> I've taught 300+ engineering students. The wall is always the same: they
-> can follow a tutorial, but they can't design a real part and prove it
-> works. So I built the place I wish I'd had. 4TUNHub is live — and I'm
-> building it in public.
->
-> #engineering #mechanicalengineering #solidworks #cameroon #engineeringstudent #buildinpublic
-
-Link: in the bio, `https://4tunhub.com/?utm_source=tiktok&utm_medium=social&utm_campaign=launch-2026`
-
-## LinkedIn version: personal profile, native video, **no link in the text**
+Upload the video, and set **`00-this-is-4tunhub-post.png` as the custom
+thumbnail**. People see your face on the card before they press play.
 
 > I've taught more than 300 engineering students, at IUC, ENSET and the
 > University of Douala. Almost all of them hit the same wall.
@@ -129,40 +114,40 @@ Link: in the bio, `https://4tunhub.com/?utm_source=tiktok&utm_medium=social&utm_
 >
 > What was the wall for you — the thing school didn't teach you?
 
-Company page: reshare **two hours later** with one line of your own, not
-a copy of the post.
+Company page: reshare **two hours later** with one line of your own, not a
+copy of the post. The URL is on the video's end card and in your profile's
+Featured section. Anyone who asks in the comments gets the link as a reply.
 
-The URL is on the video's end card and in your profile's Featured section.
-Anyone who asks in the comments gets the link as a reply.
+## X: a three-post thread
 
-## Suggested cover
+**Post 1**, with the image `00-this-is-4tunhub-post.png`:
+> I've taught 300+ engineering students. Almost all of them hit the same
+> wall: they can follow a tutorial, but they can't design a real part and
+> prove it works.
+>
+> So I built the place I wish I'd had. This is 4TUNHub.
 
-- **TikTok:** the frame at about 0.5 s, your face mid-sentence, with the text
-  **"I built the place I wish I'd had"** in the upper third.
-- **LinkedIn:** `00-this-is-4tunhub-post.png` as the thumbnail, or the same
-  face frame. Test one now and the other on P02.
+**Post 2** (reply), with the video:
+> Real machines — designed, simulated and built. Training, research and
+> engineering services that grow out of that work. Live today, not finished,
+> built in public.
 
-## Editing notes (CapCut)
+**Post 3** (reply):
+> Have a look: https://4tunhub.com/?utm_source=x&utm_medium=social&utm_campaign=launch-2026&utm_content=p01
+>
+> The first thing it runs opens on Tuesday. Follow so you see it.
 
-1. Cut every pause longer than 0.3 s. Start on the first word, with no
-   "so" or "hi guys" in front of it.
-2. Auto captions, then **correct them by hand**. Auto-captioning will
-   write "Fortune Hub" or "four ton hub". The brand is **4TUNHub** in every
-   caption, every time.
-3. Show B-roll during the "So I built…" line. Let the screen fill the frame;
-   don't use picture-in-picture.
-4. No music, or music at -25 dB under the voice. The voice carries this one.
-5. Add a slow zoom (100 → 105 %) on the face takes so a static shot doesn't
-   look frozen.
-6. Export 1080×1920 at 30 fps. For LinkedIn, export the longer cut, and add
-   a 4:5 version if the vertical crop hides your face on desktop.
+Pin post 1 to your profile for the week. Answer every reply in the first
+hour: X weighs conversations the author takes part in.
+
+## WhatsApp Status
+
+`00-this-is-4tunhub-story.png`, then the first 15 s of the video.
 
 ## Reuse
 
-- The face takes become the WhatsApp Status (15 s cut, hook plus "It's live
-  today").
-- The LinkedIn text, cut in half, becomes the P07 build-in-public opening
-  line.
-- The screen-recording B-roll is used again in P02 and in L02.
+- The screen recording is used again in P02 and in L02.
 - "Tutorial ≠ engineering" becomes L13 (an education postcard).
 - A quote card: *"They can follow a tutorial. They can't design a real part."*
+- The LinkedIn text, cut in half, becomes the P07 build-in-public opening
+  line.
