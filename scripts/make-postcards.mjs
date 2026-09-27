@@ -84,7 +84,7 @@ const lockup = (dark) =>
       },
       "4",
     ),
-    text("4TUN Hub", {
+    text("4TUNHub", {
       key: "name",
       fontSize: 34,
       fontWeight: 700,
@@ -203,7 +203,7 @@ const listItem = (label, value, dark) =>
 
 // ---- the seven cards -----------------------------------------------------
 
-const PARTNER = "4TUN Hub × Douala City SWUG";
+const PARTNER = "4TUNHub × Douala City SWUG";
 
 /**
  * Seats still open, for the urgency card. Selection is rolling, so this
@@ -227,6 +227,29 @@ const AMBASSADORS = [];
 
 function cards({ portrait }) {
   return [
+    {
+      // The platform reveal (P01, docs/content/postcards/): end card for the
+      // video and a static fallback. No cohort facts on it, so it never
+      // goes stale.
+      slug: "00-this-is-4tunhub",
+      day: "Sun 27 Sep",
+      build: (size) =>
+        card(
+          {
+            dark: true,
+            eyebrow: "Live, and built in public",
+            body: [
+              lines(["The place I wish", "I’d had."], { key: "t", ...display(true, 100) }),
+              text(
+                "This is 4TUNHub. Real machines, designed, simulated and built — and the training, research and engineering services that grow out of them.",
+                { key: "s", ...lead(true), marginTop: 36 },
+              ),
+            ],
+            foot: { left: "4tunhub.com", right: "We design machines, and teach you how." },
+          },
+          size,
+        ),
+    },
     {
       slug: "01-announcement",
       day: "Fri 25 Sep",
@@ -304,7 +327,7 @@ function cards({ portrait }) {
               col({ key: "steps" }, [
                 listItem("01", "Join Douala City SWUG on Bevy", false),
                 listItem("02", "Follow the group on LinkedIn", false),
-                listItem("03", "Follow 4TUN Hub on LinkedIn and YouTube", false),
+                listItem("03", "Follow 4TUNHub on LinkedIn and YouTube", false),
                 listItem("04", "Apply, and send a screenshot of each", false),
               ]),
             ],
