@@ -36,6 +36,7 @@ const en = {
     cohort: "Cohort 0",
     waitlist: "Waitlist",
     privacy: "Privacy",
+    terms: "Terms",
   } as Record<string, string>,
 
   nav: {
@@ -58,8 +59,23 @@ const en = {
     autoHint: "Follows your clock: light from 06:00, dark from 18:00.",
   },
 
+  /** The privacy bar, and the permanent version of it on /privacy. */
+  consent: {
+    banner: {
+      label: "Privacy choices",
+      title: "We count visits. That's all.",
+      body:
+        "This site sets no cookies and builds no profile of you. With your permission we count page views anonymously — the page, the country, the kind of device, and the site you arrived from — so we know which channels actually reach engineers. Nothing that identifies you, nothing sold, nothing shared with advertisers.",
+      short:
+        "No cookies, and no profile of you. May we count this visit anonymously?",
+      accept: "Accept",
+      decline: "Decline",
+      more: "What we store",
+    },
+  },
+
   home: {
-    eyebrow: "Engineering ecosystem · Dschang, Cameroon",
+    eyebrow: "Mechanical design, simulation & CAD training · Dschang, Cameroon",
     title: "We design machines. And teach you how.",
     subtitle:
       "Mechanical design, FEA simulation and hands-on CAD training from Dschang, Cameroon. Every lesson comes from a machine that was actually built.",
@@ -1132,7 +1148,7 @@ const en = {
         { title: "Do the work", desc: "Hand in the weekly exercise." },
         {
           title: "Share the result",
-          desc: "Sit the final mock exam, share your score, and give a short testimonial.",
+          desc: "Sit the final mock exam, share your score, and record a short video \u2014 half a minute, your own words, on what you can do now that you could not do in October.",
         },
       ],
       note: "Miss the commitment and the seat goes to the next person on the waiting list.",
@@ -1256,7 +1272,8 @@ const en = {
       errors: {
         required: "This field is required.",
         emailInvalid: "Enter a valid email address.",
-        whatsappInvalid: "Enter a WhatsApp number with its country code, e.g. +237 6XX XX XX XX.",
+        whatsappInvalid: "Enter a WhatsApp number with its country code, e.g. +237 6XX XX XX XX.",
+
         linkedinInvalid: "Paste the address of your LinkedIn profile, e.g. linkedin.com/in/jane-doe.",
         choose: "Please choose one.",
         tooShort: "Please add a little more: two or three sentences.",
@@ -1439,7 +1456,7 @@ const en = {
     title: "Privacy",
     updated: "Last updated 20 September 2026",
     intro:
-      "This site collects personal details only when you send them through a form. This note says what we keep, why, for how long, and how to have it deleted.",
+      "This site collects personal details only when you send them through a form, and stores almost nothing in your browser. This note says what we keep, why, for how long, and how to have it removed.",
     sections: [
       {
         title: "What we collect",
@@ -1447,26 +1464,140 @@ const en = {
       },
       {
         title: "Why",
-        body: "To reply to you. For applications, also to select the cohort and to run it: the weekly exercises happen in a WhatsApp group of accepted participants. For the waitlist, to write to you when the thing you asked about opens — and about nothing else.",
+        body: "To reply to you. For applications, also to select the cohort and to run it: the weekly exercises happen in a WhatsApp group of accepted participants. For the waitlist, to write to you when the thing you asked about opens — and about nothing else. You can ask to come off the list in one line, at any time, and we act on it the day we read it.",
       },
       {
         title: "Where it goes",
-        body: "Submissions are delivered to our inbox by an email service, Resend. We do not sell or share your details, and we never add you to a mailing list without asking.",
+        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. We do not sell or share your details, and we never add you to a mailing list without asking.",
       },
       {
         title: "How long we keep it",
         body: "Applications that are not selected are deleted within three months. Participants' details are kept while the cohort runs and for twelve months after it, unless you ask us to delete them sooner.",
       },
       {
-        title: "Cookies and tracking",
-        body: "No cookies, and nothing that follows you from one site to another. Your Light, Dark or Auto choice is stored in your browser and never leaves your device. We do count visits: a cookieless analytics tool records the page, the country, the kind of device and the site you came from, plus three anonymous events — a waitlist signup, an application, a message sent. It holds no name, no address and nothing that identifies a person, and none of it is shared with advertisers.",
+        title: "Cookies",
+        body: "None. Not an advertising cookie, not an analytics cookie, not one of our own. The full list of what is stored in your browser — two items, both of which stay on your device — is at the bottom of this page, with the switch that controls the one optional thing we do.",
       },
       {
         title: "Your rights",
-        body: "Ask us at any time to see, correct or delete what we hold about you.",
+        body: "Ask us at any time to see, correct, delete or export what we hold about you, or to object to our holding it. Write to the address below; we answer within thirty days, and there is no charge.",
+      },
+      {
+        title: "Who is responsible",
+        body: "4TUN Hub, Dschang, Cameroon. Donfack Fortune decides what is collected and answers for it personally. If you are in the European Union or the United Kingdom and you believe we have handled your details wrongly, you may also complain to your national data protection authority.",
+      },
+      {
+        title: "If you are under 18",
+        body: "Some of what we teach is taught to secondary-school students. If you are under 18, ask a parent or guardian before sending us your name, email or WhatsApp number — and if something was sent without that, tell us and we will delete it.",
       },
     ],
+    storage: {
+      title: "Cookies and storage",
+      intro:
+        "This site sets no cookies — not one, not even our own. Two things are stored in your browser and never leave your device, and one thing is counted, only if you allow it. That is the entire list.",
+      columns: {
+        what: "What",
+        why: "Why",
+        kept: "Where it is kept",
+        refuse: "Can you refuse it?",
+      },
+      rows: [
+        {
+          what: "Appearance",
+          key: "4tun.theme",
+          why: "Remembers whether you chose Light, Dark or Auto, so the site obeys you on the next page.",
+          kept: "Your browser, on this device. It is never sent anywhere.",
+          refuse: "It only exists once you use the switch in the footer. Clearing your browser data removes it.",
+        },
+        {
+          what: "Your answer to this question",
+          key: "4tun.consent",
+          why: "Remembers whether you accepted or declined, so you are not asked again on every page.",
+          kept: "Your browser, on this device. It is never sent anywhere.",
+          refuse: "Without it we would have to ask the same question on every page. Clearing your browser data removes it.",
+        },
+        {
+          what: "Anonymous visit counting",
+          key: "Umami — no cookie, nothing stored on your device",
+          why: "Which pages are read, from which country, on what kind of device and which site sent you — plus three events: a waitlist signup, an application, a message sent.",
+          kept: "On the analytics provider's servers, as counts. No name, no address, nothing that identifies a person.",
+          refuse: "Yes. It does not run at all until you accept, and you can switch it off here at any time.",
+        },
+      ],
+      control: {
+        label: "Privacy choices",
+        categories: {
+          analytics: {
+            name: "Anonymous visit counting",
+            desc: "Lets us see which pages are read and which channels bring engineers here. No cookie, no profile, nothing that identifies you.",
+          },
+          embeds: {
+            name: "Embedded media",
+            desc: "Video players and booking widgets loaded from other companies. Nothing on this site uses one yet.",
+          },
+        },
+        allow: "Allow",
+        refuse: "Refuse",
+        chosenOn: "You chose this on",
+        notChosen: "You have not answered yet, so nothing optional is running.",
+        gpc: "Your browser is sending a Global Privacy Control signal. We treat that as a refusal: everything optional is off, and you will not be asked again.",
+      },
+    },
     contact: "Write to",
+  },
+
+  terms: {
+    title: "Terms of use",
+    updated: "Last updated 20 September 2026",
+    intro:
+      "The rules of this site and of the training we run. Written plainly, because terms nobody reads protect nobody.",
+    sections: [
+      {
+        title: "Who we are",
+        body: "4TUN Hub is an engineering organisation based in Dschang, Cameroon, founded and run by Donfack Fortune. Writing to the address at the foot of this page reaches a person, not a queue.",
+      },
+      {
+        title: "What this site is",
+        body: "Information about our engineering services, our training and our projects, plus forms for contacting us, applying for a cohort and joining a waiting list. Nothing here is engineering advice to build from without an engagement: the projects describe work done under conditions that were ours, not yours.",
+      },
+      {
+        title: "A Cohort 0 seat",
+        body: "Seats are free and given by selection, not by order of arrival. A seat asks three things in return: attend at least 6 of the 8 sessions, hand in the weekly exercise, and sit the final mock exam, share your score and record a short video about it. Miss them and the seat passes to the waiting list \u2014 that is the whole of it, and there is nothing to pay at any point.",
+      },
+      {
+        title: "The sessions are recorded",
+        body: "Every live session is recorded so that anyone who misses one can catch up. Your name, your voice and anything you share on screen may be in that recording, and recordings may be published or reused in our teaching. If you would rather not appear, keep your camera off and say so in the group: we will not press you, and it costs you nothing in the cohort.",
+      },
+      {
+        title: "The exam voucher",
+        body: "Everyone who completes the cohort as described above receives a CSWA exam voucher at no cost. The vouchers are supplied to us through the SOLIDWORKS user group; if that supply changes or fails for reasons outside our control, we will say so publicly and immediately \u2014 and we will not have taken your money for it. Sitting the exam, and passing it, remains yours to do: we prepare you for it and promise nothing about the result.",
+      },
+      {
+        title: "What you send us",
+        body: "Send only what is yours to send: not an employer's work, a client's or a classmate's, without their permission. By giving a testimonial you allow us to publish it with your name, your role and, if you provide one, your photograph or video. Ask us to take it down at any time and we will, including from pages already published.",
+      },
+      {
+        title: "What is ours",
+        body: "The text, images, project write-ups, course material and exercises on this site belong to 4TUN Hub or to the people credited. Read them, quote them with a link, share them with a colleague. Do not resell them, republish them as your own, or teach a paid course from them without asking first \u2014 the answer is often yes.",
+      },
+      {
+        title: "Not affiliated, and a word about names",
+        body: "SOLIDWORKS and CSWA are trademarks of Dassault Syst\u00e8mes. 4TUN Hub is not part of Dassault Syst\u00e8mes, is not endorsed by them, and does not award their certifications: we prepare people to sit the exam, which they take with the certifying body. Cohort 0 is run together with the Douala City SOLIDWORKS User Group, a community group.",
+      },
+      {
+        title: "Other people's sites",
+        body: "Links leave for LinkedIn, YouTube, WhatsApp, Bevy, GrabCAD and Medium, among others. What happens there is governed by their terms, not ours.",
+      },
+      {
+        title: "What we do not promise",
+        body: "The site is provided as it is. We keep it running and correct what we find, but we do not promise it is available at every moment or free of every error. Free training is given in good faith and carries no warranty; paid work is governed by the contract signed for it, not by this page.",
+      },
+      {
+        title: "Changes, and the law that applies",
+        body: "These terms may change as the ecosystem grows. The date above says when they last did, and a change is never applied backwards to a cohort already running. Cameroonian law applies, and we would far rather settle anything by writing to each other first.",
+      },
+    ],
+    contact: "Questions about any of this \u2014 write to",
   },
 
   stub: {

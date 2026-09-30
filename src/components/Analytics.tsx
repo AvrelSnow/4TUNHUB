@@ -1,33 +1,21 @@
-import Script from "next/script";
 import { analyticsConfig } from "@/lib/analytics";
+import { AnalyticsScripts } from "./AnalyticsScripts";
 
 /**
- * The analytics tag — or nothing at all, which is what it renders until
- * the host sets ANALYTICS_PROVIDER and ANALYTICS_SITE_ID. See
- * `src/lib/analytics.ts` for the contract and why it stays cookieless.
+ * Analytics renders nothing at all until TWO separate things are true:
  *
- * `afterInteractive`: the count matters, but never before the page is
- * usable. A blocked or failed script changes nothing on the page.
+ *   1. the host is configured — ANALYTICS_PROVIDER and ANALYTICS_SITE_ID,
+ *      read when the site is BUILT, which is why this stays a server
+ *      component: `process.env` is not a thing the browser can be handed;
+ *   2. the visitor has said yes — which only the browser can know, and is
+ *      decided one component further down, in `AnalyticsScripts`.
+ *
+ * See `src/lib/analytics.ts` for why it stays cookieless, and
+ * `src/lib/consent.ts` for why the answer is opt-in.
  */
 export function Analytics() {
   const config = analyticsConfig();
   if (!config) return null;
 
-  return (
-    <>
-      {/* Plausible's own snippet: custom events called before the script
-          finishes loading are queued, not lost. Umami needs no equivalent. */}
-      {config.provider === "plausible" && (
-        <Script
-          id="analytics-queue"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html:
-              "window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}",
-          }}
-        />
-      )}
-      <Script src={config.src} strategy="afterInteractive" defer {...config.attrs} />
-    </>
-  );
+  return <AnalyticsScripts config={config} />;
 }

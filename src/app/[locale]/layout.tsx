@@ -10,7 +10,9 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
 import { CohortRibbon } from "@/components/CohortRibbon";
+import { ConsentBanner } from "@/components/ConsentBanner";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
+import { CONSENT_ANCHOR } from "@/lib/consent";
 import { localizeHref } from "@/lib/i18n/routing";
 import { SITE_URL, SITE_NAME, SITE_KEYWORDS, organizationJsonLd } from "@/lib/site";
 import { themeResolverScript } from "@/lib/theme";
@@ -118,6 +120,10 @@ export default async function LocaleLayout({
           {children}
         </main>
         <Footer locale={typedLocale} dict={dict} />
+        <ConsentBanner
+          strings={dict.consent.banner}
+          privacyHref={localizeHref(typedLocale, `/privacy#${CONSENT_ANCHOR}`)}
+        />
         <Analytics />
       </body>
     </html>

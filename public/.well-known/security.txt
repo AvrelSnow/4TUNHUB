@@ -1,0 +1,8 @@
+# How to report a security problem with 4tunhub.com (RFC 9116).
+# Write to us in English or French. We answer, we credit you if you want
+# it, and we will not threaten you for telling us.
+
+Contact: mailto:4tunhub@gmail.com
+Expires: 2027-09-20T23:00:00.000Z
+Preferred-Languages: en, fr
+Canonical: https://4tunhub.com/.well-known/security.txt

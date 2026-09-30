@@ -342,17 +342,20 @@ export const phases: Phase[] = [
     id: "7",
     name: "Launch",
     status: "active",
-    goal: "Public on Friday 25 September 2026.",
+    goal:
+      "Public on Friday 25 September 2026 — permitted by the frozen checklist, not by the date. Full runbook: docs/launch-blueprint.md.",
     items: [
-      "Domain ✓",
-      "Netlify + Resend ✓",
-      "Email capture on every page ✓",
-      "Cookieless analytics ✓ (needs its two env vars on the host)",
-      "Deployed ✓ (pushed 2026-09-20)",
-      "External design review actioned ✓",
-      "Confirm the two LinkedIn company URLs",
-      "Testimonials ✓ (three, named, with photographs)",
-      "Talks & conferences on the founder page ✓",
+      "Domain ✓ · Netlify + Resend ✓ · deployed and serving ✓ (audited live 2026-09-20: every route 200, www→apex 301, headers verified)",
+      "Email capture on every page ✓ · external design review actioned ✓ · testimonials ✓ · talks ✓",
+      "B1 — no og:image on any page: the card exists at /opengraph-image but nothing points at it, and it is 731 KB",
+      "B2 — form delivery never tested from the live domain, EN or FR",
+      "B3 — analytics still unconfigured on the host (zero provider references in the served HTML)",
+      "B4 — confirm the two LinkedIn company URLs",
+      "B5 — consent and the storage inventory ✓ shipped 2026-09-20 (gate verified: no script before a yes)",
+      "B6 — rollback procedure read before it is needed",
+      "Also swept: DMARC, account 2FA + domain lock, an application backup, uptime monitoring, testimonial permissions, a link check — and security.txt ✓",
+      "Flovet review actioned \u2713 \u2014 Community into the primary nav, terms of use, the filmed testimonial in the deal; single-service home page and the founder move rejected, on the record",
+      "Score 65/100 on 20 Sep, on a scorecard re-weighted the same evening. 80 is the permission; 95 is the Thursday target",
     ],
   },
   {
@@ -564,6 +567,69 @@ export const decisions: Decision[] = [
       "Every section on a page carries symmetric vertical padding (py-24 sm:py-32). A section may not use pb- alone and lean on its neighbour for the space above it.",
     rationale:
       "The home page's founder card was the one exception, and it showed: with no top padding it sat flush against the grey testimonials band and floated over 128px of emptiness below, so the gap read as a hole punched under the card rather than as rhythm. Fortune drew the two band edges and asked for the card centred between them, which is what symmetric padding gives for free. Borrowing space from the section above only looks right until that section's padding changes, and it hides the real spacing in a file the reader is not looking at.",
+    status: "locked",
+  },
+  {
+    decision:
+      "The launch blueprint (docs/launch-blueprint.md) is the permission to go public: five named blockers, a frozen twelve-line scorecard out of 100, an hour-by-hour launch day, a rollback procedure and a deploy budget. The site launches at ≥ 80. It scored 65 on 20 September.",
+    rationale:
+      "launch-plan.md already promised a ‘frozen checklist’ and an 80/100 rule, and the checklist itself did not exist — which means the rule was decorative, and on Friday morning the decision would have been made by feeling. Frozen means the weights are not adjusted to make the number go up the night before. The scorecard weights what a launch actually runs on rather than what is pleasant to score: forms delivering is 14 points, link-preview cards 8, measurement 8, while accessibility — already swept once — is 6. It also names the five points deliberately left on the table, so that nobody invents a reason to wait for them. The audit behind the number was run against the live domain from outside, not read out of the repository: a gate closes when an HTTP response, an email or a rendered preview card says it closed.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Found in that audit and fixed before launch: no page carries an og:image. The card renders at /opengraph-image but `generateMetadata` in the locale layout defines `openGraph` in code, which replaces the file-convention image instead of merging with it.",
+    rationale:
+      "Every channel in the campaign is a link-preview channel — the WhatsApp community, the SWUG's group, LinkedIn, Facebook — and a link with no image is a grey rectangle that gets scrolled past. It would have been discovered by 483 strangers on launch morning, when preview caches make it unfixable for days. Two things travel with the fix: the PNG is 731 KB, which WhatsApp's fetcher drops silently and would have reproduced the same bug on the channel that matters most, so it comes under 300 KB; and Cohort 0 gets its own card, because a free voucher for a $99 exam with a deadline on it deserves better than the site card. Verified from outside afterwards, never from the code.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Reversed within the hour: the launch blueprint said no cookie banner. The site now ships a consent system \u2014 a one-time privacy bar, a real gate in front of the analytics script, a permanent switch at /privacy#storage linked from every footer, and a table naming everything stored on the device.",
+    rationale:
+      "Fortune pushed back on the \u2018no banner\u2019 line and he was right, though not for the reason either of us said first. The original argument was correct about cookies \u2014 there are none \u2014 and wrong about the visitor, who has no way of knowing that unless the site tells them. Three things decided the shape. (1) A banner that says Accept and loads the script either way is worse than no banner: it is a false claim on a site whose whole argument is that its engineering is honest. So Accept and Decline both do exactly what they say, and `AnalyticsScripts` renders nothing until one is pressed \u2014 verified with the provider configured locally: zero scripts and zero requests to cloud.umami.is before a choice, one script after Accept, gone again after Refuse. (2) Opt-in rather than notice-only, even though cookieless audience measurement can qualify for an exemption: the exemption dies the day the first YouTube replay, payment form or booking widget lands, and that day is January. The cost is a fraction of the visit count, and what the launch needs \u2014 which channel converts \u2014 survives a consistent fraction. (3) It is a bottom bar, not a modal, refusing is exactly as easy as accepting, and neither button is amber: the site spends its one loud colour on the ribbon and the voucher, and a privacy question is not a deadline. On a phone the long copy took 41% of the screen and sat on the hero, so it carries a one-sentence `short` like the ribbon does. Cost: 1.8 KB gzip, 205.9 \u2192 207.7 of a 220 KB budget. Global Privacy Control is honoured as a refusal, and CONSENT_VERSION means adding a category re-asks everyone \u2014 consent to count visits is not consent to load a video player.",
+    status: "locked",
+  },
+  {
+    decision:
+      "The frozen scorecard was re-weighted the same evening it was frozen: privacy, consent and legal identity goes from 6 points to 10, one point each coming off forms, content, SEO and performance. The total stayed 65.",
+    rationale:
+      "Six points for privacy on a site that asks secondary-school students for a WhatsApp number, and was four days from switching on a third-party script nobody had been told about, was the wrong weight \u2014 and the fact that the category scored 5 of 6 while the consent work did not exist is precisely how an underweighted line hides work. Changing it an hour after freezing it is what \u00a73 says is allowed: argued, on the record, with the reason. What is not allowed is moving weights on Thursday night to clear 80. The number not moving is the honest part: the four points the category gained were gained for work still undone, so the banner bought back exactly what the missing line had been hiding. A scorecard that had risen tonight would have been measuring effort instead of readiness.",
+    status: "locked",
+  },
+  {
+    decision:
+      "The privacy note now names the controller, the three processors (Netlify, Resend, Umami), a thirty-day answer, the right to complain, and a line for applicants under 18. security.txt shipped.",
+    rationale:
+      "A note that says what is collected but not who answers for it leaves the one question a serious client or a parent actually asks. The controller line is \u20184TUN Hub, Dschang \u2014 Donfack Fortune decides and answers personally\u2019, which is true today and is the line that changes if the business-entity question, open since 18 September, is ever closed. The retention promises \u2014 three months for applications not selected, twelve after the cohort \u2014 are now published, which means they have to happen in February rather than be intended. The under-18 line exists because the cohort is taught to secondary-school students and the form asks for a phone number. security.txt closes a gate the scorecard has carried since July.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Flovet review (2026-09-20, 43-minute call): three of five points adopted, two rejected with reasons. Adopted \u2014 Community into the primary nav, terms of use written, and the video testimonial moved into the deal a seat is given on. Rejected \u2014 a single-service home page, and moving a founder biography that is not there.",
+    rationale:
+      "Taking the good half of an outside review costs nothing; taking all of it four days before a launch is how a reviewed site gets churned. COMMUNITY: the page already existed but sat in the footer, so a visitor could not tell the paid Academy from the free WhatsApp group \u2014 which is exactly the confusion he named. It is now the sixth primary item, which is the locked ceiling: nothing else joins without something leaving. TERMS: the one genuine gap on his checklist (consent shipped the night before, accessibility swept, responsive verified 360\u20131920, 404 branded). It exists because of what the site now promises, not because a list asked \u2014 a free seat with conditions, sessions recorded and republished, a $99 voucher owed to twenty people in November, and a bootcamp named after Dassault's certification, which needed the non-affiliation line before 483 of their user-group members read it. VIDEO TESTIMONIALS: right idea, wrong moment and wrong length. Consent to be filmed is cheapest when it is a condition of a free seat, not a favour begged in November, so the deal now asks for half a minute on camera instead of a written line; 15 seconds is too short to say anything credible, and twenty near-identical clips shot in one week read as manufactured, so the ask is one specific question \u2014 what can you do now that you could not do in October \u2014 and five or six get published, not twenty. The three written testimonials shipped on the 19th stay: they are real, named and photographed, and they are what exists on Friday. The player itself waits for November, when it turns on the `embeds` consent category that shipped inactive for exactly this.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Rejected: 'the home page should sell one service (project consulting)'. Kept: the diagnosis under it. The hero eyebrow now says what the organisation does instead of what it calls itself \u2014 'Mechanical design, simulation & CAD training' in place of 'Engineering ecosystem'.",
+    rationale:
+      "The observation was right and the prescription was wrong. Right: a stranger could not tell what is sold, and the page carries several competing asks. Wrong as a fix, for three reasons \u2014 Friday's launch drives applications to a free bootcamp, so a consulting-only home page would fight its own campaign; 'ecosystem, not portfolio' is the locked positioning and the whole architecture exists so pillars can be added without a redesign, which makes this a strategy change dressed as a design note; and /services already exists to do precisely that job. What survives is one line: 'ecosystem' is a word a company uses about itself, never a word a buyer searches for, and it sat in the first line a visitor reads. Restructuring a page that was reviewed and refined twice in the same week, four days before it is announced, is the risk this project can least afford.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Rejected: 'move the founder's biography from the home page to About'. There is no biography on the home page \u2014 one sentence, one portrait, one link, decided on 19 September after the previous review raised the same instinct.",
+    rationale:
+      "If the point is the biography, it was already actioned before the meeting and Flovet was probably describing a version of the site that no longer exists \u2014 worth asking him which one he opened, because two reviews landing on the same paragraph means it is still reading as heavier than it is. If the point is to remove the founder entirely, it is refused: trust.ts holds zero partners, zero awards and zero client logos, the statistics strip is explicitly labelled 'the founder's track record', and an anonymous organisation in Dschang asking students for a WhatsApp number is a worse trade than a company whose founder is visible once, below the work. Org-first has never meant founder-absent.",
+    status: "locked",
+  },
+  {
+    decision:
+      "A production rebuild on Monday 12 October is mandatory and budgeted, because the application deadline is baked in at build time.",
+    rationale:
+      "`applicationsOpen()` is evaluated while each page is prerendered, so /academy, /academy/cohort-0, /waitlist and the screenshots page will keep saying applications are open after they close on 11 October. Only the ribbon re-reads the clock in the browser, and apply-action.ts already refuses late submissions — so no bad data can enter, but the site would be lying to its readers. Moving the checks client-side would cost a 15-credit deploy now to save one later, and the ‘applications closed, Cohort 1 in January’ copy needs a deploy anyway. So: rebuild, in the same push, on the 12th.",
     status: "locked",
   },
 ];
@@ -981,8 +1047,9 @@ export const scorecard: Score[] = [
   { aspect: "Responsiveness", current: 98, target: 98, note: "AT TARGET. Verified at 360 / 636 / 768 / 1024 / 1440 / 1920 — no overflow, no wraps; mobile nav panel shipped." },
   { aspect: "Accessibility", current: 97, target: 97, note: "AT TARGET. Programmatic re-audit after the inversion and the animated backgrounds: 3,891 text runs across 26 page loads (20 EN routes + 6 FR), each measured against the REAL composited background including live canvas pixels, worst-pixel not average. Zero contrast failures; worst passing run 5.35:1. Single h1 and no heading skips on every page; zero images without alt; zero controls without an accessible name. Two genuine failures found and fixed in this pass — see Craft." },
   { aspect: "Performance", current: 97, target: 97, note: "AT TARGET (pre-deploy). Budgets ENFORCED by the build gate: 205.8 KB of a 220 KB gzip budget, largest chunk 69.3 KB of 90 KB. All eight field simulations together cost 7.3 KB over the pre-field baseline because they are dynamically imported rather than bundled. Routes static; fonts subset. Lighthouse-CI runs at deploy." },
-  { aspect: "SEO", current: 92, target: 97, note: "Infrastructure 100% — sitemap/robots/schema graph/OG image (verified 200 png)/canonical. Every primary pillar now has a real, indexable, bilingual page with per-page metadata + canonical (pre-launch product detail + placeholders stay noindex). Final points require live domain + inbound signals." },
+  { aspect: "SEO", current: 86, target: 97, note: "DOWNGRADED 2026-09-20 by the live launch audit: the OG image renders at /opengraph-image but NO page references it — `generateMetadata` defines `openGraph` in code, which replaces the file-convention image rather than merging with it, so every share on WhatsApp, LinkedIn and Facebook is imageless. Also missing: Search Console and Bing verification. Sitemap (24 URLs, hreflang-paired), robots, schema graph and canonicals all verified live. Every primary pillar now has a real, indexable, bilingual page with per-page metadata + canonical (pre-launch product detail + placeholders stay noindex). Final points require live domain + inbound signals." },
+  { aspect: "Privacy & consent", current: 93, target: 97, note: "NEW 2026-09-20, after Fortune asked where the site told people about cookies \u2014 it did not, beyond a paragraph. Shipped: a one-time bottom bar (Accept and Decline identical in size and weight, neither amber, no X because not answering is not consent), a real gate that renders no analytics script until a yes, a permanent switch at /privacy#storage linked from every footer, a table naming all three stored items, Global Privacy Control honoured as a refusal, and a versioned record so a new category re-asks everyone. Verified end to end with a provider configured locally. Terms of use added 2026-09-20 in both languages: the conditions of a free seat, the recorded sessions, the voucher and what happens if its supply fails, whose work is whose, and the Dassault non-affiliation line a CSWA bootcamp needs before the user group reads it. Remaining: the controller line depends on the open business-entity question, and the published retention promises have to actually happen in February." },
   { aspect: "Security", current: 96, target: 96, note: "AT TARGET. Headers verified live, leak-free branded 404/500, no secrets. Contact form (R12) hardened: server-side validation of every field, honeypot, per-IP rate limiting, generic error codes, framework CSRF origin checks. Delivery endpoint live (Resend, keyed on the host); every form fails loudly rather than dropping a submission silently. Remaining pre-launch: security.txt." },
   { aspect: "Content depth", current: 94, target: 95, note: "Every primary pillar ships, bilingual, plus Resources, Community and Store. Three named testimonials with photographs on the home page, and twelve public talks on the founder page, each linked to its own event. Remaining: deeper per-item copy, a post per talk (the SEO lever), and Blog and Careers, which are still honest placeholders." },
-  { aspect: "Documentation", current: 99, target: 99, note: "AT TARGET. v1.5 (2026-09-20, after the review and the first real testimonials) — current with every locked decision and verified number. Phases 6 and 7 closed out; Cohort 0 opened as phase 8. The launch, the partnership, the ambassador programme and the revised window are in the decision log; the campaign itself is docs/cohort-0-campaign.md, the plan of record docs/launch-plan.md." },
+  { aspect: "Documentation", current: 99, target: 99, note: "AT TARGET. v1.8 (2026-09-20, after the Flovet review) \u2014 three of its five points adopted and two rejected with the reasoning kept, so neither half can be quietly re-litigated. Previously v1.7 (after the consent build) \u2014 docs/launch-blueprint.md gained B5 (consent), the seven-item wider sweep (DMARC, account 2FA and domain lock, an application backup, uptime monitoring, testimonial permissions, a link check, security.txt) and a re-weighted scorecard whose change is argued in the document rather than silently applied. Previously v1.6 (after the live launch audit) — docs/launch-blueprint.md is now the permission to go public: five blockers, a frozen scorecard out of 100, the launch-day runbook, the rollback procedure and the deploy budget through mid-November. Previously v1.5 (after the review and the first real testimonials) — current with every locked decision and verified number. Phases 6 and 7 closed out; Cohort 0 opened as phase 8. The launch, the partnership, the ambassador programme and the revised window are in the decision log; the campaign itself is docs/cohort-0-campaign.md, the plan of record docs/launch-plan.md." },
 ];

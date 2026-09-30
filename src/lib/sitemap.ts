@@ -151,7 +151,11 @@ export const siteTree: SiteNode[] = [
     label: "Community",
     href: "/community",
     status: "active",
-    placement: "footer",
+    // Primary since 2026-09-20. The Academy sells; the community is free
+    // and live today, and a visitor who cannot tell those apart reads the
+    // whole site as a paid course catalogue. Sixth nav item, which is the
+    // ceiling — nothing else may join without something leaving.
+    placement: "primary",
     desc: "Engineers, students & partners — forums, events, collaboration.",
   },
   {
@@ -240,6 +244,14 @@ export const siteTree: SiteNode[] = [
     status: "active",
     placement: "utility",
     desc: "What the forms collect, why, for how long, and how to have it deleted.",
+  },
+  {
+    key: "terms",
+    label: "Terms",
+    href: "/terms",
+    status: "active",
+    placement: "utility",
+    desc: "The rules of the site and of the training: a free seat's conditions, recorded sessions, the exam voucher, whose work is whose.",
   },
 ];
 

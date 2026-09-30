@@ -132,6 +132,8 @@ ambassadors. Cohort 1 announced on evidence, for January.
 - **Launch rule for both sites** (decided 2026-09-19): go live only when
   every gate below passes AND the site scores ≥ 80/100 on its frozen
   checklist. The dates are targets; the checklist permits the launch.
+  That checklist, the five remaining blockers, the launch-day runbook and
+  the rollback procedure are `docs/launch-blueprint.md`.
 - **Posting in public** (LinkedIn + X): `C:\4TUNHUBLAB.COM\docs\build-in-public.md`.
   Before the first post: domain bought, all handles secured (Wed 23 Sep).
   Series A starts on launch day.

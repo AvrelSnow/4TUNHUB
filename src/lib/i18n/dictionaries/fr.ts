@@ -36,6 +36,7 @@ const fr: Dictionary = {
     cohort: "Cohorte 0",
     waitlist: "Liste d'attente",
     privacy: "Confidentialité",
+    terms: "Conditions",
   },
 
   nav: {
@@ -58,8 +59,23 @@ const fr: Dictionary = {
     autoHint: "Suit votre horloge : clair dès 06 h, sombre dès 18 h.",
   },
 
+  /** Le bandeau de confidentialité, et sa version permanente sur /privacy. */
+  consent: {
+    banner: {
+      label: "Choix de confidentialité",
+      title: "Nous comptons les visites. Rien d'autre.",
+      body:
+        "Ce site ne dépose aucun cookie et ne constitue aucun profil vous concernant. Avec votre accord, nous comptons les pages vues de manière anonyme — la page, le pays, le type d'appareil et le site d'où vous venez — afin de savoir quels canaux atteignent réellement les ingénieurs. Rien qui vous identifie, rien qui soit vendu, rien qui soit transmis à des annonceurs.",
+      short:
+        "Aucun cookie, aucun profil. Pouvons-nous compter cette visite de manière anonyme ?",
+      accept: "Accepter",
+      decline: "Refuser",
+      more: "Ce que nous conservons",
+    },
+  },
+
   home: {
-    eyebrow: "Écosystème d'ingénierie · Dschang, Cameroun",
+    eyebrow: "Conception mécanique, simulation & formation CAO · Dschang, Cameroun",
     title: "Nous concevons des machines. Apprenez à le faire.",
     subtitle:
       "Conception mécanique, simulation par éléments finis et formation pratique en CAO, depuis Dschang au Cameroun. Chaque leçon vient d'une machine réellement construite.",
@@ -1127,7 +1143,7 @@ const fr: Dictionary = {
         { title: "Faire le travail", desc: "Rendre l'exercice de chaque semaine." },
         {
           title: "Partager le résultat",
-          desc: "Passer l'examen blanc final, partager votre note et donner un court témoignage.",
+          desc: "Passez l'examen blanc final, partagez votre score et enregistrez une courte vidéo — une demi-minute, vos propres mots, sur ce que vous savez faire aujourd'hui et que vous ne saviez pas faire en octobre.",
         },
       ],
       note: "Si l'engagement n'est pas tenu, la place revient à la personne suivante sur la liste d'attente.",
@@ -1419,34 +1435,148 @@ const fr: Dictionary = {
     title: "Confidentialité",
     updated: "Dernière mise à jour : 20 septembre 2026",
     intro:
-      "Ce site ne recueille des informations personnelles que lorsque vous nous les envoyez par un formulaire. Cette note dit ce que nous conservons, pourquoi, combien de temps, et comment le faire supprimer.",
+      "Ce site ne recueille de données personnelles que lorsque vous les transmettez par un formulaire, et n'enregistre presque rien dans votre navigateur. Cette note indique ce que nous conservons, pourquoi, combien de temps, et comment le faire effacer.",
     sections: [
       {
         title: "Ce que nous recueillons",
-        body: "Le formulaire de contact demande votre nom, votre e-mail et votre message. Une candidature à la Cohorte 0 demande aussi votre numéro WhatsApp, votre école ou employeur, votre version de SolidWorks et pourquoi vous voulez une place. La liste d'attente demande une adresse e-mail, un nom si vous voulez bien le donner, et les sujets dont vous voulez être prévenu.",
+        body: "Le formulaire de contact demande votre nom, votre adresse e-mail et votre message. Une candidature à la Cohorte 0 demande en outre votre numéro WhatsApp, votre école ou votre employeur, votre version de SolidWorks et les raisons de votre candidature. La liste d'attente demande une adresse e-mail, un nom si vous souhaitez le donner, et les sujets qui vous intéressent.",
       },
       {
         title: "Pourquoi",
-        body: "Pour vous répondre. Pour les candidatures, aussi pour sélectionner la cohorte et la faire fonctionner : les exercices hebdomadaires se font dans un groupe WhatsApp réservé aux participants retenus. Pour la liste d'attente, pour vous écrire quand ce que vous avez demandé ouvre — et pour rien d'autre.",
+        body: "Pour vous répondre. Pour les candidatures, également pour sélectionner la cohorte et la conduire : les exercices hebdomadaires se déroulent dans un groupe WhatsApp réservé aux personnes retenues. Pour la liste d'attente, pour vous écrire lorsque ce que vous attendez ouvre — et pour rien d'autre. Vous pouvez demander à en sortir en une ligne, à tout moment, et nous le faisons le jour où nous vous lisons.",
       },
       {
-        title: "Où cela va",
-        body: "Les envois sont remis à notre boîte de réception par un service d'e-mail, Resend. Nous ne vendons ni ne partageons vos informations, et nous ne vous inscrivons jamais à une liste de diffusion sans vous le demander.",
+        title: "Où elles vont",
+        body: "Trois prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
       },
       {
-        title: "Combien de temps",
-        body: "Les candidatures non retenues sont supprimées dans les trois mois. Les informations des participants sont conservées pendant la cohorte et douze mois après, sauf si vous demandez leur suppression plus tôt.",
+        title: "Durée de conservation",
+        body: "Les candidatures non retenues sont supprimées sous trois mois. Les coordonnées des participants sont conservées pendant la cohorte et douze mois après, sauf demande de suppression anticipée de votre part.",
       },
       {
-        title: "Cookies et suivi",
-        body: "Aucun cookie, et rien qui vous suive d'un site à l'autre. Votre choix Clair, Sombre ou Auto est enregistré dans votre navigateur et ne quitte jamais votre appareil. Nous comptons en revanche les visites : un outil d'analyse sans cookie enregistre la page, le pays, le type d'appareil et le site d'où vous venez, ainsi que trois événements anonymes — une inscription à la liste, une candidature, un message envoyé. Il ne conserve ni nom, ni adresse, ni rien qui identifie une personne, et rien n'est partagé avec des annonceurs.",
+        title: "Cookies",
+        body: "Aucun. Ni cookie publicitaire, ni cookie de mesure d'audience, ni cookie de notre fait. La liste complète de ce qui est enregistré dans votre navigateur — deux éléments, qui ne quittent jamais votre appareil — figure au bas de cette page, avec le réglage qui commande la seule chose facultative que nous fassions.",
       },
       {
         title: "Vos droits",
-        body: "Demandez-nous à tout moment de consulter, corriger ou supprimer ce que nous détenons sur vous.",
+        body: "Demandez-nous à tout moment de consulter, corriger, supprimer ou exporter ce que nous détenons sur vous, ou de vous y opposer. Écrivez à l'adresse ci-dessous : nous répondons sous trente jours, sans frais.",
+      },
+      {
+        title: "Qui en répond",
+        body: "4TUN Hub, Dschang, Cameroun. Donfack Fortune décide de ce qui est recueilli et en répond personnellement. Si vous résidez dans l'Union européenne ou au Royaume-Uni et estimez que nous avons mal traité vos données, vous pouvez également saisir votre autorité nationale de protection des données.",
+      },
+      {
+        title: "Si vous avez moins de 18 ans",
+        body: "Une partie de ce que nous enseignons s'adresse à des élèves du secondaire. Si vous avez moins de 18 ans, demandez l'accord d'un parent ou d'un tuteur avant de nous transmettre votre nom, votre e-mail ou votre numéro WhatsApp — et si quelque chose a été envoyé sans cet accord, dites-le-nous : nous l'effacerons.",
       },
     ],
+    storage: {
+      title: "Cookies et stockage",
+      intro:
+        "Ce site ne dépose aucun cookie — pas un seul, pas même le nôtre. Deux éléments sont enregistrés dans votre navigateur et ne quittent jamais votre appareil ; un seul élément est compté, et seulement si vous l'autorisez. C'est toute la liste.",
+      columns: {
+        what: "Quoi",
+        why: "Pourquoi",
+        kept: "Où c'est conservé",
+        refuse: "Peut-on le refuser ?",
+      },
+      rows: [
+        {
+          what: "Apparence",
+          key: "4tun.theme",
+          why: "Retient si vous avez choisi Clair, Sombre ou Auto, pour que le site vous obéisse à la page suivante.",
+          kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
+          refuse: "Il n'existe qu'à partir du moment où vous utilisez le réglage en pied de page. Effacer les données de votre navigateur le supprime.",
+        },
+        {
+          what: "Votre réponse à cette question",
+          key: "4tun.consent",
+          why: "Retient si vous avez accepté ou refusé, pour ne pas vous reposer la question à chaque page.",
+          kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
+          refuse: "Sans lui, il faudrait reposer la même question à chaque page. Effacer les données de votre navigateur le supprime.",
+        },
+        {
+          what: "Comptage anonyme des visites",
+          key: "Umami — aucun cookie, rien sur votre appareil",
+          why: "Quelles pages sont lues, depuis quel pays, sur quel type d'appareil et depuis quel site — ainsi que trois événements : une inscription à la liste, une candidature, un message envoyé.",
+          kept: "Sur les serveurs du prestataire de mesure, sous forme de comptages. Ni nom, ni adresse, rien qui identifie une personne.",
+          refuse: "Oui. Rien ne se déclenche tant que vous n'avez pas accepté, et vous pouvez le désactiver ici à tout moment.",
+        },
+      ],
+      control: {
+        label: "Choix de confidentialité",
+        categories: {
+          analytics: {
+            name: "Comptage anonyme des visites",
+            desc: "Nous permet de voir quelles pages sont lues et quels canaux amènent des ingénieurs ici. Aucun cookie, aucun profil, rien qui vous identifie.",
+          },
+          embeds: {
+            name: "Contenus intégrés",
+            desc: "Lecteurs vidéo et modules de réservation chargés depuis d'autres sociétés. Rien sur ce site n'en utilise pour l'instant.",
+          },
+        },
+        allow: "Autoriser",
+        refuse: "Refuser",
+        chosenOn: "Vous avez fait ce choix le",
+        notChosen: "Vous n'avez pas encore répondu : rien de facultatif ne fonctionne.",
+        gpc: "Votre navigateur émet un signal Global Privacy Control. Nous le traitons comme un refus : tout ce qui est facultatif est désactivé, et la question ne vous sera plus posée.",
+      },
+    },
     contact: "Écrire à",
+  },
+
+  terms: {
+    title: "Conditions d'utilisation",
+    updated: "Derni\u00e8re mise \u00e0 jour : 20 septembre 2026",
+    intro:
+      "Les r\u00e8gles de ce site et des formations que nous conduisons. \u00c9crites simplement, car des conditions que personne ne lit ne prot\u00e8gent personne.",
+    sections: [
+      {
+        title: "Qui nous sommes",
+        body: "4TUN Hub est une organisation d'ing\u00e9nierie \u00e9tablie \u00e0 Dschang, au Cameroun, fond\u00e9e et dirig\u00e9e par Donfack Fortune. \u00c9crire \u00e0 l'adresse indiqu\u00e9e en bas de page, c'est atteindre une personne, pas un guichet.",
+      },
+      {
+        title: "Ce qu'est ce site",
+        body: "Des informations sur nos services d'ing\u00e9nierie, nos formations et nos projets, ainsi que des formulaires pour nous \u00e9crire, candidater \u00e0 une cohorte et rejoindre une liste d'attente. Rien ici ne constitue un conseil d'ing\u00e9nierie sur lequel construire sans mission : les projets d\u00e9crivent des travaux men\u00e9s dans des conditions qui \u00e9taient les n\u00f4tres, pas les v\u00f4tres.",
+      },
+      {
+        title: "Une place en Cohorte 0",
+        body: "Les places sont gratuites et attribu\u00e9es sur s\u00e9lection, non par ordre d'arriv\u00e9e. Une place demande trois choses en retour : assister \u00e0 au moins 6 des 8 s\u00e9ances, rendre l'exercice hebdomadaire, puis passer l'examen blanc final, partager son r\u00e9sultat et enregistrer une courte vid\u00e9o. \u00c0 d\u00e9faut, la place revient \u00e0 la liste d'attente \u2014 c'est tout, et il n'y a rien \u00e0 payer \u00e0 aucun moment.",
+      },
+      {
+        title: "Les s\u00e9ances sont enregistr\u00e9es",
+        body: "Chaque s\u00e9ance en direct est enregistr\u00e9e afin que les absents puissent rattraper. Votre nom, votre voix et ce que vous partagez \u00e0 l'\u00e9cran peuvent y figurer, et ces enregistrements peuvent \u00eatre publi\u00e9s ou r\u00e9utilis\u00e9s dans nos enseignements. Si vous pr\u00e9f\u00e9rez ne pas appara\u00eetre, gardez la cam\u00e9ra \u00e9teinte et dites-le dans le groupe : nous n'insisterons pas, et cela ne vous co\u00fbte rien dans la cohorte.",
+      },
+      {
+        title: "Le bon d'examen",
+        body: "Toute personne qui termine la cohorte dans les conditions ci-dessus re\u00e7oit un bon d'examen CSWA sans frais. Ces bons nous sont fournis par l'interm\u00e9diaire du groupe d'utilisateurs SOLIDWORKS ; si cet approvisionnement change ou fait d\u00e9faut pour des raisons ind\u00e9pendantes de notre volont\u00e9, nous le dirons publiquement et imm\u00e9diatement \u2014 et nous n'aurons pris votre argent pour rien. Passer l'examen, et le r\u00e9ussir, reste votre affaire : nous vous y pr\u00e9parons et ne promettons rien quant au r\u00e9sultat.",
+      },
+      {
+        title: "Ce que vous nous envoyez",
+        body: "N'envoyez que ce qui vous appartient : ni le travail d'un employeur, ni celui d'un client ou d'un camarade, sans son accord. En nous adressant un t\u00e9moignage, vous nous autorisez \u00e0 le publier avec votre nom, votre fonction et, si vous en donnez une, votre photographie ou votre vid\u00e9o. Demandez-nous de le retirer \u00e0 tout moment : nous le ferons, y compris des pages d\u00e9j\u00e0 publi\u00e9es.",
+      },
+      {
+        title: "Ce qui est \u00e0 nous",
+        body: "Les textes, images, comptes rendus de projets, supports de cours et exercices de ce site appartiennent \u00e0 4TUN Hub ou aux personnes cr\u00e9dit\u00e9es. Lisez-les, citez-les avec un lien, partagez-les avec un coll\u00e8gue. Ne les revendez pas, ne les republiez pas comme les v\u00f4tres et n'enseignez pas un cours payant \u00e0 partir d'eux sans nous le demander \u2014 la r\u00e9ponse est souvent oui.",
+      },
+      {
+        title: "Aucune affiliation, et un mot sur les noms",
+        body: "SOLIDWORKS et CSWA sont des marques de Dassault Syst\u00e8mes. 4TUN Hub ne fait pas partie de Dassault Syst\u00e8mes, n'est pas approuv\u00e9 par eux et ne d\u00e9livre pas leurs certifications : nous pr\u00e9parons \u00e0 l'examen, que le candidat passe aupr\u00e8s de l'organisme certificateur. La Cohorte 0 est conduite avec le Douala City SOLIDWORKS User Group, un groupe communautaire.",
+      },
+      {
+        title: "Les sites des autres",
+        body: "Des liens m\u00e8nent notamment vers LinkedIn, YouTube, WhatsApp, Bevy, GrabCAD et Medium. Ce qui s'y passe rel\u00e8ve de leurs conditions, pas des n\u00f4tres.",
+      },
+      {
+        title: "Ce que nous ne promettons pas",
+        body: "Le site est fourni tel quel. Nous l'entretenons et corrigeons ce que nous trouvons, mais nous ne promettons ni une disponibilit\u00e9 de tous les instants ni l'absence de toute erreur. La formation gratuite est donn\u00e9e de bonne foi et sans garantie ; les prestations payantes rel\u00e8vent du contrat sign\u00e9 pour elles, non de cette page.",
+      },
+      {
+        title: "Modifications, et le droit applicable",
+        body: "Ces conditions peuvent \u00e9voluer avec l'\u00e9cosyst\u00e8me. La date ci-dessus indique la derni\u00e8re fois, et un changement ne s'applique jamais r\u00e9troactivement \u00e0 une cohorte en cours. Le droit camerounais s'applique, et nous pr\u00e9f\u00e9rons de loin r\u00e9gler toute difficult\u00e9 en nous \u00e9crivant d'abord.",
+      },
+    ],
+    contact: "Une question sur tout ceci \u2014 \u00e9crivez \u00e0",
   },
 
   stub: {

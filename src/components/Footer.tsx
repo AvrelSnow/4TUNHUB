@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "./ui/Container";
 import { Logo } from "./ui/Logo";
 import { ThemeControl } from "./ThemeControl";
+import { CONSENT_ANCHOR } from "@/lib/consent";
 import { EmailCapture } from "./EmailCapture";
 import { flattenTree } from "@/lib/sitemap";
 import { CONTACT_EMAIL, SITE_LOCATION } from "@/lib/site";
@@ -160,6 +161,18 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link href={localizeHref(locale, "/privacy")} className="transition-colors hover:text-foreground">
               {dict.routes.privacy}
+            </Link>
+            {/* Withdrawing permission has to be as easy as giving it, so the
+                switch is one click from every page, not only from the bar
+                that asked once. */}
+            <Link
+              href={localizeHref(locale, `/privacy#${CONSENT_ANCHOR}`)}
+              className="transition-colors hover:text-foreground"
+            >
+              {dict.privacy.storage.title}
+            </Link>
+            <Link href={localizeHref(locale, "/terms")} className="transition-colors hover:text-foreground">
+              {dict.routes.terms}
             </Link>
             <ThemeControl strings={dict.theme} />
           </div>
