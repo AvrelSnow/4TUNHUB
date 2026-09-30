@@ -43,7 +43,7 @@ export const pageSpecs: PageSpec[] = [
     title: "Home",
     priority: "P0",
     objective:
-      "In five seconds, make a first-time visitor understand 4TUN Hub is an engineering ECOSYSTEM (not a personal portfolio), then route them to the right pillar.",
+      "In five seconds, make a first-time visitor understand 4TUNHub is an engineering ECOSYSTEM (not a personal portfolio), then route them to the right pillar.",
     audience:
       "First-time visitors: practicing engineers, students, companies, and potential partners.",
     sections: [
@@ -77,7 +77,7 @@ export const pageSpecs: PageSpec[] = [
     audience:
       "Companies, engineering firms, and entrepreneurs needing mechanical design, FEA, or renewable-energy consulting.",
     sections: [
-      "Hero — what 4TUN Hub engineers, in one line",
+      "Hero — what 4TUNHub engineers, in one line",
       "Offerings — Mechanical design · FEA/Simulation · Renewable-energy systems · Technical consulting (each: outcome, not just feature)",
       "How we work — the engagement process (discovery → delivery)",
       "Proof — linked case studies from /projects",
@@ -127,10 +127,10 @@ export const pageSpecs: PageSpec[] = [
     priority: "P0",
     objective:
       "Tell the ORGANIZATION's story (mission, vision) first, then present the founder as the credibility behind it.",
-    audience: "Anyone deciding whether to trust 4TUN Hub — clients, partners, students, press.",
+    audience: "Anyone deciding whether to trust 4TUNHub — clients, partners, students, press.",
     sections: [
       "Hero — mission in one sentence",
-      "Vision — where 4TUN Hub is heading",
+      "Vision — where 4TUNHub is heading",
       "Values / principles",
       "Timeline — the journey so far",
       "Team & Partners — (placeholders until real)",
@@ -162,7 +162,7 @@ export const pageSpecs: PageSpec[] = [
       "Résumé — downloadable",
       "Media — talks, features, press",
     ],
-    primaryCTA: "Download résumé / Work with 4TUN Hub → /contact",
+    primaryCTA: "Download résumé / Work with 4TUNHub → /contact",
     contentSource:
       "donfackfortune.me: roles, CAMRAIL 319B FCFA rail modernization, teaching, SolidWorks facilitation.",
     dependencies: ["Résumé PDF asset", "/projects"],
@@ -225,7 +225,7 @@ export const pageSpecs: PageSpec[] = [
     title: "Research",
     priority: "P1",
     objective:
-      "Establish 4TUN Hub's R&D and thought leadership in renewable energy and sustainability.",
+      "Establish 4TUNHub's R&D and thought leadership in renewable energy and sustainability.",
     audience: "Researchers, partners, students, and industry followers.",
     sections: [
       "Hero — research with industrial purpose",
@@ -251,7 +251,7 @@ export const pageSpecs: PageSpec[] = [
       "Communicate the product vision and capture early interest before products ship.",
     audience: "Engineers, students, and companies who would use the tools.",
     sections: [
-      "Hero — the product vision of 4TUN Hub",
+      "Hero — the product vision of 4TUNHub",
       "Product cards — Educational Assistant, Digital Twin, Mechanical AI",
       "Status & roadmap — honest build stage per product",
       "Early-access CTA — waitlist",
@@ -347,7 +347,7 @@ export const phases: Phase[] = [
     items: [
       "Domain ✓ · Netlify + Resend ✓ · deployed and serving ✓ (audited live 2026-09-20: every route 200, www→apex 301, headers verified)",
       "Email capture on every page ✓ · external design review actioned ✓ · testimonials ✓ · talks ✓",
-      "B1 — no og:image on any page: the card exists at /opengraph-image but nothing points at it, and it is 731 KB",
+      "B1 ✓ 2026-09-30 — og:image on every page (OG_IMAGE in site.ts, carried by all five code-defined openGraph objects); the card is served as an 80 KB JPEG instead of a 731 KB PNG. Still to do: a dedicated Cohort 0 card",
       "B2 — form delivery never tested from the live domain, EN or FR",
       "B3 — analytics still unconfigured on the host (zero provider references in the served HTML)",
       "B4 — confirm the two LinkedIn company URLs",
@@ -363,10 +363,12 @@ export const phases: Phase[] = [
     name: "Cohort 0",
     status: "next",
     goal:
-      "Turn the launch into twenty seated students and, by mid-November, the first real evidence 4TUN Hub has ever had: a pass rate and testimonials.",
+      "Turn the launch into twenty seated students and, by mid-November, the first real evidence 4TUNHub has ever had: a pass rate and testimonials.",
     items: [
+      "Content engine + launch campaign ✓ (docs/content-engine.md, docs/launch-campaign.md)",
       "Ambassador programme (10, selected by a 48-hour task)",
       "Seven campaign cards, one a day ✓",
+      "Partner reveal: MKV Academy + Benin SWUG (gated on their assets)",
       "Applications close 11 October",
       "Eight sessions, 21 Oct – 13 Nov",
       "Results, testimonials, then Cohort 1 on evidence",
@@ -487,7 +489,7 @@ export const decisions: Decision[] = [
   },
   {
     decision:
-      "A seat has conditions, stated on the page before the form asks for anything: join the SWUG on Bevy, follow it on LinkedIn, follow 4TUN Hub on LinkedIn and YouTube, then apply and send a screenshot of each membership.",
+      "A seat has conditions, stated on the page before the form asks for anything: join the SWUG on Bevy, follow it on LinkedIn, follow 4TUNHub on LinkedIn and YouTube, then apply and send a screenshot of each membership.",
     rationale:
       "A free seat that costs nothing to claim is a seat someone does not show up for. The application form takes a LinkedIn profile, because that is what the two follows are checked against, and the confirmation screen asks for the screenshots while the applicant is still looking at it \u2014 an instruction buried in an email nobody opens is not an instruction. Screenshots come by email because the form takes no uploads.",
     status: "locked",
@@ -531,7 +533,7 @@ export const decisions: Decision[] = [
     decision:
       "Three real testimonials shipped on the home page (2026-09-20): Mikel K. Ngueajio, Tanga Jatsa Lewouhdem Fran\u00e7oise Maelle and Tatsinda Mathias Allan — named, photographed, and each carrying the role that makes the quote mean something.",
     rationale:
-      "Collected by Fortune the day the reviewer asked for them, which is how fast this can move when the community is real. The card shows ONE sentence, taken whole from the top of what each person wrote, because a card is read in two seconds and three paragraphs on it are three paragraphs nobody finishes; the complete statement is kept in `full` so shortening the card never loses the words. ONE edit was made and is recorded in the file rather than hidden: all three wrote \u201cFortune Hub\u201d, the name people use for him rather than the organisation's, and it is printed as \u201c4TUN Hub\u201d. Worth confirming that substitution with each of them.",
+      "Collected by Fortune the day the reviewer asked for them, which is how fast this can move when the community is real. The card shows ONE sentence, taken whole from the top of what each person wrote, because a card is read in two seconds and three paragraphs on it are three paragraphs nobody finishes; the complete statement is kept in `full` so shortening the card never loses the words. ONE edit was made and is recorded in the file rather than hidden: all three wrote \u201cFortune Hub\u201d, the name people use for him rather than the organisation's, and it is printed as \u201c4TUNHub\u201d. Worth confirming that substitution with each of them.",
     status: "locked",
   },
   {
@@ -601,7 +603,7 @@ export const decisions: Decision[] = [
     decision:
       "The privacy note now names the controller, the three processors (Netlify, Resend, Umami), a thirty-day answer, the right to complain, and a line for applicants under 18. security.txt shipped.",
     rationale:
-      "A note that says what is collected but not who answers for it leaves the one question a serious client or a parent actually asks. The controller line is \u20184TUN Hub, Dschang \u2014 Donfack Fortune decides and answers personally\u2019, which is true today and is the line that changes if the business-entity question, open since 18 September, is ever closed. The retention promises \u2014 three months for applications not selected, twelve after the cohort \u2014 are now published, which means they have to happen in February rather than be intended. The under-18 line exists because the cohort is taught to secondary-school students and the form asks for a phone number. security.txt closes a gate the scorecard has carried since July.",
+      "A note that says what is collected but not who answers for it leaves the one question a serious client or a parent actually asks. The controller line is \u20184TUNHub, Dschang \u2014 Donfack Fortune decides and answers personally\u2019, which is true today and is the line that changes if the business-entity question, open since 18 September, is ever closed. The retention promises \u2014 three months for applications not selected, twelve after the cohort \u2014 are now published, which means they have to happen in February rather than be intended. The under-18 line exists because the cohort is taught to secondary-school students and the form asks for a phone number. security.txt closes a gate the scorecard has carried since July.",
     status: "locked",
   },
   {
@@ -632,6 +634,20 @@ export const decisions: Decision[] = [
       "`applicationsOpen()` is evaluated while each page is prerendered, so /academy, /academy/cohort-0, /waitlist and the screenshots page will keep saying applications are open after they close on 11 October. Only the ribbon re-reads the clock in the browser, and apply-action.ts already refuses late submissions — so no bad data can enter, but the site would be lying to its readers. Moving the checks client-side would cost a 15-credit deploy now to save one later, and the ‘applications closed, Cohort 1 in January’ copy needs a deploy anyway. So: rebuild, in the same push, on the 12th.",
     status: "locked",
   },
+  {
+    decision:
+      "The brand is written 4TUNHub (2026-09-27): one word, Hub in title case, in every piece of copy, metadata, schema and caption. Not “4TUN Hub”, not “Fortune Hub”.",
+    rationale:
+      "Fortune's direction. The site had drifted into two spellings (141 of “4TUN Hub” against a handful of “4TUNHub”), and auto-captions on video will produce a third. One spelling is what makes the name searchable and ownable. The old spelling is kept only as a search keyword in site.ts so anyone who types it still lands here. The logo artwork and the @4TUNHUB YouTube handle are official assets and stay as they are.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Launch sequence (2026-09-27): two days of platform-first posts, Cohort 0 opens on day three with Douala City SWUG, and the new partners (MKV Academy, Benin SWUG) are revealed mid-window, gated on their assets. Proposed instead of five days of platform-only posts before partners and cohort.",
+    rationale:
+      "The live site's ribbon already announces the cohort on every page, so platform-only posts would send people to a page whose first line is the thing the posts avoid. Five quiet days would spend 36% of a fourteen-day window, and the four entry conditions punish late applicants. The cohort is the most concrete proof of what 4TUNHub is, and putting the partner reveal mid-window means the campaign no longer depends on other people's response times. 11 October stays the application deadline (it is a Sunday; sessions are midweek), and session 1 stays 21 October. Channels are LinkedIn and X (no TikTok), and Fortune never appears on camera: his photograph is on the postcards only, and videos are screen recordings with his voice. Full reasoning in docs/launch-campaign.md; the reusable system in docs/content-engine.md and the 4tunhub-content project skill.",
+    status: "proposed",
+  },
 ];
 
 /* ============================================================
@@ -658,7 +674,7 @@ export const logoRules: Rule[] = [
   { t: "Fixed sizes, a real floor", d: "sm 28px (minimum — never smaller) · md 36px (nav/footer) · lg 48px (hero). No arbitrary heights." },
   { t: "Clear-space", d: "Leave ≥ the roundel's radius of empty space on all sides. The logo never touches text or edges." },
   { t: "Hover & focus", d: "As a home link: a subtle opacity dip on hover, a visible focus ring. Never stretch, recolor, or rotate the artwork." },
-  { t: "Always named", d: "Every instance carries aria-label \"4TUN Hub — home\" (link) or alt \"4TUN Hub\" (image)." },
+  { t: "Always named", d: "Every instance carries aria-label \"4TUNHub — home\" (link) or alt \"4TUNHub\" (image)." },
 ];
 
 /* ============================================================
@@ -918,7 +934,7 @@ export const precisionRules: Rule[] = [
 export const craftRules: Rule[] = [
   {
     t: "Real work, not stock",
-    d: "Every visual comes from actual 4TUN Hub output: FSAE CAD renders, FEA stress plots, the shredder build, CAMRAIL context — or custom diagrams drawn in the brand style. Stock photos and generic 3D illustrations are banned.",
+    d: "Every visual comes from actual 4TUNHub output: FSAE CAD renders, FEA stress plots, the shredder build, CAMRAIL context — or custom diagrams drawn in the brand style. Stock photos and generic 3D illustrations are banned.",
   },
   {
     t: "Specificity over superlatives",

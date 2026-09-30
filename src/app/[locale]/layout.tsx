@@ -14,7 +14,7 @@ import { ConsentBanner } from "@/components/ConsentBanner";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { CONSENT_ANCHOR } from "@/lib/consent";
 import { localizeHref } from "@/lib/i18n/routing";
-import { SITE_URL, SITE_NAME, SITE_KEYWORDS, organizationJsonLd } from "@/lib/site";
+import { SITE_URL, SITE_NAME, SITE_KEYWORDS, OG_IMAGE, organizationJsonLd } from "@/lib/site";
 import { themeResolverScript } from "@/lib/theme";
 import { locales, isLocale, localeTag, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -47,11 +47,13 @@ export async function generateMetadata({
       description: dict.meta.description,
       url: `${SITE_URL}/${locale}`,
       locale: localeTag[locale],
+      images: [OG_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title: dict.meta.title,
       description: dict.meta.description,
+      images: [OG_IMAGE],
     },
     robots: { index: true, follow: true },
     alternates: {

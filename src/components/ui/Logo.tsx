@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 
 /**
  * ============================================================
- * 4TUN Hub logo — the one component for the brand mark (R4).
+ * 4TUNHub logo — the one component for the brand mark (R4).
  * ============================================================
  * Standards enforced here so usage stays consistent:
  *  - SVG-only artwork (infinite scale, crisp at every density).
@@ -64,19 +64,19 @@ export function Logo({
   const art =
     src.light === src.dark ? (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={src.dark} alt="4TUN Hub" className={cn(height, "w-auto", className)} />
+      <img src={src.dark} alt="4TUNHub" className={cn(height, "w-auto", className)} />
     ) : (
       <>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src.dark}
-          alt="4TUN Hub"
+          alt="4TUNHub"
           className={cn("only-dark", height, "w-auto", className)}
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src.light}
-          alt="4TUN Hub"
+          alt="4TUNHub"
           className={cn("only-light", height, "w-auto", className)}
         />
       </>
@@ -89,7 +89,7 @@ export function Logo({
   return (
     <Link
       href={href}
-      aria-label="4TUN Hub — home"
+      aria-label="4TUNHub — home"
       className="inline-flex items-center rounded-md transition-opacity duration-200 hover:opacity-80"
     >
       {art}

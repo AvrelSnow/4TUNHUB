@@ -7,9 +7,9 @@ import type { Dictionary } from "./en";
 
 const fr: Dictionary = {
   meta: {
-    title: "4TUN Hub — Écosystème d'ingénierie",
+    title: "4TUNHub — Écosystème d'ingénierie",
     description:
-      "4TUN Hub est un écosystème d'ingénierie à Dschang, au Cameroun — conception mécanique, simulation par éléments finis, conseil en énergies renouvelables, formation technique et recherche en ingénierie, fondé par Donfack Fortune.",
+      "4TUNHub est un écosystème d'ingénierie à Dschang, au Cameroun — conception mécanique, simulation par éléments finis, conseil en énergies renouvelables, formation technique et recherche en ingénierie, fondé par Donfack Fortune.",
   },
 
   a11y: {
@@ -104,7 +104,7 @@ const fr: Dictionary = {
     doEyebrow: "Ce que nous faisons",
     doTitle: "Quatre façons dont l'écosystème crée de la valeur.",
     doIntro:
-      "Chacune est un pan actif de 4TUN Hub aujourd'hui — pas une promesse. Explorez celle qu'il vous faut.",
+      "Chacune est un pan actif de 4TUNHub aujourd'hui — pas une promesse. Explorez celle qu'il vous faut.",
 
     pillars: {
       community:
@@ -116,7 +116,7 @@ const fr: Dictionary = {
       research: "Énergies renouvelables, durabilité et R&D appliquée, issues du terrain.",
       projects:
         "Études de cas d'ingénierie réelles — la preuve derrière l'écosystème.",
-      about: "L'organisation et le fondateur derrière 4TUN Hub.",
+      about: "L'organisation et le fondateur derrière 4TUNHub.",
     },
 
     testimonials: {
@@ -128,13 +128,13 @@ const fr: Dictionary = {
       eyebrow: "Preuve",
       title: "De l'ingénierie livrée, pas des diapositives.",
       intro:
-        "Quelques-uns des projets derrière 4TUN Hub — conçus, simulés et construits.",
+        "Quelques-uns des projets derrière 4TUNHub — conçus, simulés et construits.",
       viewAll: "Voir tous les projets",
     },
 
     founder: {
       eyebrow: "Le fondateur",
-      line: "4TUN Hub est fondé par Donfack Fortune — ingénieur mécanicien, spécialiste de l'énergie et enseignant, ancien ingénieur mécanicien senior chez CAMRAIL, le chemin de fer national du Cameroun.",
+      line: "4TUNHub est fondé par Donfack Fortune — ingénieur mécanicien, spécialiste de l'énergie et enseignant, ancien ingénieur mécanicien senior chez CAMRAIL, le chemin de fer national du Cameroun.",
       cta: "Lire son parcours",
     },
 
@@ -142,7 +142,7 @@ const fr: Dictionary = {
       eyebrow: "À venir",
       title: "L'écosystème ne cesse de grandir.",
       intro:
-        "De nouveaux pans de 4TUN Hub s'ouvrent dès qu'ils sont prêts — sans refonte, juste plus de valeur.",
+        "De nouveaux pans de 4TUNHub s'ouvrent dès qu'ils sont prêts — sans refonte, juste plus de valeur.",
       items: [
         { key: "resources", title: "Ressources", desc: "E-books, modèles et références d'ingénierie." },
         { key: "community", title: "Communauté", desc: "Un espace où ingénieurs et étudiants construisent ensemble. Le groupe est déjà ouvert." },
@@ -155,7 +155,7 @@ const fr: Dictionary = {
     conversion: {
       title: "Un problème d'ingénierie qui mérite d'être résolu ?",
       subtitle:
-        "Lancez un projet avec 4TUN Hub — de la conception mécanique et la simulation aux systèmes énergétiques et à la formation.",
+        "Lancez un projet avec 4TUNHub — de la conception mécanique et la simulation aux systèmes énergétiques et à la formation.",
       primaryCta: "Lancer un projet",
       secondaryCta: "Découvrir les services",
     },
@@ -480,9 +480,9 @@ const fr: Dictionary = {
   },
 
   about: {
-    eyebrow: "À propos de 4TUN Hub",
+    eyebrow: "À propos de 4TUNHub",
     title: "Un écosystème d'ingénierie, bâti sur la pratique réelle.",
-    lead: "4TUN Hub réunit services d'ingénierie, formation, recherche et produits en un seul lieu — et rend une ingénierie de haut niveau concrète dans le contexte camerounais et africain au sens large.",
+    lead: "4TUNHub réunit services d'ingénierie, formation, recherche et produits en un seul lieu — et rend une ingénierie de haut niveau concrète dans le contexte camerounais et africain au sens large.",
     missionEyebrow: "Mission",
     mission:
       "Transformer le savoir en ingénierie en solutions réellement constructibles, entretenables et transmissibles là où on en a le plus besoin.",
@@ -514,7 +514,7 @@ const fr: Dictionary = {
       awards: "Prix & distinctions",
       connect: "Contact",
     },
-    portfolioIntro: "Les projets d'ingénierie derrière 4TUN Hub — chacun documenté sous forme d'étude de cas complète.",
+    portfolioIntro: "Les projets d'ingénierie derrière 4TUNHub — chacun documenté sous forme d'étude de cas complète.",
 
     talks: {
       title: "Conférences & sessions",
@@ -537,7 +537,7 @@ const fr: Dictionary = {
     eyebrow: "Communauté · En ligne",
     title: "Ingénieurs, étudiants et créateurs — déjà à l'œuvre ensemble.",
     subtitle:
-      "4TUN Hub n'est pas qu'un studio. C'est une communauté grandissante, au Cameroun et au-delà — un groupe WhatsApp ouvert, une infolettre d'ingénierie suivie par 3 200 lecteurs et un groupe d'utilisateurs SolidWorks. Chacun y est le bienvenu.",
+      "4TUNHub n'est pas qu'un studio. C'est une communauté grandissante, au Cameroun et au-delà — un groupe WhatsApp ouvert, une infolettre d'ingénierie suivie par 3 200 lecteurs et un groupe d'utilisateurs SolidWorks. Chacun y est le bienvenu.",
     primaryCta: "Rejoindre la communauté WhatsApp",
     secondaryCta: "Suivre sur LinkedIn",
 
@@ -590,7 +590,7 @@ const fr: Dictionary = {
   },
 
   academy: {
-    eyebrow: "4TUN Hub Academy",
+    eyebrow: "4TUNHub Academy",
     title: "Apprendre une ingénierie qui se concrétise.",
     subtitle:
       "Une formation pratique en CAO, simulation et systèmes énergétiques — enseignée à partir de projets réellement livrés, pour les ingénieurs et les étudiants au Cameroun et au-delà.",
@@ -718,7 +718,7 @@ const fr: Dictionary = {
     initiativesEyebrow: "Initiatives",
     initiativesTitle: "Une recherche qui quitte le papier.",
     initiativesBody:
-      "Les résultats reviennent directement dans les services, les machines et les cours de 4TUN Hub — la recherche se justifie par des livrables réels, pas seulement par des publications.",
+      "Les résultats reviennent directement dans les services, les machines et les cours de 4TUNHub — la recherche se justifie par des livrables réels, pas seulement par des publications.",
 
     cta: {
       title: "Un problème de recherche qui mérite d'être résolu ?",
@@ -731,7 +731,7 @@ const fr: Dictionary = {
 
   products: {
     eyebrow: "Produits",
-    title: "Les logiciels que 4TUN Hub construit.",
+    title: "Les logiciels que 4TUNHub construit.",
     subtitle:
       "Des outils d'ingénierie et d'éducation pour les réalités africaines — en développement actif. Rien ici n'est vendu avant d'être prêt ; voici la feuille de route, présentée honnêtement.",
     primaryCta: "Rejoindre la liste d'attente",
@@ -776,13 +776,13 @@ const fr: Dictionary = {
     roadmapEyebrow: "Comment nous livrons",
     roadmapTitle: "Construit à découvert, publié une fois prêt.",
     roadmapBody:
-      "De nouveaux outils s'intègrent à ce pilier sans refonte — 4TUN Hub est conçu comme un écosystème extensible. Nous préférons livrer un produit qui fonctionne que trois qui ne fonctionnent pas.",
+      "De nouveaux outils s'intègrent à ce pilier sans refonte — 4TUNHub est conçu comme un écosystème extensible. Nous préférons livrer un produit qui fonctionne que trois qui ne fonctionnent pas.",
 
     detail: {
       status: "Statut",
       backToProducts: "Tous les produits",
       waitlist: "Rejoindre la liste d'attente",
-      body: "Ce produit figure sur la feuille de route de 4TUN Hub. Rejoignez la liste d'attente et nous vous contacterons dès qu'il y aura quelque chose de concret à essayer.",
+      body: "Ce produit figure sur la feuille de route de 4TUNHub. Rejoignez la liste d'attente et nous vous contacterons dès qu'il y aura quelque chose de concret à essayer.",
     },
 
     cta: {
@@ -798,7 +798,7 @@ const fr: Dictionary = {
     eyebrow: "Ressources",
     title: "Des ressources d'ingénierie, gratuites et concrètes.",
     subtitle:
-      "Références, modèles CAO, études de cas et publications issus du travail réel de 4TUN Hub — certaines disponibles dès aujourd'hui, d'autres à venir. Pensées pour être utiles, pas verrouillées.",
+      "Références, modèles CAO, études de cas et publications issus du travail réel de 4TUNHub — certaines disponibles dès aujourd'hui, d'autres à venir. Pensées pour être utiles, pas verrouillées.",
     primaryCta: "Lire The REM",
     secondaryCta: "Rejoindre la communauté",
 
@@ -867,7 +867,7 @@ const fr: Dictionary = {
     eyebrow: "Boutique",
     title: "Le commerce, vendu là où c'est logique.",
     subtitle:
-      "4TUN Hub n'a pas de boutique séparée. Quand quelque chose est en vente — un cours, un e-book, un outil — vous l'achetez là où vous le trouvez. Cette page réunit simplement tout ce qui est achetable en une seule vue.",
+      "4TUNHub n'a pas de boutique séparée. Quand quelque chose est en vente — un cours, un e-book, un outil — vous l'achetez là où vous le trouvez. Cette page réunit simplement tout ce qui est achetable en une seule vue.",
     primaryCta: "Explorer l'écosystème",
     secondaryCta: "Être prévenu",
 
@@ -944,7 +944,7 @@ const fr: Dictionary = {
     minRead: "min de lecture",
     originallyOn: "Publié à l'origine sur",
     sources: {
-      native: "4TUN Hub",
+      native: "4TUNHub",
       medium: "Medium",
       rem: "The REM",
     } as Record<string, string>,
@@ -969,7 +969,7 @@ const fr: Dictionary = {
     eyebrow: "Carrières",
     title: "Personne n'y travaille encore.",
     subtitle:
-      "4TUN Hub repose aujourd'hui sur son seul fondateur et ne génère pas encore de revenus. Aucun salaire à proposer, donc aucune candidature à déposer — et inventer des postes pour paraître plus grand ferait perdre leur temps à ceux qui en ont le moins à perdre. Voici donc la situation réelle, et les trois portes qui sont véritablement ouvertes.",
+      "4TUNHub repose aujourd'hui sur son seul fondateur et ne génère pas encore de revenus. Aucun salaire à proposer, donc aucune candidature à déposer — et inventer des postes pour paraître plus grand ferait perdre leur temps à ceux qui en ont le moins à perdre. Voici donc la situation réelle, et les trois portes qui sont véritablement ouvertes.",
     primaryCta: "Rejoindre la communauté",
     secondaryCta: "Proposer une collaboration",
 
@@ -1036,7 +1036,7 @@ const fr: Dictionary = {
     entry: {
       community: {
         title: "La communauté",
-        desc: "Un groupe WhatsApp ouvert d'ingénieurs et d'étudiants — sans candidature ni filtrage. L'essentiel de ce que deviendra 4TUN Hub viendra de ceux qui s'y trouvent déjà.",
+        desc: "Un groupe WhatsApp ouvert d'ingénieurs et d'étudiants — sans candidature ni filtrage. L'essentiel de ce que deviendra 4TUNHub viendra de ceux qui s'y trouvent déjà.",
         cta: "Rejoindre sur WhatsApp",
       },
       academy: {
@@ -1073,7 +1073,7 @@ const fr: Dictionary = {
     metaDescription:
       "Un bootcamp gratuit de huit séances pour préparer le CSWA, en direct et en anglais, animé par Donfack Fortune avec Douala City SWUG. 20 places sur candidature et un bon d'examen offert à l'arrivée. Octobre–novembre 2026.",
     back: "Académie",
-    eyebrow: "Académie 4TUN Hub · Cohorte 0",
+    eyebrow: "Académie 4TUNHub · Cohorte 0",
     title: "Bootcamp CSWA. Cohorte 0.",
     partner: "Organisé avec le Douala City SOLIDWORKS User Group",
     subtitle:
@@ -1168,7 +1168,7 @@ const fr: Dictionary = {
           desc: "C'est là que le groupe publie ses événements et le travail de ses membres.",
         },
         follow: {
-          title: "Suivre 4TUN Hub",
+          title: "Suivre 4TUNHub",
           desc: "Sur LinkedIn et sur YouTube. Les résultats de la Cohorte 0, et l'ouverture de la Cohorte 1, y sont annoncés en premier.",
         },
         proof: {
@@ -1179,8 +1179,8 @@ const fr: Dictionary = {
       links: {
         bevy: "Ouvrir Bevy",
         swugLinkedin: "Douala City SWUG sur LinkedIn",
-        hubLinkedin: "4TUN Hub sur LinkedIn",
-        youtube: "4TUN Hub sur YouTube",
+        hubLinkedin: "4TUNHub sur LinkedIn",
+        youtube: "4TUNHub sur YouTube",
         proof: "Envoyer les captures",
       },
     },
@@ -1252,7 +1252,7 @@ const fr: Dictionary = {
         placeholder: "Où vous en êtes avec SolidWorks aujourd'hui, et ce que le CSWA changerait pour vous.",
         hint: "Deux ou trois phrases suffisent.",
       },
-      consent: "J'accepte que 4TUN Hub conserve ces informations pour étudier ma candidature.",
+      consent: "J'accepte que 4TUNHub conserve ces informations pour étudier ma candidature.",
       privacy: "Lire la note de confidentialité",
       submit: "Envoyer ma candidature",
       submitting: "Envoi…",
@@ -1335,7 +1335,7 @@ const fr: Dictionary = {
     eyebrow: "Liste d'attente",
     title: "Être prévenu à l'ouverture.",
     subtitle:
-      "L'essentiel de l'écosystème 4TUN Hub est encore en construction. Choisissez ce qui vous intéresse et nous écrirons quand ce sera prêt — pas avant.",
+      "L'essentiel de l'écosystème 4TUNHub est encore en construction. Choisissez ce qui vous intéresse et nous écrirons quand ce sera prêt — pas avant.",
 
     openNow: {
       badge: "Ouvert maintenant",
@@ -1357,7 +1357,7 @@ const fr: Dictionary = {
         "Choisissez-en autant que vous voulez. Nous n'écrivons que sur ce que vous cochez ici.",
       tracks: {
         lab: {
-          title: "4TUN Hub Lab",
+          title: "4TUNHub Lab",
           desc: "Une salle de sport de l'ingénierie : un vrai problème de conception avec vos propres chiffres, résolu à la main, modélisé en CAO, puis corrigé sur la géométrie du fichier que vous déposez.",
           when: "Bêta en décembre 2026",
         },
@@ -1463,7 +1463,7 @@ const fr: Dictionary = {
       },
       {
         title: "Qui en répond",
-        body: "4TUN Hub, Dschang, Cameroun. Donfack Fortune décide de ce qui est recueilli et en répond personnellement. Si vous résidez dans l'Union européenne ou au Royaume-Uni et estimez que nous avons mal traité vos données, vous pouvez également saisir votre autorité nationale de protection des données.",
+        body: "4TUNHub, Dschang, Cameroun. Donfack Fortune décide de ce qui est recueilli et en répond personnellement. Si vous résidez dans l'Union européenne ou au Royaume-Uni et estimez que nous avons mal traité vos données, vous pouvez également saisir votre autorité nationale de protection des données.",
       },
       {
         title: "Si vous avez moins de 18 ans",
@@ -1533,7 +1533,7 @@ const fr: Dictionary = {
     sections: [
       {
         title: "Qui nous sommes",
-        body: "4TUN Hub est une organisation d'ing\u00e9nierie \u00e9tablie \u00e0 Dschang, au Cameroun, fond\u00e9e et dirig\u00e9e par Donfack Fortune. \u00c9crire \u00e0 l'adresse indiqu\u00e9e en bas de page, c'est atteindre une personne, pas un guichet.",
+        body: "4TUNHub est une organisation d'ing\u00e9nierie \u00e9tablie \u00e0 Dschang, au Cameroun, fond\u00e9e et dirig\u00e9e par Donfack Fortune. \u00c9crire \u00e0 l'adresse indiqu\u00e9e en bas de page, c'est atteindre une personne, pas un guichet.",
       },
       {
         title: "Ce qu'est ce site",
@@ -1557,11 +1557,11 @@ const fr: Dictionary = {
       },
       {
         title: "Ce qui est \u00e0 nous",
-        body: "Les textes, images, comptes rendus de projets, supports de cours et exercices de ce site appartiennent \u00e0 4TUN Hub ou aux personnes cr\u00e9dit\u00e9es. Lisez-les, citez-les avec un lien, partagez-les avec un coll\u00e8gue. Ne les revendez pas, ne les republiez pas comme les v\u00f4tres et n'enseignez pas un cours payant \u00e0 partir d'eux sans nous le demander \u2014 la r\u00e9ponse est souvent oui.",
+        body: "Les textes, images, comptes rendus de projets, supports de cours et exercices de ce site appartiennent \u00e0 4TUNHub ou aux personnes cr\u00e9dit\u00e9es. Lisez-les, citez-les avec un lien, partagez-les avec un coll\u00e8gue. Ne les revendez pas, ne les republiez pas comme les v\u00f4tres et n'enseignez pas un cours payant \u00e0 partir d'eux sans nous le demander \u2014 la r\u00e9ponse est souvent oui.",
       },
       {
         title: "Aucune affiliation, et un mot sur les noms",
-        body: "SOLIDWORKS et CSWA sont des marques de Dassault Syst\u00e8mes. 4TUN Hub ne fait pas partie de Dassault Syst\u00e8mes, n'est pas approuv\u00e9 par eux et ne d\u00e9livre pas leurs certifications : nous pr\u00e9parons \u00e0 l'examen, que le candidat passe aupr\u00e8s de l'organisme certificateur. La Cohorte 0 est conduite avec le Douala City SOLIDWORKS User Group, un groupe communautaire.",
+        body: "SOLIDWORKS et CSWA sont des marques de Dassault Syst\u00e8mes. 4TUNHub ne fait pas partie de Dassault Syst\u00e8mes, n'est pas approuv\u00e9 par eux et ne d\u00e9livre pas leurs certifications : nous pr\u00e9parons \u00e0 l'examen, que le candidat passe aupr\u00e8s de l'organisme certificateur. La Cohorte 0 est conduite avec le Douala City SOLIDWORKS User Group, un groupe communautaire.",
       },
       {
         title: "Les sites des autres",
@@ -1583,14 +1583,14 @@ const fr: Dictionary = {
     badge: "En cours",
     beingBuilt: "Cette partie de l'écosystème est en construction.",
     intro:
-      "Elle fait partie de la feuille de route de 4TUN Hub et ouvrira dès qu'elle sera prête. En attendant, parlons de votre projet.",
+      "Elle fait partie de la feuille de route de 4TUNHub et ouvrira dès qu'elle sera prête. En attendant, parlons de votre projet.",
     whatsComing: "Ce qui arrive ici",
     workWithUs: "Travailler avec nous",
     backHome: "Retour à l'accueil",
   },
 
   footer: {
-    trustEyebrow: "L'ingénierie derrière 4TUN Hub",
+    trustEyebrow: "L'ingénierie derrière 4TUNHub",
     founderLine:
       "Fondé par Donfack Fortune — ingénieur mécanicien passé par les secteurs ferroviaire, énergétique et de la formation en ingénierie au Cameroun.",
     meetFounder: "Découvrir le fondateur",

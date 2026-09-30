@@ -5,13 +5,27 @@
 
 export const SITE_URL = "https://4tunhub.com";
 
-export const SITE_NAME = "4TUN Hub";
+export const SITE_NAME = "4TUNHub";
+
+/**
+ * The share card, by absolute URL. Any `openGraph` object defined in code
+ * REPLACES the file-convention image from `app/opengraph-image.tsx` rather
+ * than merging with it, and a page-level `openGraph` replaces the layout's
+ * whole, so every `openGraph` in the app must carry this explicitly.
+ */
+export const OG_IMAGE = {
+  url: `${SITE_URL}/opengraph-image`,
+  width: 1200,
+  height: 630,
+  alt: "4TUNHub: we design machines, and teach you how.",
+  type: "image/jpeg",
+};
 
 /** Where the forms deliver and visitors write. Move to hello@4tunhub.com once forwarding is set up. */
 export const CONTACT_EMAIL = "4tunhub@gmail.com";
 export const SITE_LOCATION = "Dschang, Cameroon";
 
-/** The live 4TUN Hub community — an open WhatsApp group. */
+/** The live 4TUNHub community — an open WhatsApp group. */
 export const WHATSAPP_COMMUNITY_URL =
   "https://chat.whatsapp.com/IGhDw4IiqJ0LfM4v8hNXpg?mode=gi_t";
 
@@ -41,6 +55,7 @@ export const SITE_KEYWORDS = [
   "engineering education Cameroon,Africa and abroad",
   "CAD design services",
   "4TUNHub",
+  "4TUN Hub",
   "Donfack Fortune",
 ];
 

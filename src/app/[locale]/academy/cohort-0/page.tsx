@@ -19,7 +19,7 @@ import {
   applicationsOpen,
 } from "@/lib/cohort";
 import { founder } from "@/lib/founder";
-import { WHATSAPP_COMMUNITY_URL, YOUTUBE_URL } from "@/lib/site";
+import { WHATSAPP_COMMUNITY_URL, YOUTUBE_URL, OG_IMAGE } from "@/lib/site";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: dict.cohort.metaTitle,
     description: dict.cohort.metaDescription,
     alternates: { canonical: `/${locale}${COHORT_PATH}` },
-    openGraph: { title: dict.cohort.metaTitle, description: dict.cohort.metaDescription },
+    openGraph: { title: dict.cohort.metaTitle, description: dict.cohort.metaDescription, images: [OG_IMAGE] },
   };
 }
 
@@ -82,7 +82,7 @@ export default async function CohortPage({ params }: Params) {
     description: t.metaDescription,
     inLanguage: "en",
     isAccessibleForFree: true,
-    provider: { "@type": "Organization", name: "4TUN Hub", url: "https://4tunhub.com" },
+    provider: { "@type": "Organization", name: "4TUNHub", url: "https://4tunhub.com" },
     contributor: { "@type": "Organization", name: SWUG_NAME },
     hasCourseInstance: {
       "@type": "CourseInstance",

@@ -28,7 +28,7 @@ export const SWUG_BEVY_URL = "https://community.swugn.org/douala-city-solidworks
  * two lines is the whole fix if the guess is wrong.
  */
 export const SWUG_LINKEDIN_URL = "https://www.linkedin.com/company/105488333/";
-/** The 4TUN Hub company page — not the founder's profile (see site.ts). */
+/** The 4TUNHub company page — not the founder's profile (see site.ts). */
 export const HUB_LINKEDIN_URL = "https://www.linkedin.com/company/111010064/";
 
 /**

@@ -34,7 +34,7 @@ import {
 export const metadata: Metadata = {
   title: "Execution Blueprint",
   description:
-    "The single source of truth for building 4TUN Hub — architecture, standards, security, SEO, per-page specs and acceptance criteria.",
+    "The single source of truth for building 4TUNHub — architecture, standards, security, SEO, per-page specs and acceptance criteria.",
   robots: { index: false, follow: false }, // internal spec — never in search
 };
 
@@ -449,7 +449,7 @@ export default function BlueprintPage() {
             One document. Zero ambiguity.
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">
-            The single source of truth for building 4TUN Hub. Architecture,
+            The single source of truth for building 4TUNHub. Architecture,
             design, precision, craft, security, SEO — and a testable spec for
             every page. Any engineer can pick up any page and build it right
             without asking a question. Generated from{" "}

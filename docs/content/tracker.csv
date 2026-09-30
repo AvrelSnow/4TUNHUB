@@ -1,0 +1,8 @@
+id,library_id,date,campaign,pillar,stage,audience,platform,format,hook,cta,photo_card,screen_rec,duration_s,utm_content,status,post_url,views,qualified_views_or_dwell,completion_pct,comments,shares,saves,profile_visits,follows,site_visits,applications_started,applications_completed,learning
+P01,L01,2026-09-27,launch-2026,platform,discovery,students,linkedin+x+facebook-fr,screen + voice-over; photo card 00,I've taught 300+ engineering students. Almost all of them hit the same wall.,follow + visit,yes,yes,50,p01,ready,,,,,,,,,,,,,
+P02,L02,2026-09-28,launch-2026,platform,understanding,students,linkedin+x+facebook-fr,screen + voice-over,This is what an engineering ecosystem looks like when it's one person and a lot of nights.,follow,no,yes,50,p02,idea,,,,,,,,,,,,,
+P03,L20,2026-09-29,launch-2026,opportunities,intent,students,linkedin+x+facebook-fr+whatsapp+youtube,card 01 + x thread,Cohort 0 is open,apply,no,no,static,p03,scripted,,,,,,,,,,,,,
+P04,L15,2026-09-30,launch-2026,education,intent,students,linkedin+x+facebook-fr,card 02,The SOLIDWORKS certification costs ninety-nine dollars.,apply,no,no,static,p04,scripted,,,,,,,,,,,,,
+P05,L14,2026-10-01,launch-2026,education,interest,cad-learners,linkedin+x+facebook-fr,solidworks screen + voice-over,You can model the part perfectly and still fail the CSWA.,save,no,yes,50,p05,idea,,,,,,,,,,,,,
+P06,L22,2026-10-02,launch-2026,opportunities,action,students,linkedin+x+facebook-fr,screen + card 04,Four steps. None of them cost money.,apply,no,yes,45,p06,idea,,,,,,,,,,,,,
+P07,L28,2026-10-03,launch-2026,build-in-public,trust,all,linkedin+x+facebook-fr,photo card with numbers,4TUNHub has been public for a week. Here's what happened.,follow,yes,optional,static,p07,idea,,,,,,,,,,,,,

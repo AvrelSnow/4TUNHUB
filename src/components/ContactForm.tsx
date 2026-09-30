@@ -128,7 +128,7 @@ function ContactFormFields({ t, onReset }: { t: ContactCopy; onReset: () => void
               size="md"
               className="mt-4"
               href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-                `[4TUN Hub] ${state.values?.topic ?? ""}: ${state.values?.name ?? ""}`,
+                `[4TUNHub] ${state.values?.topic ?? ""}: ${state.values?.name ?? ""}`,
               )}&body=${encodeURIComponent(state.values?.message ?? "")}`}
             >
               {f.emailInstead}

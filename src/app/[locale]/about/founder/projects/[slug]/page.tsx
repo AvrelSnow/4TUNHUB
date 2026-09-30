@@ -10,7 +10,7 @@ import { projects, getProject, projectDetailPath } from "@/lib/projects";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, OG_IMAGE } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string; slug: string }> };
 
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: copy.title,
     description: copy.outcome,
     alternates: { canonical: `/${locale}${projectDetailPath(slug)}` },
-    openGraph: { title: copy.title, description: copy.outcome, type: "article" },
+    openGraph: { title: copy.title, description: copy.outcome, type: "article", images: [OG_IMAGE] },
   };
 }
 

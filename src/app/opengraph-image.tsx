@@ -14,10 +14,14 @@ import { ImageResponse } from "next/og";
  *
  * The renderer reads WOFF/TTF and PNG/JPEG only, so the font comes from
  * the static Fontsource package and the photo is converted here.
+ *
+ * Served as JPEG, not the PNG the renderer makes: the PNG of a photograph
+ * is ~730 KB, and WhatsApp's preview fetcher silently drops images that
+ * large, which is the one channel the campaign cannot lose.
  */
-export const alt = "4TUN Hub: we design machines, and teach you how.";
+export const alt = "4TUNHub: we design machines, and teach you how.";
 export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+export const contentType = "image/jpeg";
 
 const INK = "#1d1d1f";
 const MUTED = "#6e6e73";
@@ -35,7 +39,7 @@ export default async function OpengraphImage() {
   ]);
   const photoSrc = `data:image/jpeg;base64,${photo.toString("base64")}`;
 
-  return new ImageResponse(
+  const png = new ImageResponse(
     (
       <div
         style={{
@@ -73,7 +77,7 @@ export default async function OpengraphImage() {
               4
             </div>
             <div style={{ color: INK, fontSize: 34, fontWeight: 700, letterSpacing: -0.5 }}>
-              4TUN Hub
+              4TUNHub
             </div>
           </div>
 
@@ -115,4 +119,8 @@ export default async function OpengraphImage() {
       ],
     },
   );
+  const jpeg = await sharp(Buffer.from(await png.arrayBuffer()))
+    .jpeg({ quality: 84, mozjpeg: true })
+    .toBuffer();
+  return new Response(new Uint8Array(jpeg), { headers: { "Content-Type": contentType } });
 }

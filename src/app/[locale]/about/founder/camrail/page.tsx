@@ -12,6 +12,7 @@ import { founder } from "@/lib/founder";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
+import { OG_IMAGE } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: camrail.title[locale],
     description: camrail.intro[locale],
     alternates: { canonical: `/${locale}/about/founder/camrail` },
-    openGraph: { title: camrail.title[locale], description: camrail.intro[locale], type: "article" },
+    openGraph: { title: camrail.title[locale], description: camrail.intro[locale], type: "article", images: [OG_IMAGE] },
   };
 }
 

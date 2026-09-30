@@ -15,7 +15,7 @@ import { talks, TALKS_ARCHIVE_URL, TALKS_VIDEO_URL } from "@/lib/talks";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, OG_IMAGE } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: founder.name,
     description: founder.bio[locale],
     alternates: { canonical: `/${locale}/about/founder` },
-    openGraph: { title: founder.name, description: founder.bio[locale], type: "profile" },
+    openGraph: { title: founder.name, description: founder.bio[locale], type: "profile", images: [OG_IMAGE] },
   };
 }
 
@@ -44,7 +44,7 @@ export default async function FounderPage({ params }: Params) {
     jobTitle: founder.title.en,
     description: founder.bio.en,
     url: `${SITE_URL}/${locale}/about/founder`,
-    worksFor: { "@type": "Organization", name: "4TUN Hub", url: SITE_URL },
+    worksFor: { "@type": "Organization", name: "4TUNHub", url: SITE_URL },
     alumniOf: "ENSET Douala",
     knowsAbout: [...founder.skills.technical, ...founder.skills.software],
     sameAs: founder.links.filter((l) => l.href.startsWith("http")).map((l) => l.href),

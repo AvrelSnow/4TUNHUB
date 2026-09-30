@@ -37,7 +37,7 @@ earn a place in. So Cohort 0 is:
 | Prerequisite | SolidWorks installed on their computer (any recent version) |
 | Outcome | Ready to sit the CSWA: two timed mock exams passed |
 | The exam | **Confirmed 20 Sep: everyone who finishes gets a free CSWA voucher.** The exam is $99 otherwise. This is now the strongest line in the whole offer — and a promise that has to arrive in November, when the same people are being asked for testimonials. |
-| To be accepted | Join the SWUG on Bevy, follow it on LinkedIn, follow 4TUN Hub on LinkedIn and YouTube, then apply and send a screenshot of each membership. The form asks for a LinkedIn profile so the follows can be checked; the screenshots come by email because the form takes no uploads. |
+| To be accepted | Join the SWUG on Bevy, follow it on LinkedIn, follow 4TUNHub on LinkedIn and YouTube, then apply and send a screenshot of each membership. The form asks for a LinkedIn profile so the follows can be checked; the screenshots come by email because the form takes no uploads. |
 
 ### Syllabus (mapped to what the CSWA tests)
 
@@ -91,7 +91,7 @@ Today is Friday 18 Sep. W39 = 21–27 Sep.
   Add the ten to `AMBASSADORS` in `scripts/make-postcards.mjs` and
   generate their reveal cards.
 - **Tue 29 Sep–Sat 3 Oct:** two reveals a day. Each ambassador posts
-  their own; 4TUN Hub and the SWUG repost every one.
+  their own; 4TUNHub and the SWUG repost every one.
 - Applications keep arriving. **Seats go out as they come in** — say so
   publicly, it is what keeps a three-week window urgent.
 
@@ -149,7 +149,7 @@ ambassadors. Cohort 1 announced on evidence, for January.
 | Privacy note published | The form collects names, emails and phone numbers | Claude, Wed 23 |
 | Host allows commercial use | Vercel's free Hobby plan forbids commercial use. **Netlify's free plan allows it.** | Netlify chosen |
 | `/blueprint` stays out of search | Internal spec page | Already noindex + robots |
-| The two LinkedIn URLs point at the right pages | Both company pages were handed over as admin URLs, which only an admin can open, so which ID is the SWUG and which is 4TUN Hub is a guess from the numbering. A launch post that sends 483 people to the wrong page is not a small error | **Open** — open both and confirm, or swap the two lines in `src/lib/cohort.ts` |
+| The two LinkedIn URLs point at the right pages | Both company pages were handed over as admin URLs, which only an admin can open, so which ID is the SWUG and which is 4TUNHub is a guess from the numbering. A launch post that sends 483 people to the wrong page is not a small error | **Open** — open both and confirm, or swap the two lines in `src/lib/cohort.ts` |
 | Somewhere to leave an address, on every page | Most people who read a page on launch day are not ready to apply, and a visitor who leaves without leaving an address is gone. A one-field waitlist block now sits on Academy, Cohort 0, Research, the Blog and in the footer of every page, each naming the one thing it subscribes you to | Done 20 Sep |
 | Visits counted | Launch-day traffic is the one number that never comes back. Cookieless, no consent banner, and off until the host is configured | Code done 20 Sep — needs `ANALYTICS_PROVIDER` + `ANALYTICS_SITE_ID` in Netlify **and a redeploy** (see README). Umami Cloud's free tier is the cheapest provider that also counts the three conversions |
 
@@ -165,7 +165,7 @@ The weekly system allows 13 tasks. Launch week can't add work on top of
 them, so this is the proposed W39:
 
 **Tier A (50)**
-- **20:** 4TUN Hub go-live: site public, Cohort 0 page, applications open
+- **20:** 4TUNHub go-live: site public, Cohort 0 page, applications open
 - **15:** Sit the CSWE (if Friday's practice exam passed), else CSWE prep
 - **15:** Cohort 0 preparation: syllabus weeks 1–2, exercise parts, selection criteria
 

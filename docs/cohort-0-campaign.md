@@ -1,5 +1,13 @@
 # Cohort 0 — the launch campaign
 
+> **27 September: the schedule below is replaced by `docs/launch-campaign.md`**
+> (written assuming nothing had gone out yet). The captions and cards are still the copy
+> of record, except the TikTok/Shorts section: **there is no TikTok, and
+> Fortune does not appear on camera** (his photo appears on cards only). One
+> correction from the research: LinkedIn now penalises links
+> in the first comment as well as in the post, so conversion posts carry the
+> link in the text and accept the reach cost.
+
 > Written 20 September 2026, re-dated the same day when the window moved.
 > Facts of record: `docs/launch-plan.md`. Ambassadors: `docs/ambassadors.md`.
 > Cards: `node scripts/make-postcards.mjs` → `./postcards`.
@@ -24,7 +32,7 @@ Post the announcement card. Four channels, four lengths, same facts.
 ### WhatsApp community + the Douala City SWUG group
 
 > **CSWA Bootcamp · Cohort 0**
-> 4TUN Hub × Douala City SWUG
+> 4TUNHub × Douala City SWUG
 >
 > Eight live evenings to get you ready for the Certified SOLIDWORKS
 > Associate exam. Free, for 20 people.
@@ -38,7 +46,7 @@ Post the announcement card. Four channels, four lengths, same facts.
 > Twenty seats, by application. To be accepted you need to:
 > 1. Join Douala City SWUG on Bevy
 > 2. Follow Douala City SWUG on LinkedIn
-> 3. Follow 4TUN Hub on LinkedIn and YouTube
+> 3. Follow 4TUNHub on LinkedIn and YouTube
 > 4. Apply, and send a screenshot of your Bevy registration and your
 >    LinkedIn membership
 >
@@ -55,7 +63,7 @@ Post the announcement card. Four channels, four lengths, same facts.
 > Douala and a recruiter in Dubai read the same way. It costs $99 to sit,
 > which is exactly why most of the students I teach never do.
 >
-> So 4TUN Hub and Douala City SWUG are running a bootcamp for it. Eight
+> So 4TUNHub and Douala City SWUG are running a bootcamp for it. Eight
 > live evenings from 21 October — Wednesdays and Fridays, 19:30 to 20:30,
 > in English, on Bevy. Free, for twenty people.
 >
@@ -69,7 +77,7 @@ Post the announcement card. Four channels, four lengths, same facts.
 > skill.
 >
 > Twenty seats, by application, and there are conditions. You join Douala
-> City SWUG on Bevy and on LinkedIn, you follow 4TUN Hub here and on
+> City SWUG on Bevy and on LinkedIn, you follow 4TUNHub here and on
 > YouTube, and you send the screenshots with your application. A free seat
 > that costs nothing to claim is a seat someone doesn't show up for.
 >
@@ -92,7 +100,7 @@ Post the announcement card. Four channels, four lengths, same facts.
 > The SOLIDWORKS certification costs ninety-nine dollars. That's why most
 > engineering students here never get it.
 >
-> So we're doing this. 4TUN Hub and Douala City SWUG, eight live evenings
+> So we're doing this. 4TUNHub and Douala City SWUG, eight live evenings
 > from the twenty-first of October, Wednesdays and Fridays, half past
 > seven. Free. In English.
 > And if you finish it, you get the exam voucher — also free.
@@ -112,7 +120,7 @@ Post the announcement card. Four channels, four lengths, same facts.
 | **Sat 26 Sep** | `02-voucher` | *The exam costs $99. That single number is why most of the students I teach never sit it, however good they are. Finish Cohort 0 and the voucher is yours, free — that is what the partnership with Douala City SWUG pays for. Twenty seats, applications close 11 October.* |
 | **Sun 27 Sep** | `03-programme` | *People ask what eight evenings can really cover. These eight. Every session is mapped to something the CSWA actually asks you to do — and the last Friday is a timed mock exam, marked live, because the CSWA is as much a test of speed as of skill.* |
 | **Mon 28 Sep** | `04-how-to-get-a-seat` | *A free seat that costs nothing to claim is a seat someone doesn't show up for. So here is what a seat costs: four things, and none of them are money. Do them this week, not on the tenth.* |
-| **Tue 29 Sep – Sat 3 Oct** | `amb-01` … `amb-10` | Two a day, and **each ambassador posts their own**, in their own words. 4TUN Hub and the SWUG repost every one. Brief: `docs/ambassadors.md`. |
+| **Tue 29 Sep – Sat 3 Oct** | `amb-01` … `amb-10` | Two a day, and **each ambassador posts their own**, in their own words. 4TUNHub and the SWUG repost every one. Brief: `docs/ambassadors.md`. |
 | **Sun 4 Oct** | `05-who-teaches` | *Who's teaching it: me. Mechanical engineer, CSWP-certified, organiser of Douala City SWUG. Six machines designed, simulated and built — and more than 300 students through my classrooms. I am not going to teach you SOLIDWORKS from a manual. I'll teach it the way I had to use it.* |
 | **Tue 6 Oct** | `06-one-thing` | *Free advice, whether you apply or not. Most people who fail the CSWA can model the part perfectly. They lose it on units, on decimal places, and on the clock — the exam checks your answer in the format it asked for, not the one your document happens to be in. Week 2 of the bootcamp is spent on nothing else.* |
 | **Thu 8 Oct** | `08-seats-left` | *Seats go out as applications arrive, not all at the end — the people already in applied in the first week. Set `SEATS_LEFT` in the script to the real number before posting; a stale count is the fastest way to look careless.* |
@@ -136,5 +144,5 @@ Post the announcement card. Four channels, four lengths, same facts.
    worse than no card — and `SEATS_LEFT` is the one that will go stale
    fastest.
 5. **The ambassadors are the middle week, not an interruption of it.**
-   Their ten reveals are ten networks reached; 4TUN Hub reposting each one
+   Their ten reveals are ten networks reached; 4TUNHub reposting each one
    is what makes saying yes worth it for them.

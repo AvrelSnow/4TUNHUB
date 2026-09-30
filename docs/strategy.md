@@ -1,6 +1,6 @@
-# 4TUN Hub — Strategy
+# 4TUNHub — Strategy
 
-> What 4TUN Hub sells, to whom, in what order. `art-direction.md` governs how
+> What 4TUNHub sells, to whom, in what order. `art-direction.md` governs how
 > the site looks; this document governs what the site is *for*. Drafted
 > 2026-09-18 as a proposal for Fortune to challenge. Nothing here is locked
 > until he says so. Figures marked *(verify)* are estimates, not research.
@@ -230,7 +230,7 @@ starting proposals.)*
    have buyers already asking for it?
 2. ~~Hours per week?~~ **Answered 2026-09-18:** he no longer works at
    CAMRAIL. His fixed commitment is Lycée Technique de Fongo-Tongo, Mon +
-   Tue 8:00–16:05. Wed–Fri are free, and 4TUN Hub work goes in their
+   Tue 8:00–16:05. Wed–Fri are free, and 4TUNHub work goes in their
    mornings (the Tier A slot in `D:\todoist`). The IUC timetable is still
    unknown.
 3. ~~CAMRAIL contract?~~ **Resolved:** he has left. Services are open to

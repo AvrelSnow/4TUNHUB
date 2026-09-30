@@ -1,5 +1,5 @@
 /**
- * Testimonials — what other people say about 4TUN Hub, in their words.
+ * Testimonials — what other people say about 4TUNHub, in their words.
  *
  * REAL-ONLY, and the rule is not negotiable (craft contract §1, and the
  * locked trust decision in blueprint.ts): every quote here must be
@@ -51,18 +51,18 @@ export type Testimonial = {
  *
  * ONE edit was made to all three, recorded here rather than hidden: each
  * of them wrote "Fortune Hub" — the name people use for him rather than
- * the organisation's own — and it is printed as "4TUN Hub". Nothing else
+ * the organisation's own — and it is printed as "4TUNHub". Nothing else
  * was touched: no shortening inside a sentence, no smoothing, no
  * reordering. Worth confirming the substitution with each of them.
  */
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "4TUN Hub represents the kind of platform Africa needs to strengthen its next generation of engineers, educators, and technology professionals.",
+      "4TUNHub represents the kind of platform Africa needs to strengthen its next generation of engineers, educators, and technology professionals.",
     full: [
-      "4TUN Hub represents the kind of platform Africa needs to strengthen its next generation of engineers, educators, and technology professionals. What stands out to me is its focus on connecting knowledge, professional development, and collaboration within a growing African engineering community.",
-      "In a world where access to quality technical knowledge and professional networks can significantly shape a person’s trajectory, platforms like 4TUN Hub can help create bridges between talent, opportunity, and innovation. I see great value in building communities that encourage African professionals to learn from one another, develop globally relevant skills, and contribute solutions to the challenges around them.",
-      "4TUN Hub is contributing to that vision by creating a space where people can learn, connect, and build.",
+      "4TUNHub represents the kind of platform Africa needs to strengthen its next generation of engineers, educators, and technology professionals. What stands out to me is its focus on connecting knowledge, professional development, and collaboration within a growing African engineering community.",
+      "In a world where access to quality technical knowledge and professional networks can significantly shape a person’s trajectory, platforms like 4TUNHub can help create bridges between talent, opportunity, and innovation. I see great value in building communities that encourage African professionals to learn from one another, develop globally relevant skills, and contribute solutions to the challenges around them.",
+      "4TUNHub is contributing to that vision by creating a space where people can learn, connect, and build.",
     ].join("\n\n"),
     name: "Mikel K. Ngueajio",
     role:
@@ -71,25 +71,25 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "As a mechanical engineering student, being part of 4TUN Hub has given me an environment where I can learn beyond the classroom, connect with other engineers, and better understand what it means to grow as a professional.",
+      "As a mechanical engineering student, being part of 4TUNHub has given me an environment where I can learn beyond the classroom, connect with other engineers, and better understand what it means to grow as a professional.",
     full: [
-      "As a mechanical engineering student, being part of 4TUN Hub has given me an environment where I can learn beyond the classroom, connect with other engineers, and better understand what it means to grow as a professional.",
-      "4TUN Hub encourages me to keep improving my technical skills, explore new ideas, and see engineering not only as a degree, but as a tool for creating solutions and opportunities.",
-      "I believe communities like 4TUN Hub are important for young African engineers because they give us the opportunity to learn, collaborate, and prepare ourselves for the challenges of the engineering profession.",
+      "As a mechanical engineering student, being part of 4TUNHub has given me an environment where I can learn beyond the classroom, connect with other engineers, and better understand what it means to grow as a professional.",
+      "4TUNHub encourages me to keep improving my technical skills, explore new ideas, and see engineering not only as a degree, but as a tool for creating solutions and opportunities.",
+      "I believe communities like 4TUNHub are important for young African engineers because they give us the opportunity to learn, collaborate, and prepare ourselves for the challenges of the engineering profession.",
     ].join("\n\n"),
     name: "Tanga Jatsa Lewouhdem Françoise Maelle",
-    role: "Mechanical engineering student · 4TUN Hub member",
+    role: "Mechanical engineering student · 4TUNHub member",
     photo: "/images/people/tanga-jatsa-maelle.webp",
   },
   {
     quote:
-      "Being part of 4TUN Hub has given me a valuable space to learn, connect, and grow professionally.",
+      "Being part of 4TUNHub has given me a valuable space to learn, connect, and grow professionally.",
     full: [
-      "Being part of 4TUN Hub has given me a valuable space to learn, connect, and grow professionally. As an educator, I believe that continuous learning and access to the right professional community are essential for making a greater impact. 4TUN Hub brings together knowledge, engineering, education, and opportunities in a way that encourages young African professionals to keep developing themselves.",
-      "For me, 4TUN Hub is more than a community; it is a platform that inspires growth, collaboration, and the continuous pursuit of excellence.",
+      "Being part of 4TUNHub has given me a valuable space to learn, connect, and grow professionally. As an educator, I believe that continuous learning and access to the right professional community are essential for making a greater impact. 4TUNHub brings together knowledge, engineering, education, and opportunities in a way that encourages young African professionals to keep developing themselves.",
+      "For me, 4TUNHub is more than a community; it is a platform that inspires growth, collaboration, and the continuous pursuit of excellence.",
     ].join("\n\n"),
     name: "Tatsinda Mathias Allan",
-    role: "Accredited state educator · 4TUN Hub member",
+    role: "Accredited state educator · 4TUNHub member",
     photo: "/images/people/tatsinda-mathias-allan.webp",
   },
 ];

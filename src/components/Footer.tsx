@@ -155,7 +155,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
         <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} 4TUN Hub. {dict.footer.rights}
+            © {new Date().getFullYear()} 4TUNHub. {dict.footer.rights}
             <span className="hidden md:inline"> · {dict.footer.motto}</span>
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">

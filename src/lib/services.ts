@@ -1,5 +1,5 @@
 /**
- * SERVICES — the offerings 4TUN Hub sells (blueprint §06, Services P0).
+ * SERVICES — the offerings 4TUNHub sells (blueprint §06, Services P0).
  * Structure only; all copy lives in the dictionaries (bilingual). Each
  * offering optionally links to a real project as proof (acceptance:
  * ≥2 offerings must cite a real case study).

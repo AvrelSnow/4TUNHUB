@@ -8,8 +8,8 @@ import { WHATSAPP_COMMUNITY_URL } from "./site";
  * word of prose lives in the dictionaries so EN/FR parity stays
  * enforced by the type system.
  *
- * `roles` is EMPTY on purpose, and that is the honest state: 4TUN
- * Hub is founder-led today and has no salary to pay. A careers page
+ * `roles` is EMPTY on purpose, and that is the honest state: 4TUNHub
+ * is founder-led today and has no salary to pay. A careers page
  * that invents openings to look established is the same lie as a
  * store that lists products nobody can buy — and it is worse here,
  * because the people it wastes are job seekers.
