@@ -648,6 +648,13 @@ export const decisions: Decision[] = [
       "The live site's ribbon already announces the cohort on every page, so platform-only posts would send people to a page whose first line is the thing the posts avoid. Five quiet days would spend 36% of a fourteen-day window, and the four entry conditions punish late applicants. The cohort is the most concrete proof of what 4TUNHub is, and putting the partner reveal mid-window means the campaign no longer depends on other people's response times. 11 October stays the application deadline (it is a Sunday; sessions are midweek), and session 1 stays 21 October. Channels are LinkedIn and X (no TikTok), and Fortune never appears on camera: his photograph is on the postcards only, and videos are screen recordings with his voice. Full reasoning in docs/launch-campaign.md; the reusable system in docs/content-engine.md and the 4tunhub-content project skill.",
     status: "proposed",
   },
+  {
+    decision:
+      "MKV Academy on the site (2026-10-02): an org-level PARTNER of 4TUNHub, shown in its own Partners group beside the founder's affiliations, never inside them; Joseph Celestine Donald, CSWE, listed as Cohort 0 co-instructor; MKV's LinkedIn and YouTube added to the follow step; and every affiliation logo now opens that organisation's official page. Ships only once Fortune has signed the agreement.",
+    rationale:
+      "The written agreement (signed by MKV's two co-founders on 1 October) makes Cohort 0 a joint delivery: shared teaching (clause 2), following both organisations as a seat condition (clause 4), and jointly owned participant data (clause 6). The first two are the three asks MKV made. The third made two published sentences untrue, so they changed with it: the consent box now names MKV Academy and future sessions, and the privacy note says applications are seen by MKV. Putting MKV in the affiliations row would have broken the real-only rule twice, because that row is captioned 'not corporate partnerships' and this is one, so it gets the Partners slot that had been kept empty until earned. Clickable logos turn a list of names into claims a visitor can check in one click. CAMRAIL links to its LinkedIn page because camrail.net serves a broken certificate chain and would open on a browser warning. Joseph is shown with initials until MKV sends a portrait.",
+    status: "proposed",
+  },
 ];
 
 /* ============================================================

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "./ui/Container";
 import { Reveal } from "./ui/Reveal";
 import { Chevron } from "./ui/ArrowLink";
+import { PartnerBadge } from "./PartnerBadge";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -31,6 +32,12 @@ export function CohortFeature({ locale, dict }: { locale: Locale; dict: Dictiona
               </p>
               <h2 className="mt-4 text-display-sm text-white">{t.title}</h2>
               <p className="mt-5 max-w-xl text-lead text-white/70">{t.body}</p>
+              <PartnerBadge
+                label={dict.cohort.inPartnership}
+                newTab={dict.footer.newTab}
+                tone="dark"
+                className="mt-6"
+              />
               <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
                 <Link
                   href={`${href}#apply`}

@@ -83,7 +83,7 @@ const fr: Dictionary = {
     cohort: {
       eyebrow: "Candidatures ouvertes",
       title: "Bootcamp CSWA · Cohorte 0",
-      body: "Huit soirées en direct à partir du 21 octobre pour se préparer à l'examen Certified SolidWorks Associate, avec Douala City SWUG. Gratuit pour 20 personnes sélectionnées, et un bon d'examen offert à qui va au bout. Cours en anglais.",
+      body: "Huit soirées en direct à partir du 21 octobre pour se préparer à l'examen Certified SolidWorks Associate, avec Douala City SWUG et en partenariat avec MKV Academy. Gratuit pour 20 personnes sélectionnées, et un bon d'examen offert à qui va au bout. Cours en anglais.",
       cta: "Postuler avant le 11 octobre",
       more: "Voir le programme",
     },
@@ -1071,11 +1071,12 @@ const fr: Dictionary = {
   cohort: {
     metaTitle: "Bootcamp CSWA · Cohorte 0",
     metaDescription:
-      "Un bootcamp gratuit de huit séances pour préparer le CSWA, en direct et en anglais, animé par Donfack Fortune avec Douala City SWUG. 20 places sur candidature et un bon d'examen offert à l'arrivée. Octobre–novembre 2026.",
+      "Un bootcamp gratuit de huit séances pour préparer le CSWA, en direct et en anglais, animé par Donfack Fortune et Joseph Celestine Donald, avec Douala City SWUG et MKV Academy. 20 places sur candidature et un bon d'examen offert à l'arrivée. Octobre–novembre 2026.",
     back: "Académie",
     eyebrow: "Académie 4TUNHub · Cohorte 0",
     title: "Bootcamp CSWA. Cohorte 0.",
     partner: "Organisé avec le Douala City SOLIDWORKS User Group",
+    inPartnership: "En partenariat avec",
     subtitle:
       "Huit soirées en direct pour vous préparer à l'examen Certified SolidWorks Associate. Gratuit pour les 20 personnes que nous sélectionnerons — et qui va au bout repart avec un bon d'examen offert.",
     apply: "Postuler",
@@ -1168,8 +1169,8 @@ const fr: Dictionary = {
           desc: "C'est là que le groupe publie ses événements et le travail de ses membres.",
         },
         follow: {
-          title: "Suivre 4TUNHub",
-          desc: "Sur LinkedIn et sur YouTube. Les résultats de la Cohorte 0, et l'ouverture de la Cohorte 1, y sont annoncés en premier.",
+          title: "Suivre 4TUNHub et MKV Academy",
+          desc: "Les deux, sur LinkedIn et sur YouTube : les deux organisations enseignent ensemble la Cohorte 0. Ses résultats, et l'ouverture de la Cohorte 1, y sont annoncés en premier.",
         },
         proof: {
           title: "Postuler, puis envoyer deux captures d'écran",
@@ -1181,6 +1182,8 @@ const fr: Dictionary = {
         swugLinkedin: "Douala City SWUG sur LinkedIn",
         hubLinkedin: "4TUNHub sur LinkedIn",
         youtube: "4TUNHub sur YouTube",
+        mkvLinkedin: "MKV Academy sur LinkedIn",
+        mkvYoutube: "MKV Academy sur YouTube",
         proof: "Envoyer les captures",
       },
     },
@@ -1252,7 +1255,7 @@ const fr: Dictionary = {
         placeholder: "Où vous en êtes avec SolidWorks aujourd'hui, et ce que le CSWA changerait pour vous.",
         hint: "Deux ou trois phrases suffisent.",
       },
-      consent: "J'accepte que 4TUNHub conserve ces informations pour étudier ma candidature.",
+      consent: "J'accepte que 4TUNHub et MKV Academy, qui organisent ensemble la Cohorte 0, conservent ces informations pour étudier ma candidature et puissent m'informer de leurs prochaines sessions.",
       privacy: "Lire la note de confidentialité",
       submit: "Envoyer ma candidature",
       submitting: "Envoi…",
@@ -1325,6 +1328,9 @@ const fr: Dictionary = {
     },
     instructor: {
       eyebrow: "Qui enseigne",
+      coEyebrow: "Co-formateur · MKV Academy",
+      coBody: "Certified SOLIDWORKS Expert et cofondateur de MKV Academy, qui publie des e-books techniques et des cours pour ingénieurs. Il partage l'enseignement de la Cohorte 0 et l'encadrement de ses travaux pratiques.",
+      coCta: "Découvrir MKV Academy",
       title: "Donfack Fortune",
       body: "Ingénieur mécanicien et enseignant agréé par l'État : certifié CSWP, candidat CSWE, et animateur de Douala City SWUG, le groupe d'utilisateurs SOLIDWORKS local. Il a formé plus de 300 étudiants.",
       cta: "Lire son parcours",
@@ -1433,7 +1439,7 @@ const fr: Dictionary = {
 
   privacy: {
     title: "Confidentialité",
-    updated: "Dernière mise à jour : 20 septembre 2026",
+    updated: "Dernière mise à jour : 2 octobre 2026",
     intro:
       "Ce site ne recueille de données personnelles que lorsque vous les transmettez par un formulaire, et n'enregistre presque rien dans votre navigateur. Cette note indique ce que nous conservons, pourquoi, combien de temps, et comment le faire effacer.",
     sections: [
@@ -1447,7 +1453,7 @@ const fr: Dictionary = {
       },
       {
         title: "Où elles vont",
-        body: "Trois prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
+        body: "Trois prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Une candidature à la Cohorte 0 est aussi vue par MKV Academy, qui organise la cohorte avec nous ; l'un comme l'autre peut vous écrire au sujet de sessions et d'ateliers ultérieurs, et cesse sur simple demande. Au-delà, nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
       },
       {
         title: "Durée de conservation",
@@ -1561,7 +1567,7 @@ const fr: Dictionary = {
       },
       {
         title: "Aucune affiliation, et un mot sur les noms",
-        body: "SOLIDWORKS et CSWA sont des marques de Dassault Syst\u00e8mes. 4TUNHub ne fait pas partie de Dassault Syst\u00e8mes, n'est pas approuv\u00e9 par eux et ne d\u00e9livre pas leurs certifications : nous pr\u00e9parons \u00e0 l'examen, que le candidat passe aupr\u00e8s de l'organisme certificateur. La Cohorte 0 est conduite avec le Douala City SOLIDWORKS User Group, un groupe communautaire.",
+        body: "SOLIDWORKS et CSWA sont des marques de Dassault Syst\u00e8mes. 4TUNHub ne fait pas partie de Dassault Syst\u00e8mes, n'est pas approuv\u00e9 par eux et ne d\u00e9livre pas leurs certifications : nous pr\u00e9parons \u00e0 l'examen, que le candidat passe aupr\u00e8s de l'organisme certificateur. La Cohorte 0 est conduite avec le Douala City SOLIDWORKS User Group, un groupe communautaire, et enseignée en partenariat avec MKV Academy.",
       },
       {
         title: "Les sites des autres",
@@ -1596,6 +1602,9 @@ const fr: Dictionary = {
     meetFounder: "Découvrir le fondateur",
     affiliations: "Affiliations",
     affiliationsNote: "Affiliations du fondateur — et non des partenariats d'entreprise.",
+    partners: "Partenaires",
+    partnersNote: "Partenaires de 4TUNHub.",
+    newTab: "s'ouvre dans un nouvel onglet",
     blurb:
       "Conception mécanique, simulation et formation en ingénierie, pour les ingénieurs, les étudiants et les entreprises.",
     groups: {

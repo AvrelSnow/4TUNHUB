@@ -9,9 +9,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
 import { ApplyForm } from "@/components/ApplyForm";
 import { EmailCaptureBand } from "@/components/EmailCaptureBand";
+import { PartnerBadge } from "@/components/PartnerBadge";
 import {
   COHORT_PATH,
   HUB_LINKEDIN_URL,
+  MKV,
+  MKV_INSTRUCTOR,
   SWUG_BEVY_URL,
   SWUG_LINKEDIN_URL,
   SCREENSHOTS_PATH,
@@ -64,6 +67,9 @@ export default async function CohortPage({ params }: Params) {
       links: [
         { label: t.requirements.links.hubLinkedin, href: HUB_LINKEDIN_URL },
         { label: t.requirements.links.youtube, href: YOUTUBE_URL },
+        // Clause 4 of the MKV Academy agreement: both organisations' pages.
+        { label: t.requirements.links.mkvLinkedin, href: MKV.linkedin },
+        { label: t.requirements.links.mkvYoutube, href: MKV.youtube },
       ],
     },
     {
@@ -83,13 +89,19 @@ export default async function CohortPage({ params }: Params) {
     inLanguage: "en",
     isAccessibleForFree: true,
     provider: { "@type": "Organization", name: "4TUNHub", url: "https://4tunhub.com" },
-    contributor: { "@type": "Organization", name: SWUG_NAME },
+    contributor: [
+      { "@type": "Organization", name: SWUG_NAME },
+      { "@type": "Organization", name: MKV.name, url: MKV.url },
+    ],
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "online",
       startDate: "2026-10-21",
       endDate: "2026-11-13",
-      instructor: { "@type": "Person", name: founder.name },
+      instructor: [
+        { "@type": "Person", name: founder.name },
+        { "@type": "Person", name: MKV_INSTRUCTOR.name, worksFor: { "@type": "Organization", name: MKV.name } },
+      ],
     },
   };
 
@@ -119,6 +131,11 @@ export default async function CohortPage({ params }: Params) {
             <p className="mt-4 animate-fade-up text-sm font-medium text-accent [animation-delay:40ms]">
               {t.partner}
             </p>
+            <PartnerBadge
+              label={t.inPartnership}
+              newTab={dict.footer.newTab}
+              className="mt-5 animate-fade-up justify-center [animation-delay:60ms]"
+            />
             <p className="mx-auto mt-7 max-w-2xl animate-fade-up text-lead text-muted [animation-delay:80ms]">
               {t.subtitle}
             </p>
@@ -344,6 +361,27 @@ export default async function CohortPage({ params }: Params) {
               <p className="mt-5 text-sm leading-6 text-muted">{t.instructor.body}</p>
               <ArrowLink href={localizeHref(locale, "/about/founder")} className="mt-4 text-sm">
                 {t.instructor.cta}
+              </ArrowLink>
+
+              {/* The co-instructor. No portrait yet, so his initials on
+                  ink rather than a stock face. */}
+              <div className="mt-10 flex items-center gap-5 border-t border-border pt-8">
+                <span
+                  aria-hidden="true"
+                  className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-ink-900 text-xl font-semibold tracking-tight text-white"
+                >
+                  JD
+                </span>
+                <div>
+                  <p className="text-2xs font-medium text-muted">{t.instructor.coEyebrow}</p>
+                  <p className="font-semibold text-foreground">
+                    {MKV_INSTRUCTOR.name}, {MKV_INSTRUCTOR.credential}
+                  </p>
+                </div>
+              </div>
+              <p className="mt-5 text-sm leading-6 text-muted">{t.instructor.coBody}</p>
+              <ArrowLink href={MKV.url} external className="mt-4 text-sm">
+                {t.instructor.coCta}
               </ArrowLink>
             </div>
 

@@ -47,6 +47,38 @@ function CredibilityRow({ title, items }: { title: string; items: Affiliation[] 
   );
 }
 
+/** Logo chips, each a link to the organisation's official site when it has one. */
+function LogoRow({ items, wide = false, newTab }: { items: Affiliation[]; wide?: boolean; newTab: string }) {
+  return (
+    <ul className="mt-3 flex flex-wrap items-center gap-2 lg:justify-end">
+      {items.map((a) => {
+        // eslint-disable-next-line @next/next/no-img-element
+        const art = <img src={a.logo} alt={a.name} loading="lazy" />;
+        const cls = wide ? "chip-logo chip-logo-wide" : "chip-logo";
+        return (
+          <li key={a.name}>
+            {a.href ? (
+              <a
+                href={a.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`${a.name} (${newTab})`}
+                className={`${cls} hover:border-foreground/30`}
+              >
+                {art}
+              </a>
+            ) : (
+              <span className={cls} title={a.name}>
+                {art}
+              </span>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const byKey = new Map(flattenTree().map((n) => [n.key, n]));
   const visibleGroups = groups
@@ -117,7 +149,10 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </div>
         </div>
 
-        {/* The founder's record, stated as his, never as the Hub's partners. */}
+        {/* The founder's record, stated as his, never as the Hub's partners.
+            The Hub's own partners sit beside it under their own heading, so
+            the two can never be read as one list. Every logo opens the
+            organisation's official site: a claim a visitor can check. */}
         <div className="mt-14 flex flex-col gap-8 border-t border-border pt-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-md">
             <p className="font-semibold text-foreground">{dict.footer.trustEyebrow}</p>
@@ -129,25 +164,24 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               {dict.footer.meetFounder}
             </Link>
           </div>
-          <div className="lg:text-right">
-            <p className="font-semibold text-foreground">{dict.footer.affiliations}</p>
-            <ul className="mt-3 flex flex-wrap items-center gap-2 lg:justify-end">
-              {founderAffiliations.map((a) => (
-                <li key={a.name}>
-                  <span className="chip-logo">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={a.logo} alt={a.name} title={a.name} loading="lazy" />
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-3">{dict.footer.affiliationsNote}</p>
+          <div className="flex flex-col gap-8 sm:flex-row sm:gap-12 lg:justify-end">
+            {partners.length > 0 && (
+              <div className="lg:text-right">
+                <p className="font-semibold text-foreground">{dict.footer.partners}</p>
+                <LogoRow items={partners} wide newTab={dict.footer.newTab} />
+                <p className="mt-3">{dict.footer.partnersNote}</p>
+              </div>
+            )}
+            <div className="lg:text-right">
+              <p className="font-semibold text-foreground">{dict.footer.affiliations}</p>
+              <LogoRow items={founderAffiliations} newTab={dict.footer.newTab} />
+              <p className="mt-3">{dict.footer.affiliationsNote}</p>
+            </div>
           </div>
         </div>
 
-        {(partners.length > 0 || awards.length > 0 || memberships.length > 0) && (
+        {(awards.length > 0 || memberships.length > 0) && (
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            <CredibilityRow title="Partners" items={partners} />
             <CredibilityRow title="Awards" items={awards} />
             <CredibilityRow title="Memberships" items={memberships} />
           </div>

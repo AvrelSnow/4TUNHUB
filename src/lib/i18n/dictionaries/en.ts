@@ -83,7 +83,7 @@ const en = {
     cohort: {
       eyebrow: "Applications open",
       title: "CSWA Bootcamp · Cohort 0",
-      body: "Eight live evenings from 21 October to get ready for the Certified SolidWorks Associate exam, run with Douala City SWUG. Free for 20 selected people, and a free exam voucher for everyone who finishes. In English.",
+      body: "Eight live evenings from 21 October to get ready for the Certified SolidWorks Associate exam, run with Douala City SWUG and taught in partnership with MKV Academy. Free for 20 selected people, and a free exam voucher for everyone who finishes. In English.",
       cta: "Apply by 11 October",
       more: "See the programme",
     },
@@ -1076,11 +1076,13 @@ const en = {
   cohort: {
     metaTitle: "CSWA Bootcamp · Cohort 0",
     metaDescription:
-      "A free, eight-session CSWA preparation bootcamp taught live in English by Donfack Fortune, with Douala City SWUG. 20 seats by application, and a free exam voucher on finishing. October–November 2026.",
+      "A free, eight-session CSWA preparation bootcamp taught live in English by Donfack Fortune and Joseph Celestine Donald, with Douala City SWUG and MKV Academy. 20 seats by application, and a free exam voucher on finishing. October–November 2026.",
     back: "Academy",
     eyebrow: "4TUNHub Academy · Cohort 0",
     title: "CSWA Bootcamp. Cohort 0.",
     partner: "Run with the Douala City SOLIDWORKS User Group",
+    /** Followed by the MKV Academy logo, which links to their site. */
+    inPartnership: "In partnership with",
     subtitle:
       "Eight live evenings to get you ready for the Certified SolidWorks Associate exam. Free for the 20 people we select — and everyone who finishes leaves with a free exam voucher.",
     apply: "Apply for a seat",
@@ -1173,8 +1175,8 @@ const en = {
           desc: "Where the group posts its events and the work of its members.",
         },
         follow: {
-          title: "Follow 4TUNHub",
-          desc: "On LinkedIn and on YouTube. Cohort 0's results, and the opening of Cohort 1, are announced there first.",
+          title: "Follow 4TUNHub and MKV Academy",
+          desc: "Both, on LinkedIn and on YouTube: the two organisations teach Cohort 0 together. Its results, and the opening of Cohort 1, are announced there first.",
         },
         proof: {
           title: "Apply, then send two screenshots",
@@ -1186,6 +1188,8 @@ const en = {
         swugLinkedin: "Douala City SWUG on LinkedIn",
         hubLinkedin: "4TUNHub on LinkedIn",
         youtube: "4TUNHub on YouTube",
+        mkvLinkedin: "MKV Academy on LinkedIn",
+        mkvYoutube: "MKV Academy on YouTube",
         proof: "Send the screenshots",
       },
     },
@@ -1264,7 +1268,7 @@ const en = {
         placeholder: "Where you are with SolidWorks today, and what the CSWA would change for you.",
         hint: "Two or three sentences is enough.",
       },
-      consent: "I agree that 4TUNHub keeps these details to review my application.",
+      consent: "I agree that 4TUNHub and MKV Academy, who run Cohort 0 together, keep these details to review my application and may tell me about their future sessions.",
       privacy: "Read the privacy note",
       submit: "Send my application",
       submitting: "Sending…",
@@ -1343,6 +1347,9 @@ const en = {
     },
     instructor: {
       eyebrow: "Who teaches",
+      coEyebrow: "Co-instructor · MKV Academy",
+      coBody: "Certified SOLIDWORKS Expert and co-founder of MKV Academy, which publishes technical e-books and courses for engineers. He shares the teaching of Cohort 0 and the guidance on its practical work.",
+      coCta: "Visit MKV Academy",
       title: "Donfack Fortune",
       body: "Mechanical engineer and state-accredited educator: CSWP-certified, CSWE candidate, and organiser of Douala City SWUG, the local SOLIDWORKS user group. He has taught more than 300 students.",
       cta: "Read his story",
@@ -1454,7 +1461,7 @@ const en = {
 
   privacy: {
     title: "Privacy",
-    updated: "Last updated 20 September 2026",
+    updated: "Last updated 2 October 2026",
     intro:
       "This site collects personal details only when you send them through a form, and stores almost nothing in your browser. This note says what we keep, why, for how long, and how to have it removed.",
     sections: [
@@ -1468,7 +1475,7 @@ const en = {
       },
       {
         title: "Where it goes",
-        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. We do not sell or share your details, and we never add you to a mailing list without asking.",
+        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
       },
       {
         title: "How long we keep it",
@@ -1582,7 +1589,7 @@ const en = {
       },
       {
         title: "Not affiliated, and a word about names",
-        body: "SOLIDWORKS and CSWA are trademarks of Dassault Syst\u00e8mes. 4TUNHub is not part of Dassault Syst\u00e8mes, is not endorsed by them, and does not award their certifications: we prepare people to sit the exam, which they take with the certifying body. Cohort 0 is run together with the Douala City SOLIDWORKS User Group, a community group.",
+        body: "SOLIDWORKS and CSWA are trademarks of Dassault Syst\u00e8mes. 4TUNHub is not part of Dassault Syst\u00e8mes, is not endorsed by them, and does not award their certifications: we prepare people to sit the exam, which they take with the certifying body. Cohort 0 is run together with the Douala City SOLIDWORKS User Group, a community group, and taught in partnership with MKV Academy.",
       },
       {
         title: "Other people's sites",
@@ -1617,6 +1624,9 @@ const en = {
     meetFounder: "Meet the founder",
     affiliations: "Affiliations",
     affiliationsNote: "Founder affiliations — not corporate partnerships.",
+    partners: "Partners",
+    partnersNote: "Partners of 4TUNHub.",
+    newTab: "opens in a new tab",
     blurb:
       "Mechanical design, simulation and engineering training, for engineers, students and companies.",
     groups: {

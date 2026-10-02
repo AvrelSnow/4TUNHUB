@@ -322,6 +322,11 @@
     transition: transform 0.3s var(--ease-out-quart);
   }
 
+  /* A wordmark lockup (MKV Academy) needs the width a square crest does not. */
+  .chip-logo-wide {
+    width: 148px;
+  }
+
   .chip-logo img {
     max-width: 100%;
     max-height: 100%;

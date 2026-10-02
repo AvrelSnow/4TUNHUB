@@ -32,6 +32,22 @@ export const SWUG_LINKEDIN_URL = "https://www.linkedin.com/company/105488333/";
 export const HUB_LINKEDIN_URL = "https://www.linkedin.com/company/111010064/";
 
 /**
+ * MKV Academy co-delivers Cohort 0 under a written agreement (1 Oct 2026):
+ * Joseph Celestine Donald, CSWE, teaches alongside Fortune, and following
+ * both organisations on LinkedIn and YouTube is a condition of a seat
+ * (clause 4). Links taken from mkvacademy.online's own footer.
+ */
+export const MKV = {
+  name: "MKV Academy",
+  url: "https://www.mkvacademy.online",
+  linkedin: "https://www.linkedin.com/showcase/mkv-academy/",
+  youtube: "https://www.youtube.com/@mkvconsulting",
+  logo: "/images/logos/mkv-academy.webp",
+} as const;
+
+export const MKV_INSTRUCTOR = { name: "Joseph Celestine Donald", credential: "CSWE" } as const;
+
+/**
  * Applications close at the end of Sunday 11 October, Cameroon time.
  * Moved from 1 October on 2026-09-20: six days was too short a window for
  * a form with four conditions in front of it, and the ambassador
