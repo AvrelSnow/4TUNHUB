@@ -655,6 +655,13 @@ export const decisions: Decision[] = [
       "The written agreement (signed by MKV's two co-founders on 1 October) makes Cohort 0 a joint delivery: shared teaching (clause 2), following both organisations as a seat condition (clause 4), and jointly owned participant data (clause 6). The first two are the three asks MKV made. The third made two published sentences untrue, so they changed with it: the consent box now names MKV Academy and future sessions, and the privacy note says applications are seen by MKV. Putting MKV in the affiliations row would have broken the real-only rule twice, because that row is captioned 'not corporate partnerships' and this is one, so it gets the Partners slot that had been kept empty until earned. Clickable logos turn a list of names into claims a visitor can check in one click. CAMRAIL links to its LinkedIn page because camrail.net serves a broken certificate chain and would open on a browser warning. Joseph is shown with initials until MKV sends a portrait.",
     status: "proposed",
   },
+  {
+    decision:
+      "Cohort 0 no longer mentions Douala City SWUG (2026-10-02). Joining the group on Bevy and following it on LinkedIn are gone as seat conditions; the seat now asks for four follows, 4TUNHub and MKV Academy on LinkedIn and YouTube, proven by four screenshots, and an application without all four is not reviewed. The CSWA voucher stays, with no supplier named. The founder's own record with the group (footer affiliation, talks, community) is untouched.",
+    rationale:
+      "Fortune's direction: the cohort should carry no obligation to, or claim about, a community group it is not formally tied to, so nothing on it can become a dispute later. The screenshots were already the real selection filter, so they are now said plainly, three times: in the steps, in an amber 'No screenshots, no seat' band under them, and on the screenshots page with one card per follow. The voucher promise is kept on his word that the vouchers can be obtained without the group; the terms still say we will announce it publicly if the supply fails. The platform reads 'online, link sent to you' until he and MKV pick one (Jitsi Meet is the likely choice, clause 5). The 4TUNHub LinkedIn link moved from a guessed numeric ID to the page's public address, linkedin.com/company/4tunhub, now that following it is a condition of a seat.",
+    status: "proposed",
+  },
 ];
 
 /* ============================================================

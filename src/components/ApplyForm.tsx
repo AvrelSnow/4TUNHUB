@@ -52,7 +52,7 @@ export function ApplyForm({
         <h3 className="mt-6 text-display-sm text-foreground">{t.success.title}</h3>
         <p className="mx-auto mt-3 max-w-md text-muted">{t.success.body}</p>
 
-        {/* An application with no proof of membership cannot be selected,
+        {/* An application without the four screenshots cannot be selected,
             so the confirmation is where we ask for it — while they are
             still at the screen, not in an email they may not open. */}
         <div className="mx-auto mt-8 max-w-md rounded-2xl bg-surface-2 p-6 text-left">

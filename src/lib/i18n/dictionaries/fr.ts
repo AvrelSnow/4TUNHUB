@@ -83,7 +83,7 @@ const fr: Dictionary = {
     cohort: {
       eyebrow: "Candidatures ouvertes",
       title: "Bootcamp CSWA · Cohorte 0",
-      body: "Huit soirées en direct à partir du 21 octobre pour se préparer à l'examen Certified SolidWorks Associate, avec Douala City SWUG et en partenariat avec MKV Academy. Gratuit pour 20 personnes sélectionnées, et un bon d'examen offert à qui va au bout. Cours en anglais.",
+      body: "Huit soirées en direct à partir du 21 octobre pour se préparer à l'examen Certified SolidWorks Associate, en partenariat avec MKV Academy. Gratuit pour 20 personnes sélectionnées, et un bon d'examen offert à qui va au bout. Cours en anglais.",
       cta: "Postuler avant le 11 octobre",
       more: "Voir le programme",
     },
@@ -1071,11 +1071,10 @@ const fr: Dictionary = {
   cohort: {
     metaTitle: "Bootcamp CSWA · Cohorte 0",
     metaDescription:
-      "Un bootcamp gratuit de huit séances pour préparer le CSWA, en direct et en anglais, animé par Donfack Fortune et Joseph Celestine Donald, avec Douala City SWUG et MKV Academy. 20 places sur candidature et un bon d'examen offert à l'arrivée. Octobre–novembre 2026.",
+      "Un bootcamp gratuit de huit séances pour préparer le CSWA, en direct et en anglais, animé par Donfack Fortune et Joseph Celestine Donald, en partenariat avec MKV Academy. 20 places sur candidature et un bon d'examen offert à l'arrivée. Octobre–novembre 2026.",
     back: "Académie",
     eyebrow: "Académie 4TUNHub · Cohorte 0",
     title: "Bootcamp CSWA. Cohorte 0.",
-    partner: "Organisé avec le Douala City SOLIDWORKS User Group",
     inPartnership: "En partenariat avec",
     subtitle:
       "Huit soirées en direct pour vous préparer à l'examen Certified SolidWorks Associate. Gratuit pour les 20 personnes que nous sélectionnerons — et qui va au bout repart avec un bon d'examen offert.",
@@ -1089,7 +1088,7 @@ const fr: Dictionary = {
       { label: "Places", value: "20, sur candidature" },
       { label: "Dates", value: "Du 21 oct. au 13 nov. 2026" },
       { label: "Horaires", value: "Mer. et ven., 19 h 30 – 20 h 30" },
-      { label: "Où", value: "En ligne, sur Bevy" },
+      { label: "Où", value: "En ligne, lien envoyé" },
       { label: "Langue", value: "Anglais" },
     ],
     outcome: {
@@ -1150,41 +1149,39 @@ const fr: Dictionary = {
       note: "Si l'engagement n'est pas tenu, la place revient à la personne suivante sur la liste d'attente.",
     },
     /**
-     * Les conditions d'une place. La Cohorte 0 est organisée avec Douala
-     * City SWUG : une place revient à quelqu'un qui a réellement rejoint
-     * le groupe. Les mots sont ici, les URL dans src/lib/cohort.ts.
+     * Les conditions d'une place : suivre les deux organisations qui
+     * enseignent la cohorte, et le prouver par des captures. Les mots sont
+     * ici, les URL dans src/lib/cohort.ts.
      */
     requirements: {
       eyebrow: "Comment obtenir une place",
-      title: "Quatre choses, et aucune ne coûte d'argent.",
+      title: "Trois étapes, et aucune ne coûte d'argent.",
       intro:
-        "La Cohorte 0 est organisée avec Douala City SWUG, et une place revient à quelqu'un qui a rejoint le groupe et peut le prouver. C'est l'essentiel de la sélection, et cela prend cinq minutes.",
+        "La Cohorte 0 est enseignée par 4TUNHub et MKV Academy, et suivre les deux est une condition pour obtenir une place. Nous vérifions chaque abonnement : une place revient à quelqu'un qui l'a fait et peut le montrer.",
       steps: {
-        bevy: {
-          title: "Rejoindre Douala City SWUG sur Bevy",
-          desc: "Inscrivez-vous sur la page du groupe. Les séances y sont hébergées, et le lien de chaque soirée part aux membres.",
+        hub: {
+          title: "Suivre 4TUNHub",
+          desc: "Sur LinkedIn et sur YouTube. Les résultats de la Cohorte 0, et l'ouverture de la Cohorte 1, y sont annoncés en premier.",
         },
-        swugLinkedin: {
-          title: "Suivre Douala City SWUG sur LinkedIn",
-          desc: "C'est là que le groupe publie ses événements et le travail de ses membres.",
-        },
-        follow: {
-          title: "Suivre 4TUNHub et MKV Academy",
-          desc: "Les deux, sur LinkedIn et sur YouTube : les deux organisations enseignent ensemble la Cohorte 0. Ses résultats, et l'ouverture de la Cohorte 1, y sont annoncés en premier.",
+        mkv: {
+          title: "Suivre MKV Academy",
+          desc: "Sur LinkedIn et sur YouTube. MKV Academy enseigne la Cohorte 0 avec nous.",
         },
         proof: {
-          title: "Postuler, puis envoyer deux captures d'écran",
-          desc: "Une de votre inscription sur Bevy, une montrant que vous suivez le groupe sur LinkedIn — sous le nom avec lequel vous avez postulé.",
+          title: "Postuler, puis envoyer quatre captures d'écran",
+          desc: "Une par abonnement : 4TUNHub sur LinkedIn, 4TUNHub sur YouTube, MKV Academy sur LinkedIn, MKV Academy sur YouTube. Sous le nom avec lequel vous avez postulé.",
         },
       },
       links: {
-        bevy: "Ouvrir Bevy",
-        swugLinkedin: "Douala City SWUG sur LinkedIn",
         hubLinkedin: "4TUNHub sur LinkedIn",
         youtube: "4TUNHub sur YouTube",
         mkvLinkedin: "MKV Academy sur LinkedIn",
         mkvYoutube: "MKV Academy sur YouTube",
         proof: "Envoyer les captures",
+      },
+      warning: {
+        title: "Pas de captures, pas de place.",
+        body: "Une candidature n'est étudiée qu'une fois les quatre captures reçues. Suivre sans le montrer ne compte pas, et trois captures sur quatre non plus.",
       },
     },
 
@@ -1221,7 +1218,7 @@ const fr: Dictionary = {
     },
     form: {
       heading: "Postuler à la Cohorte 0.",
-      intro: "Cinq minutes. Faites d'abord les quatre étapes ci-dessus — nous les vérifions. Nous lisons chaque candidature dès son arrivée et répondons à tous avant le vendredi 16 octobre.",
+      intro: "Cinq minutes. Suivez d'abord les deux organisations, puis envoyez les quatre captures : nous vérifions chacune. Nous lisons chaque candidature dès son arrivée et répondons à tous avant le vendredi 16 octobre.",
       name: { label: "Nom complet", placeholder: "Jeanne Dupont" },
       email: { label: "E-mail", placeholder: "vous@exemple.com" },
       whatsapp: {
@@ -1232,7 +1229,7 @@ const fr: Dictionary = {
       linkedin: {
         label: "Votre profil LinkedIn",
         placeholder: "linkedin.com/in/votre-nom",
-        hint: "C'est sur ce profil que nous vérifions les deux abonnements.",
+        hint: "C'est sur ce profil que nous vérifions vos abonnements LinkedIn.",
       },
       org: {
         label: "École ou employeur",
@@ -1278,52 +1275,66 @@ const fr: Dictionary = {
     },
     screenshots: {
       back: "Cohorte 0",
-      eyebrow: "Une \u00e9tape reste",
-      title: "Envoyez vos deux captures d\u2019\u00e9cran.",
+      eyebrow: "Une étape reste",
+      title: "Envoyez vos quatre captures d'écran.",
       intro:
-        "Votre candidature est enregistr\u00e9e. Elle ne peut pas \u00eatre retenue tant que nous ne voyons pas que vous avez r\u00e9ellement rejoint Douala City SWUG \u2014 deux captures d\u2019\u00e9cran, une minute.",
+        "Votre candidature est enregistrée. Elle ne peut pas être retenue tant que nous ne voyons pas que vous suivez 4TUNHub et MKV Academy, sur LinkedIn et sur YouTube. Quatre captures, environ deux minutes.",
       shots: {
-        bevy: {
-          title: "Votre inscription sur Bevy",
-          desc: "La page du groupe sur SWUGN, connect\u00e9, o\u00f9 l\u2019on voit que vous \u00eates membre. Le haut de la page avec votre nom visible suffit.",
-          cta: "Ouvrir le groupe sur Bevy",
+        hubLinkedin: {
+          title: "4TUNHub sur LinkedIn",
+          desc: "La page entreprise de 4TUNHub affichant Abonné et non S'abonner. Votre photo ou votre nom dans le coin est ce qui en fait la vôtre.",
+          cta: "Ouvrir 4TUNHub sur LinkedIn",
         },
-        linkedin: {
-          title: "Votre abonnement LinkedIn",
-          desc: "La page LinkedIn du groupe affichant Abonn\u00e9 et non S\u2019abonner. C\u2019est votre nom dans le coin qui en fait la v\u00f4tre.",
-          cta: "Ouvrir le groupe sur LinkedIn",
+        hubYoutube: {
+          title: "4TUNHub sur YouTube",
+          desc: "La chaîne 4TUNHUB affichant Abonné, connecté, avec votre compte visible.",
+          cta: "Ouvrir 4TUNHub sur YouTube",
+        },
+        mkvLinkedin: {
+          title: "MKV Academy sur LinkedIn",
+          desc: "La page de MKV Academy affichant Abonné et non S'abonner, avec votre profil visible.",
+          cta: "Ouvrir MKV Academy sur LinkedIn",
+        },
+        mkvYoutube: {
+          title: "MKV Academy sur YouTube",
+          desc: "La chaîne de MKV Academy affichant Abonné, connecté, avec votre compte visible.",
+          cta: "Ouvrir MKV Academy sur YouTube",
         },
       },
       send: {
-        title: "Les deux \u00e0 une seule adresse.",
+        title: "Les quatre à une seule adresse.",
         body:
-          "Joignez les deux images et envoyez. L\u2019objet et le texte sont d\u00e9j\u00e0 \u00e9crits \u2014 indiquez le nom avec lequel vous avez postul\u00e9, rien de plus n\u2019est n\u00e9cessaire.",
-        cta: "R\u00e9diger l\u2019e-mail",
+          "Joignez les quatre images et envoyez. L'objet et le texte sont déjà écrits — indiquez le nom avec lequel vous avez postulé, rien de plus n'est nécessaire.",
+        cta: "Rédiger l'e-mail",
       },
-      mailSubject: "Captures d\u2019\u00e9cran",
+      mailSubject: "Captures d'écran",
       mailBody:
-        "Nom avec lequel j\u2019ai postul\u00e9 :\n\nEn pi\u00e8ces jointes :\n1. Mon inscription Bevy \u00e0 Douala City SWUG\n2. Mon abonnement LinkedIn \u00e0 Douala City SWUG\n",
+        "Nom avec lequel j'ai postulé :\n\nEn pièces jointes :\n1. Mon abonnement LinkedIn à 4TUNHub\n2. Mon abonnement YouTube à 4TUNHUB\n3. Mon abonnement LinkedIn à MKV Academy\n4. Mon abonnement YouTube à MKV Academy\n",
       notes: [
         {
+          title: "Les quatre, ou rien ne compte",
+          body: "La sélection ne regarde que les candidatures dont les quatre captures sont arrivées. En manquer une revient à les manquer toutes.",
+        },
+        {
           title: "Avant le 11 octobre",
-          body: "La m\u00eame date que la candidature. Des captures arriv\u00e9es apr\u00e8s ne peuvent pas \u00eatre prises en compte : la s\u00e9lection sera d\u00e9j\u00e0 en cours.",
+          body: "La même date que la candidature. Des captures arrivées après ne peuvent pas être prises en compte : la sélection sera déjà en cours.",
         },
         {
           title: "Sous votre nom",
-          body: "Envoyez-les sous le nom avec lequel vous avez postul\u00e9. Nous rapprochons chaque capture d\u2019une candidature \u00e0 la main, et une adresse inconnue est une capture que nous ne pouvons pas rattacher.",
+          body: "Envoyez-les sous le nom avec lequel vous avez postulé. Nous rapprochons chaque capture d'une candidature à la main, et une adresse inconnue est une capture que nous ne pouvons pas rattacher.",
         },
         {
           title: "Si vous ne pouvez pas",
-          body: "\u00c9crivez-nous quand m\u00eame en expliquant pourquoi. Nous pr\u00e9f\u00e9rons trouver une solution que perdre quelqu\u2019un pour une capture d\u2019\u00e9cran.",
+          body: "Écrivez-nous quand même en expliquant pourquoi. Nous préférons trouver une solution que perdre quelqu'un pour une capture d'écran.",
         },
       ],
-      notApplied: "Pas encore candidat\u00e9 ? Commencez par l\u00e0",
+      notApplied: "Pas encore candidaté ? Commencez par là",
     },
 
     success: {
       title: "Candidature reçue.",
       body: "Merci. Les places sont attribuées au fil des candidatures, et nous répondons à chaque candidat avant le vendredi 16 octobre, par e-mail et sur WhatsApp.",
-      next: "Il reste une chose : envoyez-nous les deux captures d'écran — votre inscription sur Bevy et votre abonnement LinkedIn à Douala City SWUG — sous le nom avec lequel vous avez postulé. Sans elles, une candidature ne peut pas être retenue.",
+      next: "Il reste une chose, et elle décide si vous pouvez être retenu : envoyez-nous quatre captures d'écran montrant que vous suivez 4TUNHub et MKV Academy sur LinkedIn et sur YouTube, sous le nom avec lequel vous avez postulé. Sans les quatre, une candidature ne peut pas être retenue.",
       nextCta: "Envoyer les captures",
     },
     instructor: {
@@ -1332,7 +1343,7 @@ const fr: Dictionary = {
       coBody: "Certified SOLIDWORKS Expert et cofondateur de MKV Academy, qui publie des e-books techniques et des cours pour ingénieurs. Il partage l'enseignement de la Cohorte 0 et l'encadrement de ses travaux pratiques.",
       coCta: "Découvrir MKV Academy",
       title: "Donfack Fortune",
-      body: "Ingénieur mécanicien et enseignant agréé par l'État : certifié CSWP, candidat CSWE, et animateur de Douala City SWUG, le groupe d'utilisateurs SOLIDWORKS local. Il a formé plus de 300 étudiants.",
+      body: "Ingénieur mécanicien et enseignant agréé par l'État : certifié CSWP et candidat CSWE. Il a formé plus de 300 étudiants.",
       cta: "Lire son parcours",
     },
   },
@@ -1555,7 +1566,7 @@ const fr: Dictionary = {
       },
       {
         title: "Le bon d'examen",
-        body: "Toute personne qui termine la cohorte dans les conditions ci-dessus re\u00e7oit un bon d'examen CSWA sans frais. Ces bons nous sont fournis par l'interm\u00e9diaire du groupe d'utilisateurs SOLIDWORKS ; si cet approvisionnement change ou fait d\u00e9faut pour des raisons ind\u00e9pendantes de notre volont\u00e9, nous le dirons publiquement et imm\u00e9diatement \u2014 et nous n'aurons pris votre argent pour rien. Passer l'examen, et le r\u00e9ussir, reste votre affaire : nous vous y pr\u00e9parons et ne promettons rien quant au r\u00e9sultat.",
+        body: "Toute personne qui termine la cohorte dans les conditions ci-dessus re\u00e7oit un bon d'examen CSWA sans frais. Si notre approvisionnement en bons change ou fait d\u00e9faut pour des raisons ind\u00e9pendantes de notre volont\u00e9, nous le dirons publiquement et imm\u00e9diatement \u2014 et nous n'aurons pris votre argent pour rien. Passer l'examen, et le r\u00e9ussir, reste votre affaire : nous vous y pr\u00e9parons et ne promettons rien quant au r\u00e9sultat.",
       },
       {
         title: "Ce que vous nous envoyez",
@@ -1567,7 +1578,7 @@ const fr: Dictionary = {
       },
       {
         title: "Aucune affiliation, et un mot sur les noms",
-        body: "SOLIDWORKS et CSWA sont des marques de Dassault Syst\u00e8mes. 4TUNHub ne fait pas partie de Dassault Syst\u00e8mes, n'est pas approuv\u00e9 par eux et ne d\u00e9livre pas leurs certifications : nous pr\u00e9parons \u00e0 l'examen, que le candidat passe aupr\u00e8s de l'organisme certificateur. La Cohorte 0 est conduite avec le Douala City SOLIDWORKS User Group, un groupe communautaire, et enseignée en partenariat avec MKV Academy.",
+        body: "SOLIDWORKS et CSWA sont des marques de Dassault Syst\u00e8mes. 4TUNHub ne fait pas partie de Dassault Syst\u00e8mes, n'est pas approuv\u00e9 par eux et ne d\u00e9livre pas leurs certifications : nous pr\u00e9parons \u00e0 l'examen, que le candidat passe aupr\u00e8s de l'organisme certificateur. La Cohorte 0 est enseignée en partenariat avec MKV Academy.",
       },
       {
         title: "Les sites des autres",

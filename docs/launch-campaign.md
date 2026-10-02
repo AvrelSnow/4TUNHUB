@@ -7,6 +7,14 @@
 > The ideas it draws from are in `docs/content/postcard-library.md`. What was
 > posted and how it did goes in `docs/content/tracker.csv`.
 
+> **2 October 2026: Cohort 0 no longer runs with Douala City SWUG.** It is taught
+> in partnership with **MKV Academy** (Joseph Celestine Donald, CSWE, co-teaches).
+> A seat now asks for four follows (4TUNHub and MKV Academy, each on LinkedIn
+> and YouTube) and **four screenshots proving them**; no screenshots, no seat.
+> No Bevy: the sessions are online, link sent to the selected (platform to be
+> agreed with MKV, likely Jitsi Meet). The voucher stays, no supplier named.
+> The copy below has been brought into line with this.
+
 **Working assumption: nothing about the launch has been posted yet.** If the
 25 September posts did go out, skip P01–P03 and go straight to Day 4.
 
@@ -28,16 +36,15 @@ There are four reasons, and each of them can be checked.
    they're hiding something the site says in the first line.
 2. **Every day of the window counts.** There are 14 days to the 11 October
    close, so five quiet days use up 36 % of the window. Applying takes four
-   steps (join the SWUG on Bevy, two LinkedIn follows, a YouTube follow,
-   screenshots), and the screenshots are the known bottleneck. People who
+   steps (four follows, then four screenshots that prove them), and the screenshots are the known bottleneck. People who
    see the cohort late apply late, and late applicants forget the screenshots.
 3. **The cohort is the best evidence of what 4TUNHub is.** "An engineering
    ecosystem" is an abstract claim. "It is running a free CSWA bootcamp with
-   the Douala SOLIDWORKS group, with an exam voucher for everyone who
-   finishes" is concrete. The cohort shows what the platform does; it doesn't
+   MKV Academy, with an exam voucher for everyone who finishes" is
+   concrete. The cohort shows what the platform does; it doesn't
    distract from it.
 4. **The partner reveal needs things you don't have yet**: logos, a
-   photograph of Celestine Dona, approved wording for each partner's
+   photograph of Joseph Celestine Donald, approved wording for each partner's
    contribution. Putting it before the cohort ties the whole campaign to
    other people's response times. Putting it mid-window turns it into a
    news beat on the days when attention usually drops, and the campaign still
@@ -58,10 +65,9 @@ thing it's running opens on Tuesday."*
 | Depends on partner assets arriving | **Yes**, and it blocks everything | Yes | No | **No**, the reveal is a mid-window boost |
 | Long-term positioning | Good | Good | Weak: 4TUNHub looks like "the bootcamp people" | Good: the platform is introduced first and the cohort is its first project |
 
-**D is B with the partner reveal moved after the opening.** Douala City SWUG
-is already confirmed and on the site, so it is part of the day-3 opening.
-MKV Academy and the Benin SWUG are revealed on 5–7 October, and only once
-the gate in section 6 is met.
+**D is B with the partner reveal moved after the opening.** MKV Academy
+signed on 1 October and is already on the site, so it is part of the
+opening. No SWUG, Douala or Benin, is part of Cohort 0.
 
 ---
 
@@ -70,8 +76,8 @@ the gate in section 6 is met.
 ```
 27 Sep     28 Sep        29 Sep            30 Sep – 4 Oct         5 – 7 Oct            8 – 9 Oct      10 – 11 Oct     12 – 20 Oct     21 Oct
 REVEAL  →  UNDERSTAND →  COHORT OPENS   →  REASONS TO APPLY    →  PARTNER REVEAL    →  OBJECTIONS  →  FINAL PUSH  →  ONBOARDING  →  SESSION 1
-P01        P02           P03 (+Douala      P04–P07 + ambassador   (gated; if not ready,   P10–P11       P12–P13       replies,
-"This is   60 s inside   SWUG, already     reveals on their       the slot goes to an                                 WhatsApp group,
+P01        P02           P03 (+MKV         P04–P07 + ambassador   (gated; if not ready,   P10–P11       P12–P13       replies,
+"This is   60 s inside   Academy, already  reveals on their       the slot goes to an                                 WhatsApp group,
 4TUNHub"   the platform  public)           own accounts           engineering postcard)                               part-open check
 Discovery  Understanding Intent            Trust → Intent         Trust                  Intent          Action          —
 ```
@@ -124,7 +130,7 @@ where your photograph carries the trust.
 | P03 | Tue 29 Sep | Intent | **Cohort 0 is open** | None | No: `01-announcement` | Static |
 | P04 | Wed 30 Sep | Intent | **$99 is why most never sit it** | None | No: `02-voucher` | Static |
 | P05 | Thu 1 Oct | Interest | **Why people fail the CSWA with a perfect model** | SOLIDWORKS screen + voice-over | No | 45–60 s |
-| P06 | Fri 2 Oct | Action | **How to get a seat, in four steps** | Screen recording of Bevy → LinkedIn → form | No | 40–50 s |
+| P06 | Fri 2 Oct | Action | **How to get a seat, in three steps** | Screen recording of the four follows → form → screenshots page | No | 40–50 s |
 | P07 | Sat 3 Oct | Trust | **Week one of 4TUNHub, in numbers** | Optional: screen of the analytics | **Yes**: a numbers card with your photo | Static |
 
 Every post needs a reply to its comments within the first hour. LinkedIn
@@ -164,7 +170,7 @@ who reads the answer.
 - CTA: *"Save this for exam day. Week 2 of Cohort 0 is about nothing else."*
 - X: the video plus a 3-post thread of the three traps (units, decimals, the clock). Threads hold attention on X.
 
-**P06 · Fri 2 Oct · "How to get a seat"**: a screen recording of the four steps, in the order the applicant does them. Card `04-how-to-get-a-seat` goes on LinkedIn; the video goes on both.
+**P06 · Fri 2 Oct · "How to get a seat"**: a screen recording of the three steps (four follows, the form, four screenshots), in the order the applicant does them. Card `04-how-to-get-a-seat` goes on LinkedIn; the video goes on both.
 - End on the screenshots page (`/academy/cohort-0/screenshots`), because that is the step people forget.
 
 **P07 · Sat 3 Oct · "Week one, in numbers"**: build in public, as a **card with your photo** and the real numbers from analytics and the form: visits, applications, countries, and whatever broke. Claude generates the card once you have the numbers. **Invent nothing.** If a number is small, say it's small. That is part of the trust this post is building.
@@ -197,19 +203,20 @@ one of the cohort is a seat lost.
 > La certification SOLIDWORKS (CSWA) coûte 99 $. C'est pour ça que la
 > plupart des étudiants en ingénierie d'ici ne la passent jamais.
 >
-> Alors 4TUNHub et le Douala City SOLIDWORKS User Group lancent un bootcamp
-> gratuit pour s'y préparer : huit soirées en direct, les mercredis et
-> vendredis de 19h30 à 20h30, du 21 octobre au 13 novembre. **Les sessions
-> sont en anglais**, sur Bevy, et enregistrées.
+> Alors 4TUNHub et MKV Academy lancent un bootcamp gratuit pour s'y
+> préparer, animé par Donfack Fortune et Joseph Celestine Donald, CSWE :
+> huit soirées en direct, les mercredis et vendredis de 19h30 à 20h30, du
+> 21 octobre au 13 novembre. **Les sessions sont en anglais**, en ligne, et
+> enregistrées.
 >
 > Tous ceux qui terminent la cohorte reçoivent un bon d'examen CSWA
 > gratuit.
 >
 > 20 places, sur candidature. Pour être accepté :
-> 1. Rejoindre le Douala City SWUG sur Bevy
-> 2. Suivre le Douala City SWUG sur LinkedIn
-> 3. Suivre 4TUNHub sur LinkedIn et YouTube
-> 4. Candidater, puis envoyer une capture d'écran de chaque adhésion
+> 1. Suivre 4TUNHub sur LinkedIn et YouTube
+> 2. Suivre MKV Academy sur LinkedIn et YouTube
+> 3. Candidater, puis envoyer **quatre captures d'écran**, une par
+>    abonnement. Pas de captures, pas de place.
 >
 > Il vous faut SOLIDWORKS sur votre ordinateur — n'importe quelle version
 > récente, l'édition étudiante suffit.
@@ -240,9 +247,10 @@ one of the cohort is a seat lost.
 > Une place gratuite qui ne coûte rien à obtenir, c'est une place où
 > personne ne vient.
 >
-> Alors voici ce que coûte une place dans la Cohorte 0 : quatre étapes, et
-> aucune n'est de l'argent. La vidéo les montre dans l'ordre. La plus
-> oubliée, c'est la dernière : les captures d'écran.
+> Alors voici ce que coûte une place dans la Cohorte 0 : trois étapes, et
+> aucune n'est de l'argent. Suivre 4TUNHub et MKV Academy, candidater,
+> envoyer les quatre captures d'écran. La plus oubliée, c'est la dernière,
+> et sans elle il n'y a pas de place.
 >
 > Faites-les cette semaine, pas le 10.
 
@@ -260,13 +268,13 @@ one of the cohort is a seat lost.
 | Date | Stage | What goes out | Condition |
 |---|---|---|---|
 | Sun 4 Oct | Trust | Card `05-who-teaches` + caption (founder) | — |
-| Mon 5 – Wed 7 Oct | **Partner reveal** | Three posts: (1) *why* these groups are teaching together, (2) spotlight on MKV Academy with Celestine Dona, (3) the Benin SWUG. Library L24–L25 | **Only if the gate in §6 is met.** Otherwise put engineering postcards in these slots (L09, L10) and move the reveal as late as Thu 8 Oct |
+| Mon 5 – Wed 7 Oct | **Partner reveal** | Two posts: (1) *why* 4TUNHub and MKV Academy are teaching together, (2) spotlight on Joseph Celestine Donald, CSWE, co-instructor. Library L24–L25 | **Only if the gate in §6 is met.** Otherwise put engineering postcards in these slots (L09, L10) and move the reveal as late as Thu 8 Oct |
 | Thu 8 Oct | Action | Card `08-seats-left`, with `SEATS_LEFT` set to the **real** number | Regenerate the card the same morning |
-| Fri 9 Oct | Objections | L21 FAQ, as a card with your photo on LinkedIn and a thread on X: *"I'm a beginner / I only have the Student Edition / I work evenings."* WhatsApp nudge to everyone who applied without screenshots | — |
+| Fri 9 Oct | Objections | L21 FAQ, as a card with your photo on LinkedIn and a thread on X: *"I'm a beginner / I only have the Student Edition / I work evenings."* WhatsApp nudge to everyone who applied without all four screenshots | — |
 | Sat 10 Oct | Action | X: "Tomorrow night" post, reposting the P03 thread | — |
 | Sun 11 Oct | Action | Card `07-closing` + caption. Applications close at the end of the day | — |
 | Mon 12 – Fri 16 Oct | Onboarding | Select 20 and keep a waiting list. **Every applicant gets a reply by Fri 16**. Cohort WhatsApp group, 10-minute "can you open this part" check | Night shifts on Wed 14 and Thu 15 for session 1–4 material |
-| Sat 17 – Tue 20 Oct | Onboarding | Reminder with the Bevy link to the 20 selected. A build-in-public post: *"Twenty people start on Wednesday."* | — |
+| Sat 17 – Tue 20 Oct | Onboarding | Reminder with the session link to the 20 selected. A build-in-public post: *"Twenty people start on Wednesday."* | — |
 | **Wed 21 Oct** | — | Session 1 | — |
 
 **Ambassadors.** The original plan depended on a 48-hour task on launch
@@ -286,42 +294,24 @@ that partner are in hand, including written approval of the sentence that
 describes what they contribute.** Nothing about any partner is written from
 memory or inferred.
 
-### MKV Academy (Celestine Dona)
+### MKV Academy (Joseph Celestine Donald, CSWE)
 
 | Item | Required? | Notes |
 |---|---|---|
 | Official logo, SVG or PNG with a transparent background, plus a version for dark backgrounds | Required | And permission to use it on social media and on 4tunhub.com |
-| Professional photograph of Celestine Dona | Required | Portrait, at least 1080 px, with permission to use it |
-| Exact name and title, spelled as she wants them | Required | |
+| Professional photograph of Joseph Celestine Donald | Received 2 Oct | Portrait, at least 1080 px, with permission to use it |
+| Exact name and title | Done | Joseph Celestine Donald, CSWE, Co-Founder (from the signed agreement) |
 | The academy's official name and a one- or two-sentence description in their own words | Required | |
-| **What MKV contributes to Cohort 0**, in one sentence they approve | Required | Teaching? Sessions? Materials? Vouchers? Certificates? Don't guess |
-| Does this change anything on the site? Language, dates, seat count, price, curriculum, platform (Bevy) | Required | Section 3 explains why this matters |
+| **What MKV contributes to Cohort 0**, in one sentence they approve | Done | Co-teaching and practical guidance (agreement clause 2) |
+| Does this change anything on the site? Language, dates, seat count, price, curriculum, platform | Required | Platform still open (clause 5): likely Jitsi Meet |
 | Social links: LinkedIn page, X account, website | Required | For tagging. Check that each one opens |
 | Who approves the joint posts on their side, and how quickly they can | Required | |
 | Relevant achievements (numbers, students trained, accreditations) | Optional | Only what they can support with evidence |
 | Brand requirements: colour, clear space, how their logo sits next to ours | Optional | |
-| A 15–30 s video of Celestine saying why they joined | Optional | The strongest single asset for the reveal |
+| A 15–30 s video of Joseph saying why MKV joined | Optional | The strongest single asset for the reveal |
 
-### Douala City SOLIDWORKS User Group
-
-| Item | Required? | Notes |
-|---|---|---|
-| Logo (the site already uses `public/images/logos/solidworks-ug.webp`; confirm it is the current official one) | Required | |
-| A community description, one or two sentences | Required | The site's "483 members on SWUGN" was verified 20 Sep; recheck it on the day it's quoted |
-| Official links: Bevy chapter, LinkedIn page | Required | **Confirm the two LinkedIn company URLs** in `src/lib/cohort.ts`. This is still an open launch gate |
-| Its contribution to Cohort 0, confirmed in writing | Required | Currently the partnership, Bevy hosting and the voucher. Confirm the voucher source is still right |
-| Photographs from past meetups | Optional | Real ones only |
-
-### Benin SOLIDWORKS User Group
-
-| Item | Required? | Notes |
-|---|---|---|
-| Logo | Required | |
-| Community description, member count, and **the official name and city** | Required | The founder page's talks include "Benin". Confirm it is the same chapter |
-| Official links (Bevy, LinkedIn) | Required | |
-| Its contribution to Cohort 0 | Required | |
-| **Language.** Cohort 0 is in English, and Benin is French-speaking. Do their members expect French? | Required | If they do, this is a Cohort 1 conversation, not a promise to make in October |
-| Photographs | Optional | |
+*(The Douala City and Benin SWUG checklists were removed on 2 October:
+neither group is part of Cohort 0.)*
 
 **Ask for all of it today, in one message per partner**, listing the
 required items and asking for them **by Thursday 1 October**. That leaves

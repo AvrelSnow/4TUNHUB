@@ -15,10 +15,7 @@ import {
   HUB_LINKEDIN_URL,
   MKV,
   MKV_INSTRUCTOR,
-  SWUG_BEVY_URL,
-  SWUG_LINKEDIN_URL,
   SCREENSHOTS_PATH,
-  SWUG_NAME,
   applicationsOpen,
 } from "@/lib/cohort";
 import { founder } from "@/lib/founder";
@@ -49,25 +46,24 @@ export default async function CohortPage({ params }: Params) {
   const open = applicationsOpen();
 
   /**
-   * The conditions of a seat: the words come from the dictionary, the
-   * URLs from src/lib/cohort.ts. A URL that has not been filled in yet
-   * renders as no link at all rather than as a dead one.
+   * The conditions of a seat: follow both organisations that teach the
+   * cohort, then prove it. The words come from the dictionary, the URLs
+   * from src/lib/cohort.ts.
    */
   const seatSteps: {
     key: keyof typeof t.requirements.steps;
     links: { label: string; href: string; external?: boolean }[];
   }[] = [
-    { key: "bevy", links: [{ label: t.requirements.links.bevy, href: SWUG_BEVY_URL }] },
     {
-      key: "swugLinkedin",
-      links: [{ label: t.requirements.links.swugLinkedin, href: SWUG_LINKEDIN_URL }],
-    },
-    {
-      key: "follow",
+      key: "hub",
       links: [
         { label: t.requirements.links.hubLinkedin, href: HUB_LINKEDIN_URL },
         { label: t.requirements.links.youtube, href: YOUTUBE_URL },
-        // Clause 4 of the MKV Academy agreement: both organisations' pages.
+      ],
+    },
+    {
+      key: "mkv",
+      links: [
         { label: t.requirements.links.mkvLinkedin, href: MKV.linkedin },
         { label: t.requirements.links.mkvYoutube, href: MKV.youtube },
       ],
@@ -89,10 +85,7 @@ export default async function CohortPage({ params }: Params) {
     inLanguage: "en",
     isAccessibleForFree: true,
     provider: { "@type": "Organization", name: "4TUNHub", url: "https://4tunhub.com" },
-    contributor: [
-      { "@type": "Organization", name: SWUG_NAME },
-      { "@type": "Organization", name: MKV.name, url: MKV.url },
-    ],
+    contributor: { "@type": "Organization", name: MKV.name, url: MKV.url },
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "online",
@@ -128,13 +121,10 @@ export default async function CohortPage({ params }: Params) {
           <div className="mx-auto mt-12 max-w-4xl text-center">
             <p className="eyebrow animate-fade-in">{t.eyebrow}</p>
             <h1 className="mt-3 animate-fade-up text-display-lg text-foreground">{t.title}</h1>
-            <p className="mt-4 animate-fade-up text-sm font-medium text-accent [animation-delay:40ms]">
-              {t.partner}
-            </p>
             <PartnerBadge
               label={t.inPartnership}
               newTab={dict.footer.newTab}
-              className="mt-5 animate-fade-up justify-center [animation-delay:60ms]"
+              className="mt-5 animate-fade-up justify-center [animation-delay:40ms]"
             />
             <p className="mx-auto mt-7 max-w-2xl animate-fade-up text-lead text-muted [animation-delay:80ms]">
               {t.subtitle}
@@ -273,14 +263,14 @@ export default async function CohortPage({ params }: Params) {
       </section>
 
       {/* HOW TO GET A SEAT — the conditions, before the form asks for
-          anything. Someone who reads this page and applies without joining
-          the group has wasted their evening and ours. */}
+          anything. Someone who applies without following both organisations,
+          or without the screenshots to show it, cannot be selected. */}
       <Section
         eyebrow={t.requirements.eyebrow}
         title={t.requirements.title}
         intro={t.requirements.intro}
       >
-        <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-12 grid gap-5 lg:grid-cols-3">
           {seatSteps.map((step, i) => {
             const copy = t.requirements.steps[step.key];
             return (
@@ -310,6 +300,14 @@ export default async function CohortPage({ params }: Params) {
             );
           })}
         </ol>
+
+        {/* The rule, in the one loud colour the page allows itself. */}
+        <Reveal>
+          <div className="mt-5 flex flex-col gap-2 rounded-3xl bg-brand-500 p-8 text-ink-900 sm:flex-row sm:items-baseline sm:gap-8">
+            <p className="shrink-0 text-headline font-semibold">{t.requirements.warning.title}</p>
+            <p className="text-ink-900/80">{t.requirements.warning.body}</p>
+          </div>
+        </Reveal>
       </Section>
 
       {/* BEFORE YOU APPLY + KEY DATES */}

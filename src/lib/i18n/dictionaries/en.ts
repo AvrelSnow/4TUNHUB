@@ -83,7 +83,7 @@ const en = {
     cohort: {
       eyebrow: "Applications open",
       title: "CSWA Bootcamp · Cohort 0",
-      body: "Eight live evenings from 21 October to get ready for the Certified SolidWorks Associate exam, run with Douala City SWUG and taught in partnership with MKV Academy. Free for 20 selected people, and a free exam voucher for everyone who finishes. In English.",
+      body: "Eight live evenings from 21 October to get ready for the Certified SolidWorks Associate exam, taught in partnership with MKV Academy. Free for 20 selected people, and a free exam voucher for everyone who finishes. In English.",
       cta: "Apply by 11 October",
       more: "See the programme",
     },
@@ -1076,11 +1076,10 @@ const en = {
   cohort: {
     metaTitle: "CSWA Bootcamp · Cohort 0",
     metaDescription:
-      "A free, eight-session CSWA preparation bootcamp taught live in English by Donfack Fortune and Joseph Celestine Donald, with Douala City SWUG and MKV Academy. 20 seats by application, and a free exam voucher on finishing. October–November 2026.",
+      "A free, eight-session CSWA preparation bootcamp taught live in English by Donfack Fortune and Joseph Celestine Donald, in partnership with MKV Academy. 20 seats by application, and a free exam voucher on finishing. October–November 2026.",
     back: "Academy",
     eyebrow: "4TUNHub Academy · Cohort 0",
     title: "CSWA Bootcamp. Cohort 0.",
-    partner: "Run with the Douala City SOLIDWORKS User Group",
     /** Followed by the MKV Academy logo, which links to their site. */
     inPartnership: "In partnership with",
     subtitle:
@@ -1095,7 +1094,7 @@ const en = {
       { label: "Seats", value: "20, by application" },
       { label: "Dates", value: "21 Oct – 13 Nov 2026" },
       { label: "Schedule", value: "Wed & Fri, 19:30–20:30" },
-      { label: "Where", value: "Online, on Bevy" },
+      { label: "Where", value: "Online, link sent to you" },
       { label: "Language", value: "English" },
     ],
     outcome: {
@@ -1156,41 +1155,40 @@ const en = {
       note: "Miss the commitment and the seat goes to the next person on the waiting list.",
     },
     /**
-     * The conditions of a seat. Cohort 0 runs with Douala City SWUG, so a
-     * seat goes to someone who has actually joined the group. The words
-     * live here; the URLs live in src/lib/cohort.ts.
+     * The conditions of a seat: follow both organisations that teach the
+     * cohort, and prove it with screenshots. The words live here; the URLs
+     * live in src/lib/cohort.ts.
      */
     requirements: {
       eyebrow: "How to get a seat",
-      title: "Four things, none of which cost money.",
+      title: "Three steps, none of which cost money.",
       intro:
-        "Cohort 0 runs with Douala City SWUG, and a seat goes to someone who has joined the group and can show it. That is most of the selection, and it takes about five minutes.",
+        "Cohort 0 is taught by 4TUNHub and MKV Academy, and following both is a condition of a seat. We check every follow: a seat goes to someone who has done it and can show it.",
       steps: {
-        bevy: {
-          title: "Join Douala City SWUG on Bevy",
-          desc: "Register on the group's page. The sessions are hosted there, and the link to each evening goes to members.",
+        hub: {
+          title: "Follow 4TUNHub",
+          desc: "On LinkedIn and on YouTube. Cohort 0's results, and the opening of Cohort 1, are announced there first.",
         },
-        swugLinkedin: {
-          title: "Follow Douala City SWUG on LinkedIn",
-          desc: "Where the group posts its events and the work of its members.",
-        },
-        follow: {
-          title: "Follow 4TUNHub and MKV Academy",
-          desc: "Both, on LinkedIn and on YouTube: the two organisations teach Cohort 0 together. Its results, and the opening of Cohort 1, are announced there first.",
+        mkv: {
+          title: "Follow MKV Academy",
+          desc: "On LinkedIn and on YouTube. MKV Academy teaches Cohort 0 with us.",
         },
         proof: {
-          title: "Apply, then send two screenshots",
-          desc: "One of your Bevy registration, one showing you follow the group on LinkedIn — under the same name you applied with.",
+          title: "Apply, then send four screenshots",
+          desc: "One for each follow: 4TUNHub on LinkedIn, 4TUNHub on YouTube, MKV Academy on LinkedIn, MKV Academy on YouTube. Under the same name you applied with.",
         },
       },
       links: {
-        bevy: "Open Bevy",
-        swugLinkedin: "Douala City SWUG on LinkedIn",
         hubLinkedin: "4TUNHub on LinkedIn",
         youtube: "4TUNHub on YouTube",
         mkvLinkedin: "MKV Academy on LinkedIn",
         mkvYoutube: "MKV Academy on YouTube",
         proof: "Send the screenshots",
+      },
+      /** The rule, said once and plainly, under the three steps. */
+      warning: {
+        title: "No screenshots, no seat.",
+        body: "An application is only reviewed once all four screenshots have arrived. Following without showing it does not count, and neither does showing three of the four.",
       },
     },
 
@@ -1234,7 +1232,7 @@ const en = {
     },
     form: {
       heading: "Apply for Cohort 0.",
-      intro: "Five minutes. Do the four steps above first — we check them. We read every application as it arrives and reply to everyone by Friday 16 October.",
+      intro: "Five minutes. Follow both organisations first, then send the four screenshots: we check every one. We read every application as it arrives and reply to everyone by Friday 16 October.",
       name: { label: "Full name", placeholder: "Jane Doe" },
       email: { label: "Email", placeholder: "you@example.com" },
       whatsapp: {
@@ -1245,7 +1243,7 @@ const en = {
       linkedin: {
         label: "Your LinkedIn profile",
         placeholder: "linkedin.com/in/your-name",
-        hint: "We check the two follows against this profile.",
+        hint: "We check your LinkedIn follows against this profile.",
       },
       org: {
         label: "School or employer",
@@ -1298,31 +1296,45 @@ const en = {
     screenshots: {
       back: "Cohort 0",
       eyebrow: "One step left",
-      title: "Send your two screenshots.",
+      title: "Send your four screenshots.",
       intro:
-        "Your application is in. It cannot be selected until we can see that you have actually joined Douala City SWUG \u2014 which takes two screenshots and about a minute.",
+        "Your application is in. It cannot be selected until we can see that you follow 4TUNHub and MKV Academy, on LinkedIn and on YouTube. Four screenshots, about two minutes.",
       shots: {
-        bevy: {
-          title: "Your Bevy registration",
-          desc: "The group's page on SWUGN, signed in, showing you as a member. The top of the page with your name visible is enough.",
-          cta: "Open the group on Bevy",
+        hubLinkedin: {
+          title: "4TUNHub on LinkedIn",
+          desc: "The 4TUNHub company page showing Following rather than Follow. Your own profile picture or name in the corner is what makes it yours.",
+          cta: "Open 4TUNHub on LinkedIn",
         },
-        linkedin: {
-          title: "Your LinkedIn follow",
-          desc: "The group's LinkedIn page showing Following rather than Follow. Your own profile name in the corner is what makes it yours.",
-          cta: "Open the group on LinkedIn",
+        hubYoutube: {
+          title: "4TUNHub on YouTube",
+          desc: "The 4TUNHUB channel showing Subscribed, signed in, with your account visible.",
+          cta: "Open 4TUNHub on YouTube",
+        },
+        mkvLinkedin: {
+          title: "MKV Academy on LinkedIn",
+          desc: "The MKV Academy page showing Following rather than Follow, with your profile visible.",
+          cta: "Open MKV Academy on LinkedIn",
+        },
+        mkvYoutube: {
+          title: "MKV Academy on YouTube",
+          desc: "MKV Academy's channel showing Subscribed, signed in, with your account visible.",
+          cta: "Open MKV Academy on YouTube",
         },
       },
       send: {
-        title: "Both to one address.",
+        title: "All four to one address.",
         body:
-          "Attach the two images and send. The subject and the text are already written \u2014 put the name you applied with in the message, and nothing else is needed.",
+          "Attach the four images and send. The subject and the text are already written \u2014 put the name you applied with in the message, and nothing else is needed.",
         cta: "Write the email",
       },
       mailSubject: "Screenshots",
       mailBody:
-        "Name I applied with:\n\nAttached:\n1. My Bevy registration for Douala City SWUG\n2. My LinkedIn follow of Douala City SWUG\n",
+        "Name I applied with:\n\nAttached:\n1. My LinkedIn follow of 4TUNHub\n2. My YouTube subscription to 4TUNHUB\n3. My LinkedIn follow of MKV Academy\n4. My YouTube subscription to MKV Academy\n",
       notes: [
+        {
+          title: "All four, or none counts",
+          body: "Selection only looks at applications whose four screenshots have arrived. Missing one is the same as missing all of them.",
+        },
         {
           title: "By 11 October",
           body: "The same deadline as the application itself. Screenshots that arrive after it cannot be counted, because selection will already be under way.",
@@ -1342,7 +1354,7 @@ const en = {
     success: {
       title: "Application received.",
       body: "Thank you. Seats are given out as applications come in, and we reply to every applicant by Friday 16 October, by email and on WhatsApp.",
-      next: "One thing left: send us the two screenshots — your Bevy registration and your LinkedIn membership of Douala City SWUG — under the same name you applied with. An application without them cannot be selected.",
+      next: "One thing left, and it decides whether you can be selected: send us four screenshots showing you follow 4TUNHub and MKV Academy on LinkedIn and on YouTube, under the same name you applied with. An application without all four cannot be selected.",
       nextCta: "Send the screenshots",
     },
     instructor: {
@@ -1351,7 +1363,7 @@ const en = {
       coBody: "Certified SOLIDWORKS Expert and co-founder of MKV Academy, which publishes technical e-books and courses for engineers. He shares the teaching of Cohort 0 and the guidance on its practical work.",
       coCta: "Visit MKV Academy",
       title: "Donfack Fortune",
-      body: "Mechanical engineer and state-accredited educator: CSWP-certified, CSWE candidate, and organiser of Douala City SWUG, the local SOLIDWORKS user group. He has taught more than 300 students.",
+      body: "Mechanical engineer and state-accredited educator: CSWP-certified and a CSWE candidate. He has taught more than 300 students.",
       cta: "Read his story",
     },
   },
@@ -1577,7 +1589,7 @@ const en = {
       },
       {
         title: "The exam voucher",
-        body: "Everyone who completes the cohort as described above receives a CSWA exam voucher at no cost. The vouchers are supplied to us through the SOLIDWORKS user group; if that supply changes or fails for reasons outside our control, we will say so publicly and immediately \u2014 and we will not have taken your money for it. Sitting the exam, and passing it, remains yours to do: we prepare you for it and promise nothing about the result.",
+        body: "Everyone who completes the cohort as described above receives a CSWA exam voucher at no cost. If our supply of vouchers changes or fails for reasons outside our control, we will say so publicly and immediately \u2014 and we will not have taken your money for it. Sitting the exam, and passing it, remains yours to do: we prepare you for it and promise nothing about the result.",
       },
       {
         title: "What you send us",
@@ -1589,7 +1601,7 @@ const en = {
       },
       {
         title: "Not affiliated, and a word about names",
-        body: "SOLIDWORKS and CSWA are trademarks of Dassault Syst\u00e8mes. 4TUNHub is not part of Dassault Syst\u00e8mes, is not endorsed by them, and does not award their certifications: we prepare people to sit the exam, which they take with the certifying body. Cohort 0 is run together with the Douala City SOLIDWORKS User Group, a community group, and taught in partnership with MKV Academy.",
+        body: "SOLIDWORKS and CSWA are trademarks of Dassault Syst\u00e8mes. 4TUNHub is not part of Dassault Syst\u00e8mes, is not endorsed by them, and does not award their certifications: we prepare people to sit the exam, which they take with the certifying body. Cohort 0 is taught in partnership with MKV Academy.",
       },
       {
         title: "Other people's sites",

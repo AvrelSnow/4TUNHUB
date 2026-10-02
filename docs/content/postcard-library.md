@@ -77,7 +77,7 @@ reply). No TikTok.
 |---|---|---|---|---|---|---|---|---|
 | **L20** | Cohort 0 is open (= P03) | Existing copy in `cohort-0-campaign.md` | Card 01 (+ X thread) | Intent | Students | Apply | Card | Template for every cohort |
 | **L21** | FAQ: "I'm a beginner / Student Edition only / I work evenings" | "Three reasons people think they can't apply. None of them are true." (only answers that are on record) | Photo card (LinkedIn) / thread (X) | Intent → Action | Students | Apply | Photo card | Pinned FAQ, cohort page copy |
-| **L22** | How to get a seat in four steps (= P06) | "Four steps, none of them cost money." | Screen recording of Bevy → LinkedIn → form → screenshots | Action | Applicants | Apply today | Screen, Card 04 | Every cohort with conditions |
+| **L22** | How to get a seat in three steps (= P06) | "Three steps, none of them cost money. No screenshots, no seat." | Screen recording of the four follows → form → screenshots page | Action | Applicants | Apply today | Screen, Card 04 | Every cohort with conditions |
 | **L23** | Seats left / closing tonight | "{real number} seats left." | Card 08 / 07 | Action | Warm audience | Apply | Card (set `SEATS_LEFT`) | Every deadline |
 
 ## Partnership (all gated on `launch-campaign.md` §6)
@@ -85,7 +85,7 @@ reply). No TikTok.
 | ID | Concept | Hook | Format | Stage | Audience | CTA | Assets | Reuse |
 |---|---|---|---|---|---|---|---|---|
 | **L24** | Why these groups are teaching together | Written only after each partner's contribution is confirmed in writing | Card with the partners' photos and logos, as a story rather than a logo wall | Trust | SOLIDWORKS users, students | Apply | Every partner's required assets | Cohort 1 and joint events |
-| **L25** | Partner spotlight: MKV Academy / Celestine Dona, in their own words | Their own 15–30 s video, if they send one | Their video, or a card with a photo | Trust | Students, educators | Follow them, apply | Photo, logo, approved description | Repeat for each partner |
+| **L25** | Partner spotlight: MKV Academy / Joseph Celestine Donald, CSWE, in their own words | Their own 15–30 s video, if they send one | Their video, or a card with a photo | Trust | Students, educators | Follow them, apply | Photo, logo, approved description | Repeat for each partner |
 
 ## Social proof (from 21 October)
 

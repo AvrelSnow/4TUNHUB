@@ -5,8 +5,8 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ArrowLink, Chevron } from "@/components/ui/ArrowLink";
 import { Reveal } from "@/components/ui/Reveal";
-import { COHORT_PATH, SWUG_BEVY_URL, SWUG_LINKEDIN_URL, applicationsOpen } from "@/lib/cohort";
-import { CONTACT_EMAIL } from "@/lib/site";
+import { COHORT_PATH, HUB_LINKEDIN_URL, MKV, applicationsOpen } from "@/lib/cohort";
+import { CONTACT_EMAIL, YOUTUBE_URL } from "@/lib/site";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
  * four. That fails the people it most needs to reach: a phone with no
  * mail client configured opens nothing at all, and even when it works the
  * applicant is staring at an empty message with no idea what counts as
- * proof. A page can show them — what the two screenshots must contain,
+ * proof. A page can show them — what the four screenshots must contain,
  * where to get them, what to write, and what happens if they never send.
  *
  * It is also a link that can be pasted into WhatsApp, which is where most
@@ -51,8 +51,10 @@ export default async function ScreenshotsPage({ params }: Params) {
   )}`;
 
   const shots = [
-    { key: "bevy" as const, href: SWUG_BEVY_URL },
-    { key: "linkedin" as const, href: SWUG_LINKEDIN_URL },
+    { key: "hubLinkedin" as const, href: HUB_LINKEDIN_URL },
+    { key: "hubYoutube" as const, href: YOUTUBE_URL },
+    { key: "mkvLinkedin" as const, href: MKV.linkedin },
+    { key: "mkvYoutube" as const, href: MKV.youtube },
   ];
 
   return (
@@ -72,7 +74,7 @@ export default async function ScreenshotsPage({ params }: Params) {
         <h1 className="mt-3 text-display text-foreground">{t.title}</h1>
         <p className="mt-6 text-lead text-muted">{t.intro}</p>
 
-        {/* The two things, each with the place to go and get it. */}
+        {/* The four follows, each with the place to go and get it. */}
         <ol className="mt-12 grid gap-5 sm:grid-cols-2">
           {shots.map((shot, i) => {
             const copy = t.shots[shot.key];

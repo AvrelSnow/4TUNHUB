@@ -203,7 +203,7 @@ const listItem = (label, value, dark) =>
 
 // ---- the seven cards -----------------------------------------------------
 
-const PARTNER = "4TUNHub × Douala City SWUG";
+const PARTNER = "4TUNHub × MKV Academy";
 
 /**
  * Seats still open, for the urgency card. Selection is rolling, so this
@@ -359,13 +359,13 @@ function cards({ portrait }) {
           {
             eyebrow: "How to get a seat",
             body: [
-              text("Four things, none of which cost money.", { key: "t", ...display(false, 72), marginBottom: 40 }),
+              text("Three steps, none of which cost money.", { key: "t", ...display(false, 72), marginBottom: 40 }),
               col({ key: "steps" }, [
-                listItem("01", "Join Douala City SWUG on Bevy", false),
-                listItem("02", "Follow the group on LinkedIn", false),
-                listItem("03", "Follow 4TUNHub on LinkedIn and YouTube", false),
-                listItem("04", "Apply, and send a screenshot of each", false),
+                listItem("01", "Follow 4TUNHub on LinkedIn and YouTube", false),
+                listItem("02", "Follow MKV Academy on LinkedIn and YouTube", false),
+                listItem("03", "Apply, then send all four screenshots", false),
               ]),
+              text("No screenshots, no seat.", { key: "w", ...lead(false), fontWeight: 700, marginTop: 36 }),
             ],
             foot: { left: "4tunhub.com/academy/cohort-0", right: "Closes 11 October" },
           },
@@ -394,7 +394,7 @@ function cards({ portrait }) {
                 ]),
               ]),
               text(
-                "Organiser of Douala City SWUG. Six machines designed, simulated and built. More than 300 students taught.",
+                "Six machines designed, simulated and built. More than 300 students taught. Co-teaching with Joseph Celestine Donald, CSWE, of MKV Academy.",
                 { key: "s", ...lead(false), marginTop: 48 },
               ),
             ],

@@ -26,16 +26,16 @@ and it makes the ten remaining seats visibly scarce.
    group of 200 engineering students beats five with 3,000 scattered
    followers.
 2. **They want the CSWA themselves.** Getting something, not doing a favour.
-3. **They have already done something unasked** — for the SWUG, for
+3. **They have already done something unasked** — for a community, for
    classmates, for you. Past behaviour is the only reliable predictor.
 4. **They answer within 24 hours.** Someone slow during selection is gone
    by week two.
 5. **Spread.** Not ten from IUC. Douala, Dschang, ENSET, a polytechnic,
    and one or two outside Cameroon — the REM's readers are not all here.
 
-Where the thirty names come from: students taught (300+), active members
-of the Douala City SWUG (483), REM readers who reply, the WhatsApp
-community, and the first people to apply for a seat.
+Where the thirty names come from: students taught (300+), REM readers
+who reply, the WhatsApp community, MKV Academy's own learners, and the
+first people to apply for a seat.
 
 ## How they are chosen: the task, not an interview
 
@@ -44,8 +44,8 @@ title. **Invite thirty directly**, then let one task do the selecting.
 
 > **The invite** (WhatsApp or LinkedIn DM, sent 22–24 Sep)
 >
-> [Name] — I'm running a free CSWA bootcamp in October with the Douala
-> City SOLIDWORKS User Group. Eight live evenings, and everyone who
+> [Name] — I'm running a free CSWA bootcamp in October with MKV
+> Academy. Eight live evenings, and everyone who
 > finishes gets a free exam voucher.
 >
 > I'm keeping ten of the twenty seats for people who will carry it to
@@ -102,7 +102,7 @@ itself is held to.
 | A seat in Cohort 0 | Plus the free CSWA voucher with it |
 | Their name and photo on the site | An Ambassadors section, real credibility both ways |
 | A signed letter of recommendation | From a CSWP engineer and lecturer. On a student CV here, worth real money |
-| The week's best post reposted | By 4TUNHub *and* the SWUG, to 483 members. Their audience grows — this is why someone with a group says yes |
+| The week's best post reposted | By 4TUNHub *and* MKV Academy. Their audience grows — this is why someone with a group says yes |
 | First refusal on Cohort 1 | A free seat in the paid one |
 
 ## The reveal: the announcement *is* the distribution

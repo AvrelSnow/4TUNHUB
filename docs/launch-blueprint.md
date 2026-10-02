@@ -100,7 +100,7 @@ the launch actually runs on.
 ### B1 — The link preview has no image *(highest cost, smallest fix)*
 
 Every channel in the campaign is a link-preview channel: the WhatsApp
-community, the SWUG's WhatsApp group, LinkedIn, Facebook. On all of them a
+community, MKV Academy's channels, LinkedIn, Facebook. On all of them a
 link with no image is a grey rectangle with a line of text under it, and
 it is scrolled past. The card **exists** — `/opengraph-image` returns a
 1200×630 PNG of the CC3300 locomotive — but no page points at it, so no
@@ -169,20 +169,18 @@ and cookieless; two environment variables and a redeploy are missing:
 `ANALYTICS_PROVIDER=umami` and `ANALYTICS_SITE_ID=<website id>`. Umami
 Cloud's free tier also counts the three named conversions already wired in
 `src/lib/track.ts` — waitlist signup, Cohort 0 application, contact
-message — which is what turns "we got traffic" into "the SWUG group
+message — which is what turns "we got traffic" into "the WhatsApp community
 converted at 4% and LinkedIn at 0.5%", and that is what Cohort 1 gets
 planned on.
 
 Do it Wednesday, not Friday. A provider configured an hour before the
 announcement is a provider nobody has watched record anything.
 
-### B4 — The two LinkedIn company URLs are still a guess
+### B4 — The LinkedIn company URLs *(closed 2 October)*
 
-`src/lib/cohort.ts` carries `SWUG_LINKEDIN_URL` (company/105488333) and
-`HUB_LINKEDIN_URL` (company/111010064). Both were handed over as admin
-URLs and the mapping was inferred from the numbering. A launch post that
-sends 483 people to the wrong company page, in a partnership
-announcement, is the error the partner notices first.
+The guessed numeric IDs are gone. `HUB_LINKEDIN_URL` is now the public
+page, linkedin.com/company/4tunhub, checked on 2 October, and the SWUG
+link was removed with the SWUG itself.
 
 **Fix:** open both in a logged-out browser, read the page names, and
 either confirm or swap the two lines. Five minutes, and it is the cheapest
@@ -411,7 +409,7 @@ so" is a no.
     loads exactly one script, and `/privacy#storage` can turn it off
     again. Check it in French too.
 12. Applications close **Sunday 11 October** everywhere it is written:
-    the site, the cards, the captions, the Bevy event.
+    the site, the cards, the captions.
 13. The score is ≥ 80.
 
 ---
@@ -448,9 +446,9 @@ rather than by 483 strangers.
 | 08:00 | Re-run the §1 audit. Open the site on a phone, on mobile data, as a first-time visitor: read the homepage, reach the application form, stop before submitting | An overnight edge-cache surprise is found now, not after the post |
 | 08:30 | Post in the **4TUN Hub WhatsApp community** | Warmest audience, and they will tell you if something is broken |
 | 09:00 | Watch for thirty minutes: Umami recording, links resolving, no error mail | The last moment where stopping is still cheap |
-| 09:30 | Post in the **Douala City SWUG WhatsApp group** | The partner's audience, where the offer actually lands |
+| 09:30 | Send the post to **MKV Academy** to share on their channels | The partner's audience, where the offer actually lands |
 | 10:00 | **LinkedIn**, from Fortune's profile, card attached, **link in the first comment** — the feed suppresses posts that send people away | Peak weekday reach |
-| 10:15 | Reshare from the 4TUN Hub company page, and from the SWUG's page if its admin is willing | Three surfaces, one post |
+| 10:15 | Reshare from the 4TUNHub company page, and from MKV Academy's page | Three surfaces, one post |
 | 12:00 | **YouTube community post** on @4TUNHUB, plus the WhatsApp status / story card | Different audience, different hour |
 | 13:00 | **First check-in:** visits, applications received, any error | The first number of the day that means anything |
 | 15:00 | Reply to every comment and every DM. No exceptions today | Reply speed on day one is the entire reputation of a new thing |

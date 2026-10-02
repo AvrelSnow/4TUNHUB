@@ -12,6 +12,14 @@
 > Facts of record: `docs/launch-plan.md`. Ambassadors: `docs/ambassadors.md`.
 > Cards: `node scripts/make-postcards.mjs` → `./postcards`.
 
+> **2 October 2026: Cohort 0 no longer runs with Douala City SWUG.** It is taught
+> in partnership with **MKV Academy** (Joseph Celestine Donald, CSWE, co-teaches).
+> A seat now asks for four follows (4TUNHub and MKV Academy, each on LinkedIn
+> and YouTube) and **four screenshots proving them**; no screenshots, no seat.
+> No Bevy: the sessions are online, link sent to the selected (platform to be
+> agreed with MKV, likely Jitsi Meet). The voucher stays, no supplier named.
+> The copy below has been brought into line with this.
+
 Eight cards across seventeen days, launch to deadline, with the ambassador
 reveals filling the middle week. Each is posted with the caption below it:
 the cards carry the facts, the captions carry the voice.
@@ -29,26 +37,25 @@ that send people off-platform.
 
 Post the announcement card. Four channels, four lengths, same facts.
 
-### WhatsApp community + the Douala City SWUG group
+### WhatsApp community
 
 > **CSWA Bootcamp · Cohort 0**
-> 4TUNHub × Douala City SWUG
+> 4TUNHub × MKV Academy
 >
 > Eight live evenings to get you ready for the Certified SOLIDWORKS
 > Associate exam. Free, for 20 people.
 >
 > Wednesdays and Fridays, 19:30–20:30, 21 October to 13 November. In
-> English, on Bevy, recorded.
+> English, online, recorded.
 >
 > Everyone who finishes the cohort gets a **free CSWA exam voucher**. On
 > your own, that exam is $99.
 >
 > Twenty seats, by application. To be accepted you need to:
-> 1. Join Douala City SWUG on Bevy
-> 2. Follow Douala City SWUG on LinkedIn
-> 3. Follow 4TUNHub on LinkedIn and YouTube
-> 4. Apply, and send a screenshot of your Bevy registration and your
->    LinkedIn membership
+> 1. Follow 4TUNHub on LinkedIn and YouTube
+> 2. Follow MKV Academy on LinkedIn and YouTube
+> 3. Apply, and send **four screenshots**, one per follow.
+>    No screenshots, no seat.
 >
 > You need SOLIDWORKS on your computer. Any recent version; the Student
 > Edition works.
@@ -63,9 +70,10 @@ Post the announcement card. Four channels, four lengths, same facts.
 > Douala and a recruiter in Dubai read the same way. It costs $99 to sit,
 > which is exactly why most of the students I teach never do.
 >
-> So 4TUNHub and Douala City SWUG are running a bootcamp for it. Eight
-> live evenings from 21 October — Wednesdays and Fridays, 19:30 to 20:30,
-> in English, on Bevy. Free, for twenty people.
+> So 4TUNHub and MKV Academy are running a bootcamp for it, taught by
+> me and Joseph Celestine Donald, CSWE. Eight live evenings from 21
+> October — Wednesdays and Fridays, 19:30 to 20:30, in English, online.
+> Free, for twenty people.
 >
 > Everyone who finishes gets a free exam voucher. That is the point of the
 > whole thing: not eight evenings of watching someone model, but a
@@ -76,9 +84,9 @@ Post the announcement card. Four channels, four lengths, same facts.
 > timed mock exams, because the CSWA is as much a test of speed as of
 > skill.
 >
-> Twenty seats, by application, and there are conditions. You join Douala
-> City SWUG on Bevy and on LinkedIn, you follow 4TUNHub here and on
-> YouTube, and you send the screenshots with your application. A free seat
+> Twenty seats, by application, and there are conditions. You follow
+> 4TUNHub and MKV Academy, here and on YouTube, and you send four
+> screenshots that prove it. No screenshots, no seat. A free seat
 > that costs nothing to claim is a seat someone doesn't show up for.
 >
 > Applications close Sunday 11 October, and seats go out as applications
@@ -86,27 +94,27 @@ Post the announcement card. Four channels, four lengths, same facts.
 
 ### YouTube community post
 
-> Cohort 0 is open. A free CSWA preparation bootcamp with Douala City SWUG
+> Cohort 0 is open. A free CSWA preparation bootcamp with MKV Academy
 > — eight live evenings from 21 October, Wednesdays and Fridays, in English,
 > and a free exam voucher for everyone who finishes.
 >
 > 20 seats, by application, closing 11 October. Details and the form:
 > 4tunhub.com/en/academy/cohort-0
 >
-> If you're subscribed here you already have half the requirements.
+> Subscribed here already? That's one of the four follows. Screenshot it.
 
 ### TikTok / Shorts — 35 seconds, to camera
 
 > The SOLIDWORKS certification costs ninety-nine dollars. That's why most
 > engineering students here never get it.
 >
-> So we're doing this. 4TUNHub and Douala City SWUG, eight live evenings
+> So we're doing this. 4TUNHub and MKV Academy, eight live evenings
 > from the twenty-first of October, Wednesdays and Fridays, half past
 > seven. Free. In English.
 > And if you finish it, you get the exam voucher — also free.
 >
-> Twenty seats. You apply, you join the user group, you follow us. That's
-> it.
+> Twenty seats. You follow both of us, you apply, you send the four
+> screenshots. That's it.
 >
 > Eleventh of October, applications close. Link's in the bio.
 
@@ -117,11 +125,11 @@ Post the announcement card. Four channels, four lengths, same facts.
 | Day | Card | Caption |
 |---|---|---|
 | **Fri 25 Sep** | `01-announcement` | The launch posts above. |
-| **Sat 26 Sep** | `02-voucher` | *The exam costs $99. That single number is why most of the students I teach never sit it, however good they are. Finish Cohort 0 and the voucher is yours, free — that is what the partnership with Douala City SWUG pays for. Twenty seats, applications close 11 October.* |
+| **Sat 26 Sep** | `02-voucher` | *The exam costs $99. That single number is why most of the students I teach never sit it, however good they are. Finish Cohort 0 and the voucher is yours, free. Twenty seats, applications close 11 October.* |
 | **Sun 27 Sep** | `03-programme` | *People ask what eight evenings can really cover. These eight. Every session is mapped to something the CSWA actually asks you to do — and the last Friday is a timed mock exam, marked live, because the CSWA is as much a test of speed as of skill.* |
-| **Mon 28 Sep** | `04-how-to-get-a-seat` | *A free seat that costs nothing to claim is a seat someone doesn't show up for. So here is what a seat costs: four things, and none of them are money. Do them this week, not on the tenth.* |
-| **Tue 29 Sep – Sat 3 Oct** | `amb-01` … `amb-10` | Two a day, and **each ambassador posts their own**, in their own words. 4TUNHub and the SWUG repost every one. Brief: `docs/ambassadors.md`. |
-| **Sun 4 Oct** | `05-who-teaches` | *Who's teaching it: me. Mechanical engineer, CSWP-certified, organiser of Douala City SWUG. Six machines designed, simulated and built — and more than 300 students through my classrooms. I am not going to teach you SOLIDWORKS from a manual. I'll teach it the way I had to use it.* |
+| **Mon 28 Sep** | `04-how-to-get-a-seat` | *A free seat that costs nothing to claim is a seat someone doesn't show up for. So here is what a seat costs: three steps, and none of them are money. Follow 4TUNHub and MKV Academy, apply, send the four screenshots. No screenshots, no seat. Do it this week, not on the tenth.* |
+| **Tue 29 Sep – Sat 3 Oct** | `amb-01` … `amb-10` | Two a day, and **each ambassador posts their own**, in their own words. 4TUNHub and MKV Academy repost every one. Brief: `docs/ambassadors.md`. |
+| **Sun 4 Oct** | `05-who-teaches` | *Who's teaching it: me, and Joseph Celestine Donald, CSWE, of MKV Academy. I'm a mechanical engineer, CSWP-certified. Six machines designed, simulated and built — and more than 300 students through my classrooms. I am not going to teach you SOLIDWORKS from a manual. I'll teach it the way I had to use it.* |
 | **Tue 6 Oct** | `06-one-thing` | *Free advice, whether you apply or not. Most people who fail the CSWA can model the part perfectly. They lose it on units, on decimal places, and on the clock — the exam checks your answer in the format it asked for, not the one your document happens to be in. Week 2 of the bootcamp is spent on nothing else.* |
 | **Thu 8 Oct** | `08-seats-left` | *Seats go out as applications arrive, not all at the end — the people already in applied in the first week. Set `SEATS_LEFT` in the script to the real number before posting; a stale count is the fastest way to look careless.* |
 | **Sun 11 Oct** | `07-closing` | *Tonight. Twenty seats, free, eight live evenings from 21 October, and a CSWA voucher for everyone who finishes. After tonight the next cohort is January. If you've been meaning to, this is the meaning-to running out.* |

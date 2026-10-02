@@ -10,7 +10,7 @@
  *    genuine, correctly-attributed item exists.
  */
 
-import { SWUG_BEVY_URL, MKV } from "@/lib/cohort";
+import { MKV } from "@/lib/cohort";
 import { MEDIUM_URL } from "@/lib/site";
 
 /**
@@ -57,7 +57,7 @@ export const founderAffiliations: Affiliation[] = [
     name: "Douala City SolidWorks User Group",
     role: "Facilitator",
     logo: "/images/logos/solidworks-ug.webp",
-    href: SWUG_BEVY_URL,
+    href: "https://community.swugn.org/douala-city-solidworks-user-group/",
   },
   {
     name: "Renewable Energy Mall & Engineering Reviews",

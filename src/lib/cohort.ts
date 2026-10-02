@@ -5,31 +5,16 @@
  */
 
 export const COHORT_PATH = "/academy/cohort-0";
-/** Where an applicant is sent to hand in their proof of membership. */
+/** Where an applicant is sent to hand in the screenshots of their follows. */
 export const SCREENSHOTS_PATH = "/academy/cohort-0/screenshots";
 
 /**
- * Cohort 0 runs with the Douala City SWUG, and membership of the group is
- * a condition of a seat. Every one of these links is therefore a step an
- * applicant has to complete — an empty one renders as plain text rather
- * than a dead link, so a missing URL is visible instead of broken.
- *
- * REQUIRED BEFORE LAUNCH: the first three.
+ * The 4TUNHub company page — not the founder's profile (see site.ts).
+ * Following it on LinkedIn and on YouTube is a condition of a seat, so the
+ * address is the page's public vanity URL, checked on 2 Oct 2026 (the
+ * numeric admin ID it replaced was a guess).
  */
-export const SWUG_NAME = "Douala City SWUG";
-/** The group's page on SWUGN's own network: 483 members, verified 20 Sep 2026. */
-export const SWUG_BEVY_URL = "https://community.swugn.org/douala-city-solidworks-user-group/";
-
-/**
- * UNVERIFIED MAPPING — confirm before launch. Both company pages were
- * given as admin URLs, which no one but an admin can open, so which ID
- * belongs to which page is a guess from the numbering (LinkedIn IDs rise
- * over time, and the group is older than the Hub's page). Swapping these
- * two lines is the whole fix if the guess is wrong.
- */
-export const SWUG_LINKEDIN_URL = "https://www.linkedin.com/company/105488333/";
-/** The 4TUNHub company page — not the founder's profile (see site.ts). */
-export const HUB_LINKEDIN_URL = "https://www.linkedin.com/company/111010064/";
+export const HUB_LINKEDIN_URL = "https://www.linkedin.com/company/4tunhub/";
 
 /**
  * MKV Academy co-delivers Cohort 0 under a written agreement (1 Oct 2026):
