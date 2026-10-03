@@ -361,15 +361,14 @@ export default async function CohortPage({ params }: Params) {
                 {t.instructor.cta}
               </ArrowLink>
 
-              {/* The co-instructor. No portrait yet, so his initials on
-                  ink rather than a stock face. */}
+              {/* The co-instructor, in the portrait MKV Academy sent. */}
               <div className="mt-10 flex items-center gap-5 border-t border-border pt-8">
-                <span
-                  aria-hidden="true"
-                  className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-ink-900 text-xl font-semibold tracking-tight text-white"
-                >
-                  JD
-                </span>
+                <Media
+                  src="/images/people/joseph-celestine-donald.webp"
+                  alt={MKV_INSTRUCTOR.name}
+                  position="50% 30%"
+                  className="h-20 w-20 shrink-0 rounded-full"
+                />
                 <div>
                   <p className="text-2xs font-medium text-muted">{t.instructor.coEyebrow}</p>
                   <p className="font-semibold text-foreground">
