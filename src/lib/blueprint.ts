@@ -662,6 +662,13 @@ export const decisions: Decision[] = [
       "Fortune's direction: the cohort should carry no obligation to, or claim about, a community group it is not formally tied to, so nothing on it can become a dispute later. The screenshots were already the real selection filter, so they are now said plainly, three times: in the steps, in an amber 'No screenshots, no seat' band under them, and on the screenshots page with one card per follow. The voucher promise is kept on his word that the vouchers can be obtained without the group; the terms still say we will announce it publicly if the supply fails. The platform reads 'online, link sent to you' until he and MKV pick one (Jitsi Meet is the likely choice, clause 5). The 4TUNHub LinkedIn link moved from a guessed numeric ID to the page's public address, linkedin.com/company/4tunhub, now that following it is a condition of a seat.",
     status: "proposed",
   },
+  {
+    decision:
+      "Form delivery waits for the next Netlify credit reset (2026-10-04). Until then the live forms keep answering 'not switched on yet' and hand applicants a pre-written email to 4tunhub@gmail.com, which is the only way applications arrive. The first deploy after the reset turns delivery on: RESEND_API_KEY (secret, Sending access, 4tunhub.com only) and MAIL_FROM = 4TUNHub <hello@4tunhub.com> (NOT secret) are set in Netlify, and that deploy is spent on nothing else. Then one test application from a phone on mobile data, which must reach 4tunhub@gmail.com as '[Cohort 0] Application: <name>' and show delivered in Resend.",
+    rationale:
+      "Fortune's call with 57 credits left, about three deploys. An applicant reported the failure on 3 October and sent their answers by email, so the fallback works, but applicants who stopped at that message are lost and cannot be counted. The cause is the missing key, not the code. The domain is sent through the existing Resend team that already sends 4TUNHUB Lab's sign-in emails; claiming it from a new team would have revoked that team's access and broken the Lab's password resets. The first attempt failed the build (free) because MAIL_FROM had been marked secret and its value appears in README.md and mailer.ts, so Netlify's secrets scan refused it; MAIL_FROM must be re-created unticked, and scanning stays on. The first key appeared in Netlify's error summary and in chat, so it is to be replaced in Resend before the deploy. Count applicants so far in Gmail with subject:\"[Cohort 0]\". Applications close 11 October, so if the reset comes after that date, this deploy is for the acceptance emails due 16 October, which cannot go out without a verified sender.",
+    status: "locked",
+  },
 ];
 
 /* ============================================================
