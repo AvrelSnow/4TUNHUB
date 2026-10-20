@@ -43,9 +43,46 @@ export const APPLICATIONS_CLOSE = "2026-10-11T23:59:59+01:00";
 
 export const COHORT_SEATS = 20;
 
+/**
+ * Local preview only: `NEXT_PUBLIC_PREVIEW_APPLICATIONS=open npm run dev`
+ * shows the form after the deadline, so the next cohort's application can be
+ * built and tested before it opens. A production build compiles this to
+ * false whatever the variable says.
+ */
+const PREVIEW_OPEN =
+  process.env.NODE_ENV === "development" && process.env.NEXT_PUBLIC_PREVIEW_APPLICATIONS === "open";
+
 export function applicationsOpen(now: Date = new Date()): boolean {
+  if (PREVIEW_OPEN) return true;
   return now.getTime() < new Date(APPLICATIONS_CLOSE).getTime();
 }
+
+/** Prefix of an application's reference, e.g. C0-7F3KQ. */
+export const COHORT_REF_PREFIX = "C0";
+
+/**
+ * The four screenshots travel WITH the application, one file per follow.
+ * They used to come by a separate email with a blank name line, and could
+ * not be matched to the application they belonged to (inbox, Oct 2026).
+ * The slot keys are the ones the screenshots page already names.
+ */
+export const PROOF_SLOTS = ["hubLinkedin", "hubYoutube", "mkvLinkedin", "mkvYoutube"] as const;
+export type ProofSlot = (typeof PROOF_SLOTS)[number];
+export type ProofField = `proof_${ProofSlot}`;
+export const proofField = (slot: ProofSlot): ProofField => `proof_${slot}`;
+
+/**
+ * The browser shrinks each image to a JPEG no longer than `maxEdge` before
+ * it is sent (a screenshot comes out around 250 KB). The server still
+ * enforces `maxBytes` per file, because a request without JavaScript sends
+ * the originals. Four at the cap stay under the 5 MB action limit in
+ * next.config.ts, itself under the host's 6 MB request ceiling.
+ */
+export const PROOF_LIMITS = {
+  maxEdge: 1600,
+  maxBytes: 1_200_000,
+  types: ["image/jpeg", "image/png", "image/webp"],
+} as const;
 
 /** The <select> options, and the server's allow-list. */
 export const SW_VERSIONS = ["2025", "2024", "2023", "older", "student", "none"] as const;
@@ -59,7 +96,8 @@ export type ApplyField =
   | "org"
   | "sw"
   | "why"
-  | "consent";
+  | "consent"
+  | ProofField;
 
 /** Error codes, resolved to copy by dict.cohort.form.errors on the client. */
 export type ApplyError =
@@ -71,6 +109,10 @@ export type ApplyError =
   | "tooShort"
   | "tooLong"
   | "consent"
+  | "proofMissing"
+  | "proofType"
+  | "proofTooLarge"
+  | "proofUnreadable"
   | "closed"
   | "rateLimited"
   | "failed"
@@ -81,6 +123,10 @@ export type ApplyState = {
   fieldErrors?: Partial<Record<ApplyField, ApplyError>>;
   formError?: ApplyError;
   values?: Partial<Record<ApplyField, string>>;
+  /** Set on success: the code in the inbox subject and in the receipt. */
+  reference?: string;
+  /** Whether the applicant was sent a receipt (needs a verified sender). */
+  receipt?: boolean;
 };
 
 export const initialApplyState: ApplyState = { status: "idle" };

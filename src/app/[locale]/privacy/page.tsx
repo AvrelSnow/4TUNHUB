@@ -104,7 +104,7 @@ export default async function PrivacyPage({ params }: Params) {
           {t.contact}{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="text-accent hover:underline hover:underline-offset-4"
+            className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
           >
             {CONTACT_EMAIL}
           </a>

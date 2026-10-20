@@ -148,9 +148,14 @@
   --shadow-e2: 0 0 0 1px rgb(255 255 255 / 0.06), 0 24px 60px -24px rgb(0 0 0 / 0.9);
 }
 
+/* The entrance rises but is never invisible: these classes sit on hero
+   headlines, and art direction says nothing above the fold is ever hidden.
+   Starting at opacity 0 also made the headline the slowest thing on the page
+   to count as painted on a phone (Lighthouse, 2026-10-20: LCP 4.5 s, almost
+   all of it render delay). 0.6 keeps the ease-in without a blank first frame. */
 @keyframes fade-up {
   from {
-    opacity: 0;
+    opacity: 0.6;
     transform: translateY(24px);
   }
   to {

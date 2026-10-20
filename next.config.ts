@@ -62,6 +62,12 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false, // don't advertise the framework
+  // The cohort application carries four screenshots (src/lib/cohort.ts,
+  // PROOF_LIMITS). 5 MB holds four at the per-file cap and stays under the
+  // host's 6 MB request ceiling; every other form is a few kilobytes.
+  experimental: {
+    serverActions: { bodySizeLimit: "5mb" },
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },

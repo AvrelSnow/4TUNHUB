@@ -2,19 +2,57 @@
 
 import {
   APPLY_LIMITS,
+  COHORT_REF_PREFIX,
+  PROOF_LIMITS,
+  PROOF_SLOTS,
   SW_VERSIONS,
   applicationsOpen,
+  proofField,
+  type ApplyError,
   type ApplyField,
   type ApplyState,
+  type ProofSlot,
   type SwVersion,
 } from "./cohort";
 import { rateLimited, clientIp, str, EMAIL_RE, PHONE_RE, LINKEDIN_RE } from "./form-guard";
-import { sendMail, MailNotConfigured } from "./mailer";
+import { sendMail, canMailOutside, MailNotConfigured, type MailAttachment } from "./mailer";
+import { isLocale } from "./i18n/config";
+import { getDictionary } from "./i18n/dictionaries";
+import { CONTACT_EMAIL } from "./site";
 
 /**
- * Cohort 0 applications. Same contract as the contact form: the server is
+ * Cohort applications. Same contract as the contact form: the server is
  * the gate, a honeypot traps bots, a per-IP rate limit, generic error codes.
+ *
+ * One submission carries everything — the details AND the four screenshots
+ * — and reaches the inbox as one email with a reference in the subject. The
+ * applicant gets a receipt with the same reference, so a reply lands in the
+ * same thread. (Cohort 0 had the screenshots arrive separately, with no
+ * name, and they could not be matched.)
  */
+
+/** The first bytes of each allowed type: the declared MIME type is the client's word, not proof. */
+function looksLikeImage(b: Uint8Array): boolean {
+  const jpeg = b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff;
+  const png = b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4e && b[3] === 0x47;
+  const webp =
+    String.fromCharCode(b[0], b[1], b[2], b[3]) === "RIFF" &&
+    String.fromCharCode(b[8], b[9], b[10], b[11]) === "WEBP";
+  return jpeg || png || webp;
+}
+
+const EXT: Record<string, string> = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
+
+/** Five characters with no 0/O or 1/I, so it can be read down a phone. */
+function newReference(): string {
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const bytes = crypto.getRandomValues(new Uint8Array(5));
+  return `${COHORT_REF_PREFIX}-${Array.from(bytes, (b) => alphabet[b % alphabet.length]).join("")}`;
+}
+
+const fill = (template: string, vars: Record<string, string>) =>
+  template.replace(/\{(\w+)\}/g, (_, k: string) => vars[k] ?? "");
+
 export async function submitApplication(
   _prev: ApplyState,
   formData: FormData,
@@ -39,6 +77,8 @@ export async function submitApplication(
   const sw = str(formData, "sw");
   const why = str(formData, "why");
   const consent = str(formData, "consent");
+  const localeIn = str(formData, "locale");
+  const locale = isLocale(localeIn) ? localeIn : "en";
   const values: Partial<Record<ApplyField, string>> = { name, email, whatsapp, linkedin, org, sw, why };
 
   const fieldErrors: ApplyState["fieldErrors"] = {};
@@ -58,25 +98,38 @@ export async function submitApplication(
   else if (why.length > APPLY_LIMITS.whyMax) fieldErrors.why = "tooLong";
   if (consent !== "yes") fieldErrors.consent = "consent";
 
+  const attachments: MailAttachment[] = [];
+  for (const slot of PROOF_SLOTS) {
+    const error = await checkProof(formData.get(proofField(slot)), slot, attachments);
+    if (error) fieldErrors[proofField(slot)] = error;
+  }
+
   if (Object.keys(fieldErrors).length > 0) {
     return { status: "error", fieldErrors, values };
   }
 
+  const reference = newReference();
+
   try {
     await sendMail({
-      subject: `[Cohort 0] Application: ${name}`,
+      subject: `[Cohort 0] ${reference} · ${name}`,
       text: [
+        `Reference: ${reference}`,
         `Name: ${name}`,
         `Email: ${email}`,
         `WhatsApp: ${whatsapp}`,
         `LinkedIn: ${linkedin}`,
         `School / employer: ${org}`,
         `SolidWorks: ${sw}`,
+        `Language: ${locale}`,
         "",
         "Why:",
         why,
+        "",
+        `Screenshots attached: ${attachments.map((a) => a.filename).join(", ")}`,
       ].join("\n"),
       replyTo: email,
+      attachments,
     });
   } catch (err) {
     return {
@@ -86,5 +139,37 @@ export async function submitApplication(
     };
   }
 
-  return { status: "success" };
+  // The receipt is a courtesy, not part of the application: if it fails, the
+  // application is still in, and saying otherwise would make people apply twice.
+  let receipt = false;
+  if (canMailOutside() || process.env.NODE_ENV !== "production") {
+    const r = (await getDictionary(locale)).cohort.receipt;
+    try {
+      await sendMail({
+        to: [email],
+        replyTo: process.env.MAIL_TO ?? CONTACT_EMAIL,
+        subject: fill(r.subject, { ref: reference }),
+        text: fill(r.body, { name, ref: reference }),
+      });
+      receipt = true;
+    } catch {
+      // Logged by the mailer.
+    }
+  }
+
+  return { status: "success", reference, receipt };
+}
+
+async function checkProof(
+  value: FormDataEntryValue | null,
+  slot: ProofSlot,
+  out: MailAttachment[],
+): Promise<ApplyError | null> {
+  if (!(value instanceof File) || value.size === 0) return "proofMissing";
+  if (value.size > PROOF_LIMITS.maxBytes) return "proofTooLarge";
+  if (!(PROOF_LIMITS.types as readonly string[]).includes(value.type)) return "proofType";
+  const bytes = new Uint8Array(await value.arrayBuffer());
+  if (!looksLikeImage(bytes)) return "proofType";
+  out.push({ filename: `${out.length + 1}-${slot}.${EXT[value.type]}`, content: bytes });
+  return null;
 }

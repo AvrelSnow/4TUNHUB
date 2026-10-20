@@ -21,6 +21,15 @@ export const OG_IMAGE = {
   type: "image/jpeg",
 };
 
+/** The Academy card: what a shared Academy or cohort link shows. */
+export const ACADEMY_OG_IMAGE = {
+  url: `${SITE_URL}/academy-card.jpg`,
+  width: 1200,
+  height: 630,
+  alt: "4TUNHub Academy: CSWA Bootcamp, Cohort 1 in January.",
+  type: "image/jpeg",
+};
+
 /** Where the forms deliver and visitors write. Move to hello@4tunhub.com once forwarding is set up. */
 export const CONTACT_EMAIL = "4tunhub@gmail.com";
 export const SITE_LOCATION = "Dschang, Cameroon";

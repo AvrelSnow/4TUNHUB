@@ -19,7 +19,7 @@ import {
   applicationsOpen,
 } from "@/lib/cohort";
 import { founder } from "@/lib/founder";
-import { YOUTUBE_URL, OG_IMAGE } from "@/lib/site";
+import { YOUTUBE_URL, ACADEMY_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -34,7 +34,20 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: dict.cohort.metaTitle,
     description: dict.cohort.metaDescription,
     alternates: { canonical: `/${locale}${COHORT_PATH}` },
-    openGraph: { title: dict.cohort.metaTitle, description: dict.cohort.metaDescription, images: [OG_IMAGE] },
+    openGraph: {
+      title: dict.cohort.metaTitle,
+      description: dict.cohort.metaDescription,
+      type: "website",
+      siteName: SITE_NAME,
+      url: `${SITE_URL}/${locale}${COHORT_PATH}`,
+      images: [ACADEMY_OG_IMAGE],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.cohort.metaTitle,
+      description: dict.cohort.metaDescription,
+      images: [ACADEMY_OG_IMAGE],
+    },
   };
 }
 
@@ -393,6 +406,7 @@ export default async function CohortPage({ params }: Params) {
               {open ? (
                 <ApplyForm
                   t={t}
+                  locale={locale}
                   privacyHref={localizeHref(locale, "/privacy")}
                   screenshotsHref={localizeHref(locale, SCREENSHOTS_PATH)}
                 />

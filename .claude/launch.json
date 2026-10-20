@@ -8,6 +8,12 @@
       "port": 3000
     },
     {
+      "name": "4tunhub-dev-apply",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:apply"],
+      "port": 3000
+    },
+    {
       "name": "4tunhub-prod",
       "runtimeExecutable": "npx",
       "runtimeArgs": ["next", "start", "-p", "3001"],

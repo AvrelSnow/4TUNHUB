@@ -24,12 +24,13 @@ type Item = { key: string; label: string; href: string };
  */
 export function MobileNav({
   items,
-  dict,
+  nav,
   ctaHref,
   locale,
 }: {
   items: Item[];
-  dict: Dictionary;
+  /** Only the nav strings: a client component ships every prop to the browser. */
+  nav: Dictionary["nav"];
   ctaHref: string;
   locale: Locale;
 }) {
@@ -56,7 +57,7 @@ export function MobileNav({
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
-        aria-label={open ? dict.nav.closeMenu : dict.nav.openMenu}
+        aria-label={open ? nav.closeMenu : nav.openMenu}
         onClick={() => setOpen((v) => !v)}
         className="-mr-2 flex h-11 w-11 items-center justify-center rounded-full text-foreground"
       >
@@ -81,7 +82,7 @@ export function MobileNav({
           id={panelId}
           className="fixed inset-x-0 bottom-0 top-14 z-40 animate-fade-in overflow-y-auto bg-background"
         >
-          <nav aria-label={dict.nav.mobile} className="mx-auto max-w-6xl px-8 pb-12 pt-6">
+          <nav aria-label={nav.mobile} className="mx-auto max-w-6xl px-8 pb-12 pt-6">
             <ul className="flex flex-col">
               {items.map((item, i) => {
                 const active =
@@ -108,9 +109,9 @@ export function MobileNav({
               })}
             </ul>
             <div className="mt-10 flex items-center justify-between gap-4 border-t border-border pt-6">
-              <LanguageSwitcher locale={locale} label={dict.nav.language} inMenu />
+              <LanguageSwitcher locale={locale} label={nav.language} inMenu />
               <Button as="a" href={ctaHref} size="md" onClick={() => setOpen(false)}>
-                {dict.nav.workWithUs}
+                {nav.workWithUs}
               </Button>
             </div>
           </nav>

@@ -132,13 +132,13 @@ export function EmailCapture({
 
       <p className={cn("text-2xs leading-5 text-muted", footer ? "mt-3" : "mt-4")}>
         {f.promise}{" "}
-        <Link href={privacyHref} className="text-accent hover:underline hover:underline-offset-4">
+        <Link href={privacyHref} className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent">
           {f.privacy}
         </Link>
         {moreHref && (
           <>
             {" · "}
-            <Link href={moreHref} className="text-accent hover:underline hover:underline-offset-4">
+            <Link href={moreHref} className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent">
               {f.more}
             </Link>
           </>

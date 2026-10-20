@@ -1,11 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState, useId } from "react";
+import { useActionState, useEffect, useId, useRef } from "react";
 import { InputField, SelectField, TextareaField } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { submitApplication } from "@/lib/apply-action";
-import { APPLY_LIMITS, SW_VERSIONS, initialApplyState } from "@/lib/cohort";
+import { ProofUpload } from "@/components/ProofUpload";
+import {
+  APPLY_LIMITS,
+  PROOF_SLOTS,
+  SW_VERSIONS,
+  initialApplyState,
+  proofField,
+  type ApplyError,
+  type ProofSlot,
+} from "@/lib/cohort";
+import type { Locale } from "@/lib/i18n/config";
 import { ANALYTICS_EVENTS, useTrackOnce } from "@/lib/track";
 import { CONTACT_EMAIL } from "@/lib/site";
 import { cn } from "@/lib/cn";
@@ -21,12 +31,15 @@ type CohortCopy = Dictionary["cohort"];
  */
 export function ApplyForm({
   t,
+  locale,
   privacyHref,
   screenshotsHref,
 }: {
   t: CohortCopy;
+  /** Sent with the application so the receipt goes out in the same language. */
+  locale: Locale;
   privacyHref: string;
-  /** Where the confirmation sends them to hand in their proof. */
+  /** What counts as a screenshot, shown with the four upload slots. */
   screenshotsHref: string;
 }) {
   const [state, formAction, pending] = useActionState(submitApplication, initialApplyState);
@@ -36,6 +49,11 @@ export function ApplyForm({
   const err = (code?: string) => (code ? f.errors[code] : undefined);
   const v = state.values ?? {};
   const consentId = useId();
+  const swRef = useRef<HTMLSelectElement>(null);
+  const swChoice = useRef("");
+  useEffect(() => {
+    if (swRef.current) swRef.current.value = swChoice.current;
+  }, [state]);
 
 
   if (state.status === "success") {
@@ -52,15 +70,17 @@ export function ApplyForm({
         <h3 className="mt-6 text-display-sm text-foreground">{t.success.title}</h3>
         <p className="mx-auto mt-3 max-w-md text-muted">{t.success.body}</p>
 
-        {/* An application without the four screenshots cannot be selected,
-            so the confirmation is where we ask for it — while they are
-            still at the screen, not in an email they may not open. */}
-        <div className="mx-auto mt-8 max-w-md rounded-2xl bg-surface-2 p-6 text-left">
-          <p className="text-sm leading-6 text-foreground">{t.success.next}</p>
-          <Button as="a" href={screenshotsHref} size="md" className="mt-5">
-            {t.success.nextCta}
-          </Button>
-        </div>
+        {/* The reference is what ties any later email to this application:
+            it is in the inbox subject and in the receipt. */}
+        {state.reference && (
+          <div className="mx-auto mt-8 max-w-md rounded-2xl bg-surface-2 p-6">
+            <p className="text-2xs font-medium text-muted">{t.success.reference}</p>
+            <p className="figure mt-1 text-2xl font-semibold tracking-tight text-foreground">{state.reference}</p>
+            <p className="mt-3 text-sm leading-6 text-muted">
+              {state.receipt ? t.success.receipt : t.success.noReceipt}
+            </p>
+          </div>
+        )}
       </div>
     );
   }
@@ -78,8 +98,15 @@ export function ApplyForm({
       "",
       `${f.why.label}`,
       v.why ?? "",
+      "",
+      `${f.proof.legend}:`,
+      ...PROOF_SLOTS.map((slot, i) => `${i + 1}. ${t.screenshots.shots[slot].title}`),
     ].join("\n"),
   )}`;
+
+  const proofErrors = Object.fromEntries(
+    PROOF_SLOTS.map((slot) => [slot, state.fieldErrors?.[proofField(slot)]]),
+  ) as Partial<Record<ProofSlot, ApplyError>>;
 
   const consentError = err(state.fieldErrors?.consent);
 
@@ -151,7 +178,14 @@ export function ApplyForm({
         label={f.sw.label}
         name="sw"
         placeholder={f.sw.placeholder}
-        defaultValue={v.sw ?? ""}
+        // React resets a form after its action answers, and a <select> falls
+        // back to its placeholder, so an error anywhere else used to cost the
+        // applicant this choice. It is remembered and put back (see above).
+        ref={swRef}
+        defaultValue=""
+        onChange={(e) => {
+          swChoice.current = e.currentTarget.value;
+        }}
         error={err(state.fieldErrors?.sw)}
         required
       >
@@ -174,6 +208,17 @@ export function ApplyForm({
         required
       />
 
+      <ProofUpload
+        copy={f.proof}
+        shots={t.screenshots.shots}
+        errors={proofErrors}
+        errorText={err}
+        guideHref={screenshotsHref}
+        answer={state}
+      />
+
+      <input type="hidden" name="locale" value={locale} />
+
       <div className="flex flex-col gap-2">
         <label htmlFor={consentId} className="flex cursor-pointer items-start gap-3 text-sm text-foreground">
           <input
@@ -188,7 +233,7 @@ export function ApplyForm({
           />
           <span>
             {f.consent}{" "}
-            <Link href={privacyHref} className="text-accent hover:underline hover:underline-offset-4">
+            <Link href={privacyHref} className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent">
               {f.privacy}
             </Link>
           </span>

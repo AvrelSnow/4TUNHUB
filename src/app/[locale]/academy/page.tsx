@@ -16,6 +16,7 @@ import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
+import { ACADEMY_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -23,10 +24,18 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const dict = await getDictionary(locale);
+  // A page-level openGraph replaces the layout's rather than merging, so it
+  // carries everything a share needs: without it the Academy was shared
+  // under the home page's title and address.
+  // The title template does not reach openGraph, so the share title carries
+  // the name itself.
+  const share = { title: `${dict.routes.academy} · ${SITE_NAME}`, description: dict.academy.subtitle };
   return {
     title: dict.routes.academy,
     description: dict.academy.subtitle,
     alternates: { canonical: `/${locale}/academy` },
+    openGraph: { ...share, type: "website", siteName: SITE_NAME, url: `${SITE_URL}/${locale}/academy`, images: [ACADEMY_OG_IMAGE] },
+    twitter: { card: "summary_large_image", ...share, images: [ACADEMY_OG_IMAGE] },
   };
 }
 

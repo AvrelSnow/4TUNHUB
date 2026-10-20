@@ -110,19 +110,38 @@ tested at all.
   Cohort 1 waitlist.
 - B-2 Accessibility re-sweep, both themes, $99 contrast fixed.
 
-### C — Code (Claude, on the branch, previewed locally)
+### C — Code (Claude, on the branch, previewed locally) ✓ 20 Oct
 
-1. **D1** Bring the `/blueprint` scorecard and roadmap in line with the
-   redesign and today's status.
-2. **D2** Cohort 1 link-preview card.
-3. **C3** The application intake fix from §1: uploads in the form,
-   validation, one email per applicant with a reference, automatic receipt,
-   pre-filled fallback. Tested locally with the Resend key in a local
-   `.env.local`, sending to your own address.
-4. **D5** Lighthouse on the production build; fix what it finds.
-5. `npm run check` green: lint, tokens, build, budget. The uploads must stay
-   inside the 220 KB client-JS budget, so compression uses the canvas, not
-   a library.
+1. ✓ **D1** `/blueprint` scorecard and roadmap match the redesign and today.
+2. ✓ **D2** The Academy card (`/academy-card.jpg`, 73 KB): "CSWA Bootcamp.
+   Cohort 1 · January." Used by the Academy and Cohort 0 pages, which also
+   now share under their own title and address instead of the home page's.
+3. ✓ **C3** Screenshots travel with the application: four slots in the
+   form, shrunk in the browser (a phone screenshot comes out ~270 KB), checked
+   on the server by type, size and file signature, one inbox email per
+   applicant with a reference (`C0-7F3KQ`) and four attachments, and a
+   receipt in the applicant's language. Tested in EN and FR: empty submit,
+   a bad field with the four screenshots kept, a fake image refused on its
+   own slot, and success. Found and fixed on the way: the SolidWorks
+   dropdown used to empty itself after any error.
+   *Not done:* the fallback email on the screenshots page is still the old
+   blank one. With uploads in the form it is rarely needed; rewrite it with
+   Cohort 1's copy.
+   *Preview it:* `npm run dev:apply` opens the form locally after the
+   deadline. The switch is compiled out of production builds (verified:
+   zero upload fields on the built Cohort 0 page).
+   *The receipt only sends once `MAIL_FROM` is set* (A2). Until then the
+   success screen tells the applicant to keep the reference instead.
+4. ✓ **D5** Lighthouse, production build. Desktop 85–99 performance; 100 for
+   accessibility, best practices and SEO on `/en` and `/fr`. Mobile
+   (simulated) 57–63, LCP 3.4–4.5 s. Fixed: the mobile menu was sent the
+   whole dictionary on every page (inline payload halved, `/en` 134 → 64 KB);
+   inline links now underlined (colour alone failed); the home "Learn more"
+   beside the WhatsApp button now says where it goes. Not fixed: the mobile
+   floor is the framework itself; the next step is fewer client components,
+   which is a project of its own, not a pre-deploy fix.
+5. ✓ `npm run check` green: 209.4 KB of 220 KB client JS (+1.7 KB for the
+   uploads), largest chunk 69.1 KB.
 
 ### D — Verify on a free branch deploy
 

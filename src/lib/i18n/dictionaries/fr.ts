@@ -90,6 +90,7 @@ const fr: Dictionary = {
     primaryCta: "Travailler avec nous",
     secondaryCta: "Découvrir les services",
     learnMore: "En savoir plus",
+    communityMore: "À propos de la communauté",
 
     trust: {
       label: "Le parcours du fondateur",
@@ -1175,8 +1176,8 @@ const fr: Dictionary = {
           desc: "Sur LinkedIn et sur YouTube. MKV Academy enseigne la Cohorte 0 avec nous.",
         },
         proof: {
-          title: "Postuler, puis envoyer quatre captures d'écran",
-          desc: "Une par abonnement : 4TUNHub sur LinkedIn, 4TUNHub sur YouTube, MKV Academy sur LinkedIn, MKV Academy sur YouTube. Sous le nom avec lequel vous avez postulé.",
+          title: "Postuler, avec quatre captures d'écran",
+          desc: "Une par abonnement : 4TUNHub sur LinkedIn, 4TUNHub sur YouTube, MKV Academy sur LinkedIn, MKV Academy sur YouTube. Vous les joignez à la candidature elle-même.",
         },
       },
       links: {
@@ -1184,11 +1185,11 @@ const fr: Dictionary = {
         youtube: "4TUNHub sur YouTube",
         mkvLinkedin: "MKV Academy sur LinkedIn",
         mkvYoutube: "MKV Academy sur YouTube",
-        proof: "Envoyer les captures",
+        proof: "Ce qui compte comme capture",
       },
       warning: {
         title: "Pas de captures, pas de place.",
-        body: "Une candidature n'est étudiée qu'une fois les quatre captures reçues. Suivre sans le montrer ne compte pas, et trois captures sur quatre non plus.",
+        body: "La candidature ne peut pas être envoyée sans les quatre captures. Suivre sans le montrer ne compte pas, et trois captures sur quatre non plus.",
       },
     },
 
@@ -1225,7 +1226,7 @@ const fr: Dictionary = {
     },
     form: {
       heading: "Postuler à la Cohorte 0.",
-      intro: "Cinq minutes. Suivez d'abord les deux organisations, puis envoyez les quatre captures : nous vérifions chacune. Nous lisons chaque candidature dès son arrivée et répondons à tous avant le vendredi 16 octobre.",
+      intro: "Cinq minutes. Suivez d'abord les deux organisations, puis joignez les quatre captures à ce formulaire : nous vérifions chacune. Nous lisons chaque candidature dès son arrivée et répondons à tous avant le vendredi 16 octobre.",
       name: { label: "Nom complet", placeholder: "Jeanne Dupont" },
       email: { label: "E-mail", placeholder: "vous@exemple.com" },
       whatsapp: {
@@ -1259,6 +1260,15 @@ const fr: Dictionary = {
         placeholder: "Où vous en êtes avec SolidWorks aujourd'hui, et ce que le CSWA changerait pour vous.",
         hint: "Deux ou trois phrases suffisent.",
       },
+      proof: {
+        legend: "Vos quatre captures d'écran",
+        hint: "Une par abonnement, montrant « Abonné » ou « Suivi » avec votre propre compte visible. Une capture faite sur votre téléphone convient parfaitement ; nous la réduisons avant l'envoi.",
+        add: "Ajouter la capture",
+        replace: "Remplacer",
+        preparing: "Préparation…",
+        added: "Ajoutée",
+        guide: "Ce qui compte comme capture",
+      },
       consent: "J'accepte que 4TUNHub et MKV Academy, qui organisent ensemble la Cohorte 0, conservent ces informations pour étudier ma candidature et puissent m'informer de leurs prochaines sessions.",
       privacy: "Lire la note de confidentialité",
       submit: "Envoyer ma candidature",
@@ -1273,6 +1283,10 @@ const fr: Dictionary = {
         tooShort: "Ajoutez un peu plus de détails : deux ou trois phrases.",
         tooLong: "C'est un peu long. Merci de raccourcir.",
         consent: "Cochez la case pour continuer.",
+        proofMissing: "Ajoutez cette capture.",
+        proofType: "Utilisez une image JPG, PNG ou WebP.",
+        proofTooLarge: "Cette image est trop lourde. Une capture d'écran convient mieux qu'une photo de l'écran.",
+        proofUnreadable: "Cette image n'a pas pu être lue. Essayez une capture en JPG ou PNG.",
         closed: "Les candidatures pour la Cohorte 0 sont closes.",
         rateLimited: "Trop d'envois depuis cette connexion. Patientez un instant puis réessayez.",
         failed: "L'envoi de votre candidature a échoué. Réessayez, ou envoyez-la par e-mail.",
@@ -1340,9 +1354,14 @@ const fr: Dictionary = {
 
     success: {
       title: "Candidature reçue.",
-      body: "Merci. Les places sont attribuées au fil des candidatures, et nous répondons à chaque candidat avant le vendredi 16 octobre, par e-mail et sur WhatsApp.",
-      next: "Il reste une chose, et elle décide si vous pouvez être retenu : envoyez-nous quatre captures d'écran montrant que vous suivez 4TUNHub et MKV Academy sur LinkedIn et sur YouTube, sous le nom avec lequel vous avez postulé. Sans les quatre, une candidature ne peut pas être retenue.",
-      nextCta: "Envoyer les captures",
+      body: "Merci : vos informations et vos quatre captures nous sont parvenues. Les places sont attribuées au fil des candidatures, et nous répondons à chaque candidat avant le vendredi 16 octobre, par e-mail et sur WhatsApp.",
+      reference: "Votre référence",
+      receipt: "Une copie arrive dans votre boîte mail. Si vous nous écrivez, gardez cette référence dans l'objet.",
+      noReceipt: "Gardez cette référence. Si vous nous écrivez, indiquez-la dans l'objet.",
+    },
+    receipt: {
+      subject: "Votre candidature à la Cohorte 0 de 4TUNHub · {ref}",
+      body: "Bonjour {name},\n\nMerci pour votre candidature à la Cohorte 0 de 4TUNHub. Nous avons bien reçu vos informations et vos quatre captures d'écran.\n\nVotre référence est {ref}. Si vous devez nous écrire, répondez simplement à cet e-mail pour qu'il reste rattaché à votre candidature.\n\nNous répondons à chaque candidat avant le vendredi 16 octobre.\n\nBien cordialement,\nDonfack Fortune\n4TUNHub",
     },
     instructor: {
       eyebrow: "Qui enseigne",

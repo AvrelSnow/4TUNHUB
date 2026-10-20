@@ -23,20 +23,37 @@ export class MailNotConfigured extends Error {
   }
 }
 
+export type MailAttachment = { filename: string; content: Uint8Array };
+
+/**
+ * True once MAIL_FROM is set, i.e. the domain is verified in Resend. Until
+ * then the test sender can only reach the account's own inbox, so mail to
+ * anyone else (an applicant's receipt) must not be attempted.
+ */
+export const canMailOutside = (): boolean => Boolean(process.env.MAIL_FROM);
+
 export async function sendMail({
   subject,
   text,
   replyTo,
+  to,
+  attachments,
 }: {
   subject: string;
   text: string;
   replyTo?: string;
+  /** Defaults to the inbox (MAIL_TO). */
+  to?: string[];
+  attachments?: MailAttachment[];
 }): Promise<void> {
   const key = process.env.RESEND_API_KEY;
 
   if (!key) {
     if (process.env.NODE_ENV !== "production") {
-      console.info(`[mail:dev] ${subject}\n${text}`);
+      const files = attachments?.map((a) => `${a.filename} (${a.content.byteLength} B)`).join(", ");
+      console.info(
+        `[mail:dev] to ${to?.join(", ") ?? "inbox"} — ${subject}\n${text}${files ? `\n[attached] ${files}` : ""}`,
+      );
       return;
     }
     throw new MailNotConfigured();
@@ -50,12 +67,21 @@ export async function sendMail({
     },
     body: JSON.stringify({
       from: process.env.MAIL_FROM ?? "4TUNHub <onboarding@resend.dev>",
-      to: [process.env.MAIL_TO ?? CONTACT_EMAIL],
+      to: to ?? [process.env.MAIL_TO ?? CONTACT_EMAIL],
       subject,
       text,
       ...(replyTo ? { reply_to: replyTo } : {}),
+      ...(attachments?.length
+        ? {
+            attachments: attachments.map((a) => ({
+              filename: a.filename,
+              content: Buffer.from(a.content).toString("base64"),
+            })),
+          }
+        : {}),
     }),
-    signal: AbortSignal.timeout(10_000),
+    // Attachments make the request heavier than a text message.
+    signal: AbortSignal.timeout(attachments?.length ? 20_000 : 10_000),
   });
 
   if (!res.ok) {

@@ -212,7 +212,7 @@ export default async function Home({
                   >
                     {dict.community.join}
                   </Button>
-                  <ArrowLink href={href("community")}>{t.learnMore}</ArrowLink>
+                  <ArrowLink href={href("community")}>{t.communityMore}</ArrowLink>
                 </div>
               </div>
             </Reveal>

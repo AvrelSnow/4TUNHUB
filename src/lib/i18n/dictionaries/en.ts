@@ -90,6 +90,8 @@ const en = {
     primaryCta: "Work with us",
     secondaryCta: "Explore services",
     learnMore: "Learn more",
+    /** Beside the WhatsApp button, so it names where it goes. */
+    communityMore: "About the community",
 
     trust: {
       label: "The founder's track record",
@@ -1182,8 +1184,8 @@ const en = {
           desc: "On LinkedIn and on YouTube. MKV Academy teaches Cohort 0 with us.",
         },
         proof: {
-          title: "Apply, then send four screenshots",
-          desc: "One for each follow: 4TUNHub on LinkedIn, 4TUNHub on YouTube, MKV Academy on LinkedIn, MKV Academy on YouTube. Under the same name you applied with.",
+          title: "Apply, with four screenshots",
+          desc: "One for each follow: 4TUNHub on LinkedIn, 4TUNHub on YouTube, MKV Academy on LinkedIn, MKV Academy on YouTube. You attach them to the application itself.",
         },
       },
       links: {
@@ -1191,12 +1193,12 @@ const en = {
         youtube: "4TUNHub on YouTube",
         mkvLinkedin: "MKV Academy on LinkedIn",
         mkvYoutube: "MKV Academy on YouTube",
-        proof: "Send the screenshots",
+        proof: "What counts as a screenshot",
       },
       /** The rule, said once and plainly, under the three steps. */
       warning: {
         title: "No screenshots, no seat.",
-        body: "An application is only reviewed once all four screenshots have arrived. Following without showing it does not count, and neither does showing three of the four.",
+        body: "The application cannot be sent without all four screenshots. Following without showing it does not count, and neither does showing three of the four.",
       },
     },
 
@@ -1240,7 +1242,7 @@ const en = {
     },
     form: {
       heading: "Apply for Cohort 0.",
-      intro: "Five minutes. Follow both organisations first, then send the four screenshots: we check every one. We read every application as it arrives and reply to everyone by Friday 16 October.",
+      intro: "Five minutes. Follow both organisations first, then attach the four screenshots to this form: we check every one. We read every application as it arrives and reply to everyone by Friday 16 October.",
       name: { label: "Full name", placeholder: "Jane Doe" },
       email: { label: "Email", placeholder: "you@example.com" },
       whatsapp: {
@@ -1274,6 +1276,15 @@ const en = {
         placeholder: "Where you are with SolidWorks today, and what the CSWA would change for you.",
         hint: "Two or three sentences is enough.",
       },
+      proof: {
+        legend: "Your four screenshots",
+        hint: "One for each follow, showing Following or Subscribed with your own account visible. A screenshot from your phone is perfect; we shrink it before it is sent.",
+        add: "Add screenshot",
+        replace: "Replace",
+        preparing: "Preparing…",
+        added: "Added",
+        guide: "What counts as a screenshot",
+      },
       consent: "I agree that 4TUNHub and MKV Academy, who run Cohort 0 together, keep these details to review my application and may tell me about their future sessions.",
       privacy: "Read the privacy note",
       submit: "Send my application",
@@ -1289,6 +1300,10 @@ const en = {
         tooShort: "Please add a little more: two or three sentences.",
         tooLong: "That's a bit long. Please shorten it.",
         consent: "Please tick the box to continue.",
+        proofMissing: "Add this screenshot.",
+        proofType: "Use a JPG, PNG or WebP image.",
+        proofTooLarge: "This image is too large. A screenshot works better than a photo of the screen.",
+        proofUnreadable: "This image could not be read. Try a JPG or PNG screenshot.",
         closed: "Applications for Cohort 0 are closed.",
         rateLimited: "Too many submissions from this connection. Please wait a moment and try again.",
         failed: "Something went wrong sending your application. Please try again, or send it by email.",
@@ -1361,9 +1376,15 @@ const en = {
 
     success: {
       title: "Application received.",
-      body: "Thank you. Seats are given out as applications come in, and we reply to every applicant by Friday 16 October, by email and on WhatsApp.",
-      next: "One thing left, and it decides whether you can be selected: send us four screenshots showing you follow 4TUNHub and MKV Academy on LinkedIn and on YouTube, under the same name you applied with. An application without all four cannot be selected.",
-      nextCta: "Send the screenshots",
+      body: "Thank you: your details and your four screenshots are in. Seats are given out as applications come in, and we reply to every applicant by Friday 16 October, by email and on WhatsApp.",
+      reference: "Your reference",
+      receipt: "A copy is on its way to your inbox. If you write to us, keep this reference in the subject.",
+      noReceipt: "Keep this reference. If you write to us, put it in the subject.",
+    },
+    /** The automatic receipt. {name} and {ref} are filled in by the server. */
+    receipt: {
+      subject: "Your application to 4TUNHub Cohort 0 · {ref}",
+      body: "Dear {name},\n\nThank you for applying to 4TUNHub Cohort 0. We have your application and your four screenshots.\n\nYour reference is {ref}. If you need to write to us, simply reply to this email so it stays with your application.\n\nWe reply to every applicant by Friday 16 October.\n\nWarm regards,\nDonfack Fortune\n4TUNHub",
     },
     instructor: {
       eyebrow: "Who teaches",

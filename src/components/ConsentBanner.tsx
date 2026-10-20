@@ -75,7 +75,7 @@ export function ConsentBanner({
             <span className="hidden sm:inline">{strings.body}</span>{" "}
             <Link
               href={privacyHref}
-              className="text-accent hover:underline hover:underline-offset-4"
+              className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
             >
               {strings.more}
             </Link>

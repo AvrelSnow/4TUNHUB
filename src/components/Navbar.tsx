@@ -47,7 +47,7 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </Button>
             <MobileNav
               items={items}
-              dict={dict}
+              nav={dict.nav}
               ctaHref={localizeHref(locale, "/contact")}
               locale={locale}
             />

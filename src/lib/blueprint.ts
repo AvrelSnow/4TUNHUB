@@ -341,16 +341,16 @@ export const phases: Phase[] = [
   {
     id: "7",
     name: "Launch",
-    status: "active",
+    status: "done",
     goal:
       "Public on Friday 25 September 2026 — permitted by the frozen checklist, not by the date. Full runbook: docs/launch-blueprint.md.",
     items: [
       "Domain ✓ · Netlify + Resend ✓ · deployed and serving ✓ (audited live 2026-09-20: every route 200, www→apex 301, headers verified)",
       "Email capture on every page ✓ · external design review actioned ✓ · testimonials ✓ · talks ✓",
       "B1 ✓ 2026-09-30 — og:image on every page (OG_IMAGE in site.ts, carried by all five code-defined openGraph objects); the card is served as an 80 KB JPEG instead of a 731 KB PNG. Still to do: a dedicated Cohort 0 card",
-      "B2 — form delivery never tested from the live domain, EN or FR",
-      "B3 — analytics still unconfigured on the host (zero provider references in the served HTML)",
-      "B4 — confirm the two LinkedIn company URLs",
+      "B2 — applications arrived in the inbox from the live form through October; a scripted EN + FR test from a phone is still owed before the next deploy",
+      "B3 — the CSP and consent gate are ready for Umami; the site ID on the host is unconfirmed",
+      "B4 ✓ 2026-10-02 — linkedin.com/company/4tunhub and MKV Academy's showcase page, both checked",
       "B5 — consent and the storage inventory ✓ shipped 2026-09-20 (gate verified: no script before a yes)",
       "B6 — rollback procedure read before it is needed",
       "Also swept: DMARC, account 2FA + domain lock, an application backup, uptime monitoring, testimonial permissions, a link check — and security.txt ✓",
@@ -361,15 +361,15 @@ export const phases: Phase[] = [
   {
     id: "8",
     name: "Cohort 0",
-    status: "next",
+    status: "active",
     goal:
       "Turn the launch into twenty seated students and, by mid-November, the first real evidence 4TUNHub has ever had: a pass rate and testimonials.",
     items: [
       "Content engine + launch campaign ✓ (docs/content-engine.md, docs/launch-campaign.md)",
       "Ambassador programme (10, selected by a 48-hour task)",
       "Seven campaign cards, one a day ✓",
-      "Partner reveal: MKV Academy + Benin SWUG (gated on their assets)",
-      "Applications close 11 October",
+      "Partner: MKV Academy under a written agreement (1 Oct); Joseph Celestine Donald, CSWE, co-teaches ✓",
+      "Applications closed 11 October ✓ · selections sent by 11 October ✓",
       "Eight sessions, 21 Oct – 13 Nov",
       "Results, testimonials, then Cohort 1 on evidence",
     ],
@@ -731,8 +731,8 @@ export const reviewChallenges: Rule[] = [
     d: "Sponsors, awards and partner logos we don't have would be fabrication (craft §1). Build the structure; populate real-only; attribute founder affiliations to the founder, never as org partnerships.",
   },
   {
-    t: "Animated backgrounds were the highest-risk item — revisited",
-    d: "The original call was one restrained motif: multiple per-section engines threatened the perf budget AND risked reading as generic tech-startup noise. Deliberately superseded — eight fields now ship, one per context. Both risks were answered rather than assumed away. Payload: the simulations are dynamically imported so they never sit on the critical path — 205.8 KB of a 220 KB budget, +7.3 KB for all eight, versus 20 KB+ for any particle library. Noise: each field is the actual phenomenon its page is about (CFD flow on home, load paths on services, branching biomass on the shredder case study), so it argues for the work instead of decorating it. Contrast over every field is measured against real canvas pixels, the loop stops offscreen and on tab-hide, and reduced motion renders a still frame.",
+    t: "Animated backgrounds were the highest-risk item — revisited, then removed",
+    d: "Removed entirely by the 19 September redesign: decorative backgrounds are on the art direction's list of AI tics, and the page is now a quiet surface the work is laid on. Kept for the record — the original call was one restrained motif: multiple per-section engines threatened the perf budget AND risked reading as generic tech-startup noise. Deliberately superseded — eight fields now ship, one per context. Both risks were answered rather than assumed away. Payload: the simulations are dynamically imported so they never sit on the critical path — 205.8 KB of a 220 KB budget, +7.3 KB for all eight, versus 20 KB+ for any particle library. Noise: each field is the actual phenomenon its page is about (CFD flow on home, load paths on services, branching biomass on the shredder case study), so it argues for the work instead of decorating it. Contrast over every field is measured against real canvas pixels, the loop stops offscreen and on tab-hide, and reduced motion renders a still frame.",
   },
   {
     t: "Only i18n is expensive to retrofit",
@@ -842,7 +842,7 @@ export const optimizationReview: Recommendation[] = [
   },
   {
     id: "R10",
-    area: "Living section backgrounds (superseded: EIGHT fields, not one motif)",
+    area: "Living section backgrounds (eight fields shipped, then removed by the 2026-09-19 redesign)",
     priority: "Medium",
     effort: "M",
     problem: "Risk of over-animation degrading perf and craft.",
@@ -1074,19 +1074,19 @@ export type Score = {
 
 export const scorecard: Score[] = [
   { aspect: "Information architecture", current: 98, target: 98, note: "AT TARGET. Data-driven, layered, all decisions locked. Commerce encoded as a capability (lib/commerce.ts) — Store is a deferred view, not a silo." },
-  { aspect: "Brand & logo", current: 96, target: 96, note: "AT TARGET. Dark is the only theme, so the dark lockup IS the lockup — the dead theme-swap and its duplicate hidden img are gone. Official artwork, brand-tokenized, transparent; favicon shipped." },
-  { aspect: "Color system", current: 97, target: 97, note: "AT TARGET, re-verified after the dark-first inversion. The light palette is gone; every semantic pair re-measured on the near-black ground — foreground 17.1:1, muted 7.4:1, accent 12.2:1, primary 10.8:1, primary-foreground on amber 10.6:1. Third-party mark colours (LinkedIn, Gmail) are a bounded exception, confined to their own icons and held to WCAG 1.4.11 3:1 for non-text graphics." },
+  { aspect: "Brand & logo", current: 96, target: 96, note: "AT TARGET, re-stated 2026-10-20 for the light/dark redesign. Two drawn SVG lockups, one per theme (wordmark #14181D by day, #A8B0B8 by night), both in the markup and chosen by CSS so the logo never arrives a frame late. Official artwork, transparent, favicon and apple-icon shipped. One spelling everywhere: 4TUNHub." },
+  { aspect: "Color system", current: 97, target: 97, note: "AT TARGET, re-measured 2026-10-20 in both themes (docs/art-direction.md holds the table). Day: foreground 16.8:1, muted 5.1:1, accent #b25000 5.2:1. Night: foreground 19.3:1, muted 8.2:1, accent #ffb340 11.8:1. Amber keeps three roles only: the logo, links and eyebrows, small live indicators; buttons are black by day and white by night. Third-party mark colours stay confined to their own icons." },
   { aspect: "Typography", current: 95, target: 95, note: "AT TARGET. Fluid display scale shipped sitewide: display-lg 52-136px held for short statements, display 44-88px for page H1, display-sm 36-52px for section H2, tracking tightening as size grows. Weight and tracking live in the tokens, so no utility fights them. Balanced headlines, orphan-free body, tabular numerals." },
   { aspect: "Layout precision", current: 98, target: 98, note: "AT TARGET. All values on the 4px scale; container measured at exactly 1152px; zero horizontal overflow at any width." },
-  { aspect: "Components", current: 96, target: 96, note: "AT TARGET. Primitives now include Field (one canvas engine, eight renderers) and Counter, plus the .plate image treatment and its .plate-doc document variant. The field scrim ships INSIDE Field, so no caller can render a background without its contrast protection." },
-  { aspect: "Motion", current: 94, target: 94, note: "AT TARGET, rescoped. Eight canvas field simulations, one per context, dynamically imported so they never touch the critical path. Each pauses offscreen and on tab-hide (verified by frame hashing, not assumed) and renders a still frame under reduced motion. Figures count up from a server-rendered final value. Signature amber sweep retained." },
+  { aspect: "Components", current: 96, target: 96, note: "AT TARGET. Primitives: Button, ArrowLink, Badge, Card, Container, Section, PageHero, CtaPanel, EmptyState, Media (with the .media-doc document treatment), Rail, Reveal and the form Field set. The canvas field engine and the animated counter went with the 19 Sep redesign: decorative backgrounds and counting figures are on the art direction's list of AI tics." },
+  { aspect: "Motion", current: 94, target: 94, note: "AT TARGET, rescoped by the redesign. Content rises 24px and fades in once on entry with the Apple ease; nothing above the fold is ever hidden. Cards lift 4px on hover and their images scale 3.5%. Colours cross-fade on a theme change. Reduced motion switches all of it off. No canvas, no counters." },
   { aspect: "Craft / art direction", current: 95, target: 97, note: "Redesigned 2026-09-19 (docs/art-direction.md governs): light by day and dark by night on the visitor's clock, one typeface, quiet white and grey surfaces, pill controls, large rounded media, and real photographs shown as taken. Remaining: professional photography of the machines, and vector logo assets for the affiliations row." },
   { aspect: "Responsiveness", current: 98, target: 98, note: "AT TARGET. Verified at 360 / 636 / 768 / 1024 / 1440 / 1920 — no overflow, no wraps; mobile nav panel shipped." },
   { aspect: "Accessibility", current: 97, target: 97, note: "AT TARGET. Re-swept on the light/dark redesign 2026-10-20: 4,068 text runs across 24 routes (EN + FR), each in BOTH themes, colours resolved through a canvas so oklab tokens and alpha layers composite exactly. One failure, the struck-through $99 on the voucher (2.52:1 for large text, now 3.63:1); single h1, no heading skips, no missing alt, no unnamed control anywhere. Earlier: programmatic re-audit after the inversion and the animated backgrounds: 3,891 text runs across 26 page loads (20 EN routes + 6 FR), each measured against the REAL composited background including live canvas pixels, worst-pixel not average. Zero contrast failures; worst passing run 5.35:1. Single h1 and no heading skips on every page; zero images without alt; zero controls without an accessible name. Two genuine failures found and fixed in this pass — see Craft." },
-  { aspect: "Performance", current: 97, target: 97, note: "AT TARGET (pre-deploy). Budgets ENFORCED by the build gate: 205.8 KB of a 220 KB gzip budget, largest chunk 69.3 KB of 90 KB. All eight field simulations together cost 7.3 KB over the pre-field baseline because they are dynamically imported rather than bundled. Routes static; fonts subset. Lighthouse-CI runs at deploy." },
-  { aspect: "SEO", current: 86, target: 97, note: "DOWNGRADED 2026-09-20 by the live launch audit: the OG image renders at /opengraph-image but NO page references it — `generateMetadata` defines `openGraph` in code, which replaces the file-convention image rather than merging with it, so every share on WhatsApp, LinkedIn and Facebook is imageless. Also missing: Search Console and Bing verification. Sitemap (24 URLs, hreflang-paired), robots, schema graph and canonicals all verified live. Every primary pillar now has a real, indexable, bilingual page with per-page metadata + canonical (pre-launch product detail + placeholders stay noindex). Final points require live domain + inbound signals." },
+  { aspect: "Performance", current: 92, target: 98, note: "First Lighthouse run against the redesign, 2026-10-20, production build. Desktop: performance 85-99, accessibility 100 after the inline-link fix, best practices 100, SEO 100, LCP ~1 s. Mobile (simulated slow phone on a busy PC, so pessimistic): performance 57-63, LCP 3.4-4.5 s. Found and fixed: the mobile menu was being sent the WHOLE dictionary, every page — the inline payload halved (/en 134 -> 64 KB). What remains is the framework floor (React + the server-rendered tree); the next gain is fewer client components, not a quick fix. Budget ENFORCED: 209.4 KB of 220 KB gzip, largest chunk 69.1 KB of 90 KB." },
+  { aspect: "SEO", current: 90, target: 97, note: "B1 closed 2026-09-30: every page carries og:image and twitter:image (an 80 KB JPEG, verified live 2026-10-20). Sitemap (hreflang-paired), robots, schema graph and canonicals verified live; placeholders and the store stay noindex. Still missing: Search Console and Bing verification (DNS TXT, on Fortune), a dedicated cohort preview card, and posts per talk. The final points need inbound signals." },
   { aspect: "Privacy & consent", current: 93, target: 97, note: "NEW 2026-09-20, after Fortune asked where the site told people about cookies \u2014 it did not, beyond a paragraph. Shipped: a one-time bottom bar (Accept and Decline identical in size and weight, neither amber, no X because not answering is not consent), a real gate that renders no analytics script until a yes, a permanent switch at /privacy#storage linked from every footer, a table naming all three stored items, Global Privacy Control honoured as a refusal, and a versioned record so a new category re-asks everyone. Verified end to end with a provider configured locally. Terms of use added 2026-09-20 in both languages: the conditions of a free seat, the recorded sessions, the voucher and what happens if its supply fails, whose work is whose, and the Dassault non-affiliation line a CSWA bootcamp needs before the user group reads it. Remaining: the controller line depends on the open business-entity question, and the published retention promises have to actually happen in February." },
-  { aspect: "Security", current: 96, target: 96, note: "AT TARGET. Headers verified live, leak-free branded 404/500, no secrets. Contact form (R12) hardened: server-side validation of every field, honeypot, per-IP rate limiting, generic error codes, framework CSRF origin checks. Delivery endpoint live (Resend, keyed on the host); every form fails loudly rather than dropping a submission silently. Remaining pre-launch: security.txt." },
+  { aspect: "Security", current: 96, target: 96, note: "AT TARGET. Headers verified live (CSP without unsafe-eval, frame-ancestors none, HSTS, nosniff), leak-free branded 404/500, no secrets in the repo, /.well-known/security.txt shipped 2026-09-20. All four forms: server-side validation, honeypot, per-IP rate limit (in-memory, so per instance on serverless: accepted), generic error codes, framework origin checks, and a loud failure instead of a silent drop." },
   { aspect: "Content depth", current: 94, target: 95, note: "Every primary pillar ships, bilingual, plus Resources, Community and Store. Three named testimonials with photographs on the home page, and twelve public talks on the founder page, each linked to its own event. Remaining: deeper per-item copy, a post per talk (the SEO lever), and Blog and Careers, which are still honest placeholders." },
   { aspect: "Documentation", current: 99, target: 99, note: "AT TARGET. v1.8 (2026-09-20, after the Flovet review) \u2014 three of its five points adopted and two rejected with the reasoning kept, so neither half can be quietly re-litigated. Previously v1.7 (after the consent build) \u2014 docs/launch-blueprint.md gained B5 (consent), the seven-item wider sweep (DMARC, account 2FA and domain lock, an application backup, uptime monitoring, testimonial permissions, a link check, security.txt) and a re-weighted scorecard whose change is argued in the document rather than silently applied. Previously v1.6 (after the live launch audit) — docs/launch-blueprint.md is now the permission to go public: five blockers, a frozen scorecard out of 100, the launch-day runbook, the rollback procedure and the deploy budget through mid-November. Previously v1.5 (after the review and the first real testimonials) — current with every locked decision and verified number. Phases 6 and 7 closed out; Cohort 0 opened as phase 8. The launch, the partnership, the ambassador programme and the revised window are in the decision log; the campaign itself is docs/cohort-0-campaign.md, the plan of record docs/launch-plan.md." },
 ];

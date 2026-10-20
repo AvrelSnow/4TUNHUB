@@ -174,7 +174,7 @@ export function WaitlistForm({
         </Button>
         <p className="mt-5 max-w-lg text-2xs leading-5 text-muted">
           {f.promise}{" "}
-          <Link href={privacyHref} className="text-accent hover:underline hover:underline-offset-4">
+          <Link href={privacyHref} className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent">
             {f.privacy}
           </Link>
         </p>

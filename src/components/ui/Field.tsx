@@ -61,7 +61,7 @@ export function SelectField({
   placeholder,
   children,
   ...props
-}: CommonProps & { placeholder?: string } & React.SelectHTMLAttributes<HTMLSelectElement>) {
+}: CommonProps & { placeholder?: string; ref?: React.Ref<HTMLSelectElement> } & React.SelectHTMLAttributes<HTMLSelectElement>) {
   const id = useId();
   const describedBy = error ? `${id}-error` : hint ? `${id}-hint` : undefined;
   return (
