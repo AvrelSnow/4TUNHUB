@@ -1081,8 +1081,15 @@ const fr: Dictionary = {
     apply: "Postuler",
     closesOn: "Candidatures jusqu'au dimanche 11 octobre. Les places sont attribuées au fil des candidatures.",
     closed:
-      "Les candidatures pour la Cohorte 0 sont closes. Rejoignez la communauté pour savoir en premier quand la Cohorte 1 ouvrira.",
-    closedCta: "Rejoindre la communauté",
+      "Les candidatures ont fermé le 11 octobre et la Cohorte 0 est en cours. La Cohorte 1 ouvre en janvier : laissez votre adresse pour être prévenu en premier.",
+    closedCta: "Me prévenir pour la Cohorte 1",
+    running: {
+      eyebrow: "En cours",
+      title: "Les dates.",
+      heading: "Qui enseigne la Cohorte 0.",
+      intro:
+        "Vingt ingénieurs, huit soirées, deux formateurs. Les résultats sont publiés la semaine du 16 novembre, et la Cohorte 1 ouvre en janvier.",
+    },
     facts: [
       { label: "Prix", value: "Gratuit" },
       { label: "Places", value: "20, sur candidature" },

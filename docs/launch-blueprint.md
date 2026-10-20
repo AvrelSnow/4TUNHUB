@@ -1,5 +1,24 @@
 # Launch blueprint — 4tunhub.com
 
+> **Status, 20 October 2026, checked from outside.** The site is live and
+> announced; applications closed on 11 October and Cohort 0 starts on the
+> 21st. Closed: **B1** (every page carries `og:image`), **B4** (LinkedIn
+> URLs, 2 Oct), **B5** (consent) and **S7** (`security.txt`); a `p=none`
+> DMARC record is published (S1). Still open or unproven from outside:
+> **B2** (no record of a live test submission in EN and FR), **B3** (the
+> CSP allows Umami, but nothing here proves the site ID is set), Search
+> Console and Bing (no verification found on the apex), S2–S6, and the
+> sign-off in §12, which is still blank.
+>
+> **Found on 20 October:** the live Cohort 0, Academy, waitlist and
+> screenshots pages still invited applications nine days after the
+> deadline, because the planned rebuild on 12 October never happened (see
+> the decision log). The closed state was already in the code; it ships
+> with the next production deploy, and that page now points to the
+> Cohort 1 waitlist instead of WhatsApp. The accessibility re-sweep of the
+> redesign (deferred to W40 in §11) was done the same day, in both
+> themes: one failure, the struck-through $99, fixed.
+
 > Written Sunday 20 September 2026, against the site as it was actually
 > being served that evening, not against what the repository says it does.
 > Every status below was verified over HTTPS from outside; the commands are

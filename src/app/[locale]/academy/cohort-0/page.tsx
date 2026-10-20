@@ -19,7 +19,7 @@ import {
   applicationsOpen,
 } from "@/lib/cohort";
 import { founder } from "@/lib/founder";
-import { WHATSAPP_COMMUNITY_URL, YOUTUBE_URL, OG_IMAGE } from "@/lib/site";
+import { YOUTUBE_URL, OG_IMAGE } from "@/lib/site";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -140,13 +140,9 @@ export default async function CohortPage({ params }: Params) {
               ) : (
                 <>
                   <p className="max-w-lg text-foreground">{t.closed}</p>
-                  <Button
-                    as="a"
-                    href={WHATSAPP_COMMUNITY_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    size="lg"
-                  >
+                  {/* The applicants who missed Cohort 0 are the warmest list
+                      Cohort 1 will have, so the door is the waitlist. */}
+                  <Button as="a" href={localizeHref(locale, "/waitlist?track=academy")} size="lg">
                     {t.closedCta}
                   </Button>
                 </>
@@ -196,7 +192,7 @@ export default async function CohortPage({ params }: Params) {
           <Reveal>
             <div className="grid gap-10 rounded-3xl bg-brand-500 p-8 text-ink-900 sm:p-12 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-16 lg:p-16">
               <div className="flex items-baseline gap-5">
-                <span className="figure text-display-lg font-semibold tracking-tight text-ink-900/45 line-through decoration-[0.08em]">
+                <span className="figure text-display-lg font-semibold tracking-tight text-ink-900/60 line-through decoration-[0.08em]">
                   {t.voucher.figure.from}
                 </span>
                 <span className="figure text-display-lg font-semibold tracking-tight text-ink-900">
@@ -264,7 +260,9 @@ export default async function CohortPage({ params }: Params) {
 
       {/* HOW TO GET A SEAT — the conditions, before the form asks for
           anything. Someone who applies without following both organisations,
-          or without the screenshots to show it, cannot be selected. */}
+          or without the screenshots to show it, cannot be selected. Gone
+          once applications close: there is no seat left to get. */}
+      {open && (
       <Section
         eyebrow={t.requirements.eyebrow}
         title={t.requirements.title}
@@ -309,21 +307,30 @@ export default async function CohortPage({ params }: Params) {
           </div>
         </Reveal>
       </Section>
+      )}
 
-      {/* BEFORE YOU APPLY + KEY DATES */}
-      <Section tone="surface" eyebrow={t.before.eyebrow} title={t.before.title}>
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {t.before.items.map((item, i) => (
-            <Reveal key={item.title} delay={i * 70}>
-              <div className="h-full rounded-3xl bg-surface-2 p-8">
-                <h3 className="text-headline text-foreground">{item.title}</h3>
-                <p className="mt-3 text-muted">{item.desc}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+      {/* BEFORE YOU APPLY + KEY DATES — only the dates once it is running. */}
+      <Section
+        tone="surface"
+        eyebrow={open ? t.before.eyebrow : t.running.eyebrow}
+        title={open ? t.before.title : t.running.title}
+      >
+        {open && (
+          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+            {t.before.items.map((item, i) => (
+              <Reveal key={item.title} delay={i * 70}>
+                <div className="h-full rounded-3xl bg-surface-2 p-8">
+                  <h3 className="text-headline text-foreground">{item.title}</h3>
+                  <p className="mt-3 text-muted">{item.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        )}
 
-        <h3 className="mt-20 text-sm font-semibold text-foreground">{t.timeline.eyebrow}</h3>
+        <h3 className={open ? "mt-20 text-sm font-semibold text-foreground" : "mt-10 text-sm font-semibold text-foreground"}>
+          {t.timeline.eyebrow}
+        </h3>
         <ol className="mt-5 grid gap-px overflow-hidden rounded-3xl bg-border sm:grid-cols-2 lg:grid-cols-4">
           {t.timeline.items.map((item) => (
             <li key={item.date} className="bg-surface-2 p-6">
@@ -339,8 +346,8 @@ export default async function CohortPage({ params }: Params) {
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
             <div>
-              <h2 className="text-display-sm text-foreground">{t.form.heading}</h2>
-              <p className="mt-5 text-lead text-muted">{t.form.intro}</p>
+              <h2 className="text-display-sm text-foreground">{open ? t.form.heading : t.running.heading}</h2>
+              <p className="mt-5 text-lead text-muted">{open ? t.form.intro : t.running.intro}</p>
 
               <div className="mt-12 flex items-center gap-5 border-t border-border pt-8">
                 <Media

@@ -1087,8 +1087,16 @@ const en = {
     apply: "Apply for a seat",
     closesOn: "Applications close Sunday 11 October. Seats are given out as applications come in.",
     closed:
-      "Applications for Cohort 0 are closed. Join the community to hear first when Cohort 1 opens.",
-    closedCta: "Join the community",
+      "Applications closed on 11 October and Cohort 0 is under way. Cohort 1 opens in January: leave your address and you hear first.",
+    closedCta: "Tell me when Cohort 1 opens",
+    /** Replaces the application copy once applications have closed. */
+    running: {
+      eyebrow: "Under way",
+      title: "The dates.",
+      heading: "Who teaches Cohort 0.",
+      intro:
+        "Twenty engineers, eight evenings, two instructors. The results are published in the week of 16 November, and Cohort 1 opens in January.",
+    },
     facts: [
       { label: "Price", value: "Free" },
       { label: "Seats", value: "20, by application" },
