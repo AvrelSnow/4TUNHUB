@@ -33,6 +33,18 @@ details. The threads are in the inbox under `[Cohort 0]`.
 The form itself worked. The problem is everything after it: a second step
 that lives in an email client, with nothing tying it to the first.
 
+**Found 21 Oct, and it is the bigger half:** production never had a
+`RESEND_API_KEY`. The Resend keys had been typed into Netlify's *name*
+field, with empty values, so every application failed to send and the
+form offered its "Send it by email" fallback instead. That is why the
+inbox threads read "Full name: …" under a `[Cohort 0] <name>` subject —
+the fallback's format, not the server's. Fixed the same day: the exposed
+keys were revoked, one new key set as `RESEND_API_KEY` (secret, Builds +
+Functions + Runtime), plus `MAIL_TO` and `MAIL_FROM`. The Resend domain
+was already verified (DKIM, SPF, MX and DMARC all resolve). The branch
+test must show an application arriving in the server's format
+(`Reference: …`), not the fallback's.
+
 **The fix (code, task C3 below):** one submission carries everything.
 
 1. The application form takes the four screenshots itself (image inputs,
@@ -86,6 +98,9 @@ accessibility re-sweep (one failure, fixed).
 
 These are outside the code. Several of them are why the code can be
 tested at all.
+
+*Status 21 Oct: A2 and A3 done (variables checked by name, values not
+shown). A1 in progress with Fortune.*
 
 1. **2FA and domain lock**: Namecheap (auto-renew + lock), Netlify, GitHub,
    Resend, Gmail. Ten minutes; it is the cheapest insurance there is.
