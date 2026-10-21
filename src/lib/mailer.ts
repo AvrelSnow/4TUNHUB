@@ -7,7 +7,9 @@ import { CONTACT_EMAIL } from "./site";
  *   RESEND_API_KEY  required. Without it, production submissions fail
  *                   loudly with `MailNotConfigured` so the form can offer
  *                   email instead; nothing is ever silently dropped.
- *   MAIL_TO         optional, defaults to CONTACT_EMAIL.
+ *   MAIL_TO         optional, defaults to CONTACT_EMAIL. Several addresses
+ *                   may be given, comma-separated; the first is the one
+ *                   replies go to.
  *   MAIL_FROM       optional, defaults to Resend's test sender, which can
  *                   only deliver to the Resend account's own address. Use
  *                   "4TUNHub <hello@4tunhub.com>" once the domain is
@@ -24,6 +26,19 @@ export class MailNotConfigured extends Error {
 }
 
 export type MailAttachment = { filename: string; content: Uint8Array };
+
+/**
+ * Where the forms deliver. MAIL_TO may list several addresses separated by
+ * commas, so every application also lands in a backup inbox: one inbox is
+ * one accidental delete away from losing a cohort's applications.
+ */
+export function inboxes(): string[] {
+  const list = (process.env.MAIL_TO ?? "")
+    .split(",")
+    .map((a) => a.trim())
+    .filter(Boolean);
+  return list.length ? list : [CONTACT_EMAIL];
+}
 
 /**
  * True once MAIL_FROM is set, i.e. the domain is verified in Resend. Until
@@ -67,7 +82,7 @@ export async function sendMail({
     },
     body: JSON.stringify({
       from: process.env.MAIL_FROM ?? "4TUNHub <onboarding@resend.dev>",
-      to: to ?? [process.env.MAIL_TO ?? CONTACT_EMAIL],
+      to: to ?? inboxes(),
       subject,
       text,
       ...(replyTo ? { reply_to: replyTo } : {}),

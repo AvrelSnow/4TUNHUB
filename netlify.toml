@@ -7,7 +7,8 @@
 #
 # Environment variables are set in the Netlify UI, never here:
 #   RESEND_API_KEY  required for the forms to deliver (see src/lib/mailer.ts)
-#   MAIL_TO         optional, defaults to CONTACT_EMAIL
+#   MAIL_TO         optional, defaults to CONTACT_EMAIL; several addresses
+#                   may be comma-separated (the first receives replies)
 #   MAIL_FROM       optional, e.g. "4TUN Hub <hello@4tunhub.com>" once the
 #                   domain is verified in Resend
 #   ANALYTICS_PROVIDER, ANALYTICS_SITE_ID, ANALYTICS_HOST

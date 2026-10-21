@@ -15,10 +15,9 @@ import {
   type SwVersion,
 } from "./cohort";
 import { rateLimited, clientIp, str, EMAIL_RE, PHONE_RE, LINKEDIN_RE } from "./form-guard";
-import { sendMail, canMailOutside, MailNotConfigured, type MailAttachment } from "./mailer";
+import { sendMail, canMailOutside, inboxes, MailNotConfigured, type MailAttachment } from "./mailer";
 import { isLocale } from "./i18n/config";
 import { getDictionary } from "./i18n/dictionaries";
-import { CONTACT_EMAIL } from "./site";
 
 /**
  * Cohort applications. Same contract as the contact form: the server is
@@ -147,7 +146,7 @@ export async function submitApplication(
     try {
       await sendMail({
         to: [email],
-        replyTo: process.env.MAIL_TO ?? CONTACT_EMAIL,
+        replyTo: inboxes()[0],
         subject: fill(r.subject, { ref: reference }),
         text: fill(r.body, { name, ref: reference }),
       });
