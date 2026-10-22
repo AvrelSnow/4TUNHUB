@@ -110,6 +110,13 @@ export const siteTree: SiteNode[] = [
         status: "active",
         desc: "The free first cohort: 20 seats by application, 8 evening sessions in October.",
       },
+      {
+        key: "lsdyna",
+        label: "LS-DYNA library",
+        href: "/academy/ls-dyna",
+        status: "active",
+        desc: "The @4TUNHUB YouTube tutorials, one page each, with the files to follow along.",
+      },
     ],
   },
   {

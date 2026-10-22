@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { flattenTree } from "@/lib/sitemap";
 import { SITE_URL } from "@/lib/site";
 import { storefront } from "@/lib/commerce";
+import { episodePath, episodes } from "@/lib/lsdyna";
 import { locales, defaultLocale } from "@/lib/i18n/config";
 
 /**
@@ -29,6 +30,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     if (withheld.has(node.href)) continue;
     paths.add(node.href === "/" ? "" : node.href);
   }
+  // Each LS-DYNA episode is a page of its own, outside the navigation tree.
+  for (const e of episodes) paths.add(episodePath(e.slug));
 
   const url = (locale: string, path: string) => `${SITE_URL}/${locale}${path}`;
 

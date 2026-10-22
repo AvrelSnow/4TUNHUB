@@ -52,6 +52,10 @@ const securityHeaders = [
             "img-src 'self' data:",
             "font-src 'self'",
             `connect-src 'self'${analyticsOrigin}`,
+            // The LS-DYNA library's player, loaded only when someone presses
+            // play (src/components/VideoPlayer.tsx), from YouTube's
+            // no-cookie domain.
+            "frame-src https://www.youtube-nocookie.com",
             "frame-ancestors 'none'",
             "base-uri 'self'",
             "form-action 'self'",

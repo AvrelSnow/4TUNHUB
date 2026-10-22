@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 /**
  * The events worth a name. Everything else — pages, referrers, countries —
- * the provider counts by itself; these are the three moments that say
+ * the provider counts by itself; these are the few moments that say
  * whether the site is working. They live here, in the client module, so
  * nothing on a page has to import the server-side config to send one.
  */
@@ -12,6 +12,7 @@ export const ANALYTICS_EVENTS = {
   waitlist: "Waitlist signup",
   application: "Cohort 0 application",
   contact: "Contact message",
+  download: "Library download",
 } as const;
 
 /**

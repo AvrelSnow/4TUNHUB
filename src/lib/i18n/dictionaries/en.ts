@@ -34,6 +34,7 @@ const en = {
     careers: "Careers",
     contact: "Contact",
     cohort: "Cohort 0",
+    lsdyna: "LS-DYNA library",
     waitlist: "Waitlist",
     privacy: "Privacy",
     terms: "Terms",
@@ -713,6 +714,13 @@ const en = {
       },
     } as Record<string, { title: string; outcome: string; who: string }>,
 
+    library: {
+      eyebrow: "Free · on YouTube",
+      title: "The LS-DYNA library.",
+      body: "Every LS-DYNA tutorial from the channel, in order, with the keyword decks and model files used on camera. Build the model alongside the video.",
+      cta: "Open the library",
+    },
+
     formatsEyebrow: "How you learn",
     formatsTitle: "Built around how engineers actually learn.",
     formatsList: [
@@ -742,6 +750,62 @@ const en = {
         "The Academy is opening in stages. Join the waitlist and we'll reach out as each track goes live.",
       primary: "Join the waitlist",
       secondary: "See the projects",
+    },
+  },
+
+  /** The LS-DYNA library: the YouTube tutorials, with their files. */
+  library: {
+    metaTitle: "LS-DYNA tutorials and files",
+    metaDescription:
+      "Every LS-DYNA and LS-PrePost tutorial from the @4TUNHUB channel, in order, with the keyword decks and model files used on camera. Free.",
+    eyebrow: "Academy · LS-DYNA",
+    title: "LS-DYNA, from the first mesh to a result you can trust.",
+    intro:
+      "Every tutorial from the @4TUNHUB YouTube channel, in the order to take them, with the files used on camera so you can build the model alongside. Physics first, software second. Free.",
+    languageNote: "",
+    subscribe: "Subscribe on YouTube",
+    startHere: "Start with the first episode",
+    series: {
+      setup: {
+        title: "Getting started",
+        body: "Install LS-PrePost, get past the first crashes, and find your way around before building anything.",
+      },
+      "ball-plate": {
+        title: "Ball-plate impact",
+        body: "A steel ball hits a plate. One model, built from the mesh to the result, then read, edited by hand and checked.",
+      },
+      "bracket-static": {
+        title: "Bracket static analysis",
+        body: "An aluminium bracket bolted at four holes, under 10 MPa. A static answer from an explicit solver, done properly.",
+      },
+    } as Record<string, { title: string; body: string }>,
+    episode: "Episode",
+    withFiles: "Files",
+    back: "All LS-DYNA episodes",
+    play: "Play the video",
+    playerNote: "The video loads from YouTube only when you press play.",
+    watchOnYoutube: "Watch on YouTube",
+    learnTitle: "What you'll learn",
+    chaptersTitle: "Chapters",
+    chaptersHint: "Press a chapter to start the video there.",
+    prev: "Previous",
+    next: "Next",
+    files: {
+      title: "Files for this episode",
+      none: "No files for this one: everything happens on your own install.",
+      kinds: {
+        keyword: "LS-DYNA keyword deck",
+        geometry: "Geometry, IGES",
+      } as Record<string, string>,
+      gateTitle: "Leave an email to download.",
+      gateBody:
+        "The files are free. Your address is how you hear when the next episode and its files are up: one email per episode, one click to stop.",
+      submit: "Get the files",
+      submitting: "Opening…",
+      download: "Download",
+      unlocked: "The files are yours. Download them below.",
+      unlockedLost: "We couldn't add you to the list just now, but the files are open.",
+      privacy: "Privacy",
     },
   },
 
@@ -1494,6 +1558,11 @@ const en = {
           desc: "The next CSWA bootcamp after Cohort 0, and the GD&T and technical-drawing course that follows it.",
           when: "From January 2027",
         },
+        lsdyna: {
+          title: "LS-DYNA library",
+          desc: "Each new LS-DYNA tutorial on the @4TUNHUB channel, with the keyword decks and model files to follow along.",
+          when: "Running now",
+        },
         rem: {
           title: "REM — the engineering review",
           desc: "Renewable Energy Mall: one written engineering episode at a time, on energy systems that have to work where the grid doesn't.",
@@ -1551,6 +1620,10 @@ const en = {
           title: "Twenty seats. If you don't get one, don't disappear.",
           body: "Cohort 1 opens in January and this list hears first. One email the day it does — nothing in between.",
         },
+        lsdyna: {
+          title: "The next episode, with its files.",
+          body: "One email when a new LS-DYNA tutorial goes up, with the link to its files. Nothing else.",
+        },
         rem: {
           title: "The REM, the day an episode lands.",
           body: "One written engineering episode at a time, on energy systems that have to work where the grid doesn't. No digest, no filler.",
@@ -1565,13 +1638,13 @@ const en = {
 
   privacy: {
     title: "Privacy",
-    updated: "Last updated 2 October 2026",
+    updated: "Last updated 22 October 2026",
     intro:
       "This site collects personal details only when you send them through a form, and stores almost nothing in your browser. This note says what we keep, why, for how long, and how to have it removed.",
     sections: [
       {
         title: "What we collect",
-        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat. The waitlist asks for an email address, a name if you care to give one, and which subjects you want to hear about.",
+        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat. The waitlist asks for an email address, a name if you care to give one, and which subjects you want to hear about. The LS-DYNA library asks for an email address before its files download: it joins the same list, for new episodes only.",
       },
       {
         title: "Why",
@@ -1579,7 +1652,7 @@ const en = {
       },
       {
         title: "Where it goes",
-        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
+        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. The LS-DYNA library's videos play from YouTube, which is contacted only when you press play. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
       },
       {
         title: "How long we keep it",
@@ -1605,7 +1678,7 @@ const en = {
     storage: {
       title: "Cookies and storage",
       intro:
-        "This site sets no cookies — not one, not even our own. One thing is stored in your browser and never leaves your device, and one thing is counted, only if you allow it. That is the entire list.",
+        "This site sets no cookies — not one, not even our own. Two things are stored in your browser and never leave your device, and one thing is counted, only if you allow it. That is the entire list.",
       columns: {
         what: "What",
         why: "Why",
@@ -1621,9 +1694,16 @@ const en = {
           refuse: "Without it we would have to ask the same question on every page. Clearing your browser data removes it.",
         },
         {
+          what: "LS-DYNA library",
+          key: "4tun.library",
+          why: "Remembers that you already gave an address for the library's files, so every episode's files stay open without asking again.",
+          kept: "Your browser, on this device. It is never sent anywhere.",
+          refuse: "It only exists once you ask for the files. Clearing your browser data removes it.",
+        },
+        {
           what: "Anonymous visit counting",
           key: "Umami — no cookie, nothing stored on your device",
-          why: "Which pages are read, from which country, on what kind of device and which site sent you — plus three events: a waitlist signup, an application, a message sent.",
+          why: "Which pages are read, from which country, on what kind of device and which site sent you — plus four events: a waitlist signup, an application, a message sent, a library file downloaded.",
           kept: "On the analytics provider's servers, as counts. No name, no address, nothing that identifies a person.",
           refuse: "Yes. It does not run at all until you accept, and you can switch it off here at any time.",
         },

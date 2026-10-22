@@ -11,6 +11,7 @@ import { Media } from "@/components/ui/Media";
 import { CohortFeature } from "@/components/CohortFeature";
 import { EmailCaptureBand } from "@/components/EmailCaptureBand";
 import { courses } from "@/lib/academy";
+import { LIBRARY_PATH } from "@/lib/lsdyna";
 import { projectDetailPath } from "@/lib/projects";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { isLocale } from "@/lib/i18n/config";
@@ -99,7 +100,23 @@ export default async function AcademyPage({ params }: Params) {
 
       <CohortFeature locale={locale} dict={dict} />
 
-      
+      {/* THE LS-DYNA LIBRARY — the one track already teaching, for free. */}
+      <Section rhythm="compressed" className="pt-0 sm:pt-0 lg:pt-0">
+        <Reveal>
+          <div className="grid gap-6 rounded-3xl bg-surface p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-12">
+            <div>
+              <p className="eyebrow">{t.library.eyebrow}</p>
+              <h2 className="mt-3 text-4xl leading-tight font-bold tracking-tight text-foreground">
+                {t.library.title}
+              </h2>
+              <p className="mt-4 max-w-2xl text-lead text-muted">{t.library.body}</p>
+            </div>
+            <Button as="a" href={localizeHref(locale, LIBRARY_PATH)} size="lg">
+              {t.library.cta}
+            </Button>
+          </div>
+        </Reveal>
+      </Section>
 
       {/* 2 · CATALOG */}
       <Section tone="surface" eyebrow={t.catalogEyebrow} title={t.catalogTitle} intro={t.catalogIntro}>
