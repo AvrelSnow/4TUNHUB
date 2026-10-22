@@ -3,6 +3,7 @@ import { flattenTree } from "@/lib/sitemap";
 import { SITE_URL } from "@/lib/site";
 import { storefront } from "@/lib/commerce";
 import { episodePath, episodes } from "@/lib/lsdyna";
+import { lessonIds, lessonPath } from "@/lib/engineering-thinking";
 import { locales, defaultLocale } from "@/lib/i18n/config";
 
 /**
@@ -30,8 +31,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     if (withheld.has(node.href)) continue;
     paths.add(node.href === "/" ? "" : node.href);
   }
-  // Each LS-DYNA episode is a page of its own, outside the navigation tree.
+  // Each LS-DYNA episode and each lesson of the guided path is a page of
+  // its own, outside the navigation tree.
   for (const e of episodes) paths.add(episodePath(e.slug));
+  for (const id of lessonIds) paths.add(lessonPath(id));
 
   const url = (locale: string, path: string) => `${SITE_URL}/${locale}${path}`;
 

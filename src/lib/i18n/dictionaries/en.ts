@@ -35,6 +35,7 @@ const en = {
     contact: "Contact",
     cohort: "Cohort 0",
     lsdyna: "LS-DYNA library",
+    path: "Engineering Thinking",
     waitlist: "Waitlist",
     privacy: "Privacy",
     terms: "Terms",
@@ -720,6 +721,12 @@ const en = {
       body: "Every LS-DYNA tutorial from the channel, in order, with the keyword decks and model files used on camera. Build the model alongside the video.",
       cta: "Open the library",
     },
+    pathCard: {
+      eyebrow: "Free · guided path",
+      title: "Engineering Thinking.",
+      body: "Eleven short lessons from the 4TUNHub Lab: turn a hanging load into a force and a moment, then size a steel plate for strength and stiffness. A check at every step, no account.",
+      cta: "Start the path",
+    },
 
     formatsEyebrow: "How you learn",
     formatsTitle: "Built around how engineers actually learn.",
@@ -806,6 +813,60 @@ const en = {
       unlocked: "The files are yours. Download them below.",
       unlockedLost: "We couldn't add you to the list just now, but the files are open.",
       privacy: "Privacy",
+    },
+  },
+
+  /** Engineering Thinking: the Lab's Branch 1, as a guided path. */
+  path: {
+    metaTitle: "Engineering Thinking: a guided path",
+    metaDescription:
+      "Free, guided lessons from the 4TUNHUB Lab: turn a hanging load into a force and a moment, then size a steel plate for strength and stiffness. Every formula with its picture, its trap and a check.",
+    eyebrow: "Academy · Guided path",
+    title: "Engineering Thinking",
+    tagline: "From a load to a part.",
+    intro:
+      "Short lessons, one part at a time. Every formula comes with a drawing, where it comes from, the trap, a worked example and a check you answer yourself. No account: your progress stays on this device.",
+    languageNote: "",
+    free: "Free",
+    need: "You need",
+    able: "You will be able to",
+    card: "Card",
+    kinds: { checkpoint: "Checkpoint", boss: "Final challenge" } as Record<string, string>,
+    lessonsCount: "{n} lessons · ~{m} min",
+    lessonsDone: "{n} of {t} lessons done",
+    start: "Start the path",
+    resume: "Continue where you stopped",
+    coming: "Coming",
+    comingBody:
+      "This part ends with the 4TUNHub Lab's checker, which reads the part you model. It opens here when the checker does.",
+    opensAfter: "Opens after",
+    /** Translations of the cards' words, by id; English comes from the Lab. */
+    cards: {} as Record<string, { title: string; able: string[] }>,
+    lesson: {
+      back: "The path",
+      head: "Card {c} · Lesson {i} of {t} · ~{m} min",
+      part: "Part {n} of {t}",
+      minLeft: "~{m} min left",
+      underMinute: "under a minute left",
+      answerFirst: "Answer the check to go on",
+      continue: "Continue",
+      done: "Lesson done",
+      cardDone: "Card finished",
+      endSum: "Checks in tolerance: {n} of {t}",
+      next: "Next lesson",
+      toPath: "Back to the path",
+      readAll: "Open every part",
+    },
+    check: {
+      notYet: "Not yet.",
+      right: "In tolerance. That's it.",
+      show: "Show me the working",
+      numberOnly: "Type just the number: the unit is already written.",
+      unreadable: "That doesn't read as a number.",
+      ambiguous: "Is that comma a decimal point or a thousands separator? Write decimals with a point.",
+      empty: "Type an answer first.",
+      choose: "Pick one first.",
+      stamp: "In tolerance",
     },
   },
 
@@ -1660,7 +1721,7 @@ const en = {
       },
       {
         title: "Cookies",
-        body: "None. Not an advertising cookie, not an analytics cookie, not one of our own. The full list of what is stored in your browser — two items, both of which stay on your device — is at the bottom of this page, with the switch that controls the one optional thing we do.",
+        body: "None. Not an advertising cookie, not an analytics cookie, not one of our own. The full list of what is stored in your browser — three items, all of which stay on your device — is at the bottom of this page, with the switch that controls the one optional thing we do.",
       },
       {
         title: "Your rights",
@@ -1678,7 +1739,7 @@ const en = {
     storage: {
       title: "Cookies and storage",
       intro:
-        "This site sets no cookies — not one, not even our own. Two things are stored in your browser and never leave your device, and one thing is counted, only if you allow it. That is the entire list.",
+        "This site sets no cookies — not one, not even our own. Three things are stored in your browser and never leave your device, and one thing is counted, only if you allow it. That is the entire list.",
       columns: {
         what: "What",
         why: "Why",
@@ -1699,6 +1760,13 @@ const en = {
           why: "Remembers that you already gave an address for the library's files, so every episode's files stay open without asking again.",
           kept: "Your browser, on this device. It is never sent anywhere.",
           refuse: "It only exists once you ask for the files. Clearing your browser data removes it.",
+        },
+        {
+          what: "Your place on the guided path",
+          key: "4tun.path",
+          why: "Remembers which lessons of Engineering Thinking you finished and which checks you passed, so the path picks up where you stopped.",
+          kept: "Your browser, on this device. It is never sent anywhere.",
+          refuse: "It only exists once you open a lesson. Clearing your browser data removes it.",
         },
         {
           what: "Anonymous visit counting",

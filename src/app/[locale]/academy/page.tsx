@@ -12,6 +12,7 @@ import { CohortFeature } from "@/components/CohortFeature";
 import { EmailCaptureBand } from "@/components/EmailCaptureBand";
 import { courses } from "@/lib/academy";
 import { LIBRARY_PATH } from "@/lib/lsdyna";
+import { PATH_ROOT } from "@/lib/engineering-thinking";
 import { projectDetailPath } from "@/lib/projects";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { isLocale } from "@/lib/i18n/config";
@@ -100,22 +101,28 @@ export default async function AcademyPage({ params }: Params) {
 
       <CohortFeature locale={locale} dict={dict} />
 
-      {/* THE LS-DYNA LIBRARY — the one track already teaching, for free. */}
+      {/* FREE, NOW — the two things already teaching: the guided path
+          and the LS-DYNA library. */}
       <Section rhythm="compressed" className="pt-0 sm:pt-0 lg:pt-0">
-        <Reveal>
-          <div className="grid gap-6 rounded-3xl bg-surface p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-12">
-            <div>
-              <p className="eyebrow">{t.library.eyebrow}</p>
-              <h2 className="mt-3 text-4xl leading-tight font-bold tracking-tight text-foreground">
-                {t.library.title}
-              </h2>
-              <p className="mt-4 max-w-2xl text-lead text-muted">{t.library.body}</p>
-            </div>
-            <Button as="a" href={localizeHref(locale, LIBRARY_PATH)} size="lg">
-              {t.library.cta}
-            </Button>
-          </div>
-        </Reveal>
+        <div className="grid gap-5 lg:grid-cols-2">
+          {[
+            { copy: t.pathCard, href: PATH_ROOT },
+            { copy: t.library, href: LIBRARY_PATH },
+          ].map(({ copy, href }, i) => (
+            <Reveal key={href} delay={i * 80}>
+              <div className="flex h-full flex-col rounded-3xl bg-surface p-8 sm:p-10">
+                <p className="eyebrow">{copy.eyebrow}</p>
+                <h2 className="mt-3 text-4xl leading-tight font-bold tracking-tight text-foreground">{copy.title}</h2>
+                <p className="mt-4 text-lead text-muted">{copy.body}</p>
+                <div className="mt-auto pt-8">
+                  <Button as="a" href={localizeHref(locale, href)} size="lg">
+                    {copy.cta}
+                  </Button>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </Section>
 
       {/* 2 · CATALOG */}

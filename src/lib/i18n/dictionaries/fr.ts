@@ -35,6 +35,7 @@ const fr: Dictionary = {
     contact: "Contact",
     cohort: "Cohorte 0",
     lsdyna: "Bibliothèque LS-DYNA",
+    path: "Raisonner en ingénieur",
     waitlist: "Liste d'attente",
     privacy: "Confidentialité",
     terms: "Conditions",
@@ -711,6 +712,12 @@ const fr: Dictionary = {
       body: "Tous les tutoriels LS-DYNA de la chaîne, dans l'ordre, avec les fichiers keyword et les modèles utilisés à l'écran. Construisez le modèle en même temps que la vidéo (en anglais).",
       cta: "Ouvrir la bibliothèque",
     },
+    pathCard: {
+      eyebrow: "Gratuit · parcours guidé",
+      title: "Raisonner en ingénieur.",
+      body: "Onze leçons courtes du 4TUNHub Lab : transformer une charge suspendue en force et en moment, puis dimensionner une plaque d'acier en résistance et en rigidité. Un exercice à chaque étape, sans compte (en anglais pour l'instant).",
+      cta: "Commencer le parcours",
+    },
 
     formatsEyebrow: "Comment vous apprenez",
     formatsTitle: "Conçu selon la façon dont les ingénieurs apprennent vraiment.",
@@ -796,6 +803,66 @@ const fr: Dictionary = {
       unlocked: "Les fichiers sont à vous. Téléchargez-les ci-dessous.",
       unlockedLost: "Nous n'avons pas pu vous ajouter à la liste pour l'instant, mais les fichiers sont ouverts.",
       privacy: "Confidentialité",
+    },
+  },
+
+  path: {
+    metaTitle: "Raisonner en ingénieur : un parcours guidé",
+    metaDescription:
+      "Des leçons guidées et gratuites du 4TUNHUB Lab : transformer une charge suspendue en force et en moment, puis dimensionner une plaque d'acier en résistance et en rigidité. Chaque formule avec son dessin, son piège et un exercice.",
+    eyebrow: "Académie · Parcours guidé",
+    title: "Raisonner en ingénieur",
+    tagline: "D'une charge à une pièce.",
+    intro:
+      "Des leçons courtes, une étape à la fois. Chaque formule arrive avec un dessin, son origine, le piège, un exemple résolu et un exercice que vous faites vous-même. Pas de compte : votre progression reste sur cet appareil.",
+    languageNote: "Les leçons sont en anglais pour l'instant.",
+    free: "Gratuit",
+    need: "Il vous faut",
+    able: "Vous saurez",
+    card: "Carte",
+    kinds: { checkpoint: "Point d'étape", boss: "Défi final" } as Record<string, string>,
+    lessonsCount: "{n} leçons · ~{m} min",
+    lessonsDone: "{n} sur {t} leçons terminées",
+    start: "Commencer le parcours",
+    resume: "Reprendre où vous en étiez",
+    coming: "Bientôt",
+    comingBody:
+      "Cette étape se termine par le correcteur du 4TUNHub Lab, qui lit la pièce que vous modélisez. Elle ouvrira ici en même temps que le correcteur.",
+    opensAfter: "Ouvre après",
+    cards: {
+      "card-1": { title: "Forces et moments", able: ["Tracer le schéma d'une console et trouver son moment à l'encastrement en N·mm"] },
+      "card-2": { title: "Contrainte et résistance", able: ["Dire ce qu'est une contrainte admissible, et la calculer avec un coefficient de sécurité"] },
+      "card-3": { title: "Flexion et forme", able: ["Dimensionner une section rectangulaire pour un moment, et dire pourquoi sa hauteur est au carré"] },
+      "card-4": { title: "Résister ne suffit pas", able: ["Vérifier une flèche en bout par rapport à sa limite, et dire qui décide : la résistance ou la rigidité"] },
+      "card-5": { title: "Des chiffres à la pièce", able: ["Lire un dessin coté et ses références, puis modéliser la plaque et exporter un fichier STEP que le correcteur lit"] },
+      checkpoint: { title: "La poutre d'échauffement", able: ["Franchir une courte chaîne de calculs sur des valeurs que personne d'autre n'a"] },
+      boss: { title: "L'équerre murale", able: ["Mener une vraie pièce d'une charge à un fichier STEP vérifié, avec une revue de fabrication et un coût en FCFA"] },
+    } as Record<string, { title: string; able: string[] }>,
+    lesson: {
+      back: "Le parcours",
+      head: "Carte {c} · Leçon {i} sur {t} · ~{m} min",
+      part: "Étape {n} sur {t}",
+      minLeft: "~{m} min restantes",
+      underMinute: "moins d'une minute",
+      answerFirst: "Répondez à l'exercice pour continuer",
+      continue: "Continuer",
+      done: "Leçon terminée",
+      cardDone: "Carte terminée",
+      endSum: "Exercices dans la tolérance : {n} sur {t}",
+      next: "Leçon suivante",
+      toPath: "Retour au parcours",
+      readAll: "Tout ouvrir",
+    },
+    check: {
+      notYet: "Pas encore.",
+      right: "Dans la tolérance. C'est ça.",
+      show: "Montrez-moi le calcul",
+      numberOnly: "Tapez seulement le nombre : l'unité est déjà écrite.",
+      unreadable: "Ce n'est pas un nombre lisible.",
+      ambiguous: "Cette virgule est-elle décimale ou un séparateur de milliers ? Écrivez les décimales avec un point.",
+      empty: "Tapez d'abord une réponse.",
+      choose: "Choisissez d'abord une réponse.",
+      stamp: "Conforme",
     },
   },
 
@@ -1630,7 +1697,7 @@ const fr: Dictionary = {
       },
       {
         title: "Cookies",
-        body: "Aucun. Ni cookie publicitaire, ni cookie de mesure d'audience, ni cookie de notre fait. La liste complète de ce qui est enregistré dans votre navigateur — deux éléments, qui ne quittent jamais votre appareil — figure au bas de cette page, avec le réglage qui commande la seule chose facultative que nous fassions.",
+        body: "Aucun. Ni cookie publicitaire, ni cookie de mesure d'audience, ni cookie de notre fait. La liste complète de ce qui est enregistré dans votre navigateur — trois éléments, qui ne quittent jamais votre appareil — figure au bas de cette page, avec le réglage qui commande la seule chose facultative que nous fassions.",
       },
       {
         title: "Vos droits",
@@ -1648,7 +1715,7 @@ const fr: Dictionary = {
     storage: {
       title: "Cookies et stockage",
       intro:
-        "Ce site ne dépose aucun cookie — pas un seul, pas même le nôtre. Deux éléments sont enregistrés dans votre navigateur et ne quittent jamais votre appareil ; un seul élément est compté, et seulement si vous l'autorisez. C'est toute la liste.",
+        "Ce site ne dépose aucun cookie — pas un seul, pas même le nôtre. Trois éléments sont enregistrés dans votre navigateur et ne quittent jamais votre appareil ; un seul élément est compté, et seulement si vous l'autorisez. C'est toute la liste.",
       columns: {
         what: "Quoi",
         why: "Pourquoi",
@@ -1669,6 +1736,13 @@ const fr: Dictionary = {
           why: "Retient que vous avez déjà donné une adresse pour les fichiers de la bibliothèque, pour que les fichiers de chaque épisode restent ouverts sans vous la redemander.",
           kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
           refuse: "Il n'existe qu'à partir du moment où vous demandez les fichiers. Effacer les données de votre navigateur le supprime.",
+        },
+        {
+          what: "Votre place dans le parcours guidé",
+          key: "4tun.path",
+          why: "Retient les leçons de « Raisonner en ingénieur » que vous avez terminées et les exercices réussis, pour que le parcours reprenne où vous en étiez.",
+          kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
+          refuse: "Il n'existe qu'à partir du moment où vous ouvrez une leçon. Effacer les données de votre navigateur le supprime.",
         },
         {
           what: "Comptage anonyme des visites",

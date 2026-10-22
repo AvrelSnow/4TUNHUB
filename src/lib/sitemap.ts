@@ -117,6 +117,13 @@ export const siteTree: SiteNode[] = [
         status: "active",
         desc: "The @4TUNHUB YouTube tutorials, one page each, with the files to follow along.",
       },
+      {
+        key: "path",
+        label: "Engineering Thinking",
+        href: "/academy/engineering-thinking",
+        status: "active",
+        desc: "Branch 1 of the 4TUNHub Lab as a guided path: from a hanging load to a sized steel plate.",
+      },
     ],
   },
   {
