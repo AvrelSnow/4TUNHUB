@@ -1,6 +1,6 @@
 # Project state — security and payment-readiness programme
 
-_Last updated 2026-11-10 (Phase -1 done; first remediation batch ready locally; INC-001 open)._
+_Last updated 2026-11-10 (Phase -1 done; PR #1 open with the first remediation batch; INC-001 closed)._
 
 - **Identity:** 4TUNHub, https://4tunhub.com (apex canonical, www → apex).
 - **Stack:** production Next 16.2.10; branch Next **16.4.6**. React 19.2.4, TypeScript, npm; Node 22 on Netlify (Next.js Runtime v5.16.1).
@@ -36,4 +36,4 @@ Details: `docs/security/07-remediation-log.md`.
 4. Phase 0 tool installs (Gitleaks, OSV-Scanner, Semgrep).
 
 - **Payment readiness:** NOT READY.
-- **Immediate next action:** verify the Deploy Preview of this branch, then one merge to `main`; owner completes INC-001.
+- **Immediate next action:** verify the Deploy Preview of this branch, then one merge to `main`.
