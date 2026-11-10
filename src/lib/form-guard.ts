@@ -8,7 +8,8 @@ import { headers } from "next/headers";
 // ---- Rate limiting (in-memory sliding window, per IP) --------------------
 // In-memory is correct for a single instance. On a multi-instance host each
 // instance keeps its own window, which still caps abuse per instance; move
-// the window to a shared store (e.g. Redis) if that ever stops being enough.
+// the window to a shared store (e.g. Netlify Blobs) if that ever stops being
+// enough — SECURITY.md records why that is deferred.
 const RATE_WINDOW_MS = 10 * 60_000; // 10 minutes
 const RATE_MAX = 5; // submissions per window per IP, across all forms
 const hits = new Map<string, number[]>();
@@ -31,8 +32,17 @@ export function rateLimited(ip: string): boolean {
   return false;
 }
 
+// The rate limit is only as good as the IP it keys on. `x-forwarded-for` is
+// a list the visitor can start themselves, so its first entry is forgeable.
+// Netlify's edge sets `x-nf-client-connection-ip` from the TCP connection and
+// overwrites any copy the client sends — Netlify's recommended client-IP
+// header (docs.netlify.com documents the same value as `context.ip`, which a
+// server action cannot reach). Off Netlify (local dev, another host) the
+// header is absent and we fall back to the old behaviour.
 export async function clientIp(): Promise<string> {
   const h = await headers();
+  const netlify = h.get("x-nf-client-connection-ip")?.trim();
+  if (netlify) return netlify;
   const fwd = h.get("x-forwarded-for");
   if (fwd) return fwd.split(",")[0].trim();
   return h.get("x-real-ip") ?? "local";

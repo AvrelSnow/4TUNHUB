@@ -12,7 +12,10 @@ const bundleAnalyzer = withBundleAnalyzer({
 /**
  * Security headers — applied to every route.
  * The CSP is production-only because Next dev mode needs eval/inline for HMR.
- * At launch, tighten script-src with nonces if any inline scripts remain.
+ * script-src keeps 'unsafe-inline' on purpose: nonces would make every page
+ * dynamically rendered, and the experimental SRI mode does not cover the
+ * inline scripts Next and the theme resolver emit. SECURITY.md has the
+ * trade-off and what would change it.
  *
  * Analytics is the one third party allowed anywhere near the page, and only
  * when the host has configured it: `analytics` is null otherwise and the

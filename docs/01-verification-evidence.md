@@ -82,7 +82,7 @@ sharp 0.35.5, rate limiter keyed on Netlify's client-IP header, `SECURITY.md`.
 Needs review and re-validation (npm now advises next 16.4.6) before it ships.
 
 ## Preliminary application findings (to confirm in Phase 8)
-- **P-1** Rate limit keys on the first `X-Forwarded-For` value (client-controlled)
+- **P-1** Rate limit keys on the first `X-Forwarded-For` value (client-controlled) and lives in memory per function instance → bypassable. Fixed locally (R-02).
   and lives in memory per function instance → likely bypassable. Fix exists in E-11.
 - **P-2** The cohort form sends phone, LinkedIn and screenshots to a US processor
   (Resend) and a mailbox; no retention or deletion rule is documented.
