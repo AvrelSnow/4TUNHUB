@@ -8,13 +8,13 @@ _Last updated 2026-11-10 (Phase -1 done; first remediation batch ready locally; 
 - **Architecture:** SSR/SSG marketing site + 3 Server Actions that email through Resend. No DB, no auth, no payments.
 
 ## Open incident
-- **INC-001** — credential incident, details kept off this public repo until closed.
+- **INC-001** — credential incident, **closed 2026-11-10**. Details stay off this public repo.
   Full record: local-only branch `local/inc-001-private` (never push it). **Highest priority.**
 
 ## Netlify, verified in the dashboard (read-only, 2026-11-10)
 - Project `4tunhub`, team `fortunedonfack05`, linked to `github.com/AvrelSnow/4TUNHUB`.
 - Deploy log visibility: **private** (changed 2026-11-10).
-- `RESEND_API_KEY`: scoped to Builds, Functions, Runtime; 4 values in 4 contexts — previews and branch deploys get a sending key. Not visibly marked secret.
+- `RESEND_API_KEY`: secret; scoped to Builds, Functions, Runtime; value in **Production only** since 2026-11-10 (previews and branch deploys can no longer send mail).
 - `MAIL_FROM`, `MAIL_TO`, `ANALYTICS_*`: all scopes, same value everywhere.
 - Branch deploys: only `claude/project-audit-e95f91`. Deploy Previews: every PR against `main`.
 - Untrusted (fork) deploy previews: **require approval** — good.
@@ -30,7 +30,7 @@ _Last updated 2026-11-10 (Phase -1 done; first remediation batch ready locally; 
 Details: `docs/security/07-remediation-log.md`.
 
 ## Pending approvals and owner actions
-1. Owner: INC-001 containment steps (see the local branch).
+1. ~~INC-001 containment~~ done.
 2. Draft PR open → free Deploy Preview to verify R-01/R-02 on Netlify.
 3. Then one merge to `main` (15 credits).
 4. Phase 0 tool installs (Gitleaks, OSV-Scanner, Semgrep).
