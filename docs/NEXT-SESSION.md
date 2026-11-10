@@ -1,31 +1,29 @@
 # Next session — continuation prompt
 
-You are continuing the 4TUNHub security audit (master prompt V3). State on 2026-11-10:
+You are continuing the 4TUNHub security audit (master prompt V3). State late on 2026-11-10:
 
-- Phase -1 is done (`docs/00-…`, `docs/01-…`).
-- **PR #1** (https://github.com/AvrelSnow/4TUNHUB/pull/1) is open: branch
-  `claude/4tunhub-security-audit-0dfa7d` → `main`. It carries Next 16.2.10 → 16.4.6,
-  sharp 0.35.5, an `npm audit fix`, and the rate limiter keyed on
-  `x-nf-client-connection-ip`. Verified locally (`docs/security/07-remediation-log.md`).
-- INC-001 (mail keys in build logs) is **closed**. Its record lives only on the local
-  branch `local/inc-001-private` — never push it.
-- Netlify deploy logs are private. `RESEND_API_KEY` is secret and set for Production
-  only, so the preview's forms will show the "unavailable" fallback. That is expected.
+- **PR #1** (https://github.com/AvrelSnow/4TUNHUB/pull/1): Next 16.4.6 + rate limiter
+  keyed on `x-nf-client-connection-ip`. **Verified on its Deploy Preview**: headers,
+  `/` → `/en`, every page, and forged IP headers are ignored. Results:
+  `docs/security/07-remediation-log.md` ("Deploy Preview check").
+- New findings from that check: P-2 (rate window per function instance), P-3 (no
+  `nosniff` on `/_next/static/*`), P-4 (the preview held the production mail key,
+  fixed by rebuilding it).
+- INC-001 is closed; its record stays on the local branch `local/inc-001-private`.
+  Never push it.
 
 Do this:
 
-1. Read `docs/PROJECT-STATE.md`, then `git status` and `git log --oneline -5` on the branch.
-2. Test PR #1's Netlify Deploy Preview (the URL is on the PR's Netlify check):
-   - security headers;
-   - `/` → `/en`;
-   - home, contact, waitlist and Cohort 0 pages render;
-   - the contact form returns `unavailable` 5 times, then `rateLimited` on the 6th,
-     even with a forged `X-Forwarded-For` and a forged `x-nf-client-connection-ip`.
-3. Report the results and ask the owner before merging to `main` (15 Netlify credits).
-   After the merge: send one contact-form test on production, confirm it arrives in
-   Resend, and update the docs.
-4. Then continue with Phase 0: propose Gitleaks, OSV-Scanner and Semgrep, and install
-   nothing without approval.
+1. Read `docs/PROJECT-STATE.md`, then `git status` and `git log --oneline -5`.
+2. **Only if the owner has said yes in chat:** merge PR #1 into `main` (15 credits).
+   Then send one contact-form message on production, confirm it in Resend (Emails),
+   and record the result.
+3. Ask whether to check or delete the old branch deploy `claude/project-audit-e95f91`,
+   which may still hold the mail key.
+4. Phase 0: the owner decides on `docs/security/08-phase-0-tooling-proposal.md`.
+   Install nothing without a yes.
+5. Plan P-2 (Netlify Blobs window) and P-3 (`netlify.toml` header) as one branch, and
+   ship them with the next merge.
 
 Rules: never push to `main` without the owner, never scan production actively, and
 never print or copy secret values.

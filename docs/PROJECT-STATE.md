@@ -1,6 +1,6 @@
 # Project state — security and payment-readiness programme
 
-_Last updated 2026-11-10 (Phase -1 done; PR #1 open with the first remediation batch; INC-001 closed)._
+_Last updated 2026-11-10, late (PR #1's Deploy Preview verified; waiting on the owner to merge; INC-001 closed)._
 
 - **Identity:** 4TUNHub, https://4tunhub.com (apex canonical, www → apex).
 - **Stack:** production Next 16.2.10; branch Next **16.4.6**. React 19.2.4, TypeScript, npm; Node 22 on Netlify (Next.js Runtime v5.16.1).
@@ -24,8 +24,11 @@ _Last updated 2026-11-10 (Phase -1 done; PR #1 open with the first remediation b
 ## Remediation
 | ID | What | Status |
 |---|---|---|
-| R-01 | Next 16.2.10 → 16.4.6, sharp 0.35.5, audit fix | fixed locally, verified; not deployed |
-| R-02 | Rate limiter keyed on Netlify client IP | fixed locally, verified; Netlify-side check pending |
+| R-01 | Next 16.2.10 → 16.4.6, sharp 0.35.5, audit fix | verified on Deploy Preview; not deployed |
+| R-02 | Rate limiter keyed on Netlify client IP | verified on Deploy Preview (forged headers ignored); not deployed |
+| P-2 | In-memory rate window is per function instance (7/7 got through in a burst) | open — needs Netlify Blobs; Medium |
+| P-3 | No `nosniff` on `/_next/static/*` | open — `netlify.toml` headers; Low |
+| P-4 | Deploy Preview #1 held the production mail key (built before re-scoping) | fixed — preview rebuilt 2026-11-10; check old branch deploy `claude/project-audit-e95f91` |
 
 Details: `docs/security/07-remediation-log.md`.
 
@@ -36,4 +39,6 @@ Details: `docs/security/07-remediation-log.md`.
 4. Phase 0 tool installs (Gitleaks, OSV-Scanner, Semgrep).
 
 - **Payment readiness:** NOT READY.
-- **Immediate next action:** verify the Deploy Preview of this branch, then one merge to `main`.
+- **Immediate next action:** owner approves the merge of PR #1 → `main` (15 credits);
+  then one production contact-form test and a Resend check. Phase 0 tool proposal:
+  `docs/security/08-phase-0-tooling-proposal.md`.
