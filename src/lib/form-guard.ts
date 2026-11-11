@@ -31,7 +31,7 @@ export async function rateLimited(ip: string): Promise<boolean> {
   const now = Date.now();
   let store: Store;
   try {
-    store = getStore({ name: STORE_NAME, consistency: "strong" });
+    store = getStore({ name: STORE_NAME, consistency: "strong", fetch: storeFetch });
   } catch {
     return memoryLimited(ip, now); // no Blobs context: local dev, other host
   }
@@ -54,6 +54,12 @@ export async function rateLimited(ip: string): Promise<boolean> {
 }
 
 const STORE_TIMEOUT_MS = 2500;
+
+// Inside a server action `fetch` is Next's patched, caching fetch. The store
+// gets a plain uncached request with its own abort, so a stalled socket is
+// closed rather than left open after the deadline above.
+const storeFetch: typeof fetch = (input, init) =>
+  fetch(input, { ...init, cache: "no-store", signal: AbortSignal.timeout(STORE_TIMEOUT_MS) });
 
 class StoreTimeout extends Error {
   name = "StoreTimeout";
