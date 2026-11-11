@@ -1,43 +1,45 @@
 # Next session — continuation prompt
 
-Continue the 4TUNHub security audit. State on 2026-11-11 (evening):
+Continue the 4TUNHub security audit and payment-readiness work. State at the end of 2026-11-11:
 
-- **Production = `main` = `68fa9fe`** (PR #2 merged 2026-11-11, on top of PR #1's Next 16.4.6,
-  IP-keyed rate limiter, Blobs rate window and `nosniff`). Details: `docs/security/07-remediation-log.md`.
-- **Security CI live:** `.github/workflows/security.yml` (Gitleaks, OSV-Scanner, Semgrep with no rule
-  exclusions) runs on PRs, `main` and weekly. The first run on `main` passed. `gh` isn't signed in on this
-  machine, so check runs in Chrome. The minimatch advisory is ignored until 2027-02-11 (typescript-eslint
-  still pins `^10.2.2`).
-- **R-06 live:** JSON-LD goes through `src/components/JsonLd.tsx` (escapes `<` `>` `&` and line separators).
-- **R-05 done:** Netlify production deploys are Git-only (CLI/API/MCP previews still allowed). The PR #2
-  production deploy built by itself after the merge (35 s).
-- **P-5 fixed:** the leftover Vercel project `4tunhub` was deleted (`4tunhub.vercel.app` → 404) and
-  the Vercel GitHub app now reaches only `AvrelSnow/Portfolio-project`. Still open: the owner
-  enables 2FA on Vercel (and checks GitHub 2FA).
-- **Netlify credits:** ~235.6 / 300 left after the PR #2 deploy, cycle ending Nov 18 (Free plan; the
-  site pauses if credits run out). Re-read Usage & billing → General before any merge and log it in PROJECT-STATE.
-- **R-03 closed:** the burst test passed on Deploy Preview #2 (5 of 9 accepted, parallel race and forged
-  IP headers held). The Blobs window is site-wide, so a preview test also limits the tester on production.
-- **Payment readiness:** gap review written, `docs/security/09-payment-readiness.md`. Recommended:
-  provider-hosted payment links for Cohort 1; integrated checkout only when volume asks for it.
-- **2FA:** owner confirmed on 2026-11-11 that GitHub and Vercel 2FA are both still **off**.
-- **These doc updates** sit on branch `claude/4tunhub-security-audit-cont-9a733c` (on top of `…-c7aed1`),
-  not on `main` (docs-only; ship them with the next PR).
-- Gotcha: `netlify.toml`'s `ignore` rule can cancel a production deploy whose preview already
-  built. Use Trigger deploy → "Deploy project without cache".
+- **Production = `main` = `68fa9fe`** (PR #2, Next 16.4.6, IP-keyed rate limiter, Blobs rate window,
+  `nosniff`, JSON-LD escaping). Details: `docs/security/07-remediation-log.md`.
+- **Open work = draft PR #3**, branch `claude/4tunhub-security-audit-cont-9a733c`, Deploy Preview
+  `https://deploy-preview-3--4tunhub.netlify.app`, all checks green (Netlify, Gitleaks, OSV-Scanner, Semgrep).
+  It carries:
+  - `/terms` (EN + FR): *Paying for a seat*, *Refunds*, *Pay only through this site*. **Owner approved the
+    wording as is.** Price stays on the cohort page. Refunds: full within 7 days and before session 2, half until
+    session 2, none after; full refund or next cohort if 4TUNHub cancels or postpones.
+  - `/privacy` (EN + FR): Fapshi named as processor, payment records kept ten years (OHADA).
+  - `src/lib/commerce.ts`: `Purchasable.payment` + `paymentUrl()` (only `https` on `fapshi.com` or a subdomain).
+  - `src/lib/blueprint.ts`: phase 9 "Paid Cohort 1 — taking payments" and two locked decisions; Documentation v1.9.
+  - `SECURITY.md` item 2 marked done; all the audit docs from this session.
+  - Do not merge yet: it ships with the payment link and Pay button, as one 15-credit deploy.
+- **R-03 closed:** burst test on Deploy Preview #2 passed (5 of 9 accepted; parallel and forged-IP posts held).
+- **Payments:** `docs/security/09-payment-readiness.md` has the gap list, the provider comparison and the
+  registration route. Owner decision: **Fapshi first** (individual "Not Legally Registered" account, MoMo only,
+  3%), hosted payment link, no webhook. No registered entity yet; an *établissement* at the Bafoussam CFCE
+  and a move to CinetPay or Notch Pay come later.
+- **Account security (owner, open):** GitHub and Vercel 2FA were **off** on 2026-11-11. GitHub matters most
+  (push to `main` deploys production). Gmail needs app/passkey 2FA before Fapshi holds money (Fapshi's 2FA is by
+  email). This status is written in a public repo, so closing it soon matters twice.
+- **Netlify credits:** ~235.6 / 300 at the last reading, cycle ends Nov 18, resets Nov 19 (Free plan; the site
+  pauses if credits run out). Re-read Usage & billing before any merge and log it in PROJECT-STATE.
+- `gh` is not installed on this machine: open or read PRs in the owner's Chrome (Claude in Chrome). The app
+  cannot bind PR #3 for the same reason.
+- Gotcha: `netlify.toml`'s `ignore` rule can cancel a production deploy whose preview already built. Use
+  Trigger deploy → "Deploy project without cache".
 - INC-001 is closed; its record stays on local branch `local/inc-001-private`. Never push it.
 
 Do this:
 
-1. Ask whether GitHub 2FA and Vercel 2FA are on now; record it in the remediation log.
-2. Entity: **not registered** (owner, 2026-11-11). Ask about 2FA on Gmail, Netlify, Resend (G-02).
-3. Owner chose **Fapshi first** (individual, MoMo only). Ask whether the Fapshi account is open, its 2FA on,
-   and what support said about limits and refunds. Ask the Cohort 1 price (kept off the terms; refund rule decided).
-   Terms of sale, privacy update and the allow-listed payment link are on **draft PR #3**
-   (Deploy Preview #3, all checks green); the owner **approved the wording as is** on 2026-11-11.
-   Next: once the Fapshi link exists, add it to the catalogue and a Pay button with the scam warning on the
-   cohort page, in the same PR. Merge only as one batch, after re-reading Netlify credits (15 per deploy).
+1. Ask whether GitHub, Gmail and Vercel 2FA are on now (then Netlify and Resend); record it in the remediation log.
+2. Ask whether the Fapshi account is open with 2FA, what support said about limits on individual accounts and
+   refunds, whether a test payment and refund worked, and the Cohort 1 price.
+3. When the owner has a Fapshi link: on PR #3, add the Cohort 1 item to `catalog` with `payment`, a Pay button on
+   the cohort page that uses `paymentUrl()`, and the scam warning next to it (EN + FR). Check it on the preview.
+4. Then propose the merge: re-read Netlify credits first, mark PR #3 ready, merge only on the owner's word.
 
-Rules: never push to `main` without the owner, never scan production actively, and
-never print or copy secret values. Netlify, Vercel, GitHub and Resend are signed in in the
-owner's Chrome (use Claude in Chrome, not the built-in browser).
+Rules: never push to `main` without the owner, never scan production actively, never print or copy secret
+values, and never open accounts or enter ID documents for the owner. Netlify, Vercel, GitHub and Resend are
+signed in in the owner's Chrome (use Claude in Chrome, not the built-in browser).

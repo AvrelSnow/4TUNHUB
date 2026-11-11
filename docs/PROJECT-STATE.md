@@ -1,10 +1,10 @@
 # Project state — security and payment-readiness programme
 
-_Last updated 2026-11-11 (PR #2 live; R-03 burst test passed on Deploy Preview #2; 2FA still off on Vercel and GitHub)._
+_Last updated 2026-11-11, end of session (PR #2 live; R-03 passed; payment readiness: Fapshi first, terms of sale approved on draft PR #3; 2FA still off on Vercel and GitHub)._
 
 - **Identity:** 4TUNHub, https://4tunhub.com (apex canonical, www → apex).
 - **Stack:** production **Next 16.4.6** (since 2026-11-11; `main` = `68fa9fe` after PR #2). React 19.2.4, TypeScript, npm; Node 22 on Netlify (Next.js Runtime v5.16.1).
-- **Repo:** `C:\4TUNHUB.com`, GitHub `AvrelSnow/4TUNHUB` (**public**). Audit branch `claude/4tunhub-security-audit-0dfa7d`.
+- **Repo:** `C:\4TUNHUB.com`, GitHub `AvrelSnow/4TUNHUB` (**public**). Current work: branch `claude/4tunhub-security-audit-cont-9a733c`, draft PR #3 (not merged).
 - **Architecture:** SSR/SSG marketing site + 3 Server Actions that email through Resend. No DB, no auth, no payments.
 
 ## Open incident
@@ -45,6 +45,8 @@ Details: `docs/security/07-remediation-log.md`.
 5. ~~Phase 0 tool installs~~ done; CI workflow on **PR #2** (green, two runs). Merge only with the next batch (15 credits).
 6. ~~P-5 Vercel~~ project deleted, app access narrowed. **Owner: enable 2FA on GitHub and Vercel — confirmed off on 2026-11-11.**
 7. ~~R-03 burst test~~ passed on Deploy Preview #2.
+8. **Owner: open the Fapshi account** (individual), 2FA on, ask support about limits and refunds, test payment + refund, set the Cohort 1 price. Then Claude adds the link and Pay button to PR #3.
+9. **Merge PR #3** only as one batch with the payment link, after re-reading credits (15).
 
 - **Payment readiness:** NOT READY. Gap review done 2026-11-11: `docs/security/09-payment-readiness.md`. Recommended path: provider-hosted payment links for Cohort 1 (no webhook, no order store). Blockers: GitHub 2FA (G-01), 2FA on every money-path account (G-02), legal entity (G-03), provider choice (G-04), terms of sale and privacy update (G-05, G-06), site pause risk on Netlify Free (G-07).
-- **Immediate next action:** owner enables GitHub 2FA (first) and Vercel 2FA. No registered entity yet (owner, 2026-11-11). Provider comparison done (09): register an *établissement* at the Bafoussam CFCE (72 h official, ~41,500–61,500 FCFA), then CinetPay or Notch Pay; **Owner chose Fapshi first** (individual account, MoMo only, 3%); registration and CinetPay/Notch Pay later. Terms of sale + privacy update approved as is, on draft PR #3 (not merged).
+- **Immediate next action:** owner enables GitHub 2FA (first) and Vercel 2FA. No registered entity yet (owner, 2026-11-11). Provider comparison done (09): register an *établissement* at the Bafoussam CFCE (72 h official, ~41,500–61,500 FCFA), then CinetPay or Notch Pay; **Owner chose Fapshi first** (individual account, MoMo only, 3%); registration and CinetPay/Notch Pay later. Terms of sale + privacy update approved as is, on draft PR #3 (not merged). Blueprint: phase 9 opened, two decisions locked.
