@@ -34,8 +34,12 @@ Continue the 4TUNHub security audit and payment-readiness work. State at the end
 Do this:
 
 1. Ask whether GitHub, Gmail and Vercel 2FA are on now (then Netlify and Resend); record it in the remediation log.
-2. Ask whether the Fapshi account is open with 2FA, what support said about limits on individual accounts and
-   refunds, whether a test payment and refund worked, and the Cohort 1 price.
+2. Ask whether the Fapshi account is open with 2FA, what support said about limits on individual accounts,
+   refunds **and cards**, whether a test payment and refund worked, and the Cohort 1 price.
+   - **Open question (owner, 2026-11-11): card payments.** Fapshi lists no cards; the only confirmed card route is
+     CinetPay (Visa/Mastercard 3.5%), which needs the *établissement* registration. If cards matter for Cohort 1
+     (diaspora, employers paying), register first and start on CinetPay instead of Fapshi. Not yet researched:
+     Stripe, PayPal, Flutterwave for a seller based in Cameroon; offer to check them.
 3. When the owner has a Fapshi link: on PR #3, add the Cohort 1 item to `catalog` with `payment`, a Pay button on
    the cohort page that uses `paymentUrl()`, and the scam warning next to it (EN + FR). Check it on the preview.
 4. Then propose the merge: re-read Netlify credits first, mark PR #3 ready, merge only on the owner's word.
