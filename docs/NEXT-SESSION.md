@@ -10,9 +10,11 @@ Continue the 4TUNHub security audit. State on 2026-11-11 (evening):
   passed and did real work (results in `docs/security/08-phase-0-tooling-proposal.md`). Workflow
   now on `actions/checkout@v7` and `osv-scanner-action` v2.7.0, no warnings. Netlify Deploy Preview
   built. The app's PR bar can't bind it (`gh` isn't signed in on this machine); check it in Chrome.
-- **Do not merge PR #2 alone:** `.github/` triggers a 15-credit production build. Merge it with
-  the next real batch of site work. The minimatch "update" is not possible (typescript-eslint
-  still pins `^10.2.2`); the dated ignore stays.
+- **Merging PR #2** costs one 15-credit production build. It now carries a real site change (R-06),
+  so merging it alone is reasonable; it can also wait for the next batch. The owner decides. After
+  merging, if Netlify skips the build, use Trigger deploy → "Deploy project without cache"
+  (production deploys are Git-only now, R-05). The minimatch "update" is not possible
+  (typescript-eslint still pins `^10.2.2`); the dated ignore stays.
 - **P-5 fixed:** the leftover Vercel project `4tunhub` was deleted (`4tunhub.vercel.app` → 404) and
   the Vercel GitHub app now reaches only `AvrelSnow/Portfolio-project`. Still open: the owner
   enables 2FA on Vercel (and checks GitHub 2FA).
