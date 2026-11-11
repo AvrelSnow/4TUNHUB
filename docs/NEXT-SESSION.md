@@ -32,8 +32,10 @@ Do this:
 1. Ask whether GitHub 2FA and Vercel 2FA are on now; record it in the remediation log.
 2. Entity: **not registered** (owner, 2026-11-11). Ask about 2FA on Gmail, Netlify, Resend (G-02).
 3. Owner chose **Fapshi first** (individual, MoMo only). Ask whether the Fapshi account is open, its 2FA on,
-   and what support said about limits and refunds. Ask the Cohort 1 price and refund rule.
-   Then propose the terms of sale and privacy drafts naming Fapshi (G-05, G-06) on a branch. Fix `SECURITY.md` H-01 in the same PR.
+   and what support said about limits and refunds. Ask the Cohort 1 price (kept off the terms; refund rule decided).
+   Terms of sale, privacy update and the allow-listed payment link are drafted on this branch (09,
+   "Drafted 2026-11-11"); get the owner's approval of the wording, review them on a Deploy Preview, then add the
+   Fapshi link and the Pay button to the cohort page. `SECURITY.md` H-01 is already fixed here.
 
 Rules: never push to `main` without the owner, never scan production actively, and
 never print or copy secret values. Netlify, Vercel, GitHub and Resend are signed in in the

@@ -1502,13 +1502,13 @@ const en = {
 
   privacy: {
     title: "Privacy",
-    updated: "Last updated 2 October 2026",
+    updated: "Last updated 11 November 2026",
     intro:
       "This site collects personal details only when you send them through a form, and stores almost nothing in your browser. This note says what we keep, why, for how long, and how to have it removed.",
     sections: [
       {
         title: "What we collect",
-        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat. The waitlist asks for an email address, a name if you care to give one, and which subjects you want to hear about.",
+        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat. The waitlist asks for an email address, a name if you care to give one, and which subjects you want to hear about. If you pay for a seat, Fapshi handles the payment: we see your name, the Mobile Money number that paid, the amount, the date and the payment reference, never your PIN.",
       },
       {
         title: "Why",
@@ -1516,11 +1516,11 @@ const en = {
       },
       {
         title: "Where it goes",
-        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
+        body: "Four companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, Fapshi processes payments for paid seats under its own privacy terms, and — only if you allow it — Umami counts anonymous visits. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
       },
       {
         title: "How long we keep it",
-        body: "Applications that are not selected are deleted within three months. Participants' details are kept while the cohort runs and for twelve months after it, unless you ask us to delete them sooner.",
+        body: "Applications that are not selected are deleted within three months. Participants' details are kept while the cohort runs and for twelve months after it, unless you ask us to delete them sooner. Payment records are the exception: we keep them for ten years, as OHADA accounting rules require, and use them for nothing else.",
       },
       {
         title: "Cookies",
@@ -1596,7 +1596,7 @@ const en = {
 
   terms: {
     title: "Terms of use",
-    updated: "Last updated 20 September 2026",
+    updated: "Last updated 11 November 2026",
     intro:
       "The rules of this site and of the training we run. Written plainly, because terms nobody reads protect nobody.",
     sections: [
@@ -1611,6 +1611,18 @@ const en = {
       {
         title: "A Cohort 0 seat",
         body: "Seats are free and given by selection, not by order of arrival. A seat asks three things in return: attend at least 6 of the 8 sessions, hand in the weekly exercise, and sit the final mock exam, share your score and record a short video about it. Miss them and the seat passes to the waiting list \u2014 that is the whole of it, and there is nothing to pay at any point.",
+      },
+      {
+        title: "Paying for a seat",
+        body: "Paid training is sold at the price shown on its page at the moment you pay, in CFA francs. Payment is by MTN Mobile Money or Orange Money through Fapshi, a Cameroonian payment provider; we do not take cards yet. The seller is Donfack Fortune, trading as 4TUNHub in a personal capacity: 4TUNHub is not yet a registered company. Your seat is confirmed when we have matched your payment to your application and written to you, normally within two working days.",
+      },
+      {
+        title: "Refunds",
+        body: "Ask within 7 days of paying, and before the second live session, and we refund the full amount. After those 7 days and before the second session, we refund half. From the second session on, there is no refund. If we cancel or postpone a cohort, you choose: the full amount back, or a seat in the next one. Refunds go back by Mobile Money to the number that paid, within 7 days of your request.",
+      },
+      {
+        title: "Pay only through this site",
+        body: "We take payment only through the payment link on this site, which opens a Fapshi page. We never ask you to send money to a personal Mobile Money number, by WhatsApp message, or to anyone who contacts you saying they are us. If someone does, do not pay, and tell us.",
       },
       {
         title: "The sessions are recorded",
@@ -1638,7 +1650,7 @@ const en = {
       },
       {
         title: "What we do not promise",
-        body: "The site is provided as it is. We keep it running and correct what we find, but we do not promise it is available at every moment or free of every error. Free training is given in good faith and carries no warranty; paid work is governed by the contract signed for it, not by this page.",
+        body: "The site is provided as it is. We keep it running and correct what we find, but we do not promise it is available at every moment or free of every error. Free training is given in good faith and carries no warranty. Paid training follows the sections on paying and refunds above; other paid work is governed by the contract signed for it, not by this page.",
       },
       {
         title: "Changes, and the law that applies",

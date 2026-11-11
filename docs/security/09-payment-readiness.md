@@ -132,7 +132,20 @@ What that means for the gaps:
 - G-06 privacy: name Fapshi as the payment processor and list what 4TUNHub sees (name, phone, amount, reference).
 - Before the link goes live, ask Fapshi in writing about limits on individual accounts and how refunds are made.
 
-## Recommended order
+**Drafted 2026-11-11 on `claude/4tunhub-security-audit-cont-9a733c` (not deployed, owner to approve):**
+- G-05: three new sections in `/terms` (EN + FR), "Paying for a seat", "Refunds", "Pay only through this site".
+  Price stays on the cohort page. Refunds (owner's rule): full within 7 days and before session 2, half after
+  7 days until session 2, none from session 2; full refund or next cohort if 4TUNHub cancels or postpones;
+  paid back by MoMo within 7 days.
+- G-06: `/privacy` names Fapshi, lists what 4TUNHub sees, and keeps payment records ten years (OHADA).
+- A-01: `Purchasable.payment` plus `paymentUrl()`, which returns the link only if it is `https:` on
+  `fapshi.com` or a subdomain (tested against `http:`, look-alike hosts, `javascript:` and junk).
+- A-03: the scam warning is the "Pay only through this site" section; repeat it next to the Pay button when
+  the cohort page gets one.
+- H-01: `SECURITY.md` open item 2 marked done.
+- Checks: `npm run check` passes (lint, tokens, build, 198 KB / 220 KB); the built `/en|fr/terms` and
+  `/en|fr/privacy` pages contain the new text.
+
 
 1. Owner: GitHub 2FA, then Gmail, Netlify and the rest (G-01, G-02). No deploy, no cost.
 2. ~~Entity question~~ answered: not registered. ~~Provider comparison~~ done (above). Owner: register an *établissement* at the Bafoussam CFCE; Fapshi as an individual is the fallback.
