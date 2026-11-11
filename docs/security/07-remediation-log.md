@@ -137,7 +137,20 @@ The branch deploy `claude/project-audit-e95f91` was rebuilt without cache. A
 valid contact message there now returns `unavailable`, so no non-production
 deploy holds the mail key any more.
 
+## Production deploy (2026-11-11)
+- PR #1 was merged by fast-forward: `main` c956a69 → `a37a83b`, the exact commit
+  the Deploy Preview tested.
+- **The production deploy was canceled by `netlify.toml`'s `ignore` rule.** It diffs
+  against `CACHED_COMMIT_REF`, which was the preview build of the same commit, so
+  there was no diff and the build was skipped. Canceled builds are free.
+  **Lesson:** a merge whose preview already built may skip production. Use
+  Trigger deploy → "Deploy project without cache" (empty ref fails open and builds).
+- That deploy ran once: 47 s, 15 credits, published. Production now returns the new
+  headers (HSTS 2 years), `/` → `/en`, and pages 200.
+- **Production contact test:** one message returned "Message sent" and shows as
+  Delivered in Resend ("[4TUNHub] services: Security Audit Test"). Nothing else was
+  sent to production.
+
 ## Status
-R-01: verified on the Deploy Preview. R-02: verified on the Deploy Preview
-(forgery); P-2 remains. **Not deployed:** ship with one merge to `main`
-on the owner's approval.
+R-01 to R-04 and P-4: deployed. The formal burst test (R-03) was not run; on the
+preview, requests 1–5 were accepted and 6–7 limited despite forged IP headers.

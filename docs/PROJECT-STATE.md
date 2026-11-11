@@ -1,9 +1,9 @@
 # Project state — security and payment-readiness programme
 
-_Last updated 2026-11-10, late (PR #1's Deploy Preview verified; waiting on the owner to merge; INC-001 closed)._
+_Last updated 2026-11-11 (PR #1 shipped to production; production contact test delivered; Phase 0 awaits the owner)._
 
 - **Identity:** 4TUNHub, https://4tunhub.com (apex canonical, www → apex).
-- **Stack:** production Next 16.2.10; branch Next **16.4.6**. React 19.2.4, TypeScript, npm; Node 22 on Netlify (Next.js Runtime v5.16.1).
+- **Stack:** production **Next 16.4.6** (since 2026-11-11). React 19.2.4, TypeScript, npm; Node 22 on Netlify (Next.js Runtime v5.16.1).
 - **Repo:** `C:\4TUNHUB.com`, GitHub `AvrelSnow/4TUNHUB` (**public**). Audit branch `claude/4tunhub-security-audit-0dfa7d`.
 - **Architecture:** SSR/SSG marketing site + 3 Server Actions that email through Resend. No DB, no auth, no payments.
 
@@ -24,21 +24,22 @@ _Last updated 2026-11-10, late (PR #1's Deploy Preview verified; waiting on the 
 ## Remediation
 | ID | What | Status |
 |---|---|---|
-| R-01 | Next 16.2.10 → 16.4.6, sharp 0.35.5, audit fix | verified on Deploy Preview; not deployed |
-| R-02 | Rate limiter keyed on Netlify client IP | verified on Deploy Preview (forged headers ignored); not deployed |
-| P-2 / R-03 | Rate window shared in Netlify Blobs | on PR #1; store answers on the preview; **burst test still to run** |
-| P-3 / R-04 | `nosniff` on `/_next/static/*` | on PR #1; verified on the preview |
+| R-01 | Next 16.2.10 → 16.4.6, sharp 0.35.5, audit fix | **deployed to production** 2026-11-11 |
+| R-02 | Rate limiter keyed on Netlify client IP | **deployed**; preview check: forged headers ignored |
+| P-2 / R-03 | Rate window shared in Netlify Blobs | **deployed**; formal burst test never run (5 accepted then limited was seen on the preview) |
+| P-3 / R-04 | `nosniff` on `/_next/static/*` | **deployed** |
 | P-4 | Non-production deploys held the production mail key | fixed: Deploy Preview #1 and branch deploy `claude/project-audit-e95f91` rebuilt, both return `unavailable` |
 
 Details: `docs/security/07-remediation-log.md`.
 
 ## Pending approvals and owner actions
 1. ~~INC-001 containment~~ done.
-2. Draft PR open → free Deploy Preview to verify R-01/R-02 on Netlify.
-3. Then one merge to `main` (15 credits).
-4. Phase 0 tool installs (Gitleaks, OSV-Scanner, Semgrep).
+2. ~~Merge PR #1 → `main`~~ done 2026-11-11 (fast-forward to `a37a83b`).
+3. ~~Production deploy~~ done: Netlify first **canceled** it (see remediation log), then
+   "Deploy project without cache" built it (47 s, 15 credits).
+4. ~~Production contact test~~ done: "Message sent", Delivered in Resend.
+5. Phase 0 tool installs (Gitleaks, OSV-Scanner, Semgrep): owner approval needed.
 
 - **Payment readiness:** NOT READY.
-- **Immediate next action:** owner approves the merge of PR #1 → `main` (15 credits);
-  then one production contact-form test and a Resend check. Phase 0 tool proposal:
-  `docs/security/08-phase-0-tooling-proposal.md`.
+- **Immediate next action:** owner decides on Phase 0:
+  `docs/security/08-phase-0-tooling-proposal.md`. Optional: run the burst test on production.
