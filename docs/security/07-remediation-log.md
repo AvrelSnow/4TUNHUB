@@ -197,3 +197,19 @@ from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either wa
   build to 4tunhub.com without it ever touching `main` or GitHub review.
 - Not yet checked: the next production deploy. "Trigger deploy → Deploy project without cache"
   builds from `main`, so it should still be allowed. Confirm on the next billed deploy.
+
+## R-06 — JSON-LD escaping helper (2026-11-11, owner request)
+
+- **Change:** new `src/components/JsonLd.tsx`. `serializeJsonLd()` escapes `<`, `>`, `&` and
+  U+2028/2029 as JSON unicode escapes (the approach in the Next.js JSON-LD guide). All four JSON-LD
+  blocks use `<JsonLd data={...} />`: `layout.tsx` (WebSite and Organization), `about/founder`
+  (Person), `about/founder/projects/[slug]` (CreativeWork), `academy/cohort-0` (Course).
+- **Why:** the content was static and safe (Semgrep findings triaged as false positives), but raw
+  `JSON.stringify` inside `<script>` breaks if a value ever holds `</script>`. Now one place handles it.
+- **CI:** the workflow's `--exclude-rule ...react-dangerouslysetinnerhtml` is removed. Locally,
+  that rule flags the old inline pattern but not the helper, so a future unescaped injection fails CI.
+- **Verified locally:** a round-trip test (`</script><script>alert(1)</script>`, `&`, `>`, separators)
+  produced no raw characters and the same data after parsing. `tsc` clean; `npm run check`
+  passes (lint, tokens, build 70 pages, client JS 198 KB / 220 KB). Built HTML for `/en`,
+  `/en/about/founder`, `/fr/academy/cohort-0` and a project page: every JSON-LD block parses with
+  the same `@type`s as before. Semgrep without exclusions: 0 findings.

@@ -31,6 +31,7 @@ _Last updated 2026-11-11 evening (Phase 0 in CI on PR #2, green, unmerged; P-5 V
 | P-4 | Non-production deploys held the production mail key | fixed: Deploy Preview #1 and branch deploy `claude/project-audit-e95f91` rebuilt, both return `unavailable` |
 | P-5 | Leftover Vercel project builds every push, serves `4tunhub.vercel.app`; Vercel account has no 2FA | **fixed 2026-11-11**: project deleted (404), Vercel GitHub app limited to Portfolio-project. Owner still to enable Vercel 2FA. |
 | R-05 | Netlify production deploys restricted to Git | **done** 2026-11-11 (dashboard setting) |
+| R-06 | JSON-LD escaped through one `JsonLd` component; Semgrep rule exclusion removed | on PR #2 branch, verified locally, **not deployed** |
 
 Details: `docs/security/07-remediation-log.md`.
 
@@ -44,4 +45,4 @@ Details: `docs/security/07-remediation-log.md`.
 6. ~~P-5 Vercel~~ project deleted, app access narrowed. **Owner: enable 2FA on Vercel (and check GitHub 2FA).**
 
 - **Payment readiness:** NOT READY.
-- **Immediate next action:** owner enables Vercel (and GitHub) 2FA. Next audit step to propose: the JSON-LD `<` escape helper, batched with PR #2.
+- **Immediate next action:** owner enables Vercel (and GitHub) 2FA. Next audit step to propose: the R-03 burst test or payment-readiness gaps.

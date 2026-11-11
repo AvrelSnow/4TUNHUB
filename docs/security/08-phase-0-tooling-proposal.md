@@ -72,3 +72,6 @@ Run 2: green in 29 s, no warnings left, only a notice about the `ubuntu-latest` 
 **minimatch:** this can't be fixed inside the allowed range. The fix is 11.0.1, but
 `@typescript-eslint/typescript-estree` (latest too) requires `^10.2.2`. Keep the dated ignore
 and re-check when typescript-eslint moves to minimatch 11. It is not a batch item.
+
+**JSON-LD (R-06, 2026-11-11):** the three Semgrep false positives are gone. JSON-LD now renders through
+`src/components/JsonLd.tsx` (escaped), and the workflow no longer excludes the `react-dangerouslysetinnerhtml` rule.
