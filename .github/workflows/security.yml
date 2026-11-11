@@ -1,0 +1,60 @@
+# Phase 0 security scans: secrets, vulnerable dependencies, risky code patterns.
+# Free on a public repo. Runs on pull requests, on pushes to main, and weekly
+# (new advisories appear without any code change). Triage notes:
+# docs/security/08-phase-0-tooling-proposal.md
+name: security
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 5 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  gitleaks:
+    name: Secrets (Gitleaks, full history)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run Gitleaks
+        env:
+          GITLEAKS_VERSION: "8.28.0"
+        run: |
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" | tar -xz gitleaks
+          ./gitleaks git --redact --no-banner -v .
+
+  osv-scanner:
+    name: Dependencies (OSV-Scanner)
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v2.0.3
+    with:
+      scan-args: |-
+        -L package-lock.json
+
+  semgrep:
+    name: Code patterns (Semgrep)
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep:1.131.0
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Semgrep
+        env:
+          SEMGREP_SEND_METRICS: "off"
+        # The three JSON-LD blocks are triaged false positives (static,
+        # validated content); the rule is excluded so a real finding of any
+        # other kind still fails the job.
+        run: >
+          semgrep scan --error
+          --config p/nextjs --config p/typescript --config p/secrets
+          --exclude-rule typescript.react.security.audit.react-dangerouslysetinnerhtml.react-dangerouslysetinnerhtml
+          src/

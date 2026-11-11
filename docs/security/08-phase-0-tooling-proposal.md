@@ -45,4 +45,10 @@ Installed with the owner's approval: Gitleaks (winget), OSV-Scanner (winget), Se
 | **OSV-Scanner** (`package-lock.json`, 507 packages) | 1 medium: `minimatch` 10.2.6 (GHSA-g3hv-75wg-m249, CVSS 6.9, fix 11.0.1). **Dev-only** (lint tooling), not in the production bundle. Fix in the next routine dependency update. |
 | **Semgrep** (`p/nextjs`, `p/typescript`, `p/secrets`, 110 rules, 113 files in `src/`) | 3 findings, all `react-dangerouslysetinnerhtml`, all **false positives**: JSON-LD `<script>` blocks (`about/founder/page.tsx:57`, `about/founder/projects/[slug]/page.tsx:72`, `academy/cohort-0/page.tsx:118`). Content comes from the repo's own dictionaries and project data; `locale` and `slug` are validated (`notFound()`) before use. No visitor input reaches them. Optional hardening: escape `<` as `<` in a shared JSON-LD helper (the same pattern is in `layout.tsx:104`, not flagged). No secrets or injection findings. |
 
-Step 4 (GitHub Actions workflow) is still undecided and untouched.
+Step 4 (owner approved 2026-11-11): `.github/workflows/security.yml` runs Gitleaks, OSV-Scanner
+and Semgrep on pull requests, pushes to `main` and weekly (Mondays). Config: `.gitleaks.toml`
+(allowlists `SWUG_LINKEDIN_URL`), `osv-scanner.toml` (ignores the dev-only minimatch advisory
+until 2027-02-11), and the Semgrep JSON-LD rule excluded in the workflow. All three pass locally
+with that config; the Action versions (`gitleaks` 8.28.0, `osv-scanner-action` v2.0.3,
+`semgrep` image 1.131.0) are unverified until the first run on the PR. **Merging it triggers
+a Netlify build** (`.github/` is not ignored), so merge it together with other work.

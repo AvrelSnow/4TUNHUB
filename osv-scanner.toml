@@ -1,0 +1,6 @@
+# minimatch 10.2.6 is reached only through lint tooling (dev dependency), not the
+# production bundle. Re-check by the date below, or fix in the next dependency update.
+[[IgnoredVulns]]
+id = "GHSA-g3hv-75wg-m249"
+ignoreUntil = 2027-02-11
+reason = "dev-only (lint tooling), not shipped"

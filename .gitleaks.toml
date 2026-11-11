@@ -1,0 +1,9 @@
+# Triaged false positive: the rule matched the constant name SWUG_LINKEDIN_URL
+# in an import list, not a secret value.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "SWUG_LINKEDIN_URL is a constant name, not a credential"
+regexTarget = "match"
+regexes = ['''SWUG_LINKEDIN_URL''']
