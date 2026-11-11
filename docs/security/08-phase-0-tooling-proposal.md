@@ -34,3 +34,15 @@ finds it.
 ## Decisions for the owner
 - Approve the local installs (steps 1–3)? → yes / no / some.
 - Add the GitHub Actions workflow later (step 4)? → yes / no.
+
+## Results (2026-11-11) — approved and run locally
+
+Installed with the owner's approval: Gitleaks (winget), OSV-Scanner (winget), Semgrep (pip --user).
+
+| Tool | Result |
+|---|---|
+| **Gitleaks** (`git --redact --log-opts=--all`, every branch) | **No real secrets in history.** One false positive: rule `linkedin-client-secret` matched the constant name `SWUG_LINKEDIN_URL` in an import list (`screenshots/page.tsx`, commit 0f7e162). Allowlist it when the CI workflow is added. |
+| **OSV-Scanner** (`package-lock.json`, 507 packages) | 1 medium: `minimatch` 10.2.6 (GHSA-g3hv-75wg-m249, CVSS 6.9, fix 11.0.1). **Dev-only** (lint tooling), not in the production bundle. Fix in the next routine dependency update. |
+| **Semgrep** | **Not run yet.** Installed, but rule download from semgrep.dev fails TLS verification on this machine (`unable to get local issuer certificate`, same Windows revocation/CA problem as curl). Options: trust the Windows certificate store for Python, or run Semgrep in CI instead. Certificate checks must not be disabled. |
+
+Step 4 (GitHub Actions workflow) is still undecided and untouched.
