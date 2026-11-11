@@ -19,9 +19,10 @@ jobs:
     name: Secrets (Gitleaks, full history)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Run Gitleaks
         env:
           GITLEAKS_VERSION: "8.28.0"
@@ -35,7 +36,7 @@ jobs:
       contents: read
       security-events: write
       actions: read
-    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v2.0.3
+    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v2.7.0
     with:
       scan-args: |-
         -L package-lock.json
@@ -46,7 +47,9 @@ jobs:
     container:
       image: semgrep/semgrep:1.131.0
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Run Semgrep
         env:
           SEMGREP_SEND_METRICS: "off"
