@@ -6,6 +6,7 @@ import { Chevron } from "@/components/ui/ArrowLink";
 import { CtaPanel } from "@/components/ui/CtaPanel";
 import { Reveal } from "@/components/ui/Reveal";
 import { Zoomable } from "@/components/Zoomable";
+import { JsonLd } from "@/components/JsonLd";
 import { projects, getProject, projectDetailPath } from "@/lib/projects";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -67,10 +68,7 @@ export default async function ProjectDetail({ params }: Params) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
 
       {/* HEADER */}
       <section className="pt-10 sm:pt-14">

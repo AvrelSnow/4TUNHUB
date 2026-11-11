@@ -1,9 +1,9 @@
 # Project state — security and payment-readiness programme
 
-_Last updated 2026-11-10, late (PR #1's Deploy Preview verified; waiting on the owner to merge; INC-001 closed)._
+_Last updated 2026-11-11 evening (Phase 0 in CI on PR #2, green, unmerged; P-5 Vercel leftover removed)._
 
 - **Identity:** 4TUNHub, https://4tunhub.com (apex canonical, www → apex).
-- **Stack:** production Next 16.2.10; branch Next **16.4.6**. React 19.2.4, TypeScript, npm; Node 22 on Netlify (Next.js Runtime v5.16.1).
+- **Stack:** production **Next 16.4.6** (since 2026-11-11). React 19.2.4, TypeScript, npm; Node 22 on Netlify (Next.js Runtime v5.16.1).
 - **Repo:** `C:\4TUNHUB.com`, GitHub `AvrelSnow/4TUNHUB` (**public**). Audit branch `claude/4tunhub-security-audit-0dfa7d`.
 - **Architecture:** SSR/SSG marketing site + 3 Server Actions that email through Resend. No DB, no auth, no payments.
 
@@ -18,27 +18,32 @@ _Last updated 2026-11-10, late (PR #1's Deploy Preview verified; waiting on the 
 - `MAIL_FROM`, `MAIL_TO`, `ANALYTICS_*`: all scopes, same value everywhere.
 - Branch deploys: only `claude/project-audit-e95f91`. Deploy Previews: every PR against `main`.
 - Untrusted (fork) deploy previews: **require approval** — good.
-- All deployment methods (CLI, API, MCP, Git) may deploy to production. Consider restricting to Git.
+- Production deploys: **Git only** since 2026-11-11 (R-05). CLI/API/MCP can still make previews.
+- **Credits (Free plan, 300 per cycle, 19th→18th, no overage: the site pauses if they run out):** 2026-11-11, cycle Oct 19 → Nov 18: **250.6 left**, 49.4 used (2 production deploys = 30, running cost 19.4 ≈ 0.85/day). Unused credits expire Nov 19. Check Usage & billing before every merge.
 - Netlify secret scanning is on and caught the leak in early October (that build failed).
 
 ## Remediation
 | ID | What | Status |
 |---|---|---|
-| R-01 | Next 16.2.10 → 16.4.6, sharp 0.35.5, audit fix | verified on Deploy Preview; not deployed |
-| R-02 | Rate limiter keyed on Netlify client IP | verified on Deploy Preview (forged headers ignored); not deployed |
-| P-2 / R-03 | Rate window shared in Netlify Blobs | on PR #1; store answers on the preview; **burst test still to run** |
-| P-3 / R-04 | `nosniff` on `/_next/static/*` | on PR #1; verified on the preview |
+| R-01 | Next 16.2.10 → 16.4.6, sharp 0.35.5, audit fix | **deployed to production** 2026-11-11 |
+| R-02 | Rate limiter keyed on Netlify client IP | **deployed**; preview check: forged headers ignored |
+| P-2 / R-03 | Rate window shared in Netlify Blobs | **deployed**; formal burst test never run (5 accepted then limited was seen on the preview) |
+| P-3 / R-04 | `nosniff` on `/_next/static/*` | **deployed** |
 | P-4 | Non-production deploys held the production mail key | fixed: Deploy Preview #1 and branch deploy `claude/project-audit-e95f91` rebuilt, both return `unavailable` |
+| P-5 | Leftover Vercel project builds every push, serves `4tunhub.vercel.app`; Vercel account has no 2FA | **fixed 2026-11-11**: project deleted (404), Vercel GitHub app limited to Portfolio-project. Owner still to enable Vercel 2FA. |
+| R-05 | Netlify production deploys restricted to Git | **done** 2026-11-11 (dashboard setting) |
+| R-06 | JSON-LD escaped through one `JsonLd` component; Semgrep rule exclusion removed | on PR #2 branch, verified locally, **not deployed** |
 
 Details: `docs/security/07-remediation-log.md`.
 
 ## Pending approvals and owner actions
 1. ~~INC-001 containment~~ done.
-2. Draft PR open → free Deploy Preview to verify R-01/R-02 on Netlify.
-3. Then one merge to `main` (15 credits).
-4. Phase 0 tool installs (Gitleaks, OSV-Scanner, Semgrep).
+2. ~~Merge PR #1 → `main`~~ done 2026-11-11 (fast-forward to `a37a83b`).
+3. ~~Production deploy~~ done: Netlify first **canceled** it (see remediation log), then
+   "Deploy project without cache" built it (47 s, 15 credits).
+4. ~~Production contact test~~ done: "Message sent", Delivered in Resend.
+5. ~~Phase 0 tool installs~~ done; CI workflow on **PR #2** (green, two runs). Merge only with the next batch (15 credits).
+6. ~~P-5 Vercel~~ project deleted, app access narrowed. **Owner: enable 2FA on Vercel (and check GitHub 2FA).**
 
 - **Payment readiness:** NOT READY.
-- **Immediate next action:** owner approves the merge of PR #1 → `main` (15 credits);
-  then one production contact-form test and a Resend check. Phase 0 tool proposal:
-  `docs/security/08-phase-0-tooling-proposal.md`.
+- **Immediate next action:** owner enables Vercel (and GitHub) 2FA. Next audit step to propose: the R-03 burst test or payment-readiness gaps.

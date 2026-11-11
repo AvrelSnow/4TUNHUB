@@ -34,3 +34,44 @@ finds it.
 ## Decisions for the owner
 - Approve the local installs (steps 1–3)? → yes / no / some.
 - Add the GitHub Actions workflow later (step 4)? → yes / no.
+
+## Results (2026-11-11) — approved and run locally
+
+Installed with the owner's approval: Gitleaks (winget), OSV-Scanner (winget), Semgrep (pip --user), plus `pip-system-certs` (pip --user) so Python trusts the Windows certificate store; Semgrep's rule download failed TLS verification without it. Semgrep needs `%APPDATA%\Python\Python313\Scripts` on PATH.
+
+| Tool | Result |
+|---|---|
+| **Gitleaks** (`git --redact --log-opts=--all`, every branch) | **No real secrets in history.** One false positive: rule `linkedin-client-secret` matched the constant name `SWUG_LINKEDIN_URL` in an import list (`screenshots/page.tsx`, commit 0f7e162). Allowlist it when the CI workflow is added. |
+| **OSV-Scanner** (`package-lock.json`, 507 packages) | 1 medium: `minimatch` 10.2.6 (GHSA-g3hv-75wg-m249, CVSS 6.9, fix 11.0.1). **Dev-only** (lint tooling), not in the production bundle. Fix in the next routine dependency update. |
+| **Semgrep** (`p/nextjs`, `p/typescript`, `p/secrets`, 110 rules, 113 files in `src/`) | 3 findings, all `react-dangerouslysetinnerhtml`, all **false positives**: JSON-LD `<script>` blocks (`about/founder/page.tsx:57`, `about/founder/projects/[slug]/page.tsx:72`, `academy/cohort-0/page.tsx:118`). Content comes from the repo's own dictionaries and project data; `locale` and `slug` are validated (`notFound()`) before use. No visitor input reaches them. Optional hardening: escape `<` as `<` in a shared JSON-LD helper (the same pattern is in `layout.tsx:104`, not flagged). No secrets or injection findings. |
+
+Step 4 (owner approved 2026-11-11): `.github/workflows/security.yml` runs Gitleaks, OSV-Scanner
+and Semgrep on pull requests, pushes to `main` and weekly (Mondays). Config: `.gitleaks.toml`
+(allowlists `SWUG_LINKEDIN_URL`), `osv-scanner.toml` (ignores the dev-only minimatch advisory
+until 2027-02-11), and the Semgrep JSON-LD rule excluded in the workflow. All three pass locally
+with that config; the Action versions (`gitleaks` 8.28.0, `osv-scanner-action` v2.0.3,
+`semgrep` image 1.131.0) are unverified until the first run on the PR. **Merging it triggers
+a Netlify build** (`.github/` is not ignored), so merge it together with other work.
+
+### First CI runs on PR #2 (2026-11-11)
+
+PR #2 (`claude/4tunhub-security-audit-cont-422de1` → `main`, not merged) ran the workflow twice.
+Both runs were green, and the logs show each scan did real work:
+
+| Job | Run 1 (`cd6bf4a`) |
+|---|---|
+| Gitleaks 8.28.0 | 72 commits on every branch, ~1.96 MB, **no leaks** (the allowlist held) |
+| OSV-Scanner | 507 packages, `osv-scanner.toml` loaded, GHSA-g3hv-75wg-m249 filtered, **no issues**; SARIF uploaded to code scanning |
+| Semgrep 1.131.0 | 109 rules on 113 files, **0 findings** |
+
+Run 1 warned that `actions/checkout@v4` and the actions inside `osv-scanner-action` v2.0.3 run
+on deprecated Node 20. `687fe1b` moved to `actions/checkout@v7` (Node 24) with
+`persist-credentials: false`, and the reusable workflow to `v2.7.0` (v2.7.1 was hours old, so it was skipped).
+Run 2: green in 29 s, no warnings left, only a notice about the `ubuntu-latest` → Ubuntu 26 label move.
+
+**minimatch:** this can't be fixed inside the allowed range. The fix is 11.0.1, but
+`@typescript-eslint/typescript-estree` (latest too) requires `^10.2.2`. Keep the dated ignore
+and re-check when typescript-eslint moves to minimatch 11. It is not a batch item.
+
+**JSON-LD (R-06, 2026-11-11):** the three Semgrep false positives are gone. JSON-LD now renders through
+`src/components/JsonLd.tsx` (escaped), and the workflow no longer excludes the `react-dangerouslysetinnerhtml` rule.

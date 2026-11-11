@@ -137,7 +137,79 @@ The branch deploy `claude/project-audit-e95f91` was rebuilt without cache. A
 valid contact message there now returns `unavailable`, so no non-production
 deploy holds the mail key any more.
 
+## Production deploy (2026-11-11)
+- PR #1 was merged by fast-forward: `main` c956a69 → `a37a83b`, the exact commit
+  the Deploy Preview tested.
+- **The production deploy was canceled by `netlify.toml`'s `ignore` rule.** It diffs
+  against `CACHED_COMMIT_REF`, which was the preview build of the same commit, so
+  there was no diff and the build was skipped. Canceled builds are free.
+  **Lesson:** a merge whose preview already built may skip production. Use
+  Trigger deploy → "Deploy project without cache" (empty ref fails open and builds).
+- That deploy ran once: 47 s, 15 credits, published. Production now returns the new
+  headers (HSTS 2 years), `/` → `/en`, and pages 200.
+- **Production contact test:** one message returned "Message sent" and shows as
+  Delivered in Resend ("[4TUNHub] services: Security Audit Test"). Nothing else was
+  sent to production.
+
 ## Status
-R-01: verified on the Deploy Preview. R-02: verified on the Deploy Preview
-(forgery); P-2 remains. **Not deployed:** ship with one merge to `main`
-on the owner's approval.
+R-01 to R-04 and P-4: deployed. The formal burst test (R-03) was not run; on the
+preview, requests 1–5 were accepted and 6–7 limited despite forged IP headers.
+
+## P-5 — Leftover Vercel project still builds the repo (found 2026-11-11)
+
+PR #2 got a "Vercel Preview Comments" check alongside Netlify's. The owner's Vercel project
+`fortunedonfack05-4257s-projects/4tunhub` (Hobby) is still connected to the GitHub repo
+from before the move to Netlify, and builds every push. Read-only checks:
+
+- **Environment variables: none** (project and shared). No Resend key, so forms on the
+  Vercel copy fail closed. No secret is exposed.
+- **Domain:** only `4tunhub.vercel.app` (Production). It serves the current site publicly
+  (`/en` 200, same CSP/HSTS) with `index, follow`, but its canonical points at
+  `https://4tunhub.com/en`, so the SEO harm is small.
+- **Preview URLs** redirect to Vercel SSO (Deployment Protection on).
+- **Vercel account has no 2FA** (dashboard shows "Enable 2FA"). Anyone who takes that
+  account can publish anything at `4tunhub.vercel.app` and has the Vercel GitHub app's
+  access to the repo.
+
+Risk: low-to-medium. A trusted-looking second copy of the site that nobody watches,
+plus a third-party app with repo access and a weak account. **Proposed (owner action):**
+delete the Vercel project, or at least disconnect its Git repo; remove the Vercel GitHub app
+from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either way.
+
+**P-5 done (2026-11-11, owner approved "do what is recommended", deletion confirmed):**
+- Vercel project `4tunhub` **deleted**. `4tunhub.vercel.app/en` now returns 404; 4tunhub.com
+  (Netlify) and donfackfortune.me (the owner's other Vercel project) still return 200.
+- Vercel GitHub app (installation 73193593) went from **All repositories** (read/write to code,
+  administration, hooks, PRs…) to **only `AvrelSnow/Portfolio-project`**. The app was kept because
+  the portfolio deploys through it. Vercel's pending "permission update" request was left unanswered.
+- **Owner action left:** enable 2FA on the Vercel account (needs the owner's authenticator).
+  Check GitHub 2FA too, since the GitHub account controls the repo.
+
+## R-05 — Production deploys restricted to Git (2026-11-11, owner request)
+
+- Netlify → Project configuration → Developer settings → **Enforce deployment methods**:
+  "Only Git-based production branches can deploy to the production context" is **on**
+  (checked again after a reload). The Netlify CLI, MCP and API can no longer publish to production.
+  They can still create Deploy Previews and branch deploys.
+- Nothing in the repo deploys through the CLI or API (searched for `netlify deploy`, `NETLIFY_AUTH_TOKEN`,
+  `api.netlify.com`), so normal work is unaffected.
+- Why: a leaked Netlify token, or an agent session with Netlify access, could otherwise push a
+  build to 4tunhub.com without it ever touching `main` or GitHub review.
+- Not yet checked: the next production deploy. "Trigger deploy → Deploy project without cache"
+  builds from `main`, so it should still be allowed. Confirm on the next billed deploy.
+
+## R-06 — JSON-LD escaping helper (2026-11-11, owner request)
+
+- **Change:** new `src/components/JsonLd.tsx`. `serializeJsonLd()` escapes `<`, `>`, `&` and
+  U+2028/2029 as JSON unicode escapes (the approach in the Next.js JSON-LD guide). All four JSON-LD
+  blocks use `<JsonLd data={...} />`: `layout.tsx` (WebSite and Organization), `about/founder`
+  (Person), `about/founder/projects/[slug]` (CreativeWork), `academy/cohort-0` (Course).
+- **Why:** the content was static and safe (Semgrep findings triaged as false positives), but raw
+  `JSON.stringify` inside `<script>` breaks if a value ever holds `</script>`. Now one place handles it.
+- **CI:** the workflow's `--exclude-rule ...react-dangerouslysetinnerhtml` is removed. Locally,
+  that rule flags the old inline pattern but not the helper, so a future unescaped injection fails CI.
+- **Verified locally:** a round-trip test (`</script><script>alert(1)</script>`, `&`, `>`, separators)
+  produced no raw characters and the same data after parsing. `tsc` clean; `npm run check`
+  passes (lint, tokens, build 70 pages, client JS 198 KB / 220 KB). Built HTML for `/en`,
+  `/en/about/founder`, `/fr/academy/cohort-0` and a project page: every JSON-LD block parses with
+  the same `@type`s as before. Semgrep without exclusions: 0 findings.
