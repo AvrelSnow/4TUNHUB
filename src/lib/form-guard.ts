@@ -35,19 +35,29 @@ export async function rateLimited(ip: string): Promise<boolean> {
   } catch {
     return memoryLimited(ip, now); // no Blobs context: local dev, other host
   }
+  const step = { name: "start" };
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new StoreTimeout()), STORE_TIMEOUT_MS);
+  });
   try {
-    return await sharedLimited(store, ip, now);
+    // A form must never hang on its rate limiter: past the deadline the
+    // memory window decides and the store call is abandoned.
+    return await Promise.race([sharedLimited(store, ip, now, step), timeout]);
   } catch (err) {
-    if (!warned) {
-      warned = true;
-      // Name only: never the IP, the key or the payload.
-      console.error(`[rate-limit] shared store failed (${err instanceof Error ? err.name : "unknown"}); using the in-memory window`);
-    }
+    // Name and step only: never the IP, the key or the payload.
+    console.error(`[rate-limit] shared store ${err instanceof StoreTimeout ? "timed out" : `failed (${err instanceof Error ? err.name : "unknown"})`} at ${step.name}; using the in-memory window`);
     return memoryLimited(ip, now);
+  } finally {
+    clearTimeout(timer);
   }
 }
 
-let warned = false;
+const STORE_TIMEOUT_MS = 2500;
+
+class StoreTimeout extends Error {
+  name = "StoreTimeout";
+}
 
 const utcDay = (now: number) => new Date(now).toISOString().slice(0, 10);
 
@@ -56,9 +66,15 @@ function blobKey(ip: string, now: number): string {
   return `${day}/${createHash("sha256").update(`${day}|${ip}`).digest("hex")}`;
 }
 
-async function sharedLimited(store: Store, ip: string, now: number): Promise<boolean> {
+async function sharedLimited(
+  store: Store,
+  ip: string,
+  now: number,
+  step: { name: string },
+): Promise<boolean> {
   const key = blobKey(ip, now);
   for (let attempt = 0; attempt < WRITE_ATTEMPTS; attempt++) {
+    step.name = `read#${attempt + 1}`;
     const current = await store.getWithMetadata(key, { type: "json" });
     const stored: unknown = current?.data;
     const recent = (Array.isArray(stored) ? stored : []).filter(
@@ -66,10 +82,12 @@ async function sharedLimited(store: Store, ip: string, now: number): Promise<boo
     );
     if (recent.length >= RATE_MAX) return true;
     recent.push(now);
+    step.name = `write#${attempt + 1}`;
     const result = current
       ? await store.setJSON(key, recent, current.etag ? { onlyIfMatch: current.etag } : {})
       : await store.setJSON(key, recent, { onlyIfNew: true });
     if (result.modified) {
+      step.name = "sweep";
       if (Math.random() < SWEEP_CHANCE) await sweep(store, now);
       return false;
     }
