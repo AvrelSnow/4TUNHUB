@@ -152,7 +152,7 @@ deploy holds the mail key any more.
   sent to production.
 
 ## Status
-R-01 to R-04 and P-4: deployed. The formal burst test (R-03) was not run; on the
+R-01 to R-04 and P-4: deployed. The formal burst test (R-03) passed on 2026-11-11 (see below); before it, on the
 preview, requests 1–5 were accepted and 6–7 limited despite forged IP headers.
 
 ## P-5 — Leftover Vercel project still builds the repo (found 2026-11-11)
@@ -221,3 +221,20 @@ from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either wa
 - Production checks: `/en`, `/en/about/founder`, `/fr/academy/cohort-0` and a project page return 200, and every
   JSON-LD block parses with the expected `@type`s; HSTS is unchanged. The security workflow ran on `main` (run 9) and passed.
 - Credits: 250.6 / 300 before the deploy, ~235.6 expected after it (cycle ends Nov 18).
+
+## R-03 burst test — Deploy Preview #2 (2026-11-11, 08:48 UTC, owner approved)
+- Target `https://deploy-preview-2--4tunhub.netlify.app` (same code as production `68fa9fe`), script
+  `docs/security/scripts/burst-test.sh`. Nine contact-form posts with an empty message (they count
+  towards the limit but fail validation, so no mail can be sent): 3 sequential, 4 parallel, 2 sequential.
+  Each post forged a different `x-nf-client-connection-ip` and `X-Forwarded-For`.
+- **Result: pass.** Exactly 5 accepted (seq 1–3, par 4 and 7), then `rateLimited` for par 5, par 6,
+  seq 8 and seq 9. The parallel race did not leak a sixth slot, and the forged headers did not split the
+  window, so R-02 holds as well. Response times 1.3–2.5 s; one parallel post took 5.3 s and still came back
+  limited (most likely conditional-write retries; an in-memory fallback would have let it through).
+- Side effect, expected: the Blobs store is site-wide, so the tester's IP was limited on production forms
+  for the next 10 minutes too.
+- **R-03 closed.**
+
+## Owner 2FA check (2026-11-11)
+- Owner reports 2FA is **not yet** on for Vercel or GitHub. Still open (P-5 follow-up). GitHub matters
+  most: the GitHub account can push to `main`, which deploys production.

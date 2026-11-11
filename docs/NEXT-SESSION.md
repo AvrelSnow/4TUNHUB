@@ -16,18 +16,20 @@ Continue the 4TUNHub security audit. State on 2026-11-11 (evening):
   enables 2FA on Vercel (and checks GitHub 2FA).
 - **Netlify credits:** ~235.6 / 300 left after the PR #2 deploy, cycle ending Nov 18 (Free plan; the
   site pauses if credits run out). Re-read Usage & billing → General before any merge and log it in PROJECT-STATE.
-- **This doc update** sits on branch `claude/4tunhub-security-audit-cont-c7aed1`, not on `main`
-  (docs-only; ship it with the next PR).
+- **R-03 closed:** the burst test passed on Deploy Preview #2 (5 of 9 accepted, parallel race and forged
+  IP headers held). The Blobs window is site-wide, so a preview test also limits the tester on production.
+- **2FA:** owner confirmed on 2026-11-11 that GitHub and Vercel 2FA are both still **off**.
+- **These doc updates** sit on branch `claude/4tunhub-security-audit-cont-9a733c` (on top of `…-c7aed1`),
+  not on `main` (docs-only; ship them with the next PR).
 - Gotcha: `netlify.toml`'s `ignore` rule can cancel a production deploy whose preview already
   built. Use Trigger deploy → "Deploy project without cache".
 - INC-001 is closed; its record stays on local branch `local/inc-001-private`. Never push it.
 
 Do this:
 
-1. Ask whether Vercel 2FA (and GitHub 2FA) is on; record it in the remediation log.
-2. Next audit steps (propose first): the R-03 burst test
-   (`docs/security/scripts/burst-test.sh`, production only with the owner's OK);
-   payment-readiness gaps.
+1. Ask whether GitHub 2FA and Vercel 2FA are on now; record it in the remediation log.
+2. Next audit step (propose first): the payment-readiness gap review (read-only, a gap list
+   before any code).
 
 Rules: never push to `main` without the owner, never scan production actively, and
 never print or copy secret values. Netlify, Vercel, GitHub and Resend are signed in in the

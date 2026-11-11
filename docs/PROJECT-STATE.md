@@ -1,6 +1,6 @@
 # Project state — security and payment-readiness programme
 
-_Last updated 2026-11-11 (PR #2 merged and live: Phase 0 CI on `main`, R-06 JSON-LD; P-5 and R-05 done)._
+_Last updated 2026-11-11 (PR #2 live; R-03 burst test passed on Deploy Preview #2; 2FA still off on Vercel and GitHub)._
 
 - **Identity:** 4TUNHub, https://4tunhub.com (apex canonical, www → apex).
 - **Stack:** production **Next 16.4.6** (since 2026-11-11; `main` = `68fa9fe` after PR #2). React 19.2.4, TypeScript, npm; Node 22 on Netlify (Next.js Runtime v5.16.1).
@@ -27,10 +27,10 @@ _Last updated 2026-11-11 (PR #2 merged and live: Phase 0 CI on `main`, R-06 JSON
 |---|---|---|
 | R-01 | Next 16.2.10 → 16.4.6, sharp 0.35.5, audit fix | **deployed to production** 2026-11-11 |
 | R-02 | Rate limiter keyed on Netlify client IP | **deployed**; preview check: forged headers ignored |
-| P-2 / R-03 | Rate window shared in Netlify Blobs | **deployed**; formal burst test never run (5 accepted then limited was seen on the preview) |
+| P-2 / R-03 | Rate window shared in Netlify Blobs | **deployed**; burst test **passed** 2026-11-11 on Deploy Preview #2: 5 of 9 accepted, parallel race and forged IPs held |
 | P-3 / R-04 | `nosniff` on `/_next/static/*` | **deployed** |
 | P-4 | Non-production deploys held the production mail key | fixed: Deploy Preview #1 and branch deploy `claude/project-audit-e95f91` rebuilt, both return `unavailable` |
-| P-5 | Leftover Vercel project builds every push, serves `4tunhub.vercel.app`; Vercel account has no 2FA | **fixed 2026-11-11**: project deleted (404), Vercel GitHub app limited to Portfolio-project. Owner still to enable Vercel 2FA. |
+| P-5 | Leftover Vercel project builds every push, serves `4tunhub.vercel.app`; Vercel account has no 2FA | **fixed 2026-11-11**: project deleted (404), Vercel GitHub app limited to Portfolio-project. Owner reports 2FA still off on Vercel and GitHub (2026-11-11). |
 | R-05 | Netlify production deploys restricted to Git | **done** 2026-11-11 (dashboard setting) |
 | R-06 | JSON-LD escaped through one `JsonLd` component; Semgrep rule exclusion removed | **deployed** 2026-11-11 (`main` = `68fa9fe`); production JSON-LD verified |
 
@@ -43,7 +43,8 @@ Details: `docs/security/07-remediation-log.md`.
    "Deploy project without cache" built it (47 s, 15 credits).
 4. ~~Production contact test~~ done: "Message sent", Delivered in Resend.
 5. ~~Phase 0 tool installs~~ done; CI workflow on **PR #2** (green, two runs). Merge only with the next batch (15 credits).
-6. ~~P-5 Vercel~~ project deleted, app access narrowed. **Owner: enable 2FA on Vercel (and check GitHub 2FA).**
+6. ~~P-5 Vercel~~ project deleted, app access narrowed. **Owner: enable 2FA on GitHub and Vercel — confirmed off on 2026-11-11.**
+7. ~~R-03 burst test~~ passed on Deploy Preview #2.
 
 - **Payment readiness:** NOT READY.
-- **Immediate next action:** owner enables Vercel (and GitHub) 2FA. Next audit step to propose: the R-03 burst test or payment-readiness gaps.
+- **Immediate next action:** owner enables GitHub 2FA (first) and Vercel 2FA. Next audit step to propose: payment-readiness gaps.
