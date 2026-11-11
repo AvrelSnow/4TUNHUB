@@ -128,7 +128,7 @@ What that means for the gaps:
 - G-02: Fapshi's dashboard 2FA (code by email) makes the **Gmail account the real key** to the money; Gmail 2FA
   with an authenticator app or passkey, not SMS, before the account holds anything.
 - G-05 terms of sale: say payment is by MTN MoMo or Orange Money through Fapshi, no cards, the payee is
-  Avrel Fortune Donfack trading as 4TUNHub (individual, not yet registered), plus the refund rule.
+  the founder, in his own name, trading as 4TUNHub (individual, not yet registered), plus the refund rule.
 - G-06 privacy: name Fapshi as the payment processor and list what 4TUNHub sees (name, phone, amount, reference).
 - Before the link goes live, ask Fapshi in writing about limits on individual accounts and how refunds are made.
 
