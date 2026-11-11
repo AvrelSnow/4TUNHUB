@@ -1,21 +1,100 @@
+import { createHash } from "node:crypto";
 import { headers } from "next/headers";
+import { getStore, type Store } from "@netlify/blobs";
 
 /**
  * Shared server-side guards for every form (R12 security contract):
  * a per-IP rate limit and field helpers. Imported only by server actions.
  */
 
-// ---- Rate limiting (in-memory sliding window, per IP) --------------------
-// In-memory is correct for a single instance. On a multi-instance host each
-// instance keeps its own window, which still caps abuse per instance; move
-// the window to a shared store (e.g. Netlify Blobs) if that ever stops being
-// enough — SECURITY.md records why that is deferred.
+// ---- Rate limiting (sliding window per IP, shared across instances) ------
+// Netlify runs several function instances and starts fresh ones for a burst,
+// so a window kept in memory let 7 of 7 rapid submissions through on the
+// 2026-11-10 preview check (P-2). The window now lives in Netlify Blobs,
+// shared by every instance, with strong consistency and conditional writes
+// so two instances can't both take the last slot.
+//
+// Privacy: the store never holds an IP. The key is a SHA-256 of the IP
+// salted with the UTC day, the value is a list of timestamps, and entries
+// from earlier days are swept away. The salt changes at midnight UTC, which
+// resets the window then; at worst that allows 2 × RATE_MAX across midnight.
+//
+// Off Netlify (local dev) or if the store fails, the old per-instance
+// memory window takes over: weaker, but never no limit at all.
 const RATE_WINDOW_MS = 10 * 60_000; // 10 minutes
 const RATE_MAX = 5; // submissions per window per IP, across all forms
+const STORE_NAME = "form-rate-limit";
+const WRITE_ATTEMPTS = 4;
+const SWEEP_CHANCE = 0.05;
+
+export async function rateLimited(ip: string): Promise<boolean> {
+  const now = Date.now();
+  let store: Store;
+  try {
+    store = getStore({ name: STORE_NAME, consistency: "strong" });
+  } catch {
+    return memoryLimited(ip, now); // no Blobs context: local dev, other host
+  }
+  try {
+    return await sharedLimited(store, ip, now);
+  } catch (err) {
+    if (!warned) {
+      warned = true;
+      // Name only: never the IP, the key or the payload.
+      console.error(`[rate-limit] shared store failed (${err instanceof Error ? err.name : "unknown"}); using the in-memory window`);
+    }
+    return memoryLimited(ip, now);
+  }
+}
+
+let warned = false;
+
+const utcDay = (now: number) => new Date(now).toISOString().slice(0, 10);
+
+function blobKey(ip: string, now: number): string {
+  const day = utcDay(now);
+  return `${day}/${createHash("sha256").update(`${day}|${ip}`).digest("hex")}`;
+}
+
+async function sharedLimited(store: Store, ip: string, now: number): Promise<boolean> {
+  const key = blobKey(ip, now);
+  for (let attempt = 0; attempt < WRITE_ATTEMPTS; attempt++) {
+    const current = await store.getWithMetadata(key, { type: "json" });
+    const stored: unknown = current?.data;
+    const recent = (Array.isArray(stored) ? stored : []).filter(
+      (t): t is number => typeof t === "number" && now - t < RATE_WINDOW_MS,
+    );
+    if (recent.length >= RATE_MAX) return true;
+    recent.push(now);
+    const result = current
+      ? await store.setJSON(key, recent, current.etag ? { onlyIfMatch: current.etag } : {})
+      : await store.setJSON(key, recent, { onlyIfNew: true });
+    if (result.modified) {
+      if (Math.random() < SWEEP_CHANCE) await sweep(store, now);
+      return false;
+    }
+    // Another instance wrote first: read again and recount.
+  }
+  // Still losing the race after several tries means a burst is under way.
+  return true;
+}
+
+/** Deletes entries from before yesterday so the store can't grow forever. */
+async function sweep(store: Store, now: number): Promise<void> {
+  const keep = new Set([utcDay(now), utcDay(now - 86_400_000)]);
+  try {
+    const { blobs } = await store.list();
+    await Promise.all(
+      blobs.filter((b) => !keep.has(b.key.split("/")[0])).map((b) => store.delete(b.key)),
+    );
+  } catch {
+    // Housekeeping only; the next sweep tries again.
+  }
+}
+
 const hits = new Map<string, number[]>();
 
-export function rateLimited(ip: string): boolean {
-  const now = Date.now();
+function memoryLimited(ip: string, now: number): boolean {
   const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
   if (recent.length >= RATE_MAX) {
     hits.set(ip, recent); // keep the window; don't add this attempt

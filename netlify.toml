@@ -38,3 +38,12 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Next's headers() in next.config.ts covers every page, but Netlify serves
+# /_next/static/* straight from the CDN, where those headers never apply.
+# The preview check of 2026-11-10 found the JS chunks without `nosniff`
+# (P-3). The rest of the security headers only matter on documents.
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"

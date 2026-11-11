@@ -64,7 +64,7 @@ export async function submitApplication(
     return { status: "error", formError: "closed" };
   }
 
-  if (rateLimited(await clientIp())) {
+  if (await rateLimited(await clientIp())) {
     return { status: "error", formError: "rateLimited" };
   }
 

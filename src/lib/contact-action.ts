@@ -26,7 +26,7 @@ export async function submitContact(
   }
 
   // 2) Rate limit per IP.
-  if (rateLimited(await clientIp())) {
+  if (await rateLimited(await clientIp())) {
     return { status: "error", formError: "rateLimited" };
   }
 
