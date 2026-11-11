@@ -122,10 +122,20 @@ about Cameroon methods or who can sign up. Revisit only for option B.
 3. **Once registered:** compare CinetPay (cheapest MoMo, cards) and Notch Pay (sandbox, fast MoMo payouts) on a
    test payment, refund and payout each, and move the payment link. The site code does not change: one URL.
 
+**Owner decision, 2026-11-11: Fapshi first.** Cohort 1 sells through a Fapshi payment link on an individual
+("Not Legally Registered") account, Mobile Money only. Registration and a move to CinetPay or Notch Pay come later.
+What that means for the gaps:
+- G-02: Fapshi's dashboard 2FA (code by email) makes the **Gmail account the real key** to the money; Gmail 2FA
+  with an authenticator app or passkey, not SMS, before the account holds anything.
+- G-05 terms of sale: say payment is by MTN MoMo or Orange Money through Fapshi, no cards, the payee is
+  Avrel Fortune Donfack trading as 4TUNHub (individual, not yet registered), plus the refund rule.
+- G-06 privacy: name Fapshi as the payment processor and list what 4TUNHub sees (name, phone, amount, reference).
+- Before the link goes live, ask Fapshi in writing about limits on individual accounts and how refunds are made.
+
 ## Recommended order
 
 1. Owner: GitHub 2FA, then Gmail, Netlify and the rest (G-01, G-02). No deploy, no cost.
 2. ~~Entity question~~ answered: not registered. ~~Provider comparison~~ done (above). Owner: register an *établissement* at the Bafoussam CFCE; Fapshi as an individual is the fallback.
-3. Owner picks a provider and opens the account with 2FA. Test payment and refund in test mode (A-04).
+3. Owner opens the **Fapshi** account (individual), turns on 2FA, asks support about limits and refunds, and makes one small real payment and refund (A-04). Claude cannot open accounts or enter ID documents.
 4. Claude: terms of sale, privacy update, payment link in `commerce.ts`, the scam warning (G-05, G-06, A-01, A-03) on a branch, checked on its preview, merged in **one** deploy (15 credits) with the pending docs.
 5. Pre-sale opens. Reconcile by hand (A-02). Revisit option B only when volume asks for it.
