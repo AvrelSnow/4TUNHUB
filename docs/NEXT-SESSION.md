@@ -18,6 +18,8 @@ Continue the 4TUNHub security audit. State on 2026-11-11 (evening):
   site pauses if credits run out). Re-read Usage & billing → General before any merge and log it in PROJECT-STATE.
 - **R-03 closed:** the burst test passed on Deploy Preview #2 (5 of 9 accepted, parallel race and forged
   IP headers held). The Blobs window is site-wide, so a preview test also limits the tester on production.
+- **Payment readiness:** gap review written, `docs/security/09-payment-readiness.md`. Recommended:
+  provider-hosted payment links for Cohort 1; integrated checkout only when volume asks for it.
 - **2FA:** owner confirmed on 2026-11-11 that GitHub and Vercel 2FA are both still **off**.
 - **These doc updates** sit on branch `claude/4tunhub-security-audit-cont-9a733c` (on top of `…-c7aed1`),
   not on `main` (docs-only; ship them with the next PR).
@@ -28,8 +30,9 @@ Continue the 4TUNHub security audit. State on 2026-11-11 (evening):
 Do this:
 
 1. Ask whether GitHub 2FA and Vercel 2FA are on now; record it in the remediation log.
-2. Next audit step (propose first): the payment-readiness gap review (read-only, a gap list
-   before any code).
+2. Ask about the entity question (G-03) and 2FA on Gmail, Netlify, Resend (G-02).
+3. Propose next: the provider comparison (G-04, current sources, no sign-ups), then the terms of
+   sale and privacy drafts (G-05, G-06) on a branch. Fix `SECURITY.md` H-01 in the same PR.
 
 Rules: never push to `main` without the owner, never scan production actively, and
 never print or copy secret values. Netlify, Vercel, GitHub and Resend are signed in in the

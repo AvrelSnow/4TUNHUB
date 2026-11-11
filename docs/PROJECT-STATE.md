@@ -46,5 +46,5 @@ Details: `docs/security/07-remediation-log.md`.
 6. ~~P-5 Vercel~~ project deleted, app access narrowed. **Owner: enable 2FA on GitHub and Vercel — confirmed off on 2026-11-11.**
 7. ~~R-03 burst test~~ passed on Deploy Preview #2.
 
-- **Payment readiness:** NOT READY.
-- **Immediate next action:** owner enables GitHub 2FA (first) and Vercel 2FA. Next audit step to propose: payment-readiness gaps.
+- **Payment readiness:** NOT READY. Gap review done 2026-11-11: `docs/security/09-payment-readiness.md`. Recommended path: provider-hosted payment links for Cohort 1 (no webhook, no order store). Blockers: GitHub 2FA (G-01), 2FA on every money-path account (G-02), legal entity (G-03), provider choice (G-04), terms of sale and privacy update (G-05, G-06), site pause risk on Netlify Free (G-07).
+- **Immediate next action:** owner enables GitHub 2FA (first) and Vercel 2FA. Then the owner answers the entity question and Claude compares CinetPay, NotchPay and Moneroo (G-03, G-04).
