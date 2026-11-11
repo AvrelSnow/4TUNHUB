@@ -213,3 +213,11 @@ from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either wa
   passes (lint, tokens, build 70 pages, client JS 198 KB / 220 KB). Built HTML for `/en`,
   `/en/about/founder`, `/fr/academy/cohort-0` and a project page: every JSON-LD block parses with
   the same `@type`s as before. Semgrep without exclusions: 0 findings.
+
+## PR #2 to production (2026-11-11)
+- Merged by the owner's instruction: `main` a37a83b → `68fa9fe` (merge commit). The Netlify production
+  deploy built and published by itself (35 s, 15 credits). The `ignore` rule did not cancel it, because
+  the diff from the last production commit includes `src/`.
+- Production checks: `/en`, `/en/about/founder`, `/fr/academy/cohort-0` and a project page return 200, and every
+  JSON-LD block parses with the expected `@type`s; HSTS is unchanged. The security workflow ran on `main` (run 9) and passed.
+- Credits: 250.6 / 300 before the deploy, ~235.6 expected after it (cycle ends Nov 18).

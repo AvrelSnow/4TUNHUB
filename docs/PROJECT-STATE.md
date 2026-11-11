@@ -1,9 +1,9 @@
 # Project state — security and payment-readiness programme
 
-_Last updated 2026-11-11 evening (Phase 0 in CI on PR #2, green, unmerged; P-5 Vercel leftover removed)._
+_Last updated 2026-11-11 (PR #2 merged and live: Phase 0 CI on `main`, R-06 JSON-LD; P-5 and R-05 done)._
 
 - **Identity:** 4TUNHub, https://4tunhub.com (apex canonical, www → apex).
-- **Stack:** production **Next 16.4.6** (since 2026-11-11). React 19.2.4, TypeScript, npm; Node 22 on Netlify (Next.js Runtime v5.16.1).
+- **Stack:** production **Next 16.4.6** (since 2026-11-11; `main` = `68fa9fe` after PR #2). React 19.2.4, TypeScript, npm; Node 22 on Netlify (Next.js Runtime v5.16.1).
 - **Repo:** `C:\4TUNHUB.com`, GitHub `AvrelSnow/4TUNHUB` (**public**). Audit branch `claude/4tunhub-security-audit-0dfa7d`.
 - **Architecture:** SSR/SSG marketing site + 3 Server Actions that email through Resend. No DB, no auth, no payments.
 
@@ -19,7 +19,7 @@ _Last updated 2026-11-11 evening (Phase 0 in CI on PR #2, green, unmerged; P-5 V
 - Branch deploys: only `claude/project-audit-e95f91`. Deploy Previews: every PR against `main`.
 - Untrusted (fork) deploy previews: **require approval** — good.
 - Production deploys: **Git only** since 2026-11-11 (R-05). CLI/API/MCP can still make previews.
-- **Credits (Free plan, 300 per cycle, 19th→18th, no overage: the site pauses if they run out):** 2026-11-11, cycle Oct 19 → Nov 18: **250.6 left**, 49.4 used (2 production deploys = 30, running cost 19.4 ≈ 0.85/day). Unused credits expire Nov 19. Check Usage & billing before every merge.
+- **Credits (Free plan, 300 per cycle, 19th→18th, no overage: the site pauses if they run out):** 2026-11-11, cycle Oct 19 → Nov 18: **~235.6 left after the PR #2 deploy** (250.6 before it), ~64.4 used (3 production deploys = 45, running cost 19.4 ≈ 0.85/day). Unused credits expire Nov 19. Check Usage & billing before every merge.
 - Netlify secret scanning is on and caught the leak in early October (that build failed).
 
 ## Remediation
@@ -32,7 +32,7 @@ _Last updated 2026-11-11 evening (Phase 0 in CI on PR #2, green, unmerged; P-5 V
 | P-4 | Non-production deploys held the production mail key | fixed: Deploy Preview #1 and branch deploy `claude/project-audit-e95f91` rebuilt, both return `unavailable` |
 | P-5 | Leftover Vercel project builds every push, serves `4tunhub.vercel.app`; Vercel account has no 2FA | **fixed 2026-11-11**: project deleted (404), Vercel GitHub app limited to Portfolio-project. Owner still to enable Vercel 2FA. |
 | R-05 | Netlify production deploys restricted to Git | **done** 2026-11-11 (dashboard setting) |
-| R-06 | JSON-LD escaped through one `JsonLd` component; Semgrep rule exclusion removed | on PR #2 branch, verified locally, **not deployed** |
+| R-06 | JSON-LD escaped through one `JsonLd` component; Semgrep rule exclusion removed | **deployed** 2026-11-11 (`main` = `68fa9fe`); production JSON-LD verified |
 
 Details: `docs/security/07-remediation-log.md`.
 
