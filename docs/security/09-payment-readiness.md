@@ -44,7 +44,7 @@ The gaps below say which option they apply to.
 |---|---|---|---|
 | G-01 | **GitHub 2FA is off.** The repo is public and a push to `main` deploys production. | Owner | Whoever takes the GitHub account can swap the "Pay" link or the payee for their own. That is the single most likely way to steal buyers' money. |
 | G-02 | **2FA on every account in the money path:** payment provider dashboard, Netlify, the Gmail inbox that gets payment notices, Resend, Vercel. Only Vercel and GitHub have been asked so far (both off). | Owner | The provider dashboard holds payouts; the inbox holds payout and password-reset mail. |
-| G-03 | **Legal entity and provider KYC.** No registered business entity is confirmed (`strategy.md` Q4); aggregators ask for one before they pay out. | Owner | Decides which provider is even possible. |
+| G-03 | **Legal entity and provider KYC.** Owner confirmed on 2026-11-11: **not registered yet** (`strategy.md` Q4). Aggregators ask for business documents before they pay out. Two routes: a provider that onboards an individual, or register first (what form, cost and delay in Cameroon to be checked from current sources). | Owner | Decides which provider is even possible, and whether registration has to happen before the January pre-sale. |
 | G-04 | **Provider not chosen.** Compare CinetPay, NotchPay and Moneroo on: MoMo + Orange Money + card in Cameroon, fees, payout delay and account, KYC for an individual vs a company, hosted payment links, test mode, 2FA on the dashboard, and how refunds work. | Owner, with Claude's research | Everything else depends on it. |
 | G-05 | **No terms of sale.** `/terms` covers the free Cohort 0 and recorded sessions, but says nothing about price, currency, what is bought, refunds, cancellation by 4TUNHub, or seat transfer. | Claude drafts, owner approves | Buyers and the provider both expect them; the refund rule prevents disputes. |
 | G-06 | **Privacy note does not name a payment processor** or say what payment data 4TUNHub sees (name, phone number, amount, reference) and how long it is kept. | Claude drafts, owner approves | Phone numbers in MoMo receipts are personal data. |
@@ -82,7 +82,7 @@ Each of these is required before option B ships; none is needed for option A.
 ## Recommended order
 
 1. Owner: GitHub 2FA, then Gmail, Netlify and the rest (G-01, G-02). No deploy, no cost.
-2. Owner: answer the entity question (G-03). Claude: provider comparison from current sources (G-04).
+2. ~~Entity question~~ answered: not registered. Claude: provider comparison from current sources (G-04), starting with which providers onboard an unregistered individual, and the registration route and delay in Cameroon (G-03).
 3. Owner picks a provider and opens the account with 2FA. Test payment and refund in test mode (A-04).
 4. Claude: terms of sale, privacy update, payment link in `commerce.ts`, the scam warning (G-05, G-06, A-01, A-03) on a branch, checked on its preview, merged in **one** deploy (15 credits) with the pending docs.
 5. Pre-sale opens. Reconcile by hand (A-02). Revisit option B only when volume asks for it.
