@@ -4,10 +4,11 @@
    4TUN HUB — DESIGN FOUNDATION
    Governed by docs/art-direction.md.
 
-   Quiet surfaces, one typeface, real photographs, and colour
-   used once: the amber of the logo. Day is a white page and
-   night is a black one, and the visitor's clock decides which
-   (src/lib/theme.ts).
+   Indigo ink on drafting paper by day, an indigo night lit by
+   amber after dark; the visitor's clock decides which
+   (src/lib/theme.ts). One family (Mona Sans), four pillar hues,
+   real photographs, and a CSS-first motion language.
+   Rationale and every rule: docs/visual-experience.md.
 
    Every pillar reuses these tokens. Components never carry a
    raw colour; `npm run lint:tokens` enforces it.
@@ -16,7 +17,8 @@
 /* `static` emits every token as a CSS variable, including ones only
    read through var() in inline styles. */
 @theme static {
-  /* --- Brand amber, from the logo. A fill, never small text on white. --- */
+  /* --- Brand amber, from the logo. The light of the system: buttons at
+         night, live signals, selection. A fill, never small text on paper. --- */
   --color-brand-50: #fff8e6;
   --color-brand-100: #ffeebf;
   --color-brand-200: #ffe08a;
@@ -28,46 +30,69 @@
   --color-brand-800: #8a5700;
   --color-brand-900: #5c3a00;
 
-  /* --- Neutrals. Warm-free greys, the way good hardware is photographed. --- */
-  --color-ink-50: #f5f5f7;
-  --color-ink-100: #e8e8ed;
-  --color-ink-200: #d2d2d7;
-  --color-ink-300: #aeaeb2;
-  --color-ink-400: #86868b;
-  --color-ink-500: #6e6e73;
-  --color-ink-600: #48484a;
-  --color-ink-700: #3a3a3c;
-  --color-ink-800: #2c2c2e;
-  --color-ink-900: #1d1d1f;
-  --color-ink-950: #141416;
-  --color-ink-975: #000000;
+  /* --- Ink. Neutrals pulled toward blueprint navy, so dark panels read as
+         a drawing sheet at night rather than a black void. --- */
+  --color-ink-50: #f4f3f8;
+  --color-ink-100: #e7e6f0;
+  --color-ink-200: #cfcde0;
+  --color-ink-300: #aaafcc;
+  --color-ink-400: #7f86a6;
+  --color-ink-500: #5f6683;
+  --color-ink-600: #434a6b;
+  --color-ink-700: #2e355a;
+  --color-ink-800: #1c2450;
+  --color-ink-900: #141b3c;
+  --color-ink-950: #0e1330;
+  --color-ink-975: #080b1e;
 
   /* Third-party marks, quoted inside their own icons only. */
   --color-mark-linkedin: #0a66c2;
   --color-mark-gmail: #ea4335;
 
-  /* --- Semantic tokens: DAY. Ratios measured against --color-background
-         unless stated; night overrides these below. --- */
-  --color-background: #ffffff;
-  --color-surface: #f5f5f7; /* alternate sections and tiles */
-  --color-surface-2: #ffffff; /* a card lifted off a surface */
-  --color-foreground: #1d1d1f; /* 16.8:1 */
-  --color-muted: #6e6e73; /* 5.07:1, and 4.66:1 on surface */
-  --color-subtle: #86868b; /* decorative only: rules, icons, never body text */
-  --color-border: #e8e8ed;
-  --color-hairline: #d2d2d7;
-  --color-primary: #1d1d1f; /* the button fill */
-  --color-primary-foreground: #ffffff; /* 16.8:1 */
-  --color-primary-hover: #000000;
-  --color-accent: #b25000; /* links. 5.20:1, and 4.77:1 on surface */
-  --color-danger: #c4311b;
-  --color-success: #1f7a3a;
+  /* --- The ecosystem's four hues (docs/visual-experience.md, "Colour").
+         Indigo is ndop, the indigo royal cloth of the Grassfields around
+         Dschang, and the engineer's blueprint; amber is the logo's lamp.
+         Each hue codes ONE pillar and nothing else, at most one per section:
+           indigo   — Services: design and FEA, precision
+           amber    — Academy: teaching is the light you pass on
+           green    — Research: highland green, energy from living things
+           laterite — Community: the red earth everyone walks on
+         The plain token is text-safe on every ground (AA, measured);
+         `glow-*` is atmosphere only, never text. --- */
+  --color-indigo: #2a3eb1; /* 8.0:1 on paper */
+  --color-amber: #855600; /* 5.9:1 — raw #ffb000 is never text on paper */
+  --color-green: #1f6b45; /* 6.0:1 */
+  --color-laterite: #b23a1e; /* 5.5:1, 5.0:1 on surface */
+  --color-glow-indigo: #c9d2ff;
+  --color-glow-amber: #ffd98a;
+  --color-glow-green: #bfe8cf;
+  --color-glow-laterite: #f3c1ae;
 
-  /* --- Type. One family, worked hard. --- */
+  /* --- Semantic tokens: DAY — indigo ink on drafting paper. Ratios
+         measured against --color-background unless stated. --- */
+  --color-background: #faf6ee;
+  --color-surface: #f1eadb; /* kraft-paper band */
+  --color-surface-2: #ffffff; /* a clean sheet on the band */
+  --color-foreground: #141b3c; /* 15.6:1 */
+  --color-muted: #4e5672; /* 6.7:1, 6.1:1 on surface */
+  --color-subtle: #8a8fa3; /* decorative only */
+  --color-border: #e6dccb;
+  --color-hairline: #d3c7b0;
+  --color-primary: #ffb000; /* the logo's colour is the action colour */
+  --color-primary-foreground: #141b3c; /* 9.2:1 */
+  --color-primary-hover: #ffc233;
+  --color-secondary: #2a3eb1;
+  --color-secondary-foreground: #ffffff; /* 8.7:1 */
+  --color-accent: #2a3eb1; /* by day the ink is the accent. 8.0:1 */
+  --color-danger: #b42318;
+  --color-success: #1f6b45;
+
+  /* --- Type. Mona Sans: one variable family with a width axis. Headlines
+         run wide and heavy like stamped lettering on a machine plate; body
+         text stays at normal width for reading. --- */
   --font-sans:
-    "Instrument Sans Variable", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-  /* No mono in the system any more; kept so older markup degrades to sans. */
+    "Mona Sans Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-sans);
 
   --text-3xs: 0.6875rem; /* 11px — legal lines only */
@@ -75,77 +100,84 @@
   --text-2xs: 0.75rem; /* 12px — captions, footer */
   --text-2xs--line-height: 1.125rem;
 
-  /* 21px intro copy, the size a page speaks at before it gets detailed. */
   --text-lead: clamp(1.125rem, 1.6vw, 1.3125rem);
   --text-lead--line-height: 1.5;
-  --text-lead--letter-spacing: 0.002em;
+  --text-lead--letter-spacing: 0;
 
-  /* Card and feature titles. */
   --text-headline: clamp(1.375rem, 2vw, 1.75rem);
-  --text-headline--line-height: 1.18;
-  --text-headline--letter-spacing: -0.012em;
-  --text-headline--font-weight: 600;
+  --text-headline--line-height: 1.15;
+  --text-headline--letter-spacing: -0.015em;
+  --text-headline--font-weight: 650;
 
-  /* Section titles. */
   --text-display-sm: clamp(2rem, 4.4vw, 3.5rem);
-  --text-display-sm--line-height: 1.07;
-  --text-display-sm--letter-spacing: -0.028em;
-  --text-display-sm--font-weight: 700;
+  --text-display-sm--line-height: 1.02;
+  --text-display-sm--letter-spacing: -0.03em;
+  --text-display-sm--font-weight: 760;
 
-  /* Page titles. */
   --text-display: clamp(2.5rem, 6.4vw, 5rem);
-  --text-display--line-height: 1.04;
-  --text-display--letter-spacing: -0.034em;
-  --text-display--font-weight: 700;
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.035em;
+  --text-display--font-weight: 800;
 
   /* The home hero, and nothing else. */
-  --text-display-lg: clamp(2.875rem, 8.6vw, 6.5rem);
-  --text-display-lg--line-height: 1;
+  --text-display-lg: clamp(2.75rem, 8.2vw, 6.75rem);
+  --text-display-lg--line-height: 0.94;
   --text-display-lg--letter-spacing: -0.04em;
-  --text-display-lg--font-weight: 700;
+  --text-display-lg--font-weight: 820;
 
-  /* --- Shape. Soft, generous corners on large surfaces; pills for
-         controls. --- */
-  --radius-lg: 0.75rem; /* 12px — fields, small media */
-  --radius-xl: 1.125rem; /* 18px — cards */
-  --radius-2xl: 1.75rem; /* 28px — tiles and large media */
-  --radius-3xl: 2.25rem; /* 36px — hero media */
+  /* --- Shape. --- */
+  --radius-lg: 0.75rem;
+  --radius-xl: 1.125rem;
+  --radius-2xl: 1.75rem;
+  --radius-3xl: 2.25rem;
 
-  /* --- Elevation. Almost none: surfaces separate by tone, not shadow. --- */
-  --shadow-e1: 0 1px 2px rgb(0 0 0 / 0.04);
-  --shadow-e2: 0 2px 6px rgb(0 0 0 / 0.04), 0 18px 48px -18px rgb(0 0 0 / 0.22);
+  /* --- Elevation. Shadows are tinted with navy, never grey-black. --- */
+  --shadow-e1: 0 1px 2px rgb(20 27 60 / 0.06);
+  --shadow-e2: 0 2px 6px rgb(20 27 60 / 0.05), 0 24px 56px -22px rgb(20 27 60 / 0.32);
 
-  /* --- Motion. --- */
-  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
-  --ease-apple: cubic-bezier(0.28, 0.11, 0.32, 1);
+  /* --- Motion. Three curves, one per intent (docs/visual-experience.md). --- */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1); /* things arriving */
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1); /* things moving across */
+  --ease-apple: cubic-bezier(0.28, 0.11, 0.32, 1); /* content settling */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* small controls, a slight overshoot */
 
   --animate-fade-up: fade-up 0.9s var(--ease-apple) both;
   --animate-fade-in: fade-in 0.6s var(--ease-out-quart) both;
 }
 
 /* ============================================================
-   NIGHT. Applied by the resolver in src/lib/theme.ts when the
-   visitor's clock reads 18:00–06:00, or when they chose Dark.
+   NIGHT — blueprint navy, cream ink, amber light. Applied by the
+   resolver in src/lib/theme.ts (18:00–06:00, or chosen).
    ============================================================ */
 :root[data-theme="dark"] {
-  --color-background: #000000;
-  --color-surface: #141416;
-  --color-surface-2: #1d1d1f;
-  --color-foreground: #f5f5f7; /* 19.3:1 */
-  --color-muted: #a1a1a6; /* 8.16:1, and 6.6:1 on surface-2 */
-  --color-subtle: #6e6e73;
-  --color-border: #2c2c2e;
-  --color-hairline: #424245;
-  --color-primary: #f5f5f7;
-  --color-primary-foreground: #1d1d1f;
-  --color-primary-hover: #ffffff;
-  --color-accent: #ffb340; /* 11.8:1 */
-  --color-danger: #ff6a55;
-  --color-success: #4cc76f;
+  --color-background: #0e1330; /* indigo night, never black */
+  --color-surface: #141a3d;
+  --color-surface-2: #1c2450;
+  --color-foreground: #f4eedf; /* 15.7:1 */
+  --color-muted: #aab0cc; /* 8.5:1, 6.9:1 on surface-2 */
+  --color-subtle: #5f6683;
+  --color-border: #232b5c;
+  --color-hairline: #2b3466;
+  --color-primary: #ffb000;
+  --color-primary-foreground: #141b3c; /* 9.2:1 */
+  --color-primary-hover: #ffc233;
+  --color-secondary: #9daeff;
+  --color-secondary-foreground: #0e1330; /* 8.6:1 */
+  --color-accent: #ffb000; /* by night the lamp is the accent. 9.9:1 */
+  --color-danger: #ff8a6b;
+  --color-success: #5fd39a;
 
-  --shadow-e1: 0 0 0 1px rgb(255 255 255 / 0.04);
-  --shadow-e2: 0 0 0 1px rgb(255 255 255 / 0.06), 0 24px 60px -24px rgb(0 0 0 / 0.9);
+  --color-indigo: #9daeff;
+  --color-amber: #ffb000;
+  --color-green: #5fd39a;
+  --color-laterite: #ff8a6b;
+  --color-glow-indigo: #3d4fd6;
+  --color-glow-amber: #ffb000;
+  --color-glow-green: #1f8a5a;
+  --color-glow-laterite: #b23a1e;
+
+  --shadow-e1: 0 0 0 1px rgb(255 255 255 / 0.05);
+  --shadow-e2: 0 0 0 1px rgb(255 255 255 / 0.07), 0 28px 64px -24px rgb(0 0 0 / 0.8);
 }
 
 /* The entrance rises but is never invisible: these classes sit on hero
@@ -303,13 +335,13 @@
 
   /* Translucent chrome over content: the nav bar and the mobile sheet. */
   .glass {
-    background: rgb(255 255 255 / 0.78);
+    background: rgb(250 246 238 / 0.78);
     -webkit-backdrop-filter: saturate(1.8) blur(20px);
     backdrop-filter: saturate(1.8) blur(20px);
   }
 
   :root[data-theme="dark"] .glass {
-    background: rgb(22 22 23 / 0.78);
+    background: rgb(14 19 48 / 0.74);
   }
 
   /* Affiliation logos: drawn for white grounds, so they sit on a white
@@ -365,4 +397,412 @@
       scroll-behavior: auto !important;
     }
   }
+}
+
+/* ============================================================
+   MOTION LANGUAGE — docs/visual-experience.md, "Motion".
+   CSS first: every effect below runs on the compositor with no
+   animation library. Each one names its purpose, trigger and
+   reduced-motion fallback. Browsers without a feature get the
+   finished state, never a hidden one.
+   ============================================================ */
+
+/* Houdini Properties & Values: typed custom properties can be
+   animated, which plain custom properties cannot. */
+@property --drift {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+@property --mx {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 50%;
+}
+
+@property --my {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 30%;
+}
+
+@keyframes drift {
+  0% { --drift: 0%; }
+  50% { --drift: 8%; }
+  100% { --drift: 0%; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes word-in {
+  from { opacity: 0.001; transform: translateY(0.45em); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+
+@keyframes nav-raise {
+  to { box-shadow: var(--shadow-e2); }
+}
+
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@layer components {
+  /* ---------- Display width ----------
+     Headlines are set wide (Mona Sans width axis), like lettering
+     stamped on a machine plate. Narrower on phones so long French
+     words still fit a 360px screen. */
+  .text-display-lg,
+  .text-display,
+  .text-display-sm {
+    font-stretch: 108%;
+  }
+
+  @media (min-width: 640px) {
+    .text-display-lg,
+    .text-display,
+    .text-display-sm {
+      font-stretch: 116%;
+    }
+  }
+
+  /* The beam lab's slider: a track in the ink, a thumb in the lamp. */
+  .beam-range {
+    appearance: none;
+    height: 28px;
+    background: transparent;
+    cursor: grab;
+  }
+
+  .beam-range::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--color-indigo), var(--color-brand-500) 55%, var(--color-laterite));
+  }
+
+  .beam-range::-moz-range-track {
+    height: 6px;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--color-indigo), var(--color-brand-500) 55%, var(--color-laterite));
+  }
+
+  .beam-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    margin-top: -11px;
+    border-radius: 50%;
+    background: var(--color-surface-2);
+    border: 3px solid var(--color-foreground);
+    box-shadow: var(--shadow-e2);
+    transition: transform 0.2s var(--ease-spring);
+  }
+
+  .beam-range::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--color-surface-2);
+    border: 3px solid var(--color-foreground);
+  }
+
+  .beam-range:active::-webkit-slider-thumb {
+    transform: scale(1.12);
+  }
+
+  /* ---------- Floating nav ----------
+     PURPOSE: the bar is quiet at the top of a page and gains weight
+     once content slides under it. TRIGGER: the first 120px of scroll
+     (scroll-driven). NO SUPPORT: the resting shadow. */
+  .nav-pill {
+    box-shadow: var(--shadow-e1);
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .nav-pill {
+      animation: nav-raise linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 120px;
+    }
+  }
+
+  /* ---------- Footer wordmark ----------
+     The name as the page's last frame: as wide as the container, its
+     foot cut by the page's edge, one tone off the ground so it reads as
+     an embossing rather than a headline. */
+  .footer-wordmark {
+    font-size: clamp(4.25rem, 18.5vw, 17rem);
+    font-weight: 900;
+    font-stretch: 125%;
+    letter-spacing: -0.055em;
+    line-height: 0.78;
+    margin-bottom: -0.12em;
+    white-space: nowrap;
+    color: var(--color-surface-2);
+    text-align: center;
+  }
+
+  /* ---------- Atmosphere ----------
+     PURPOSE: give the hero and the closing band a living light, the
+     glow of a workshop, without an image to download.
+     TRIGGER: always, as a slow 26s breath. MOBILE: same layer, two
+     glows instead of three. PERF: gradients on one composited layer;
+     only a registered percentage animates. REDUCED: still. */
+  .atmosphere {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .atmosphere::before {
+    content: "";
+    position: absolute;
+    inset: -25% -15%;
+    background:
+      radial-gradient(38% 42% at calc(74% - var(--drift)) calc(26% + var(--drift)), color-mix(in oklab, var(--color-glow-amber) 85%, transparent), transparent 70%),
+      radial-gradient(34% 40% at calc(88% + var(--drift)) 74%, color-mix(in oklab, var(--color-glow-laterite) 55%, transparent), transparent 70%),
+      radial-gradient(44% 50% at calc(12% + var(--drift)) calc(80% - var(--drift)), color-mix(in oklab, var(--color-glow-indigo) 75%, transparent), transparent 70%);
+    animation: drift 26s var(--ease-in-out-quart) infinite;
+    will-change: background;
+  }
+
+  /* A fine paper grain: texture, so the glow reads as light on a
+     surface rather than a gradient on a screen. 1 KB, inline. */
+  .atmosphere::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.04 0 0 0 0 0.08 0 0 0 0 0.19 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  :root[data-theme="dark"] .atmosphere::before {
+    background:
+      radial-gradient(38% 42% at calc(74% - var(--drift)) calc(26% + var(--drift)), color-mix(in oklab, var(--color-glow-amber) 24%, transparent), transparent 70%),
+      radial-gradient(34% 40% at calc(88% + var(--drift)) 74%, color-mix(in oklab, var(--color-glow-laterite) 30%, transparent), transparent 70%),
+      radial-gradient(44% 50% at calc(12% + var(--drift)) calc(80% - var(--drift)), color-mix(in oklab, var(--color-glow-indigo) 48%, transparent), transparent 70%);
+  }
+
+  :root[data-theme="dark"] .atmosphere::after {
+    mix-blend-mode: screen;
+    opacity: 0.2;
+  }
+
+  /* The atmosphere fades into the page below, so the hero hands over
+     to the next section instead of ending on a hard edge. */
+  .atmosphere-fade {
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  }
+
+  /* On a navy band the glows need no theme switch: it is always night. */
+  .band-night {
+    --color-foreground: #f4eedf;
+    --color-muted: #aab0cc;
+    --color-accent: #ffb000;
+    --color-primary: #ffb000;
+    --color-primary-foreground: #141b3c;
+    --color-primary-hover: #ffc233;
+    --color-secondary: #9daeff;
+    --color-secondary-foreground: #0e1330;
+    --color-surface: #141a3d;
+    --color-surface-2: #1c2450;
+    --color-border: #232b5c;
+    --color-hairline: #2b3466;
+    --color-indigo: #9daeff;
+    --color-amber: #ffb000;
+    --color-green: #5fd39a;
+    --color-laterite: #ff8a6b;
+    --color-glow-indigo: #3d4fd6;
+    --color-glow-amber: #ffb000;
+    --color-glow-green: #1f8a5a;
+    --color-glow-laterite: #b23a1e;
+    background: var(--color-ink-950);
+    color: var(--color-foreground);
+    position: relative;
+    isolation: isolate;
+  }
+
+  .band-night .atmosphere::before {
+    background:
+      radial-gradient(40% 60% at calc(80% - var(--drift)) 20%, color-mix(in oklab, var(--color-glow-laterite) 30%, transparent), transparent 70%),
+      radial-gradient(40% 60% at calc(60% + var(--drift)) 110%, color-mix(in oklab, var(--color-glow-amber) 30%, transparent), transparent 70%),
+      radial-gradient(45% 60% at calc(10% + var(--drift)) 30%, color-mix(in oklab, var(--color-glow-indigo) 34%, transparent), transparent 70%);
+  }
+
+  /* The CtaPanel's action card: the same light, turned up, so the
+     brightest thing in the closing band is the way forward. */
+  .band-night .atmosphere-strong::before {
+    inset: -10%;
+    background:
+      radial-gradient(55% 80% at calc(85% - var(--drift)) 15%, color-mix(in oklab, var(--color-glow-laterite) 70%, transparent), transparent 70%),
+      radial-gradient(50% 80% at calc(45% + var(--drift)) 110%, color-mix(in oklab, var(--color-glow-amber) 55%, transparent), transparent 70%),
+      radial-gradient(55% 90% at calc(5% + var(--drift)) 20%, color-mix(in oklab, var(--color-glow-indigo) 80%, transparent), transparent 70%);
+  }
+
+  .band-night .atmosphere::after {
+    mix-blend-mode: screen;
+    opacity: 0.2;
+  }
+
+  /* ---------- Headline entrance ----------
+     PURPOSE: the first sentence lands word by word, the way it would
+     be said. TRIGGER: load. DURATION: 0.8s per word, 55ms stagger.
+     The words start at almost-zero opacity for only ~0.5s, and the
+     sentence is in the DOM as text, so it is read and indexed whole.
+     REDUCED: no movement, no blur. */
+  .words > span {
+    display: inline-block;
+    animation: word-in 0.8s var(--ease-out-quart) both;
+    animation-delay: calc(var(--i, 0) * 55ms + 60ms);
+  }
+
+  /* ---------- Scroll reveal ----------
+     PURPOSE: content arrives as the reader reaches it, so the page
+     feels like it is being unrolled. TRIGGER: the element entering
+     the viewport (scroll-driven, no JS). RANGE: first 35% of entry.
+     NO SUPPORT: content is simply there. */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+
+  /* ---------- Reading progress ----------
+     PURPOSE: a hairline of heat under the nav says how far down the
+     page you are. TRIGGER: document scroll (scroll-driven). */
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress {
+      position: absolute;
+      inset: auto 28px -1px 28px;
+      height: 2px;
+      border-radius: 2px;
+      transform-origin: 0 50%;
+      background: linear-gradient(90deg, var(--color-indigo), var(--color-brand-500) 55%, var(--color-laterite));
+      animation: progress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+
+  /* ---------- Marquee ----------
+     PURPOSE: the disciplines behind the work, passing like a ticker
+     on a shop floor. TRIGGER: always; pauses on hover and focus.
+     DURATION: 40s per loop, linear. REDUCED: stops and wraps. */
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    flex-shrink: 0;
+    animation: marquee 40s linear infinite;
+  }
+
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* ---------- Spotlight ----------
+     PURPOSE: a tile answers the pointer with light in its own hue,
+     so a visitor learns it is alive and clickable. TRIGGER: pointer
+     move (src/components/PointerFX.tsx writes --mx/--my). MOBILE:
+     touch has no hover; the tile shows its resting glow. */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(60% 70% at var(--mx) var(--my), color-mix(in oklab, var(--hue, var(--color-glow-amber)) 18%, transparent), transparent 70%);
+    opacity: 0.55;
+    transition: opacity 0.5s var(--ease-out-quart);
+  }
+
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+
+  .hue-indigo { --hue: var(--color-glow-indigo); --hue-ink: var(--color-indigo); }
+  .hue-amber { --hue: var(--color-glow-amber); --hue-ink: var(--color-amber); }
+  .hue-green { --hue: var(--color-glow-green); --hue-ink: var(--color-green); }
+  .hue-laterite { --hue: var(--color-glow-laterite); --hue-ink: var(--color-laterite); }
+
+  .text-hue { color: var(--hue-ink); }
+  .bg-hue { background: var(--hue); }
+
+  /* ---------- Lift ----------
+     PURPOSE: a card rises toward the pointer like a part picked off
+     the bench. TRIGGER: hover. 0.5s out-quart. */
+  .lift {
+    transition:
+      transform 0.5s var(--ease-out-quart),
+      box-shadow 0.5s var(--ease-out-quart);
+  }
+
+  .lift:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-e2);
+  }
+
+  /* ---------- Magnetic ----------
+     PURPOSE: the primary action leans toward the pointer, a small
+     pull that says "this one". PointerFX writes --tx/--ty within
+     ±6px on fine pointers only. */
+  [data-magnetic] {
+    transform: translate(var(--tx, 0), var(--ty, 0));
+    transition:
+      transform 0.35s var(--ease-spring),
+      background-color 0.2s ease-out,
+      box-shadow 0.35s var(--ease-out-quart);
+  }
+
+  [data-magnetic]:hover {
+    box-shadow: 0 12px 32px -12px color-mix(in oklab, var(--color-brand-500) 70%, transparent);
+  }
+
+  /* The hero photographs fan out a little further when the pointer
+     reaches them: the set opens like cards in a hand. */
+  .fan > * {
+    transition: transform 0.7s var(--ease-out-quart);
+  }
+
+  @media (hover: hover) {
+    .fan:hover > *:nth-child(1) { transform: translate(-10px, 6px) rotate(-2deg); }
+    .fan:hover > *:nth-child(2) { transform: translate(-6px, -4px) rotate(-1deg); }
+    .fan:hover > *:nth-child(3) { transform: translateY(-10px); }
+    .fan:hover > *:nth-child(4) { transform: translate(6px, -4px) rotate(1deg); }
+    .fan:hover > *:nth-child(5) { transform: translate(10px, 6px) rotate(2deg); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere::before { animation: none; }
+  .words > span { animation: none; }
+  .reveal { animation: none !important; }
+  .marquee { mask-image: none; }
+  .marquee-track { animation: none; flex-wrap: wrap; justify-content: center; }
+  .marquee-track[aria-hidden="true"] { display: none; }
+  [data-magnetic] { transform: none; }
+  .lift:hover { transform: none; }
 }

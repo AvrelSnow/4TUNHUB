@@ -46,6 +46,38 @@ const en = {
     primary: "Primary",
     mobile: "Mobile",
     language: "Language",
+    /** Mega menus (Navbar). Descriptions are one line: what you get there. */
+    menus: {
+      work: "What we do",
+      about: "About",
+      forCompanies: "For companies",
+      forLearners: "For learners",
+      company: "4TUNHub",
+      services: "Mechanical design, FEA simulation and energy systems for your project.",
+      research: "Renewable energy and applied R&D from the field.",
+      academy: "CAD and SolidWorks training, taught from machines that were built.",
+      youtube: "YouTube tutorials",
+      youtubeDesc: "Free LS-DYNA and simulation lessons on the 4TUNHUB channel.",
+      rem: "The REM newsletter",
+      remDesc: "Renewable-energy analysis, read by 3,200+ people.",
+      aboutOrg: "About 4TUNHub",
+      aboutOrgDesc: "Why the ecosystem exists and how it works.",
+      founder: "The founder",
+      founderDesc: "Donfack Fortune: engineer, energy specialist, educator.",
+      camrail: "CAMRAIL story",
+      camrailDesc: "His work as a senior mechanical engineer at Cameroon's national railway.",
+      contact: "Contact",
+      contactDesc: "Tell us about the problem. Replies within 48 hours.",
+      projectsDesc: "Six machines designed, simulated and built: the proof.",
+      featured: "Featured project",
+      featuredCta: "Read the case study",
+      communityTitle: "The community is open",
+      communityBody: "Engineers and students learning together on WhatsApp. Free, live today.",
+      communityCta: "Join on WhatsApp",
+      sound: "Interface sound",
+      soundOn: "Sound on",
+      soundOff: "Sound off",
+    },
   },
 
   /** The appearance control in the footer. */
@@ -153,6 +185,47 @@ const en = {
     },
 
     heroCaption: "CFD · pressure distribution",
+
+    /** The logo strip under the hero. Worded for what the logos are. */
+    strip: {
+      founder: "Where the founder has worked and taught",
+      partner: "Partner of 4TUNHub",
+    },
+
+    /** The ticker under the hero: the disciplines behind the work. */
+    disciplines: [
+      "Mechanical design",
+      "FEA simulation",
+      "CFD",
+      "SolidWorks",
+      "ANSYS",
+      "AutoCAD",
+      "MATLAB",
+      "Welding & fabrication",
+      "Technical drawing",
+      "Renewable energy",
+      "Design for manufacture",
+    ],
+
+    beam: {
+      eyebrow: "Try it",
+      title: "Load the beam. Watch the steel answer.",
+      intro:
+        "The hand calculation behind every FEA check, running in your browser. Drag the load and see bending stress, deflection and the safety margin respond.",
+      load: "Load at the tip",
+      deflection: "Tip deflection",
+      stress: "Stress at the wall",
+      safety: "Safety factor",
+      spec: "Steel cantilever, 1 m span, 30 × 50 mm section, S235 (yield 235 MPa), E = 200 GPa. Euler–Bernoulli beam theory. Colour shows bending stress, highest at the wall.",
+      scale: "Deflection drawn ×10",
+      hint: "Use the slider or drag on the drawing.",
+      states: {
+        ok: "Holds, with margin to spare.",
+        low: "Holds, but below a common 1.5 design margin.",
+        yield: "Yields: the steel would bend for good.",
+      },
+      cta: "Learn this in the Academy",
+    },
 
     conversion: {
       title: "Have an engineering problem worth solving?",
@@ -1677,6 +1750,10 @@ const en = {
     },
     rights: "All rights reserved.",
     motto: "Engineering · Education · Innovation",
+    /** The direct-contact column. */
+    reach: "Reach us",
+    whatsapp: "WhatsApp community",
+    backToTop: "Back to top",
   },
 
   notFound: {

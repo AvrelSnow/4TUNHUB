@@ -5,17 +5,23 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 
 /**
- * Navigation link. The current page reads in full foreground colour and is
- * announced with aria-current="page"; the rest sit back in muted grey.
+ * Navigation link inside the floating bar. Hover lays a soft pill under
+ * the word; the current page reads in full ink, is announced with
+ * aria-current="page", and carries a dot under it in its pillar's hue
+ * (`hue` is a `.hue-*` class from src/lib/hues.ts; neutral pages get an
+ * ink dot). The dot is the nav's only colour, so it always means "you are
+ * here".
  */
 export function NavLink({
   href,
   children,
+  hue = "",
   className,
   onNavigate,
 }: {
   href: string;
   children: React.ReactNode;
+  hue?: string;
   className?: string;
   onNavigate?: () => void;
 }) {
@@ -28,12 +34,21 @@ export function NavLink({
       aria-current={active ? "page" : undefined}
       onClick={onNavigate}
       className={cn(
-        "text-sm transition-colors duration-200",
-        active ? "font-medium text-foreground" : "text-muted hover:text-foreground",
+        "group/nav relative rounded-full px-3.5 py-2 text-sm transition-colors duration-200 hover:bg-foreground/5",
+        active ? "font-semibold text-foreground" : "font-medium text-muted hover:text-foreground",
+        hue,
         className,
       )}
     >
       {children}
+      <span
+        aria-hidden="true"
+        className={cn(
+          "absolute bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full transition-[opacity,transform] duration-300",
+          hue ? "bg-hue" : "bg-foreground",
+          active ? "scale-100 opacity-100" : "scale-0 opacity-0 group-hover/nav:scale-100 group-hover/nav:opacity-60",
+        )}
+      />
     </Link>
   );
 }

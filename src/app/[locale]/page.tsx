@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
@@ -11,25 +12,30 @@ import { Rail, RailItem } from "@/components/ui/Rail";
 import { SectionHeader } from "@/components/ui/Section";
 import { CohortFeature } from "@/components/CohortFeature";
 import { Testimonials } from "@/components/Testimonials";
+import { BeamLab } from "@/components/BeamLab";
 import { flattenTree } from "@/lib/sitemap";
 import { projects, featuredProjects, projectDetailPath } from "@/lib/projects";
 import { WHATSAPP_COMMUNITY_URL } from "@/lib/site";
+import { founderAffiliations, partners } from "@/lib/trust";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
 import { cn } from "@/lib/cn";
 
 /**
- * The hero is a fan of five real photographs — all of them machines that
- * were designed, simulated and built. No render, no stock: the first thing
- * a visitor sees is evidence. Offsets make the row read as a set rather
- * than a grid; phones keep the middle three.
+ * The home page is one continuous experience (docs/visual-experience.md):
  *
- * The founder's portrait used to hold the last slot. It came out on
- * 2026-09-20: with his photograph further down the page as well, the home
- * page read as one man's portfolio rather than an ecosystem, which is the
- * one thing the positioning cannot afford. He appears once, below, as the
- * proof behind the work — never as the work itself.
+ *   workshop light → the claim → the evidence fanned out → the disciplines
+ *   ticking past → the four pillars, each in its own hue → a beam you can
+ *   load yourself → the machines that shipped → what people say → the
+ *   person behind it all, with his record → the night band and footer
+ *   where every page ends.
+ *
+ * The hero is a fan of five real photographs — machines that were
+ * designed, simulated and built. No render, no stock: the first thing a
+ * visitor sees is evidence. The founder appears once, below, as the proof
+ * behind the work, never as the work itself (positioning: an ecosystem,
+ * not a portfolio).
  */
 const HERO_SHOTS = [
   { src: "/images/projects/banana-hero.webp", key: "banana-pseudostem-shredder", offset: "lg:mt-20", mobile: false },
@@ -38,6 +44,9 @@ const HERO_SHOTS = [
   { src: "/images/projects/beans-hero.webp", key: "beans-unwrapping-machine", offset: "mt-8 lg:mt-8", mobile: true },
   { src: "/images/projects/fsae-hero.webp", key: "fsae-race-car", offset: "lg:mt-20", mobile: false },
 ] as const;
+
+/** The marquee's dots cycle through the four pillar hues. */
+const DOTS = ["bg-indigo", "bg-brand-500", "bg-green", "bg-laterite"] as const;
 
 export default async function Home({
   params,
@@ -59,17 +68,22 @@ export default async function Home({
 
   return (
     <>
-      {/* 1 · HERO */}
-      <section className="overflow-hidden pt-16 sm:pt-24">
-        <Container>
+      {/* 1 · HERO — workshop light behind the claim, then the evidence.
+          The atmosphere fades out at its foot, so the hero hands over to
+          the page instead of ending on an edge. */}
+      <section className="relative overflow-hidden pt-16 sm:pt-24">
+        <div aria-hidden="true" className="atmosphere atmosphere-fade" />
+        <Container className="relative">
           <div className="mx-auto max-w-5xl text-center">
             <p className="eyebrow animate-fade-in">{t.eyebrow}</p>
-            <h1 className="mt-4 animate-fade-up text-display-lg text-foreground">{t.title}</h1>
-            <p className="mx-auto mt-7 max-w-2xl animate-fade-up text-lead text-muted [animation-delay:90ms]">
+            <h1 className="mt-5 text-display-lg text-foreground">
+              <HeroTitle text={t.title} />
+            </h1>
+            <p className="mx-auto mt-7 max-w-2xl animate-fade-up text-lead text-muted [animation-delay:420ms]">
               {t.subtitle}
             </p>
-            <div className="mt-10 flex animate-fade-up flex-wrap items-center justify-center gap-x-7 gap-y-4 [animation-delay:180ms]">
-              <Button as="a" href={localizeHref(locale, "/contact")} size="lg">
+            <div className="mt-10 flex animate-fade-up flex-wrap items-center justify-center gap-x-7 gap-y-4 [animation-delay:520ms]">
+              <Button as="a" href={localizeHref(locale, "/contact")} size="lg" data-magnetic="">
                 {t.primaryCta}
               </Button>
               <ArrowLink href={localizeHref(locale, "/services")}>{t.secondaryCta}</ArrowLink>
@@ -77,83 +91,100 @@ export default async function Home({
           </div>
         </Container>
 
-        <div className="mx-auto mt-16 max-w-7xl px-3 sm:mt-20 sm:px-6">
-          <div className="grid grid-cols-3 items-start gap-2.5 sm:gap-4 lg:grid-cols-5">
+        <div className="relative mx-auto mt-16 max-w-7xl px-3 sm:mt-20 sm:px-6">
+          <div className="fan grid grid-cols-3 items-start gap-2.5 sm:gap-4 lg:grid-cols-5">
             {HERO_SHOTS.map((shot, i) => {
               const alt = dict.projects.items[shot.key]?.title ?? "";
               return (
-                <div
-                  key={shot.src}
-                  className={cn(
-                    "animate-fade-up",
-                    shot.offset,
-                    !shot.mobile && "hidden lg:block",
-                  )}
-                  style={{ animationDelay: `${240 + Math.abs(2 - i) * 90}ms` }}
-                >
-                  <Media
-                    src={shot.src}
-                    alt={alt}
-                    priority={i === 2}
-                    responsive
-                    sizes="(min-width: 1024px) 20vw, 33vw"
-                    className="aspect-[3/4] rounded-2xl sm:rounded-3xl"
-                  />
+                <div key={shot.src} className={cn(shot.offset, !shot.mobile && "hidden lg:block")}>
+                  <div
+                    className="animate-fade-up"
+                    style={{ animationDelay: `${560 + Math.abs(2 - i) * 90}ms` }}
+                  >
+                    <Media
+                      src={shot.src}
+                      alt={alt}
+                      priority={i === 2}
+                      responsive
+                      sizes="(min-width: 1024px) 20vw, 33vw"
+                      className="aspect-[3/4] rounded-2xl shadow-e2 sm:rounded-3xl"
+                    />
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
+
+        {/* The disciplines behind the work, as a ticker. The second copy
+            only makes the loop seamless, so assistive tech skips it. */}
+        <div className="marquee relative mt-14 py-6 sm:mt-20">
+          {[false, true].map((dup) => (
+            <ul
+              key={String(dup)}
+              aria-hidden={dup ? "true" : undefined}
+              className="marquee-track items-center gap-x-10 pr-10 text-lg font-semibold tracking-tight text-muted sm:text-xl"
+            >
+              {t.disciplines.map((d, i) => (
+                <li key={d} className="flex items-center gap-10 whitespace-nowrap">
+                  {d}
+                  <span aria-hidden="true" className={cn("h-1.5 w-1.5 rounded-full", DOTS[i % 4])} />
+                </li>
+              ))}
+            </ul>
+          ))}
+        </div>
       </section>
 
-      {/* 2 · COHORT 0, while applications are open. */}
-
-      <CohortFeature locale={locale} dict={dict} />
-
-      
-
-      {/* 3 · TRACK RECORD */}
-      <section className="py-24 sm:py-32">
+      {/* 2 · WHERE THE WORK HAS BEEN DONE — a logo strip (after Fapshi),
+          worded for what it is. These are the founder's employers and the
+          schools he taught at, not clients or partners of the Hub, and the
+          label says so; the Hub's own partner sits apart under its own
+          name. Every logo links to the organisation, so it can be checked. */}
+      <section aria-labelledby="strip-label" className="pt-6 pb-16 sm:pb-20">
         <Container>
-          <Reveal>
-            <p className="text-center text-sm font-medium text-muted">{t.trust.label}</p>
-            <dl className="mt-10 grid grid-cols-2 gap-y-12 lg:grid-cols-4 lg:divide-x lg:divide-border">
-              {t.trust.stats.map((s) => (
-                <div key={s.label} className="px-4 text-center">
-                  <dt className="sr-only">{s.label}</dt>
-                  <dd>
-                    <span className="figure block text-display-sm text-foreground">
-                      {s.value}
-                      {s.unit}
-                    </span>
-                    <span className="mx-auto mt-3 block max-w-44 text-sm leading-6 text-muted">
-                      {s.label}
-                    </span>
-                  </dd>
-                </div>
+          <p id="strip-label" className="text-center text-sm font-medium text-muted">
+            {t.strip.founder}
+          </p>
+          <ul className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            {founderAffiliations.filter((a) => a.logo).map((a) => (
+              <li key={a.name}>
+                <LogoChip name={a.name} logo={a.logo!} href={a.href} />
+              </li>
+            ))}
+          </ul>
+          {partners.length > 0 && (
+            <p className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-muted">
+              <span>{t.strip.partner}</span>
+              {partners.filter((a) => a.logo).map((a) => (
+                <LogoChip key={a.name} name={a.name} logo={a.logo!} href={a.href} wide />
               ))}
-            </dl>
-          </Reveal>
+            </p>
+          )}
         </Container>
       </section>
 
-      {/* 3 · WHAT WE DO — tiles, each with its own evidence. */}
+      {/* COHORT 0, while applications are open. */}
+      <CohortFeature locale={locale} dict={dict} />
+
+      {/* 3 · WHAT WE DO — four tiles, four hues. Each tile answers the
+          pointer with light in its pillar's colour and carries its own
+          evidence. */}
       <section className="bg-surface py-24 sm:py-32">
         <Container>
           <SectionHeader eyebrow={t.doEyebrow} title={t.doTitle} intro={t.doIntro} />
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            {/* Services: wide, the stress plot beside the words. */}
+          <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-2">
             <Reveal className="lg:col-span-2">
               <Link
                 href={href("services")}
-                className="group grid h-full overflow-hidden rounded-3xl bg-surface-2 lg:grid-cols-2"
+                className="spotlight lift hue-indigo group grid h-full grid-cols-1 overflow-hidden rounded-3xl bg-surface-2 lg:grid-cols-2"
               >
                 <div className="flex flex-col justify-center p-8 sm:p-12">
-                  <p className="eyebrow">{dict.routes.services}</p>
+                  <PillarName>{dict.routes.services}</PillarName>
                   <h3 className="mt-3 text-display-sm text-foreground">{dict.services.title}</h3>
                   <p className="mt-4 max-w-md text-muted">{t.pillars.services}</p>
-                  <span className="mt-6 inline-flex items-center gap-1 font-medium text-accent">
+                  <span className="text-hue mt-6 inline-flex items-center gap-1 font-semibold">
                     {t.learnMore}
                     <Chevron />
                   </span>
@@ -174,6 +205,7 @@ export default async function Home({
               title={dict.academy.title}
               body={t.pillars.academy}
               cta={t.learnMore}
+              hue="hue-amber"
               image="/images/projects/beans-8.webp"
               alt={dict.projects.galleries["beans-unwrapping-machine"]?.[7] ?? ""}
             />
@@ -183,19 +215,19 @@ export default async function Home({
               title={dict.research.title}
               body={t.pillars.research}
               cta={t.learnMore}
+              hue="hue-green"
               image="/images/projects/banana-2.webp"
               alt={dict.projects.galleries["banana-pseudostem-shredder"]?.[1] ?? ""}
-              delay={80}
             />
 
             {/* Community: the one pillar that is live today says so. */}
             <Reveal className="lg:col-span-2">
-              <div className="flex flex-col gap-8 rounded-3xl bg-surface-2 p-8 sm:p-12 lg:flex-row lg:items-end lg:justify-between">
+              <div className="spotlight hue-laterite flex flex-col gap-8 rounded-3xl bg-surface-2 p-8 sm:p-12 lg:flex-row lg:items-end lg:justify-between">
                 <div className="max-w-xl">
                   <div className="flex items-center gap-3">
-                    <p className="eyebrow">{dict.routes.community}</p>
+                    <PillarName>{dict.routes.community}</PillarName>
                     <Badge variant="amber">
-                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+                      <span aria-hidden="true" className="h-1.5 w-1.5 animate-pulse rounded-full bg-laterite" />
                       {dict.community.live}
                     </Badge>
                   </div>
@@ -209,6 +241,8 @@ export default async function Home({
                     target="_blank"
                     rel="noopener noreferrer"
                     size="lg"
+                    variant="ink"
+                    className="text-center max-sm:h-auto max-sm:min-h-12 max-sm:whitespace-normal max-sm:py-3"
                   >
                     {dict.community.join}
                   </Button>
@@ -220,8 +254,25 @@ export default async function Home({
         </Container>
       </section>
 
-      {/* 4 · PROOF — a rail of real projects. */}
+      {/* 5 · TRY IT — the page's one interactive engineering graphic. A
+          visitor does what a student does on day one, and sees the numbers
+          answer. */}
       <section className="py-24 sm:py-32">
+        <Container>
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <SectionHeader eyebrow={t.beam.eyebrow} title={t.beam.title} intro={t.beam.intro} />
+              <ArrowLink href={href("academy")}>{t.beam.cta}</ArrowLink>
+            </div>
+          </Reveal>
+          <div className="mt-12">
+            <BeamLab t={t.beam} locale={locale} />
+          </div>
+        </Container>
+      </section>
+
+      {/* 6 · PROOF — a rail of real projects. */}
+      <section className="pb-24 sm:pb-32">
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeader eyebrow={t.proof.eyebrow} title={t.proof.title} intro={t.proof.intro} />
@@ -238,7 +289,7 @@ export default async function Home({
             if (!copy || !p.image) return null;
             return (
               <RailItem key={p.slug}>
-                <Link href={localizeHref(locale, projectDetailPath(p.slug))} className="group block">
+                <Link href={localizeHref(locale, projectDetailPath(p.slug))} className="group block rounded-3xl">
                   <Media
                     src={p.image}
                     alt={copy.title}
@@ -259,45 +310,63 @@ export default async function Home({
         </Rail>
       </section>
 
-      {/* 5 · WHAT PEOPLE SAY — the work above is ours; this is someone
-          else's word for it, which is the only kind that counts. Renders
-          nothing until there are real, named quotes to print. */}
+      {/* 7 · WHAT PEOPLE SAY — renders nothing until there are real,
+          named quotes to print. */}
       <Testimonials t={t.testimonials} />
 
-      {/* 6 · FOUNDER — org first, the person second, but a real person.
-          Symmetric padding like every other section: with only `pb-` the
-          card hugged the surface band above it and floated over the gap
-          below, instead of sitting centred in its own band. */}
+      {/* 8 · FOUNDER — org first, the person second, but a real person.
+          His track record sits with him, because it is his: the Hub is
+          young, and the page says so by putting the numbers here rather
+          than under the hero. */}
       <section className="py-24 sm:py-32">
         <Container>
           <Reveal>
-            <div className="grid items-center gap-10 overflow-hidden rounded-3xl bg-surface lg:grid-cols-2 lg:gap-0">
+            <div className="grid grid-cols-1 items-stretch overflow-hidden rounded-3xl bg-surface lg:grid-cols-[5fr_7fr]">
               <Media
                 src="/images/founder-portrait.webp"
                 alt="Donfack Fortune"
                 responsive
-                sizes="(min-width: 1024px) 50vw, 100vw"
+                sizes="(min-width: 1024px) 42vw, 100vw"
                 position="50% 20%"
-                className="aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[32rem]"
+                className="aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[34rem]"
               />
-              <div className="px-8 pb-10 sm:px-12 lg:py-16">
+              <div className="flex flex-col justify-center px-8 py-10 sm:px-12 lg:py-16">
                 <p className="eyebrow">{t.founder.eyebrow}</p>
                 <p className="mt-4 text-2xl leading-snug font-medium tracking-tight text-foreground">{t.founder.line}</p>
                 <ArrowLink href={localizeHref(locale, "/about/founder")} className="mt-7">
                   {t.founder.cta}
                 </ArrowLink>
+
+                <dl
+                  aria-label={t.trust.label}
+                  className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-hairline pt-8 sm:grid-cols-4"
+                >
+                  {t.trust.stats.map((s) => (
+                    <div key={s.label}>
+                      <dt className="sr-only">{s.label}</dt>
+                      <dd>
+                        <span className="figure block text-3xl font-extrabold tracking-tight text-foreground [font-stretch:118%]">
+                          {s.value}
+                          {s.unit}
+                        </span>
+                        <span className="mt-1.5 block text-2xs leading-4 text-muted">{s.label}</span>
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             </div>
           </Reveal>
         </Container>
       </section>
 
-      {/* 7 · CONVERSION */}
+      {/* 9 · CONVERSION — the night band every page ends on. */}
       <CtaPanel
         title={t.conversion.title}
         subtitle={t.conversion.subtitle}
         primary={{ label: t.conversion.primaryCta, href: localizeHref(locale, "/contact") }}
         secondary={{ label: t.conversion.secondaryCta, href: localizeHref(locale, "/services") }}
+        quote={false}
       />
     </>
   );
@@ -309,30 +378,30 @@ function PillarTile({
   title,
   body,
   cta,
+  hue,
   image,
   alt,
-  delay = 0,
 }: {
   href: string;
   eyebrow: string;
   title: string;
   body: string;
   cta: string;
+  hue: string;
   image: string;
   alt: string;
-  delay?: number;
 }) {
   return (
-    <Reveal delay={delay}>
+    <Reveal>
       <Link
         href={href}
-        className="group flex h-full flex-col overflow-hidden rounded-3xl bg-surface-2"
+        className={cn("spotlight lift group flex h-full flex-col overflow-hidden rounded-3xl bg-surface-2", hue)}
       >
         <div className="p-8 sm:p-12 sm:pb-8">
-          <p className="eyebrow">{eyebrow}</p>
+          <PillarName>{eyebrow}</PillarName>
           <h3 className="mt-3 text-headline text-foreground">{title}</h3>
           <p className="mt-3 text-muted">{body}</p>
-          <span className="mt-5 inline-flex items-center gap-1 font-medium text-accent">
+          <span className="text-hue mt-5 inline-flex items-center gap-1 font-semibold">
             {cta}
             <Chevron />
           </span>
@@ -340,5 +409,61 @@ function PillarTile({
         <Media src={image} alt={alt} doc zoom className="mt-auto aspect-[16/10]" />
       </Link>
     </Reveal>
+  );
+}
+
+/** One organisation's logo on a white chip, linked to its own site. */
+function LogoChip({ name, logo, href, wide = false }: { name: string; logo: string; href?: string; wide?: boolean }) {
+  // eslint-disable-next-line @next/next/no-img-element
+  const art = <img src={logo} alt={name} loading="lazy" />;
+  const cls = cn("chip-logo lift", wide && "chip-logo-wide");
+  return href ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" title={name} className={cls}>
+      {art}
+    </a>
+  ) : (
+    <span title={name} className={cls}>
+      {art}
+    </span>
+  );
+}
+
+/** A pillar's name in its own hue, with the hue's mark beside it. */
+function PillarName({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="eyebrow text-hue inline-flex items-center gap-2">
+      <span aria-hidden="true" className="bg-hue h-2 w-2 rounded-full" />
+      {children}
+    </p>
+  );
+}
+
+/**
+ * The hero sentence, word by word (`.words` in globals.css). The first
+ * sentence is the ink; the answer after it is the accent: indigo by day,
+ * amber by night. Screen readers and search engines get it whole.
+ */
+function HeroTitle({ text }: { text: string }) {
+  const cut = text.indexOf(". ");
+  const parts = cut > 0 ? [text.slice(0, cut + 1), text.slice(cut + 2)] : [text];
+  let i = 0;
+  return (
+    <>
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true" className="words">
+        {parts.map((part, p) =>
+          part.split(" ").map((w, k) => (
+            <Fragment key={`${p}-${k}`}>
+              <span
+                style={{ "--i": i++ } as React.CSSProperties}
+                className={p === 1 ? "text-accent" : undefined}
+              >
+                {w}
+              </span>{" "}
+            </Fragment>
+          )),
+        )}
+      </span>
+    </>
   );
 }

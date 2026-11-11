@@ -12,6 +12,7 @@ import {
   type ThemePreference,
 } from "@/lib/theme";
 import { cn } from "@/lib/cn";
+import { tick } from "@/lib/sound";
 
 /**
  * ============================================================
@@ -187,7 +188,10 @@ export function ThemeControl({ strings }: { strings: ThemeStrings }) {
             type="button"
             aria-pressed={active}
             aria-label={strings.options[option]}
-            onClick={() => choose(option)}
+            onClick={() => {
+              choose(option);
+              tick();
+            }}
             title={option === "auto" ? strings.autoHint : undefined}
             className={cn(
               "inline-flex h-7 items-center gap-1.5 rounded-full px-3 text-2xs font-medium transition-colors duration-200",

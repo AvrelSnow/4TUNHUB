@@ -7,7 +7,7 @@ import { stripLocale } from "@/lib/i18n/routing";
 import { cn } from "@/lib/cn";
 
 /**
- * EN · FR. Keeps the current path when switching language, marks the
+ * EN | FR. Keeps the current path when switching language, marks the
  * active locale with aria-current, and tells crawlers what each link
  * leads to with hreflang.
  */
@@ -24,36 +24,38 @@ export function LanguageSwitcher({
   const pathname = usePathname();
   const rest = stripLocale(pathname);
 
+  // In the bar: a segmented pill (after Fapshi), the active language
+  // raised on a white chip. In the phone menu: thumb-sized targets.
   return (
     <div
       role="group"
       aria-label={label}
-      className={inMenu ? "flex items-center gap-1" : "hidden items-center gap-1 sm:flex"}
+      className={
+        inMenu
+          ? "flex items-center gap-1 rounded-full bg-surface p-1"
+          : "hidden items-center rounded-full bg-surface p-0.5 sm:flex"
+      }
     >
-      {locales.map((l, i) => {
+      {locales.map((l) => {
         const active = l === locale;
         const href = `/${l}${rest === "/" ? "" : rest}`;
         return (
-          <span key={l} className="flex items-center">
-            {i > 0 && (
-              <span className="mx-0.5 text-subtle" aria-hidden="true">
-                /
-              </span>
+          <Link
+            key={l}
+            href={href}
+            hrefLang={l}
+            aria-current={active ? "true" : undefined}
+            aria-label={localeName[l]}
+            className={cn(
+              "inline-flex items-center justify-center rounded-full text-2xs font-semibold uppercase tracking-wide transition-[background-color,color,box-shadow] duration-300",
+              inMenu ? "min-h-11 min-w-14 text-sm" : "h-8 min-w-10 px-2.5",
+              active
+                ? "bg-surface-2 text-foreground shadow-e1"
+                : "text-muted hover:text-foreground",
             )}
-            <Link
-              href={href}
-              hrefLang={l}
-              aria-current={active ? "true" : undefined}
-              aria-label={localeName[l]}
-              className={cn(
-                "text-2xs uppercase tracking-wide transition-colors",
-                inMenu && "inline-flex min-h-11 min-w-11 items-center justify-center text-base",
-                active ? "font-semibold text-foreground" : "text-muted hover:text-foreground",
-              )}
-            >
-              {l}
-            </Link>
-          </span>
+          >
+            {l}
+          </Link>
         );
       })}
     </div>

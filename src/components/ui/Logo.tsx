@@ -49,7 +49,10 @@ export function Logo({
   href = "/",
   variant = "full",
   size = "md",
+  tone = "auto",
 }: {
+  /** "night" pins the light-on-dark artwork, for bands that are dark in both themes. */
+  tone?: "auto" | "night";
   className?: string;
   href?: string | null;
   variant?: Variant;
@@ -62,7 +65,7 @@ export function Logo({
   // reader must not hear the brand twice. The hidden copy is display:none,
   // which takes it out of the accessibility tree along with its alt.
   const art =
-    src.light === src.dark ? (
+    src.light === src.dark || tone === "night" ? (
       // eslint-disable-next-line @next/next/no-img-element
       <img src={src.dark} alt="4TUNHub" className={cn(height, "w-auto", className)} />
     ) : (

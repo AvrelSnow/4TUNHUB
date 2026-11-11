@@ -1,5 +1,10 @@
 # 4TUNHub — Art Direction
 
+> **2026-11-11: colour, type and motion below are superseded by
+> [`docs/visual-experience.md`](visual-experience.md)** (indigo + amber with
+> four pillar hues, Mona Sans, a CSS-first motion language, opt-in sound).
+> The principles on imagery, honesty and accessibility still hold.
+
 > This document governs every visual decision on the site. If a change can't
 > be justified against it, the change is wrong.
 >
