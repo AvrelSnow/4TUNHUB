@@ -33,9 +33,10 @@ Do this:
 2. Entity: **not registered** (owner, 2026-11-11). Ask about 2FA on Gmail, Netlify, Resend (G-02).
 3. Owner chose **Fapshi first** (individual, MoMo only). Ask whether the Fapshi account is open, its 2FA on,
    and what support said about limits and refunds. Ask the Cohort 1 price (kept off the terms; refund rule decided).
-   Terms of sale, privacy update and the allow-listed payment link are drafted on this branch (09,
-   "Drafted 2026-11-11"); get the owner's approval of the wording, review them on a Deploy Preview, then add the
-   Fapshi link and the Pay button to the cohort page. `SECURITY.md` H-01 is already fixed here.
+   Terms of sale, privacy update and the allow-listed payment link are on **draft PR #3**
+   (Deploy Preview #3, all checks green); the owner **approved the wording as is** on 2026-11-11.
+   Next: once the Fapshi link exists, add it to the catalogue and a Pay button with the scam warning on the
+   cohort page, in the same PR. Merge only as one batch, after re-reading Netlify credits (15 per deploy).
 
 Rules: never push to `main` without the owner, never scan production actively, and
 never print or copy secret values. Netlify, Vercel, GitHub and Resend are signed in in the

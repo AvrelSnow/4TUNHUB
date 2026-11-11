@@ -132,7 +132,7 @@ What that means for the gaps:
 - G-06 privacy: name Fapshi as the payment processor and list what 4TUNHub sees (name, phone, amount, reference).
 - Before the link goes live, ask Fapshi in writing about limits on individual accounts and how refunds are made.
 
-**Drafted 2026-11-11 on `claude/4tunhub-security-audit-cont-9a733c` (not deployed, owner to approve):**
+**Drafted 2026-11-11 on `claude/4tunhub-security-audit-cont-9a733c`, draft PR #3. Wording approved by the owner as is (2026-11-11), read on Deploy Preview #3; not deployed:**
 - G-05: three new sections in `/terms` (EN + FR), "Paying for a seat", "Refunds", "Pay only through this site".
   Price stays on the cohort page. Refunds (owner's rule): full within 7 days and before session 2, half after
   7 days until session 2, none from session 2; full refund or next cohort if 4TUNHub cancels or postpones;
