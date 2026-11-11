@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { ArrowLink, Chevron } from "@/components/ui/ArrowLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
+import { JsonLd } from "@/components/JsonLd";
 import { ApplyForm } from "@/components/ApplyForm";
 import { EmailCaptureBand } from "@/components/EmailCaptureBand";
 import { PartnerBadge } from "@/components/PartnerBadge";
@@ -113,10 +114,7 @@ export default async function CohortPage({ params }: Params) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
-      />
+      <JsonLd data={courseJsonLd} />
 
       {/* HERO */}
       <section className="pt-10 pb-16 sm:pt-14 sm:pb-24">

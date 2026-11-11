@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { ArrowLink, Chevron } from "@/components/ui/ArrowLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
+import { JsonLd } from "@/components/JsonLd";
 import { FounderConnect } from "@/components/FounderConnect";
 import { ResumeMenu } from "@/components/ResumeMenu";
 import { founder } from "@/lib/founder";
@@ -52,10 +53,7 @@ export default async function FounderPage({ params }: Params) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
 
       {/* HERO — the person, plainly. */}
       <section className="pt-10 pb-20 sm:pt-14 sm:pb-28">

@@ -8,6 +8,7 @@ import "@fontsource-variable/instrument-sans/wght.css";
 import "../globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
 import { Analytics } from "@/components/Analytics";
 import { CohortRibbon } from "@/components/CohortRibbon";
 import { ConsentBanner } from "@/components/ConsentBanner";
@@ -99,10 +100,7 @@ export default async function LocaleLayout({
         <script dangerouslySetInnerHTML={{ __html: themeResolverScript }} />
       </head>
       <body className="flex min-h-full flex-col">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
+        <JsonLd data={organizationJsonLd} />
         <a
           href="#main"
           className="sr-only z-50 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground focus:not-sr-only focus:fixed focus:left-4 focus:top-3"

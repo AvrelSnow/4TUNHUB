@@ -53,11 +53,10 @@ jobs:
       - name: Run Semgrep
         env:
           SEMGREP_SEND_METRICS: "off"
-        # The three JSON-LD blocks are triaged false positives (static,
-        # validated content); the rule is excluded so a real finding of any
-        # other kind still fails the job.
+        # No rule exclusions: JSON-LD goes through src/components/JsonLd.tsx,
+        # which escapes the payload, so a raw dangerouslySetInnerHTML anywhere
+        # else fails the job.
         run: >
           semgrep scan --error
           --config p/nextjs --config p/typescript --config p/secrets
-          --exclude-rule typescript.react.security.audit.react-dangerouslysetinnerhtml.react-dangerouslysetinnerhtml
           src/
