@@ -33,8 +33,7 @@ Do this:
 2. Entity: **not registered** (owner, 2026-11-11). Ask about 2FA on Gmail, Netlify, Resend (G-02).
 3. Provider comparison is done (09 §Provider comparison). Ask whether the owner will register an
    *établissement* and when the pre-sale opens; that decides Fapshi (individual) vs CinetPay/Notch Pay.
-   Then propose, then the terms of
-   sale and privacy drafts (G-05, G-06) on a branch. Fix `SECURITY.md` H-01 in the same PR.
+   Then propose the terms of sale and privacy drafts (G-05, G-06) on a branch. Fix `SECURITY.md` H-01 in the same PR.
 
 Rules: never push to `main` without the owner, never scan production actively, and
 never print or copy secret values. Netlify, Vercel, GitHub and Resend are signed in in the
