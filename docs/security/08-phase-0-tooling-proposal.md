@@ -37,12 +37,12 @@ finds it.
 
 ## Results (2026-11-11) — approved and run locally
 
-Installed with the owner's approval: Gitleaks (winget), OSV-Scanner (winget), Semgrep (pip --user).
+Installed with the owner's approval: Gitleaks (winget), OSV-Scanner (winget), Semgrep (pip --user), plus `pip-system-certs` (pip --user) so Python trusts the Windows certificate store; Semgrep's rule download failed TLS verification without it. Semgrep needs `%APPDATA%\Python\Python313\Scripts` on PATH.
 
 | Tool | Result |
 |---|---|
 | **Gitleaks** (`git --redact --log-opts=--all`, every branch) | **No real secrets in history.** One false positive: rule `linkedin-client-secret` matched the constant name `SWUG_LINKEDIN_URL` in an import list (`screenshots/page.tsx`, commit 0f7e162). Allowlist it when the CI workflow is added. |
 | **OSV-Scanner** (`package-lock.json`, 507 packages) | 1 medium: `minimatch` 10.2.6 (GHSA-g3hv-75wg-m249, CVSS 6.9, fix 11.0.1). **Dev-only** (lint tooling), not in the production bundle. Fix in the next routine dependency update. |
-| **Semgrep** | **Not run yet.** Installed, but rule download from semgrep.dev fails TLS verification on this machine (`unable to get local issuer certificate`, same Windows revocation/CA problem as curl). Options: trust the Windows certificate store for Python, or run Semgrep in CI instead. Certificate checks must not be disabled. |
+| **Semgrep** (`p/nextjs`, `p/typescript`, `p/secrets`, 110 rules, 113 files in `src/`) | 3 findings, all `react-dangerouslysetinnerhtml`, all **false positives**: JSON-LD `<script>` blocks (`about/founder/page.tsx:57`, `about/founder/projects/[slug]/page.tsx:72`, `academy/cohort-0/page.tsx:118`). Content comes from the repo's own dictionaries and project data; `locale` and `slug` are validated (`notFound()`) before use. No visitor input reaches them. Optional hardening: escape `<` as `<` in a shared JSON-LD helper (the same pattern is in `layout.tsx:104`, not flagged). No secrets or injection findings. |
 
 Step 4 (GitHub Actions workflow) is still undecided and untouched.
