@@ -19,6 +19,7 @@ _Last updated 2026-11-11 evening (Phase 0 in CI on PR #2, green, unmerged; P-5 V
 - Branch deploys: only `claude/project-audit-e95f91`. Deploy Previews: every PR against `main`.
 - Untrusted (fork) deploy previews: **require approval** — good.
 - Production deploys: **Git only** since 2026-11-11 (R-05). CLI/API/MCP can still make previews.
+- **Credits (Free plan, 300 per cycle, 19th→18th, no overage: the site pauses if they run out):** 2026-11-11, cycle Oct 19 → Nov 18: **250.6 left**, 49.4 used (2 production deploys = 30, running cost 19.4 ≈ 0.85/day). Unused credits expire Nov 19. Check Usage & billing before every merge.
 - Netlify secret scanning is on and caught the leak in early October (that build failed).
 
 ## Remediation

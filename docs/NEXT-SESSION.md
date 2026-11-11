@@ -10,6 +10,8 @@ Continue the 4TUNHub security audit. State on 2026-11-11 (evening):
   passed and did real work (results in `docs/security/08-phase-0-tooling-proposal.md`). Workflow
   now on `actions/checkout@v7` and `osv-scanner-action` v2.7.0, no warnings. Netlify Deploy Preview
   built. The app's PR bar can't bind it (`gh` isn't signed in on this machine); check it in Chrome.
+- **Netlify credits (2026-11-11):** 250.6 / 300 left in the cycle ending Nov 18 (Free plan; the site pauses
+  if credits run out). Re-read Usage & billing → General before any merge and log it in PROJECT-STATE.
 - **Merging PR #2** costs one 15-credit production build. It now carries a real site change (R-06),
   so merging it alone is reasonable; it can also wait for the next batch. The owner decides. After
   merging, if Netlify skips the build, use Trigger deploy → "Deploy project without cache"
