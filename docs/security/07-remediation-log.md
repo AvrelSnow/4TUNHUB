@@ -184,3 +184,16 @@ from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either wa
   the portfolio deploys through it. Vercel's pending "permission update" request was left unanswered.
 - **Owner action left:** enable 2FA on the Vercel account (needs the owner's authenticator).
   Check GitHub 2FA too, since the GitHub account controls the repo.
+
+## R-05 — Production deploys restricted to Git (2026-11-11, owner request)
+
+- Netlify → Project configuration → Developer settings → **Enforce deployment methods**:
+  "Only Git-based production branches can deploy to the production context" is **on**
+  (checked again after a reload). The Netlify CLI, MCP and API can no longer publish to production.
+  They can still create Deploy Previews and branch deploys.
+- Nothing in the repo deploys through the CLI or API (searched for `netlify deploy`, `NETLIFY_AUTH_TOKEN`,
+  `api.netlify.com`), so normal work is unaffected.
+- Why: a leaked Netlify token, or an agent session with Netlify access, could otherwise push a
+  build to 4tunhub.com without it ever touching `main` or GitHub review.
+- Not yet checked: the next production deploy. "Trigger deploy → Deploy project without cache"
+  builds from `main`, so it should still be allowed. Confirm on the next billed deploy.

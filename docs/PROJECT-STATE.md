@@ -18,7 +18,7 @@ _Last updated 2026-11-11 evening (Phase 0 in CI on PR #2, green, unmerged; P-5 V
 - `MAIL_FROM`, `MAIL_TO`, `ANALYTICS_*`: all scopes, same value everywhere.
 - Branch deploys: only `claude/project-audit-e95f91`. Deploy Previews: every PR against `main`.
 - Untrusted (fork) deploy previews: **require approval** — good.
-- All deployment methods (CLI, API, MCP, Git) may deploy to production. Consider restricting to Git.
+- Production deploys: **Git only** since 2026-11-11 (R-05). CLI/API/MCP can still make previews.
 - Netlify secret scanning is on and caught the leak in early October (that build failed).
 
 ## Remediation
@@ -30,6 +30,7 @@ _Last updated 2026-11-11 evening (Phase 0 in CI on PR #2, green, unmerged; P-5 V
 | P-3 / R-04 | `nosniff` on `/_next/static/*` | **deployed** |
 | P-4 | Non-production deploys held the production mail key | fixed: Deploy Preview #1 and branch deploy `claude/project-audit-e95f91` rebuilt, both return `unavailable` |
 | P-5 | Leftover Vercel project builds every push, serves `4tunhub.vercel.app`; Vercel account has no 2FA | **fixed 2026-11-11**: project deleted (404), Vercel GitHub app limited to Portfolio-project. Owner still to enable Vercel 2FA. |
+| R-05 | Netlify production deploys restricted to Git | **done** 2026-11-11 (dashboard setting) |
 
 Details: `docs/security/07-remediation-log.md`.
 
@@ -43,4 +44,4 @@ Details: `docs/security/07-remediation-log.md`.
 6. ~~P-5 Vercel~~ project deleted, app access narrowed. **Owner: enable 2FA on Vercel (and check GitHub 2FA).**
 
 - **Payment readiness:** NOT READY.
-- **Immediate next action:** owner enables Vercel 2FA; then propose restricting Netlify deploys to Git.
+- **Immediate next action:** owner enables Vercel (and GitHub) 2FA. Next audit step to propose: the JSON-LD `<` escape helper, batched with PR #2.

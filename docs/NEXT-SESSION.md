@@ -16,6 +16,7 @@ Continue the 4TUNHub security audit. State on 2026-11-11 (evening):
 - **P-5 fixed:** the leftover Vercel project `4tunhub` was deleted (`4tunhub.vercel.app` → 404) and
   the Vercel GitHub app now reaches only `AvrelSnow/Portfolio-project`. Still open: the owner
   enables 2FA on Vercel (and checks GitHub 2FA).
+- **R-05 done:** Netlify production deploys are Git-only (CLI/API/MCP previews still allowed).
 - Gotcha: `netlify.toml`'s `ignore` rule can cancel a production deploy whose preview already
   built. Use Trigger deploy → "Deploy project without cache".
 - INC-001 is closed; its record stays on local branch `local/inc-001-private`. Never push it.
@@ -23,7 +24,7 @@ Continue the 4TUNHub security audit. State on 2026-11-11 (evening):
 Do this:
 
 1. Ask whether Vercel 2FA (and GitHub 2FA) is on; record it in the remediation log.
-2. Next audit steps (propose first): restricting Netlify deploys to Git; optional JSON-LD
+2. Next audit steps (propose first): optional JSON-LD
    helper that escapes `<` (a good item to batch with PR #2); the R-03 burst test
    (`docs/security/scripts/burst-test.sh`, production only with the owner's OK);
    payment-readiness gaps.
