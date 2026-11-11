@@ -52,3 +52,23 @@ until 2027-02-11), and the Semgrep JSON-LD rule excluded in the workflow. All th
 with that config; the Action versions (`gitleaks` 8.28.0, `osv-scanner-action` v2.0.3,
 `semgrep` image 1.131.0) are unverified until the first run on the PR. **Merging it triggers
 a Netlify build** (`.github/` is not ignored), so merge it together with other work.
+
+### First CI runs on PR #2 (2026-11-11)
+
+PR #2 (`claude/4tunhub-security-audit-cont-422de1` → `main`, not merged) ran the workflow twice.
+Both runs were green, and the logs show each scan did real work:
+
+| Job | Run 1 (`cd6bf4a`) |
+|---|---|
+| Gitleaks 8.28.0 | 72 commits on every branch, ~1.96 MB, **no leaks** (the allowlist held) |
+| OSV-Scanner | 507 packages, `osv-scanner.toml` loaded, GHSA-g3hv-75wg-m249 filtered, **no issues**; SARIF uploaded to code scanning |
+| Semgrep 1.131.0 | 109 rules on 113 files, **0 findings** |
+
+Run 1 warned that `actions/checkout@v4` and the actions inside `osv-scanner-action` v2.0.3 run
+on deprecated Node 20. `687fe1b` moved to `actions/checkout@v7` (Node 24) with
+`persist-credentials: false`, and the reusable workflow to `v2.7.0` (v2.7.1 was hours old, so it was skipped).
+Run 2: green in 29 s, no warnings left, only a notice about the `ubuntu-latest` → Ubuntu 26 label move.
+
+**minimatch:** this can't be fixed inside the allowed range. The fix is 11.0.1, but
+`@typescript-eslint/typescript-estree` (latest too) requires `^10.2.2`. Keep the dated ignore
+and re-check when typescript-eslint moves to minimatch 11. It is not a batch item.

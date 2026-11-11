@@ -154,3 +154,24 @@ deploy holds the mail key any more.
 ## Status
 R-01 to R-04 and P-4: deployed. The formal burst test (R-03) was not run; on the
 preview, requests 1–5 were accepted and 6–7 limited despite forged IP headers.
+
+## P-5 — Leftover Vercel project still builds the repo (found 2026-11-11)
+
+PR #2 got a "Vercel Preview Comments" check alongside Netlify's. The owner's Vercel project
+`fortunedonfack05-4257s-projects/4tunhub` (Hobby) is still connected to the GitHub repo
+from before the move to Netlify, and builds every push. Read-only checks:
+
+- **Environment variables: none** (project and shared). No Resend key, so forms on the
+  Vercel copy fail closed. No secret is exposed.
+- **Domain:** only `4tunhub.vercel.app` (Production). It serves the current site publicly
+  (`/en` 200, same CSP/HSTS) with `index, follow`, but its canonical points at
+  `https://4tunhub.com/en`, so the SEO harm is small.
+- **Preview URLs** redirect to Vercel SSO (Deployment Protection on).
+- **Vercel account has no 2FA** (dashboard shows "Enable 2FA"). Anyone who takes that
+  account can publish anything at `4tunhub.vercel.app` and has the Vercel GitHub app's
+  access to the repo.
+
+Risk: low-to-medium. A trusted-looking second copy of the site that nobody watches,
+plus a third-party app with repo access and a weak account. **Proposed (owner action):**
+delete the Vercel project, or at least disconnect its Git repo; remove the Vercel GitHub app
+from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either way.
