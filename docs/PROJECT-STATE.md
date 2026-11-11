@@ -26,9 +26,9 @@ _Last updated 2026-11-10, late (PR #1's Deploy Preview verified; waiting on the 
 |---|---|---|
 | R-01 | Next 16.2.10 → 16.4.6, sharp 0.35.5, audit fix | verified on Deploy Preview; not deployed |
 | R-02 | Rate limiter keyed on Netlify client IP | verified on Deploy Preview (forged headers ignored); not deployed |
-| P-2 | In-memory rate window is per function instance (7/7 got through in a burst) | open — needs Netlify Blobs; Medium |
-| P-3 | No `nosniff` on `/_next/static/*` | open — `netlify.toml` headers; Low |
-| P-4 | Deploy Preview #1 held the production mail key (built before re-scoping) | fixed — preview rebuilt 2026-11-10; check old branch deploy `claude/project-audit-e95f91` |
+| P-2 / R-03 | Rate window shared in Netlify Blobs | on PR #1; store answers on the preview; **burst test still to run** |
+| P-3 / R-04 | `nosniff` on `/_next/static/*` | on PR #1; verified on the preview |
+| P-4 | Non-production deploys held the production mail key | fixed: Deploy Preview #1 and branch deploy `claude/project-audit-e95f91` rebuilt, both return `unavailable` |
 
 Details: `docs/security/07-remediation-log.md`.
 

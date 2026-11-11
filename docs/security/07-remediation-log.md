@@ -106,6 +106,37 @@ which only one instance having seen part of A explains). → P-2 below.
   rebuild or delete every older non-production deploy. The old branch deploy
   `claude/project-audit-e95f91` may also still hold the key; check it.
 
+## R-03 — Shared rate-limit window in Netlify Blobs (P-2, 2026-11-11)
+
+- **Change:** `src/lib/form-guard.ts`. `rateLimited()` is now async, and its
+  window lives in a Blobs store `form-rate-limit` with strong consistency and
+  conditional writes (`onlyIfMatch`/`onlyIfNew`, 4 tries). The key is
+  `<UTC day>/sha256(day|ip)`, so no IP is stored, and older days are swept.
+  There's a 2.5 s deadline, after which the per-instance memory window
+  decides. The three actions `await` it. New dependency `@netlify/blobs`
+  11.1.9 (about 60 transitive packages, all Netlify's own; `npm audit
+  --omit=dev` = 0; server only, client bundle unchanged at 198 KB).
+- **Incident during the work:** the first preview (`0b480a0`) hung every
+  form request until the 30 s function timeout. The Blobs read never returned
+  under Next's patched `fetch`. Fixed in two steps: a deadline (`3adf417`),
+  then `fetch` with `cache: "no-store"` and an abort (`949f119`). After that
+  the action ran in 681 ms with no store error in the function log.
+- **Local:** `npm run check` passes. `next start` without Blobs falls back to
+  memory: submissions 1–5 accepted, 6–7 `rateLimited`.
+- **Still to verify on the preview:** the burst test (3 sequential, then
+  4 at once, then 2 more after 10 idle minutes). Expected: exactly 5 accepted.
+
+## R-04 — `nosniff` on `/_next/static/*` (P-3, 2026-11-11)
+
+- **Change:** `netlify.toml` `[[headers]]` for `/_next/static/*`.
+- **Verified on the preview:** a JS chunk now returns
+  `X-Content-Type-Options: nosniff`.
+
+## P-4 follow-up — old branch deploy (2026-11-11)
+The branch deploy `claude/project-audit-e95f91` was rebuilt without cache. A
+valid contact message there now returns `unavailable`, so no non-production
+deploy holds the mail key any more.
+
 ## Status
 R-01: verified on the Deploy Preview. R-02: verified on the Deploy Preview
 (forgery); P-2 remains. **Not deployed:** ship with one merge to `main`

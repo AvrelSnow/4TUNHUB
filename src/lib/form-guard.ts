@@ -55,9 +55,11 @@ export async function rateLimited(ip: string): Promise<boolean> {
 
 const STORE_TIMEOUT_MS = 2500;
 
-// Inside a server action `fetch` is Next's patched, caching fetch. The store
-// gets a plain uncached request with its own abort, so a stalled socket is
-// closed rather than left open after the deadline above.
+// Inside a server action `fetch` is Next's patched, caching fetch. With it,
+// the store's first read hung until the 30 s function timeout on the
+// 2026-11-11 preview; with `cache: "no-store"` it answered in well under a
+// second. The abort closes a stalled socket instead of leaving it open
+// after the deadline above.
 const storeFetch: typeof fetch = (input, init) =>
   fetch(input, { ...init, cache: "no-store", signal: AbortSignal.timeout(STORE_TIMEOUT_MS) });
 
