@@ -13,19 +13,16 @@ Continue the 4TUNHub security audit. State on 2026-11-11 (evening):
 - **Do not merge PR #2 alone:** `.github/` triggers a 15-credit production build. Merge it with
   the next real batch of site work. The minimatch "update" is not possible (typescript-eslint
   still pins `^10.2.2`); the dated ignore stays.
-- **New finding P-5:** a leftover Vercel project (`fortunedonfack05-4257s-projects/4tunhub`)
-  still builds every push and serves `4tunhub.vercel.app` publicly. No env vars (no secrets),
-  canonical → 4tunhub.com, previews behind Vercel SSO, **but the Vercel account has no 2FA**.
-  Proposed to the owner: delete the project (or disconnect Git), remove the Vercel GitHub app,
-  enable 2FA. Record the owner's decision in the remediation log.
+- **P-5 fixed:** the leftover Vercel project `4tunhub` was deleted (`4tunhub.vercel.app` → 404) and
+  the Vercel GitHub app now reaches only `AvrelSnow/Portfolio-project`. Still open: the owner
+  enables 2FA on Vercel (and checks GitHub 2FA).
 - Gotcha: `netlify.toml`'s `ignore` rule can cancel a production deploy whose preview already
   built. Use Trigger deploy → "Deploy project without cache".
 - INC-001 is closed; its record stays on local branch `local/inc-001-private`. Never push it.
 
 Do this:
 
-1. Ask the owner what they decided on P-5 (Vercel). Anything that deletes or disconnects is
-   the owner's click, or needs their explicit yes first.
+1. Ask whether Vercel 2FA (and GitHub 2FA) is on; record it in the remediation log.
 2. Next audit steps (propose first): restricting Netlify deploys to Git; optional JSON-LD
    helper that escapes `<` (a good item to batch with PR #2); the R-03 burst test
    (`docs/security/scripts/burst-test.sh`, production only with the owner's OK);

@@ -1,6 +1,6 @@
 # Project state — security and payment-readiness programme
 
-_Last updated 2026-11-11 evening (Phase 0 in CI on PR #2, green, unmerged; P-5 Vercel leftover found)._
+_Last updated 2026-11-11 evening (Phase 0 in CI on PR #2, green, unmerged; P-5 Vercel leftover removed)._
 
 - **Identity:** 4TUNHub, https://4tunhub.com (apex canonical, www → apex).
 - **Stack:** production **Next 16.4.6** (since 2026-11-11). React 19.2.4, TypeScript, npm; Node 22 on Netlify (Next.js Runtime v5.16.1).
@@ -29,7 +29,7 @@ _Last updated 2026-11-11 evening (Phase 0 in CI on PR #2, green, unmerged; P-5 V
 | P-2 / R-03 | Rate window shared in Netlify Blobs | **deployed**; formal burst test never run (5 accepted then limited was seen on the preview) |
 | P-3 / R-04 | `nosniff` on `/_next/static/*` | **deployed** |
 | P-4 | Non-production deploys held the production mail key | fixed: Deploy Preview #1 and branch deploy `claude/project-audit-e95f91` rebuilt, both return `unavailable` |
-| P-5 | Leftover Vercel project builds every push, serves `4tunhub.vercel.app`; Vercel account has no 2FA | **open, owner decision**: delete project / disconnect Git, remove Vercel GitHub app, enable 2FA. No env vars on it. |
+| P-5 | Leftover Vercel project builds every push, serves `4tunhub.vercel.app`; Vercel account has no 2FA | **fixed 2026-11-11**: project deleted (404), Vercel GitHub app limited to Portfolio-project. Owner still to enable Vercel 2FA. |
 
 Details: `docs/security/07-remediation-log.md`.
 
@@ -40,7 +40,7 @@ Details: `docs/security/07-remediation-log.md`.
    "Deploy project without cache" built it (47 s, 15 credits).
 4. ~~Production contact test~~ done: "Message sent", Delivered in Resend.
 5. ~~Phase 0 tool installs~~ done; CI workflow on **PR #2** (green, two runs). Merge only with the next batch (15 credits).
-6. **P-5 Vercel:** owner decides (delete or disconnect the project, remove the GitHub app, enable 2FA).
+6. ~~P-5 Vercel~~ project deleted, app access narrowed. **Owner: enable 2FA on Vercel (and check GitHub 2FA).**
 
 - **Payment readiness:** NOT READY.
-- **Immediate next action:** owner decides on P-5 (Vercel); then propose restricting Netlify deploys to Git.
+- **Immediate next action:** owner enables Vercel 2FA; then propose restricting Netlify deploys to Git.

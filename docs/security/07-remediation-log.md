@@ -175,3 +175,12 @@ Risk: low-to-medium. A trusted-looking second copy of the site that nobody watch
 plus a third-party app with repo access and a weak account. **Proposed (owner action):**
 delete the Vercel project, or at least disconnect its Git repo; remove the Vercel GitHub app
 from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either way.
+
+**P-5 done (2026-11-11, owner approved "do what is recommended", deletion confirmed):**
+- Vercel project `4tunhub` **deleted**. `4tunhub.vercel.app/en` now returns 404; 4tunhub.com
+  (Netlify) and donfackfortune.me (the owner's other Vercel project) still return 200.
+- Vercel GitHub app (installation 73193593) went from **All repositories** (read/write to code,
+  administration, hooks, PRs…) to **only `AvrelSnow/Portfolio-project`**. The app was kept because
+  the portfolio deploys through it. Vercel's pending "permission update" request was left unanswered.
+- **Owner action left:** enable 2FA on the Vercel account (needs the owner's authenticator).
+  Check GitHub 2FA too, since the GitHub account controls the repo.
