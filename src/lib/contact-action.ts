@@ -7,7 +7,7 @@ import {
   type FieldName,
   type TopicValue,
 } from "./contact";
-import { rateLimited, clientIp, str, EMAIL_RE } from "./form-guard";
+import { rateLimited, clientIp, str, text, EMAIL_RE } from "./form-guard";
 import { sendMail, MailNotConfigured } from "./mailer";
 
 /**
@@ -34,7 +34,7 @@ export async function submitContact(
   const name = str(formData, "name").slice(0, LIMITS.nameMax);
   const email = str(formData, "email").slice(0, LIMITS.emailMax);
   const topic = str(formData, "topic");
-  const message = str(formData, "message");
+  const message = text(formData, "message");
   const values: Record<FieldName, string> = { name, email, topic, message };
 
   const fieldErrors: ContactState["fieldErrors"] = {};

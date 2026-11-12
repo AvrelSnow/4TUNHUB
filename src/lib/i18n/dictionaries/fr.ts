@@ -1536,13 +1536,13 @@ const fr: Dictionary = {
 
   privacy: {
     title: "Confidentialité",
-    updated: "Dernière mise à jour : 2 octobre 2026",
+    updated: "Dernière mise à jour : 11 novembre 2026",
     intro:
       "Ce site ne recueille de données personnelles que lorsque vous les transmettez par un formulaire, et n'enregistre presque rien dans votre navigateur. Cette note indique ce que nous conservons, pourquoi, combien de temps, et comment le faire effacer.",
     sections: [
       {
         title: "Ce que nous recueillons",
-        body: "Le formulaire de contact demande votre nom, votre adresse e-mail et votre message. Une candidature à la Cohorte 0 demande en outre votre numéro WhatsApp, votre école ou votre employeur, votre version de SolidWorks et les raisons de votre candidature. La liste d'attente demande une adresse e-mail, un nom si vous souhaitez le donner, et les sujets qui vous intéressent.",
+        body: "Le formulaire de contact demande votre nom, votre adresse e-mail et votre message. Une candidature à la Cohorte 0 demande en outre votre numéro WhatsApp, votre école ou votre employeur, votre version de SolidWorks et les raisons de votre candidature. La liste d'attente demande une adresse e-mail, un nom si vous souhaitez le donner, et les sujets qui vous intéressent. Si vous payez une place, Fapshi traite le paiement : nous voyons votre nom, le numéro Mobile Money qui a payé, le montant, la date et la référence du paiement, jamais votre code secret.",
       },
       {
         title: "Pourquoi",
@@ -1550,11 +1550,11 @@ const fr: Dictionary = {
       },
       {
         title: "Où elles vont",
-        body: "Trois prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Une candidature à la Cohorte 0 est aussi vue par MKV Academy, qui organise la cohorte avec nous ; l'un comme l'autre peut vous écrire au sujet de sessions et d'ateliers ultérieurs, et cesse sur simple demande. Au-delà, nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
+        body: "Quatre prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, Fapshi traite les paiements des places payantes selon ses propres conditions de confidentialité, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Une candidature à la Cohorte 0 est aussi vue par MKV Academy, qui organise la cohorte avec nous ; l'un comme l'autre peut vous écrire au sujet de sessions et d'ateliers ultérieurs, et cesse sur simple demande. Au-delà, nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
       },
       {
         title: "Durée de conservation",
-        body: "Les candidatures non retenues sont supprimées sous trois mois. Les coordonnées des participants sont conservées pendant la cohorte et douze mois après, sauf demande de suppression anticipée de votre part.",
+        body: "Les candidatures non retenues sont supprimées sous trois mois. Les coordonnées des participants sont conservées pendant la cohorte et douze mois après, sauf demande de suppression anticipée de votre part. Les traces de paiement font exception : nous les conservons dix ans, comme l'exigent les règles comptables OHADA, et ne nous en servons pour rien d'autre.",
       },
       {
         title: "Cookies",
@@ -1623,7 +1623,7 @@ const fr: Dictionary = {
 
   terms: {
     title: "Conditions d'utilisation",
-    updated: "Derni\u00e8re mise \u00e0 jour : 20 septembre 2026",
+    updated: "Dernière mise à jour : 11 novembre 2026",
     intro:
       "Les r\u00e8gles de ce site et des formations que nous conduisons. \u00c9crites simplement, car des conditions que personne ne lit ne prot\u00e8gent personne.",
     sections: [
@@ -1638,6 +1638,18 @@ const fr: Dictionary = {
       {
         title: "Une place en Cohorte 0",
         body: "Les places sont gratuites et attribu\u00e9es sur s\u00e9lection, non par ordre d'arriv\u00e9e. Une place demande trois choses en retour : assister \u00e0 au moins 6 des 8 s\u00e9ances, rendre l'exercice hebdomadaire, puis passer l'examen blanc final, partager son r\u00e9sultat et enregistrer une courte vid\u00e9o. \u00c0 d\u00e9faut, la place revient \u00e0 la liste d'attente \u2014 c'est tout, et il n'y a rien \u00e0 payer \u00e0 aucun moment.",
+      },
+      {
+        title: "Payer une place",
+        body: "Les formations payantes sont vendues au prix affiché sur leur page au moment du paiement, en francs CFA. Le paiement se fait par MTN Mobile Money ou Orange Money via Fapshi, un prestataire de paiement camerounais ; nous n'acceptons pas encore les cartes. Le vendeur est Donfack Fortune, qui exerce sous le nom 4TUNHub à titre personnel : 4TUNHub n'est pas encore une société immatriculée. Votre place est confirmée lorsque nous avons rapproché votre paiement de votre candidature et vous avons écrit, en général sous deux jours ouvrés.",
+      },
+      {
+        title: "Remboursements",
+        body: "Demandez-le dans les 7 jours suivant votre paiement, et avant la deuxième séance en direct : nous remboursons la totalité. Passé ces 7 jours et avant la deuxième séance, nous remboursons la moitié. À partir de la deuxième séance, il n'y a plus de remboursement. Si nous annulons ou reportons une cohorte, vous choisissez : le remboursement intégral, ou une place dans la suivante. Les remboursements sont versés par Mobile Money au numéro qui a payé, sous 7 jours après votre demande.",
+      },
+      {
+        title: "Ne payez que par ce site",
+        body: "Nous n'encaissons que par le lien de paiement de ce site, qui ouvre une page Fapshi. Nous ne vous demandons jamais d'envoyer de l'argent à un numéro Mobile Money personnel, par message WhatsApp, ni à quelqu'un qui vous contacte en se présentant comme nous. Si cela arrive, ne payez pas, et prévenez-nous.",
       },
       {
         title: "Les s\u00e9ances sont enregistr\u00e9es",
@@ -1665,7 +1677,7 @@ const fr: Dictionary = {
       },
       {
         title: "Ce que nous ne promettons pas",
-        body: "Le site est fourni tel quel. Nous l'entretenons et corrigeons ce que nous trouvons, mais nous ne promettons ni une disponibilit\u00e9 de tous les instants ni l'absence de toute erreur. La formation gratuite est donn\u00e9e de bonne foi et sans garantie ; les prestations payantes rel\u00e8vent du contrat sign\u00e9 pour elles, non de cette page.",
+        body: "Le site est fourni tel quel. Nous l'entretenons et corrigeons ce que nous trouvons, mais nous ne promettons ni une disponibilit\u00e9 de tous les instants ni l'absence de toute erreur. La formation gratuite est donnée de bonne foi et sans garantie. Les formations payantes suivent les sections sur le paiement et les remboursements ci-dessus ; les autres prestations payantes relèvent du contrat signé pour elles, non de cette page.",
       },
       {
         title: "Modifications, et le droit applicable",

@@ -152,13 +152,13 @@ deploy holds the mail key any more.
   sent to production.
 
 ## Status
-R-01 to R-04 and P-4: deployed. The formal burst test (R-03) was not run; on the
+R-01 to R-04 and P-4: deployed. The formal burst test (R-03) passed on 2026-11-11 (see below); before it, on the
 preview, requests 1–5 were accepted and 6–7 limited despite forged IP headers.
 
 ## P-5 — Leftover Vercel project still builds the repo (found 2026-11-11)
 
 PR #2 got a "Vercel Preview Comments" check alongside Netlify's. The owner's Vercel project
-`fortunedonfack05-4257s-projects/4tunhub` (Hobby) is still connected to the GitHub repo
+`4tunhub` (Hobby) is still connected to the GitHub repo
 from before the move to Netlify, and builds every push. Read-only checks:
 
 - **Environment variables: none** (project and shared). No Resend key, so forms on the
@@ -167,12 +167,11 @@ from before the move to Netlify, and builds every push. Read-only checks:
   (`/en` 200, same CSP/HSTS) with `index, follow`, but its canonical points at
   `https://4tunhub.com/en`, so the SEO harm is small.
 - **Preview URLs** redirect to Vercel SSO (Deployment Protection on).
-- **Vercel account has no 2FA** (dashboard shows "Enable 2FA"). Anyone who takes that
-  account can publish anything at `4tunhub.vercel.app` and has the Vercel GitHub app's
-  access to the repo.
+- **Account hardening:** anyone who takes the Vercel account can publish anything at
+  `4tunhub.vercel.app` and has the Vercel GitHub app's access to the repo, so its 2FA matters.
 
 Risk: low-to-medium. A trusted-looking second copy of the site that nobody watches,
-plus a third-party app with repo access and a weak account. **Proposed (owner action):**
+plus a third-party app with repo access. **Proposed (owner action):**
 delete the Vercel project, or at least disconnect its Git repo; remove the Vercel GitHub app
 from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either way.
 
@@ -182,8 +181,7 @@ from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either wa
 - Vercel GitHub app (installation 73193593) went from **All repositories** (read/write to code,
   administration, hooks, PRs…) to **only `AvrelSnow/Portfolio-project`**. The app was kept because
   the portfolio deploys through it. Vercel's pending "permission update" request was left unanswered.
-- **Owner action left:** enable 2FA on the Vercel account (needs the owner's authenticator).
-  Check GitHub 2FA too, since the GitHub account controls the repo.
+- **Owner action:** 2FA on the Vercel and GitHub accounts (GitHub controls the repo).
 
 ## R-05 — Production deploys restricted to Git (2026-11-11, owner request)
 
@@ -213,3 +211,81 @@ from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either wa
   passes (lint, tokens, build 70 pages, client JS 198 KB / 220 KB). Built HTML for `/en`,
   `/en/about/founder`, `/fr/academy/cohort-0` and a project page: every JSON-LD block parses with
   the same `@type`s as before. Semgrep without exclusions: 0 findings.
+
+## PR #2 to production (2026-11-11)
+- Merged by the owner's instruction: `main` a37a83b → `68fa9fe` (merge commit). The Netlify production
+  deploy built and published by itself (35 s, 15 credits). The `ignore` rule did not cancel it, because
+  the diff from the last production commit includes `src/`.
+- Production checks: `/en`, `/en/about/founder`, `/fr/academy/cohort-0` and a project page return 200, and every
+  JSON-LD block parses with the expected `@type`s; HSTS is unchanged. The security workflow ran on `main` (run 9) and passed.
+- Credits: 250.6 / 300 before the deploy, ~235.6 expected after it (cycle ends Nov 18).
+
+## R-03 burst test — Deploy Preview #2 (2026-11-11, 08:48 UTC, owner approved)
+- Target `https://deploy-preview-2--4tunhub.netlify.app` (same code as production `68fa9fe`), script
+  `docs/security/scripts/burst-test.sh`. Nine contact-form posts with an empty message (they count
+  towards the limit but fail validation, so no mail can be sent): 3 sequential, 4 parallel, 2 sequential.
+  Each post forged a different `x-nf-client-connection-ip` and `X-Forwarded-For`.
+- **Result: pass.** Exactly 5 accepted (seq 1–3, par 4 and 7), then `rateLimited` for par 5, par 6,
+  seq 8 and seq 9. The parallel race did not leak a sixth slot, and the forged headers did not split the
+  window, so R-02 holds as well. Response times 1.3–2.5 s; one parallel post took 5.3 s and still came back
+  limited (most likely conditional-write retries; an in-memory fallback would have let it through).
+- Side effect, expected: the Blobs store is site-wide, so the tester's IP was limited on production forms
+  for the next 10 minutes too.
+- **R-03 closed.**
+
+## Account 2FA (owner)
+- 2FA on GitHub first (it can push to `main`, which deploys production), then Gmail, Vercel, Netlify,
+  Resend and the payment provider. **Live status is not written in this public repo** (see
+  "Public-repo exposure sweep" below); it is kept in the owner's private notes.
+
+## Public-repo exposure sweep (2026-11-12)
+Read of every tracked file on the PR #3 branch, `main` and every remote branch tip, looking for anything
+that helps an attacker. No secrets, keys, tokens or `.env` files on any branch tip; the private incident
+branch is not on the remote. Changes:
+- Removed statements of which accounts lack 2FA, and the Vercel and Netlify team slugs (they spell the
+  owner's personal email name). The live account status moves out of the repo.
+- Not removed: the history. Old commits and older branch tips still say 2FA was off on 2026-11-11.
+  Rewriting public history is not worth the risk; turning 2FA on is what makes that text harmless.
+- Finding for the owner: the founder page publishes the personal Gmail address, and that inbox is the
+  2FA channel for Fapshi (codes by email). Register Fapshi with an address that is not on the site, or
+  protect that Gmail with a passkey or authenticator app (not SMS) before money arrives.
+- Low, left as is: Netlify env-scope notes (defensive, no values), the local scratch path in
+  `scripts/optimize-images.mjs`, the incident ID itself.
+
+## R-07 — minimatch advisory and Dependabot (2026-11-12, PR #3)
+- **minimatch** GHSA-g3hv-75wg-m249 (CVE-2026-118764, DoS by glob amplification, affects 7.0.0 to 11.0.0):
+  the only affected copy was 10.2.6 under `@typescript-eslint/typescript-estree` (lint tooling, dev-only,
+  never shipped). No 10.x fix exists and the latest typescript-estree still asks for `^10.2.2`, so
+  `package.json` `overrides` pins that copy to `^11.0.1` (resolved 11.0.8). eslint's own minimatch 3.1.5
+  is outside the affected range. `npm run check` passes (lint, tokens, build, 198 KB / 220 KB).
+  Remove the override once typescript-estree depends on minimatch 11.
+- **Dependabot** (`.github/dependabot.yml`): npm and GitHub Actions, monthly, grouped (Next family,
+  minor + patch, security), 14-day cooldown, majors ignored (planned by hand). Never merge its PRs one
+  by one: each merge to `main` is 15 credits. Fold them into the next batch.
+- **Owner action (GitHub, after 2FA):** Settings → Advanced Security → turn on *Dependabot alerts* and
+  *Dependabot security updates*. The config file alone only drives the monthly version updates.
+
+## R-09 — Form review (2026-11-12, PR #3)
+Read of the three Server Actions (`contact`, `apply`, `waitlist`), `form-guard.ts` and `mailer.ts`.
+Sound already: server is the gate, honeypot, shared per-IP rate limit before any work, generic error
+codes, provider errors logged without the payload, screenshot checks by size, type and magic bytes,
+server-made attachment names, 5 MB action body limit, Resend's JSON API (no raw SMTP headers to inject).
+
+Fixed:
+- **Receipt as a phishing relay (medium, before Cohort 1).** The application receipt goes to whatever
+  address the visitor types and greeted them with the typed name, from 4TUNHub's verified domain. A
+  "name" such as "your seat is cancelled, pay at scam.example" would have been mailed to a stranger as
+  4TUNHub, exactly the payment scam the terms warn about. Applications are closed now, so not live; the
+  form is reused for Cohort 1. Now `greetingName()` keeps a name only if it is letters, spaces, hyphens
+  and apostrophes, four words at most; otherwise the greeting is just "Dear," / "Bonjour,".
+- **Forged lines in the inbox email (low).** Single-line fields are flattened (line breaks, control and
+  bidirectional-override characters removed), so "Ada\nReference: C0-FAKE" can't fake a line. Messages
+  keep their line breaks only.
+- **Email addresses (low).** `EMAIL_RE` refuses `, ; < > ( ) [ ] \ "`, so one field can't hold two
+  recipients in `to` / `reply_to`.
+- **Waitlist CSV line (low).** Name and tracks are quoted CSV cells with quotes doubled and a leading
+  `= + - @` neutralised (spreadsheet formula injection); tracks are de-duplicated.
+
+Checked: 16 unit cases on the helpers pass; on local dev a contact post with a forged name
+(`Ada\nTopic: FORGED`) and a control character in the message arrived flattened and clean;
+`npm run check` passes (198 KB / 220 KB).

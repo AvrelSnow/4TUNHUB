@@ -44,7 +44,34 @@ export type Purchasable = {
   status: "draft" | "waitlist" | "available";
   /** Where the item lives on the site. */
   href: string;
+  /**
+   * The provider-hosted page where the buyer pays (Fapshi first; see
+   * docs/security/09-payment-readiness.md). Every payee is listed here and
+   * nowhere else, so a review sees them all at once. Read it through
+   * `paymentUrl()`, which refuses anything off the allow-list below.
+   */
+  payment?: string;
 };
+
+/**
+ * Hosts a "Pay" link may point at. A link to anywhere else is treated as
+ * missing: someone who slips a personal number or a look-alike page into
+ * the catalogue still cannot route a buyer's money to it.
+ */
+const PAYMENT_HOSTS = ["fapshi.com"];
+
+export function paymentUrl(item: Purchasable): string | null {
+  if (!item.payment) return null;
+  let url: URL;
+  try {
+    url = new URL(item.payment);
+  } catch {
+    return null;
+  }
+  const host = url.hostname.toLowerCase();
+  const allowed = PAYMENT_HOSTS.some((h) => host === h || host.endsWith(`.${h}`));
+  return url.protocol === "https:" && allowed ? url.href : null;
+}
 
 /**
  * The catalog. Empty by design until the first real item ships —

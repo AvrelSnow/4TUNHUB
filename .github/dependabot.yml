@@ -1,0 +1,49 @@
+# Dependabot: tells us when a dependency or a GitHub Action has an update.
+#
+# Credits: every merge to main is a 15-credit Netlify production deploy, so
+# updates come as FEW grouped PRs, monthly, never one PR per package. Never
+# merge a Dependabot PR on its own: fold it into the next batch (cherry-pick
+# onto the working branch), check it on that branch's preview, merge once.
+# The PRs themselves (Deploy Previews, CI) are free.
+#
+# Cooldown: a new release waits 14 days before Dependabot proposes it, so a
+# hijacked package version is usually caught and pulled before it reaches us.
+# Security updates ignore the cooldown and the schedule (they need "Dependabot
+# security updates" on in the repo's Settings -> Advanced Security).
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 14
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "deps"
+    groups:
+      # Next and its ESLint config and analyzer must move together.
+      nextjs:
+        patterns: ["next", "eslint-config-next", "@next/*"]
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+      security:
+        applies-to: security-updates
+        patterns: ["*"]
+    ignore:
+      # Majors are read and planned by hand (see AGENTS.md: Next has breaking changes).
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 14
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: "ci"
+    groups:
+      actions:
+        patterns: ["*"]
