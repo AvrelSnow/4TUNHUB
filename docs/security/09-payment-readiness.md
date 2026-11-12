@@ -146,6 +146,32 @@ What that means for the gaps:
 - Checks: `npm run check` passes (lint, tokens, build, 198 KB / 220 KB); the built `/en|fr/terms` and
   `/en|fr/privacy` pages contain the new text.
 
+### Card payments (open question, researched 2026-11-12)
+
+The question: can Cohort 1 take Visa/Mastercard (diaspora buyers, employers paying) without registering first?
+Public pages and search results only, read 2026-11-12; no account was opened. Re-check with each provider.
+
+| Route | Card acceptance for a seller in Cameroon | Unregistered individual? |
+|---|---|---|
+| **Stripe** | Cameroon is not on Stripe's merchant-account country list; it appears only in Stripe Tax (tax registration, not collection) ([Stripe Tax: Cameroon](https://docs.stripe.com/tax/supported-countries/africa/cameroon)). | No |
+| **PayPal** | Cameroon-registered accounts can send but not receive payments, per PayPal Community answers ([thread](https://www.paypal-community.com/t5/Payments-Archives/PAYPAL-OPTIONS-IN-CAMEROON/td-p/2765923)). "Foreign PayPal account" workarounds break PayPal's terms and can freeze the funds. | No |
+| **Flutterwave** | Lists card and MoMo collection in XAF ([Cameroon docs](https://developer.flutterwave.com/docs/cameroon), [payment methods](https://developer.flutterwave.com/docs/payment-methods)); licensed in Cameroon through Ecobank since 2025 ([fintech.global](https://fintech.global/2025/06/27/flutterwave-expands-licensed-payments-in-cameroon/)). Whether a Cameroon merchant's hosted link takes XAF cards with 3-D Secure is not confirmed in public docs. | No: full business KYC |
+| **Notch Pay** | Conflicting: its WooCommerce plugin lists Visa/Mastercard, its direct-charge API lists only MTN, Orange and PayPal ([direct charge](https://developer.notchpay.co/docs/payments/direct)). | Unclear (docs ask for business papers) |
+| **CinetPay** | Visa/Mastercard 3.5% (see comparison above). The only confirmed card route. | No: NIU and RCCM |
+| **Fapshi** | No card method found on its pricing page or in search. | Yes, MoMo only |
+| **Merchant-of-record platforms** (Lemon Squeezy, Polar, Dodo Payments) | They take cards worldwide, but payouts go through Stripe Connect, bank lists or PayPal; no source confirms a payout to Cameroon. Whether they allow live, taught cohorts (not just digital goods) is also unchecked. | Not confirmed |
+
+**Finding:** no route gives an *unregistered* seller in Cameroon a working, terms-compliant card checkout.
+Cards come only with registration (RCCM + NIU), then CinetPay (confirmed) or Flutterwave / Notch Pay (ask in writing).
+
+**What this means for the owner's choice:**
+- If the January buyers are students in Cameroon paying 35,000–60,000 FCFA, MoMo covers them; Fapshi first holds,
+  and a diaspora relative or employer can pay by sending MoMo to the buyer, who pays the link.
+- If cards matter for Cohort 1 (diaspora, employers that pay only by card or invoice), register the *établissement*
+  at the Bafoussam CFCE **now** (3–7 days in practice) and start on CinetPay instead; Fapshi becomes the fallback.
+- Middle path: open Fapshi now for MoMo, register in parallel, add a CinetPay card link once the papers are back.
+  `paymentUrl()` then needs `cinetpay.com` on its allow-list (one line, reviewed in a PR).
+
 
 1. Owner: GitHub 2FA, then Gmail, Netlify and the rest (G-01, G-02). No deploy, no cost.
 2. ~~Entity question~~ answered: not registered. ~~Provider comparison~~ done (above). Owner: register an *établissement* at the Bafoussam CFCE; Fapshi as an individual is the fallback.
