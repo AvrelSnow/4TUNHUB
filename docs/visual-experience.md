@@ -7,6 +7,45 @@
 > stock standing in for projects, AA contrast in both themes, static per-locale
 > pages, the token lint and the JS budget.
 
+## 2026-11-12: the logo's colours, one theme (supersedes the colour notes below)
+
+The owner reverted the palette to the logo's own colours. Where a section
+below mentions indigo, ndop, night, pillar hues or a dark theme, this
+section wins.
+
+- **One theme.** Dark mode is removed completely: no clock resolver, no
+  footer switch, no `data-theme`, no `4tun.theme` key (the privacy page now
+  lists one stored item). `ThemeControl`, `src/lib/theme.ts`,
+  `src/lib/hues.ts` and the dark logo lockup are deleted.
+- **White pages, cream bands.** Background `#FFFFFF`; alternate sections,
+  the closing CTA band and the footer are cream `#FAF6EE`, so a page ends in
+  one light band. Cards on cream are white (`surface-2`).
+- **Amber and black only.** Buttons are bright amber `#FFB000` with black
+  text (9.7:1). Text accent, links and eyebrows are deep amber `#8A5700`
+  (6.1:1 on white, 5.7:1 on cream). Ink `#14181D`, muted `#555A62`. No
+  pillar hues: every pillar hero is lit by the same amber lamp.
+- **Footer.** The large "4TUNHub" wordmark at the end is gone. Partner and
+  affiliation logos sit on white chips on the cream footer.
+- **Link card and apple icon.** White ground, black claim, deep-amber
+  eyebrow, amber→black hairline; the icon is the amber roundel on white.
+- Dark tiles (`bg-ink-900`: the cohort feature, the live channel) stay as
+  logo-black accents, not a theme.
+
+Second pass, same day (owner's review of the preview):
+
+- **Ghost White, not cream.** Pages, the closing band and the footer are
+  white `#FFFFFF`; cards and alternate bands are Ghost White `#F8F8FF`;
+  borders are cool greys. No cream anywhere.
+- **Yellow on big type only.** The logo yellow `#FFB000` is about 1.8:1 on
+  white, so it is used for large display type (the hero line), buttons, dots
+  and underlines, never for small text. Links, eyebrows and labels are the
+  logo black (17.8:1); links carry a 2 px yellow underline, eyebrows a yellow
+  dot. The owner asked for this after seeing small yellow links.
+- **Beam lab** uses the classic von Mises contour scale, blue → cyan →
+  green → yellow → red, on the beam and the slider (`--color-fea-0…4`).
+- **Marquee dots** cycle red, blue, green, yellow and violet (`--color-dot-*`).
+- **No reading-progress bar** under the nav.
+
 ## The idea
 
 **Indigo ink on drafting paper by day; an indigo night lit by amber after dark.**

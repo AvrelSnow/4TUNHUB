@@ -126,7 +126,7 @@ export default async function FounderPage({ params }: Params) {
               <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
                 <h3 className="text-display-sm text-foreground">{founder.camrail.role[locale]}</h3>
                 <p className="mt-5 max-w-2xl text-lead text-muted">{founder.camrail.blurb[locale]}</p>
-                <span className="mt-7 inline-flex items-center gap-1 font-medium text-accent">
+                <span className="mt-7 inline-flex items-center gap-1 font-semibold text-accent underline decoration-brand-500 decoration-2 underline-offset-4">
                   {founder.camrail.cta[locale]}
                   <Chevron />
                 </span>
@@ -245,7 +245,7 @@ export default async function FounderPage({ params }: Params) {
                   </p>
                   <h3 className="mt-1.5 text-headline text-foreground">{copy.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-muted">{copy.outcome}</p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent">
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent underline decoration-brand-500 decoration-2 underline-offset-4">
                     {t.viewProject}
                     <Chevron />
                   </span>

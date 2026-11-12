@@ -4,10 +4,9 @@
    4TUN HUB — DESIGN FOUNDATION
    Governed by docs/art-direction.md.
 
-   Indigo ink on drafting paper by day, an indigo night lit by
-   amber after dark; the visitor's clock decides which
-   (src/lib/theme.ts). One family (Mona Sans), four pillar hues,
-   real photographs, and a CSS-first motion language.
+   The logo's colours on white: black ink, amber for action, cream
+   bands, one theme (no dark mode). One family (Mona Sans), real
+   photographs, and a CSS-first motion language.
    Rationale and every rule: docs/visual-experience.md.
 
    Every pillar reuses these tokens. Components never carry a
@@ -30,60 +29,63 @@
   --color-brand-800: #8a5700;
   --color-brand-900: #5c3a00;
 
-  /* --- Ink. Neutrals pulled toward blueprint navy, so dark panels read as
-         a drawing sheet at night rather than a black void. --- */
-  --color-ink-50: #f4f3f8;
-  --color-ink-100: #e7e6f0;
-  --color-ink-200: #cfcde0;
-  --color-ink-300: #aaafcc;
-  --color-ink-400: #7f86a6;
-  --color-ink-500: #5f6683;
-  --color-ink-600: #434a6b;
-  --color-ink-700: #2e355a;
-  --color-ink-800: #1c2450;
-  --color-ink-900: #141b3c;
-  --color-ink-950: #0e1330;
-  --color-ink-975: #080b1e;
+  /* --- Ink. Neutrals built on the logo's black (#14181D), not tinted. --- */
+  --color-ink-50: #f5f5f6;
+  --color-ink-100: #e9eaeb;
+  --color-ink-200: #d2d4d7;
+  --color-ink-300: #b0b3b8;
+  --color-ink-400: #8a8e94;
+  --color-ink-500: #6a6e75;
+  --color-ink-600: #4d5158;
+  --color-ink-700: #33373d;
+  --color-ink-800: #22262b;
+  --color-ink-900: #14181d;
+  --color-ink-950: #0d1013;
+  --color-ink-975: #07090b;
 
   /* Third-party marks, quoted inside their own icons only. */
   --color-mark-linkedin: #0a66c2;
   --color-mark-gmail: #ea4335;
 
-  /* --- The ecosystem's four hues (docs/visual-experience.md, "Colour").
-         Indigo is ndop, the indigo royal cloth of the Grassfields around
-         Dschang, and the engineer's blueprint; amber is the logo's lamp.
-         Each hue codes ONE pillar and nothing else, at most one per section:
-           indigo   — Services: design and FEA, precision
-           amber    — Academy: teaching is the light you pass on
-           green    — Research: highland green, energy from living things
-           laterite — Community: the red earth everyone walks on
-         The plain token is text-safe on every ground (AA, measured);
-         `glow-*` is atmosphere only, never text. --- */
-  --color-indigo: #2a3eb1; /* 8.0:1 on paper */
-  --color-amber: #855600; /* 5.9:1 — raw #ffb000 is never text on paper */
-  --color-green: #1f6b45; /* 6.0:1 */
-  --color-laterite: #b23a1e; /* 5.5:1, 5.0:1 on surface */
-  --color-glow-indigo: #c9d2ff;
+  /* --- The logo's colours, and nothing else (docs/visual-experience.md,
+         "Colour"): amber, black, white. Amber is a fill; the deep amber
+         is the one amber that is safe as text. `glow-amber` is atmosphere
+         only, never text. --- */
+  --color-amber: #ffb000; /* the logo's yellow: large type and fills only, never small text (1.8:1) */
   --color-glow-amber: #ffd98a;
-  --color-glow-green: #bfe8cf;
-  --color-glow-laterite: #f3c1ae;
+  --color-glow-cream: #fff4d6;
 
-  /* --- Semantic tokens: DAY — indigo ink on drafting paper. Ratios
-         measured against --color-background unless stated. --- */
-  --color-background: #faf6ee;
-  --color-surface: #f1eadb; /* kraft-paper band */
-  --color-surface-2: #ffffff; /* a clean sheet on the band */
-  --color-foreground: #141b3c; /* 15.6:1 */
-  --color-muted: #4e5672; /* 6.7:1, 6.1:1 on surface */
-  --color-subtle: #8a8fa3; /* decorative only */
-  --color-border: #e6dccb;
-  --color-hairline: #d3c7b0;
+  /* The classic FEA (von Mises) contour scale, blue = no stress, red =
+     yield. Used by the beam lab only. */
+  --color-fea-0: #0000ff;
+  --color-fea-1: #00ffff;
+  --color-fea-2: #00ff00;
+  --color-fea-3: #ffff00;
+  --color-fea-4: #ff0000;
+
+  /* The marquee's dots, one colour per item. Decorative only. */
+  --color-dot-red: #e5484d;
+  --color-dot-blue: #2f6fed;
+  --color-dot-green: #1f9d55;
+  --color-dot-violet: #7c3aed;
+
+  /* --- Semantic tokens. One theme: the logo's black on white, cream
+         bands. Ratios measured against --color-background unless
+         stated. --- */
+  --color-background: #ffffff;
+  --color-surface: #f8f8ff; /* Ghost White: cards and alternate bands */
+  --color-surface-2: #ffffff; /* a white sheet on a Ghost White band */
+  --color-foreground: #14181d; /* 17.8:1, 16.5:1 on cream */
+  --color-muted: #555a62; /* 6.9:1, 6.4:1 on cream */
+  --color-subtle: #8e9298; /* decorative only */
+  --color-border: #e8e8f2;
+  --color-hairline: #d6d6e4;
   --color-primary: #ffb000; /* the logo's colour is the action colour */
-  --color-primary-foreground: #141b3c; /* 9.2:1 */
+  --color-primary-foreground: #14181d; /* 9.7:1 */
   --color-primary-hover: #ffc233;
-  --color-secondary: #2a3eb1;
-  --color-secondary-foreground: #ffffff; /* 8.7:1 */
-  --color-accent: #2a3eb1; /* by day the ink is the accent. 8.0:1 */
+  --color-secondary: #14181d; /* the logo's black, for the action that must not compete */
+  --color-secondary-foreground: #ffffff; /* 17.8:1 */
+  --color-accent: #14181d; /* small accent text is the logo's black (17.8:1); links carry a yellow underline */
   --color-danger: #b42318;
   --color-success: #1f6b45;
 
@@ -131,9 +133,9 @@
   --radius-2xl: 1.75rem;
   --radius-3xl: 2.25rem;
 
-  /* --- Elevation. Shadows are tinted with navy, never grey-black. --- */
-  --shadow-e1: 0 1px 2px rgb(20 27 60 / 0.06);
-  --shadow-e2: 0 2px 6px rgb(20 27 60 / 0.05), 0 24px 56px -22px rgb(20 27 60 / 0.32);
+  /* --- Elevation. Shadows in the logo's black, kept soft on white. --- */
+  --shadow-e1: 0 1px 2px rgb(20 24 29 / 0.06);
+  --shadow-e2: 0 2px 6px rgb(20 24 29 / 0.05), 0 24px 56px -22px rgb(20 24 29 / 0.28);
 
   /* --- Motion. Three curves, one per intent (docs/visual-experience.md). --- */
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1); /* things arriving */
@@ -143,41 +145,6 @@
 
   --animate-fade-up: fade-up 0.9s var(--ease-apple) both;
   --animate-fade-in: fade-in 0.6s var(--ease-out-quart) both;
-}
-
-/* ============================================================
-   NIGHT — blueprint navy, cream ink, amber light. Applied by the
-   resolver in src/lib/theme.ts (18:00–06:00, or chosen).
-   ============================================================ */
-:root[data-theme="dark"] {
-  --color-background: #0e1330; /* indigo night, never black */
-  --color-surface: #141a3d;
-  --color-surface-2: #1c2450;
-  --color-foreground: #f4eedf; /* 15.7:1 */
-  --color-muted: #aab0cc; /* 8.5:1, 6.9:1 on surface-2 */
-  --color-subtle: #5f6683;
-  --color-border: #232b5c;
-  --color-hairline: #2b3466;
-  --color-primary: #ffb000;
-  --color-primary-foreground: #141b3c; /* 9.2:1 */
-  --color-primary-hover: #ffc233;
-  --color-secondary: #9daeff;
-  --color-secondary-foreground: #0e1330; /* 8.6:1 */
-  --color-accent: #ffb000; /* by night the lamp is the accent. 9.9:1 */
-  --color-danger: #ff8a6b;
-  --color-success: #5fd39a;
-
-  --color-indigo: #9daeff;
-  --color-amber: #ffb000;
-  --color-green: #5fd39a;
-  --color-laterite: #ff8a6b;
-  --color-glow-indigo: #3d4fd6;
-  --color-glow-amber: #ffb000;
-  --color-glow-green: #1f8a5a;
-  --color-glow-laterite: #b23a1e;
-
-  --shadow-e1: 0 0 0 1px rgb(255 255 255 / 0.05);
-  --shadow-e2: 0 0 0 1px rgb(255 255 255 / 0.07), 0 28px 64px -24px rgb(0 0 0 / 0.8);
 }
 
 /* The entrance rises but is never invisible: these classes sit on hero
@@ -206,14 +173,11 @@
 }
 
 @layer base {
+  /* One theme only: there is no dark mode. */
   html {
     color-scheme: light;
     background: var(--color-background);
     -webkit-text-size-adjust: 100%;
-  }
-
-  html[data-theme="dark"] {
-    color-scheme: dark;
   }
 
   body {
@@ -227,17 +191,6 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     font-feature-settings: "ss01" off;
-  }
-
-  /* The theme switch is instant, but the page should not strobe: colours
-     ease across when the ground changes under a reader. */
-  body,
-  header,
-  footer,
-  section {
-    transition:
-      background-color 0.5s var(--ease-out-quart),
-      color 0.5s var(--ease-out-quart);
   }
 
   ::selection {
@@ -335,17 +288,13 @@
 
   /* Translucent chrome over content: the nav bar and the mobile sheet. */
   .glass {
-    background: rgb(250 246 238 / 0.78);
+    background: rgb(255 255 255 / 0.8);
     -webkit-backdrop-filter: saturate(1.8) blur(20px);
     backdrop-filter: saturate(1.8) blur(20px);
   }
 
-  :root[data-theme="dark"] .glass {
-    background: rgb(14 19 48 / 0.74);
-  }
-
   /* Affiliation logos: drawn for white grounds, so they sit on a white
-     chip in both themes rather than being inverted or tinted. */
+     chip on any band rather than being inverted or tinted. */
   .chip-logo {
     display: flex;
     align-items: center;
@@ -368,12 +317,6 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-  }
-
-  /* Theme-scoped artwork (the logo lockup is two drawn files). */
-  :root[data-theme="dark"] .only-light,
-  :root:not([data-theme="dark"]) .only-dark {
-    display: none;
   }
 
   /* Horizontal rails scroll without a visible bar; the arrows and the
@@ -451,10 +394,6 @@
   to { box-shadow: var(--shadow-e2); }
 }
 
-@keyframes progress {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
 
 @layer components {
   /* ---------- Display width ----------
@@ -475,7 +414,7 @@
     }
   }
 
-  /* The beam lab's slider: a track in the ink, a thumb in the lamp. */
+  /* The beam lab's slider: the track is the von Mises scale, blue to red. */
   .beam-range {
     appearance: none;
     height: 28px;
@@ -486,13 +425,13 @@
   .beam-range::-webkit-slider-runnable-track {
     height: 6px;
     border-radius: 99px;
-    background: linear-gradient(90deg, var(--color-indigo), var(--color-brand-500) 55%, var(--color-laterite));
+    background: linear-gradient(90deg, var(--color-fea-0), var(--color-fea-1), var(--color-fea-2), var(--color-fea-3), var(--color-fea-4));
   }
 
   .beam-range::-moz-range-track {
     height: 6px;
     border-radius: 99px;
-    background: linear-gradient(90deg, var(--color-indigo), var(--color-brand-500) 55%, var(--color-laterite));
+    background: linear-gradient(90deg, var(--color-fea-0), var(--color-fea-1), var(--color-fea-2), var(--color-fea-3), var(--color-fea-4));
   }
 
   .beam-range::-webkit-slider-thumb {
@@ -535,28 +474,13 @@
     }
   }
 
-  /* ---------- Footer wordmark ----------
-     The name as the page's last frame: as wide as the container, its
-     foot cut by the page's edge, one tone off the ground so it reads as
-     an embossing rather than a headline. */
-  .footer-wordmark {
-    font-size: clamp(4.25rem, 18.5vw, 17rem);
-    font-weight: 900;
-    font-stretch: 125%;
-    letter-spacing: -0.055em;
-    line-height: 0.78;
-    margin-bottom: -0.12em;
-    white-space: nowrap;
-    color: var(--color-surface-2);
-    text-align: center;
-  }
-
   /* ---------- Atmosphere ----------
      PURPOSE: give the hero and the closing band a living light, the
-     glow of a workshop, without an image to download.
-     TRIGGER: always, as a slow 26s breath. MOBILE: same layer, two
-     glows instead of three. PERF: gradients on one composited layer;
-     only a registered percentage animates. REDUCED: still. */
+     glow of a workshop lamp in the logo's amber, without an image to
+     download. The page stays white: the light is soft and sits at the
+     edges. TRIGGER: always, as a slow 26s breath. PERF: gradients on one
+     composited layer; only a registered percentage animates. REDUCED:
+     still. */
   .atmosphere {
     position: absolute;
     inset: 0;
@@ -570,34 +494,21 @@
     position: absolute;
     inset: -25% -15%;
     background:
-      radial-gradient(38% 42% at calc(74% - var(--drift)) calc(26% + var(--drift)), color-mix(in oklab, var(--color-glow-amber) 85%, transparent), transparent 70%),
-      radial-gradient(34% 40% at calc(88% + var(--drift)) 74%, color-mix(in oklab, var(--color-glow-laterite) 55%, transparent), transparent 70%),
-      radial-gradient(44% 50% at calc(12% + var(--drift)) calc(80% - var(--drift)), color-mix(in oklab, var(--color-glow-indigo) 75%, transparent), transparent 70%);
+      radial-gradient(38% 42% at calc(80% - var(--drift)) calc(18% + var(--drift)), color-mix(in oklab, var(--color-glow-amber) 55%, transparent), transparent 70%),
+      radial-gradient(44% 50% at calc(10% + var(--drift)) calc(82% - var(--drift)), color-mix(in oklab, var(--color-glow-cream) 80%, transparent), transparent 70%);
     animation: drift 26s var(--ease-in-out-quart) infinite;
     will-change: background;
   }
 
-  /* A fine paper grain: texture, so the glow reads as light on a
-     surface rather than a gradient on a screen. 1 KB, inline. */
+  /* A fine paper grain, in neutral black: texture, so the glow reads as
+     light on a surface rather than a gradient on a screen. 1 KB, inline. */
   .atmosphere::after {
     content: "";
     position: absolute;
     inset: 0;
-    opacity: 0.35;
+    opacity: 0.3;
     mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.04 0 0 0 0 0.08 0 0 0 0 0.19 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  :root[data-theme="dark"] .atmosphere::before {
-    background:
-      radial-gradient(38% 42% at calc(74% - var(--drift)) calc(26% + var(--drift)), color-mix(in oklab, var(--color-glow-amber) 24%, transparent), transparent 70%),
-      radial-gradient(34% 40% at calc(88% + var(--drift)) 74%, color-mix(in oklab, var(--color-glow-laterite) 30%, transparent), transparent 70%),
-      radial-gradient(44% 50% at calc(12% + var(--drift)) calc(80% - var(--drift)), color-mix(in oklab, var(--color-glow-indigo) 48%, transparent), transparent 70%);
-  }
-
-  :root[data-theme="dark"] .atmosphere::after {
-    mix-blend-mode: screen;
-    opacity: 0.2;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.09 0 0 0 0 0.11 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   /* The atmosphere fades into the page below, so the hero hands over
@@ -606,54 +517,13 @@
     mask-image: linear-gradient(to bottom, #000 55%, transparent);
   }
 
-  /* On a navy band the glows need no theme switch: it is always night. */
-  .band-night {
-    --color-foreground: #f4eedf;
-    --color-muted: #aab0cc;
-    --color-accent: #ffb000;
-    --color-primary: #ffb000;
-    --color-primary-foreground: #141b3c;
-    --color-primary-hover: #ffc233;
-    --color-secondary: #9daeff;
-    --color-secondary-foreground: #0e1330;
-    --color-surface: #141a3d;
-    --color-surface-2: #1c2450;
-    --color-border: #232b5c;
-    --color-hairline: #2b3466;
-    --color-indigo: #9daeff;
-    --color-amber: #ffb000;
-    --color-green: #5fd39a;
-    --color-laterite: #ff8a6b;
-    --color-glow-indigo: #3d4fd6;
-    --color-glow-amber: #ffb000;
-    --color-glow-green: #1f8a5a;
-    --color-glow-laterite: #b23a1e;
-    background: var(--color-ink-950);
-    color: var(--color-foreground);
-    position: relative;
-    isolation: isolate;
-  }
-
-  .band-night .atmosphere::before {
-    background:
-      radial-gradient(40% 60% at calc(80% - var(--drift)) 20%, color-mix(in oklab, var(--color-glow-laterite) 30%, transparent), transparent 70%),
-      radial-gradient(40% 60% at calc(60% + var(--drift)) 110%, color-mix(in oklab, var(--color-glow-amber) 30%, transparent), transparent 70%),
-      radial-gradient(45% 60% at calc(10% + var(--drift)) 30%, color-mix(in oklab, var(--color-glow-indigo) 34%, transparent), transparent 70%);
-  }
-
-  /* The CtaPanel's action card: the same light, turned up, so the
+  /* The CtaPanel's action card: the same lamp, turned up, so the
      brightest thing in the closing band is the way forward. */
-  .band-night .atmosphere-strong::before {
+  .atmosphere-strong::before {
     inset: -10%;
     background:
-      radial-gradient(55% 80% at calc(85% - var(--drift)) 15%, color-mix(in oklab, var(--color-glow-laterite) 70%, transparent), transparent 70%),
-      radial-gradient(50% 80% at calc(45% + var(--drift)) 110%, color-mix(in oklab, var(--color-glow-amber) 55%, transparent), transparent 70%),
-      radial-gradient(55% 90% at calc(5% + var(--drift)) 20%, color-mix(in oklab, var(--color-glow-indigo) 80%, transparent), transparent 70%);
-  }
-
-  .band-night .atmosphere::after {
-    mix-blend-mode: screen;
-    opacity: 0.2;
+      radial-gradient(55% 80% at calc(85% - var(--drift)) 15%, color-mix(in oklab, var(--color-glow-amber) 85%, transparent), transparent 70%),
+      radial-gradient(55% 90% at calc(5% + var(--drift)) 90%, var(--color-glow-cream), transparent 70%);
   }
 
   /* ---------- Headline entrance ----------
@@ -681,21 +551,6 @@
     }
   }
 
-  /* ---------- Reading progress ----------
-     PURPOSE: a hairline of heat under the nav says how far down the
-     page you are. TRIGGER: document scroll (scroll-driven). */
-  @supports (animation-timeline: scroll()) {
-    .scroll-progress {
-      position: absolute;
-      inset: auto 28px -1px 28px;
-      height: 2px;
-      border-radius: 2px;
-      transform-origin: 0 50%;
-      background: linear-gradient(90deg, var(--color-indigo), var(--color-brand-500) 55%, var(--color-laterite));
-      animation: progress linear both;
-      animation-timeline: scroll(root block);
-    }
-  }
 
   /* ---------- Marquee ----------
      PURPOSE: the disciplines behind the work, passing like a ticker
@@ -743,37 +598,24 @@
     opacity: 1;
   }
 
-  .hue-indigo { --hue: var(--color-glow-indigo); --hue-ink: var(--color-indigo); }
-  .hue-amber { --hue: var(--color-glow-amber); --hue-ink: var(--color-amber); }
-  .hue-green { --hue: var(--color-glow-green); --hue-ink: var(--color-green); }
-  .hue-laterite { --hue: var(--color-glow-laterite); --hue-ink: var(--color-laterite); }
+  /* One accent hue now: the logo's amber. `--hue` is the glow,
+     `--hue-ink` the text-safe deep amber. */
+  :root {
+    --hue: var(--color-glow-amber);
+    --hue-ink: var(--color-foreground);
+  }
 
   .text-hue { color: var(--hue-ink); }
-  .bg-hue { background: var(--hue); }
+  .bg-hue { background: var(--color-brand-500); }
   .bg-hue-ink { background: var(--hue-ink); }
-  .border-hue { border-color: var(--hue-ink); }
+  .border-hue { border-color: var(--color-brand-500); }
 
-  /* ---------- Pillar pages ----------
-     PURPOSE: each part of the ecosystem reads as its own room in the
-     same house. A pillar page (`.pillar.hue-*`) takes its hue as the
-     accent, so eyebrows, links and focus rings speak in it, and its
-     hero is lit by that hue alone. The action colour stays amber and
-     the closing band stays the shared night (`.band-night` resets the
-     accent). Every hue ink is AA on paper, surface and night. */
-  .pillar {
-    --color-accent: var(--hue-ink);
-  }
-
+  /* A page hero lit by the lamp alone: amber at the top-right, cream at
+     the left, fading into the white page below. */
   .atmosphere.atmosphere-pillar::before {
     background:
-      radial-gradient(40% 46% at calc(84% - var(--drift)) calc(12% + var(--drift)), color-mix(in oklab, var(--hue) 80%, transparent), transparent 70%),
-      radial-gradient(36% 42% at calc(8% + var(--drift)) 58%, color-mix(in oklab, var(--hue) 45%, transparent), transparent 70%);
-  }
-
-  :root[data-theme="dark"] .atmosphere.atmosphere-pillar::before {
-    background:
-      radial-gradient(40% 46% at calc(84% - var(--drift)) calc(12% + var(--drift)), color-mix(in oklab, var(--hue) 26%, transparent), transparent 70%),
-      radial-gradient(36% 42% at calc(8% + var(--drift)) 58%, color-mix(in oklab, var(--hue) 16%, transparent), transparent 70%);
+      radial-gradient(40% 46% at calc(84% - var(--drift)) calc(12% + var(--drift)), color-mix(in oklab, var(--color-glow-amber) 60%, transparent), transparent 70%),
+      radial-gradient(36% 42% at calc(8% + var(--drift)) 58%, color-mix(in oklab, var(--color-glow-cream) 90%, transparent), transparent 70%);
   }
 
   /* ---------- Lift ----------

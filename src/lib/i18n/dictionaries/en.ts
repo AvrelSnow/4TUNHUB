@@ -80,16 +80,6 @@ const en = {
     },
   },
 
-  /** The appearance control in the footer. */
-  theme: {
-    label: "Appearance",
-    options: {
-      auto: "Auto",
-      light: "Light",
-      dark: "Dark",
-    },
-    autoHint: "Follows your clock: light from 06:00, dark from 18:00.",
-  },
 
   /** The privacy bar, and the permanent version of it on /privacy. */
   consent: {
@@ -1615,7 +1605,7 @@ const en = {
     storage: {
       title: "Cookies and storage",
       intro:
-        "This site sets no cookies — not one, not even our own. Two things are stored in your browser and never leave your device, and one thing is counted, only if you allow it. That is the entire list.",
+        "This site sets no cookies — not one, not even our own. One thing is stored in your browser and never leaves your device, and one thing is counted, only if you allow it. That is the entire list.",
       columns: {
         what: "What",
         why: "Why",
@@ -1623,13 +1613,6 @@ const en = {
         refuse: "Can you refuse it?",
       },
       rows: [
-        {
-          what: "Appearance",
-          key: "4tun.theme",
-          why: "Remembers whether you chose Light, Dark or Auto, so the site obeys you on the next page.",
-          kept: "Your browser, on this device. It is never sent anywhere.",
-          refuse: "It only exists once you use the switch in the footer. Clearing your browser data removes it.",
-        },
         {
           what: "Your answer to this question",
           key: "4tun.consent",

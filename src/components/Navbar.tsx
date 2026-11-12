@@ -8,7 +8,6 @@ import { MobileNav } from "./MobileNav";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { SoundToggle } from "./SoundToggle";
 import { primaryNav } from "@/lib/sitemap";
-import { hueClass } from "@/lib/hues";
 import { projectDetailPath } from "@/lib/projects";
 import { MEDIUM_URL, WHATSAPP_COMMUNITY_URL, YOUTUBE_URL } from "@/lib/site";
 import type { Locale } from "@/lib/i18n/config";
@@ -18,8 +17,7 @@ import { cn } from "@/lib/cn";
 
 /**
  * The bar floats: a glass pill held 12px off the top and sides. As the page
- * scrolls it gains its shadow and a hairline of progress runs along its
- * foot (scroll-driven CSS, `.nav-pill` and `.scroll-progress`).
+ * scrolls it gains its shadow (scroll-driven CSS, `.nav-pill`).
  *
  * Four entries, grouped the way a visitor asks (after Fapshi and Bonsai):
  *   What we do ▾  — for companies (Services, Research) and for learners
@@ -45,7 +43,6 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     key,
     label: dict.routes[key] ?? key,
     href: L(href),
-    hue: hueClass(key),
   }));
 
   return (
@@ -57,12 +54,12 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <NavMenu label={m.work}>
             <div className="grid grid-cols-[1fr_1fr_17rem] gap-2 p-3">
               <MenuColumn title={m.forCompanies}>
-                <MenuItem href={L("/services")} icon="gear" hue="hue-indigo" title={dict.routes.services} desc={m.services} />
-                <MenuItem href={L("/research")} icon="leaf" hue="hue-green" title={dict.routes.research} desc={m.research} />
+                <MenuItem href={L("/services")} icon="gear" title={dict.routes.services} desc={m.services} />
+                <MenuItem href={L("/research")} icon="leaf" title={dict.routes.research} desc={m.research} />
                 <MenuItem href={L("/projects")} icon="cube" title={dict.routes.projects} desc={m.projectsDesc} />
               </MenuColumn>
               <MenuColumn title={m.forLearners}>
-                <MenuItem href={L("/academy")} icon="cap" hue="hue-amber" title={dict.routes.academy} desc={m.academy} />
+                <MenuItem href={L("/academy")} icon="cap" title={dict.routes.academy} desc={m.academy} />
                 <MenuItem href={YOUTUBE_URL} external icon="play" title={m.youtube} desc={m.youtubeDesc} />
                 <MenuItem href={MEDIUM_URL} external icon="letter" title={m.rem} desc={m.remDesc} />
               </MenuColumn>
@@ -89,7 +86,7 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </NavMenu>
 
           <NavLink href={L("/projects")}>{dict.routes.projects}</NavLink>
-          <NavLink href={L("/community")} hue="hue-laterite">
+          <NavLink href={L("/community")}>
             {dict.routes.community}
           </NavLink>
 
@@ -104,10 +101,10 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                   <MenuItem href={L("/contact")} icon="mail" title={m.contact} desc={m.contactDesc} />
                 </ul>
               </div>
-              <div className="spotlight hue-laterite flex flex-col justify-between rounded-2xl bg-surface p-5">
+              <div className="spotlight flex flex-col justify-between rounded-2xl bg-surface p-5">
                 <div>
-                  <p className="inline-flex items-center gap-2 text-2xs font-semibold text-laterite">
-                    <span aria-hidden="true" className="h-1.5 w-1.5 animate-pulse rounded-full bg-laterite" />
+                  <p className="inline-flex items-center gap-2 text-2xs font-semibold text-foreground">
+                    <span aria-hidden="true" className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-500" />
                     {dict.community.live}
                   </p>
                   <p className="mt-2 font-semibold leading-snug text-foreground">{m.communityTitle}</p>
@@ -143,7 +140,6 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </div>
 
         {/* Reading progress, held to the pill's straight run. */}
-        <span aria-hidden="true" className="scroll-progress" />
       </div>
     </header>
   );
@@ -163,14 +159,12 @@ function MenuItem({
   icon,
   title,
   desc,
-  hue = "",
   external = false,
 }: {
   href: string;
   icon: GlyphName;
   title: string;
   desc: string;
-  hue?: string;
   external?: boolean;
 }) {
   const inner = (
@@ -178,7 +172,7 @@ function MenuItem({
       <span
         className={cn(
           "flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-surface transition-transform duration-300 group-hover:scale-105",
-          hue ? "text-hue" : "text-foreground",
+          "text-foreground",
         )}
       >
         <Glyph name={icon} />
@@ -192,7 +186,7 @@ function MenuItem({
       </span>
     </>
   );
-  const cls = cn("group flex gap-3 rounded-2xl p-3 transition-colors hover:bg-surface", hue);
+  const cls = "group flex gap-3 rounded-2xl p-3 transition-colors hover:bg-surface";
   return (
     <li>
       {external ? (

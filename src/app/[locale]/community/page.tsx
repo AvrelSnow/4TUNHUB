@@ -34,10 +34,10 @@ export default async function CommunityPage({ params }: Params) {
   const t = dict.community;
 
   return (
-    <div className="pillar hue-laterite">
+    <div>
       {/* 1 · HERO */}
       <PageHero
-        hue="laterite"
+        lit
         eyebrow={t.eyebrow}
         title={t.title}
         intro={t.subtitle}

@@ -1,5 +1,4 @@
 import { cn } from "@/lib/cn";
-import type { Hue } from "@/lib/hues";
 import { Container } from "./Container";
 
 /**
@@ -13,12 +12,12 @@ export function PageHero({
   intro,
   actions,
   align = "center",
-  hue,
+  lit = false,
   className,
   children,
 }: {
-  /** A pillar page's hue (src/lib/hues.ts): lights the hero in it. */
-  hue?: Hue;
+  /** A pillar page's hero: lit by the amber lamp, the eyebrow with its dot. */
+  lit?: boolean;
   eyebrow?: string;
   title: string;
   intro?: string;
@@ -33,19 +32,19 @@ export function PageHero({
     <section
       className={cn(
         "pt-16 pb-16 sm:pt-24 sm:pb-24",
-        hue && `hue-${hue} relative isolate overflow-hidden`,
+        lit && "relative isolate overflow-hidden",
         className,
       )}
     >
-      {/* A pillar's hero is lit in that pillar's hue alone, and the light
-          fades into the page below (globals.css, `.atmosphere-pillar`). */}
-      {hue && <div aria-hidden="true" className="atmosphere atmosphere-pillar atmosphere-fade" />}
-      <Container className={cn(hue && "relative")}>
+      {/* A pillar's hero is lit by the amber lamp, and the light fades
+          into the white page below (globals.css, `.atmosphere-pillar`). */}
+      {lit && <div aria-hidden="true" className="atmosphere atmosphere-pillar atmosphere-fade" />}
+      <Container className={cn(lit && "relative")}>
         <div className={cn(centered ? "mx-auto max-w-4xl text-center" : "max-w-4xl")}>
           {eyebrow &&
-            (hue ? (
+            (lit ? (
               <p className="eyebrow text-hue inline-flex animate-fade-in items-center gap-2">
-                <span aria-hidden="true" className="bg-hue-ink h-2 w-2 rounded-full" />
+                <span aria-hidden="true" className="bg-hue h-2 w-2 rounded-full" />
                 {eyebrow}
               </p>
             ) : (

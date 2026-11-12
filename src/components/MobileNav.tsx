@@ -10,7 +10,7 @@ import { cn } from "@/lib/cn";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Item = { key: string; label: string; href: string; hue?: string };
+type Item = { key: string; label: string; href: string };
 
 /**
  * The menu below lg: a full-height sheet under the bar, with the pillars
@@ -22,7 +22,7 @@ type Item = { key: string; label: string; href: string; hue?: string };
  * containing block for fixed descendants, which would trap the sheet inside
  * a 56px strip. It covers the whole screen *under* the floating pill (z-10
  * below the header's z-40), so the pill and its close button stay put.
- * Each pillar carries its hue dot, as in the desktop bar.
+ * The current page carries the amber dot, as in the desktop bar.
  */
 export function MobileNav({
   items,
@@ -102,12 +102,11 @@ export function MobileNav({
                       className={cn(
                         "flex items-center gap-3 border-b border-border py-4 text-3xl font-bold tracking-tight [font-stretch:112%]",
                         active ? "text-foreground" : "text-foreground/80 hover:text-foreground",
-                        item.hue,
                       )}
                     >
                       <span
                         aria-hidden="true"
-                        className={cn("h-2.5 w-2.5 shrink-0 rounded-full", item.hue ? "bg-hue" : "bg-hairline")}
+                        className={cn("h-2.5 w-2.5 shrink-0 rounded-full", active ? "bg-brand-500" : "bg-hairline")}
                       />
                       {item.label}
                     </Link>

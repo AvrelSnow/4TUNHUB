@@ -98,7 +98,7 @@ export default async function StorePage({ params }: Params) {
                   <Card interactive className="flex h-full flex-col">
                     <h3 className="text-headline text-foreground">{copy.title}</h3>
                     <p className="mt-3 flex-1 text-muted">{copy.desc}</p>
-                    <span className="mt-6 inline-flex items-center gap-1 font-medium text-accent">
+                    <span className="mt-6 inline-flex items-center gap-1 font-semibold text-accent underline decoration-brand-500 decoration-2 underline-offset-4">
                       {t.explore}
                       <Chevron />
                     </span>

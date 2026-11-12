@@ -7,11 +7,10 @@ import { ImageResponse } from "next/og";
  * The one renderer for every link-preview card (1200×630), so the site
  * card and the Academy card cannot drift apart.
  *
- * Same language as the site (docs/visual-experience.md): indigo ink on
- * drafting paper, Mona Sans set wide and heavy for the claim, the amber
- * roundel, the indigo→amber→laterite hairline the nav uses for reading
- * progress, and a real photograph on the right. A card for one pillar sets
- * its eyebrow in that pillar's hue.
+ * Same language as the site (docs/visual-experience.md): the logo's black
+ * on white, Mona Sans set wide and heavy for the claim, the amber roundel,
+ * an amber→black hairline, an ink
+ * eyebrow after a yellow dot, and a real photograph on the right.
  *
  * The renderer reads TTF/WOFF and PNG/JPEG only, and draws a variable font
  * at its default instance, so the fonts are two static Mona Sans instances
@@ -23,30 +22,18 @@ import { ImageResponse } from "next/og";
  */
 export const OG_SIZE = { width: 1200, height: 630 };
 
-// Day tokens from globals.css. A card is a still image: it does not follow
-// the visitor's clock, and paper is the ground every feed renders well.
-const PAPER = "#faf6ee";
-const INK = "#141b3c"; // 15.6:1 on paper
-const MUTED = "#4e5672"; // 6.7:1
-const AMBER = "#ffb000"; // a fill, never text on paper
-const INDIGO = "#2a3eb1";
-const LATERITE = "#b23a1e";
+// Tokens from globals.css: the logo's colours on white.
+const PAPER = "#ffffff";
+const INK = "#14181d"; // 17.8:1 on white
+const MUTED = "#555a62"; // 6.9:1
+const AMBER = "#ffb000"; // the logo's yellow, fills only
 
-/** Text-safe day inks of the pillar hues (src/lib/hues.ts). */
-const HUE_INK = {
-  indigo: INDIGO,
-  amber: "#855600",
-  green: "#1f6b45",
-  laterite: LATERITE,
-} as const;
 
 const PHOTO_W = 440;
 
 export type CardContent = {
-  /** Small line above the claim, in the pillar's hue. Optional. */
+  /** Small line above the claim, in ink, after a yellow dot. Optional. */
   eyebrow?: string;
-  /** The pillar this card speaks for; colours the eyebrow. Default indigo. */
-  hue?: keyof typeof HUE_INK;
   /** The claim, one entry per line. Two lines fit. */
   lines: string[];
   sub: string;
@@ -122,7 +109,7 @@ export async function renderCard(c: CardContent): Promise<Response> {
                   alignItems: "center",
                   gap: 12,
                   marginBottom: 18,
-                  color: HUE_INK[c.hue ?? "indigo"],
+                  color: INK,
                   fontSize: 26,
                   fontWeight: 600,
                 }}
@@ -132,7 +119,7 @@ export async function renderCard(c: CardContent): Promise<Response> {
                     width: 12,
                     height: 12,
                     borderRadius: 9999,
-                    backgroundColor: HUE_INK[c.hue ?? "indigo"],
+                    backgroundColor: AMBER,
                   }}
                 />
                 {c.eyebrow}
@@ -170,13 +157,13 @@ export async function renderCard(c: CardContent): Promise<Response> {
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-            {/* The site's reading-progress hairline, as the card's rule. */}
+            {/* An amber→black hairline, as the card's rule. */}
             <div
               style={{
                 width: 120,
                 height: 4,
                 borderRadius: 4,
-                backgroundImage: `linear-gradient(90deg, ${INDIGO}, ${AMBER} 55%, ${LATERITE})`,
+                backgroundImage: `linear-gradient(90deg, ${AMBER}, ${INK})`,
               }}
             />
             <div style={{ color: MUTED, fontSize: 23, fontWeight: 600 }}>{c.foot}</div>

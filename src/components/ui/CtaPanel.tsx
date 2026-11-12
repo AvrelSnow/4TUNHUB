@@ -9,8 +9,8 @@ import { cn } from "@/lib/cn";
  * question on the left, and on the right an action card lit by the
  * workshop atmosphere, with one real person's words under it.
  *
- * Always an indigo night (`band-night`), in both themes, and the footer
- * below is the same ground, so a page ends in one continuous dark scene.
+ * White, like the footer below it, with its cards in Ghost White, so a
+ * page ends in one continuous white band.
  *
  * The quote is real and named (src/lib/testimonials.ts), printed in the
  * words its author wrote. A page picks one by its title, so different
@@ -61,7 +61,7 @@ export function CtaPanel({
       : null;
 
   return (
-    <section className={cn("band-night py-24 sm:py-32", className)}>
+    <section className={cn("bg-background py-24 sm:py-32", className)}>
       <Container>
         <Reveal className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>

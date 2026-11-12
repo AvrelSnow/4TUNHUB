@@ -44,10 +44,10 @@ export default async function ResearchPage({ params }: Params) {
   const banana = dict.projects.galleries["banana-pseudostem-shredder"] ?? [];
 
   return (
-    <div className="pillar hue-green">
+    <div>
       {/* 1 · HERO — a lab result, not an illustration of one. */}
       <PageHero
-        hue="green"
+        lit
         eyebrow={t.eyebrow}
         title={t.title}
         intro={t.subtitle}

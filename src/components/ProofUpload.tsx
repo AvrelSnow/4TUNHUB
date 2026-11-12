@@ -99,7 +99,7 @@ export function ProofUpload({
       <legend className="text-sm font-medium text-foreground">{copy.legend}</legend>
       <p className="-mt-1 text-2xs leading-5 text-muted">
         {copy.hint}{" "}
-        <Link href={guideHref} className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent">
+        <Link href={guideHref} className="text-accent underline decoration-brand-500 decoration-2 underline-offset-4 transition-colors hover:decoration-foreground">
           {copy.guide}
         </Link>
       </p>

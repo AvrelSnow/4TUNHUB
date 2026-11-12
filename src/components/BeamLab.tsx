@@ -106,18 +106,18 @@ export function BeamLab({ t, locale }: { t: BeamStrings; locale: string }) {
   const tipY = Y0 + dMax * PX_PER_MM * SCALE;
   const arrowLen = 24 + (force / F_MAX) * 70;
 
-  // Stress colour: the four pillar hues as a stress scale, cool to hot,
-  // the way an FEA plot reads (indigo → green → amber → laterite). Each
-  // stop along the beam is coloured by the LOCAL stress ratio, which falls
-  // linearly from the wall to zero at the tip, so the hot zone visibly
-  // grows from the wall as the load rises. Mixing only neighbouring hues
-  // avoids the muddy grey of mixing indigo straight into amber.
-  const SCALE_HUES = ["var(--color-indigo)", "var(--color-green)", "var(--color-brand-500)", "var(--color-laterite)"];
+  // Stress colour on the classic von Mises contour scale an FEA plot uses:
+  // blue (no stress) → cyan → green → yellow → red (yield). Each stop along
+  // the beam is coloured by the LOCAL stress ratio, which falls linearly
+  // from the wall to zero at the tip, so the hot zone visibly grows from
+  // the wall as the load rises. Mixing only neighbouring stops keeps the
+  // ramp clean.
+  const SCALE_HUES = ["var(--color-fea-0)", "var(--color-fea-1)", "var(--color-fea-2)", "var(--color-fea-3)", "var(--color-fea-4)"];
   const colourAt = (r: number) => {
-    const p = Math.max(0, Math.min(1, r)) * 3;
-    const k = Math.min(2, Math.floor(p));
+    const p = Math.max(0, Math.min(1, r)) * 4;
+    const k = Math.min(3, Math.floor(p));
     const f = Math.round((p - k) * 100);
-    return `color-mix(in oklab, ${SCALE_HUES[k + 1]} ${f}%, ${SCALE_HUES[k]})`;
+    return `color-mix(in srgb, ${SCALE_HUES[k + 1]} ${f}%, ${SCALE_HUES[k]})`;
   };
   const stops = Array.from({ length: 9 }, (_, j) => {
     const x = j / 8;
@@ -135,11 +135,11 @@ export function BeamLab({ t, locale }: { t: BeamStrings; locale: string }) {
 
   const stateText = t.states[state];
   const stateTone =
-    state === "yield" ? "text-laterite" : state === "low" ? "text-amber" : "text-green";
+    state === "yield" ? "text-danger" : state === "low" ? "text-foreground" : "text-foreground";
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1.35fr_1fr] lg:items-center">
-      <figure className="spotlight hue-indigo overflow-hidden rounded-3xl bg-surface-2 p-4 shadow-e1 sm:p-6">
+      <figure className="spotlight overflow-hidden rounded-3xl bg-surface-2 p-4 shadow-e1 sm:p-6">
         <svg
           ref={svgRef}
           viewBox="0 0 640 240"

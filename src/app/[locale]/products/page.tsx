@@ -66,7 +66,7 @@ export default async function ProductsPage({ params }: Params) {
                   <p className="mt-1.5 text-sm leading-6 text-muted">{copy.problem}</p>
                   <p className="mt-4 text-2xs font-semibold text-foreground">{t.whoLabel}</p>
                   <p className="mt-1.5 text-sm leading-6 text-muted">{copy.who}</p>
-                  <span className="mt-auto inline-flex items-center gap-1 pt-6 font-medium text-accent">
+                  <span className="mt-auto inline-flex items-center gap-1 pt-6 font-semibold text-accent underline decoration-brand-500 decoration-2 underline-offset-4">
                     {t.primaryCta}
                     <Chevron />
                   </span>

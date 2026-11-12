@@ -7,8 +7,8 @@ import { ImageResponse } from "next/og";
  * for favicon/OG). iOS home-screen bookmark uses this, 180×180.
  *
  * The amber roundel as drawn in public/4tunhub-mark.svg (white "4", soft
- * ink shadow), set on the indigo night (#0E1330) so the home-screen tile
- * carries the site's two colours. The "4" is Mona Sans, from the same
+ * ink shadow), set on white, the logo's own ground, so the home-screen tile
+ * reads as the logo. The "4" is Mona Sans, from the same
  * static instance as the link-preview cards (scripts/make-og-fonts.py).
  */
 export const size = { width: 180, height: 180 };
@@ -25,7 +25,7 @@ export default async function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#0e1330",
+          backgroundColor: "#ffffff",
         }}
       >
         <div

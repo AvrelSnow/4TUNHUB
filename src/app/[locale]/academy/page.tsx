@@ -56,10 +56,10 @@ export default async function AcademyPage({ params }: Params) {
   ];
 
   return (
-    <div className="pillar hue-amber">
+    <div>
       {/* 1 · HERO */}
       <PageHero
-        hue="amber"
+        lit
         eyebrow={t.eyebrow}
         title={t.title}
         intro={t.subtitle}

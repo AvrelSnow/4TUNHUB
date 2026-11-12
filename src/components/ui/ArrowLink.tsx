@@ -18,7 +18,7 @@ export function ArrowLink({
   children: React.ReactNode;
 }) {
   const classes = cn(
-    "group/arrow inline-flex items-center gap-1 text-base font-medium text-accent hover:underline hover:underline-offset-4",
+    "group/arrow inline-flex items-center gap-1 text-base font-medium text-accent underline decoration-brand-500 decoration-2 underline-offset-4",
     className,
   );
   const icon = <Chevron external={external} />;

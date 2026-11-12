@@ -45,7 +45,7 @@ function ContactFormFields({ t, onReset }: { t: ContactCopy; onReset: () => void
         <button
           type="button"
           onClick={onReset}
-          className="mt-6 font-medium text-accent hover:underline hover:underline-offset-4"
+          className="mt-6 font-medium text-accent underline decoration-brand-500 decoration-2 underline-offset-4"
         >
           {t.success.again}
         </button>

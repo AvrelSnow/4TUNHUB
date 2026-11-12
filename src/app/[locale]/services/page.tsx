@@ -46,10 +46,10 @@ export default async function ServicesPage({ params }: Params) {
   const braking = dict.projects.galleries["locomotive-braking-analysis"] ?? [];
 
   return (
-    <div className="pillar hue-indigo">
+    <div>
       {/* 1 · HERO — the title's claim, shown: a drawing, and the part built from it. */}
       <PageHero
-        hue="indigo"
+        lit
         eyebrow={t.eyebrow}
         title={t.title}
         intro={t.subtitle}

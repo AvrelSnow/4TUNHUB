@@ -18,7 +18,6 @@ import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { CONSENT_ANCHOR } from "@/lib/consent";
 import { localizeHref } from "@/lib/i18n/routing";
 import { SITE_URL, SITE_NAME, SITE_KEYWORDS, OG_IMAGE, organizationJsonLd } from "@/lib/site";
-import { themeResolverScript } from "@/lib/theme";
 import { locales, isLocale, localeTag, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -66,13 +65,9 @@ export async function generateMetadata({
   };
 }
 
-/**
- * One tag, not a media-switched pair: the theme follows the visitor's clock,
- * which a media query cannot see. This is the day value (the fallback), and
- * ThemeControl rewrites it to the live `--color-background` after mount.
- */
+/** One theme: the browser chrome matches the white page. */
 export const viewport: Viewport = {
-  themeColor: "#faf6ee",
+  themeColor: "#ffffff",
 };
 
 export default async function LocaleLayout({
@@ -91,16 +86,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       className="h-full antialiased"
-      // No `data-theme` is server-rendered: a static page cannot know the
-      // visitor's local hour. The resolver below sets it before first paint,
-      // and no markup depends on it, so nothing can mismatch on hydration.
-      suppressHydrationWarning
     >
-      <head>
-        {/* BLOCKING, and first, so the page never flashes the wrong theme.
-            See src/lib/theme.ts. */}
-        <script dangerouslySetInnerHTML={{ __html: themeResolverScript }} />
-      </head>
       <body className="flex min-h-full flex-col">
         <JsonLd data={organizationJsonLd} />
         <a

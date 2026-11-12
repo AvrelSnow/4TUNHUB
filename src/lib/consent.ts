@@ -27,10 +27,9 @@
  * worth paying once rather than a legal question worth reopening twice.
  *
  * WHAT IS *NOT* ASKED ABOUT, AND WHY
- * The appearance preference (`4tun.theme`) and the record of this very
- * choice (`4tun.consent`) are strictly necessary for something the
- * visitor asked for: obeying a setting they chose, and not being asked
- * the same question on every page. Asking permission to remember that
+ * The record of this very choice (`4tun.consent`) is strictly necessary
+ * for something the visitor asked for: not being asked the same question
+ * on every page. Asking permission to remember that
  * permission was refused is the kind of theatre that makes people stop
  * reading banners.
  *
@@ -44,7 +43,7 @@
 /** Bump when the question changes. Old answers stop counting. */
 export const CONSENT_VERSION = 1;
 
-/** localStorage key. Namespaced like the theme key so it cannot collide. */
+/** localStorage key. Namespaced (`4tun.`) so it cannot collide. */
 export const CONSENT_STORAGE_KEY = "4tun.consent";
 
 /** Fired on the window when the choice changes in this tab. */

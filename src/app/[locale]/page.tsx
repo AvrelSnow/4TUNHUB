@@ -26,9 +26,9 @@ import { cn } from "@/lib/cn";
  * The home page is one continuous experience (docs/visual-experience.md):
  *
  *   workshop light → the claim → the evidence fanned out → the disciplines
- *   ticking past → the four pillars, each in its own hue → a beam you can
+ *   ticking past → the four pillars → a beam you can
  *   load yourself → the machines that shipped → what people say → the
- *   person behind it all, with his record → the night band and footer
+ *   person behind it all, with his record → the closing band and footer
  *   where every page ends.
  *
  * The hero is a fan of five real photographs — machines that were
@@ -45,8 +45,8 @@ const HERO_SHOTS = [
   { src: "/images/projects/fsae-hero.webp", key: "fsae-race-car", offset: "lg:mt-20", mobile: false },
 ] as const;
 
-/** The marquee's dots cycle through the four pillar hues. */
-const DOTS = ["bg-indigo", "bg-brand-500", "bg-green", "bg-laterite"] as const;
+/** The marquee's dots alternate the logo's amber and black. */
+const DOTS = ["bg-dot-red", "bg-dot-blue", "bg-dot-green", "bg-brand-500", "bg-dot-violet"] as const;
 
 export default async function Home({
   params,
@@ -128,7 +128,7 @@ export default async function Home({
               {t.disciplines.map((d, i) => (
                 <li key={d} className="flex items-center gap-10 whitespace-nowrap">
                   {d}
-                  <span aria-hidden="true" className={cn("h-1.5 w-1.5 rounded-full", DOTS[i % 4])} />
+                  <span aria-hidden="true" className={cn("h-1.5 w-1.5 rounded-full", DOTS[i % DOTS.length])} />
                 </li>
               ))}
             </ul>
@@ -178,13 +178,13 @@ export default async function Home({
             <Reveal className="lg:col-span-2">
               <Link
                 href={href("services")}
-                className="spotlight lift hue-indigo group grid h-full grid-cols-1 overflow-hidden rounded-3xl bg-surface-2 lg:grid-cols-2"
+                className="spotlight lift group grid h-full grid-cols-1 overflow-hidden rounded-3xl bg-surface-2 lg:grid-cols-2"
               >
                 <div className="flex flex-col justify-center p-8 sm:p-12">
                   <PillarName>{dict.routes.services}</PillarName>
                   <h3 className="mt-3 text-display-sm text-foreground">{dict.services.title}</h3>
                   <p className="mt-4 max-w-md text-muted">{t.pillars.services}</p>
-                  <span className="text-hue mt-6 inline-flex items-center gap-1 font-semibold">
+                  <span className="text-hue mt-6 inline-flex items-center gap-1 font-semibold underline decoration-brand-500 decoration-2 underline-offset-4">
                     {t.learnMore}
                     <Chevron />
                   </span>
@@ -205,7 +205,6 @@ export default async function Home({
               title={dict.academy.title}
               body={t.pillars.academy}
               cta={t.learnMore}
-              hue="hue-amber"
               image="/images/projects/beans-8.webp"
               alt={dict.projects.galleries["beans-unwrapping-machine"]?.[7] ?? ""}
             />
@@ -215,19 +214,18 @@ export default async function Home({
               title={dict.research.title}
               body={t.pillars.research}
               cta={t.learnMore}
-              hue="hue-green"
               image="/images/projects/banana-2.webp"
               alt={dict.projects.galleries["banana-pseudostem-shredder"]?.[1] ?? ""}
             />
 
             {/* Community: the one pillar that is live today says so. */}
             <Reveal className="lg:col-span-2">
-              <div className="spotlight hue-laterite flex flex-col gap-8 rounded-3xl bg-surface-2 p-8 sm:p-12 lg:flex-row lg:items-end lg:justify-between">
+              <div className="spotlight flex flex-col gap-8 rounded-3xl bg-surface-2 p-8 sm:p-12 lg:flex-row lg:items-end lg:justify-between">
                 <div className="max-w-xl">
                   <div className="flex items-center gap-3">
                     <PillarName>{dict.routes.community}</PillarName>
                     <Badge variant="amber">
-                      <span aria-hidden="true" className="h-1.5 w-1.5 animate-pulse rounded-full bg-laterite" />
+                      <span aria-hidden="true" className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-500" />
                       {dict.community.live}
                     </Badge>
                   </div>
@@ -378,7 +376,6 @@ function PillarTile({
   title,
   body,
   cta,
-  hue,
   image,
   alt,
 }: {
@@ -387,7 +384,6 @@ function PillarTile({
   title: string;
   body: string;
   cta: string;
-  hue: string;
   image: string;
   alt: string;
 }) {
@@ -395,13 +391,13 @@ function PillarTile({
     <Reveal>
       <Link
         href={href}
-        className={cn("spotlight lift group flex h-full flex-col overflow-hidden rounded-3xl bg-surface-2", hue)}
+        className="spotlight lift group flex h-full flex-col overflow-hidden rounded-3xl bg-surface-2"
       >
         <div className="p-8 sm:p-12 sm:pb-8">
           <PillarName>{eyebrow}</PillarName>
           <h3 className="mt-3 text-headline text-foreground">{title}</h3>
           <p className="mt-3 text-muted">{body}</p>
-          <span className="text-hue mt-5 inline-flex items-center gap-1 font-semibold">
+          <span className="text-hue mt-5 inline-flex items-center gap-1 font-semibold underline decoration-brand-500 decoration-2 underline-offset-4">
             {cta}
             <Chevron />
           </span>
@@ -428,7 +424,7 @@ function LogoChip({ name, logo, href, wide = false }: { name: string; logo: stri
   );
 }
 
-/** A pillar's name in its own hue, with the hue's mark beside it. */
+/** A pillar's name in the deep amber, with an amber dot beside it. */
 function PillarName({ children }: { children: React.ReactNode }) {
   return (
     <p className="eyebrow text-hue inline-flex items-center gap-2">
@@ -456,7 +452,7 @@ function HeroTitle({ text }: { text: string }) {
             <Fragment key={`${p}-${k}`}>
               <span
                 style={{ "--i": i++ } as React.CSSProperties}
-                className={p === 1 ? "text-accent" : undefined}
+                className={p === 1 ? "text-brand-500" : undefined}
               >
                 {w}
               </span>{" "}

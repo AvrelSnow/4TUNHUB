@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Container } from "./ui/Container";
 import { Logo } from "./ui/Logo";
-import { ThemeControl } from "./ThemeControl";
 import { CONSENT_ANCHOR } from "@/lib/consent";
 import { EmailCapture } from "./EmailCapture";
 import { flattenTree } from "@/lib/sitemap";
@@ -14,8 +13,6 @@ import {
   MEDIUM_URL,
 } from "@/lib/site";
 import { Glyph, type GlyphName } from "./ui/Glyph";
-import { hueClass } from "@/lib/hues";
-import { cn } from "@/lib/cn";
 import {
   founderAffiliations,
   partners,
@@ -28,10 +25,8 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
 
 /**
- * Footer — the closing scene. An indigo night in both themes, the same
- * ground as the CtaPanel above it, so a page ends in one continuous dark
- * band: the question, then the list, the map, the people behind it, and
- * the name set large as the full stop.
+ * Footer — the closing scene on the white page, its cards in Ghost White:
+ * the list, the map, the people behind it, and the fine print.
  * Trust content is REAL-ONLY: affiliations are attributed to the founder,
  * and partner/award/membership rows render only when populated.
  */
@@ -121,12 +116,12 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const byKey = new Map(flattenTree().map((n) => [n.key, n]));
 
   return (
-    <footer className="band-night mt-auto overflow-hidden text-2xs text-muted">
+    <footer className="mt-auto overflow-hidden bg-background text-2xs text-muted">
       <Container size="wide" className="pt-6 sm:pt-10">
         {/* The list, first, as a card: the one thing we ask for on every
             page. The track is fixed to `academy` because the line above
             the field promises course dates, nothing else. */}
-        <div className="spotlight hue-amber flex flex-col gap-6 rounded-3xl bg-surface p-7 sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+        <div className="spotlight flex flex-col gap-6 rounded-3xl bg-surface p-7 sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
           <div className="max-w-md">
             <p className="text-headline text-foreground">{dict.waitlist.inline.footer.title}</p>
             <p className="mt-2 text-sm leading-6">{dict.waitlist.inline.footer.body}</p>
@@ -141,11 +136,10 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           />
         </div>
 
-        {/* Who we are, the map, and how to reach us. Pillars in the map
-            carry their hue dots, the same code as the nav. */}
+        {/* Who we are, the map, and how to reach us. */}
         <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
-            <Logo href={localizeHref(locale, "/")} size="md" tone="night" />
+            <Logo href={localizeHref(locale, "/")} size="md" />
             <p className="mt-5 max-w-xs text-sm leading-6">{dict.footer.blurb}</p>
             <ul className="mt-6 flex gap-2">
               {socials.map((x) => (
@@ -155,7 +149,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${x.name} (${dict.footer.newTab})`}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface text-muted transition-[color,background-color,transform] duration-300 hover:-translate-y-0.5 hover:bg-surface-2 hover:text-foreground"
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface text-muted transition-[color,border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-hairline hover:text-foreground"
                   >
                     <Glyph name={x.icon} className="h-[18px] w-[18px]" />
                   </a>
@@ -186,18 +180,13 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                     }
                     const node = byKey.get(link.key);
                     if (!node || node.hidden) return null;
-                    const hue = hueClass(link.key);
                     return (
                       <li key={link.key}>
                         <Link
                           href={localizeHref(locale, node.href)}
-                          className={cn(
-                            "inline-flex items-center gap-2 text-sm transition-colors hover:text-foreground",
-                            hue,
-                          )}
+                          className="text-sm transition-colors hover:text-foreground"
                         >
                           {link.key === "founder" ? dict.nav.menus.founder : (dict.routes[link.key] ?? node.label)}
-                          {hue && <span aria-hidden="true" className="bg-hue h-1.5 w-1.5 rounded-full" />}
                         </Link>
                       </li>
                     );
@@ -240,7 +229,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <p className="mt-2 text-sm leading-6">{dict.footer.founderLine}</p>
             <Link
               href={localizeHref(locale, "/about/founder")}
-              className="mt-2 inline-block text-sm text-accent hover:underline hover:underline-offset-4"
+              className="mt-2 inline-block text-sm text-accent underline decoration-brand-500 decoration-2 underline-offset-4"
             >
               {dict.footer.meetFounder}
             </Link>
@@ -268,7 +257,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </div>
         )}
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-border pt-6 pb-10 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} 4TUNHub. {dict.footer.rights}
             <span className="hidden md:inline"> · {dict.footer.motto}</span>
@@ -289,16 +278,8 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Link href={localizeHref(locale, "/terms")} className="transition-colors hover:text-foreground">
               {dict.routes.terms}
             </Link>
-            <ThemeControl strings={dict.theme} />
           </div>
         </div>
-
-        {/* The full stop: the name as wide as the page, its foot cut by
-            the page's edge. Decorative; the logo above names the site for
-            assistive tech. The amber 4 is the logo's. */}
-        <p aria-hidden="true" className="footer-wordmark mt-10 select-none">
-          <span className="text-brand-500">4</span>TUNHub
-        </p>
       </Container>
     </footer>
   );

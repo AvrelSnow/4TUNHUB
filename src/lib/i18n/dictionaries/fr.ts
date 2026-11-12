@@ -79,16 +79,6 @@ const fr: Dictionary = {
     },
   },
 
-  /** Le réglage d'apparence, dans le pied de page. */
-  theme: {
-    label: "Apparence",
-    options: {
-      auto: "Auto",
-      light: "Clair",
-      dark: "Sombre",
-    },
-    autoHint: "Suit votre horloge : clair dès 06 h, sombre dès 18 h.",
-  },
 
   /** Le bandeau de confidentialité, et sa version permanente sur /privacy. */
   consent: {
@@ -1586,7 +1576,7 @@ const fr: Dictionary = {
     storage: {
       title: "Cookies et stockage",
       intro:
-        "Ce site ne dépose aucun cookie — pas un seul, pas même le nôtre. Deux éléments sont enregistrés dans votre navigateur et ne quittent jamais votre appareil ; un seul élément est compté, et seulement si vous l'autorisez. C'est toute la liste.",
+        "Ce site ne dépose aucun cookie — pas un seul, pas même le nôtre. Un seul élément est enregistré dans votre navigateur et ne quitte jamais votre appareil ; un autre est compté, et seulement si vous l'autorisez. C'est toute la liste.",
       columns: {
         what: "Quoi",
         why: "Pourquoi",
@@ -1594,13 +1584,6 @@ const fr: Dictionary = {
         refuse: "Peut-on le refuser ?",
       },
       rows: [
-        {
-          what: "Apparence",
-          key: "4tun.theme",
-          why: "Retient si vous avez choisi Clair, Sombre ou Auto, pour que le site vous obéisse à la page suivante.",
-          kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
-          refuse: "Il n'existe qu'à partir du moment où vous utilisez le réglage en pied de page. Effacer les données de votre navigateur le supprime.",
-        },
         {
           what: "Votre réponse à cette question",
           key: "4tun.consent",

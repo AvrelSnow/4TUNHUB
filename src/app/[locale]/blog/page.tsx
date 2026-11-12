@@ -111,7 +111,7 @@ export default async function BlogPage({ params }: Params) {
                       </p>
                     )}
                     <p className="mt-4 flex-1 text-muted">{copy.desc}</p>
-                    <span className="mt-6 inline-flex items-center gap-1 font-medium text-accent">
+                    <span className="mt-6 inline-flex items-center gap-1 font-semibold text-accent underline decoration-brand-500 decoration-2 underline-offset-4">
                       {copy.cta}
                       <Chevron external />
                     </span>
