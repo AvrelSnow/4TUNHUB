@@ -34,5 +34,7 @@ export function proxy(request: NextRequest) {
 export const config = {
   // Run on everything EXCEPT: Next internals, generated metadata routes,
   // and any path containing a dot (robots.txt, sitemap.xml, *.svg, etc.).
-  matcher: ["/((?!_next|opengraph-image|icon|.*\\.).*)"],
+  // `apple-icon` has no dot and does not start with `icon`, so it is named
+  // here, or the iOS home-screen icon is redirected to a 404.
+  matcher: ["/((?!_next|opengraph-image|apple-icon|icon|.*\\.).*)"],
 };

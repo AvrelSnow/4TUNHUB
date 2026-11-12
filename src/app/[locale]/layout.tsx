@@ -3,20 +3,21 @@ import { notFound } from "next/navigation";
 // Self-hosted type (Fontsource): no runtime fetch to Google, and the CSP
 // allows fonts from 'self' only. Each file carries unicode-range, so a page
 // downloads only the subsets it uses; French needs latin plus latin-ext.
-// Instrument Sans, weight axis only: one family for everything.
-import "@fontsource-variable/instrument-sans/wght.css";
+// Mona Sans with both axes, weight 200–900 and width 75–125%, in one file:
+// headlines run wide, body text stays at normal width.
+import "@fontsource-variable/mona-sans/wdth.css";
 import "../globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { Analytics } from "@/components/Analytics";
+import { PointerFX } from "@/components/PointerFX";
 import { CohortRibbon } from "@/components/CohortRibbon";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { CONSENT_ANCHOR } from "@/lib/consent";
 import { localizeHref } from "@/lib/i18n/routing";
 import { SITE_URL, SITE_NAME, SITE_KEYWORDS, OG_IMAGE, organizationJsonLd } from "@/lib/site";
-import { themeResolverScript } from "@/lib/theme";
 import { locales, isLocale, localeTag, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -64,11 +65,7 @@ export async function generateMetadata({
   };
 }
 
-/**
- * One tag, not a media-switched pair: the theme follows the visitor's clock,
- * which a media query cannot see. This is the day value (the fallback), and
- * ThemeControl rewrites it to the live `--color-background` after mount.
- */
+/** One theme: the browser chrome matches the white page. */
 export const viewport: Viewport = {
   themeColor: "#ffffff",
 };
@@ -89,16 +86,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       className="h-full antialiased"
-      // No `data-theme` is server-rendered: a static page cannot know the
-      // visitor's local hour. The resolver below sets it before first paint,
-      // and no markup depends on it, so nothing can mismatch on hydration.
-      suppressHydrationWarning
     >
-      <head>
-        {/* BLOCKING, and first, so the page never flashes the wrong theme.
-            See src/lib/theme.ts. */}
-        <script dangerouslySetInnerHTML={{ __html: themeResolverScript }} />
-      </head>
       <body className="flex min-h-full flex-col">
         <JsonLd data={organizationJsonLd} />
         <a
@@ -125,6 +113,7 @@ export default async function LocaleLayout({
           privacyHref={localizeHref(typedLocale, `/privacy#${CONSENT_ANCHOR}`)}
         />
         <Analytics />
+        <PointerFX />
       </body>
     </html>
   );

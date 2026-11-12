@@ -56,9 +56,10 @@ export default async function AcademyPage({ params }: Params) {
   ];
 
   return (
-    <>
+    <div>
       {/* 1 · HERO */}
       <PageHero
+        lit
         eyebrow={t.eyebrow}
         title={t.title}
         intro={t.subtitle}
@@ -139,7 +140,7 @@ export default async function AcademyPage({ params }: Params) {
       <Section eyebrow={t.formatsEyebrow} title={t.formatsTitle}>
         <div className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-3">
           {t.formatsList.map((f) => (
-            <div key={f.title} className="border-t border-foreground pt-6">
+            <div key={f.title} className="border-t-2 border-hue pt-6">
               <h3 className="text-headline text-foreground">{f.title}</h3>
               <p className="mt-3 text-muted">{f.desc}</p>
             </div>
@@ -196,6 +197,6 @@ export default async function AcademyPage({ params }: Params) {
         }
         secondary={{ label: t.cta.secondary, href: localizeHref(locale, "/projects") }}
       />
-    </>
+    </div>
   );
 }

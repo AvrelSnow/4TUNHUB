@@ -16,7 +16,7 @@
     "lhci": "npx --yes @lhci/cli autorun"
   },
   "dependencies": {
-    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "@fontsource-variable/mona-sans": "^5.3.0",
     "@fontsource/instrument-sans": "^5.3.0",
     "@netlify/blobs": "11.1.9",
     "next": "16.4.6",

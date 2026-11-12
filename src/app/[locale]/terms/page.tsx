@@ -57,7 +57,7 @@ export default async function TermsPage({ params }: Params) {
           {t.contact}{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
+            className="text-accent underline decoration-brand-500 decoration-2 underline-offset-4 transition-colors hover:decoration-foreground"
           >
             {CONTACT_EMAIL}
           </a>

@@ -20,7 +20,9 @@ type Item = { key: string; label: string; href: string };
  *
  * The sheet is portalled to <body>: the bar's backdrop-filter makes it the
  * containing block for fixed descendants, which would trap the sheet inside
- * a 56px strip.
+ * a 56px strip. It covers the whole screen *under* the floating pill (z-10
+ * below the header's z-40), so the pill and its close button stay put.
+ * The current page carries the amber dot, as in the desktop bar.
  */
 export function MobileNav({
   items,
@@ -80,7 +82,7 @@ export function MobileNav({
       {open && createPortal(
         <div
           id={panelId}
-          className="fixed inset-x-0 bottom-0 top-14 z-40 animate-fade-in overflow-y-auto bg-background"
+          className="fixed inset-0 z-10 animate-fade-in overflow-y-auto bg-background pt-20"
         >
           <nav aria-label={nav.mobile} className="mx-auto max-w-6xl px-8 pb-12 pt-6">
             <ul className="flex flex-col">
@@ -98,10 +100,14 @@ export function MobileNav({
                       aria-current={active ? "page" : undefined}
                       onClick={() => setOpen(false)}
                       className={cn(
-                        "block py-2.5 text-3xl font-semibold tracking-tight",
+                        "flex items-center gap-3 border-b border-border py-4 text-3xl font-bold tracking-tight [font-stretch:112%]",
                         active ? "text-foreground" : "text-foreground/80 hover:text-foreground",
                       )}
                     >
+                      <span
+                        aria-hidden="true"
+                        className={cn("h-2.5 w-2.5 shrink-0 rounded-full", active ? "bg-brand-500" : "bg-hairline")}
+                      />
                       {item.label}
                     </Link>
                   </li>

@@ -233,7 +233,7 @@ export function ApplyForm({
           />
           <span>
             {f.consent}{" "}
-            <Link href={privacyHref} className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent">
+            <Link href={privacyHref} className="text-accent underline decoration-brand-500 decoration-2 underline-offset-4 transition-colors hover:decoration-foreground">
               {f.privacy}
             </Link>
           </span>

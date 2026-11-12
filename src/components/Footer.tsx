@@ -1,11 +1,18 @@
 import Link from "next/link";
 import { Container } from "./ui/Container";
 import { Logo } from "./ui/Logo";
-import { ThemeControl } from "./ThemeControl";
 import { CONSENT_ANCHOR } from "@/lib/consent";
 import { EmailCapture } from "./EmailCapture";
 import { flattenTree } from "@/lib/sitemap";
-import { CONTACT_EMAIL, SITE_LOCATION } from "@/lib/site";
+import {
+  CONTACT_EMAIL,
+  SITE_LOCATION,
+  WHATSAPP_COMMUNITY_URL,
+  LINKEDIN_URL,
+  YOUTUBE_URL,
+  MEDIUM_URL,
+} from "@/lib/site";
+import { Glyph, type GlyphName } from "./ui/Glyph";
 import {
   founderAffiliations,
   partners,
@@ -18,16 +25,42 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
 
 /**
- * Footer — small type on the grey band: the map of the site, the
- * founder's affiliations, and the fine print.
+ * Footer — the closing scene on the white page, its cards in Ghost White:
+ * the list, the map, the people behind it, and the fine print.
  * Trust content is REAL-ONLY: affiliations are attributed to the founder,
  * and partner/award/membership rows render only when populated.
  */
 
-const groups: { titleKey: "ecosystem" | "company" | "resources"; keys: string[] }[] = [
-  { titleKey: "ecosystem", keys: ["products", "services", "academy", "research", "projects"] },
-  { titleKey: "company", keys: ["about", "community", "careers", "contact", "waitlist"] },
-  { titleKey: "resources", keys: ["resources", "blog", "store", "solutions"] },
+/** A footer link: a sitemap key (localised, hidden pages dropped) or an
+ *  external channel. */
+type FooterLink = { key: string } | { label: (d: Dictionary) => string; href: string };
+
+/** The map, in the same groups as the nav's menus (Bonsai/Fapshi pattern). */
+const columns: { title: (d: Dictionary) => string; links: FooterLink[] }[] = [
+  {
+    title: (d) => d.nav.menus.work,
+    links: [{ key: "services" }, { key: "research" }, { key: "academy" }, { key: "projects" }],
+  },
+  {
+    title: (d) => d.nav.menus.forLearners,
+    links: [
+      { key: "community" },
+      { label: (d) => d.nav.menus.youtube, href: YOUTUBE_URL },
+      { label: (d) => d.nav.menus.rem, href: MEDIUM_URL },
+      { key: "waitlist" },
+    ],
+  },
+  {
+    title: (d) => d.nav.menus.company,
+    links: [{ key: "about" }, { key: "founder" }, { key: "contact" }],
+  },
+];
+
+const socials: { name: string; href: string; icon: GlyphName }[] = [
+  { name: "LinkedIn", href: LINKEDIN_URL, icon: "linkedin" },
+  { name: "YouTube", href: YOUTUBE_URL, icon: "youtube" },
+  { name: "WhatsApp", href: WHATSAPP_COMMUNITY_URL, icon: "whatsapp" },
+  { name: "Medium", href: MEDIUM_URL, icon: "medium" },
 ];
 
 function CredibilityRow({ title, items }: { title: string; items: Affiliation[] }) {
@@ -81,22 +114,16 @@ function LogoRow({ items, wide = false, newTab }: { items: Affiliation[]; wide?:
 
 export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const byKey = new Map(flattenTree().map((n) => [n.key, n]));
-  const visibleGroups = groups
-    .map((group) => ({ ...group, keys: group.keys.filter((k) => !byKey.get(k)?.hidden) }))
-    .filter((group) => group.keys.length > 0);
 
   return (
-    <footer className="mt-auto border-t border-border bg-surface text-2xs text-muted">
-      <Container size="wide" className="pt-16 pb-10">
-        {/* The list, first: the footer is where a reader lands once the
-            page is over, and this is the one thing we ask for on every
-            page of the site. The track is fixed to `academy` because the
-            line above the field promises course dates, nothing else. */}
-        <div className="flex flex-col gap-6 border-b border-border pb-12 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+    <footer className="mt-auto overflow-hidden bg-background text-2xs text-muted">
+      <Container size="wide" className="pt-6 sm:pt-10">
+        {/* The list, first, as a card: the one thing we ask for on every
+            page. The track is fixed to `academy` because the line above
+            the field promises course dates, nothing else. */}
+        <div className="spotlight flex flex-col gap-6 rounded-3xl bg-surface p-7 sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
           <div className="max-w-md">
-            <p className="text-base font-semibold tracking-tight text-foreground">
-              {dict.waitlist.inline.footer.title}
-            </p>
+            <p className="text-headline text-foreground">{dict.waitlist.inline.footer.title}</p>
             <p className="mt-2 text-sm leading-6">{dict.waitlist.inline.footer.body}</p>
           </div>
           <EmailCapture
@@ -109,36 +136,57 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           />
         </div>
 
-        <div className="mt-12 flex flex-col gap-12 lg:flex-row lg:justify-between">
-          <div>
-            <Logo href={localizeHref(locale, "/")} size="sm" />
+        {/* Who we are, the map, and how to reach us. */}
+        <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-4">
+            <Logo href={localizeHref(locale, "/")} size="md" />
             <p className="mt-5 max-w-xs text-sm leading-6">{dict.footer.blurb}</p>
-            <div className="mt-5 space-y-1 text-sm">
-              <p>{SITE_LOCATION}</p>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="text-foreground hover:underline hover:underline-offset-4"
-              >
-                {CONTACT_EMAIL}
-              </a>
-            </div>
+            <ul className="mt-6 flex gap-2">
+              {socials.map((x) => (
+                <li key={x.name}>
+                  <a
+                    href={x.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${x.name} (${dict.footer.newTab})`}
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface text-muted transition-[color,border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-hairline hover:text-foreground"
+                  >
+                    <Glyph name={x.icon} className="h-[18px] w-[18px]" />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-16 gap-y-10 sm:grid-cols-3 lg:flex lg:gap-24">
-            {visibleGroups.map((group) => (
-              <nav key={group.titleKey} aria-label={dict.footer.groups[group.titleKey]}>
-                <p className="font-semibold text-foreground">{dict.footer.groups[group.titleKey]}</p>
+          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:col-span-8">
+            {columns.map((col) => (
+              <nav key={col.title(dict)} aria-label={col.title(dict)}>
+                <p className="text-sm font-semibold text-foreground">{col.title(dict)}</p>
                 <ul className="mt-4 space-y-3">
-                  {group.keys.map((key) => {
-                    const node = byKey.get(key);
-                    if (!node) return null;
+                  {col.links.map((link) => {
+                    if ("href" in link) {
+                      return (
+                        <li key={link.href}>
+                          <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm transition-colors hover:text-foreground"
+                          >
+                            {link.label(dict)} <span aria-hidden="true">{"\u2197"}</span>
+                          </a>
+                        </li>
+                      );
+                    }
+                    const node = byKey.get(link.key);
+                    if (!node || node.hidden) return null;
                     return (
-                      <li key={key}>
+                      <li key={link.key}>
                         <Link
                           href={localizeHref(locale, node.href)}
                           className="text-sm transition-colors hover:text-foreground"
                         >
-                          {dict.routes[key] ?? node.label}
+                          {link.key === "founder" ? dict.nav.menus.founder : (dict.routes[link.key] ?? node.label)}
                         </Link>
                       </li>
                     );
@@ -146,6 +194,28 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 </ul>
               </nav>
             ))}
+
+            <div>
+              <p className="text-sm font-semibold text-foreground">{dict.footer.reach}</p>
+              <ul className="mt-4 space-y-3 text-sm">
+                <li>
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="break-all text-foreground hover:underline hover:underline-offset-4">
+                    {CONTACT_EMAIL}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={WHATSAPP_COMMUNITY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-foreground"
+                  >
+                    {dict.footer.whatsapp} {"\u2197"}
+                  </a>
+                </li>
+                <li>{SITE_LOCATION}</li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -153,13 +223,13 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             The Hub's own partners sit beside it under their own heading, so
             the two can never be read as one list. Every logo opens the
             organisation's official site: a claim a visitor can check. */}
-        <div className="mt-14 flex flex-col gap-8 border-t border-border pt-10 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mt-16 flex flex-col gap-8 border-t border-border pt-10 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-md">
-            <p className="font-semibold text-foreground">{dict.footer.trustEyebrow}</p>
+            <p className="text-sm font-semibold text-foreground">{dict.footer.trustEyebrow}</p>
             <p className="mt-2 text-sm leading-6">{dict.footer.founderLine}</p>
             <Link
               href={localizeHref(locale, "/about/founder")}
-              className="mt-2 inline-block text-sm text-accent hover:underline hover:underline-offset-4"
+              className="mt-2 inline-block text-sm text-accent underline decoration-brand-500 decoration-2 underline-offset-4"
             >
               {dict.footer.meetFounder}
             </Link>
@@ -167,13 +237,13 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <div className="flex flex-col gap-8 sm:flex-row sm:gap-12 lg:justify-end">
             {partners.length > 0 && (
               <div className="lg:text-right">
-                <p className="font-semibold text-foreground">{dict.footer.partners}</p>
+                <p className="text-sm font-semibold text-foreground">{dict.footer.partners}</p>
                 <LogoRow items={partners} wide newTab={dict.footer.newTab} />
                 <p className="mt-3">{dict.footer.partnersNote}</p>
               </div>
             )}
             <div className="lg:text-right">
-              <p className="font-semibold text-foreground">{dict.footer.affiliations}</p>
+              <p className="text-sm font-semibold text-foreground">{dict.footer.affiliations}</p>
               <LogoRow items={founderAffiliations} newTab={dict.footer.newTab} />
               <p className="mt-3">{dict.footer.affiliationsNote}</p>
             </div>
@@ -187,7 +257,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </div>
         )}
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-border pt-6 pb-10 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} 4TUNHub. {dict.footer.rights}
             <span className="hidden md:inline"> · {dict.footer.motto}</span>
@@ -208,7 +278,6 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Link href={localizeHref(locale, "/terms")} className="transition-colors hover:text-foreground">
               {dict.routes.terms}
             </Link>
-            <ThemeControl strings={dict.theme} />
           </div>
         </div>
       </Container>

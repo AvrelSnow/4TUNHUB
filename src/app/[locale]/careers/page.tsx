@@ -80,7 +80,7 @@ export default async function CareersPage({ params }: Params) {
                     <p className="readout mt-4">
                       {role.location} · {t.commitments[role.commitment]}
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-1 font-medium text-accent">
+                    <span className="mt-5 inline-flex items-center gap-1 font-semibold text-accent underline decoration-brand-500 decoration-2 underline-offset-4">
                       {t.apply}
                       <Chevron />
                     </span>
@@ -129,7 +129,7 @@ export default async function CareersPage({ params }: Params) {
                   {point.live && <Badge variant="amber">{t.live}</Badge>}
                 </div>
                 <p className="mt-3 flex-1 text-muted">{copy.desc}</p>
-                <span className="mt-6 inline-flex items-center gap-1 font-medium text-accent">
+                <span className="mt-6 inline-flex items-center gap-1 font-semibold text-accent underline decoration-brand-500 decoration-2 underline-offset-4">
                   {copy.cta}
                   <Chevron external={point.external} />
                 </span>

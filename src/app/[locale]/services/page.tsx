@@ -46,9 +46,10 @@ export default async function ServicesPage({ params }: Params) {
   const braking = dict.projects.galleries["locomotive-braking-analysis"] ?? [];
 
   return (
-    <>
+    <div>
       {/* 1 · HERO — the title's claim, shown: a drawing, and the part built from it. */}
       <PageHero
+        lit
         eyebrow={t.eyebrow}
         title={t.title}
         intro={t.subtitle}
@@ -149,8 +150,8 @@ export default async function ServicesPage({ params }: Params) {
       <Section eyebrow={t.process.eyebrow} title={t.process.title}>
         <ol className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {t.process.steps.map((step, i) => (
-            <li key={step.title} className="border-t border-foreground pt-6">
-              <p className="figure text-sm font-medium text-muted">
+            <li key={step.title} className="border-t-2 border-hue pt-6">
+              <p className="figure text-hue text-sm font-semibold">
                 {String(i + 1).padStart(2, "0")}
               </p>
               <h3 className="mt-3 text-headline text-foreground">{step.title}</h3>
@@ -181,6 +182,6 @@ export default async function ServicesPage({ params }: Params) {
         primary={{ label: t.cta.primary, href: localizeHref(locale, "/contact") }}
         secondary={{ label: t.cta.secondary, href: localizeHref(locale, "/projects") }}
       />
-    </>
+    </div>
   );
 }

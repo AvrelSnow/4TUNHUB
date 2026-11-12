@@ -46,18 +46,39 @@ const fr: Dictionary = {
     primary: "Principale",
     mobile: "Mobile",
     language: "Langue",
+    menus: {
+      work: "Ce que nous faisons",
+      about: "À propos",
+      forCompanies: "Pour les entreprises",
+      forLearners: "Pour apprendre",
+      company: "4TUNHub",
+      services: "Conception mécanique, simulation par éléments finis et systèmes énergétiques pour votre projet.",
+      research: "Énergies renouvelables et R&D appliquée, depuis le terrain.",
+      academy: "Formation CAO et SolidWorks, enseignée à partir de machines réellement construites.",
+      youtube: "Tutoriels YouTube",
+      youtubeDesc: "Cours gratuits de LS-DYNA et de simulation sur la chaîne 4TUNHUB.",
+      rem: "La newsletter The REM",
+      remDesc: "Analyses sur les énergies renouvelables, lues par plus de 3 200 personnes.",
+      aboutOrg: "À propos de 4TUNHub",
+      aboutOrgDesc: "Pourquoi l'écosystème existe et comment il fonctionne.",
+      founder: "Le fondateur",
+      founderDesc: "Donfack Fortune : ingénieur, spécialiste de l'énergie, enseignant.",
+      camrail: "L'histoire CAMRAIL",
+      camrailDesc: "Son travail d'ingénieur mécanique principal au chemin de fer national du Cameroun.",
+      contact: "Contact",
+      contactDesc: "Parlez-nous du problème. Réponse sous 48 heures.",
+      projectsDesc: "Six machines conçues, simulées et construites : la preuve.",
+      featured: "Projet à la une",
+      featuredCta: "Lire l'étude de cas",
+      communityTitle: "La communauté est ouverte",
+      communityBody: "Ingénieurs et étudiants apprennent ensemble sur WhatsApp. Gratuit, en ligne aujourd'hui.",
+      communityCta: "Rejoindre sur WhatsApp",
+      sound: "Son de l'interface",
+      soundOn: "Son activé",
+      soundOff: "Son coupé",
+    },
   },
 
-  /** Le réglage d'apparence, dans le pied de page. */
-  theme: {
-    label: "Apparence",
-    options: {
-      auto: "Auto",
-      light: "Clair",
-      dark: "Sombre",
-    },
-    autoHint: "Suit votre horloge : clair dès 06 h, sombre dès 18 h.",
-  },
 
   /** Le bandeau de confidentialité, et sa version permanente sur /privacy. */
   consent: {
@@ -152,6 +173,45 @@ const fr: Dictionary = {
     },
 
     heroCaption: "CFD · répartition de pression",
+
+    strip: {
+      founder: "Là où le fondateur a travaillé et enseigné",
+      partner: "Partenaire de 4TUNHub",
+    },
+
+    disciplines: [
+      "Conception mécanique",
+      "Simulation par éléments finis",
+      "CFD",
+      "SolidWorks",
+      "ANSYS",
+      "AutoCAD",
+      "MATLAB",
+      "Soudure & fabrication",
+      "Dessin technique",
+      "Énergies renouvelables",
+      "Conception pour la fabrication",
+    ],
+
+    beam: {
+      eyebrow: "Essayez",
+      title: "Chargez la poutre. Regardez l'acier répondre.",
+      intro:
+        "Le calcul à la main derrière chaque vérification par éléments finis, dans votre navigateur. Faites varier la charge : contrainte, flèche et marge de sécurité réagissent.",
+      load: "Charge en bout",
+      deflection: "Flèche en bout",
+      stress: "Contrainte à l'encastrement",
+      safety: "Coefficient de sécurité",
+      spec: "Poutre console en acier, portée 1 m, section 30 × 50 mm, S235 (limite élastique 235 MPa), E = 200 GPa. Théorie des poutres d'Euler–Bernoulli. La couleur montre la contrainte de flexion, maximale à l'encastrement.",
+      scale: "Flèche dessinée ×10",
+      hint: "Utilisez le curseur ou faites glisser sur le dessin.",
+      states: {
+        ok: "Elle tient, avec de la marge.",
+        low: "Elle tient, mais sous une marge de calcul courante de 1,5.",
+        yield: "Elle plastifie : l'acier resterait déformé.",
+      },
+      cta: "Apprenez-le à l'Académie",
+    },
 
     conversion: {
       title: "Un problème d'ingénierie qui mérite d'être résolu ?",
@@ -1516,7 +1576,7 @@ const fr: Dictionary = {
     storage: {
       title: "Cookies et stockage",
       intro:
-        "Ce site ne dépose aucun cookie — pas un seul, pas même le nôtre. Deux éléments sont enregistrés dans votre navigateur et ne quittent jamais votre appareil ; un seul élément est compté, et seulement si vous l'autorisez. C'est toute la liste.",
+        "Ce site ne dépose aucun cookie — pas un seul, pas même le nôtre. Un seul élément est enregistré dans votre navigateur et ne quitte jamais votre appareil ; un autre est compté, et seulement si vous l'autorisez. C'est toute la liste.",
       columns: {
         what: "Quoi",
         why: "Pourquoi",
@@ -1524,13 +1584,6 @@ const fr: Dictionary = {
         refuse: "Peut-on le refuser ?",
       },
       rows: [
-        {
-          what: "Apparence",
-          key: "4tun.theme",
-          why: "Retient si vous avez choisi Clair, Sombre ou Auto, pour que le site vous obéisse à la page suivante.",
-          kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
-          refuse: "Il n'existe qu'à partir du moment où vous utilisez le réglage en pied de page. Effacer les données de votre navigateur le supprime.",
-        },
         {
           what: "Votre réponse à cette question",
           key: "4tun.consent",
@@ -1651,6 +1704,9 @@ const fr: Dictionary = {
     },
     rights: "Tous droits réservés.",
     motto: "Ingénierie · Formation · Innovation",
+    reach: "Nous joindre",
+    whatsapp: "Communauté WhatsApp",
+    backToTop: "Haut de page",
   },
 
   notFound: {

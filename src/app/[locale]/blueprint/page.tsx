@@ -312,7 +312,7 @@ function SpecCard({ spec, status }: { spec: PageSpec; status: NodeStatus }) {
           <dl className="mt-4 divide-y divide-border border-t border-border">
             <MetaRow label="Audience">{spec.audience}</MetaRow>
             <MetaRow label="Primary CTA">
-              <span className="font-medium text-accent">{spec.primaryCTA}</span>
+              <span className="font-semibold text-accent underline decoration-brand-500 decoration-2 underline-offset-4">{spec.primaryCTA}</span>
             </MetaRow>
             <MetaRow label="Content">{spec.contentSource}</MetaRow>
             <MetaRow label="Depends on">

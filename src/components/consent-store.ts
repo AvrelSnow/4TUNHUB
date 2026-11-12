@@ -14,8 +14,7 @@ import {
 } from "@/lib/consent";
 
 /**
- * The consent answer, read as an external store — the same shape the
- * theme control uses, so this tab, other tabs and every component that
+ * The consent answer, read as an external store, so this tab, other tabs and every component that
  * depends on it all look at one value.
  *
  * Everything here is wrapped in try/catch: localStorage throws outright
