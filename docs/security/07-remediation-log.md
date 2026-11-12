@@ -251,3 +251,16 @@ branch is not on the remote. Changes:
   protect that Gmail with a passkey or authenticator app (not SMS) before money arrives.
 - Low, left as is: Netlify env-scope notes (defensive, no values), the local scratch path in
   `scripts/optimize-images.mjs`, the incident ID itself.
+
+## R-07 — minimatch advisory and Dependabot (2026-11-12, PR #3)
+- **minimatch** GHSA-g3hv-75wg-m249 (CVE-2026-118764, DoS by glob amplification, affects 7.0.0 to 11.0.0):
+  the only affected copy was 10.2.6 under `@typescript-eslint/typescript-estree` (lint tooling, dev-only,
+  never shipped). No 10.x fix exists and the latest typescript-estree still asks for `^10.2.2`, so
+  `package.json` `overrides` pins that copy to `^11.0.1` (resolved 11.0.8). eslint's own minimatch 3.1.5
+  is outside the affected range. `npm run check` passes (lint, tokens, build, 198 KB / 220 KB).
+  Remove the override once typescript-estree depends on minimatch 11.
+- **Dependabot** (`.github/dependabot.yml`): npm and GitHub Actions, monthly, grouped (Next family,
+  minor + patch, security), 14-day cooldown, majors ignored (planned by hand). Never merge its PRs one
+  by one: each merge to `main` is 15 credits. Fold them into the next batch.
+- **Owner action (GitHub, after 2FA):** Settings → Advanced Security → turn on *Dependabot alerts* and
+  *Dependabot security updates*. The config file alone only drives the monthly version updates.

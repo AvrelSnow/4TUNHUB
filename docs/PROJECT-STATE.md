@@ -35,6 +35,8 @@ _Account 2FA status is deliberately not recorded in this public repo; it lives i
 | P-5 | Leftover Vercel project builds every push, serves `4tunhub.vercel.app` | **fixed 2026-11-11**: project deleted (404), Vercel GitHub app limited to Portfolio-project. Owner: 2FA on Vercel and GitHub. |
 | R-05 | Netlify production deploys restricted to Git | **done** 2026-11-11 (dashboard setting) |
 | R-06 | JSON-LD escaped through one `JsonLd` component; Semgrep rule exclusion removed | **deployed** 2026-11-11 (`main` = `68fa9fe`); production JSON-LD verified |
+| R-07 | minimatch override (dev-only advisory) + grouped monthly Dependabot | on PR #3, not deployed; owner to turn on Dependabot alerts and security updates in GitHub settings |
+| R-08 | Public-repo exposure sweep: account status and team slugs out of the docs | on PR #3 (docs only) |
 
 Details: `docs/security/07-remediation-log.md`.
 
