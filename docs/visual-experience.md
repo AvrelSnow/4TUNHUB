@@ -167,11 +167,41 @@ Prices were checked 2026-11-11.
 Claude Code wrote code and rendered pages in a real browser (headless Chrome via
 CDP) for every critique pass. No design application was installed or used.
 
+## Pillar pages (added 2026-11-11, second pass)
+
+Each pillar page is one room of the same house, in its own hue:
+Services indigo, Academy amber, Research green, Community laterite.
+
+- The page is wrapped in `.pillar.hue-*`, which makes the hue the accent:
+  eyebrows, inline links, arrow links and focus rings speak in it. The text
+  ink of each hue is already AA on paper, surface and night, so no new pair
+  was introduced.
+- `PageHero` takes `hue`: the hero gets its own atmosphere lit by that hue
+  alone (two glows, top-right and left, fading into the page) and the eyebrow
+  carries the hue's dot, like the home tiles.
+- The rules above step lists (Services' process, Academy's formats,
+  Community's ethos) are a 2 px rule in the hue; Services' step numbers too.
+- What does **not** change: the action is still amber (the logo's colour is
+  the thing you click), the header and footer stay neutral, and the closing
+  band stays the shared indigo night (`.band-night` resets the accent).
+
+## Link-preview card and home-screen icon
+
+- `src/lib/og-card.tsx`: drafting paper, indigo ink, the claim in Mona Sans
+  800 at 116% width (as the site's headlines), the amber roundel as drawn,
+  the indigo→amber→laterite progress hairline as the card's rule. A pillar's
+  card sets its eyebrow in that pillar's hue (the Academy card is ochre).
+  Always the day palette: a card is a still image and does not follow a clock.
+- next/og cannot read WOFF2 or pick a variable instance, so
+  `scripts/make-og-fonts.py` cuts two static TTFs from the site's own
+  variable file into `src/assets/fonts/` (800/116 and 600/100, 45 KB each).
+- `apple-icon`: the amber roundel on the indigo night, "4" in Mona Sans.
+  It was never actually served before: the language proxy redirected
+  `/apple-icon` to `/en/apple-icon` (a 404). The matcher now excludes it.
+
 ## Still to do
 
-- Art-direct the pillar pages with their hue (Services indigo, Academy amber,
-  Research green, Community laterite); today they inherit tokens and the new
-  closing band.
 - Pillar-page and project-page motion: a scroll-told case study is where GSAP
   would earn its weight.
-- Update the OG card and `apple-icon` to the new palette and font.
+- The favicon (`icon.svg`) and `4tunhub-mark.svg` still set the "4" in Arial
+  Black; redraw them as outlines from Mona Sans when the mark is next touched.

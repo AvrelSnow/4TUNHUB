@@ -750,6 +750,31 @@
 
   .text-hue { color: var(--hue-ink); }
   .bg-hue { background: var(--hue); }
+  .bg-hue-ink { background: var(--hue-ink); }
+  .border-hue { border-color: var(--hue-ink); }
+
+  /* ---------- Pillar pages ----------
+     PURPOSE: each part of the ecosystem reads as its own room in the
+     same house. A pillar page (`.pillar.hue-*`) takes its hue as the
+     accent, so eyebrows, links and focus rings speak in it, and its
+     hero is lit by that hue alone. The action colour stays amber and
+     the closing band stays the shared night (`.band-night` resets the
+     accent). Every hue ink is AA on paper, surface and night. */
+  .pillar {
+    --color-accent: var(--hue-ink);
+  }
+
+  .atmosphere.atmosphere-pillar::before {
+    background:
+      radial-gradient(40% 46% at calc(84% - var(--drift)) calc(12% + var(--drift)), color-mix(in oklab, var(--hue) 80%, transparent), transparent 70%),
+      radial-gradient(36% 42% at calc(8% + var(--drift)) 58%, color-mix(in oklab, var(--hue) 45%, transparent), transparent 70%);
+  }
+
+  :root[data-theme="dark"] .atmosphere.atmosphere-pillar::before {
+    background:
+      radial-gradient(40% 46% at calc(84% - var(--drift)) calc(12% + var(--drift)), color-mix(in oklab, var(--hue) 26%, transparent), transparent 70%),
+      radial-gradient(36% 42% at calc(8% + var(--drift)) 58%, color-mix(in oklab, var(--hue) 16%, transparent), transparent 70%);
+  }
 
   /* ---------- Lift ----------
      PURPOSE: a card rises toward the pointer like a part picked off

@@ -44,9 +44,10 @@ export default async function ResearchPage({ params }: Params) {
   const banana = dict.projects.galleries["banana-pseudostem-shredder"] ?? [];
 
   return (
-    <>
+    <div className="pillar hue-green">
       {/* 1 · HERO — a lab result, not an illustration of one. */}
       <PageHero
+        hue="green"
         eyebrow={t.eyebrow}
         title={t.title}
         intro={t.subtitle}
@@ -161,6 +162,6 @@ export default async function ResearchPage({ params }: Params) {
         primary={{ label: t.cta.primary, href: localizeHref(locale, "/contact") }}
         secondary={{ label: t.cta.secondary, href: localizeHref(locale, "/projects") }}
       />
-    </>
+    </div>
   );
 }

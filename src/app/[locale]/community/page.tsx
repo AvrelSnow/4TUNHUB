@@ -34,9 +34,10 @@ export default async function CommunityPage({ params }: Params) {
   const t = dict.community;
 
   return (
-    <>
+    <div className="pillar hue-laterite">
       {/* 1 · HERO */}
       <PageHero
+        hue="laterite"
         eyebrow={t.eyebrow}
         title={t.title}
         intro={t.subtitle}
@@ -149,7 +150,7 @@ export default async function CommunityPage({ params }: Params) {
       <Section eyebrow={t.ethosEyebrow} title={t.ethosTitle}>
         <div className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-3">
           {t.ethos.map((item) => (
-            <div key={item.title} className="border-t border-foreground pt-6">
+            <div key={item.title} className="border-t-2 border-hue pt-6">
               <h3 className="text-headline text-foreground">{item.title}</h3>
               <p className="mt-3 text-muted">{item.desc}</p>
             </div>
@@ -164,6 +165,6 @@ export default async function CommunityPage({ params }: Params) {
         primary={{ label: t.cta.primary, href: WHATSAPP_COMMUNITY_URL, external: true }}
         secondary={{ label: t.cta.secondary, href: localizeHref(locale, "/contact") }}
       />
-    </>
+    </div>
   );
 }

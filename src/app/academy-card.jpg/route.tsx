@@ -14,6 +14,7 @@ export const dynamic = "force-static";
 export function GET() {
   return renderCard({
     eyebrow: "4TUNHub Academy",
+    hue: "amber",
     lines: ["CSWA Bootcamp.", "Cohort 1 · January."],
     sub: "Live SolidWorks training, mapped to the CSWA exam",
     foot: "4tunhub.com/academy · Join the waitlist",
