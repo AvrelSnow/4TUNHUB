@@ -158,7 +158,7 @@ preview, requests 1–5 were accepted and 6–7 limited despite forged IP header
 ## P-5 — Leftover Vercel project still builds the repo (found 2026-11-11)
 
 PR #2 got a "Vercel Preview Comments" check alongside Netlify's. The owner's Vercel project
-`fortunedonfack05-4257s-projects/4tunhub` (Hobby) is still connected to the GitHub repo
+`4tunhub` (Hobby) is still connected to the GitHub repo
 from before the move to Netlify, and builds every push. Read-only checks:
 
 - **Environment variables: none** (project and shared). No Resend key, so forms on the
@@ -167,12 +167,11 @@ from before the move to Netlify, and builds every push. Read-only checks:
   (`/en` 200, same CSP/HSTS) with `index, follow`, but its canonical points at
   `https://4tunhub.com/en`, so the SEO harm is small.
 - **Preview URLs** redirect to Vercel SSO (Deployment Protection on).
-- **Vercel account has no 2FA** (dashboard shows "Enable 2FA"). Anyone who takes that
-  account can publish anything at `4tunhub.vercel.app` and has the Vercel GitHub app's
-  access to the repo.
+- **Account hardening:** anyone who takes the Vercel account can publish anything at
+  `4tunhub.vercel.app` and has the Vercel GitHub app's access to the repo, so its 2FA matters.
 
 Risk: low-to-medium. A trusted-looking second copy of the site that nobody watches,
-plus a third-party app with repo access and a weak account. **Proposed (owner action):**
+plus a third-party app with repo access. **Proposed (owner action):**
 delete the Vercel project, or at least disconnect its Git repo; remove the Vercel GitHub app
 from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either way.
 
@@ -182,8 +181,7 @@ from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either wa
 - Vercel GitHub app (installation 73193593) went from **All repositories** (read/write to code,
   administration, hooks, PRs…) to **only `AvrelSnow/Portfolio-project`**. The app was kept because
   the portfolio deploys through it. Vercel's pending "permission update" request was left unanswered.
-- **Owner action left:** enable 2FA on the Vercel account (needs the owner's authenticator).
-  Check GitHub 2FA too, since the GitHub account controls the repo.
+- **Owner action:** 2FA on the Vercel and GitHub accounts (GitHub controls the repo).
 
 ## R-05 — Production deploys restricted to Git (2026-11-11, owner request)
 
@@ -235,6 +233,21 @@ from `AvrelSnow/4TUNHUB` if nothing else uses it; enable 2FA on Vercel either wa
   for the next 10 minutes too.
 - **R-03 closed.**
 
-## Owner 2FA check (2026-11-11)
-- Owner reports 2FA is **not yet** on for Vercel or GitHub. Still open (P-5 follow-up). GitHub matters
-  most: the GitHub account can push to `main`, which deploys production.
+## Account 2FA (owner)
+- 2FA on GitHub first (it can push to `main`, which deploys production), then Gmail, Vercel, Netlify,
+  Resend and the payment provider. **Live status is not written in this public repo** (see
+  "Public-repo exposure sweep" below); it is kept in the owner's private notes.
+
+## Public-repo exposure sweep (2026-11-12)
+Read of every tracked file on the PR #3 branch, `main` and every remote branch tip, looking for anything
+that helps an attacker. No secrets, keys, tokens or `.env` files on any branch tip; the private incident
+branch is not on the remote. Changes:
+- Removed statements of which accounts lack 2FA, and the Vercel and Netlify team slugs (they spell the
+  owner's personal email name). The live account status moves out of the repo.
+- Not removed: the history. Old commits and older branch tips still say 2FA was off on 2026-11-11.
+  Rewriting public history is not worth the risk; turning 2FA on is what makes that text harmless.
+- Finding for the owner: the founder page publishes the personal Gmail address, and that inbox is the
+  2FA channel for Fapshi (codes by email). Register Fapshi with an address that is not on the site, or
+  protect that Gmail with a passkey or authenticator app (not SMS) before money arrives.
+- Low, left as is: Netlify env-scope notes (defensive, no values), the local scratch path in
+  `scripts/optimize-images.mjs`, the incident ID itself.

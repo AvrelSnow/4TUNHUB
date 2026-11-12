@@ -1,6 +1,8 @@
 # Project state — security and payment-readiness programme
 
-_Last updated 2026-11-11, end of session (PR #2 live; R-03 passed; payment readiness: Fapshi first, terms of sale approved on draft PR #3; 2FA still off on Vercel and GitHub)._
+_Last updated 2026-11-11, end of session (PR #2 live; R-03 passed; payment readiness: Fapshi first, terms of sale approved on draft PR #3; public-repo exposure sweep 2026-11-12)._
+
+_Account 2FA status is deliberately not recorded in this public repo; it lives in the owner's private notes._
 
 - **Identity:** 4TUNHub, https://4tunhub.com (apex canonical, www → apex).
 - **Stack:** production **Next 16.4.6** (since 2026-11-11; `main` = `68fa9fe` after PR #2). React 19.2.4, TypeScript, npm; Node 22 on Netlify (Next.js Runtime v5.16.1).
@@ -12,7 +14,7 @@ _Last updated 2026-11-11, end of session (PR #2 live; R-03 passed; payment readi
   Full record: local-only branch `local/inc-001-private` (never push it). **Highest priority.**
 
 ## Netlify, verified in the dashboard (read-only, 2026-11-10)
-- Project `4tunhub`, team `fortunedonfack05`, linked to `github.com/AvrelSnow/4TUNHUB`.
+- Project `4tunhub`, linked to `github.com/AvrelSnow/4TUNHUB`.
 - Deploy log visibility: **private** (changed 2026-11-10).
 - `RESEND_API_KEY`: secret; scoped to Builds, Functions, Runtime; value in **Production only** since 2026-11-10 (previews and branch deploys can no longer send mail).
 - `MAIL_FROM`, `MAIL_TO`, `ANALYTICS_*`: all scopes, same value everywhere.
@@ -30,7 +32,7 @@ _Last updated 2026-11-11, end of session (PR #2 live; R-03 passed; payment readi
 | P-2 / R-03 | Rate window shared in Netlify Blobs | **deployed**; burst test **passed** 2026-11-11 on Deploy Preview #2: 5 of 9 accepted, parallel race and forged IPs held |
 | P-3 / R-04 | `nosniff` on `/_next/static/*` | **deployed** |
 | P-4 | Non-production deploys held the production mail key | fixed: Deploy Preview #1 and branch deploy `claude/project-audit-e95f91` rebuilt, both return `unavailable` |
-| P-5 | Leftover Vercel project builds every push, serves `4tunhub.vercel.app`; Vercel account has no 2FA | **fixed 2026-11-11**: project deleted (404), Vercel GitHub app limited to Portfolio-project. Owner reports 2FA still off on Vercel and GitHub (2026-11-11). |
+| P-5 | Leftover Vercel project builds every push, serves `4tunhub.vercel.app` | **fixed 2026-11-11**: project deleted (404), Vercel GitHub app limited to Portfolio-project. Owner: 2FA on Vercel and GitHub. |
 | R-05 | Netlify production deploys restricted to Git | **done** 2026-11-11 (dashboard setting) |
 | R-06 | JSON-LD escaped through one `JsonLd` component; Semgrep rule exclusion removed | **deployed** 2026-11-11 (`main` = `68fa9fe`); production JSON-LD verified |
 
@@ -43,10 +45,10 @@ Details: `docs/security/07-remediation-log.md`.
    "Deploy project without cache" built it (47 s, 15 credits).
 4. ~~Production contact test~~ done: "Message sent", Delivered in Resend.
 5. ~~Phase 0 tool installs~~ done; CI workflow on **PR #2** (green, two runs). Merge only with the next batch (15 credits).
-6. ~~P-5 Vercel~~ project deleted, app access narrowed. **Owner: enable 2FA on GitHub and Vercel — confirmed off on 2026-11-11.**
+6. ~~P-5 Vercel~~ project deleted, app access narrowed. **Owner: 2FA on GitHub and Vercel.**
 7. ~~R-03 burst test~~ passed on Deploy Preview #2.
 8. **Owner: open the Fapshi account** (individual), 2FA on, ask support about limits and refunds, test payment + refund, set the Cohort 1 price. Then Claude adds the link and Pay button to PR #3.
 9. **Merge PR #3** only as one batch with the payment link, after re-reading credits (15).
 
 - **Payment readiness:** NOT READY. Gap review done 2026-11-11: `docs/security/09-payment-readiness.md`. Recommended path: provider-hosted payment links for Cohort 1 (no webhook, no order store). Blockers: GitHub 2FA (G-01), 2FA on every money-path account (G-02), legal entity (G-03), provider choice (G-04), terms of sale and privacy update (G-05, G-06), site pause risk on Netlify Free (G-07).
-- **Immediate next action:** owner enables GitHub 2FA (first) and Vercel 2FA. No registered entity yet (owner, 2026-11-11). Provider comparison done (09): register an *établissement* at the Bafoussam CFCE (72 h official, ~41,500–61,500 FCFA), then CinetPay or Notch Pay; **Owner chose Fapshi first** (individual account, MoMo only, 3%); registration and CinetPay/Notch Pay later. Terms of sale + privacy update approved as is, on draft PR #3 (not merged). Blueprint: phase 9 opened, two decisions locked.
+- **Immediate next action:** owner: 2FA on GitHub (first), Gmail and Vercel. No registered entity yet (owner, 2026-11-11). Provider comparison done (09): register an *établissement* at the Bafoussam CFCE (72 h official, ~41,500–61,500 FCFA), then CinetPay or Notch Pay; **Owner chose Fapshi first** (individual account, MoMo only, 3%); registration and CinetPay/Notch Pay later. Terms of sale + privacy update approved as is, on draft PR #3 (not merged). Blueprint: phase 9 opened, two decisions locked.

@@ -20,9 +20,9 @@ Continue the 4TUNHub security audit and payment-readiness work. State at the end
   registration route. Owner decision: **Fapshi first** (individual "Not Legally Registered" account, MoMo only,
   3%), hosted payment link, no webhook. No registered entity yet; an *établissement* at the Bafoussam CFCE
   and a move to CinetPay or Notch Pay come later.
-- **Account security (owner, open):** GitHub and Vercel 2FA were **off** on 2026-11-11. GitHub matters most
-  (push to `main` deploys production). Gmail needs app/passkey 2FA before Fapshi holds money (Fapshi's 2FA is by
-  email). This status is written in a public repo, so closing it soon matters twice.
+- **Account security (owner, open):** 2FA on GitHub, Gmail, Vercel, Netlify, Resend, Fapshi.
+  GitHub matters most (push to `main` deploys production). Status is kept off this public repo: ask the owner. Gmail needs app/passkey 2FA before Fapshi holds money (Fapshi's 2FA is by
+  email). Do not write account status into the repo.
 - **Netlify credits:** ~235.6 / 300 at the last reading, cycle ends Nov 18, resets Nov 19 (Free plan; the site
   pauses if credits run out). Re-read Usage & billing before any merge and log it in PROJECT-STATE.
 - `gh` is not installed on this machine: open or read PRs in the owner's Chrome (Claude in Chrome). The app
@@ -33,7 +33,7 @@ Continue the 4TUNHub security audit and payment-readiness work. State at the end
 
 Do this:
 
-1. Ask whether GitHub, Gmail and Vercel 2FA are on now (then Netlify and Resend); record it in the remediation log.
+1. Ask whether GitHub, Gmail and Vercel 2FA are on now (then Netlify and Resend); record it in the owner's private notes or Claude memory, never in the repo.
 2. Ask whether the Fapshi account is open with 2FA, what support said about limits on individual accounts,
    refunds **and cards**, whether a test payment and refund worked, and the Cohort 1 price.
    - **Open question (owner, 2026-11-11): card payments.** Fapshi lists no cards; the only confirmed card route is
