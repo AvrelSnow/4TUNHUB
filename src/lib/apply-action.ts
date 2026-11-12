@@ -14,7 +14,7 @@ import {
   type ProofSlot,
   type SwVersion,
 } from "./cohort";
-import { rateLimited, clientIp, str, EMAIL_RE, PHONE_RE, LINKEDIN_RE } from "./form-guard";
+import { rateLimited, clientIp, str, text, greetingName, EMAIL_RE, PHONE_RE, LINKEDIN_RE } from "./form-guard";
 import { sendMail, canMailOutside, inboxes, MailNotConfigured, type MailAttachment } from "./mailer";
 import { isLocale } from "./i18n/config";
 import { getDictionary } from "./i18n/dictionaries";
@@ -74,7 +74,7 @@ export async function submitApplication(
   const linkedin = str(formData, "linkedin").slice(0, APPLY_LIMITS.linkedinMax);
   const org = str(formData, "org").slice(0, APPLY_LIMITS.orgMax);
   const sw = str(formData, "sw");
-  const why = str(formData, "why");
+  const why = text(formData, "why");
   const consent = str(formData, "consent");
   const localeIn = str(formData, "locale");
   const locale = isLocale(localeIn) ? localeIn : "en";
@@ -148,7 +148,8 @@ export async function submitApplication(
         to: [email],
         replyTo: inboxes()[0],
         subject: fill(r.subject, { ref: reference }),
-        text: fill(r.body, { name, ref: reference }),
+        // A name that fails greetingName() is left out ("Dear," / "Bonjour,").
+        text: fill(r.body, { name: greetingName(name) ?? "", ref: reference }).replace(/^(\S+) ,/, "$1,"),
       });
       receipt = true;
     } catch {

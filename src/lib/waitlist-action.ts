@@ -3,10 +3,9 @@
 import {
   TRACK_VALUES,
   WAITLIST_LIMITS,
-  type TrackValue,
   type WaitlistState,
 } from "./waitlist";
-import { rateLimited, clientIp, str, EMAIL_RE } from "./form-guard";
+import { rateLimited, clientIp, str, csvCell, EMAIL_RE } from "./form-guard";
 import { sendMail, MailNotConfigured } from "./mailer";
 
 /**
@@ -34,10 +33,8 @@ export async function submitWaitlist(
 
   const email = str(formData, "email").slice(0, WAITLIST_LIMITS.emailMax);
   const name = str(formData, "name").slice(0, WAITLIST_LIMITS.nameMax);
-  const tracks = formData
-    .getAll("tracks")
-    .filter((v): v is string => typeof v === "string")
-    .filter((v): v is TrackValue => TRACK_VALUES.includes(v as TrackValue));
+  // Known values only, each once.
+  const tracks = TRACK_VALUES.filter((t) => formData.getAll("tracks").includes(t));
   const values = { email, name, tracks };
 
   const fieldErrors: WaitlistState["fieldErrors"] = {};
@@ -57,7 +54,7 @@ export async function submitWaitlist(
       subject: `[Waitlist] ${list} — ${email}`,
       text: [
         // One parseable line first, then the same facts for a human.
-        `${new Date().toISOString()},${email},"${name}","${list}"`,
+        [new Date().toISOString(), email, csvCell(name), csvCell(list)].join(","),
         "",
         `Email:  ${email}`,
         `Name:   ${name || "—"}`,

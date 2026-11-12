@@ -264,3 +264,28 @@ branch is not on the remote. Changes:
   by one: each merge to `main` is 15 credits. Fold them into the next batch.
 - **Owner action (GitHub, after 2FA):** Settings → Advanced Security → turn on *Dependabot alerts* and
   *Dependabot security updates*. The config file alone only drives the monthly version updates.
+
+## R-09 — Form review (2026-11-12, PR #3)
+Read of the three Server Actions (`contact`, `apply`, `waitlist`), `form-guard.ts` and `mailer.ts`.
+Sound already: server is the gate, honeypot, shared per-IP rate limit before any work, generic error
+codes, provider errors logged without the payload, screenshot checks by size, type and magic bytes,
+server-made attachment names, 5 MB action body limit, Resend's JSON API (no raw SMTP headers to inject).
+
+Fixed:
+- **Receipt as a phishing relay (medium, before Cohort 1).** The application receipt goes to whatever
+  address the visitor types and greeted them with the typed name, from 4TUNHub's verified domain. A
+  "name" such as "your seat is cancelled, pay at scam.example" would have been mailed to a stranger as
+  4TUNHub, exactly the payment scam the terms warn about. Applications are closed now, so not live; the
+  form is reused for Cohort 1. Now `greetingName()` keeps a name only if it is letters, spaces, hyphens
+  and apostrophes, four words at most; otherwise the greeting is just "Dear," / "Bonjour,".
+- **Forged lines in the inbox email (low).** Single-line fields are flattened (line breaks, control and
+  bidirectional-override characters removed), so "Ada\nReference: C0-FAKE" can't fake a line. Messages
+  keep their line breaks only.
+- **Email addresses (low).** `EMAIL_RE` refuses `, ; < > ( ) [ ] \ "`, so one field can't hold two
+  recipients in `to` / `reply_to`.
+- **Waitlist CSV line (low).** Name and tracks are quoted CSV cells with quotes doubled and a leading
+  `= + - @` neutralised (spreadsheet formula injection); tracks are de-duplicated.
+
+Checked: 16 unit cases on the helpers pass; on local dev a contact post with a forged name
+(`Ada\nTopic: FORGED`) and a control character in the message arrived flattened and clean;
+`npm run check` passes (198 KB / 220 KB).

@@ -37,6 +37,7 @@ _Account 2FA status is deliberately not recorded in this public repo; it lives i
 | R-06 | JSON-LD escaped through one `JsonLd` component; Semgrep rule exclusion removed | **deployed** 2026-11-11 (`main` = `68fa9fe`); production JSON-LD verified |
 | R-07 | minimatch override (dev-only advisory) + grouped monthly Dependabot | on PR #3, not deployed; owner to turn on Dependabot alerts and security updates in GitHub settings |
 | R-08 | Public-repo exposure sweep: account status and team slugs out of the docs | on PR #3 (docs only) |
+| R-09 | Form review: receipt can't carry a phishing "name", single-line fields flattened, stricter email, safe waitlist CSV | on PR #3, not deployed |
 
 Details: `docs/security/07-remediation-log.md`.
 
