@@ -28,8 +28,9 @@ const sizeHeights: Record<Size, string> = {
 };
 
 /**
- * The lockup is drawn twice: the dark one sets its wordmark in #A8B0B8 for
- * the black page, the light one in #14181D for the white page. Both ship
+ * The lockup is drawn twice: the dark one sets its wordmark in cream
+ * (#F4EEDF) beside the amber roundel for the indigo night, the light one in
+ * ink (#14181D) for the paper. Both ship
  * in the markup and CSS picks with
  * `.only-light` / `.only-dark`, rather than JavaScript swapping a `src`
  * after mount — a logo that arrives one frame late is the most conspicuous
