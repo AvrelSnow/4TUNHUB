@@ -47,17 +47,6 @@ export default async function AcademyPage({ params }: Params) {
   if (!isLocale(locale)) notFound();
   const dict = await getDictionary(locale);
   const t = dict.academy;
-  const beans = dict.projects.galleries["beans-unwrapping-machine"] ?? [];
-  const beansTitle = dict.projects.items["beans-unwrapping-machine"]?.title ?? "";
-
-  // What a student learns to do, shown on one real machine: the drawing,
-  // the model, the thing that was built.
-  const sequence = [
-    { src: "/images/projects/beans-3.webp", caption: beans[2] ?? "", doc: true },
-    { src: "/images/projects/beans-7.webp", caption: beans[6] ?? "", doc: true },
-    { src: "/images/projects/beans-hero.webp", caption: beansTitle, doc: false },
-  ];
-
   return (
     <div>
       {/* 1 · HERO */}
@@ -82,22 +71,6 @@ export default async function AcademyPage({ params }: Params) {
           </>
         }
       >
-        <div className="mt-12 grid animate-fade-up gap-4 [animation-delay:240ms] sm:mt-14 sm:grid-cols-3">
-          {sequence.map((s, i) => (
-            <figure key={s.src}>
-              <Media
-                src={s.src}
-                alt={s.caption}
-                doc={s.doc}
-                responsive={!s.doc}
-                sizes="(min-width: 640px) 33vw, 100vw"
-                priority={i === 0}
-                className="aspect-[4/3] rounded-3xl"
-              />
-              <figcaption className="readout mt-3 text-center">{s.caption}</figcaption>
-            </figure>
-          ))}
-        </div>
       </PageHero>
 
       <CohortFeature locale={locale} dict={dict} />

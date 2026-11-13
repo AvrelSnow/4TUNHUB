@@ -65,11 +65,18 @@ const BRACKET_IGES: LibraryFile = {
   kind: "geometry",
 };
 
+const BRACKET_DECK: LibraryFile = {
+  href: "/library/ls-dyna/bracket-static.k",
+  name: "bracket-static.k",
+  size: "293 KB",
+  kind: "keyword",
+};
+
 /** In the order a newcomer should take them. */
 export const series: { key: SeriesKey; files: LibraryFile[] }[] = [
   { key: "setup", files: [] },
   { key: "ball-plate", files: [BALL_PLATE_DECK] },
-  { key: "bracket-static", files: [] },
+  { key: "bracket-static", files: [BRACKET_DECK] },
 ];
 
 export const episodes: Episode[] = [

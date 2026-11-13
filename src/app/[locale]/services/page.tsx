@@ -62,26 +62,6 @@ export default async function ServicesPage({ params }: Params) {
           </>
         }
       >
-        <div className="mt-12 grid animate-fade-up gap-4 [animation-delay:240ms] sm:mt-14 sm:grid-cols-2">
-          <figure>
-            <Media
-              src="/images/projects/braking-3.webp"
-              alt={braking[2] ?? ""}
-              doc
-              priority
-              className="aspect-[4/3] rounded-3xl"
-            />
-            <figcaption className="readout mt-3 text-center">{braking[2]}</figcaption>
-          </figure>
-          <figure>
-            <Media
-              src="/images/projects/braking-2.webp"
-              alt={braking[1] ?? ""}
-              className="aspect-[4/3] rounded-3xl"
-            />
-            <figcaption className="readout mt-3 text-center">{braking[1]}</figcaption>
-          </figure>
-        </div>
       </PageHero>
 
       {/* 2 · OFFERINGS — one row each, the picture alternating sides. */}

@@ -60,16 +60,6 @@ export default async function ResearchPage({ params }: Params) {
           </>
         }
       >
-        <figure className="mx-auto mt-16 max-w-5xl animate-fade-up [animation-delay:240ms] sm:mt-20">
-          <Media
-            src="/images/projects/banana-2.webp"
-            alt={banana[1] ?? ""}
-            doc
-            priority
-            className="aspect-[16/9] rounded-3xl border border-border"
-          />
-          <figcaption className="readout mt-3 text-center">{banana[1]}</figcaption>
-        </figure>
       </PageHero>
 
       {/* 2 · FOCUS AREAS */}
