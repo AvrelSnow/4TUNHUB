@@ -18,6 +18,17 @@
  *                       e.g. "https://stats.4tunhub.com". Defaults to
  *                       the provider's own cloud.
  *
+ * TWO ORIGINS, NOT ONE. Umami's script is served from cloud.umami.is but
+ * posts its hits to gateway.umami.is (its tracker's built-in default; it
+ * does not derive the endpoint from where it was loaded). The
+ * Content-Security-Policy therefore needs the script origin in script-src
+ * and the endpoint in connect-src. With only the first, the script loads,
+ * `window.umami` exists, and every hit is blocked by the browser without
+ * an error anyone sees — the dashboard just stays at zero. That is what
+ * happened on the first deploy. The endpoint is also written onto the
+ * tag (`data-host-url`) so it is stated here, not inherited from a default
+ * that can change.
+ *
  * No import belongs in this file: `next.config.ts` imports it to add the
  * chosen origin to the Content-Security-Policy, and a config is loaded
  * outside the app's module graph.
@@ -32,8 +43,10 @@ export type AnalyticsConfig = {
   provider: AnalyticsProvider;
   /** The script to load. */
   src: string;
-  /** Origin to allow in script-src and connect-src. */
+  /** Origin the script is served from: allowed in script-src. */
   origin: string;
+  /** Origin the script posts its hits to: allowed in connect-src. */
+  endpoint: string;
   /** Provider-specific attributes on the <script> tag. */
   attrs: Record<string, string>;
 };
@@ -42,6 +55,9 @@ const defaultHost: Record<AnalyticsProvider, string> = {
   umami: "https://cloud.umami.is",
   plausible: "https://plausible.io",
 };
+
+/** Where Umami Cloud's tracker sends its hits (its built-in default). */
+const UMAMI_CLOUD_ENDPOINT = "https://gateway.umami.is";
 
 /** Trailing slashes make `${host}/script.js` a 404 on some hosts. */
 function origin(host: string): string {
@@ -70,9 +86,19 @@ export function analyticsConfig(
   }
 
   const p = provider as AnalyticsProvider;
-  const host = origin(env.ANALYTICS_HOST?.trim() || defaultHost[p]);
+  const custom = env.ANALYTICS_HOST?.trim();
+  const host = origin(custom || defaultHost[p]);
 
-  return p === "umami"
-    ? { provider: p, origin: host, src: `${host}/script.js`, attrs: { "data-website-id": id } }
-    : { provider: p, origin: host, src: `${host}/js/script.js`, attrs: { "data-domain": id } };
+  if (p === "umami") {
+    // A self-hosted instance receives its own hits; the cloud one uses the gateway.
+    const endpoint = custom ? host : UMAMI_CLOUD_ENDPOINT;
+    return {
+      provider: p,
+      origin: host,
+      endpoint,
+      src: `${host}/script.js`,
+      attrs: { "data-website-id": id, "data-host-url": endpoint },
+    };
+  }
+  return { provider: p, origin: host, endpoint: host, src: `${host}/js/script.js`, attrs: { "data-domain": id } };
 }
