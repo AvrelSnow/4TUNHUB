@@ -404,6 +404,24 @@ const en = {
       "Mechanical design, simulation and reverse engineering for companies, teams and entrepreneurs — grounded in what can actually be manufactured and maintained, across Cameroon and beyond.",
     primaryCta: "Request a consultation",
     secondaryCta: "See the work",
+    jumpLabel: "Jump to a service",
+
+    brief: {
+      eyebrow: "Starting a job",
+      title: "What to send us, and what comes back.",
+      bringTitle: "You bring",
+      bring: [
+        "A drawing, a CAD file or a photo of the part",
+        "The conditions it works in: load, environment, budget",
+        "Who will build it, and where",
+      ],
+      getTitle: "You get",
+      get: [
+        "Drawings and models a local workshop can build from",
+        "A written check that the design holds, when simulation is in scope",
+        "A clear recommendation: build it, change it or stop",
+      ],
+    },
 
     offeringsEyebrow: "What we do",
     offeringsTitle: "Four ways we turn a brief into hardware.",
@@ -891,6 +909,27 @@ const en = {
       "Applied engineering research in renewable energy, sustainability and industrial systems — grounded in West and Central African infrastructure realities, not abstractions.",
     primaryCta: "Collaborate on research",
     secondaryCta: "See the projects",
+    jumpLabel: "Jump to a focus area",
+
+    approach: {
+      eyebrow: "How we work",
+      steps: [
+        {
+          title: "Start in the field",
+          desc: "A real gap: a part that cannot be bought, waste that is burned, power that is not there.",
+        },
+        {
+          title: "Build and test",
+          desc: "A design, a lab trial or an analysis that someone else can check.",
+        },
+        {
+          title: "Publish and reuse",
+          desc: "Results go to The REM, then back into services, machines and courses.",
+        },
+      ],
+      ledBy: "Led by 4TUNHub's founder, a mechanical engineer and lecturer.",
+      ledByLink: "Meet the founder",
+    },
 
     focusEyebrow: "Focus areas",
     focusTitle: "Where we put the work.",

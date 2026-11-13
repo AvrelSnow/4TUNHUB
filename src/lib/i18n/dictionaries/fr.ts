@@ -397,6 +397,24 @@ const fr: Dictionary = {
       "Conception mécanique, simulation et rétro-ingénierie pour les entreprises, les équipes et les entrepreneurs — ancrées dans ce qui peut réellement être fabriqué et entretenu, au Cameroun et au-delà.",
     primaryCta: "Demander une consultation",
     secondaryCta: "Voir les réalisations",
+    jumpLabel: "Aller à un service",
+
+    brief: {
+      eyebrow: "Démarrer une mission",
+      title: "Ce que vous nous envoyez, et ce que vous recevez.",
+      bringTitle: "Vous apportez",
+      bring: [
+        "Un plan, un fichier CAO ou une photo de la pièce",
+        "Les conditions d'usage : charge, environnement, budget",
+        "Qui la fabriquera, et où",
+      ],
+      getTitle: "Vous recevez",
+      get: [
+        "Des plans et des modèles qu'un atelier local peut fabriquer",
+        "Une vérification écrite que la conception tient, quand la simulation est prévue",
+        "Une recommandation claire : la fabriquer, la modifier ou s'arrêter",
+      ],
+    },
 
     offeringsEyebrow: "Ce que nous faisons",
     offeringsTitle: "Quatre façons de transformer un cahier des charges en matériel.",
@@ -887,6 +905,27 @@ const fr: Dictionary = {
       "Une recherche appliquée en énergies renouvelables, durabilité et systèmes industriels — ancrée dans les réalités d'infrastructure d'Afrique de l'Ouest et centrale, pas dans des abstractions.",
     primaryCta: "Collaborer sur un projet de recherche",
     secondaryCta: "Voir les projets",
+    jumpLabel: "Aller à un axe de recherche",
+
+    approach: {
+      eyebrow: "Notre méthode",
+      steps: [
+        {
+          title: "Partir du terrain",
+          desc: "Un vrai manque : une pièce introuvable, des déchets brûlés, un courant qui n'est pas là.",
+        },
+        {
+          title: "Construire et tester",
+          desc: "Une conception, un essai en laboratoire ou une analyse que d'autres peuvent vérifier.",
+        },
+        {
+          title: "Publier et réutiliser",
+          desc: "Les résultats vont à The REM, puis reviennent dans les services, les machines et les cours.",
+        },
+      ],
+      ledBy: "Dirigée par le fondateur de 4TUNHub, ingénieur mécanicien et enseignant.",
+      ledByLink: "Rencontrer le fondateur",
+    },
 
     focusEyebrow: "Axes de recherche",
     focusTitle: "Là où nous concentrons le travail.",
