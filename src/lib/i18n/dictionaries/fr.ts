@@ -1775,7 +1775,7 @@ const fr: Dictionary = {
           },
           embeds: {
             name: "Contenus intégrés",
-            desc: "Lecteurs vidéo et modules de réservation chargés depuis d'autres sociétés. Rien sur ce site n'en utilise pour l'instant.",
+            desc: "Lecteurs vidéo et modules de réservation chargés depuis d'autres sociétés. Le seul ici est le lecteur YouTube des pages de tutoriels LS-DYNA : il ne se charge que lorsque vous appuyez sur lecture, il n'y a donc rien à activer ni à désactiver.",
           },
         },
         allow: "Autoriser",

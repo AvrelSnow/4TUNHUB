@@ -1799,7 +1799,7 @@ const en = {
           },
           embeds: {
             name: "Embedded media",
-            desc: "Video players and booking widgets loaded from other companies. Nothing on this site uses one yet.",
+            desc: "Video players and booking widgets loaded from other companies. The only one here is the YouTube player on the LS-DYNA tutorial pages, and it stays unloaded until you press play, so there is nothing to switch on or off.",
           },
         },
         allow: "Allow",
