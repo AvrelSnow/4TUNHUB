@@ -715,6 +715,21 @@ const en = {
       },
     } as Record<string, { title: string; outcome: string; who: string }>,
 
+    statuses: {
+      next: "Next cohort",
+      planned: "Planned, no date yet",
+    } as Record<string, string>,
+    plannedCta: "Tell me when it opens",
+
+    sessions: {
+      eyebrow: "Taught before",
+      title: "Sessions already taught, in public.",
+      intro:
+        "Before any course opens, these live sessions were run for the Douala City SOLIDWORKS User Group. Each one links to its own event page, so you can check it.",
+      open: "See the session",
+      archive: "The full programme",
+    },
+
     library: {
       eyebrow: "Free · on YouTube",
       title: "The LS-DYNA library.",

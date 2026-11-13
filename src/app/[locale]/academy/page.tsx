@@ -11,6 +11,7 @@ import { Media } from "@/components/ui/Media";
 import { CohortFeature } from "@/components/CohortFeature";
 import { EmailCaptureBand } from "@/components/EmailCaptureBand";
 import { courses } from "@/lib/academy";
+import { talks, TALKS_ARCHIVE_URL } from "@/lib/talks";
 import { LIBRARY_PATH } from "@/lib/lsdyna";
 import { PATH_ROOT } from "@/lib/engineering-thinking";
 import { projectDetailPath } from "@/lib/projects";
@@ -135,7 +136,8 @@ export default async function AcademyPage({ params }: Params) {
               <Reveal key={c.key} delay={(i % 2) * 80}>
                 <article className="flex h-full flex-col rounded-3xl bg-surface-2 p-8 sm:p-10">
                   <div className="flex flex-wrap items-center gap-2">
-                    <Badge variant="amber">{t.levels[c.level]}</Badge>
+                    <Badge variant={c.status === "next" ? "amber" : "outline"}>{t.statuses[c.status]}</Badge>
+                    <Badge variant="outline">{t.levels[c.level]}</Badge>
                     <Badge variant="outline">{t.formats[c.format]}</Badge>
                   </div>
                   <h3 className="mt-5 text-3xl font-semibold tracking-tight text-foreground">{copy.title}</h3>
@@ -144,8 +146,12 @@ export default async function AcademyPage({ params }: Params) {
                     {copy.who}
                   </p>
                   <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8">
-                    <Button as="a" href={localizeHref(locale, "/waitlist?track=academy")}>
-                      {t.primaryCta}
+                    <Button
+                      as="a"
+                      href={localizeHref(locale, "/waitlist?track=academy")}
+                      variant={c.status === "next" ? "primary" : "secondary"}
+                    >
+                      {c.status === "next" ? t.primaryCta : t.plannedCta}
                     </Button>
                     {c.proof && (
                       <ArrowLink href={localizeHref(locale, projectDetailPath(c.proof))}>
@@ -157,6 +163,38 @@ export default async function AcademyPage({ params }: Params) {
               </Reveal>
             );
           })}
+        </div>
+      </Section>
+
+      {/* 2b · TAUGHT BEFORE — real sessions, each with the page that proves it.
+          Dates are not shown: the event pages carry them, and a wrong year
+          is worse than none (see talks.ts). */}
+      <Section eyebrow={t.sessions.eyebrow} title={t.sessions.title} intro={t.sessions.intro}>
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {talks
+            .filter((talk) => talk.lesson)
+            .map((talk, i) => (
+              <li key={talk.href}>
+                <Reveal delay={(i % 3) * 80} className="h-full">
+                <div className="flex h-full flex-col rounded-3xl bg-surface p-6 sm:p-7">
+                  <p className="text-2xs font-semibold tracking-wide text-accent">{talk.org}</p>
+                  <h3 className="mt-3 text-lg font-semibold leading-snug tracking-tight text-foreground">
+                    {talk.title}
+                  </h3>
+                  <div className="mt-auto pt-6">
+                    <ArrowLink href={talk.href} external>
+                      {t.sessions.open}
+                    </ArrowLink>
+                  </div>
+                </div>
+                </Reveal>
+              </li>
+            ))}
+        </ul>
+        <div className="mt-9">
+          <ArrowLink href={TALKS_ARCHIVE_URL} external>
+            {t.sessions.archive}
+          </ArrowLink>
         </div>
       </Section>
 

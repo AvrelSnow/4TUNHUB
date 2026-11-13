@@ -706,6 +706,21 @@ const fr: Dictionary = {
       },
     } as Record<string, { title: string; outcome: string; who: string }>,
 
+    statuses: {
+      next: "Prochaine cohorte",
+      planned: "Prévu, sans date pour l'instant",
+    } as Record<string, string>,
+    plannedCta: "Prévenez-moi à l'ouverture",
+
+    sessions: {
+      eyebrow: "Déjà enseigné",
+      title: "Des sessions déjà enseignées, en public.",
+      intro:
+        "Avant l'ouverture d'un cours, ces sessions en direct ont été animées pour le Douala City SOLIDWORKS User Group. Chacune renvoie à sa propre page d'événement : vous pouvez le vérifier.",
+      open: "Voir la session",
+      archive: "Le programme complet",
+    },
+
     library: {
       eyebrow: "Gratuit · sur YouTube",
       title: "La bibliothèque LS-DYNA.",
