@@ -775,7 +775,7 @@ const fr: Dictionary = {
     instructorCta: "Rencontrer le fondateur",
 
     cta: {
-      title: "Soyez dans la prochaine cohorte.",
+      title: "Soyez prévenu à l'ouverture d'un cours.",
       subtitle:
         "L'Academy ouvre par étapes. Rejoignez la liste d'attente et nous vous contacterons dès qu'un parcours démarre.",
       primary: "Rejoindre la liste d'attente",
@@ -1325,14 +1325,14 @@ const fr: Dictionary = {
     apply: "Postuler",
     closesOn: "Candidatures jusqu'au dimanche 11 octobre. Les places sont attribuées au fil des candidatures.",
     closed:
-      "Les candidatures ont fermé le 11 octobre et la Cohorte 0 est en cours. La Cohorte 1 ouvre en janvier : laissez votre adresse pour être prévenu en premier.",
-    closedCta: "Me prévenir pour la Cohorte 1",
+      "Les candidatures ont fermé le 11 octobre et la Cohorte 0 est en cours. Laissez votre adresse pour être prévenu en premier de la suite.",
+    closedCta: "Me tenir au courant",
     running: {
       eyebrow: "En cours",
       title: "Les dates.",
       heading: "Qui enseigne la Cohorte 0.",
       intro:
-        "Vingt ingénieurs, huit soirées, deux formateurs. Les résultats sont publiés la semaine du 16 novembre, et la Cohorte 1 ouvre en janvier.",
+        "Vingt ingénieurs, huit soirées, deux formateurs. Les résultats sont publiés la semaine du 16 novembre.",
     },
     facts: [
       { label: "Prix", value: "Gratuit" },
@@ -1412,7 +1412,7 @@ const fr: Dictionary = {
       steps: {
         hub: {
           title: "Suivre 4TUNHub",
-          desc: "Sur LinkedIn et sur YouTube. Les résultats de la Cohorte 0, et l'ouverture de la Cohorte 1, y sont annoncés en premier.",
+          desc: "Sur LinkedIn et sur YouTube. Les résultats de la Cohorte 0 y sont annoncés en premier.",
         },
         mkv: {
           title: "Suivre MKV Academy",
@@ -1648,9 +1648,9 @@ const fr: Dictionary = {
           when: "Bêta en décembre 2026",
         },
         academy: {
-          title: "Cohortes de l'Académie",
-          desc: "Le prochain bootcamp CSWA après la Cohorte 0, et le cours de GD&T et dessin technique qui suivra.",
-          when: "À partir de janvier 2027",
+          title: "Cours de l'Académie",
+          desc: "Le bootcamp CSWA, et le cours de GD&T et dessin technique. Les dates sont annoncées une fois fixées.",
+          when: "Dates à venir",
         },
         lsdyna: {
           title: "Bibliothèque LS-DYNA",
@@ -1703,8 +1703,8 @@ const fr: Dictionary = {
       more: "Être prévenu du reste",
       bands: {
         academy: {
-          title: "La Cohorte 1 ouvre en janvier.",
-          body: "Laissez une adresse et vous saurez le jour où les candidatures ouvrent — pour le prochain bootcamp CSWA, et pour le cours de GD&T qui suivra.",
+          title: "Soyez prévenu à l'ouverture d'un cours.",
+          body: "Laissez une adresse et vous saurez le jour où un cours ouvre — le bootcamp CSWA, ou le cours de GD&T. Un e-mail, rien entre-temps.",
         },
         lsdyna: {
           title: "Le prochain épisode, avec ses fichiers.",
@@ -1712,7 +1712,7 @@ const fr: Dictionary = {
         },
         cohort: {
           title: "Vingt places. Si vous n'en obtenez pas une, ne disparaissez pas.",
-          body: "La Cohorte 1 ouvre en janvier et cette liste est prévenue la première. Un e-mail le jour venu — rien entre-temps.",
+          body: "Laissez votre adresse : cette liste est prévenue la première de la suite. Un e-mail, rien entre-temps.",
         },
         rem: {
           title: "La REM, le jour où un épisode paraît.",

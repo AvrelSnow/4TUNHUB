@@ -784,7 +784,7 @@ const en = {
     instructorCta: "Meet the founder",
 
     cta: {
-      title: "Be first into the next cohort.",
+      title: "Hear when a course opens.",
       subtitle:
         "The Academy is opening in stages. Join the waitlist and we'll reach out as each track goes live.",
       primary: "Join the waitlist",
@@ -1330,15 +1330,15 @@ const en = {
     apply: "Apply for a seat",
     closesOn: "Applications close Sunday 11 October. Seats are given out as applications come in.",
     closed:
-      "Applications closed on 11 October and Cohort 0 is under way. Cohort 1 opens in January: leave your address and you hear first.",
-    closedCta: "Tell me when Cohort 1 opens",
+      "Applications closed on 11 October and Cohort 0 is under way. Leave your address and you hear first about what comes next.",
+    closedCta: "Keep me posted",
     /** Replaces the application copy once applications have closed. */
     running: {
       eyebrow: "Under way",
       title: "The dates.",
       heading: "Who teaches Cohort 0.",
       intro:
-        "Twenty engineers, eight evenings, two instructors. The results are published in the week of 16 November, and Cohort 1 opens in January.",
+        "Twenty engineers, eight evenings, two instructors. The results are published in the week of 16 November.",
     },
     facts: [
       { label: "Price", value: "Free" },
@@ -1418,7 +1418,7 @@ const en = {
       steps: {
         hub: {
           title: "Follow 4TUNHub",
-          desc: "On LinkedIn and on YouTube. Cohort 0's results, and the opening of Cohort 1, are announced there first.",
+          desc: "On LinkedIn and on YouTube. Cohort 0's results are announced there first.",
         },
         mkv: {
           title: "Follow MKV Academy",
@@ -1668,9 +1668,9 @@ const en = {
           when: "Beta December 2026",
         },
         academy: {
-          title: "Academy cohorts",
-          desc: "The next CSWA bootcamp after Cohort 0, and the GD&T and technical-drawing course that follows it.",
-          when: "From January 2027",
+          title: "Academy courses",
+          desc: "The CSWA bootcamp, and the GD&T and technical-drawing course. Dates are announced once they are fixed.",
+          when: "Dates to come",
         },
         lsdyna: {
           title: "LS-DYNA library",
@@ -1727,12 +1727,12 @@ const en = {
       more: "Hear about the rest",
       bands: {
         academy: {
-          title: "Cohort 1 opens in January.",
-          body: "Leave an address and you'll know the day applications open — for the next CSWA bootcamp, and for the GD&T course that follows it.",
+          title: "Hear when a course opens.",
+          body: "Leave an address and you'll know the day a course opens — the CSWA bootcamp, or the GD&T course. One email, nothing in between.",
         },
         cohort: {
           title: "Twenty seats. If you don't get one, don't disappear.",
-          body: "Cohort 1 opens in January and this list hears first. One email the day it does — nothing in between.",
+          body: "Leave your address and this list hears first about what comes next. One email, nothing in between.",
         },
         lsdyna: {
           title: "The next episode, with its files.",

@@ -249,7 +249,7 @@ export const siteTree: SiteNode[] = [
     href: "/waitlist",
     status: "active",
     placement: "utility",
-    desc: "One address, for the Lab, the next cohorts, the REM or the tools — whichever you choose.",
+    desc: "One address, for the Lab, the courses, the REM or the tools — whichever you choose.",
   },
   {
     key: "privacy",
