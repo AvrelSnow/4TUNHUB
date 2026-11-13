@@ -7,10 +7,9 @@
 export type CourseLevel = "beginner" | "intermediate" | "advanced" | "all-levels";
 /**
  * Where a course really stands. Only what is true today:
- *  - next: the one in front of the others, its waitlist is the one to join
  *  - planned: on the list, no date yet — the card says so
  */
-export type CourseStatus = "next" | "planned";
+export type CourseStatus = "planned";
 export type CourseFormat = "online" | "in-person" | "hybrid" | "workshop";
 
 export type Course = {
@@ -23,7 +22,7 @@ export type Course = {
 };
 
 export const courses: Course[] = [
-  { key: "solidworks-cad", status: "next", level: "beginner", format: "hybrid", proof: "banana-pseudostem-shredder" },
+  { key: "solidworks-cad", status: "planned", level: "beginner", format: "hybrid", proof: "banana-pseudostem-shredder" },
   { key: "fea-simulation", status: "planned", level: "intermediate", format: "online", proof: "pedal-power-charger" },
   { key: "reverse-engineering", status: "planned", level: "intermediate", format: "workshop", proof: "locomotive-braking-analysis" },
   { key: "energy-systems", status: "planned", level: "intermediate", format: "hybrid" },

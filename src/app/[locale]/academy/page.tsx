@@ -136,7 +136,7 @@ export default async function AcademyPage({ params }: Params) {
               <Reveal key={c.key} delay={(i % 2) * 80}>
                 <article className="flex h-full flex-col rounded-3xl bg-surface-2 p-8 sm:p-10">
                   <div className="flex flex-wrap items-center gap-2">
-                    <Badge variant={c.status === "next" ? "amber" : "outline"}>{t.statuses[c.status]}</Badge>
+                    <Badge variant="amber">{t.statuses[c.status]}</Badge>
                     <Badge variant="outline">{t.levels[c.level]}</Badge>
                     <Badge variant="outline">{t.formats[c.format]}</Badge>
                   </div>
@@ -146,12 +146,8 @@ export default async function AcademyPage({ params }: Params) {
                     {copy.who}
                   </p>
                   <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8">
-                    <Button
-                      as="a"
-                      href={localizeHref(locale, "/waitlist?track=academy")}
-                      variant={c.status === "next" ? "primary" : "secondary"}
-                    >
-                      {c.status === "next" ? t.primaryCta : t.plannedCta}
+                    <Button as="a" href={localizeHref(locale, "/waitlist?track=academy")}>
+                      {t.plannedCta}
                     </Button>
                     {c.proof && (
                       <ArrowLink href={localizeHref(locale, projectDetailPath(c.proof))}>

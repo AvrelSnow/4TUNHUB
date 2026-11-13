@@ -707,7 +707,6 @@ const fr: Dictionary = {
     } as Record<string, { title: string; outcome: string; who: string }>,
 
     statuses: {
-      next: "Prochaine cohorte",
       planned: "Prévu, sans date pour l'instant",
     } as Record<string, string>,
     plannedCta: "Prévenez-moi à l'ouverture",

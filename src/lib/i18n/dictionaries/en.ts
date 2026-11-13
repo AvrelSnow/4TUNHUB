@@ -716,7 +716,6 @@ const en = {
     } as Record<string, { title: string; outcome: string; who: string }>,
 
     statuses: {
-      next: "Next cohort",
       planned: "Planned, no date yet",
     } as Record<string, string>,
     plannedCta: "Tell me when it opens",
