@@ -41,7 +41,6 @@ export default async function ResearchPage({ params }: Params) {
   if (!isLocale(locale)) notFound();
   const dict = await getDictionary(locale);
   const t = dict.research;
-  const banana = dict.projects.galleries["banana-pseudostem-shredder"] ?? [];
 
   return (
     <div>
@@ -60,16 +59,16 @@ export default async function ResearchPage({ params }: Params) {
           </>
         }
       >
-        <figure className="mx-auto mt-16 max-w-5xl animate-fade-up [animation-delay:240ms] sm:mt-20">
-          <Media
-            src="/images/projects/banana-2.webp"
-            alt={banana[1] ?? ""}
-            doc
-            priority
-            className="aspect-[16/9] rounded-3xl border border-border"
-          />
-          <figcaption className="readout mt-3 text-center">{banana[1]}</figcaption>
-        </figure>
+        <nav
+          aria-label={t.jumpLabel}
+          className="mt-10 flex animate-fade-up flex-wrap justify-center gap-3 [animation-delay:240ms] sm:mt-12"
+        >
+          {focusAreas.map((a) => (
+            <a key={a.key} href={`#${a.key}`} className="rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-surface-2">
+              {t.areas[a.key]?.title}
+            </a>
+          ))}
+        </nav>
       </PageHero>
 
       {/* 2 · FOCUS AREAS */}
@@ -82,7 +81,10 @@ export default async function ResearchPage({ params }: Params) {
             const project = area.proof ? getProject(area.proof) : undefined;
             return (
               <Reveal key={area.key} delay={i * 80}>
-                <article className="flex h-full flex-col overflow-hidden rounded-3xl bg-surface-2">
+                <article
+                  id={area.key}
+                  className="flex h-full scroll-mt-24 flex-col overflow-hidden rounded-3xl bg-surface-2"
+                >
                   {media && (
                     <Media
                       src={media.src}
@@ -135,16 +137,31 @@ export default async function ResearchPage({ params }: Params) {
         </Container>
       </section>
 
-      {/* 4 · INITIATIVES — one statement, given room. */}
-      <section className="border-t border-border py-24 sm:py-32">
-        <Container size="narrow">
-          <Reveal className="text-center">
-            <p className="eyebrow">{t.initiativesEyebrow}</p>
-            <h2 className="mt-3 text-display-sm text-foreground">{t.initiativesTitle}</h2>
-            <p className="mt-6 text-lead text-muted">{t.initiativesBody}</p>
-          </Reveal>
-        </Container>
-      </section>
+      {/* 4 · HOW WE WORK — field, test, reuse; and who leads it. */}
+      <Section
+        eyebrow={t.approach.eyebrow}
+        title={t.initiativesTitle}
+        intro={t.initiativesBody}
+        className="border-t border-border"
+      >
+        <ol className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-3">
+          {t.approach.steps.map((step, i) => (
+            <li key={step.title} className="border-t-2 border-hue pt-6">
+              <p className="figure text-hue text-sm font-semibold">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-3 text-headline text-foreground">{step.title}</h3>
+              <p className="mt-3 text-muted">{step.desc}</p>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-12 text-muted">
+          {t.approach.ledBy}{" "}
+          <ArrowLink href={localizeHref(locale, "/about/founder")} className="ml-2">
+            {t.approach.ledByLink}
+          </ArrowLink>
+        </p>
+      </Section>
 
       {/* 5 · THE LIST — the REM is what this audience came for. */}
       <EmailCaptureBand

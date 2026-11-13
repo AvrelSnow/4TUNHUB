@@ -76,8 +76,10 @@ export const CONSENT_CATEGORIES: readonly {
   active: boolean;
 }[] = [
   { id: "analytics", active: true },
-  // Turns on with the first YouTube replay, Bevy widget or payment form.
-  // Until then those load behind a click-to-load placeholder instead.
+  // The LS-DYNA library's YouTube player (youtube-nocookie) loads only on
+  // an explicit press of play, behind a placeholder that says so. That click
+  // is the request, so it is not gated here. Turn this on with the first
+  // embed that loads without one (Bevy widget, payment form).
   { id: "embeds", active: false },
 ];
 

@@ -43,7 +43,6 @@ export default async function ServicesPage({ params }: Params) {
   if (!isLocale(locale)) notFound();
   const dict = await getDictionary(locale);
   const t = dict.services;
-  const braking = dict.projects.galleries["locomotive-braking-analysis"] ?? [];
 
   return (
     <div>
@@ -62,26 +61,16 @@ export default async function ServicesPage({ params }: Params) {
           </>
         }
       >
-        <div className="mt-12 grid animate-fade-up gap-4 [animation-delay:240ms] sm:mt-14 sm:grid-cols-2">
-          <figure>
-            <Media
-              src="/images/projects/braking-3.webp"
-              alt={braking[2] ?? ""}
-              doc
-              priority
-              className="aspect-[4/3] rounded-3xl"
-            />
-            <figcaption className="readout mt-3 text-center">{braking[2]}</figcaption>
-          </figure>
-          <figure>
-            <Media
-              src="/images/projects/braking-2.webp"
-              alt={braking[1] ?? ""}
-              className="aspect-[4/3] rounded-3xl"
-            />
-            <figcaption className="readout mt-3 text-center">{braking[1]}</figcaption>
-          </figure>
-        </div>
+        <nav
+          aria-label={t.jumpLabel}
+          className="mt-10 flex animate-fade-up flex-wrap justify-center gap-3 [animation-delay:240ms] sm:mt-12"
+        >
+          {services.map((s) => (
+            <a key={s.key} href={`#${s.key}`} className="rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-surface-2">
+              {t.offerings[s.key]?.title}
+            </a>
+          ))}
+        </nav>
       </PageHero>
 
       {/* 2 · OFFERINGS — one row each, the picture alternating sides. */}
@@ -100,7 +89,10 @@ export default async function ServicesPage({ params }: Params) {
             const flip = i % 2 === 1;
             return (
               <Reveal key={s.key}>
-                <article className="grid items-center overflow-hidden rounded-3xl bg-surface-2 lg:grid-cols-2">
+                <article
+                  id={s.key}
+                  className="grid scroll-mt-24 items-center overflow-hidden rounded-3xl bg-surface-2 lg:grid-cols-2"
+                >
                   {/* `lg:aspect-auto` matters: with a ratio still set, a
                       100%-height frame takes its width from that ratio and
                       overflows its column — which is why the longer French
@@ -161,7 +153,34 @@ export default async function ServicesPage({ params }: Params) {
         </ol>
       </Section>
 
-      {/* 4 · WAYS TO ENGAGE */}
+      {/* 4 · STARTING A JOB — what to send, what comes back. */}
+      <Section
+        tone="surface"
+        eyebrow={t.brief.eyebrow}
+        title={t.brief.title}
+      >
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          {[
+            { title: t.brief.bringTitle, items: t.brief.bring },
+            { title: t.brief.getTitle, items: t.brief.get },
+          ].map((col, i) => (
+            <Reveal key={col.title} delay={i * 70}>
+              <div className="h-full rounded-3xl bg-surface-2 p-8 sm:p-10">
+                <h3 className="text-headline text-foreground">{col.title}</h3>
+                <ul className="mt-5 space-y-3 text-muted">
+                  {col.items.map((item) => (
+                    <li key={item} className="border-t border-border pt-3 leading-6">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      {/* 5 · WAYS TO ENGAGE */}
       <Section eyebrow={t.models.eyebrow} title={t.models.title} className="pt-0 sm:pt-0 lg:pt-0">
         <div className="mt-12 grid gap-5 sm:grid-cols-3">
           {t.models.items.map((m, i) => (
@@ -175,7 +194,7 @@ export default async function ServicesPage({ params }: Params) {
         </div>
       </Section>
 
-      {/* 5 · CONVERSION */}
+      {/* 6 · CONVERSION */}
       <CtaPanel
         title={t.cta.title}
         subtitle={t.cta.subtitle}

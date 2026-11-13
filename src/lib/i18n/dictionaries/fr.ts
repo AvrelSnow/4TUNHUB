@@ -34,6 +34,8 @@ const fr: Dictionary = {
     careers: "Carrières",
     contact: "Contact",
     cohort: "Cohorte 0",
+    lsdyna: "Bibliothèque LS-DYNA",
+    path: "Raisonner en ingénieur",
     waitlist: "Liste d'attente",
     privacy: "Confidentialité",
     terms: "Conditions",
@@ -395,6 +397,24 @@ const fr: Dictionary = {
       "Conception mécanique, simulation et rétro-ingénierie pour les entreprises, les équipes et les entrepreneurs — ancrées dans ce qui peut réellement être fabriqué et entretenu, au Cameroun et au-delà.",
     primaryCta: "Demander une consultation",
     secondaryCta: "Voir les réalisations",
+    jumpLabel: "Aller à un service",
+
+    brief: {
+      eyebrow: "Démarrer une mission",
+      title: "Ce que vous nous envoyez, et ce que vous recevez.",
+      bringTitle: "Vous apportez",
+      bring: [
+        "Un plan, un fichier CAO ou une photo de la pièce",
+        "Les conditions d'usage : charge, environnement, budget",
+        "Qui la fabriquera, et où",
+      ],
+      getTitle: "Vous recevez",
+      get: [
+        "Des plans et des modèles qu'un atelier local peut fabriquer",
+        "Une vérification écrite que la conception tient, quand la simulation est prévue",
+        "Une recommandation claire : la fabriquer, la modifier ou s'arrêter",
+      ],
+    },
 
     offeringsEyebrow: "Ce que nous faisons",
     offeringsTitle: "Quatre façons de transformer un cahier des charges en matériel.",
@@ -704,6 +724,33 @@ const fr: Dictionary = {
       },
     } as Record<string, { title: string; outcome: string; who: string }>,
 
+    statuses: {
+      planned: "Prévu, sans date pour l'instant",
+    } as Record<string, string>,
+    plannedCta: "Prévenez-moi à l'ouverture",
+
+    sessions: {
+      eyebrow: "Déjà enseigné",
+      title: "Des sessions déjà enseignées, en public.",
+      intro:
+        "Avant l'ouverture d'un cours, ces sessions en direct ont été animées pour le Douala City SOLIDWORKS User Group. Chacune renvoie à sa propre page d'événement : vous pouvez le vérifier.",
+      open: "Voir la session",
+      archive: "Le programme complet",
+    },
+
+    library: {
+      eyebrow: "Gratuit · sur YouTube",
+      title: "La bibliothèque LS-DYNA.",
+      body: "Tous les tutoriels LS-DYNA de la chaîne, dans l'ordre, avec les fichiers keyword et les modèles utilisés à l'écran. Construisez le modèle en même temps que la vidéo (en anglais).",
+      cta: "Ouvrir la bibliothèque",
+    },
+    pathCard: {
+      eyebrow: "Gratuit · parcours guidé",
+      title: "Raisonner en ingénieur.",
+      body: "Onze leçons courtes du 4TUNHub Lab : transformer une charge suspendue en force et en moment, puis dimensionner une plaque d'acier en résistance et en rigidité. Un exercice à chaque étape, sans compte (en anglais pour l'instant).",
+      cta: "Commencer le parcours",
+    },
+
     formatsEyebrow: "Comment vous apprenez",
     formatsTitle: "Conçu selon la façon dont les ingénieurs apprennent vraiment.",
     formatsList: [
@@ -728,11 +775,126 @@ const fr: Dictionary = {
     instructorCta: "Rencontrer le fondateur",
 
     cta: {
-      title: "Soyez dans la prochaine cohorte.",
+      title: "Soyez prévenu à l'ouverture d'un cours.",
       subtitle:
         "L'Academy ouvre par étapes. Rejoignez la liste d'attente et nous vous contacterons dès qu'un parcours démarre.",
       primary: "Rejoindre la liste d'attente",
       secondary: "Voir les projets",
+    },
+  },
+
+  library: {
+    metaTitle: "Tutoriels et fichiers LS-DYNA",
+    metaDescription:
+      "Tous les tutoriels LS-DYNA et LS-PrePost de la chaîne @4TUNHUB, dans l'ordre, avec les fichiers keyword et les modèles utilisés à l'écran. Gratuit.",
+    eyebrow: "Académie · LS-DYNA",
+    title: "LS-DYNA, du premier maillage à un résultat fiable.",
+    intro:
+      "Tous les tutoriels de la chaîne YouTube @4TUNHUB, dans l'ordre où les suivre, avec les fichiers utilisés à l'écran pour construire le modèle en même temps. La physique d'abord, le logiciel ensuite. Gratuit.",
+    languageNote: "Les vidéos sont en anglais.",
+    subscribe: "S'abonner sur YouTube",
+    startHere: "Commencer par le premier épisode",
+    series: {
+      setup: {
+        title: "Premiers pas",
+        body: "Installer LS-PrePost, passer les premiers plantages et prendre ses repères avant de construire quoi que ce soit.",
+      },
+      "ball-plate": {
+        title: "Impact bille-plaque",
+        body: "Une bille d'acier frappe une plaque. Un seul modèle, du maillage au résultat, puis lu, modifié à la main et vérifié.",
+      },
+      "bracket-static": {
+        title: "Analyse statique d'une équerre",
+        body: "Une équerre en aluminium boulonnée en quatre trous, sous 10 MPa. Une réponse statique avec un solveur explicite, faite proprement.",
+      },
+    } as Record<string, { title: string; body: string }>,
+    episode: "Épisode",
+    withFiles: "Fichiers",
+    back: "Tous les épisodes LS-DYNA",
+    play: "Lire la vidéo",
+    playerNote: "La vidéo ne se charge depuis YouTube que lorsque vous appuyez sur lecture.",
+    watchOnYoutube: "Voir sur YouTube",
+    learnTitle: "Ce que vous apprendrez",
+    chaptersTitle: "Chapitres",
+    chaptersHint: "Appuyez sur un chapitre pour démarrer la vidéo à cet endroit.",
+    prev: "Précédent",
+    next: "Suivant",
+    files: {
+      title: "Fichiers de l'épisode",
+      none: "Pas de fichier pour celui-ci : tout se fait sur votre propre installation.",
+      kinds: {
+        keyword: "Fichier keyword LS-DYNA",
+        geometry: "Géométrie, IGES",
+      } as Record<string, string>,
+      gateTitle: "Laissez un e-mail pour télécharger.",
+      gateBody:
+        "Les fichiers sont gratuits. Votre adresse sert à vous prévenir quand le prochain épisode et ses fichiers sont en ligne : un e-mail par épisode, un clic pour arrêter.",
+      submit: "Obtenir les fichiers",
+      submitting: "Ouverture…",
+      download: "Télécharger",
+      unlocked: "Les fichiers sont à vous. Téléchargez-les ci-dessous.",
+      unlockedLost: "Nous n'avons pas pu vous ajouter à la liste pour l'instant, mais les fichiers sont ouverts.",
+      privacy: "Confidentialité",
+    },
+  },
+
+  path: {
+    metaTitle: "Raisonner en ingénieur : un parcours guidé",
+    metaDescription:
+      "Des leçons guidées et gratuites du 4TUNHUB Lab : transformer une charge suspendue en force et en moment, puis dimensionner une plaque d'acier en résistance et en rigidité. Chaque formule avec son dessin, son piège et un exercice.",
+    eyebrow: "Académie · Parcours guidé",
+    title: "Raisonner en ingénieur",
+    tagline: "D'une charge à une pièce.",
+    intro:
+      "Des leçons courtes, une étape à la fois. Chaque formule arrive avec un dessin, son origine, le piège, un exemple résolu et un exercice que vous faites vous-même. Pas de compte : votre progression reste sur cet appareil.",
+    languageNote: "Les leçons sont en anglais pour l'instant.",
+    free: "Gratuit",
+    need: "Il vous faut",
+    able: "Vous saurez",
+    card: "Carte",
+    kinds: { checkpoint: "Point d'étape", boss: "Défi final" } as Record<string, string>,
+    lessonsCount: "{n} leçons · ~{m} min",
+    lessonsDone: "{n} sur {t} leçons terminées",
+    start: "Commencer le parcours",
+    resume: "Reprendre où vous en étiez",
+    coming: "Bientôt",
+    comingBody:
+      "Cette étape se termine par le correcteur du 4TUNHub Lab, qui lit la pièce que vous modélisez. Elle ouvrira ici en même temps que le correcteur.",
+    opensAfter: "Ouvre après",
+    cards: {
+      "card-1": { title: "Forces et moments", able: ["Tracer le schéma d'une console et trouver son moment à l'encastrement en N·mm"] },
+      "card-2": { title: "Contrainte et résistance", able: ["Dire ce qu'est une contrainte admissible, et la calculer avec un coefficient de sécurité"] },
+      "card-3": { title: "Flexion et forme", able: ["Dimensionner une section rectangulaire pour un moment, et dire pourquoi sa hauteur est au carré"] },
+      "card-4": { title: "Résister ne suffit pas", able: ["Vérifier une flèche en bout par rapport à sa limite, et dire qui décide : la résistance ou la rigidité"] },
+      "card-5": { title: "Des chiffres à la pièce", able: ["Lire un dessin coté et ses références, puis modéliser la plaque et exporter un fichier STEP que le correcteur lit"] },
+      checkpoint: { title: "La poutre d'échauffement", able: ["Franchir une courte chaîne de calculs sur des valeurs que personne d'autre n'a"] },
+      boss: { title: "L'équerre murale", able: ["Mener une vraie pièce d'une charge à un fichier STEP vérifié, avec une revue de fabrication et un coût en FCFA"] },
+    } as Record<string, { title: string; able: string[] }>,
+    lesson: {
+      back: "Le parcours",
+      head: "Carte {c} · Leçon {i} sur {t} · ~{m} min",
+      part: "Étape {n} sur {t}",
+      minLeft: "~{m} min restantes",
+      underMinute: "moins d'une minute",
+      answerFirst: "Répondez à l'exercice pour continuer",
+      continue: "Continuer",
+      done: "Leçon terminée",
+      cardDone: "Carte terminée",
+      endSum: "Exercices dans la tolérance : {n} sur {t}",
+      next: "Leçon suivante",
+      toPath: "Retour au parcours",
+      readAll: "Tout ouvrir",
+    },
+    check: {
+      notYet: "Pas encore.",
+      right: "Dans la tolérance. C'est ça.",
+      show: "Montrez-moi le calcul",
+      numberOnly: "Tapez seulement le nombre : l'unité est déjà écrite.",
+      unreadable: "Ce n'est pas un nombre lisible.",
+      ambiguous: "Cette virgule est-elle décimale ou un séparateur de milliers ? Écrivez les décimales avec un point.",
+      empty: "Tapez d'abord une réponse.",
+      choose: "Choisissez d'abord une réponse.",
+      stamp: "Conforme",
     },
   },
 
@@ -743,6 +905,27 @@ const fr: Dictionary = {
       "Une recherche appliquée en énergies renouvelables, durabilité et systèmes industriels — ancrée dans les réalités d'infrastructure d'Afrique de l'Ouest et centrale, pas dans des abstractions.",
     primaryCta: "Collaborer sur un projet de recherche",
     secondaryCta: "Voir les projets",
+    jumpLabel: "Aller à un axe de recherche",
+
+    approach: {
+      eyebrow: "Notre méthode",
+      steps: [
+        {
+          title: "Partir du terrain",
+          desc: "Un vrai manque : une pièce introuvable, des déchets brûlés, un courant qui n'est pas là.",
+        },
+        {
+          title: "Construire et tester",
+          desc: "Une conception, un essai en laboratoire ou une analyse que d'autres peuvent vérifier.",
+        },
+        {
+          title: "Publier et réutiliser",
+          desc: "Les résultats vont à The REM, puis reviennent dans les services, les machines et les cours.",
+        },
+      ],
+      ledBy: "Dirigée par le fondateur de 4TUNHub, ingénieur mécanicien et enseignant.",
+      ledByLink: "Rencontrer le fondateur",
+    },
 
     focusEyebrow: "Axes de recherche",
     focusTitle: "Là où nous concentrons le travail.",
@@ -1142,14 +1325,14 @@ const fr: Dictionary = {
     apply: "Postuler",
     closesOn: "Candidatures jusqu'au dimanche 11 octobre. Les places sont attribuées au fil des candidatures.",
     closed:
-      "Les candidatures ont fermé le 11 octobre et la Cohorte 0 est en cours. La Cohorte 1 ouvre en janvier : laissez votre adresse pour être prévenu en premier.",
-    closedCta: "Me prévenir pour la Cohorte 1",
+      "Les candidatures ont fermé le 11 octobre et la Cohorte 0 est en cours. Laissez votre adresse pour être prévenu en premier de la suite.",
+    closedCta: "Me tenir au courant",
     running: {
       eyebrow: "En cours",
       title: "Les dates.",
       heading: "Qui enseigne la Cohorte 0.",
       intro:
-        "Vingt ingénieurs, huit soirées, deux formateurs. Les résultats sont publiés la semaine du 16 novembre, et la Cohorte 1 ouvre en janvier.",
+        "Vingt ingénieurs, huit soirées, deux formateurs. Les résultats sont publiés la semaine du 16 novembre.",
     },
     facts: [
       { label: "Prix", value: "Gratuit" },
@@ -1229,7 +1412,7 @@ const fr: Dictionary = {
       steps: {
         hub: {
           title: "Suivre 4TUNHub",
-          desc: "Sur LinkedIn et sur YouTube. Les résultats de la Cohorte 0, et l'ouverture de la Cohorte 1, y sont annoncés en premier.",
+          desc: "Sur LinkedIn et sur YouTube. Les résultats de la Cohorte 0 y sont annoncés en premier.",
         },
         mkv: {
           title: "Suivre MKV Academy",
@@ -1465,9 +1648,14 @@ const fr: Dictionary = {
           when: "Bêta en décembre 2026",
         },
         academy: {
-          title: "Cohortes de l'Académie",
-          desc: "Le prochain bootcamp CSWA après la Cohorte 0, et le cours de GD&T et dessin technique qui suivra.",
-          when: "À partir de janvier 2027",
+          title: "Cours de l'Académie",
+          desc: "Le bootcamp CSWA, et le cours de GD&T et dessin technique. Les dates sont annoncées une fois fixées.",
+          when: "Dates à venir",
+        },
+        lsdyna: {
+          title: "Bibliothèque LS-DYNA",
+          desc: "Chaque nouveau tutoriel LS-DYNA de la chaîne @4TUNHUB, avec les fichiers keyword et les modèles pour suivre pas à pas.",
+          when: "En cours",
         },
         rem: {
           title: "REM — la revue d'ingénierie",
@@ -1515,12 +1703,16 @@ const fr: Dictionary = {
       more: "Être prévenu du reste",
       bands: {
         academy: {
-          title: "La Cohorte 1 ouvre en janvier.",
-          body: "Laissez une adresse et vous saurez le jour où les candidatures ouvrent — pour le prochain bootcamp CSWA, et pour le cours de GD&T qui suivra.",
+          title: "Soyez prévenu à l'ouverture d'un cours.",
+          body: "Laissez une adresse et vous saurez le jour où un cours ouvre — le bootcamp CSWA, ou le cours de GD&T. Un e-mail, rien entre-temps.",
+        },
+        lsdyna: {
+          title: "Le prochain épisode, avec ses fichiers.",
+          body: "Un e-mail quand un nouveau tutoriel LS-DYNA est en ligne, avec le lien vers ses fichiers. Rien d'autre.",
         },
         cohort: {
           title: "Vingt places. Si vous n'en obtenez pas une, ne disparaissez pas.",
-          body: "La Cohorte 1 ouvre en janvier et cette liste est prévenue la première. Un e-mail le jour venu — rien entre-temps.",
+          body: "Laissez votre adresse : cette liste est prévenue la première de la suite. Un e-mail, rien entre-temps.",
         },
         rem: {
           title: "La REM, le jour où un épisode paraît.",
@@ -1536,13 +1728,13 @@ const fr: Dictionary = {
 
   privacy: {
     title: "Confidentialité",
-    updated: "Dernière mise à jour : 2 octobre 2026",
+    updated: "Dernière mise à jour : 22 octobre 2026",
     intro:
       "Ce site ne recueille de données personnelles que lorsque vous les transmettez par un formulaire, et n'enregistre presque rien dans votre navigateur. Cette note indique ce que nous conservons, pourquoi, combien de temps, et comment le faire effacer.",
     sections: [
       {
         title: "Ce que nous recueillons",
-        body: "Le formulaire de contact demande votre nom, votre adresse e-mail et votre message. Une candidature à la Cohorte 0 demande en outre votre numéro WhatsApp, votre école ou votre employeur, votre version de SolidWorks et les raisons de votre candidature. La liste d'attente demande une adresse e-mail, un nom si vous souhaitez le donner, et les sujets qui vous intéressent.",
+        body: "Le formulaire de contact demande votre nom, votre adresse e-mail et votre message. Une candidature à la Cohorte 0 demande en outre votre numéro WhatsApp, votre école ou votre employeur, votre version de SolidWorks et les raisons de votre candidature. La liste d'attente demande une adresse e-mail, un nom si vous souhaitez le donner, et les sujets qui vous intéressent. La bibliothèque LS-DYNA demande une adresse e-mail avant le téléchargement de ses fichiers : elle rejoint la même liste, pour les nouveaux épisodes seulement.",
       },
       {
         title: "Pourquoi",
@@ -1550,7 +1742,7 @@ const fr: Dictionary = {
       },
       {
         title: "Où elles vont",
-        body: "Trois prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Une candidature à la Cohorte 0 est aussi vue par MKV Academy, qui organise la cohorte avec nous ; l'un comme l'autre peut vous écrire au sujet de sessions et d'ateliers ultérieurs, et cesse sur simple demande. Au-delà, nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
+        body: "Trois prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Les vidéos de la bibliothèque LS-DYNA sont lues depuis YouTube, qui n'est contacté que lorsque vous appuyez sur lecture. Une candidature à la Cohorte 0 est aussi vue par MKV Academy, qui organise la cohorte avec nous ; l'un comme l'autre peut vous écrire au sujet de sessions et d'ateliers ultérieurs, et cesse sur simple demande. Au-delà, nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
       },
       {
         title: "Durée de conservation",
@@ -1558,7 +1750,7 @@ const fr: Dictionary = {
       },
       {
         title: "Cookies",
-        body: "Aucun. Ni cookie publicitaire, ni cookie de mesure d'audience, ni cookie de notre fait. La liste complète de ce qui est enregistré dans votre navigateur — deux éléments, qui ne quittent jamais votre appareil — figure au bas de cette page, avec le réglage qui commande la seule chose facultative que nous fassions.",
+        body: "Aucun. Ni cookie publicitaire, ni cookie de mesure d'audience, ni cookie de notre fait. La liste complète de ce qui est enregistré dans votre navigateur — trois éléments, qui ne quittent jamais votre appareil — figure au bas de cette page, avec le réglage qui commande la seule chose facultative que nous fassions.",
       },
       {
         title: "Vos droits",
@@ -1576,7 +1768,7 @@ const fr: Dictionary = {
     storage: {
       title: "Cookies et stockage",
       intro:
-        "Ce site ne dépose aucun cookie — pas un seul, pas même le nôtre. Un seul élément est enregistré dans votre navigateur et ne quitte jamais votre appareil ; un autre est compté, et seulement si vous l'autorisez. C'est toute la liste.",
+        "Ce site ne dépose aucun cookie — pas un seul, pas même le nôtre. Trois éléments sont enregistrés dans votre navigateur et ne quittent jamais votre appareil ; un seul élément est compté, et seulement si vous l'autorisez. C'est toute la liste.",
       columns: {
         what: "Quoi",
         why: "Pourquoi",
@@ -1592,9 +1784,23 @@ const fr: Dictionary = {
           refuse: "Sans lui, il faudrait reposer la même question à chaque page. Effacer les données de votre navigateur le supprime.",
         },
         {
+          what: "Bibliothèque LS-DYNA",
+          key: "4tun.library",
+          why: "Retient que vous avez déjà donné une adresse pour les fichiers de la bibliothèque, pour que les fichiers de chaque épisode restent ouverts sans vous la redemander.",
+          kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
+          refuse: "Il n'existe qu'à partir du moment où vous demandez les fichiers. Effacer les données de votre navigateur le supprime.",
+        },
+        {
+          what: "Votre place dans le parcours guidé",
+          key: "4tun.path",
+          why: "Retient les leçons de « Raisonner en ingénieur » que vous avez terminées et les exercices réussis, pour que le parcours reprenne où vous en étiez.",
+          kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
+          refuse: "Il n'existe qu'à partir du moment où vous ouvrez une leçon. Effacer les données de votre navigateur le supprime.",
+        },
+        {
           what: "Comptage anonyme des visites",
           key: "Umami — aucun cookie, rien sur votre appareil",
-          why: "Quelles pages sont lues, depuis quel pays, sur quel type d'appareil et depuis quel site — ainsi que trois événements : une inscription à la liste, une candidature, un message envoyé.",
+          why: "Quelles pages sont lues, depuis quel pays, sur quel type d'appareil et depuis quel site — ainsi que quatre événements : une inscription à la liste, une candidature, un message envoyé, un fichier de la bibliothèque téléchargé.",
           kept: "Sur les serveurs du prestataire de mesure, sous forme de comptages. Ni nom, ni adresse, rien qui identifie une personne.",
           refuse: "Oui. Rien ne se déclenche tant que vous n'avez pas accepté, et vous pouvez le désactiver ici à tout moment.",
         },
@@ -1608,7 +1814,7 @@ const fr: Dictionary = {
           },
           embeds: {
             name: "Contenus intégrés",
-            desc: "Lecteurs vidéo et modules de réservation chargés depuis d'autres sociétés. Rien sur ce site n'en utilise pour l'instant.",
+            desc: "Lecteurs vidéo et modules de réservation chargés depuis d'autres sociétés. Le seul ici est le lecteur YouTube des pages de tutoriels LS-DYNA : il ne se charge que lorsque vous appuyez sur lecture, il n'y a donc rien à activer ni à désactiver.",
           },
         },
         allow: "Autoriser",

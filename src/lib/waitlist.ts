@@ -18,7 +18,7 @@
  * opt-in: it says which emails this person asked for, and nothing outside
  * their ticked tracks may ever be sent to them.
  */
-export const TRACK_VALUES = ["lab", "academy", "rem", "products"] as const;
+export const TRACK_VALUES = ["lab", "academy", "lsdyna", "rem", "products"] as const;
 export type TrackValue = (typeof TRACK_VALUES)[number];
 
 export type WaitlistField = "email" | "name" | "tracks";

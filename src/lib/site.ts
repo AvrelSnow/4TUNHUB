@@ -26,7 +26,7 @@ export const ACADEMY_OG_IMAGE = {
   url: `${SITE_URL}/academy-card.jpg`,
   width: 1200,
   height: 630,
-  alt: "4TUNHub Academy: CSWA Bootcamp, Cohort 1 in January.",
+  alt: "4TUNHub Academy: learn engineering that ships.",
   type: "image/jpeg",
 };
 

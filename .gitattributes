@@ -1,0 +1,3 @@
+# Tutorial files are served byte for byte: a solver deck or an IGES file
+# must download exactly as it was saved, line endings included.
+public/library/** -text

@@ -21,6 +21,9 @@ export type TalkRole = "hosted" | "cohosted" | "spoke";
 
 export type Talk = {
   title: string;
+  /** A session that teaches a skill or an exam, shown on the Academy page
+   *  as "taught before". Panels and community meetings stay off it. */
+  lesson?: boolean;
   /** hosted = his chapter ran it; cohosted = another chapter's, with his;
    *  spoke = invited onto someone else's programme. */
   role: TalkRole;
@@ -48,24 +51,28 @@ export const talks: Talk[] = [
   },
   {
     title: "Mastering CSWA Certifications: CAD Design & Additive Manufacturing",
+    lesson: true,
     role: "hosted",
     org: "Douala City SWUG",
     href: `${SWUGN}/solidworks-douala-city-solidworks-user-group-presents-mastering-cswa-certifications-focus-on-cad-design-amp-additive-manufacturing/`,
   },
   {
     title: "Tips & Tricks to Ace the CSWE Exam",
+    lesson: true,
     role: "hosted",
     org: "Douala City SWUG",
     href: `${SWUGN}/solidworks-douala-city-solidworks-user-group-presents-tips-amp-tricks-to-ace-the-cswe-exam/`,
   },
   {
     title: "Tips & Tricks to Ace the CSWP Mechanical Design Exam",
+    lesson: true,
     role: "hosted",
     org: "Douala City SWUG",
     href: `${SWUGN}/solidworks-douala-city-solidworks-user-group-presents-tips-amp-tricks-to-ace-the-cswp-mechanical-design-exam/`,
   },
   {
     title: "Tips & Tricks to Ace the CSWP Sheet Metal Exam",
+    lesson: true,
     role: "hosted",
     org: "Douala City SWUG",
     href: `${SWUGN}/solidworks-douala-city-solidworks-user-group-presents-tips-and-tricks-to-ace-the-cswp-sheet-metal-exam/`,
@@ -78,12 +85,14 @@ export const talks: Talk[] = [
   },
   {
     title: "Assembly Modeling Mastery: From Basic Mates to Smart Assembly Tools",
+    lesson: true,
     role: "hosted",
     org: "Douala City SWUG",
     href: `${SWUGN}/solidworks-douala-city-solidworks-user-group-presents-assembly-modeling-mastery-from-basic-mates-to-smart-assembly-tools/`,
   },
   {
     title: "SOLIDWORKS Essentials & Best Practices",
+    lesson: true,
     role: "hosted",
     org: "Douala City SWUG",
     href: `${SWUGN}/solidworks-douala-city-solidworks-user-group-presents-solidworks-essentials-amp-best-practices/`,

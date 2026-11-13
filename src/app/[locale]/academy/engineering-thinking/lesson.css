@@ -1,0 +1,217 @@
+/* ============================================================
+   A lesson from the 4TUNHUB Lab, inside the Academy.
+   The markup is the Lab's own (scripts/export-lab-path.py), so these are
+   the Lab's lesson styles (web/lesson/lesson.css), scoped under `.lab`
+   and fed by the site's tokens: drawings on sheets with a title block,
+   the living formula, checks that get stamped when they pass.
+   ============================================================ */
+
+.lab {
+  --bg: var(--color-background);
+  --surface: var(--color-surface);
+  --surface-2: var(--color-surface-2);
+  --fg: var(--color-foreground);
+  --muted: var(--color-muted);
+  --subtle: var(--color-subtle);
+  --border: var(--color-border);
+  --hairline: var(--color-hairline);
+  --primary: var(--color-primary);
+  --on-primary: var(--color-primary-foreground);
+  --primary-hover: var(--color-primary-hover);
+  --accent: var(--color-accent);
+  --danger: var(--color-danger);
+  --success: var(--color-success);
+  --brand: var(--color-brand-500);
+  --r-field: var(--radius-lg);
+  --r-card: var(--radius-xl);
+  --r-tile: var(--radius-2xl);
+  --ease: var(--ease-out-quart);
+  /* Branch 1 wears the structures hue, as in the Lab. */
+  --hue: #2a78d6;
+  --hue-tint: #e8f1fc;
+  --hue-ink: #1c5cab;
+  --grid: rgb(29 29 31 / 0.055);
+  --grid-strong: rgb(29 29 31 / 0.09);
+  --sheet: #fbfbfd;
+  color: var(--fg);
+}
+:root[data-theme="dark"] .lab {
+  --hue: #4d96ee;
+  --hue-tint: #0e1d33;
+  --hue-ink: #9ec5f4;
+  --grid: rgb(255 255 255 / 0.05);
+  --grid-strong: rgb(255 255 255 / 0.085);
+  --sheet: #0f0f11;
+}
+
+.lab .step { margin: 0 0 18px; animation: lab-rise 0.45s var(--ease); scroll-margin-top: 96px; }
+@keyframes lab-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.lab h3 { font-size: 0.875rem; font-weight: 700; letter-spacing: -0.005em; color: var(--muted); margin: 0 0 8px; }
+.lab .icon { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.lab .prose { font-size: 1.0625rem; }
+.lab p { line-height: 1.65; margin: 0 0 10px; }
+.lab p:last-child { margin-bottom: 0; }
+.lab ul, .lab ol { margin: 0 0 10px; padding-left: 20px; }
+.lab ul { list-style: disc; }
+.lab ol { list-style: decimal; }
+.lab li { margin: 5px 0; line-height: 1.55; }
+.lab strong { font-weight: 700; color: var(--fg); }
+.lab code { font-family: inherit; font-style: italic; font-weight: 700; background: none; padding: 0; }
+.lab table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; margin: 6px 0 10px; }
+.lab td, .lab th { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--border); }
+.lab th { font-weight: 700; }
+
+/* The sheet: faint graph paper, a hairline frame, a title block. */
+.lab .sheet { position: relative; background-color: var(--sheet);
+  background-image:
+    linear-gradient(var(--grid-strong) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-strong) 1px, transparent 1px),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+  background-position: -1px -1px;
+  border: 1px solid var(--hairline); border-radius: 14px; }
+
+/* The parts of the formula standard, each with its mark and its colour. */
+.lab .part { --tone: var(--muted); background: var(--surface); border-radius: var(--r-card); padding: 16px 18px; }
+.lab .part h3 { display: flex; align-items: center; gap: 8px; color: var(--tone); }
+.lab .part h3 .icon { width: 20px; height: 20px; }
+.lab .part-sentence { --tone: var(--fg); }
+.lab .part-sentence p { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0.01em; }
+.lab .part-origin { --tone: var(--accent); }
+.lab .part-sanity { --tone: var(--success); }
+.lab .part-trap { --tone: var(--danger); background: color-mix(in srgb, var(--danger) 7%, var(--surface)); }
+.lab .part-worked { --tone: var(--accent); }
+
+.lab .formula { background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--r-tile); padding: 22px 18px 16px; box-shadow: var(--shadow-e2); }
+.lab .formula-line { font-size: clamp(1.75rem, 7vw, 2.5rem); font-weight: 600; text-align: center;
+  letter-spacing: 0.01em; margin: 2px 0 4px; line-height: 1.3; overflow-wrap: anywhere; }
+.lab .sym { font: inherit; font-style: italic; color: var(--fg); background: var(--surface);
+  border: 1.5px solid var(--border); border-bottom-width: 3px; border-radius: 12px;
+  padding: 0 11px; margin: 0 2px; cursor: pointer; line-height: 1.25;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s; }
+.lab .sym:hover { border-color: var(--hairline); transform: translateY(-1px); }
+.lab .sym:active { transform: translateY(1px); }
+.lab .sym.lit { background: var(--brand); border-color: color-mix(in srgb, var(--brand) 70%, #000); color: #1d1d1f; }
+.lab .hint-tap { text-align: center; font-size: 0.8125rem; color: var(--muted); margin: 0 0 12px; }
+.lab .symbols { display: grid; gap: 4px; margin: 12px 0 0; }
+.lab .symbols > div { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 8px;
+  align-items: baseline; padding: 7px 8px; border-radius: 10px; transition: background 0.25s; }
+.lab .symbols > div.lit { background: color-mix(in srgb, var(--brand) 20%, transparent); }
+.lab .symbols dt { font-style: italic; font-weight: 800; text-align: center; font-size: 1.05rem; }
+.lab .symbols dd { margin: 0; color: var(--muted); font-size: 0.9375rem; }
+
+/* The drawings: every colour from the page, so night and day both read. */
+.lab .pic { margin: 6px auto 0; max-width: 480px; color: var(--fg); padding: 14px 14px 0; }
+.lab .pic svg { display: block; width: 100%; height: auto; overflow: visible; }
+.lab .title-block { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px;
+  align-items: center; margin: 10px -14px 0; padding: 7px 12px; border-top: 1px solid var(--hairline);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted); background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border-radius: 0 0 13px 13px; }
+.lab .tb-eq { text-transform: none; letter-spacing: 0; font-style: italic; color: var(--fg);
+  text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lab .tb-house { color: var(--subtle); }
+.lab .pic .ink, .lab .pic .ink line, .lab .pic .ink path { stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+.lab .pic .solid { fill: var(--surface-2); stroke: currentColor; stroke-width: 2; }
+.lab .pic .wall { fill: var(--hairline); stroke: none; }
+.lab .pic .bolt, .lab .pic .pivot { fill: var(--bg); stroke: currentColor; stroke-width: 1.5; }
+.lab .pic .dim, .lab .pic path.dim { stroke: var(--subtle); stroke-width: 1.2; fill: none; }
+.lab .pic .lbl { fill: currentColor; font: italic 700 20px var(--font-sans); }
+.lab .pic .unit { fill: var(--muted); font: 600 14px var(--font-sans); }
+.lab .pic .unit.strong { fill: currentColor; font-size: 15px; }
+.lab .pic .load .arrow, .lab .pic .load .arc { stroke: var(--accent); stroke-width: 3; fill: none; stroke-linecap: round; }
+.lab .pic .load .head { fill: var(--accent); }
+.lab .pic .load .lbl { fill: var(--accent); }
+.lab .pic .react .arrow, .lab .pic .react .arc { stroke: var(--success); stroke-width: 3; fill: none; stroke-linecap: round; }
+.lab .pic .react .head { fill: var(--success); }
+.lab .pic .react .lbl { fill: var(--success); }
+.lab .pic .field .dash { stroke: var(--muted); stroke-width: 2; stroke-dasharray: 5 5; }
+.lab .pic .field .head-soft { fill: var(--muted); }
+.lab .pic .field .lbl { fill: var(--muted); }
+.lab .pic .dimension .dimline { stroke: currentColor; stroke-width: 1.5; }
+.lab .pic .dimension .tick { fill: currentColor; }
+.lab .pic .bmd { fill: color-mix(in srgb, var(--success) 22%, transparent); stroke: var(--success); stroke-width: 1.5; }
+.lab .pic [data-sym] { transition: opacity 0.25s; }
+.lab .pic [data-sym].lit .lbl { fill: var(--brand); font-size: 24px; }
+.lab .pic [data-sym].lit .arrow, .lab .pic [data-sym].lit .arc, .lab .pic [data-sym].lit .dimline,
+.lab .pic [data-sym].lit .solid, .lab .pic [data-sym].lit .bmd { stroke: var(--brand); stroke-width: 4; }
+.lab .pic [data-sym].lit .head, .lab .pic [data-sym].lit .tick { fill: var(--brand); }
+.lab .pic:has(.lit) [data-sym]:not(.lit) { opacity: 0.3; }
+
+/* Checks */
+.lab .pill { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 0 22px; border-radius: 999px; border: 0; cursor: pointer;
+  font: 600 0.9375rem/1.1 var(--font-sans); letter-spacing: -0.01em;
+  background: var(--primary); color: var(--on-primary); transition: background 0.2s, transform 0.15s; }
+.lab .pill:hover { background: var(--primary-hover); }
+.lab .pill:active { transform: scale(0.97); }
+.lab .pill:disabled { opacity: 0.6; pointer-events: none; }
+.lab .pill-ghost { background: none; color: var(--accent); padding: 0 12px; }
+.lab .pill-ghost:hover { background: var(--surface); }
+
+.lab .check { position: relative; background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--r-card); padding: 16px 18px; transition: border-color 0.3s, box-shadow 0.3s; }
+.lab .part .check { border: 0; padding: 0; background: none; }
+.lab .part-faded, .lab .part-yours { background: var(--surface-2); border: 1.5px solid var(--border); }
+.lab .check-label { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: 0.875rem;
+  font-weight: 700; color: var(--hue-ink); }
+.lab .answer-row { display: flex; align-items: center; gap: 10px; margin: 12px 0; }
+.lab .answer { flex: 1 1 auto; min-width: 0; height: 52px; font: 700 1.2rem var(--font-sans);
+  padding: 0 16px; border-radius: var(--r-field); border: 1.5px solid var(--hairline);
+  background: var(--bg); color: var(--fg); transition: border-color 0.2s, box-shadow 0.2s; }
+.lab .answer:focus { outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent); }
+.lab .answer-unit { font-weight: 800; color: var(--fg); min-width: 52px; height: 52px; display: grid;
+  place-items: center; padding: 0 12px; border-radius: var(--r-field); background: var(--surface); }
+.lab .options { display: grid; gap: 8px; margin: 12px 0; }
+.lab .option { position: relative; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: center;
+  padding: 11px 12px; border-radius: var(--r-field); border: 1.5px solid var(--border);
+  background: var(--bg); cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+.lab .option:hover { border-color: var(--hairline); }
+.lab .option input { position: absolute; opacity: 0; pointer-events: none; }
+.lab .option:has(input:checked) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, var(--bg)); }
+.lab .option:has(input:focus-visible) { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent); }
+.lab .option-key { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+  font-weight: 800; background: var(--surface); text-transform: lowercase; }
+.lab .option:has(input:checked) .option-key { background: var(--accent); color: #fff; }
+.lab .check-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.lab .feedback { min-height: 1.4em; margin: 10px 0 0; font-weight: 700; }
+.lab .feedback:empty { min-height: 0; margin: 0; }
+.lab .feedback.is-miss { color: var(--danger); }
+.lab .feedback.is-right { color: var(--success); }
+.lab .check.is-right .check-go { display: none; }
+.lab .part-faded:has(.is-right), .lab .part-yours:has(.is-right), .lab .check.is-right:not(.part .check) {
+  border-color: var(--success); box-shadow: 0 0 0 4px color-mix(in srgb, var(--success) 12%, transparent); }
+.lab .reveal { margin-top: 12px; padding: 12px 14px; border-radius: var(--r-field);
+  background: var(--surface); border-left: 3px solid var(--accent); }
+.lab .reveal p { margin: 0 0 6px; }
+.lab .reveal p:last-child { margin: 0; }
+
+/* The stamp: what an office puts on work that passed. */
+.lab .stamp { position: absolute; top: 14px; right: 14px; padding: 5px 12px 4px; border: 2.5px solid var(--success);
+  border-radius: 8px; color: var(--success); font-weight: 900; font-size: 0.78rem; letter-spacing: 0.14em;
+  text-transform: uppercase; transform: rotate(-9deg); pointer-events: none;
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--success) 25%, transparent);
+  background: color-mix(in srgb, var(--success) 6%, transparent);
+  animation: lab-stamp 0.42s cubic-bezier(0.2, 1.6, 0.4, 1) both; }
+.lab .stamp.is-quiet { animation: none; }
+.lab .part .check .stamp { top: -42px; right: -8px; }
+@keyframes lab-stamp { 0% { opacity: 0; transform: rotate(-9deg) scale(2.2); }
+  60% { opacity: 1; transform: rotate(-9deg) scale(0.92); } 100% { transform: rotate(-9deg) scale(1); } }
+.lab .shake { animation: lab-shake 0.35s; }
+@keyframes lab-shake { 20%, 60% { transform: translateX(-4px); } 40%, 80% { transform: translateX(4px); } }
+
+/* The dock: progress and the one next action, under the thumb. */
+.lab-dock-seg { flex: 1 1 0; height: 6px; border-radius: 999px; background: var(--color-border); overflow: hidden; }
+.lab-dock-seg > i { display: block; height: 100%; background: #2a78d6; border-radius: 999px;
+  transition: width 0.5s var(--ease-out-quart); }
+:root[data-theme="dark"] .lab-dock-seg > i { background: #4d96ee; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lab .step, .lab .stamp, .lab .shake { animation: none; }
+  .lab-dock-seg > i { transition: none; }
+}

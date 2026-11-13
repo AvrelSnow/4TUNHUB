@@ -23,6 +23,8 @@ const bundleAnalyzer = withBundleAnalyzer({
  */
 const analytics = analyticsConfig();
 const analyticsOrigin = analytics ? ` ${analytics.origin}` : "";
+// Where the script posts its hits; for some providers not where it loads from.
+const analyticsEndpoint = analytics ? ` ${analytics.endpoint}` : "";
 
 const securityHeaders = [
   // Never let browsers guess MIME types.
@@ -51,7 +53,11 @@ const securityHeaders = [
             "style-src 'self' 'unsafe-inline'",
             "img-src 'self' data:",
             "font-src 'self'",
-            `connect-src 'self'${analyticsOrigin}`,
+            `connect-src 'self'${analyticsEndpoint}`,
+            // The LS-DYNA library's player, loaded only when someone presses
+            // play (src/components/VideoPlayer.tsx), from YouTube's
+            // no-cookie domain.
+            "frame-src https://www.youtube-nocookie.com",
             "frame-ancestors 'none'",
             "base-uri 'self'",
             "form-action 'self'",

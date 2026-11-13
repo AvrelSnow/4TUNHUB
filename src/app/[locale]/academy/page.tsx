@@ -11,6 +11,9 @@ import { Media } from "@/components/ui/Media";
 import { CohortFeature } from "@/components/CohortFeature";
 import { EmailCaptureBand } from "@/components/EmailCaptureBand";
 import { courses } from "@/lib/academy";
+import { talks, TALKS_ARCHIVE_URL } from "@/lib/talks";
+import { LIBRARY_PATH } from "@/lib/lsdyna";
+import { PATH_ROOT } from "@/lib/engineering-thinking";
 import { projectDetailPath } from "@/lib/projects";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { isLocale } from "@/lib/i18n/config";
@@ -44,17 +47,6 @@ export default async function AcademyPage({ params }: Params) {
   if (!isLocale(locale)) notFound();
   const dict = await getDictionary(locale);
   const t = dict.academy;
-  const beans = dict.projects.galleries["beans-unwrapping-machine"] ?? [];
-  const beansTitle = dict.projects.items["beans-unwrapping-machine"]?.title ?? "";
-
-  // What a student learns to do, shown on one real machine: the drawing,
-  // the model, the thing that was built.
-  const sequence = [
-    { src: "/images/projects/beans-3.webp", caption: beans[2] ?? "", doc: true },
-    { src: "/images/projects/beans-7.webp", caption: beans[6] ?? "", doc: true },
-    { src: "/images/projects/beans-hero.webp", caption: beansTitle, doc: false },
-  ];
-
   return (
     <div>
       {/* 1 · HERO */}
@@ -79,27 +71,33 @@ export default async function AcademyPage({ params }: Params) {
           </>
         }
       >
-        <div className="mt-12 grid animate-fade-up gap-4 [animation-delay:240ms] sm:mt-14 sm:grid-cols-3">
-          {sequence.map((s, i) => (
-            <figure key={s.src}>
-              <Media
-                src={s.src}
-                alt={s.caption}
-                doc={s.doc}
-                responsive={!s.doc}
-                sizes="(min-width: 640px) 33vw, 100vw"
-                priority={i === 0}
-                className="aspect-[4/3] rounded-3xl"
-              />
-              <figcaption className="readout mt-3 text-center">{s.caption}</figcaption>
-            </figure>
-          ))}
-        </div>
       </PageHero>
 
       <CohortFeature locale={locale} dict={dict} />
 
-      
+      {/* FREE, NOW — the two things already teaching: the guided path
+          and the LS-DYNA library. */}
+      <Section rhythm="compressed" className="pt-0 sm:pt-0 lg:pt-0">
+        <div className="grid gap-5 lg:grid-cols-2">
+          {[
+            { copy: t.pathCard, href: PATH_ROOT },
+            { copy: t.library, href: LIBRARY_PATH },
+          ].map(({ copy, href }, i) => (
+            <Reveal key={href} delay={i * 80}>
+              <div className="flex h-full flex-col rounded-3xl bg-surface p-8 sm:p-10">
+                <p className="eyebrow">{copy.eyebrow}</p>
+                <h2 className="mt-3 text-4xl leading-tight font-bold tracking-tight text-foreground">{copy.title}</h2>
+                <p className="mt-4 text-lead text-muted">{copy.body}</p>
+                <div className="mt-auto pt-8">
+                  <Button as="a" href={localizeHref(locale, href)} size="lg">
+                    {copy.cta}
+                  </Button>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
 
       {/* 2 · CATALOG */}
       <Section tone="surface" eyebrow={t.catalogEyebrow} title={t.catalogTitle} intro={t.catalogIntro}>
@@ -111,7 +109,8 @@ export default async function AcademyPage({ params }: Params) {
               <Reveal key={c.key} delay={(i % 2) * 80}>
                 <article className="flex h-full flex-col rounded-3xl bg-surface-2 p-8 sm:p-10">
                   <div className="flex flex-wrap items-center gap-2">
-                    <Badge variant="amber">{t.levels[c.level]}</Badge>
+                    <Badge variant="amber">{t.statuses[c.status]}</Badge>
+                    <Badge variant="outline">{t.levels[c.level]}</Badge>
                     <Badge variant="outline">{t.formats[c.format]}</Badge>
                   </div>
                   <h3 className="mt-5 text-3xl font-semibold tracking-tight text-foreground">{copy.title}</h3>
@@ -121,7 +120,7 @@ export default async function AcademyPage({ params }: Params) {
                   </p>
                   <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8">
                     <Button as="a" href={localizeHref(locale, "/waitlist?track=academy")}>
-                      {t.primaryCta}
+                      {t.plannedCta}
                     </Button>
                     {c.proof && (
                       <ArrowLink href={localizeHref(locale, projectDetailPath(c.proof))}>
@@ -133,6 +132,38 @@ export default async function AcademyPage({ params }: Params) {
               </Reveal>
             );
           })}
+        </div>
+      </Section>
+
+      {/* 2b · TAUGHT BEFORE — real sessions, each with the page that proves it.
+          Dates are not shown: the event pages carry them, and a wrong year
+          is worse than none (see talks.ts). */}
+      <Section eyebrow={t.sessions.eyebrow} title={t.sessions.title} intro={t.sessions.intro}>
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {talks
+            .filter((talk) => talk.lesson)
+            .map((talk, i) => (
+              <li key={talk.href}>
+                <Reveal delay={(i % 3) * 80} className="h-full">
+                <div className="flex h-full flex-col rounded-3xl bg-surface p-6 sm:p-7">
+                  <p className="text-2xs font-semibold tracking-wide text-accent">{talk.org}</p>
+                  <h3 className="mt-3 text-lg font-semibold leading-snug tracking-tight text-foreground">
+                    {talk.title}
+                  </h3>
+                  <div className="mt-auto pt-6">
+                    <ArrowLink href={talk.href} external>
+                      {t.sessions.open}
+                    </ArrowLink>
+                  </div>
+                </div>
+                </Reveal>
+              </li>
+            ))}
+        </ul>
+        <div className="mt-9">
+          <ArrowLink href={TALKS_ARCHIVE_URL} external>
+            {t.sessions.archive}
+          </ArrowLink>
         </div>
       </Section>
 

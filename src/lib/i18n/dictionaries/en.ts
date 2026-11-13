@@ -34,6 +34,8 @@ const en = {
     careers: "Careers",
     contact: "Contact",
     cohort: "Cohort 0",
+    lsdyna: "LS-DYNA library",
+    path: "Engineering Thinking",
     waitlist: "Waitlist",
     privacy: "Privacy",
     terms: "Terms",
@@ -402,6 +404,24 @@ const en = {
       "Mechanical design, simulation and reverse engineering for companies, teams and entrepreneurs — grounded in what can actually be manufactured and maintained, across Cameroon and beyond.",
     primaryCta: "Request a consultation",
     secondaryCta: "See the work",
+    jumpLabel: "Jump to a service",
+
+    brief: {
+      eyebrow: "Starting a job",
+      title: "What to send us, and what comes back.",
+      bringTitle: "You bring",
+      bring: [
+        "A drawing, a CAD file or a photo of the part",
+        "The conditions it works in: load, environment, budget",
+        "Who will build it, and where",
+      ],
+      getTitle: "You get",
+      get: [
+        "Drawings and models a local workshop can build from",
+        "A written check that the design holds, when simulation is in scope",
+        "A clear recommendation: build it, change it or stop",
+      ],
+    },
 
     offeringsEyebrow: "What we do",
     offeringsTitle: "Four ways we turn a brief into hardware.",
@@ -713,6 +733,33 @@ const en = {
       },
     } as Record<string, { title: string; outcome: string; who: string }>,
 
+    statuses: {
+      planned: "Planned, no date yet",
+    } as Record<string, string>,
+    plannedCta: "Tell me when it opens",
+
+    sessions: {
+      eyebrow: "Taught before",
+      title: "Sessions already taught, in public.",
+      intro:
+        "Before any course opens, these live sessions were run for the Douala City SOLIDWORKS User Group. Each one links to its own event page, so you can check it.",
+      open: "See the session",
+      archive: "The full programme",
+    },
+
+    library: {
+      eyebrow: "Free · on YouTube",
+      title: "The LS-DYNA library.",
+      body: "Every LS-DYNA tutorial from the channel, in order, with the keyword decks and model files used on camera. Build the model alongside the video.",
+      cta: "Open the library",
+    },
+    pathCard: {
+      eyebrow: "Free · guided path",
+      title: "Engineering Thinking.",
+      body: "Eleven short lessons from the 4TUNHub Lab: turn a hanging load into a force and a moment, then size a steel plate for strength and stiffness. A check at every step, no account.",
+      cta: "Start the path",
+    },
+
     formatsEyebrow: "How you learn",
     formatsTitle: "Built around how engineers actually learn.",
     formatsList: [
@@ -737,11 +784,121 @@ const en = {
     instructorCta: "Meet the founder",
 
     cta: {
-      title: "Be first into the next cohort.",
+      title: "Hear when a course opens.",
       subtitle:
         "The Academy is opening in stages. Join the waitlist and we'll reach out as each track goes live.",
       primary: "Join the waitlist",
       secondary: "See the projects",
+    },
+  },
+
+  /** The LS-DYNA library: the YouTube tutorials, with their files. */
+  library: {
+    metaTitle: "LS-DYNA tutorials and files",
+    metaDescription:
+      "Every LS-DYNA and LS-PrePost tutorial from the @4TUNHUB channel, in order, with the keyword decks and model files used on camera. Free.",
+    eyebrow: "Academy · LS-DYNA",
+    title: "LS-DYNA, from the first mesh to a result you can trust.",
+    intro:
+      "Every tutorial from the @4TUNHUB YouTube channel, in the order to take them, with the files used on camera so you can build the model alongside. Physics first, software second. Free.",
+    languageNote: "",
+    subscribe: "Subscribe on YouTube",
+    startHere: "Start with the first episode",
+    series: {
+      setup: {
+        title: "Getting started",
+        body: "Install LS-PrePost, get past the first crashes, and find your way around before building anything.",
+      },
+      "ball-plate": {
+        title: "Ball-plate impact",
+        body: "A steel ball hits a plate. One model, built from the mesh to the result, then read, edited by hand and checked.",
+      },
+      "bracket-static": {
+        title: "Bracket static analysis",
+        body: "An aluminium bracket bolted at four holes, under 10 MPa. A static answer from an explicit solver, done properly.",
+      },
+    } as Record<string, { title: string; body: string }>,
+    episode: "Episode",
+    withFiles: "Files",
+    back: "All LS-DYNA episodes",
+    play: "Play the video",
+    playerNote: "The video loads from YouTube only when you press play.",
+    watchOnYoutube: "Watch on YouTube",
+    learnTitle: "What you'll learn",
+    chaptersTitle: "Chapters",
+    chaptersHint: "Press a chapter to start the video there.",
+    prev: "Previous",
+    next: "Next",
+    files: {
+      title: "Files for this episode",
+      none: "No files for this one: everything happens on your own install.",
+      kinds: {
+        keyword: "LS-DYNA keyword deck",
+        geometry: "Geometry, IGES",
+      } as Record<string, string>,
+      gateTitle: "Leave an email to download.",
+      gateBody:
+        "The files are free. Your address is how you hear when the next episode and its files are up: one email per episode, one click to stop.",
+      submit: "Get the files",
+      submitting: "Opening…",
+      download: "Download",
+      unlocked: "The files are yours. Download them below.",
+      unlockedLost: "We couldn't add you to the list just now, but the files are open.",
+      privacy: "Privacy",
+    },
+  },
+
+  /** Engineering Thinking: the Lab's Branch 1, as a guided path. */
+  path: {
+    metaTitle: "Engineering Thinking: a guided path",
+    metaDescription:
+      "Free, guided lessons from the 4TUNHUB Lab: turn a hanging load into a force and a moment, then size a steel plate for strength and stiffness. Every formula with its picture, its trap and a check.",
+    eyebrow: "Academy · Guided path",
+    title: "Engineering Thinking",
+    tagline: "From a load to a part.",
+    intro:
+      "Short lessons, one part at a time. Every formula comes with a drawing, where it comes from, the trap, a worked example and a check you answer yourself. No account: your progress stays on this device.",
+    languageNote: "",
+    free: "Free",
+    need: "You need",
+    able: "You will be able to",
+    card: "Card",
+    kinds: { checkpoint: "Checkpoint", boss: "Final challenge" } as Record<string, string>,
+    lessonsCount: "{n} lessons · ~{m} min",
+    lessonsDone: "{n} of {t} lessons done",
+    start: "Start the path",
+    resume: "Continue where you stopped",
+    coming: "Coming",
+    comingBody:
+      "This part ends with the 4TUNHub Lab's checker, which reads the part you model. It opens here when the checker does.",
+    opensAfter: "Opens after",
+    /** Translations of the cards' words, by id; English comes from the Lab. */
+    cards: {} as Record<string, { title: string; able: string[] }>,
+    lesson: {
+      back: "The path",
+      head: "Card {c} · Lesson {i} of {t} · ~{m} min",
+      part: "Part {n} of {t}",
+      minLeft: "~{m} min left",
+      underMinute: "under a minute left",
+      answerFirst: "Answer the check to go on",
+      continue: "Continue",
+      done: "Lesson done",
+      cardDone: "Card finished",
+      endSum: "Checks in tolerance: {n} of {t}",
+      next: "Next lesson",
+      toPath: "Back to the path",
+      readAll: "Open every part",
+    },
+    check: {
+      notYet: "Not yet.",
+      right: "In tolerance. That's it.",
+      show: "Show me the working",
+      numberOnly: "Type just the number: the unit is already written.",
+      unreadable: "That doesn't read as a number.",
+      ambiguous: "Is that comma a decimal point or a thousands separator? Write decimals with a point.",
+      empty: "Type an answer first.",
+      choose: "Pick one first.",
+      stamp: "In tolerance",
     },
   },
 
@@ -752,6 +909,27 @@ const en = {
       "Applied engineering research in renewable energy, sustainability and industrial systems — grounded in West and Central African infrastructure realities, not abstractions.",
     primaryCta: "Collaborate on research",
     secondaryCta: "See the projects",
+    jumpLabel: "Jump to a focus area",
+
+    approach: {
+      eyebrow: "How we work",
+      steps: [
+        {
+          title: "Start in the field",
+          desc: "A real gap: a part that cannot be bought, waste that is burned, power that is not there.",
+        },
+        {
+          title: "Build and test",
+          desc: "A design, a lab trial or an analysis that someone else can check.",
+        },
+        {
+          title: "Publish and reuse",
+          desc: "Results go to The REM, then back into services, machines and courses.",
+        },
+      ],
+      ledBy: "Led by 4TUNHub's founder, a mechanical engineer and lecturer.",
+      ledByLink: "Meet the founder",
+    },
 
     focusEyebrow: "Focus areas",
     focusTitle: "Where we put the work.",
@@ -1152,15 +1330,15 @@ const en = {
     apply: "Apply for a seat",
     closesOn: "Applications close Sunday 11 October. Seats are given out as applications come in.",
     closed:
-      "Applications closed on 11 October and Cohort 0 is under way. Cohort 1 opens in January: leave your address and you hear first.",
-    closedCta: "Tell me when Cohort 1 opens",
+      "Applications closed on 11 October and Cohort 0 is under way. Leave your address and you hear first about what comes next.",
+    closedCta: "Keep me posted",
     /** Replaces the application copy once applications have closed. */
     running: {
       eyebrow: "Under way",
       title: "The dates.",
       heading: "Who teaches Cohort 0.",
       intro:
-        "Twenty engineers, eight evenings, two instructors. The results are published in the week of 16 November, and Cohort 1 opens in January.",
+        "Twenty engineers, eight evenings, two instructors. The results are published in the week of 16 November.",
     },
     facts: [
       { label: "Price", value: "Free" },
@@ -1240,7 +1418,7 @@ const en = {
       steps: {
         hub: {
           title: "Follow 4TUNHub",
-          desc: "On LinkedIn and on YouTube. Cohort 0's results, and the opening of Cohort 1, are announced there first.",
+          desc: "On LinkedIn and on YouTube. Cohort 0's results are announced there first.",
         },
         mkv: {
           title: "Follow MKV Academy",
@@ -1490,9 +1668,14 @@ const en = {
           when: "Beta December 2026",
         },
         academy: {
-          title: "Academy cohorts",
-          desc: "The next CSWA bootcamp after Cohort 0, and the GD&T and technical-drawing course that follows it.",
-          when: "From January 2027",
+          title: "Academy courses",
+          desc: "The CSWA bootcamp, and the GD&T and technical-drawing course. Dates are announced once they are fixed.",
+          when: "Dates to come",
+        },
+        lsdyna: {
+          title: "LS-DYNA library",
+          desc: "Each new LS-DYNA tutorial on the @4TUNHUB channel, with the keyword decks and model files to follow along.",
+          when: "Running now",
         },
         rem: {
           title: "REM — the engineering review",
@@ -1544,12 +1727,16 @@ const en = {
       more: "Hear about the rest",
       bands: {
         academy: {
-          title: "Cohort 1 opens in January.",
-          body: "Leave an address and you'll know the day applications open — for the next CSWA bootcamp, and for the GD&T course that follows it.",
+          title: "Hear when a course opens.",
+          body: "Leave an address and you'll know the day a course opens — the CSWA bootcamp, or the GD&T course. One email, nothing in between.",
         },
         cohort: {
           title: "Twenty seats. If you don't get one, don't disappear.",
-          body: "Cohort 1 opens in January and this list hears first. One email the day it does — nothing in between.",
+          body: "Leave your address and this list hears first about what comes next. One email, nothing in between.",
+        },
+        lsdyna: {
+          title: "The next episode, with its files.",
+          body: "One email when a new LS-DYNA tutorial goes up, with the link to its files. Nothing else.",
         },
         rem: {
           title: "The REM, the day an episode lands.",
@@ -1565,13 +1752,13 @@ const en = {
 
   privacy: {
     title: "Privacy",
-    updated: "Last updated 2 October 2026",
+    updated: "Last updated 22 October 2026",
     intro:
       "This site collects personal details only when you send them through a form, and stores almost nothing in your browser. This note says what we keep, why, for how long, and how to have it removed.",
     sections: [
       {
         title: "What we collect",
-        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat. The waitlist asks for an email address, a name if you care to give one, and which subjects you want to hear about.",
+        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat. The waitlist asks for an email address, a name if you care to give one, and which subjects you want to hear about. The LS-DYNA library asks for an email address before its files download: it joins the same list, for new episodes only.",
       },
       {
         title: "Why",
@@ -1579,7 +1766,7 @@ const en = {
       },
       {
         title: "Where it goes",
-        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
+        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. The LS-DYNA library's videos play from YouTube, which is contacted only when you press play. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
       },
       {
         title: "How long we keep it",
@@ -1587,7 +1774,7 @@ const en = {
       },
       {
         title: "Cookies",
-        body: "None. Not an advertising cookie, not an analytics cookie, not one of our own. The full list of what is stored in your browser — two items, both of which stay on your device — is at the bottom of this page, with the switch that controls the one optional thing we do.",
+        body: "None. Not an advertising cookie, not an analytics cookie, not one of our own. The full list of what is stored in your browser — three items, all of which stay on your device — is at the bottom of this page, with the switch that controls the one optional thing we do.",
       },
       {
         title: "Your rights",
@@ -1605,7 +1792,7 @@ const en = {
     storage: {
       title: "Cookies and storage",
       intro:
-        "This site sets no cookies — not one, not even our own. One thing is stored in your browser and never leaves your device, and one thing is counted, only if you allow it. That is the entire list.",
+        "This site sets no cookies — not one, not even our own. Three things are stored in your browser and never leave your device, and one thing is counted, only if you allow it. That is the entire list.",
       columns: {
         what: "What",
         why: "Why",
@@ -1621,9 +1808,23 @@ const en = {
           refuse: "Without it we would have to ask the same question on every page. Clearing your browser data removes it.",
         },
         {
+          what: "LS-DYNA library",
+          key: "4tun.library",
+          why: "Remembers that you already gave an address for the library's files, so every episode's files stay open without asking again.",
+          kept: "Your browser, on this device. It is never sent anywhere.",
+          refuse: "It only exists once you ask for the files. Clearing your browser data removes it.",
+        },
+        {
+          what: "Your place on the guided path",
+          key: "4tun.path",
+          why: "Remembers which lessons of Engineering Thinking you finished and which checks you passed, so the path picks up where you stopped.",
+          kept: "Your browser, on this device. It is never sent anywhere.",
+          refuse: "It only exists once you open a lesson. Clearing your browser data removes it.",
+        },
+        {
           what: "Anonymous visit counting",
           key: "Umami — no cookie, nothing stored on your device",
-          why: "Which pages are read, from which country, on what kind of device and which site sent you — plus three events: a waitlist signup, an application, a message sent.",
+          why: "Which pages are read, from which country, on what kind of device and which site sent you — plus four events: a waitlist signup, an application, a message sent, a library file downloaded.",
           kept: "On the analytics provider's servers, as counts. No name, no address, nothing that identifies a person.",
           refuse: "Yes. It does not run at all until you accept, and you can switch it off here at any time.",
         },
@@ -1637,7 +1838,7 @@ const en = {
           },
           embeds: {
             name: "Embedded media",
-            desc: "Video players and booking widgets loaded from other companies. Nothing on this site uses one yet.",
+            desc: "Video players and booking widgets loaded from other companies. The only one here is the YouTube player on the LS-DYNA tutorial pages, and it stays unloaded until you press play, so there is nothing to switch on or off.",
           },
         },
         allow: "Allow",

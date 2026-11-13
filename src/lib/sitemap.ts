@@ -110,6 +110,20 @@ export const siteTree: SiteNode[] = [
         status: "active",
         desc: "The free first cohort: 20 seats by application, 8 evening sessions in October.",
       },
+      {
+        key: "lsdyna",
+        label: "LS-DYNA library",
+        href: "/academy/ls-dyna",
+        status: "active",
+        desc: "The @4TUNHUB YouTube tutorials, one page each, with the files to follow along.",
+      },
+      {
+        key: "path",
+        label: "Engineering Thinking",
+        href: "/academy/engineering-thinking",
+        status: "active",
+        desc: "Branch 1 of the 4TUNHub Lab as a guided path: from a hanging load to a sized steel plate.",
+      },
     ],
   },
   {
@@ -235,7 +249,7 @@ export const siteTree: SiteNode[] = [
     href: "/waitlist",
     status: "active",
     placement: "utility",
-    desc: "One address, for the Lab, the next cohorts, the REM or the tools — whichever you choose.",
+    desc: "One address, for the Lab, the courses, the REM or the tools — whichever you choose.",
   },
   {
     key: "privacy",
