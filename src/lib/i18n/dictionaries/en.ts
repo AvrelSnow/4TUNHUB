@@ -792,7 +792,7 @@ const en = {
     } as Record<string, { title: string; body: string }>,
     ctaTitle: "Want to learn it with us?",
     ctaSubtitle:
-      "These are free to take alone. The Academy's guided path, the YouTube library and Cohort 0 are for learning with someone checking your work.",
+      "These are free to take alone. For the Academy's own material, and a route through all of it in order, start at the Academy.",
     ctaPrimary: "See the Academy",
     ctaSecondary: "YouTube library",
   },
@@ -820,7 +820,7 @@ const en = {
     intro:
       "One shared start, then two tracks. Each stage says what it is made of and how long it takes, and ends with something you can check. Everything here is free. What is not built yet says so.",
     honesty:
-      "This route gets you ready to practise for the exam, not to book it. That is decided on a full timed mock, and the cohort has one.",
+      "This route gets you ready to practise for the exam, not to book it. That is decided on a full timed mock, which this free route does not include.",
     dashboard: {
       title: "Your progress",
       empty: "Nothing ticked yet. Start with the first lesson: it takes about five minutes.",
@@ -851,7 +851,7 @@ const en = {
       },
       cohort: {
         title: "Then: learn with someone checking your work",
-        body: "The cohort is where the timed mock and the feedback live.",
+        body: "The timed mock, and feedback on your own work, come with teaching.",
       },
     } as Record<string, { title: string; body: string }>,
     stages: {
@@ -896,8 +896,8 @@ const en = {
         body: "A French teaching document on ISO GPS tolerancing, then checks on limits and fits and on position at maximum material.",
       },
       cohort: {
-        title: "Join the list for the next cohort",
-        body: "Taught, with a timed mock and someone looking at your model. No date is named yet.",
+        title: "Join the list",
+        body: "For teaching, with a timed mock and someone looking at your model. No date is named.",
       },
     } as Record<string, { title: string; body: string }>,
     items: {

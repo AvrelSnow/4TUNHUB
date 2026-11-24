@@ -669,6 +669,34 @@ export const decisions: Decision[] = [
       "Fortune's direction: the cohort should carry no obligation to, or claim about, a community group it is not formally tied to, so nothing on it can become a dispute later. The screenshots were already the real selection filter, so they are now said plainly, three times: in the steps, in an amber 'No screenshots, no seat' band under them, and on the screenshots page with one card per follow. The voucher promise is kept on his word that the vouchers can be obtained without the group; the terms still say we will announce it publicly if the supply fails. The platform reads 'online, link sent to you' until he and MKV pick one (Jitsi Meet is the likely choice, clause 5). The 4TUNHub LinkedIn link moved from a guessed numeric ID to the page's public address, linkedin.com/company/4tunhub, now that following it is a condition of a seat.",
     status: "proposed",
   },
+  {
+    decision:
+      "Academy restructure (2026-11-24): the Academy page shows only what exists. The empty course catalogue, the \u201cHow you learn\u201d block and the instructor block are gone (the founder page carries the founder). In their place: \u201cStart here\u201d, three goal cards (Engineering Thinking, the YouTube library, Free places to learn), each with a real preview, then the sessions we hosted.",
+    rationale:
+      "Fortune's direction: a visitor should find their way, and a card should show what is behind it, not a bare link. Previews are our own files, never hot-linked: the CSP allows images only from this site, and a third-party image would tell that third party who is reading. The page and the founder page each keep to their own subject: the session cards are on the Academy page only, and the founder page's talks list is unchanged. Previews exist on five Free places cards; the rest stay text on purpose, because the page is read on slow phones.",
+    status: "locked",
+  },
+  {
+    decision:
+      "The LS-DYNA library is now the YouTube library, at /academy/youtube (2026-11-24). The old address, with or without a language prefix and for every episode, redirects permanently.",
+    rationale:
+      "The channel will not stay about LS-DYNA, and the name should say where the material comes from. The files under /library/ls-dyna/ did not move, because video descriptions already link to them.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Sessions we hosted are cards that play here (2026-11-24): a picture, the date, the speaker, and a pop-up player with what the session covers and its chapters. Five recordings from the Douala City SWUG channel; a session with no recording says so and links to its event page, with no play button.",
+    rationale:
+      "Fortune asked for a visual of what was taught, played on 4TUNHub rather than by sending the visitor to YouTube. The pop-up loads YouTube's no-cookie player only when a session is opened, so nothing is contacted before. The event pages and recordings name Fortune as host and someone else as the speaker, so the cards say both and the heading says \u201chosted\u201d, not \u201ctaught\u201d. Dates, speakers, chapters and the \u201cwhat it covers\u201d lines are taken from those pages, never written by us. Full record: docs/sessions.md.",
+    status: "locked",
+  },
+  {
+    decision:
+      "The free route (2026-11-24): an ordered page at /academy/route: a shared foundation (Engineering Thinking), then a simulation track (LS-DYNA) or a SolidWorks and CSWA track, then teaching. Each stage lists what it is made of today and its time; stages that are not built (the Lab's practice problems) show as coming, with no link. Progress is kept on the device only. Defaults pending Fortune's answers: where the hand check sits, no \u201cApply\u201d stage, and the public track names.",
+    rationale:
+      "A menu of three doors does not tell a newcomer what to do first. The route says it, and says what it does not promise: it gets you ready to practise for the CSWA, not to book it, because a timed mock is where that is decided and no free one exists. The design, its attack and the open decisions are in docs/academy-route.md.",
+    status: "proposed",
+  },
 ];
 
 /* ============================================================

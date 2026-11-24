@@ -782,7 +782,7 @@ const fr: Dictionary = {
     } as Record<string, { title: string; body: string }>,
     ctaTitle: "Envie d'apprendre avec nous ?",
     ctaSubtitle:
-      "Tout cela se suit seul, gratuitement. Le parcours guidé de l'Academy, la bibliothèque YouTube et la Cohorte 0 sont pour apprendre avec quelqu'un qui vérifie votre travail.",
+      "Tout cela se suit seul, gratuitement. Pour le contenu de l'Academy et un parcours qui le traverse dans l'ordre, commencez par l'Academy.",
     ctaPrimary: "Voir l'Academy",
     ctaSecondary: "Bibliothèque YouTube",
   },
@@ -810,7 +810,7 @@ const fr: Dictionary = {
     intro:
       "Un départ commun, puis deux parcours. Chaque étape dit de quoi elle est faite et combien de temps elle prend, et finit par quelque chose que vous pouvez vérifier. Tout est gratuit. Ce qui n'est pas encore construit le dit.",
     honesty:
-      "Ce parcours vous prépare à vous entraîner pour l'examen, pas à le réserver. Cela se décide sur un examen blanc complet et chronométré, et la cohorte en a un.",
+      "Ce parcours vous prépare à vous entraîner pour l'examen, pas à le réserver. Cela se décide sur un examen blanc complet et chronométré, que ce parcours gratuit ne comprend pas.",
     dashboard: {
       title: "Votre progression",
       empty: "Rien de coché pour l'instant. Commencez par la première leçon : environ cinq minutes.",
@@ -841,7 +841,7 @@ const fr: Dictionary = {
       },
       cohort: {
         title: "Ensuite : apprendre avec quelqu'un qui vérifie votre travail",
-        body: "La cohorte, c'est là que se trouvent l'examen blanc chronométré et le retour sur votre travail.",
+        body: "L'examen blanc chronométré et le retour sur votre travail viennent avec l'enseignement.",
       },
     } as Record<string, { title: string; body: string }>,
     stages: {
@@ -886,8 +886,8 @@ const fr: Dictionary = {
         body: "Un document pédagogique français sur le tolérancement ISO GPS, puis des exercices sur les limites et ajustements et sur la position au maximum de matière.",
       },
       cohort: {
-        title: "Rejoindre la liste pour la prochaine cohorte",
-        body: "Enseignée, avec un examen blanc chronométré et quelqu'un qui regarde votre modèle. Aucune date n'est annoncée pour l'instant.",
+        title: "Rejoindre la liste",
+        body: "Pour un enseignement, avec un examen blanc chronométré et quelqu'un qui regarde votre modèle. Aucune date n'est annoncée.",
       },
     } as Record<string, { title: string; body: string }>,
     items: {
