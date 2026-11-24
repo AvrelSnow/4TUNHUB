@@ -36,6 +36,7 @@ const fr: Dictionary = {
     cohort: "Cohorte 0",
     lsdyna: "Bibliothèque YouTube",
     path: "Raisonner en ingénieur",
+    route: "Votre parcours",
     waitlist: "Liste d'attente",
     privacy: "Confidentialité",
     terms: "Conditions",
@@ -692,11 +693,12 @@ const fr: Dictionary = {
       title: "Choisissez ce que vous voulez faire.",
       intro:
         "Trois portes d'entrée, toutes gratuites, sans compte.",
+      routeCta: "Voir tout le parcours",
       items: {
         path: {
           goal: "Je veux penser en ingénieur",
-          title: "Engineering Thinking.",
-          body: "Onze courtes leçons issues du Lab 4TUNHub : transformer une charge suspendue en une force et un moment, puis dimensionner une plaque d'acier en résistance et en rigidité. Une vérification à chaque étape.",
+          title: "Raisonner en ingénieur.",
+          body: "Onze courtes leçons issues du Lab 4TUNHub : transformer une charge suspendue en une force et un moment, puis dimensionner une plaque d'acier en résistance et en rigidité. Une vérification à chaque étape (en anglais pour l'instant).",
           cta: "Commencer le parcours",
           alt: "La première page du parcours Engineering Thinking",
         },
@@ -782,6 +784,126 @@ const fr: Dictionary = {
       "Tout cela se suit seul, gratuitement. Le parcours guidé de l'Academy, la bibliothèque YouTube et la Cohorte 0 sont pour apprendre avec quelqu'un qui vérifie votre travail.",
     ctaPrimary: "Voir l'Academy",
     ctaSecondary: "Bibliothèque YouTube",
+  },
+
+  /** Le parcours : comment avancer dans l'Académie gratuite, avec un tableau de bord gardé sur l'appareil. */
+  route: {
+    metaTitle: "Votre parcours dans l'Académie",
+    metaDescription:
+      "Un parcours gratuit et ordonné : une base commune, puis la simulation LS-DYNA ou SolidWorks et le CSWA. De quoi chaque étape est faite, sa durée, et comment savoir que vous pouvez passer à la suivante.",
+    eyebrow: "Académie · Votre parcours",
+    title: "À faire dans cet ordre.",
+    intro:
+      "Un départ commun, puis deux parcours. Chaque étape dit de quoi elle est faite et combien de temps elle prend, et finit par quelque chose que vous pouvez vérifier. Tout est gratuit. Ce qui n'est pas encore construit le dit.",
+    honesty:
+      "Ce parcours vous prépare à vous entraîner pour l'examen, pas à le réserver. Cela se décide sur un examen blanc complet et chronométré, et la cohorte en a un.",
+    dashboard: {
+      title: "Votre progression",
+      empty: "Rien de coché pour l'instant. Commencez par la première leçon : environ cinq minutes.",
+      lessons: "Leçons de la base : {n} sur {t}",
+      left: "Environ {m} min restantes dans la base",
+      ticked: "Coché par vous : {n}",
+      device: "Gardé sur cet appareil seulement. Les leçons se cochent seules ; les vidéos et les liens, c'est vous qui les cochez.",
+      start: "Commencer la première leçon",
+      resume: "Continuer la base",
+      foundationDone: "La base est terminée. Choisissez un parcours plus bas.",
+    },
+    groups: {
+      foundation: {
+        title: "Commencez ici : la base",
+        body: "Les deux parcours commencent par « Raisonner en ingénieur » : transformer une charge en force, vérifier une contrainte, choisir une épaisseur. La physique d'abord, le logiciel ensuite.",
+      },
+      simulation: {
+        title: "Parcours A : la simulation avec LS-DYNA",
+        body: "De l'installation du logiciel à un support sous charge, avec les fichiers utilisés à l'écran.",
+      },
+      solidworks: {
+        title: "Parcours B : SolidWorks et le CSWA",
+        body: "D'une première pièce à l'entraînement pour la certification.",
+      },
+      tolerances: {
+        title: "Branche à part : les tolérances",
+        body: "Facultatif pour les deux parcours. Lire et vérifier les cotes d'un plan.",
+      },
+      cohort: {
+        title: "Ensuite : apprendre avec quelqu'un qui vérifie votre travail",
+        body: "La cohorte, c'est là que se trouvent l'examen blanc chronométré et le retour sur votre travail.",
+      },
+    } as Record<string, { title: string; body: string }>,
+    stages: {
+      foundation: {
+        title: "Raisonner en ingénieur",
+        body: "Onze leçons courtes, un exercice à chaque étape, sans compte. En anglais pour l'instant.",
+      },
+      setup: {
+        title: "Mise en route",
+        body: "Installer LS-PrePost, passer les premiers plantages et s'orienter avant de construire quoi que ce soit.",
+      },
+      ballplate: {
+        title: "Impact bille-plaque",
+        body: "Un modèle construit du maillage au résultat, puis lu, modifié à la main et vérifié.",
+      },
+      checkA: {
+        title: "Vérification : avant de lancer le calcul",
+        body: "Un contrôle à la main du système d'unités, sur vos propres nombres. LS-DYNA n'a pas d'unités : c'est l'erreur qui coûte un calcul entier.",
+      },
+      bracket: {
+        title: "Support, charge statique",
+        body: "Une réponse statique à partir d'un solveur explicite, faite proprement, en commençant par la raison pour laquelle une charge doit être montée en rampe.",
+      },
+      software: {
+        title: "Obtenir SOLIDWORKS",
+        body: "La version étudiante gratuite, chez SOLIDWORKS lui-même.",
+      },
+      basics: {
+        title: "Les bases",
+        body: "Les leçons de SOLIDWORKS lui-même : une pièce, un assemblage, un plan. À commencer si vous n'avez jamais modélisé de pièce.",
+      },
+      exam: {
+        title: "Connaître l'examen",
+        body: "Ce que demande le CSWA et comment l'aborder, avec le groupe d'utilisateurs, le guide officiel et les exercices de SOLIDWORKS.",
+      },
+      checkB: {
+        title: "Vérification : vos propres nombres",
+        body: "Modéliser trois pièces et donner leur volume, leur masse et leur centre de masse. Les réponses sont vérifiées, et l'erreur précise est nommée si vous en faites une.",
+      },
+      tolerances: {
+        title: "Ajustements, limites et position",
+        body: "Un document pédagogique français sur le tolérancement ISO GPS, puis des exercices sur les limites et ajustements et sur la position au maximum de matière.",
+      },
+      cohort: {
+        title: "Rejoindre la liste pour la prochaine cohorte",
+        body: "Enseignée, avec un examen blanc chronométré et quelqu'un qui regarde votre modèle. Aucune date n'est annoncée pour l'instant.",
+      },
+    } as Record<string, { title: string; body: string }>,
+    items: {
+      getSolidworks: "Obtenir SOLIDWORKS gratuitement (page Ressources)",
+      p001: "Exercice : un bloc étagé",
+      p002: "Exercice : un arbre étagé",
+      p003: "Exercice : une plaque pilotée par une équation",
+      p004: "Exercice : limites et ajustements",
+      p005: "Exercice : avant de lancer le calcul",
+      p006: "Exercice : position au maximum de matière",
+      cohort: "Rejoindre la liste",
+    } as Record<string, string>,
+    labels: {
+      stage: "Étape",
+      check: "Vérification",
+      minutes: "{m} min",
+      content: "{m} min de leçons et de vidéos",
+      work: "Environ {h} h de votre propre travail (une estimation)",
+      comingBadge: "À venir",
+      comingNote: "Pas encore construit. Il ouvrira avec le Lab 4TUNHub, sans date pour l'instant.",
+      markDone: "Marquer comme fait",
+      done: "Fait",
+      open: "Ouvrir",
+      progress: "{n} sur {t}",
+      lessonsEnglish: "Les leçons et les vidéos sont en anglais.",
+    },
+    ctaTitle: "Vous ne savez pas par où commencer ?",
+    ctaSubtitle: "Commencez par la base. C'est la même pour les deux parcours.",
+    ctaPrimary: "Retour à l'Académie",
+    ctaSecondary: "Des endroits gratuits pour apprendre",
   },
 
   library: {
@@ -1821,6 +1943,13 @@ const fr: Dictionary = {
           why: "Retient les leçons de « Raisonner en ingénieur » que vous avez terminées et les exercices réussis, pour que le parcours reprenne où vous en étiez.",
           kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
           refuse: "Il n'existe qu'à partir du moment où vous ouvrez une leçon. Effacer les données de votre navigateur le supprime.",
+        },
+        {
+          what: "Vos cases cochées sur le parcours",
+          key: "4tun.route",
+          why: "Retient les vidéos et les liens que vous avez cochés comme faits sur la page du parcours, pour qu'elle montre où vous en êtes.",
+          kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
+          refuse: "Il n'existe qu'à partir du moment où vous cochez quelque chose. Effacer les données de votre navigateur le supprime.",
         },
         {
           what: "Comptage anonyme des visites",

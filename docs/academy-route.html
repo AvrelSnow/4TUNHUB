@@ -386,16 +386,26 @@ first lesson is done; before that the visitor sees the route itself.</p>
 <li><strong>Names.</strong> "Track A / Track B" are working labels; the public names are for
    you to choose, in both languages.</li>
 </ol>
-<h2>10. What happens next (not started)</h2>
+<h2>10. What happens next</h2>
+<p><strong>Built 2026-11-24:</strong> the Route page at <code>/academy/route</code> (English and French),
+from this document, with the order of §4 and the dashboard of §7. Its data is
+<code>src/lib/route.ts</code>, built from the path's open lessons, the library's episodes
+and the Free places list, so it cannot drift: a removed resource fails the
+build. The learner's ticks are kept on the device (<code>4tun.route</code>, listed in the
+privacy note). Decisions 2 to 5 of §9 were not answered, so the page uses my
+defaults: P005 between ball-plate and bracket, no "Apply" stage shown, no
+claim about the wall bracket, and plain public names ("Track A / Track B" with
+what each is about).</p>
+<p><strong>Still to do:</strong></p>
 <ol>
-<li>Avrel validates or changes §9.</li>
-<li>Then the Route page is built from this document: stages from the data
-   (<code>engineering-thinking.json</code>, <code>lsdyna.ts</code>, <code>free-resources.ts</code>), the
-   dashboard from §7, "coming" stages greyed.</li>
+<li>Avrel answers §9 decisions 2 to 5; the page changes to match.</li>
 <li>The delivery log starts with the first learners: real working times replace
    §6's multiplier, and any gate most learners fail is a finding about the
    route, not only about them.</li>
+<li>The Lab's practice problems, when live, turn the "coming" items into links.</li>
 </ol>
+<p><strong>Original plan, for the record:</strong> validate §9, then build the page from this
+document.</p>
 <h2>Sources</h2>
 <p>Real data read on 2026-11-24: <code>src/content/engineering-thinking.json</code> (cards,
 minutes, open/closed), <code>src/lib/lsdyna.ts</code> (episodes and lengths),

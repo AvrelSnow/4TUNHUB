@@ -137,7 +137,7 @@ export const freeResourceGroups: FreeResourceGroup[] = [
         preview: "/images/previews/lille-mecanique.webp",
         facts: ["PDF · 71 pages"],
         note: "University lecture notes in French: statics (the equilibrium of forces) and dynamics. A PDF from the university's own staff pages. Read it beside our Engineering Thinking path.",
-        noteFr: "Des notes de cours universitaires en français : la statique (l'équilibre des forces) et la dynamique. Un PDF hébergé par l'université. À lire avec notre parcours Engineering Thinking.",
+        noteFr: "Des notes de cours universitaires en français : la statique (l'équilibre des forces) et la dynamique. Un PDF hébergé par l'université. À lire avec notre parcours « Raisonner en ingénieur ».",
       },
       {
         name: "Thermoptim : thermodynamique appliquée",
