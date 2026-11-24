@@ -77,6 +77,17 @@ const nextConfig: NextConfig = {
   experimental: {
     serverActions: { bodySizeLimit: "5mb" },
   },
+  // The library moved from /academy/ls-dyna to /academy/youtube when it
+  // stopped being only about LS-DYNA. Links already shared (video
+  // descriptions, posts) keep working, with or without a language prefix.
+  async redirects() {
+    return [
+      { source: "/academy/ls-dyna", destination: "/academy/youtube", permanent: true },
+      { source: "/academy/ls-dyna/:path*", destination: "/academy/youtube/:path*", permanent: true },
+      { source: "/:locale(en|fr)/academy/ls-dyna", destination: "/:locale/academy/youtube", permanent: true },
+      { source: "/:locale(en|fr)/academy/ls-dyna/:path*", destination: "/:locale/academy/youtube/:path*", permanent: true },
+    ];
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },

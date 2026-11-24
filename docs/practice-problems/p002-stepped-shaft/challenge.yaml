@@ -1,0 +1,46 @@
+# Practice problem P002 - stepped shaft. CSWA topic: revolve, mass properties.
+id: p002-stepped-shaft
+version: 0.1.0
+
+title:
+  en: Stepped shaft
+  fr: Arbre étagé
+
+constants:
+  pi: 3.141592653589793
+  kg_m3_to_g_mm3: 0.000001
+
+params:
+  d1:   { values: [20, 25, 30],       unit: mm }
+  l1:   { min: 40, max: 60, step: 10, unit: mm }
+  d2:   { values: [40, 45, 50],       unit: mm }
+  l2:   { min: 30, max: 50, step: 10, unit: mm }
+  d3:   { values: [25, 30, 35],       unit: mm }
+  l3:   { min: 30, max: 50, step: 10, unit: mm }
+  bore: { values: [8, 10, 12],        unit: mm }
+  rho:  { values: [2700, 7800, 7850], unit: kg/m3 }
+
+steps:
+  - id: volume
+    screen: mass
+    unit: mm3
+    quantity: volume
+    tolerance: { type: rel, value: 0.001 }
+
+  - id: mass
+    screen: mass
+    unit: g
+    quantity: mass
+    tolerance: { type: rel, value: 0.001 }
+
+  - id: com_x
+    screen: mass
+    unit: mm
+    quantity: length
+    tolerance: { type: rel, value: 0.01 }
+
+screens:
+  mass: { en: Mass properties, fr: Propriétés de masse }
+
+attempts:
+  per_step: 3

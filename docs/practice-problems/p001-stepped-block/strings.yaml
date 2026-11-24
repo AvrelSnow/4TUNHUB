@@ -1,0 +1,70 @@
+diagnosis:
+  FP_HOLE_IGNORED:
+    en: >-
+      Your volume still contains the hole. Which feature removes material?
+    fr: >-
+      Votre volume contient encore le trou. Quelle fonction retire de la matière ?
+  FP_BOSS_IGNORED:
+    en: >-
+      Your volume has no boss in it. Count the features you modelled.
+    fr: >-
+      Votre volume ne contient pas le bossage. Comptez les fonctions modélisées.
+  FP_HOLE_STOPS_AT_BASE:
+    en: >-
+      Check how deep the hole goes: through the block only, or through the boss too?
+    fr: >-
+      Vérifiez la profondeur du trou : le bloc seul, ou aussi le bossage ?
+  FP_MASS_IN_KG:
+    en: >-
+      Check the unit your mass is in against the unit the step asks for.
+    fr: >-
+      Vérifiez l'unité de votre masse par rapport à celle demandée.
+  FP_DENSITY_NOT_CONVERTED:
+    en: >-
+      The density is in kg per cubic metre and the volume is in cubic millimetres. Bring them to one system first.
+    fr: >-
+      La masse volumique est en kg par mètre cube et le volume en millimètres cubes. Ramenez-les d'abord à un même système.
+  FP_DIAMETER_AS_RADIUS:
+    en: >-
+      A circle's area is written with its radius. Check which dimension you put in.
+    fr: >-
+      L'aire d'un cercle s'écrit avec son rayon. Vérifiez la dimension que vous avez utilisée.
+  FP_COM_AT_MIDHEIGHT:
+    en: >-
+      The middle of the part's height is not where its mass is balanced. Where is most of the material?
+    fr: >-
+      Le milieu de la hauteur n'est pas l'endroit où la masse est équilibrée. Où se trouve l'essentiel de la matière ?
+
+step:
+  volume:
+    en: "1 · The volume of the part"
+    fr: "1 · Le volume de la pièce"
+  mass:
+    en: "2 · The mass"
+    fr: "2 · La masse"
+  com_height:
+    en: "3 · The height of the centre of mass"
+    fr: "3 · La hauteur du centre de masse"
+
+hint:
+  volume.h1:
+    en: List the features in the order you modelled them, and say whether each adds or removes material.
+    fr: Listez les fonctions dans l'ordre de modélisation, et dites si chacune ajoute ou retire de la matière.
+  volume.h2:
+    en: Read the volume from the SOLIDWORKS mass properties, then rebuild it by hand from the three features.
+    fr: Lisez le volume dans les propriétés de masse SOLIDWORKS, puis reconstruisez-le à la main à partir des trois fonctions.
+  volume.h3:
+    en: The hole passes through the boss and the block. How long is that hole in total?
+    fr: Le trou traverse le bossage et le bloc. Quelle est sa longueur totale ?
+  mass.h1:
+    en: Which two quantities does a mass depend on?
+    fr: De quelles deux grandeurs une masse dépend-elle ?
+  mass.h2:
+    en: Check the units before the arithmetic. One cubic metre is a thousand million cubic millimetres.
+    fr: Vérifiez les unités avant l'arithmétique. Un mètre cube vaut un milliard de millimètres cubes.
+  com_height.h1:
+    en: Which piece holds most of the material, and where is its own centre?
+    fr: Quelle pièce contient l'essentiel de la matière, et où est son propre centre ?
+  com_height.h2:
+    en: Weigh each piece by its volume, from the bottom face. A hole counts as negative material.
+    fr: Pondérez chaque pièce par son volume, depuis la face inférieure. Un trou compte comme de la matière négative.

@@ -1,0 +1,81 @@
+# Practice problem P006 - position tolerance at MMC (the geometric half of
+# GD&T that is pure arithmetic): the maximum material condition of a hole, its
+# virtual condition, the bonus tolerance, the position the part is allowed,
+# the position it has, and the verdict.
+#
+# Definitions (ASME Y14.5 / ISO 2692 "maximum material requirement"), each read
+# in two independent published sources (see docs/practice-problems.md):
+#   - a HOLE's MMC is its SMALLEST size
+#   - virtual condition of a hole = MMC - position tolerance
+#   - bonus = actual size - MMC (the departure from MMC)
+#   - allowed position zone (diameter) = tolerance + bonus
+#   - position error = the DIAMETER of the circle around the true position
+#     that holds the hole's axis: 2 * sqrt(dx^2 + dy^2)
+#
+# Sizes and offsets are whole micrometres inside the engine, so no float
+# drift reaches a band; the student answers in millimetres.
+id: p006-position-at-mmc
+version: 0.1.0
+
+title:
+  en: Position at MMC
+  fr: Position au maximum de matière
+
+constants:
+  um_to_mm: 0.001
+  # actual size = MMC + W * f_q / 4 : a quarter of the size range per step,
+  # and 5 quarters is a hole one quarter OVER its upper limit (reject on size).
+  quarters: 4
+
+params:
+  Dmin_um: { values: [6000, 8000, 10000, 12000, 16000], unit: um }
+  W_um:    { values: [100, 200, 300],                    unit: um }
+  T_um:    { values: [100, 200, 300, 400],               unit: um }
+  f_q:     { values: [0, 1, 2, 3, 4, 5],                 unit: "-" }
+  dx_um:   { values: [0, 30, 50, 80, 100, 120, 150],     unit: um }
+  dy_um:   { values: [0, 30, 50, 80, 100, 120, 150],     unit: um }
+
+steps:
+  - id: mmc
+    screen: size
+    unit: mm
+    quantity: length
+    tolerance: { type: abs, value: 0.0005 }
+
+  - id: virtual_condition
+    screen: size
+    unit: mm
+    quantity: length
+    tolerance: { type: abs, value: 0.0005 }
+
+  - id: bonus
+    screen: position
+    unit: mm
+    quantity: length
+    tolerance: { type: abs, value: 0.0005 }
+
+  - id: allowed_zone
+    screen: position
+    unit: mm
+    quantity: length
+    tolerance: { type: abs, value: 0.0005 }
+
+  - id: position_error
+    screen: position
+    unit: mm
+    quantity: length
+    tolerance: { type: abs, value: 0.001 }
+
+  - id: verdict
+    screen: verdict
+    unit: "-"
+    quantity: choice
+    tolerance: { type: exact }
+
+screens:
+  size:     { en: The size, fr: La dimension }
+  position: { en: The position, fr: La position }
+  verdict:  { en: The verdict, fr: Le verdict }
+
+attempts:
+  per_step: 3

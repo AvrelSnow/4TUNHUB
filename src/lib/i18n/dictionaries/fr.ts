@@ -34,7 +34,7 @@ const fr: Dictionary = {
     careers: "Carrières",
     contact: "Contact",
     cohort: "Cohorte 0",
-    lsdyna: "Bibliothèque LS-DYNA",
+    lsdyna: "Bibliothèque YouTube",
     path: "Raisonner en ingénieur",
     waitlist: "Liste d'attente",
     privacy: "Confidentialité",
@@ -676,58 +676,7 @@ const fr: Dictionary = {
     subtitle:
       "Une formation pratique en CAO, simulation et systèmes énergétiques — enseignée à partir de projets réellement livrés, pour les ingénieurs et les étudiants au Cameroun et au-delà.",
     primaryCta: "Rejoindre la liste d'attente",
-    secondaryCta: "Rencontrer le formateur",
-
-    catalogEyebrow: "Catalogue",
-    catalogTitle: "Des parcours immédiatement applicables.",
-    catalogIntro:
-      "Chaque parcours est pratique et aboutit à une compétence démontrable — une pièce modélisée, une conception validée, un composant reconstruit — pas seulement une vidéo regardée.",
-    levelLabel: "Niveau",
-    formatLabel: "Format",
-    proofLabel: "Voir l'application",
-    levels: {
-      beginner: "Débutant",
-      intermediate: "Intermédiaire",
-      advanced: "Avancé",
-      "all-levels": "Tous niveaux",
-    } as Record<string, string>,
-    formats: {
-      online: "En ligne",
-      "in-person": "En présentiel",
-      hybrid: "En ligne + présentiel",
-      workshop: "Atelier pratique",
-    } as Record<string, string>,
-    courses: {
-      "solidworks-cad": {
-        title: "SolidWorks & fondamentaux de la CAO",
-        outcome:
-          "Modéliser des pièces et des assemblages et produire des plans de fabrication propres — la compétence centrale derrière chaque machine du portfolio.",
-        who: "Pour les étudiants et jeunes ingénieurs qui débutent en conception mécanique.",
-      },
-      "fea-simulation": {
-        title: "FEA & validation de conception",
-        outcome:
-          "Réaliser des analyses par éléments finis pour tester la résistance et les contraintes, et repérer les points de rupture à l'écran avant toute découpe.",
-        who: "Pour les concepteurs qui veulent valider une pièce avant de s'engager dans la fabrication.",
-      },
-      "reverse-engineering": {
-        title: "Rétro-ingénierie & fabrication",
-        outcome:
-          "Reconstituer des plans précis de pièces sans documentation, et les amener vers une conception constructible localement.",
-        who: "Pour les techniciens et ingénieurs qui maintiennent des équipements sans pièces de rechange.",
-      },
-      "energy-systems": {
-        title: "Systèmes d'énergie renouvelable",
-        outcome:
-          "Dimensionner et analyser des systèmes solaires et hors réseau pour des conditions réelles de pénurie d'énergie.",
-        who: "Pour les ingénieurs et entrepreneurs travaillant sur l'énergie hors réseau et durable.",
-      },
-    } as Record<string, { title: string; outcome: string; who: string }>,
-
-    statuses: {
-      planned: "Prévu, sans date pour l'instant",
-    } as Record<string, string>,
-    plannedCta: "Prévenez-moi à l'ouverture",
+    secondaryCta: "Commencer gratuitement",
 
     sessions: {
       eyebrow: "Déjà enseigné",
@@ -738,41 +687,35 @@ const fr: Dictionary = {
       archive: "Le programme complet",
     },
 
-    library: {
-      eyebrow: "Gratuit · sur YouTube",
-      title: "La bibliothèque LS-DYNA.",
-      body: "Tous les tutoriels LS-DYNA de la chaîne, dans l'ordre, avec les fichiers keyword et les modèles utilisés à l'écran. Construisez le modèle en même temps que la vidéo (en anglais).",
-      cta: "Ouvrir la bibliothèque",
+    start: {
+      eyebrow: "Par où commencer",
+      title: "Choisissez ce que vous voulez faire.",
+      intro:
+        "Trois portes d'entrée, toutes gratuites, sans compte.",
+      items: {
+        path: {
+          goal: "Je veux penser en ingénieur",
+          title: "Engineering Thinking.",
+          body: "Onze courtes leçons issues du Lab 4TUNHub : transformer une charge suspendue en une force et un moment, puis dimensionner une plaque d'acier en résistance et en rigidité. Une vérification à chaque étape.",
+          cta: "Commencer le parcours",
+          alt: "La première page du parcours Engineering Thinking",
+        },
+        library: {
+          goal: "Je veux apprendre LS-DYNA",
+          title: "La bibliothèque YouTube.",
+          body: "Tous les tutoriels de la chaîne, dans l'ordre, avec les fichiers keyword et les modèles utilisés à l'écran. Construisez le modèle en même temps que la vidéo.",
+          cta: "Ouvrir la bibliothèque",
+          alt: "Une vignette de la chaîne 4TUNHUB",
+        },
+        free: {
+          goal: "Je veux aller plus loin, gratuitement",
+          title: "Des endroits gratuits pour apprendre.",
+          body: "Les meilleurs cours, logiciels et manuels gratuits pour SolidWorks, la simulation et la mécanique, préparation au CSWA comprise. Chacun renvoie vers la page de son auteur.",
+          cta: "Ouvrir la liste",
+          alt: "Les couvertures de quatre des ressources de la liste",
+        },
+      },
     },
-    pathCard: {
-      eyebrow: "Gratuit · parcours guidé",
-      title: "Raisonner en ingénieur.",
-      body: "Onze leçons courtes du 4TUNHub Lab : transformer une charge suspendue en force et en moment, puis dimensionner une plaque d'acier en résistance et en rigidité. Un exercice à chaque étape, sans compte (en anglais pour l'instant).",
-      cta: "Commencer le parcours",
-    },
-
-    formatsEyebrow: "Comment vous apprenez",
-    formatsTitle: "Conçu selon la façon dont les ingénieurs apprennent vraiment.",
-    formatsList: [
-      {
-        title: "Cours en ligne",
-        desc: "Des modules à votre rythme avec de vrais exercices réalisés dans des logiciels de CAO et de simulation.",
-      },
-      {
-        title: "Ateliers en direct",
-        desc: "Des séances pratiques par projet — en présentiel quand c'est possible, à distance sinon.",
-      },
-      {
-        title: "Mentorat en cohorte",
-        desc: "De petits groupes guidés d'un cahier des charges jusqu'à un livrable d'ingénierie présentable.",
-      },
-    ],
-
-    instructorEyebrow: "Qui enseigne",
-    instructorTitle: "Enseigné par un ingénieur en exercice et éducateur accrédité.",
-    instructorBody:
-      "Chaque parcours est animé par Donfack Fortune — ingénieur mécanicien et éducateur accrédité par l'État, qui a touché plus de 300 étudiants et anime le groupe SolidWorks de Douala. Vous apprenez les méthodes derrière de vrais projets livrés, pas des abstractions de manuel.",
-    instructorCta: "Rencontrer le fondateur",
 
     cta: {
       title: "Soyez prévenu à l'ouverture d'un cours.",
@@ -783,12 +726,70 @@ const fr: Dictionary = {
     },
   },
 
+  freeResources: {
+    metaTitle: "Où apprendre l'ingénierie gratuitement",
+    metaDescription:
+      "Cours, logiciels et manuels gratuits pour SolidWorks, LS-DYNA et la simulation, la mécanique, le dessin et la CAO, gratuits uniquement.",
+    eyebrow: "Academy · Ressources gratuites",
+    title: "Où apprendre l'ingénierie gratuitement.",
+    intro:
+      "Les meilleurs cours, logiciels et manuels gratuits que nous connaissons pour SolidWorks, la simulation et la mécanique. La plupart des liens mènent à la page de leur propriétaire ; nous n'hébergeons le cours de personne. La dernière section est différente : des dossiers d'étude partagés, rassemblés par d'autres. Nous ne les avons pas faits et ne pouvons pas nous en porter garants.",
+    rule: "Les offres gratuites changent. Si un lien a bougé ou si une offre a pris fin, dites-le-nous et nous corrigerons.",
+    open: "Ouvrir",
+    langLabel: "Enseigné en",
+    costs: {
+      free: "Gratuit",
+      account: "Compte gratuit",
+      audit: "Gratuit en auditeur libre",
+    } as Record<string, string>,
+    langs: { en: "English", fr: "Français" } as Record<string, string>,
+    groups: {
+      solidworks: {
+        title: "SolidWorks et l'examen CSWA",
+        body: "Commencez ici. SOLIDWORKS a rendu toute sa bibliothèque de formation gratuite en juillet 2026, ainsi que son logiciel pour étudiants.",
+      },
+      francais: {
+        title: "En français",
+        body: "Des cours et guides gratuits en français. Plusieurs cours universitaires français n'existent plus qu'en sessions archivées : vérifiez chacun avant de vous organiser autour.",
+      },
+      simulation: {
+        title: "LS-DYNA et simulation",
+        body: "Les tutoriels du solveur lui-même, des logiciels étudiants gratuits, et les cours universitaires derrière la méthode.",
+      },
+      mechanics: {
+        title: "Mécanique, matériaux et physique",
+        body: "La théorie que le logiciel ne fait pas à votre place. Les options en français sont indiquées.",
+      },
+      drawing: {
+        title: "Dessin et GD&T",
+        body: "Lire et écrire le langage d'un plan. Plus léger qu'un cours complet, mais gratuit.",
+      },
+      cad: {
+        title: "Autres outils de CAO",
+        body: "Pas de PC puissant, ou pas de licence : des outils gratuits, dans le navigateur ou hors ligne.",
+      },
+      code: {
+        title: "Code, calcul et IA",
+        body: "Python et MATLAB pour ingénieurs, et des cours gratuits pour travailler avec l'IA.",
+      },
+      folders: {
+        title: "Dossiers d'étude partagés",
+        body: "Des dossiers Google Drive de cours et de supports, rassemblés par d'autres. Ils ne sont pas publiés par leurs propriétaires ni hébergés par 4TUNHub : ils peuvent changer ou disparaître, et certains contenus ne sont peut-être pas librement redistribuables.",
+      },
+    } as Record<string, { title: string; body: string }>,
+    ctaTitle: "Envie d'apprendre avec nous ?",
+    ctaSubtitle:
+      "Tout cela se suit seul, gratuitement. Le parcours guidé de l'Academy, la bibliothèque YouTube et la Cohorte 0 sont pour apprendre avec quelqu'un qui vérifie votre travail.",
+    ctaPrimary: "Voir l'Academy",
+    ctaSecondary: "Bibliothèque YouTube",
+  },
+
   library: {
-    metaTitle: "Tutoriels et fichiers LS-DYNA",
+    metaTitle: "Bibliothèque YouTube : tutoriels et fichiers",
     metaDescription:
       "Tous les tutoriels LS-DYNA et LS-PrePost de la chaîne @4TUNHUB, dans l'ordre, avec les fichiers keyword et les modèles utilisés à l'écran. Gratuit.",
-    eyebrow: "Académie · LS-DYNA",
-    title: "LS-DYNA, du premier maillage à un résultat fiable.",
+    eyebrow: "Académie · Bibliothèque YouTube",
+    title: "Chaque tutoriel, avec les fichiers utilisés à l'écran.",
     intro:
       "Tous les tutoriels de la chaîne YouTube @4TUNHUB, dans l'ordre où les suivre, avec les fichiers utilisés à l'écran pour construire le modèle en même temps. La physique d'abord, le logiciel ensuite. Gratuit.",
     languageNote: "Les vidéos sont en anglais.",
@@ -810,7 +811,7 @@ const fr: Dictionary = {
     } as Record<string, { title: string; body: string }>,
     episode: "Épisode",
     withFiles: "Fichiers",
-    back: "Tous les épisodes LS-DYNA",
+    back: "Tous les épisodes",
     play: "Lire la vidéo",
     playerNote: "La vidéo ne se charge depuis YouTube que lorsque vous appuyez sur lecture.",
     watchOnYoutube: "Voir sur YouTube",
@@ -1046,7 +1047,27 @@ const fr: Dictionary = {
     primaryCta: "Lire The REM",
     secondaryCta: "Rejoindre la communauté",
 
-    availableEyebrow: "Disponibles maintenant",
+    studentOffer: {
+      eyebrow: "Gratuit pour les étudiants",
+      title: "Obtenez SOLIDWORKS gratuitement.",
+      body: "SOLIDWORKS offre désormais son édition Design Standard aux étudiants éligibles, sans frais. L'inscription se fait sur le site même de SOLIDWORKS : vous ne payez rien et ne téléchargez rien chez nous.",
+      cta: "Inscription étudiant, sur solidworks.com",
+      steps: [
+        { n: "1", title: "Remplissez le formulaire", body: "Le nom de votre école et quelques informations. Moins d'une minute." },
+        { n: "2", title: "Recevez votre numéro de série", body: "Avec le lien de téléchargement et un guide d'installation." },
+        { n: "3", title: "Installez-le", body: "Sur un PC Windows. L'accès dure 1 an, puis vous vous réinscrivez." },
+      ],
+      factsTitle: "À lire avant d'en dépendre",
+      facts: [
+        "Pour les étudiants à titre individuel. Une preuve de statut étudiant peut être demandée.",
+        "Pièces, assemblages, mises en plan, tôlerie et mécano-soudure. Pas de Simulation.",
+        "Pas de bon d'examen CSWA ou CSWP : 99 $ par tentative, sauf achat de l'offre étudiante Premium, payante.",
+        "Windows uniquement.",
+      ],
+      legal: "*Une marque de Dassault Systèmes. SOLIDWORKS est une marque déposée de Dassault Systèmes. 4TUNHub n'est pas affilié à Dassault Systèmes et n'héberge pas le logiciel.",
+    },
+
+    availableEyebrow: "Disponible maintenant",
     availableTitle: "Commencez par ce qui est déjà ouvert.",
     availableIntro: "Du matériel réel et publié, utilisable dès aujourd'hui — sans inscription.",
     plannedEyebrow: "À venir",
@@ -1072,6 +1093,10 @@ const fr: Dictionary = {
       grabcad: {
         title: "Modèles CAO sur GrabCAD",
         desc: "Modèles 3D et assemblages publics issus de projets réels — libres de téléchargement, d'étude et de réutilisation.",
+      },
+      "grabcad-library": {
+        title: "La bibliothèque GrabCAD",
+        desc: "Des millions de modèles CAO gratuits d'ingénieurs du monde entier : ouvrez-les, démontez-les, apprenez comment ils ont été construits. Vérifiez la licence de chaque modèle avant de le réutiliser.",
       },
       "case-studies": {
         title: "Études de cas des projets",
@@ -1653,7 +1678,7 @@ const fr: Dictionary = {
           when: "Dates à venir",
         },
         lsdyna: {
-          title: "Bibliothèque LS-DYNA",
+          title: "Bibliothèque YouTube",
           desc: "Chaque nouveau tutoriel LS-DYNA de la chaîne @4TUNHUB, avec les fichiers keyword et les modèles pour suivre pas à pas.",
           when: "En cours",
         },
@@ -1742,7 +1767,7 @@ const fr: Dictionary = {
       },
       {
         title: "Où elles vont",
-        body: "Trois prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Les vidéos de la bibliothèque LS-DYNA sont lues depuis YouTube, qui n'est contacté que lorsque vous appuyez sur lecture. Une candidature à la Cohorte 0 est aussi vue par MKV Academy, qui organise la cohorte avec nous ; l'un comme l'autre peut vous écrire au sujet de sessions et d'ateliers ultérieurs, et cesse sur simple demande. Au-delà, nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
+        body: "Trois prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Les vidéos de la bibliothèque YouTube sont lues depuis YouTube, qui n'est contacté que lorsque vous appuyez sur lecture. Une candidature à la Cohorte 0 est aussi vue par MKV Academy, qui organise la cohorte avec nous ; l'un comme l'autre peut vous écrire au sujet de sessions et d'ateliers ultérieurs, et cesse sur simple demande. Au-delà, nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
       },
       {
         title: "Durée de conservation",
@@ -1784,7 +1809,7 @@ const fr: Dictionary = {
           refuse: "Sans lui, il faudrait reposer la même question à chaque page. Effacer les données de votre navigateur le supprime.",
         },
         {
-          what: "Bibliothèque LS-DYNA",
+          what: "Bibliothèque YouTube",
           key: "4tun.library",
           why: "Retient que vous avez déjà donné une adresse pour les fichiers de la bibliothèque, pour que les fichiers de chaque épisode restent ouverts sans vous la redemander.",
           kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",

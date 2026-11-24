@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { Section } from "@/components/ui/Section";
 import { PageHero } from "@/components/ui/PageHero";
@@ -100,6 +101,77 @@ export default async function ResourcesPage({ params }: Params) {
           </>
         }
       />
+
+      {/* FREE SOFTWARE — an offer from SOLIDWORKS, not something we publish.
+          The official logotype is used as supplied (unaltered, standalone,
+          with clear space, above 115px, with the asterisk and the
+          "A Dassault Systèmes brand" line in the fine print). Dassault's
+          graphics charter asks for written permission; the owner chose to
+          proceed without it. */}
+      <Section rhythm="compressed">
+        <Reveal>
+          <div className="overflow-hidden rounded-3xl bg-surface">
+            <div className="grid gap-10 p-8 sm:p-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:p-12">
+              <div className="flex flex-col">
+                <div className="mb-10 flex items-start gap-1">
+                  <Image
+                    src="/images/logos/solidworks-3ds-red.png"
+                    alt="SOLIDWORKS, a Dassault Systèmes brand"
+                    width={790}
+                    height={147}
+                    className="h-auto w-56"
+                    unoptimized
+                  />
+                  <span aria-hidden className="text-lg leading-none font-semibold text-foreground">
+                    *
+                  </span>
+                </div>
+                <p className="eyebrow">{t.studentOffer.eyebrow}</p>
+                <h2 className="mt-3 text-4xl leading-tight font-bold tracking-tight text-foreground">
+                  {t.studentOffer.title}
+                </h2>
+                <p className="mt-4 text-lead text-muted">{t.studentOffer.body}</p>
+                <div className="mt-8">
+                  <Button
+                    as="a"
+                    href="https://www.solidworks.com/product/students/design-standard"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    size="lg"
+                  >
+                    {t.studentOffer.cta}
+                  </Button>
+                </div>
+                <div className="mt-8 border-t border-border pt-6">
+                  <p className="text-sm font-semibold text-foreground">{t.studentOffer.factsTitle}</p>
+                  <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
+                    {t.studentOffer.facts.map((f) => (
+                      <li key={f} className="flex gap-3">
+                        <span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-brand-500" />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <ol className="grid content-start gap-4">
+                {t.studentOffer.steps.map((s) => (
+                  <li key={s.n} className="flex gap-5 rounded-2xl bg-surface-2 p-6">
+                    <span className="readout shrink-0 text-3xl font-bold text-accent">{s.n}</span>
+                    <div>
+                      <h3 className="text-lg font-semibold tracking-tight text-foreground">{s.title}</h3>
+                      <p className="mt-1 text-sm leading-6 text-muted">{s.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <p className="border-t border-border px-8 py-4 text-2xs leading-5 text-muted sm:px-10 lg:px-12">
+              {t.studentOffer.legal}
+            </p>
+          </div>
+        </Reveal>
+      </Section>
 
       <Section tone="surface" eyebrow={t.availableEyebrow} title={t.availableTitle} intro={t.availableIntro}>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

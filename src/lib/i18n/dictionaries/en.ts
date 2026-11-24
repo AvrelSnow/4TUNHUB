@@ -34,7 +34,7 @@ const en = {
     careers: "Careers",
     contact: "Contact",
     cohort: "Cohort 0",
-    lsdyna: "LS-DYNA library",
+    lsdyna: "YouTube library",
     path: "Engineering Thinking",
     waitlist: "Waitlist",
     privacy: "Privacy",
@@ -685,58 +685,7 @@ const en = {
     subtitle:
       "Practical training in CAD, simulation and energy systems — taught from real delivered projects, built for engineers and students across Cameroon and beyond.",
     primaryCta: "Join the waitlist",
-    secondaryCta: "Meet the instructor",
-
-    catalogEyebrow: "Catalog",
-    catalogTitle: "Tracks you can put to work immediately.",
-    catalogIntro:
-      "Every track is hands-on and ends in a skill you can show — a part modelled, a design validated, a component rebuilt — not just a video watched.",
-    levelLabel: "Level",
-    formatLabel: "Format",
-    proofLabel: "See it applied",
-    levels: {
-      beginner: "Beginner",
-      intermediate: "Intermediate",
-      advanced: "Advanced",
-      "all-levels": "All levels",
-    } as Record<string, string>,
-    formats: {
-      online: "Online",
-      "in-person": "In person",
-      hybrid: "Online + in person",
-      workshop: "Hands-on workshop",
-    } as Record<string, string>,
-    courses: {
-      "solidworks-cad": {
-        title: "SolidWorks & CAD fundamentals",
-        outcome:
-          "Model parts and assemblies and produce clean manufacturing drawings — the core skill behind every machine in the portfolio.",
-        who: "For students and junior engineers starting out in mechanical design.",
-      },
-      "fea-simulation": {
-        title: "FEA & design validation",
-        outcome:
-          "Run finite-element analysis to test strength and stress, and catch failure points on screen before anything is cut.",
-        who: "For designers who want confidence in a part before committing to fabrication.",
-      },
-      "reverse-engineering": {
-        title: "Reverse engineering & fabrication",
-        outcome:
-          "Rebuild accurate drawings of parts that have no documentation, and take them to a design that can be built locally.",
-        who: "For technicians and engineers keeping equipment running without spares.",
-      },
-      "energy-systems": {
-        title: "Renewable energy systems",
-        outcome:
-          "Size and analyse solar and off-grid systems for real, energy-scarce conditions.",
-        who: "For engineers and entrepreneurs working on off-grid and sustainable energy.",
-      },
-    } as Record<string, { title: string; outcome: string; who: string }>,
-
-    statuses: {
-      planned: "Planned, no date yet",
-    } as Record<string, string>,
-    plannedCta: "Tell me when it opens",
+    secondaryCta: "Start free",
 
     sessions: {
       eyebrow: "Taught before",
@@ -747,41 +696,35 @@ const en = {
       archive: "The full programme",
     },
 
-    library: {
-      eyebrow: "Free · on YouTube",
-      title: "The LS-DYNA library.",
-      body: "Every LS-DYNA tutorial from the channel, in order, with the keyword decks and model files used on camera. Build the model alongside the video.",
-      cta: "Open the library",
+    start: {
+      eyebrow: "Start here",
+      title: "Pick what you want to do.",
+      intro:
+        "Three ways in, all free, none needs an account.",
+      items: {
+        path: {
+          goal: "I want to think like an engineer",
+          title: "Engineering Thinking.",
+          body: "Eleven short lessons from the 4TUNHub Lab: turn a hanging load into a force and a moment, then size a steel plate for strength and stiffness. A check at every step.",
+          cta: "Start the path",
+          alt: "The first page of the Engineering Thinking path",
+        },
+        library: {
+          goal: "I want to learn LS-DYNA",
+          title: "The YouTube library.",
+          body: "Every tutorial from the channel, in order, with the keyword decks and model files used on camera. Build the model alongside the video.",
+          cta: "Open the library",
+          alt: "A thumbnail from the 4TUNHUB channel",
+        },
+        free: {
+          goal: "I want to go further, for free",
+          title: "Free places to learn.",
+          body: "The best free courses, software and textbooks for SolidWorks, simulation and mechanics, CSWA preparation included. Each links to its owner's own page.",
+          cta: "Open the list",
+          alt: "Covers of four of the resources on the list",
+        },
+      },
     },
-    pathCard: {
-      eyebrow: "Free · guided path",
-      title: "Engineering Thinking.",
-      body: "Eleven short lessons from the 4TUNHub Lab: turn a hanging load into a force and a moment, then size a steel plate for strength and stiffness. A check at every step, no account.",
-      cta: "Start the path",
-    },
-
-    formatsEyebrow: "How you learn",
-    formatsTitle: "Built around how engineers actually learn.",
-    formatsList: [
-      {
-        title: "Online courses",
-        desc: "Self-paced modules with real exercises you complete in CAD and simulation software.",
-      },
-      {
-        title: "Live workshops",
-        desc: "Hands-on, project-based sessions — in person where possible, remote where not.",
-      },
-      {
-        title: "Cohort mentoring",
-        desc: "Small groups guided from a brief to a finished, presentable engineering deliverable.",
-      },
-    ],
-
-    instructorEyebrow: "Who teaches",
-    instructorTitle: "Taught by a working engineer and accredited educator.",
-    instructorBody:
-      "Every track is led by Donfack Fortune — a mechanical engineer and state-accredited educator who has reached 300+ students and leads the Douala SolidWorks user group. You learn the methods behind real delivered projects, not textbook abstractions.",
-    instructorCta: "Meet the founder",
 
     cta: {
       title: "Hear when a course opens.",
@@ -792,13 +735,72 @@ const en = {
     },
   },
 
-  /** The LS-DYNA library: the YouTube tutorials, with their files. */
+  /** Free resources: other people's free courses, linked, never copied. */
+  freeResources: {
+    metaTitle: "Free places to learn engineering",
+    metaDescription:
+      "Free courses, software and textbooks for SolidWorks, LS-DYNA and simulation, mechanics, drawing and CAD, free only.",
+    eyebrow: "Academy · Free resources",
+    title: "Free places to learn engineering.",
+    intro:
+      "The best free courses, software and textbooks we know for SolidWorks, simulation and mechanics. Most links go to the owner's own page; we never host anyone's course. The last section is different: shared study folders that other people collected. We did not make them and cannot vouch for them.",
+    rule: "Free offers change. If a link has moved or an offer has ended, tell us and we will fix it.",
+    open: "Open",
+    langLabel: "Taught in",
+    costs: {
+      free: "Free",
+      account: "Free account",
+      audit: "Free to audit",
+    } as Record<string, string>,
+    langs: { en: "English", fr: "Français" } as Record<string, string>,
+    groups: {
+      solidworks: {
+        title: "SolidWorks and the CSWA exam",
+        body: "Start here. SOLIDWORKS made its whole training library free in July 2026, and its student software too.",
+      },
+      francais: {
+        title: "In French",
+        body: "Free courses and guides in French. Several French university courses now exist only as archived sessions, so check each one before you plan around it.",
+      },
+      simulation: {
+        title: "LS-DYNA and simulation",
+        body: "The solver's own tutorials, free student software, and the university courses behind the method.",
+      },
+      mechanics: {
+        title: "Mechanics, materials and physics",
+        body: "The theory the software cannot do for you. French options are marked.",
+      },
+      drawing: {
+        title: "Drawing and GD&T",
+        body: "Reading and writing the language of a drawing. Lighter than a full course, but free.",
+      },
+      cad: {
+        title: "Other CAD tools",
+        body: "No powerful PC, or no licence: tools that run in a browser or offline for free.",
+      },
+      code: {
+        title: "Code, computation and AI",
+        body: "Python and MATLAB for engineers, and free courses on working with AI.",
+      },
+      folders: {
+        title: "Shared study folders",
+        body: "Google Drive folders of course files and study material that other people collected. They are not published by their owners and not hosted by 4TUNHub, so they can change or disappear, and some content may not be free to redistribute.",
+      },
+    } as Record<string, { title: string; body: string }>,
+    ctaTitle: "Want to learn it with us?",
+    ctaSubtitle:
+      "These are free to take alone. The Academy's guided path, the YouTube library and Cohort 0 are for learning with someone checking your work.",
+    ctaPrimary: "See the Academy",
+    ctaSecondary: "YouTube library",
+  },
+
+  /** The YouTube library: the YouTube tutorials, with their files. */
   library: {
-    metaTitle: "LS-DYNA tutorials and files",
+    metaTitle: "YouTube library: tutorials and files",
     metaDescription:
       "Every LS-DYNA and LS-PrePost tutorial from the @4TUNHUB channel, in order, with the keyword decks and model files used on camera. Free.",
-    eyebrow: "Academy · LS-DYNA",
-    title: "LS-DYNA, from the first mesh to a result you can trust.",
+    eyebrow: "Academy · YouTube library",
+    title: "Every tutorial, with the files used on camera.",
     intro:
       "Every tutorial from the @4TUNHUB YouTube channel, in the order to take them, with the files used on camera so you can build the model alongside. Physics first, software second. Free.",
     languageNote: "",
@@ -820,7 +822,7 @@ const en = {
     } as Record<string, { title: string; body: string }>,
     episode: "Episode",
     withFiles: "Files",
-    back: "All LS-DYNA episodes",
+    back: "All episodes",
     play: "Play the video",
     playerNote: "The video loads from YouTube only when you press play.",
     watchOnYoutube: "Watch on YouTube",
@@ -1050,6 +1052,26 @@ const en = {
     primaryCta: "Read The REM",
     secondaryCta: "Join the community",
 
+    studentOffer: {
+      eyebrow: "Free for students",
+      title: "Get SOLIDWORKS free.",
+      body: "SOLIDWORKS now gives qualified students its Design Standard edition at no cost. The sign-up is on SOLIDWORKS' own site: you never pay and never download from us.",
+      cta: "Student sign-up, on solidworks.com",
+      steps: [
+        { n: "1", title: "Fill the form", body: "Your school name and a few details. Under a minute." },
+        { n: "2", title: "Receive your serial number", body: "With the download link and an installation guide." },
+        { n: "3", title: "Install it", body: "On a Windows PC. Access lasts 1 year, then you sign up again." },
+      ],
+      factsTitle: "Read before you plan around it",
+      facts: [
+        "For individual students. Proof of student status may be asked.",
+        "Parts, assemblies, drawings, sheet metal and weldments. No Simulation.",
+        "No CSWA or CSWP exam voucher: exams are $99 an attempt, unless you buy the paid Premium student plan.",
+        "Windows only.",
+      ],
+      legal: "*A Dassault Systèmes brand. SOLIDWORKS is a registered trademark of Dassault Systèmes. 4TUNHub is not affiliated with Dassault Systèmes and does not host the software.",
+    },
+
     availableEyebrow: "Available now",
     availableTitle: "Start with what's already open.",
     availableIntro: "Real, published material you can use today — no sign-up wall.",
@@ -1076,6 +1098,10 @@ const en = {
       grabcad: {
         title: "CAD models on GrabCAD",
         desc: "Public 3D models and assemblies from real projects — free to download, study and reuse.",
+      },
+      "grabcad-library": {
+        title: "The GrabCAD library",
+        desc: "Millions of free CAD models from engineers worldwide: open them, take them apart, learn how they were built. Check each model's licence before reusing it.",
       },
       "case-studies": {
         title: "Project case studies",
@@ -1673,7 +1699,7 @@ const en = {
           when: "Dates to come",
         },
         lsdyna: {
-          title: "LS-DYNA library",
+          title: "YouTube library",
           desc: "Each new LS-DYNA tutorial on the @4TUNHUB channel, with the keyword decks and model files to follow along.",
           when: "Running now",
         },
@@ -1758,7 +1784,7 @@ const en = {
     sections: [
       {
         title: "What we collect",
-        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat. The waitlist asks for an email address, a name if you care to give one, and which subjects you want to hear about. The LS-DYNA library asks for an email address before its files download: it joins the same list, for new episodes only.",
+        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat. The waitlist asks for an email address, a name if you care to give one, and which subjects you want to hear about. The YouTube library asks for an email address before its files download: it joins the same list, for new episodes only.",
       },
       {
         title: "Why",
@@ -1766,7 +1792,7 @@ const en = {
       },
       {
         title: "Where it goes",
-        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. The LS-DYNA library's videos play from YouTube, which is contacted only when you press play. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
+        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. The YouTube library's videos play from YouTube, which is contacted only when you press play. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
       },
       {
         title: "How long we keep it",
@@ -1808,7 +1834,7 @@ const en = {
           refuse: "Without it we would have to ask the same question on every page. Clearing your browser data removes it.",
         },
         {
-          what: "LS-DYNA library",
+          what: "YouTube library",
           key: "4tun.library",
           why: "Remembers that you already gave an address for the library's files, so every episode's files stay open without asking again.",
           kept: "Your browser, on this device. It is never sent anywhere.",
