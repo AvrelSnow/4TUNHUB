@@ -154,7 +154,9 @@ export async function clientIp(): Promise<string> {
 }
 
 // ---- Validation ----------------------------------------------------------
-export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// No list separators, angle brackets, quotes or brackets: the address goes
+// into `to` and `reply_to` as is, and "a,b@c.d" must not become two recipients.
+export const EMAIL_RE = /^[^\s@,;<>()[\]\\"]+@[^\s@,;<>()[\]\\"]+\.[^\s@,;<>()[\]\\"]+$/;
 
 /** International phone: optional +, then 8–15 digits once spaces and dashes go. */
 export const PHONE_RE = /^\+?\d{8,15}$/;
@@ -167,7 +169,52 @@ export const PHONE_RE = /^\+?\d{8,15}$/;
  */
 export const LINKEDIN_RE = /^(https?:\/\/)?([a-z]{2,3}\.)?(www\.)?linkedin\.com\/(in|pub)\/[^\s/?#]{2,}/i;
 
+// Bidirectional overrides and isolates can make an email line read backwards
+// ("moc.liamg" shown as "gmail.com"); no form needs them.
+const BIDI = /[\u202A-\u202E\u2066-\u2069]/g;
+// Every control character, including line breaks, plus the Unicode line and
+// paragraph separators.
+const CONTROL_ALL = /[\p{Cc}\u2028\u2029]/gu;
+// The same, but keeping \n and \t for multi-line fields.
+const CONTROL_KEEP_LINES = /[\u0000-\u0008\u000B-\u001F\u007F-\u009F\u2028\u2029]/g;
+
+/**
+ * A single-line field. The browser's <input> can't hold a line break, but a
+ * hand-made POST can, and a name like "Ada\nReference: C0-FAKE" would forge
+ * a line in the email the inbox reads. Breaks become spaces.
+ */
 export function str(formData: FormData, key: string): string {
   const v = formData.get(key);
-  return typeof v === "string" ? v.trim() : "";
+  return typeof v === "string"
+    ? v.replace(CONTROL_ALL, " ").replace(BIDI, "").replace(/ {2,}/g, " ").trim()
+    : "";
+}
+
+/** A multi-line field (a message): line breaks and tabs stay, other controls go. */
+export function text(formData: FormData, key: string): string {
+  const v = formData.get(key);
+  return typeof v === "string"
+    ? v.replace(/\r\n?/g, "\n").replace(CONTROL_KEEP_LINES, "").replace(BIDI, "").trim()
+    : "";
+}
+
+/**
+ * The name to put in an email that goes to an address the visitor typed (the
+ * application receipt). Anyone can type someone else's address, so whatever
+ * the name says is mailed to a stranger from 4TUNHub's own domain. A "name"
+ * like "your seat is cancelled, pay at scam.example" would make that a
+ * phishing mail. Only letters, spaces, hyphens and apostrophes, four words at
+ * most: anything else gets no name in the greeting.
+ */
+export function greetingName(name: string): string | null {
+  return /^[\p{L}\p{M}'’ -]{1,40}$/u.test(name) && name.split(" ").length <= 4 ? name : null;
+}
+
+/**
+ * One CSV cell for the waitlist's parseable line: quotes doubled, and a
+ * leading = + - @ neutralised so a spreadsheet won't run it as a formula.
+ */
+export function csvCell(v: string): string {
+  const safe = /^[=+\-@]/.test(v) ? `'${v}` : v;
+  return `"${safe.replace(/"/g, '""')}"`;
 }
