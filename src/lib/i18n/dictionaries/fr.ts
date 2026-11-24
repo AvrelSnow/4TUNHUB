@@ -1997,7 +1997,7 @@ const fr: Dictionary = {
 
   terms: {
     title: "Conditions d'utilisation",
-    updated: "Dernière mise à jour : 11 novembre 2026",
+    updated: "Dernière mise à jour : 24 novembre 2026",
     intro:
       "Les r\u00e8gles de ce site et des formations que nous conduisons. \u00c9crites simplement, car des conditions que personne ne lit ne prot\u00e8gent personne.",
     sections: [
@@ -2015,7 +2015,7 @@ const fr: Dictionary = {
       },
       {
         title: "Payer une place",
-        body: "Les formations payantes sont vendues au prix affiché sur leur page au moment du paiement, en francs CFA. Le paiement se fait par MTN Mobile Money ou Orange Money via Fapshi, un prestataire de paiement camerounais ; nous n'acceptons pas encore les cartes. Le vendeur est Donfack Fortune, qui exerce sous le nom 4TUNHub à titre personnel : 4TUNHub n'est pas encore une société immatriculée. Votre place est confirmée lorsque nous avons rapproché votre paiement de votre candidature et vous avons écrit, en général sous deux jours ouvrés.",
+        body: "Aucune formation payante n'est encore en vente. Quand ce sera le cas, elle sera vendue au prix affiché sur sa page au moment du paiement, en francs CFA. Le paiement se fera par MTN Mobile Money ou Orange Money via Fapshi, un prestataire de paiement camerounais ; nous n'acceptons pas encore les cartes. Le vendeur est Donfack Fortune, qui exerce sous le nom 4TUNHub à titre personnel : 4TUNHub n'est pas encore une société immatriculée. Votre place est confirmée lorsque nous avons rapproché votre paiement de votre candidature et vous avons écrit, en général sous deux jours ouvrés.",
       },
       {
         title: "Remboursements",
@@ -2023,7 +2023,7 @@ const fr: Dictionary = {
       },
       {
         title: "Ne payez que par ce site",
-        body: "Nous n'encaissons que par le lien de paiement de ce site, qui ouvre une page Fapshi. Nous ne vous demandons jamais d'envoyer de l'argent à un numéro Mobile Money personnel, par message WhatsApp, ni à quelqu'un qui vous contacte en se présentant comme nous. Si cela arrive, ne payez pas, et prévenez-nous.",
+        body: "Quand des places payantes ouvriront, nous n'encaisserons que par le lien de paiement de ce site, qui ouvre une page Fapshi. Nous ne vous demandons jamais d'envoyer de l'argent à un numéro Mobile Money personnel, par message WhatsApp, ni à quelqu'un qui vous contacte en se présentant comme nous. Si cela arrive, ne payez pas, et prévenez-nous.",
       },
       {
         title: "Les s\u00e9ances sont enregistr\u00e9es",

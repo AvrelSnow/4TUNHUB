@@ -2022,7 +2022,7 @@ const en = {
 
   terms: {
     title: "Terms of use",
-    updated: "Last updated 11 November 2026",
+    updated: "Last updated 24 November 2026",
     intro:
       "The rules of this site and of the training we run. Written plainly, because terms nobody reads protect nobody.",
     sections: [
@@ -2040,7 +2040,7 @@ const en = {
       },
       {
         title: "Paying for a seat",
-        body: "Paid training is sold at the price shown on its page at the moment you pay, in CFA francs. Payment is by MTN Mobile Money or Orange Money through Fapshi, a Cameroonian payment provider; we do not take cards yet. The seller is Donfack Fortune, trading as 4TUNHub in a personal capacity: 4TUNHub is not yet a registered company. Your seat is confirmed when we have matched your payment to your application and written to you, normally within two working days.",
+        body: "No paid training is on sale yet. When it is, it will be sold at the price shown on its page at the moment you pay, in CFA francs. Payment will be by MTN Mobile Money or Orange Money through Fapshi, a Cameroonian payment provider; we do not take cards yet. The seller is Donfack Fortune, trading as 4TUNHub in a personal capacity: 4TUNHub is not yet a registered company. Your seat is confirmed when we have matched your payment to your application and written to you, normally within two working days.",
       },
       {
         title: "Refunds",
@@ -2048,7 +2048,7 @@ const en = {
       },
       {
         title: "Pay only through this site",
-        body: "We take payment only through the payment link on this site, which opens a Fapshi page. We never ask you to send money to a personal Mobile Money number, by WhatsApp message, or to anyone who contacts you saying they are us. If someone does, do not pay, and tell us.",
+        body: "When paid places open, we will take payment only through the payment link on this site, which opens a Fapshi page. We never ask you to send money to a personal Mobile Money number, by WhatsApp message, or to anyone who contacts you saying they are us. If someone does, do not pay, and tell us.",
       },
       {
         title: "The sessions are recorded",
