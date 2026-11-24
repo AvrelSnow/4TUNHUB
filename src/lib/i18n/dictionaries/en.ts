@@ -689,12 +689,13 @@ const en = {
     secondaryCta: "Start free",
 
     sessions: {
-      eyebrow: "Taught before",
-      title: "Sessions already taught, in public.",
+      eyebrow: "Hosted in public",
+      title: "Sessions we hosted, on video.",
       intro:
-        "Before any course opens, these live sessions were run for the Douala City SOLIDWORKS User Group. Each one links to its own event page, so you can check it.",
+        "Before any course opens, these live sessions were run for the Douala City SOLIDWORKS User Group: each led by a certified speaker, hosted by Donfack Fortune, and recorded. Press one to watch it here, with what it covers and its chapters.",
       open: "See the session",
       archive: "The full programme",
+      others: "Also run, with no recording published",
     },
 
     start: {
@@ -794,6 +795,19 @@ const en = {
       "These are free to take alone. The Academy's guided path, the YouTube library and Cohort 0 are for learning with someone checking your work.",
     ctaPrimary: "See the Academy",
     ctaSecondary: "YouTube library",
+  },
+
+  /** Session cards: a session we hosted, with its picture, speaker and (when one exists) a pop-up player. */
+  session: {
+    with: "With",
+    watch: "Watch",
+    noRecording: "No recording published",
+    eventPage: "Event page",
+    onYoutube: "Open on YouTube",
+    close: "Close",
+    learnTitle: "What it covers",
+    length: "Length",
+    roles: { hosted: "Hosted", cohosted: "Co-hosted", spoke: "Speaker" } as Record<string, string>,
   },
 
   /** The route: how someone moves through the free Academy, with a dashboard kept on the device. */
@@ -1914,7 +1928,7 @@ const en = {
       },
       {
         title: "Where it goes",
-        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. The YouTube library's videos play from YouTube, which is contacted only when you press play. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
+        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. The YouTube library's videos, and the recorded sessions on the Academy page, play from YouTube, which is contacted only when you press play or open a session. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
       },
       {
         title: "How long we keep it",

@@ -680,12 +680,13 @@ const fr: Dictionary = {
     secondaryCta: "Commencer gratuitement",
 
     sessions: {
-      eyebrow: "Déjà enseigné",
-      title: "Des sessions déjà enseignées, en public.",
+      eyebrow: "Organisé en public",
+      title: "Des séances que nous avons organisées, en vidéo.",
       intro:
-        "Avant l'ouverture d'un cours, ces sessions en direct ont été animées pour le Douala City SOLIDWORKS User Group. Chacune renvoie à sa propre page d'événement : vous pouvez le vérifier.",
+        "Avant l'ouverture d'un cours, ces sessions en direct ont été animées pour le Douala City SOLIDWORKS User Group : chacune par un intervenant certifié, organisée par Donfack Fortune et enregistrée. Appuyez sur l'une d'elles pour la regarder ici, avec ce qu'elle couvre et ses chapitres.",
       open: "Voir la session",
       archive: "Le programme complet",
+      others: "Aussi organisées, sans enregistrement publié",
     },
 
     start: {
@@ -784,6 +785,19 @@ const fr: Dictionary = {
       "Tout cela se suit seul, gratuitement. Le parcours guidé de l'Academy, la bibliothèque YouTube et la Cohorte 0 sont pour apprendre avec quelqu'un qui vérifie votre travail.",
     ctaPrimary: "Voir l'Academy",
     ctaSecondary: "Bibliothèque YouTube",
+  },
+
+  /** Cartes de séance : une séance que nous avons organisée, avec son image, son intervenant et, s'il existe, un lecteur en fenêtre. */
+  session: {
+    with: "Avec",
+    watch: "Regarder",
+    noRecording: "Pas d'enregistrement publié",
+    eventPage: "Page de l'événement",
+    onYoutube: "Ouvrir sur YouTube",
+    close: "Fermer",
+    learnTitle: "Ce que la séance couvre",
+    length: "Durée",
+    roles: { hosted: "Organisée", cohosted: "Co-organisée", spoke: "Intervenant" } as Record<string, string>,
   },
 
   /** Le parcours : comment avancer dans l'Académie gratuite, avec un tableau de bord gardé sur l'appareil. */
@@ -1889,7 +1903,7 @@ const fr: Dictionary = {
       },
       {
         title: "Où elles vont",
-        body: "Trois prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Les vidéos de la bibliothèque YouTube sont lues depuis YouTube, qui n'est contacté que lorsque vous appuyez sur lecture. Une candidature à la Cohorte 0 est aussi vue par MKV Academy, qui organise la cohorte avec nous ; l'un comme l'autre peut vous écrire au sujet de sessions et d'ateliers ultérieurs, et cesse sur simple demande. Au-delà, nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
+        body: "Trois prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Les vidéos de la bibliothèque YouTube, et les séances enregistrées de la page Académie, sont lues depuis YouTube, qui n'est contacté que lorsque vous appuyez sur lecture ou ouvrez une séance. Une candidature à la Cohorte 0 est aussi vue par MKV Academy, qui organise la cohorte avec nous ; l'un comme l'autre peut vous écrire au sujet de sessions et d'ateliers ultérieurs, et cesse sur simple demande. Au-delà, nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
       },
       {
         title: "Durée de conservation",
