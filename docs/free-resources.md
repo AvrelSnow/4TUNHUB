@@ -245,3 +245,5 @@ their pages render in JavaScript).
 - "Academy" stays the name. Renaming it "Learn" is open: the evidence was that
   four of the seven sites use the word, but the cohort and its shared links
   carry "Academy".
+
+- 2026-11-24: added SOLIDWORKS' own Getting Started tutorials to the SolidWorks group (open page, four lessons, 2 h 30; read that day; 2024 edition, the 2026 address does not exist).

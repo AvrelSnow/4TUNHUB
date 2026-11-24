@@ -66,6 +66,17 @@ export const freeResourceGroups: FreeResourceGroup[] = [
     key: "solidworks",
     items: [
       {
+        name: "SOLIDWORKS Tutorials: Getting Started",
+        by: "SOLIDWORKS",
+        url: "https://help.solidworks.com/2024/english/swconntutorial/c_swtut_getting_started_online.htm",
+        cost: "free",
+        lang: "en",
+        note: "SOLIDWORKS' own step-by-step lessons, open without an account: an introduction (a part and a drawing), then parts, assemblies and drawings. About two and a half hours in all. The same tutorials ship inside the software, under Help. Start here if you have never modelled a part.",
+        noteFr: "Les leçons pas à pas de SOLIDWORKS lui-même, sans compte : une introduction (une pièce et un plan), puis pièces, assemblages et mises en plan. Environ deux heures et demie au total. Les mêmes tutoriels sont fournis dans le logiciel, menu Aide. À commencer si vous n'avez jamais modélisé une pièce. En anglais.",
+        facts: ["2 h 30"],
+        checked: "2026-11-24",
+      },
+      {
         name: "Mastering CSWA certifications",
         by: "Douala City SOLIDWORKS User Group",
         url: "https://community.swugn.org/events/details/solidworks-douala-city-solidworks-user-group-presents-mastering-cswa-certifications-focus-on-cad-design-amp-additive-manufacturing/",

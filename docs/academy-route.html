@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The free route: how someone moves through the 4TUNHub Academy</title><style>
+:root{--ink:#1f2a33;--muted:#5b6b78;--line:#d9e0e6;--head:#263238;--accent:#d9660b;
+--accent-soft:#fdf0e6;--bg:#ffffff;--card:#f5f7f9;--ok:#1f7a4d;--warn:#b3261e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#e6ebef;--muted:#a3b1bc;
+--line:#3a4650;--head:#f1f4f6;--accent:#ff8a3d;--accent-soft:#3a2a1f;--bg:#161c21;--card:#1f272d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",Calibri,Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 20px 60px}
+header.doc{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
+border-bottom:2px solid var(--head);padding-bottom:10px;margin-bottom:22px}
+header.doc .brand{font-weight:700;letter-spacing:.02em;color:var(--head)}
+header.doc .kind{font-size:13px;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+h1{font:700 30px/1.2 Cambria,Georgia,serif;color:var(--head);margin:.2em 0 .5em}
+h2{font:700 22px/1.25 Cambria,Georgia,serif;color:var(--head);margin:1.6em 0 .5em;padding-top:.3em;border-top:1px solid var(--line)}
+h3{font-size:17px;color:var(--head);margin:1.3em 0 .4em}
+p,li{max-width:78ch}
+a{color:var(--accent)}
+strong{color:var(--head)}
+table{border-collapse:collapse;width:100%;margin:12px 0 18px;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--card);color:var(--head);font-weight:650}
+tr:nth-child(even) td{background:color-mix(in srgb,var(--card) 45%,transparent)}
+code{font-family:Consolas,"Courier New",monospace;font-size:.92em;background:var(--card);padding:1px 5px;border-radius:4px}
+pre{background:var(--card);padding:12px 14px;border-radius:8px;overflow-x:auto;font-size:13.5px}
+pre code{background:none;padding:0}
+blockquote{margin:14px 0;padding:10px 16px;border-radius:8px;background:var(--accent-soft)}
+figure{margin:18px 0;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff;page-break-inside:avoid}
+figure img{width:100%;height:auto;display:block}
+figcaption{font-size:13px;color:#5b6b78;margin-top:6px}
+img{max-width:100%}
+ul.task-list{list-style:none;padding-left:4px}
+.foot{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+@media (max-width:640px){body{font-size:15px}h1{font-size:25px}.wrap{padding:18px 16px 40px}}
+@media print{:root{--bg:#fff;--ink:#000}body{font-size:11.5pt}.wrap{max-width:none;padding:0}
+h2{page-break-after:avoid}table,figure,pre{page-break-inside:avoid}a{color:inherit;text-decoration:none}
+@page{size:A4;margin:14mm 13mm}}
+</style></head>
+<body><div class="wrap">
+<header class="doc"><span class="brand">4TUNHub · Engineering Training</span><span class="kind">Instructor</span></header>
+<h1>The free route: how someone moves through the 4TUNHub Academy</h1>
+<p>Draft 1, 2026-11-24, written with <code>engineering-course-engine</code>. <strong>On paper only:
+no page, no code.</strong> Avrel validates every decision below before anything is
+built. Where something is an estimate or a guess, it says so.</p>
+<p>Companion records: the taught CSWA course is designed in
+<code>D:\teaching CAE\courses\cswa-4-weeks\</code> (this route does not repeat it, and
+borrows its readiness bar). The working list of free resources is
+<code>docs/free-resources.md</code>; the practice problems are <code>docs/practice-problems.md</code>.</p>
+<h2>0. Assumptions (change one, and the route must be re-checked)</h2>
+<ol>
+<li><strong>The learner</strong> arrives at <code>4tunhub.com/academy</code> with no account: an
+   engineering student or junior technician in Cameroon or francophone Africa,
+   on a phone or a shared laptop, time-poor, often on a slow line.</li>
+<li><strong>Free and self-paced.</strong> No live coaching in this route. The taught offer is
+   the cohort, which sits at the end, not inside.</li>
+<li><strong>Real-only.</strong> A stage lists only what exists today. What does not exist is
+   marked <em>coming</em>, with no link, and never counted in a time total.</li>
+<li><strong>No account on the Academy site.</strong> Progress on the site lives on the
+   learner's device. The Lab will have accounts; the Academy does not duplicate
+   them.</li>
+<li><strong>Language.</strong> The route is in English here. The site shows it in French too;
+   the lessons and videos themselves are in English, and the page says so.</li>
+</ol>
+<h2>1. What the route is for</h2>
+<p><strong>Two goals bring people here</strong>, and they are different:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Track A: Simulation</th>
+<th>Track B: SolidWorks and the CSWA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who</td>
+<td>people who found the channel and want to run an LS-DYNA model correctly</td>
+<td>people who want the SOLIDWORKS CSWA certificate</td>
+</tr>
+<tr>
+<td>End state</td>
+<td>builds, runs and checks a simple explicit or quasi-static model, and can say whether the result is believable</td>
+<td>models parts from a drawing and reports mass and centre of mass correctly, ready to practise the exam</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>a hand check of the units, then reading results against it</td>
+<td>the Lab's graded practice problems, answered correctly on a fresh seed</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A shared foundation comes first for both</strong>: Engineering Thinking. Its stance
+("physics first, software second") is the channel's own, and a learner who can
+turn a load into a force and check a stress is better at both tracks.</p>
+<p><strong>What the free route does not promise.</strong> It does not make anyone <em>ready to
+book the CSWA</em>. The taught course's bar is 190/240 on a full 180-minute timed
+mock, and no free timed mock exists. The free route's honest end state is
+<em>ready to practise for the exam</em>, and the cohort is where the mock lives.</p>
+<h2>2. The map</h2>
+<pre><code>                        ┌───────────────────────────────────────────┐
+                        │  FOUNDATION · Engineering Thinking (open) │
+                        │  cards 1 to 4: 11 lessons, 71 min         │
+                        └───────────────┬───────────────────────────┘
+                                        │ gate F: the cards' own checks
+                 ┌──────────────────────┴──────────────────────┐
+                 ▼                                             ▼
+   TRACK A · SIMULATION                          TRACK B · SOLIDWORKS / CSWA
+   A1 Set up        3 videos, 28 min             B1 Get the software (free student offer)
+   A2 Ball-plate    8 videos, 82+ min            B2 The basics            ← the weak link
+   ── gate A: P005 hand check (coming)           B3 Know the exam         (3 resources)
+   A3 Bracket       2 videos, 15+ min            ── gate B: P001 to P003 (coming)
+   (A4 Apply: does not exist)                    B4 Practise              (Lab, coming)
+                 │                                             │
+                 └──────────────────────┬──────────────────────┘
+                                        ▼
+                        LEARN WITH SOMEONE CHECKING: the cohort
+                        (no date named, by decision)
+
+   Side branch, optional for both: TOLERANCES
+   one French PDF (80 pp.), P004 limits and fits, P006 position at MMC (coming)
+</code></pre>
+<h2>3. Competencies (what the learner can do, observably)</h2>
+<p><strong>Foundation</strong> (from the path's own "you will be able to", open cards only):
+- F1 Turn a hanging load into a force and a bending moment.
+- F2 Check a stress against an allowable stress with a safety factor.
+- F3 Choose a section and a plate thickness that can actually be bought.
+- F4 Check a deflection (sag) against a limit, so "strong" is not mistaken for "stiff".</p>
+<p><em>Not yet testable here:</em> reading a dimensioned drawing and its datums, and
+modelling the part and sending a STEP file. Those belong to card 5 and the
+boss, which need the Lab's checker and are closed.</p>
+<p><strong>Track A</strong>
+- A-1 Install LS-PrePost and get past the first crashes.
+- A-2 Build the ball-plate model: mesh, boundary conditions, contact, material and parts, solver set-up.
+- A-3 Read stress, displacement and energy, and judge whether the result is believable.
+- A-4 Edit a keyword deck by hand without breaking it, and know which file to open.
+- A-5 <strong>Check the unit system by hand before pressing run</strong> (P005).
+- A-6 Apply a static load to an explicit solver by ramping it (the bracket).</p>
+<p><strong>Track B</strong>
+- B-1 Get SOLIDWORKS running legally and free (the student offer).
+- B-2 Sketch and extrude/revolve a part from a drawing, with the right origin.
+- B-3 Report volume, mass and centre of mass for a part (P001, P002).
+- B-4 Drive a dimension with a global variable or an equation, and rebuild (P003).
+- B-5 Say what the exam asks and how it is structured.</p>
+<h2>4. The stages, and what each is made of today</h2>
+<p>Time is shown twice: <strong>content time</strong> is measured from the real material;
+<strong>working time</strong> is the learner's time, an <em>estimate</em> (see §6).</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Made of (real, today)</th>
+<th>Content time</th>
+<th>Working time (est.)</th>
+<th>Needs first</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>F · Foundation</strong></td>
+<td>Engineering Thinking cards 1 to 4 (open)</td>
+<td>71 min</td>
+<td>about 1.5 h</td>
+<td>school maths, a calculator</td>
+</tr>
+<tr>
+<td><strong>A1 · Set up</strong></td>
+<td>3 episodes: install, troubleshooting, "LS-PrePost for beginners"</td>
+<td>28 min</td>
+<td>about 1 h (install included)</td>
+<td>F</td>
+</tr>
+<tr>
+<td><strong>A2 · Ball-plate</strong></td>
+<td>8 episodes, mesh to keyword editing and file formats</td>
+<td>82 min + 1 episode with no length</td>
+<td>about 3.5 h</td>
+<td>A1</td>
+</tr>
+<tr>
+<td><strong>Gate A</strong></td>
+<td>P005 "Before you press run": hand check in mm-tonne-second</td>
+<td>n/a</td>
+<td>about 30 min (est.)</td>
+<td>A2</td>
+</tr>
+<tr>
+<td><strong>A3 · Bracket</strong></td>
+<td>2 episodes (ramped load; mesh, material, supports)</td>
+<td>15 min + 1 with no length</td>
+<td>about 1.5 h</td>
+<td>Gate A</td>
+</tr>
+<tr>
+<td><strong>B1 · Get SOLIDWORKS</strong></td>
+<td>the "Get SOLIDWORKS free" band on the Resources page</td>
+<td>n/a</td>
+<td>about 30 min (install)</td>
+<td>none</td>
+</tr>
+<tr>
+<td><strong>B2 · The basics</strong></td>
+<td>SOLIDWORKS' own <em>Getting Started</em> tutorials: Introduction (1 h), Lesson 1 Parts (30 min), Lesson 2 Assemblies (45 min), Lesson 3 Drawings (15 min). Open page, no account, English only</td>
+<td>2 h 30 (SOLIDWORKS' own estimate)</td>
+<td>about 3 h (est.)</td>
+<td>B1</td>
+</tr>
+<tr>
+<td><strong>B3 · Know the exam</strong></td>
+<td>the SWUG "Mastering CSWA" session; the official CSWA guide (French); SOLIDWORKS' own practice problems</td>
+<td>not measured</td>
+<td>about 2 h (est.)</td>
+<td>B2</td>
+</tr>
+<tr>
+<td><strong>Gate B</strong></td>
+<td>P001 to P003 on a fresh seed, with the walk-through as the "stuck?" rung</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>B3</td>
+</tr>
+<tr>
+<td><strong>B4 · Practise</strong></td>
+<td>P001 to P003 in the Lab: <strong>not live</strong></td>
+<td>n/a</td>
+<td>n/a</td>
+<td>B3</td>
+</tr>
+<tr>
+<td><strong>Tolerances</strong></td>
+<td><code>eduscol</code> GPS PDF (80 pages, French); P004, P006</td>
+<td>PDF only</td>
+<td>open-ended</td>
+<td>F</td>
+</tr>
+<tr>
+<td><strong>Cohort</strong></td>
+<td>the CSWA cohort</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>gate B passed</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Totals, honestly.</strong> Track A today: about 8 h of working time (F 1.5, A1 1,
+A2 3.5, gate 0.5, A3 1.5), a little more once two episodes have a length. At
+3 h a week that is <strong>about 3 weeks</strong>. Track B today: B1 0.5 h + B2 about 3 h + B3 about 2 h = <strong>about 5.5 h</strong> before
+the practice problems, which are not live yet (B4, gate B), so the track still
+cannot be totalled to its end.</p>
+<h2>5. The gates (a stage is passed by doing, not by watching)</h2>
+<table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Where</th>
+<th>The evidence</th>
+<th>Pass</th>
+<th>If failed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>F</strong></td>
+<td>end of Foundation</td>
+<td>the cards' own checks, answered by the learner</td>
+<td>all four cards' checks right; progress is kept on the device</td>
+<td>the card's lessons say which step went wrong; repeat the card</td>
+</tr>
+<tr>
+<td><strong>A</strong></td>
+<td>A2 to A3</td>
+<td>P005 on a fresh seed: six numbers (modulus, density, wave speed, time step, ball energy, steps)</td>
+<td>all six within tolerance, at most 3 attempts per step (the Lab's setting)</td>
+<td>the Lab names the unit slip made (twelve are recognised); re-attempt on a new seed</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>B3 to cohort</td>
+<td>P001, P002, P003 each correct on a fresh seed</td>
+<td>all three, without opening the walk-through video first</td>
+<td>the walk-through is the "stuck?" rung; re-attempt on a new seed</td>
+</tr>
+</tbody>
+</table>
+<p>Until the Lab opens, gates A and B are <em>coming</em>. The route says so rather than
+substituting a quiz that tests recall.</p>
+<h2>6. How the time was estimated, and what would change it</h2>
+<ul>
+<li>Content time is read from the library (<code>lsdyna.ts</code>) and the path data
+  (<code>engineering-thinking.json</code>); two episodes have no length yet.</li>
+<li><strong>Working time = content time × 2 to 3 for follow-along videos</strong> (the learner
+  pauses, builds the model and breaks it), and about ×1.2 for the path's
+  lessons, which are already interactive. <strong>That multiplier is my assumption,
+  not a measurement.</strong> The first ten learners are the measurement.</li>
+<li>A schedule with dates is deliberately absent. The only honest unit is
+  hours; dates would be invented, and the next cohort is not named in public.
+  A rhythm such as "3 h a week" is a suggestion, not a promise.</li>
+</ul>
+<h2>7. What the learner sees (the dashboard, specified, not built)</h2>
+<table>
+<thead>
+<tr>
+<th>Shown</th>
+<th>Source</th>
+<th>Can the site know it?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foundation: lessons done out of 11, minutes left, next lesson</td>
+<td>the path's progress store, on the device</td>
+<td><strong>yes, automatically</strong></td>
+</tr>
+<tr>
+<td>Videos watched</td>
+<td>nothing: a video player cannot report that it was understood</td>
+<td><strong>only if the learner ticks it</strong>; label it as their own mark</td>
+</tr>
+<tr>
+<td>Gate A and B results</td>
+<td>the Lab's grader, which needs an account</td>
+<td><strong>no</strong>: the Academy does not hold Lab results</td>
+</tr>
+<tr>
+<td>Stages not yet built</td>
+<td>none</td>
+<td>shown greyed, with "coming", no link, no time counted</td>
+</tr>
+</tbody>
+</table>
+<p>Consequences: the first dashboard is honest but thin. It shows the route, the
+Foundation progress, and the learner's own ticks. The richer one (gate results,
+time spent) belongs to the Lab, where accounts exist. It appears only after the
+first lesson is done; before that the visitor sees the route itself.</p>
+<h2>8. Design review (what attacking the first draft found, and what changed)</h2>
+<ol>
+<li><strong>The path was counted wrong.</strong> The first reading was 13 lessons, 83 minutes.
+   Card 5, the warm-up beam and the wall bracket are <em>closed</em> (they need the
+   Lab's checker). Open: 11 lessons, 71 minutes. Corrected throughout.</li>
+<li><strong>Track B had a hole at the bottom.</strong> The free route had nothing structured
+   to teach SOLIDWORKS basics: MySolidWorks, Hawk Ridge and the French playlists
+   were removed from the list on purpose. The taught course makes basics a
+   mandatory Week 0 plus an entry diagnostic for this reason. <strong>Repaired
+   2026-11-24 (Avrel chose option a):</strong> B2 now links SOLIDWORKS' own Getting
+   Started tutorials, read that day (open, no account; four lessons, 2 h 30).
+   They also ship in the software (<code>swtutorial.chm</code> is in the 2023 install on
+   this machine). <em>Still open:</em> they are English only; the page is the 2024
+   edition (the 2026 address does not exist); they teach the interface, parts,
+   assemblies and drawings but not mass properties or the exam, which is what
+   B3 and the practice problems are for; and there is no entry check like the
+   cohort's diagnostic, so a learner can enter B3 without having done B2.</li>
+<li><strong>The dashboard cannot be what was imagined.</strong> Only the path's progress can
+   be tracked by the site; videos and Lab results cannot. §7 now says so.</li>
+<li><strong>Not every practice problem belongs on the CSWA path.</strong> P005 is a
+   simulation problem; P004 and P006 are drawing and tolerance arithmetic that
+   the CSWA does not test heavily. They are placed on Track A and the Tolerances
+   branch, not forced into Track B.</li>
+<li><strong>Video time is not learning time.</strong> Using content time as the schedule would
+   have undersold the route by half or more. Working time is now shown, with its
+   assumption.</li>
+<li><strong>Track A has no "apply" stage.</strong> After the bracket, a learner has watched and
+   followed but never built a model on their own. No free problem of that kind
+   exists. It is shown as missing (A4), not hidden.</li>
+<li><strong>Over-claiming.</strong> "Ready for the CSWA" would be false: the readiness bar needs
+   a timed mock. The end state was rewritten to "ready to practise".</li>
+<li><strong>A dependency was guessed.</strong> Whether Engineering Thinking's first two lessons
+   ("kilogram", "units") cover mass and units as CSWA answers need them has not
+   been read; they are suggested for Track B, to be confirmed.</li>
+</ol>
+<h2>9. Decisions for Avrel</h2>
+<ol>
+<li>~~<strong>Track B's missing basics (finding 2).</strong>~~ <strong>Decided 2026-11-24: (a), link
+   SOLIDWORKS' own tutorials.</strong> Done on the Free places page. Option (b), our own
+   short "first part" lesson in the Engineering Thinking format, stays open for
+   later, aimed at what the tutorials do not teach (mass properties, an origin
+   that changes the answer).</li>
+<li><strong>Order inside Track A.</strong> I placed P005 between ball-plate and bracket,
+   because the bracket is where units and the ramped load bite. Is that where you
+   would put "before you press run"?</li>
+<li><strong>Is "A4 Apply" worth building?</strong> A Lab challenge where the learner builds a
+   small model alone, graded on a result number, would close the track.</li>
+<li><strong>Does the wall bracket in Engineering Thinking's boss match the channel's
+   bracket series?</strong> If so, the two tracks meet at the same part, and that is
+   worth saying on the route.</li>
+<li><strong>Names.</strong> "Track A / Track B" are working labels; the public names are for
+   you to choose, in both languages.</li>
+</ol>
+<h2>10. What happens next (not started)</h2>
+<ol>
+<li>Avrel validates or changes §9.</li>
+<li>Then the Route page is built from this document: stages from the data
+   (<code>engineering-thinking.json</code>, <code>lsdyna.ts</code>, <code>free-resources.ts</code>), the
+   dashboard from §7, "coming" stages greyed.</li>
+<li>The delivery log starts with the first learners: real working times replace
+   §6's multiplier, and any gate most learners fail is a finding about the
+   route, not only about them.</li>
+</ol>
+<h2>Sources</h2>
+<p>Real data read on 2026-11-24: <code>src/content/engineering-thinking.json</code> (cards,
+minutes, open/closed), <code>src/lib/lsdyna.ts</code> (episodes and lengths),
+<code>src/lib/free-resources.ts</code>, <code>docs/practice-problems.md</code>,
+<code>docs/practice-problems/p005-solver-preflight/challenge.yaml</code> (attempts, steps),
+and the existing CSWA course record (<code>cswa-4-weeks</code>: readiness bar and
+points economy). Not opened today: SOLIDWORKS' built-in tutorials, the official
+sample exam, video speech, and the Engineering Thinking lesson text.</p>
+<div class="foot">4TUNHub · generated from academy-route.md</div>
+</div></body></html>
