@@ -390,6 +390,19 @@ export const phases: Phase[] = [
       "Register an établissement, then move to CinetPay or Notch Pay for cards and lower fees",
     ],
   },
+  {
+    id: "10",
+    name: "The Lab inside Engineering Thinking",
+    status: "active",
+    goal:
+      "Stop running the Lab as a separate site: a visitor arrives on 4tunhub.com, tries the exercises and learns, with no account and no new server.",
+    items: [
+      "Step 1, every exercise works ✓ locally, on a branch: seven challenges, 13 lessons, 12 warm-up questions (not on the live site)",
+      "Step 2, it remembers: continue where you stopped, stamps, a first-visit question, save and restore progress",
+      "Step 3, it feels alive: the bracket assembling, the stamp, the load test",
+      "Not carried over: accounts, the STEP file check, the community; lab.4tunhub.com is untouched until Fortune decides",
+    ],
+  },
 ];
 
 /* ---------------- Decisions log ---------------- */
@@ -725,6 +738,13 @@ export const decisions: Decision[] = [
       "No route page (2026-11-25): the ordered page at /academy/route and its on-device ticks are removed before it ever reached production. The Academy offers its three “Start here” doors only.",
     rationale:
       "Fortune reviewed it on the Deploy Preview and did not like it. The design record stays in docs/academy-route.md, marked as removed.",
+    status: "locked",
+  },
+  {
+    decision:
+      "The Lab moves inside Engineering Thinking and runs in the visitor's browser (2026-11-25): numbers are drawn and answers checked on the device, progress is kept there, and nothing new is hosted.",
+    rationale:
+      "Fortune wants to stop continuing the Lab separately and asked for no server and nothing complicated. The formulas are rewritten for the browser and held to the Lab's Python engine by scripts/check-lab-parity.mjs. The accepted cost: answers can be found by someone who looks, so a cleared challenge proves nothing to a third party, and no certificate or ranking may rest on it. The Lab's three tries per step are kept.",
     status: "locked",
   },
 ];

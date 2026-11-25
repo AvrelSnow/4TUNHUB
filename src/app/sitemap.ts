@@ -4,6 +4,7 @@ import { SITE_URL } from "@/lib/site";
 import { storefront } from "@/lib/commerce";
 import { episodePath, episodes } from "@/lib/lsdyna";
 import { lessonIds, lessonPath } from "@/lib/engineering-thinking";
+import { PRACTICE_ROOT, challengeIds, challengePath, warmupPath, warmupUnits } from "@/lib/practice/data";
 import { locales, defaultLocale } from "@/lib/i18n/config";
 
 /**
@@ -35,6 +36,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // its own, outside the navigation tree.
   for (const e of episodes) paths.add(episodePath(e.slug));
   for (const id of lessonIds) paths.add(lessonPath(id));
+  paths.add(PRACTICE_ROOT);
+  for (const id of challengeIds) paths.add(challengePath(id));
+  for (const unit of warmupUnits(defaultLocale)) paths.add(warmupPath(unit.id));
 
   const url = (locale: string, path: string) => `${SITE_URL}/${locale}${path}`;
 

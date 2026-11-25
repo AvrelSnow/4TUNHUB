@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { PathMap } from "@/components/PathMap";
+import { PathSwitch } from "@/components/practice/PathSwitch";
+import { BRACKET_ID, challengePath } from "@/lib/practice/data";
 import { PATH_ROOT, lessonPath, path } from "@/lib/engineering-thinking";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -41,6 +43,7 @@ export default async function PathPage({ params }: Params) {
   return (
     <section className="pt-12 pb-24 sm:pt-16">
       <Container className="max-w-3xl">
+        <PathSwitch locale={locale} here="path" t={dict.practice.switch} />
         <div className="flex flex-wrap items-center gap-2">
           <p className="eyebrow">{t.eyebrow}</p>
           <Badge variant="amber">{t.free}</Badge>
@@ -69,7 +72,13 @@ export default async function PathPage({ params }: Params) {
         )}
 
         <div className="mt-10">
-          <PathMap cards={path.cards} hrefs={hrefs} t={t} />
+          <PathMap
+            // The warm-up checkpoint was never built in the Lab: not shown.
+            cards={path.cards.filter((c) => c.kind !== "checkpoint")}
+            hrefs={hrefs}
+            bossHref={localizeHref(locale, challengePath(BRACKET_ID))}
+            t={t}
+          />
         </div>
       </Container>
     </section>

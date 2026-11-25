@@ -20,11 +20,14 @@ const fmt = (text: string, vars: Record<string, string | number>) =>
 export function PathMap({
   cards,
   hrefs,
+  bossHref,
   t,
 }: {
   cards: PathCard[];
   /** Lesson id → localized URL. */
   hrefs: Record<string, string>;
+  /** The final challenge, in Practice. */
+  bossHref: string;
   t: Dictionary["path"];
 }) {
   const { seen, parts } = useProgress();
@@ -65,12 +68,12 @@ export function PathMap({
               <div
                 className={cn(
                   "rounded-3xl border border-border bg-surface-2 p-6 shadow-e1 sm:p-7",
-                  !c.open && "opacity-70",
+                  !c.open && c.kind !== "boss" && "opacity-70",
                 )}
               >
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="eyebrow">{label(c)}</span>
-                  {c.open ? (
+                  {c.kind === "boss" ? null : c.open ? (
                     c.lessons.length > 0 && (
                       <span className="readout">
                         {fmt(t.lessonsCount, { n: c.lessons.length, m: minutes })}
@@ -82,7 +85,16 @@ export function PathMap({
                 </div>
                 <h2 className="mt-2 text-headline text-foreground">{name(c)}</h2>
 
-                {c.open ? (
+                {c.kind === "boss" ? (
+                  <>
+                    <p className="mt-2 text-muted">{t.bossBody}</p>
+                    <div className="mt-4">
+                      <Button as="a" href={bossHref}>
+                        {t.bossCta}
+                      </Button>
+                    </div>
+                  </>
+                ) : c.open ? (
                   <>
                     <p className="mt-2 text-muted">{ables(c).join(" ")}</p>
                     <div className="mt-4 flex items-center gap-3">
