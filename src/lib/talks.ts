@@ -21,7 +21,8 @@
  * The poster is our own copy of its thumbnail under /public/images/sessions,
  * because the CSP allows no image from elsewhere. `learn` and `chapters`
  * are taken from the recording's description, not written by us. A session
- * with no recording on that channel has none, and says so.
+ * with no recording on that channel has none, and the Academy page leaves
+ * it out (the founder page still lists it).
  *
  * `speaker` is who gave the session, as its event page or recording names
  * them. The sessions listed as `hosted` were run by Donfack Fortune as

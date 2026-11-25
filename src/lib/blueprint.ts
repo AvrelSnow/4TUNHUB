@@ -715,7 +715,7 @@ export const decisions: Decision[] = [
   },
   {
     decision:
-      "Sessions we hosted are cards that play here (2026-11-24): a picture, the date, the speaker, and a pop-up player with what the session covers and its chapters. Five recordings from the Douala City SWUG channel; a session with no recording says so and links to its event page, with no play button.",
+      "Sessions we hosted are cards that play here (2026-11-24): a picture, the date, the speaker, and a pop-up player with what the session covers and its chapters. Five recordings from the Douala City SWUG channel; a session with no recording is not shown on the Academy page (2026-11-25).",
     rationale:
       "Fortune asked for a visual of what was taught, played on 4TUNHub rather than by sending the visitor to YouTube. The pop-up loads YouTube's no-cookie player only when a session is opened, so nothing is contacted before. The event pages and recordings name Fortune as host and someone else as the speaker, so the cards say both and the heading says \u201chosted\u201d, not \u201ctaught\u201d. Dates, speakers, chapters and the \u201cwhat it covers\u201d lines are taken from those pages, never written by us. Full record: docs/sessions.md.",
     status: "locked",

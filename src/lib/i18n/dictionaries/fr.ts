@@ -686,7 +686,6 @@ const fr: Dictionary = {
         "Avant l'ouverture d'un cours, ces sessions en direct ont été animées pour le Douala City SOLIDWORKS User Group : chacune par un intervenant certifié, organisée par Donfack Fortune et enregistrée. Appuyez sur l'une d'elles pour la regarder ici, avec ce qu'elle couvre et ses chapitres.",
       open: "Voir la session",
       archive: "Le programme complet",
-      others: "Aussi organisées, sans enregistrement publié",
     },
 
     start: {
@@ -787,11 +786,10 @@ const fr: Dictionary = {
     ctaSecondary: "Bibliothèque YouTube",
   },
 
-  /** Cartes de séance : une séance que nous avons organisée, avec son image, son intervenant et, s'il existe, un lecteur en fenêtre. */
+  /** Cartes de séance : une séance que nous avons organisée, avec son image, son intervenant et un lecteur en fenêtre. */
   session: {
     with: "Avec",
     watch: "Regarder",
-    noRecording: "Pas d'enregistrement publié",
     eventPage: "Page de l'événement",
     onYoutube: "Ouvrir sur YouTube",
     close: "Fermer",

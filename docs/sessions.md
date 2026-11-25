@@ -3,8 +3,8 @@
 Written 2026-11-24. The Academy page shows each session the Douala City SWUG
 ran, hosted by Donfack Fortune, as a card with a picture, the speaker and the
 date. A session with a recording opens a pop-up that plays it on 4TUNHub, with
-what it covers and its chapters; one without says so and links to its event
-page. Only the Academy page shows them: the founder page keeps its own
+what it covers and its chapters. Since 2026-11-25 a session without one is not
+shown there. Only the Academy page has the cards: the founder page keeps its own
 "Talks & conferences" list, by decision.
 
 ## Where the data is
@@ -37,7 +37,7 @@ not seen in the in-app browser, which showed the player area blank.
   description, never written by us.
 - The poster is our own copy of the thumbnail (`public/images/sessions/`): the
   CSP allows no image from elsewhere.
-- A session with no recording gets no play button. If one is published, add
+- A session with no recording gets no card. If one is published, add
   `recording` and a poster.
 - The recordings have auto-generated English captions (four of five). A full
   transcript was not added: it is long and auto-generated. The outline and

@@ -125,7 +125,7 @@ export default async function AcademyPage({ params }: Params) {
 
       {/* 2b · HOSTED IN PUBLIC — each session as a card with its picture,
           its speaker and a pop-up player: the recording plays here, not on
-          YouTube. A session with no recording is listed apart, honestly.
+          YouTube. Only sessions with a recording appear here.
           Dates, speakers and chapters are in talks.ts, taken from the event
           pages and the recordings' own descriptions. */}
       <Section eyebrow={t.sessions.eyebrow} title={t.sessions.title} intro={t.sessions.intro}>
@@ -145,25 +145,6 @@ export default async function AcademyPage({ params }: Params) {
               </li>
             ))}
         </ul>
-        {talks.some((talk) => talk.lesson && !talk.recording) && (
-          <>
-            <h3 className="mt-14 text-xl font-semibold tracking-tight text-foreground">{t.sessions.others}</h3>
-            <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {talks
-                .filter((talk) => talk.lesson && !talk.recording)
-                .map((talk) => (
-                  <li key={talk.href}>
-                    <SessionCard
-                      talk={talk}
-                      roleLabel={dict.session.roles[talk.role]}
-                      labels={dict.session}
-                      playerLabels={dict.library}
-                    />
-                  </li>
-                ))}
-            </ul>
-          </>
-        )}
         <div className="mt-9">
           <ArrowLink href={TALKS_ARCHIVE_URL} external>
             {t.sessions.archive}

@@ -8,20 +8,18 @@ import type { Talk } from "@/lib/talks";
 
 /**
  * A session we hosted, shown the way it deserves: a picture of it, who gave
- * it and when, and (when a recording exists) a pop-up that plays it right
+ * it and when, and a pop-up that plays its recording right
  * here, with what it covers and its chapters. No trip to YouTube.
  *
  * The poster is our own file. The video costs nothing until it is wanted:
  * the dialog's contents are mounted only when it opens, and the player
  * inside loads from YouTube's no-cookie domain (VideoPlayer). A session
- * without a recording is a plain card that goes to its event page, with
- * no play button.
+ * without a recording renders nothing.
  */
 
 export type SessionLabels = {
   with: string;
   watch: string;
-  noRecording: string;
   eventPage: string;
   onYoutube: string;
   close: string;
@@ -76,25 +74,7 @@ export function SessionCard({
     </>
   );
 
-  if (!rec) {
-    return (
-      <div className="flex h-full flex-col rounded-3xl bg-surface p-6 sm:p-7">
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge variant="outline">{roleLabel}</Badge>
-          <Badge variant="outline">{labels.noRecording}</Badge>
-        </div>
-        <div className="mt-4">{meta}</div>
-        <a
-          href={talk.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-auto pt-6 text-sm font-medium text-foreground underline-offset-4 hover:underline"
-        >
-          {labels.eventPage} ↗
-        </a>
-      </div>
-    );
-  }
+  if (!rec) return null;
 
   return (
     <>

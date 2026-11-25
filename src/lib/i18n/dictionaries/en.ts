@@ -695,7 +695,6 @@ const en = {
         "Before any course opens, these live sessions were run for the Douala City SOLIDWORKS User Group: each led by a certified speaker, hosted by Donfack Fortune, and recorded. Press one to watch it here, with what it covers and its chapters.",
       open: "See the session",
       archive: "The full programme",
-      others: "Also run, with no recording published",
     },
 
     start: {
@@ -797,11 +796,10 @@ const en = {
     ctaSecondary: "YouTube library",
   },
 
-  /** Session cards: a session we hosted, with its picture, speaker and (when one exists) a pop-up player. */
+  /** Session cards: a session we hosted, with its picture, speaker and a pop-up player. */
   session: {
     with: "With",
     watch: "Watch",
-    noRecording: "No recording published",
     eventPage: "Event page",
     onYoutube: "Open on YouTube",
     close: "Close",
