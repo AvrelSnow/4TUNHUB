@@ -5,178 +5,159 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Engineering Thinking: design proposal</title>
 <style>
-:root{--bg:#fff;--surface:#f8f8ff;--fg:#14181d;--muted:#555a62;--border:#e8e8f2;--hair:#d6d6e4;--amber:#ffb000;--amber-ink:#8a5700;--ok:#1f6b45;--board:#14181d;--line:#dfe3ea;--dim:#9aa3b2}
+:root{--bg:#fff;--surface:#f8f8ff;--fg:#14181d;--muted:#555a62;--border:#e8e8f2;--hair:#d6d6e4;--amber:#ffb000;--amber-ink:#8a5700;--ok:#1f6b45;--board:#14181d}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 "Mona Sans",system-ui,Segoe UI,sans-serif}
 main{max-width:1040px;margin:0 auto;padding:32px 16px 80px}
-h1{font-size:clamp(30px,6vw,52px);line-height:1.05;margin:0 0 12px;font-weight:800;letter-spacing:-.02em}
-h2{font-size:clamp(22px,3.5vw,30px);margin:56px 0 12px;letter-spacing:-.01em}
-h3{font-size:17px;margin:24px 0 8px}
-p{margin:0 0 12px;max-width:70ch}
+h1{font-size:clamp(30px,6vw,50px);line-height:1.05;margin:0 0 12px;font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(22px,3.5vw,30px);margin:52px 0 12px;letter-spacing:-.01em}
+p,li{max-width:70ch}p{margin:0 0 12px}
 .lead{font-size:19px;color:var(--muted)}
 a{color:var(--fg);text-decoration-color:var(--amber);text-decoration-thickness:2px;text-underline-offset:3px;overflow-wrap:anywhere}
 .scroll{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:560px}
 th,td{text-align:left;vertical-align:top;padding:9px 12px 9px 0;border-bottom:1px solid var(--border)}
 th{color:var(--muted);font-weight:600}
-code{font-size:13.5px;background:var(--surface);padding:1px 5px;border-radius:5px}
 .frames{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+figure{margin:0}
 .phone{width:320px;max-width:100%;border:1px solid var(--hair);border-radius:32px;padding:10px;background:var(--bg);box-shadow:0 24px 56px -22px rgb(20 24 29/.28)}
-.cap{font-size:13px;color:var(--muted);margin:8px 6px 0}
-.board{background:var(--board);color:#fff;border-radius:24px;padding:18px}
-.eyebrow{font-size:12.5px;font-weight:700;color:var(--amber);margin:0 0 4px}
-.board h4{margin:0 0 10px;font-size:21px;line-height:1.2}
-.board svg{width:100%;height:auto;display:block;margin:6px 0 12px}
-.btn{display:block;text-align:center;background:var(--amber);color:var(--fg);font-weight:700;border-radius:99px;padding:12px}
-.card{background:var(--surface);border-radius:18px;padding:14px;margin-top:10px}
-.row{display:flex;align-items:center;gap:12px;justify-content:space-between}
+figcaption{font-size:13px;color:var(--muted);margin:8px 6px 0;max-width:300px}
+.eyebrow{font-size:12.5px;font-weight:700;color:var(--amber-ink);margin:0 0 4px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--surface);border-radius:99px;padding:4px;margin-bottom:10px;text-align:center;font-size:13px;font-weight:700;color:var(--muted)}
+.seg b{background:var(--fg);color:#fff;border-radius:99px;padding:6px}.seg span{padding:6px}
+.board{background:var(--board);color:#fff;border-radius:24px;padding:16px}
+.board .eyebrow{color:var(--amber)}
+.board h4{margin:0 0 6px;font-size:20px;line-height:1.2}
+.board small{color:#9aa3b2}
+.board svg{width:100%;height:auto;display:block}
+.btn{display:block;text-align:center;background:var(--amber);color:var(--fg);font-weight:700;border-radius:99px;padding:11px;margin-top:10px}
+.card{background:var(--surface);border-radius:18px;padding:13px;margin-top:10px}
 .card b{display:block;font-size:14.5px}.card small{color:var(--muted);font-size:12.5px}
-.big{font-size:34px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
-.strip{display:grid;grid-template-columns:repeat(14,1fr);gap:3px;margin-top:10px}
-.strip i{height:22px;border-radius:4px;border:1px solid var(--hair)}
-.strip i.on{background:var(--amber);border-color:var(--amber)}
-.strip i.today{border:2px dashed var(--fg)}
-.gauge{width:56px;height:56px;border-radius:50%;background:conic-gradient(var(--amber) 75%,var(--hair) 0);display:grid;place-items:center;flex:none}
-.gauge span{width:42px;height:42px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-size:12.5px;font-weight:700}
-.stamps{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
-.stamp{border:2px dashed var(--hair);border-radius:7px;padding:3px 9px;font-size:12px;font-weight:700;color:var(--muted)}
-.stamp.on{border:2px solid var(--ok);color:var(--ok);transform:rotate(-4deg)}
-.stamp.proven{border:4px double var(--ok);color:var(--ok);transform:rotate(-6deg);font-size:15px}
-.tabs{display:grid;grid-template-columns:repeat(5,1fr);margin-top:12px;border-top:1px solid var(--border);padding-top:8px;font-size:11.5px;text-align:center;color:var(--muted)}
-.tabs b{color:var(--fg);border-top:3px solid var(--amber);margin-top:-10px;padding-top:7px}
-.field{border:1px solid var(--hair);background:var(--bg);border-radius:12px;padding:9px 12px;margin-top:8px;display:flex;justify-content:space-between;font-variant-numeric:tabular-nums}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.field{border:1px solid var(--hair);background:var(--bg);border-radius:12px;padding:9px 12px;margin-top:8px;display:flex;justify-content:space-between}
 .chip{font-size:11.5px;font-weight:700;border-radius:99px;padding:2px 9px;background:#fff4d6;color:var(--amber-ink);white-space:nowrap}
-.bar{height:12px;border-radius:99px;background:linear-gradient(90deg,#00f,#0ff,#0f0,#ff0,#f00);margin:8px 0}
-.tag{font-size:11.5px;font-weight:700;border:1px solid var(--hair);border-radius:99px;padding:1px 8px;white-space:nowrap}
-.tag.o{background:var(--fg);color:#fff;border-color:var(--fg)}
+.chip.n{background:var(--border);color:var(--fg)}
+.stamp{display:inline-block;border:2px dashed var(--hair);border-radius:7px;padding:2px 8px;font-size:11.5px;font-weight:700;color:var(--muted)}
+.stamp.on{border:2px solid var(--ok);color:var(--ok);transform:rotate(-4deg)}
+.stamp.proven{border:4px double var(--ok);color:var(--ok);transform:rotate(-5deg)}
+/* the Lab's own assembly drawing, restyled for the board */
+.column{fill:#555a62}.plate{fill:#2a313b;stroke:#dfe3ea;stroke-width:1.5}.stress{fill:#ffb000;opacity:.35}
+.hole{fill:var(--board);stroke:#dfe3ea;stroke-width:1.5}.dimx,.dimline{stroke:#9aa3b2;fill:none}.tick{fill:#9aa3b2}
+.force{stroke:#ffb000;stroke-width:3;fill:none}.force-head{fill:#ffb000;stroke:none}.sag{stroke:#9aa3b2;stroke-width:1.5;stroke-dasharray:6 5;fill:none}
+.ghost{opacity:.18}
 @media (prefers-reduced-motion:no-preference){
- .load{animation:drop 2.6s cubic-bezier(.34,1.56,.64,1) infinite alternate}
- .stamp.proven{animation:press .7s .4s both cubic-bezier(.34,1.56,.64,1)}
+ .new{animation:arrive 1s .3s cubic-bezier(.34,1.56,.64,1) both}
+ .stamp.proven{animation:press .7s .6s both cubic-bezier(.34,1.56,.64,1)}
 }
-@keyframes drop{from{transform:translateY(-7px)}to{transform:translateY(3px)}}
-@keyframes press{from{opacity:0;transform:rotate(-14deg) scale(2)}to{opacity:1;transform:rotate(-6deg) scale(1)}}
+@keyframes arrive{from{opacity:0;transform:translateY(-26px)}to{opacity:1;transform:none}}
+@keyframes press{from{opacity:0;transform:rotate(-14deg) scale(2)}to{opacity:1;transform:rotate(-5deg) scale(1)}}
 </style>
 </head>
 <body>
 <main>
-<p class="eyebrow" style="color:var(--amber-ink)">Proposal for review · 25 November 2026 · nothing on the site has changed</p>
-<h1>Engineering Thinking is a drawing office. You build one part by learning.</h1>
-<p class="lead">The loud thing on screen is the part: drawn large, gaining pieces as you clear cards, then taking its load. Rewards are things an engineer knows: stamps, a title block, a licence. White pages, black and amber, as on 4tunhub.com.</p>
+<p class="eyebrow">Version 2, after challenging version 1 · 25 November 2026 · nothing on the site has changed</p>
+<h1>Try something first. Then watch your bracket get built.</h1>
+<p class="lead">Two places instead of five. Three moments done well instead of many effects. Every exercise says whether a phone is enough.</p>
 
-<h2>1 · The screens</h2>
-<p>Sample data. These are layout sketches, not the finished design.</p>
+<h2>1 · What was wrong with version 1</h2>
+<div class="scroll"><table>
+<tr><th>Challenge</th><th>What I checked</th><th>Change</th></tr>
+<tr><td>A daily streak has too little to feed it</td><td>The 11 open lessons take 71 minutes, the other two 12. Then six problems and one bracket. Someone could finish in days</td><td><b>Streak removed.</b> A quiet “days you worked here” count that never breaks</td></tr>
+<tr><td>Five tabs are heavy and collide with the lesson bar</td><td>Lessons already have a bar fixed at the bottom, and the site has its own header on top</td><td><b>Two places:</b> Path and Practice, a switch at the top. No bottom bar</td></tr>
+<tr><td>A newcomer met a dashboard of zeros</td><td>Most first visits have no progress</td><td><b>First visit is one question</b> you can answer at once</td></tr>
+<tr><td>Licence ranks would be hollow</td><td>Four ranks, but only one final challenge. “Engineer” after one practice bracket overclaims</td><td><b>Licence, title block, name and shareable card removed</b></td></tr>
+<tr><td>Rewards could be guessed</td><td>Some answers are a choice from a short list. I had said unlimited tries</td><td><b>Keep the Lab's 3 tries per step</b>, then new numbers. Resettable by a determined visitor, fine for practice</td></tr>
+<tr><td>Phone visitors hit a wall</td><td>P001–P003 ask you to model in SOLIDWORKS. P004–P006 need only a calculator</td><td><b>Each problem is labelled</b>; calculator ones come first</td></tr>
+<tr><td>The bracket brief would mislead</td><td>2,247 words that include uploads, a checker queue and a tutor, which will not exist here</td><td><b>Rewrite it</b> in English and French for this version</td></tr>
+<tr><td>I drew a new bracket</td><td>The Lab already has an assembly drawing with one piece per card</td><td><b>Use that drawing</b> (shown below)</td></tr>
+<tr><td>Card 5 cannot be “Proven”</td><td>Its proof is the uploaded part</td><td>It stops at <b>Practised</b>, and says why</td></tr>
+</table></div>
+
+<h2>2 · The screens now</h2>
+<p>Sample data; layout sketches.</p>
 <div class="frames">
-<figure style="margin:0">
+<figure>
 <div class="phone">
- <div class="board">
-  <p class="eyebrow">Continue where you stopped</p>
-  <h4>Card 3 · Bending and shape<br><span style="font-size:14px;color:var(--dim);font-weight:500">Lesson 2, part 4 of 11</span></h4>
-  <svg viewBox="0 0 280 130" role="img" aria-label="Wall bracket drawing with a hanging load">
-   <path d="M18 10V118" stroke="#9aa3b2" stroke-width="6"/>
-   <path d="M22 34H226L252 52V78L226 90H22Z" fill="none" stroke="#dfe3ea" stroke-width="2"/>
-   <g fill="none" stroke="#dfe3ea" stroke-width="1.5"><circle cx="40" cy="48" r="4"/><circle cx="72" cy="48" r="4"/><circle cx="40" cy="76" r="4"/><circle cx="72" cy="76" r="4"/><circle cx="222" cy="62" r="6"/></g>
-   <path d="M56 22H222M56 17V27M222 17V27" stroke="#9aa3b2"/><text x="139" y="17" fill="#9aa3b2" font-size="11" text-anchor="middle">L</text>
-   <g class="load" stroke="#ffb000" stroke-width="3" fill="none"><path d="M222 68V108M214 99L222 109L230 99"/></g>
+ <div class="seg"><b>Path</b><span>Practice</span></div>
+ <div class="board"><p class="eyebrow">Try one now</p><h4>An 18 kg motor hangs from a hook. How hard does it pull?</h4><small>Take g = 9.81 m/s²</small>
+  <div class="field" style="background:#fff;color:#14181d"><span style="color:#555a62">Your answer</span><span>N</span></div><span class="btn">Check</span></div>
+ <div class="card"><b>13 lessons that end in one real part</b><small>Free. No account. Progress stays in this browser.</small></div>
+</div>
+<figcaption>First visit: doing before reading.</figcaption>
+</figure>
+
+<figure>
+<div class="phone">
+ <div class="seg"><b>Path</b><span>Practice</span></div>
+ <div class="board"><p class="eyebrow">Card 2: Practised</p><h4>Your bracket gained a piece</h4>
+  <svg viewBox="0 0 360 180" role="img" aria-label="The wall bracket assembling: cards 1 to 3 lit, 4 and 5 faint">
+   <rect class="column" x="16" y="20" width="22" height="140" rx="2"/>
+   <g><rect class="plate" x="38" y="62" width="272" height="38" rx="4"/></g>
+   <g class="new"><rect class="stress" x="40" y="64" width="120" height="34" rx="3"/></g>
+   <g class="ghost"><circle class="hole" cx="58" cy="72" r="4.5"/><circle class="hole" cx="58" cy="90" r="4.5"/><circle class="hole" cx="84" cy="72" r="4.5"/><circle class="hole" cx="84" cy="90" r="4.5"/><circle class="hole" cx="290" cy="81" r="7"/><path class="dimx" d="M71 58V34M290 58V34"/><path class="dimline" d="M71 40H290"/><polygon class="tick" points="71,40 81,36 81,44"/><polygon class="tick" points="290,40 280,36 280,44"/></g>
+   <g><path class="force" d="M290 104V146M104 112A32 32 0 0 1 104 50"/><polygon class="force-head" points="282,140 298,140 290,156"/><polygon class="force-head" points="97,56 111,54 106,40"/></g>
+   <g class="ghost"><path class="sag" d="M40 81C150 83 240 92 312 104"/></g>
   </svg>
-  <span class="btn">Continue</span>
- </div>
- <div class="card row"><div><span class="big">4</span> <small>days of uptime</small><div class="strip" style="width:190px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="today"></i></div></div></div>
- <div class="card row"><div><b>1 lesson to “Practised”</b><small>Card 3 of 5</small></div><div class="gauge"><span>2/3</span></div></div>
- <div class="card"><b>Your stamps</b><div class="stamps"><span class="stamp on">Card 1 Practised</span><span class="stamp on">Card 2 Seen</span><span class="stamp">not yet</span></div></div>
- <div class="tabs"><b>Home</b><span>Learn</span><span>Practice</span><span>Bracket</span><span>Me</span></div>
+  <span class="btn">Continue: Bending, part 4 of 11</span></div>
+ <div class="card"><b>Card 3 · 1 lesson to “Seen”</b><span class="stamp on">Card 1</span> <span class="stamp on">Card 2</span> <span class="stamp">Card 3 not yet</span></div>
+ <div class="card row"><small>Days you worked here: 3</small><small><u>Save my progress</u></small></div>
 </div>
-<figcaption class="cap">Home: one next action, then your progress.</figcaption>
+<figcaption>Returning: what changed, one button, then the existing path below.</figcaption>
 </figure>
 
-<figure style="margin:0">
+<figure>
 <div class="phone">
- <p class="eyebrow" style="color:var(--amber-ink);margin:8px 6px">Practice bench</p>
- <div class="card"><div class="row"><b>P001 · Stepped block</b><span class="stamp on">Cleared</span></div><small>Extrude, cut, mass · 3 steps</small></div>
- <div class="card"><div class="row"><b>P002 · Stepped shaft</b><span class="chip">1 of 3</span></div><small>Revolve, mass · 3 steps</small></div>
- <div class="card"><div class="row"><b>P003 · Driven plate</b><span class="chip">New</span></div><small>Equations · 3 steps</small></div>
- <div class="card"><div class="row"><b>P004 · Limits and fits</b><span class="chip">New</span></div><small>Tolerances · 6 steps</small></div>
- <div class="card"><div class="row"><b>P005 · Before you press run</b><span class="chip">New</span></div><small>LS-DYNA hand check · 6 steps</small></div>
- <div class="card"><div class="row"><b>P006 · Position at MMC</b><span class="chip">New</span></div><small>GD&amp;T · 6 steps</small></div>
- <div class="tabs"><span>Home</span><span>Learn</span><b>Practice</b><span>Bracket</span><span>Me</span></div>
+ <div class="seg"><span>Path</span><b>Practice</b></div>
+ <div class="board"><p class="eyebrow">Final challenge</p><h4>The wall bracket</h4><small>8 numbers · calculator · best after cards 1 to 4</small></div>
+ <p class="eyebrow" style="margin:14px 6px 0">Calculator is enough</p>
+ <div class="card row"><div><b>P004 · Limits and fits</b><small>6 steps</small></div><span class="stamp on">Cleared</span></div>
+ <div class="card row"><div><b>P005 · Before you press run</b><small>6 steps</small></div><span class="chip">2 of 6</span></div>
+ <div class="card row"><div><b>P006 · Position at MMC</b><small>6 steps</small></div><span class="chip">New</span></div>
+ <p class="eyebrow" style="margin:14px 6px 0">Best with SOLIDWORKS</p>
+ <div class="card row"><div><b>P001 · Stepped block</b><small>3 steps</small></div><span class="chip n">CAD</span></div>
+ <div class="card row"><div><b>P002 · Stepped shaft</b><small>3 steps</small></div><span class="chip n">CAD</span></div>
+ <div class="card row"><div><b>P003 · Driven plate</b><small>3 steps</small></div><span class="chip n">CAD</span></div>
 </div>
-<figcaption class="cap">Practice: each problem says its skill and your state.</figcaption>
-</figure>
-
-<figure style="margin:0">
-<div class="phone">
- <div class="board"><p class="eyebrow">Load test passed</p><h4>Your 10 mm bracket holds</h4>
-  <div class="bar"></div><small style="color:var(--dim)">Stress colours, then the sag settles inside its limit</small>
-  <div style="text-align:center;padding:22px 0 10px"><span class="stamp proven" style="color:#6fe0a0;border-color:#6fe0a0;display:inline-block">PROVEN</span></div>
-  <span class="btn">See my licence</span></div>
- <div class="card"><b>8 · Which thickness will you use?</b><div class="field"><span>10</span><small>mm</small></div><small style="color:var(--ok);font-weight:700">Correct</small></div>
- <div class="card"><b>When an answer is not right</b><small>A sentence naming the likely slip, then up to three hints, and a link to the lesson.</small></div>
- <div class="tabs"><span>Home</span><span>Learn</span><span>Practice</span><b>Bracket</b><span>Me</span></div>
-</div>
-<figcaption class="cap">Bracket: the big moment is the physics.</figcaption>
+<figcaption>Practice: nobody opens a problem they cannot do.</figcaption>
 </figure>
 </div>
 
-<h2>2 · Where everything goes</h2>
-<p>All under <code>/academy/engineering-thinking</code>. Existing lesson addresses stay.</p>
+<h2>3 · Rewards: three moments</h2>
 <div class="scroll"><table>
-<tr><th>Place</th><th>Address (after the root)</th><th>What is in it</th></tr>
-<tr><td><b>Home</b></td><td><code>/</code></td><td>First visit: the bracket and “Start”. Later: Continue, uptime, next stamp, what changed since last time.</td></tr>
-<tr><td><b>Learn</b></td><td><code>/learn</code>, <code>/[lesson]</code></td><td>The route of 5 cards as stations, 13 lessons, the 42 checks, the 12 practice questions beside their cards.</td></tr>
-<tr><td><b>Practice</b></td><td><code>/practice</code>, <code>/practice/[id]</code></td><td>P001–P006: your numbers, drawing, answer boxes, hints.</td></tr>
-<tr><td><b>Bracket</b></td><td><code>/bracket</code></td><td>The final challenge: brief, 8 numbers, load test. File check marked “coming”.</td></tr>
-<tr><td><b>Me</b></td><td><code>/me</code></td><td>Title block (name typed on this device only, licence, shift days), all stamps, save and load progress file, start over.</td></tr>
+<tr><th>Moment</th><th>Earned by</th><th>What happens</th></tr>
+<tr><td><b>Stamp</b></td><td><i>Seen</i>: lessons finished. <i>Practised</i>: their checks passed without showing the working. <i>Proven</i>: the bracket steps that card teaches are cleared (cards 1–4)</td><td>It presses onto the card</td></tr>
+<tr><td><b>Assembly</b></td><td>A card reaches Practised</td><td>Its piece drops onto the bracket</td></tr>
+<tr><td><b>Load test</b></td><td>All 8 bracket numbers cleared</td><td>Your own load and thickness: stress colours computed along the plate, sag drawn enlarged and labelled so, then the stamp</td></tr>
 </table></div>
-<p style="margin-top:12px">Phone: five tabs at the bottom. They hide inside a lesson, where the existing lesson dock already sits. Desktop: the same five as a bar under the site header. Warm-up checkpoint: not shown, as it was never built.</p>
+<p style="margin-top:12px">The trade-off: this is calmer than “a lot of effects”. Each reward means something, and there is less to build and break. All motion switches off for people who ask for <a href="https://web.dev/articles/prefers-reduced-motion">reduced motion</a>.</p>
 
-<h2>3 · The effects</h2>
+<h2>4 · Build order</h2>
 <div class="scroll"><table>
-<tr><th>Moment</th><th>What the learner sees</th><th>Borrowed idea</th></tr>
-<tr><td>Arrives</td><td>The part draws itself line by line, once</td><td>A strong first scene (Brilliant)</td></tr>
-<tr><td>Check passed</td><td>A stamp presses in (exists today), optional click sound, off by default</td><td>Celebration inside the lesson (ustwo)</td></tr>
-<tr><td>Answer wrong</td><td>Short shake, the likely slip, a hint, the lesson</td><td>Encouragement when stuck (ustwo)</td></tr>
-<tr><td>Back on Home</td><td>The new piece slides onto the assembly; “Card 2: Practised”</td><td>Summary of what moved (Khan Academy)</td></tr>
-<tr><td>Day finished</td><td>Today's square fills upward. Days off never break it</td><td>Streak with forgiveness (Duolingo, Mobbin)</td></tr>
-<tr><td>Drag a slider</td><td>Load a beam and watch stress and sag (the site already has this beam lab)</td><td>Play with the idea (Ciechanowski)</td></tr>
-<tr><td>Bracket cleared</td><td>Load test, Proven stamp, licence card you can save as a picture</td><td>The reward is proof of skill</td></tr>
+<tr><th>Step</th><th>Contents</th><th>You review</th></tr>
+<tr><td><b>1 · Every exercise works</b></td><td>P004–P006, then P001–P003, then the bracket; card 5; the 12 practice questions</td><td>Try them on your phone and laptop</td></tr>
+<tr><td><b>2 · It remembers</b></td><td>Continue, stamps, first-visit question, save and load, start over, privacy page</td><td>Close the browser and come back</td></tr>
+<tr><td><b>3 · It feels alive</b></td><td>Assembly, stamp press, load test</td><td>Judge the look</td></tr>
 </table></div>
-<p style="margin-top:12px">Built with CSS and inline drawings, with no animation library to start. Brilliant uses Rive for its animations; that is worth revisiting only if drawings by hand stop being enough. Every effect switches off for people who ask for <a href="https://web.dev/articles/prefers-reduced-motion">reduced motion</a>.</p>
-
-<h3>Left out on purpose</h3>
-<p>Leaderboards and live learner counts (need a server). XP and gems (your Lab design dropped XP; it can be added if you want it). Confetti. Guilt messages about a broken streak. Locks on lessons: the order is recommended, not forced.</p>
-
-<h2>4 · What the research says</h2>
-<ul>
-<li>A <a href="https://link.springer.com/article/10.1007/s10648-019-09498-w">meta-analysis of gamified learning</a> (Sailer and Homner) found small positive effects: learning g = 0.49, motivation 0.36, behaviour 0.25. The learning result held up better in rigorous studies than the other two. Game story mattered for behaviour.</li>
-<li><a href="https://blog.duolingo.com/new-duolingo-home-screen-design/">Duolingo moved to one guided path</a> because learners were unsure they were using the app the right way. Some users disliked losing choice.</li>
-<li>A <a href="https://mobbin.com/blog/streaks-are-about-losing-a-study-of-859-streak-designs">study of 859 streak designs</a> argues streaks count days rather than learning, and that fear of breaking one can backfire.</li>
-</ul>
+<p style="margin-top:12px">Everything is built on a branch from the newest Academy work, and goes live in one merge only when you say so. Lessons stay in English; new screens and exercises are English and French.</p>
+<p><b>Kept, though I questioned it:</b> rewriting the Lab's formulas for the browser. Pre-computing a bank of answers would be simpler, but all seven challenges have steps that depend on earlier answers, and the Lab credits correct method after one slip. That needs the formulas. The rewrite will be compared with the Python original over many sets of numbers.</p>
 
 <h2>5 · Sites to look at</h2>
-<h3>Opened and read on 25 November (landing or article pages; no sign-in)</h3>
-<div class="scroll"><table>
-<tr><th>Site</th><th>Look at</th></tr>
-<tr><td><a href="https://ustwo.com/work/brilliant/">ustwo: Brilliant case study</a></td><td>Best visual reference for “game feel” in learning</td></tr>
-<tr><td><a href="https://rive.app/blog/how-brilliant-org-motivates-learners-with-rive-animations">Rive: Brilliant's animations</a></td><td>Animated path nodes and streak</td></tr>
-<tr><td><a href="https://brilliant.org/">Brilliant</a></td><td>How it presents guided, visual learning</td></tr>
-<tr><td><a href="https://www.boot.dev/">Boot.dev</a></td><td>A full game identity (more arcade than I recommend)</td></tr>
-<tr><td><a href="https://tootalltoby.com/practice/sample/">TooTallToby practice model</a></td><td>Closest to CAD practice: skills tested, level, one start button, own completion count</td></tr>
-<tr><td><a href="https://mathacademy.com/how-it-works">Math Academy</a></td><td>XP as minutes of focused work, if you want XP</td></tr>
-<tr><td><a href="https://ciechanow.ski/gears/">Bartosz Ciechanowski: Gears</a></td><td>The finest interactive engineering explanations here. Play with the sliders</td></tr>
-<tr><td><a href="https://exercism.org/tracks/python">Exercism track page</a></td><td>How a track introduces its exercises</td></tr>
-<tr><td><a href="https://blog.duolingo.com/new-duolingo-home-screen-design/">Duolingo path article</a></td><td>The single path</td></tr>
-<tr><td><a href="https://mobbin.com/blog/streaks-are-about-losing-a-study-of-859-streak-designs">Mobbin streak study</a></td><td>Many streak screens side by side</td></tr>
-<tr><td><a href="https://link.springer.com/article/10.1007/s10648-019-09498-w">Sailer and Homner paper</a></td><td>Abstract only</td></tr>
-<tr><td><a href="https://web.dev/articles/prefers-reduced-motion">web.dev: reduced motion</a></td><td>Opening section only</td></tr>
-</table></div>
-
-<h3>Seen in search summaries only</h3>
-<p><a href="https://support.khanacademy.org/hc/en-us/articles/115002552631">Khan Academy mastery</a> · <a href="https://blog.duolingo.com/how-duolingo-streak-builds-habit">Duolingo on streaks</a> · <a href="https://blog.boot.dev/wiki/the-game">Boot.dev game wiki</a> · <a href="https://github.com/exercism/v3/blob/master/docs/rationale-for-v3.md">Exercism design rationale</a></p>
-
-<h3>From the Lab's own design research of September (not reopened today)</h3>
-<p><a href="https://help.hackthebox.com/en/articles/12256202-introduction-to-htb-academy">Hack The Box Academy: resume where you were</a> · <a href="https://developer.apple.com/design/human-interface-guidelines/activity-rings">Apple activity rings</a> · <a href="https://www.nngroup.com/articles/empty-state-interface-design/">NN/g: empty screens</a> · <a href="https://home.uchicago.edu/ourminsky/Goal-Gradient_Illusionary_Goal_Progress.pdf">Goal-gradient study</a> · <a href="https://www.sciencedirect.com/science/article/pii/S2666557323000083">Comparison in learning dashboards</a></p>
-
-<h3>Did not work</h3>
-<p><a href="https://phet.colorado.edu/en/simulations/balancing-act">PhET Balancing Act</a> showed no readable text to my reader (worth opening yourself). roadmap.sh had no mechanical engineering page at the address I tried. I found no good engineering or blueprint-style dashboard gallery.</p>
+<p>Opened and read on 25 November, without signing in:</p>
+<ul>
+<li><a href="https://ustwo.com/work/brilliant/">ustwo: Brilliant case study</a>, the best reference for game feel</li>
+<li><a href="https://rive.app/blog/how-brilliant-org-motivates-learners-with-rive-animations">Rive: Brilliant's animations</a></li>
+<li><a href="https://brilliant.org/">Brilliant</a></li>
+<li><a href="https://ciechanow.ski/gears/">Ciechanowski: Gears</a>, interactive engineering explanations</li>
+<li><a href="https://tootalltoby.com/practice/sample/">TooTallToby practice model</a>, CAD practice</li>
+<li><a href="https://www.boot.dev/">Boot.dev</a> and <a href="https://mathacademy.com/how-it-works">Math Academy</a>, if you want an arcade or XP style</li>
+<li><a href="https://blog.duolingo.com/new-duolingo-home-screen-design/">Duolingo's single path</a></li>
+<li><a href="https://mobbin.com/blog/streaks-are-about-losing-a-study-of-859-streak-designs">Mobbin: 859 streak designs</a>, part of why the streak went</li>
+<li><a href="https://exercism.org/tracks/python">Exercism track page</a></li>
+<li><a href="https://link.springer.com/article/10.1007/s10648-019-09498-w">Gamification meta-analysis</a> (abstract only): small positive effects, learning g = 0.49</li>
+<li><a href="https://web.dev/articles/prefers-reduced-motion">web.dev: reduced motion</a> (opening only)</li>
+</ul>
+<p>Search summaries only: <a href="https://support.khanacademy.org/hc/en-us/articles/115002552631">Khan Academy mastery</a>, <a href="https://blog.duolingo.com/how-duolingo-streak-builds-habit">Duolingo on streaks</a>, <a href="https://blog.boot.dev/wiki/the-game">Boot.dev game wiki</a>.</p>
+<p>From the Lab's September design research, not reopened: <a href="https://help.hackthebox.com/en/articles/12256202-introduction-to-htb-academy">Hack The Box Academy</a>, <a href="https://www.nngroup.com/articles/empty-state-interface-design/">NN/g on empty screens</a>, <a href="https://home.uchicago.edu/ourminsky/Goal-Gradient_Illusionary_Goal_Progress.pdf">goal-gradient study</a>.</p>
 </main>
 </body>
 </html>
