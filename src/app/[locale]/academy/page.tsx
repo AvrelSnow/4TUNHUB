@@ -13,7 +13,6 @@ import { EmailCaptureBand } from "@/components/EmailCaptureBand";
 import { talks, TALKS_ARCHIVE_URL } from "@/lib/talks";
 import { LIBRARY_PATH } from "@/lib/lsdyna";
 import { FREE_RESOURCES_PATH } from "@/lib/free-resources";
-import { ROUTE_PATH } from "@/lib/route";
 import { PATH_ROOT } from "@/lib/engineering-thinking";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { isLocale } from "@/lib/i18n/config";
@@ -117,9 +116,6 @@ export default async function AcademyPage({ params }: Params) {
               </Reveal>
             );
           })}
-        </div>
-        <div className="mt-8">
-          <ArrowLink href={localizeHref(locale, ROUTE_PATH)}>{t.start.routeCta}</ArrowLink>
         </div>
       </Section>
 

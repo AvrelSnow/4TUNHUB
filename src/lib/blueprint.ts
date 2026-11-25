@@ -722,10 +722,10 @@ export const decisions: Decision[] = [
   },
   {
     decision:
-      "The free route (2026-11-24): an ordered page at /academy/route: a shared foundation (Engineering Thinking), then a simulation track (LS-DYNA) or a SolidWorks and CSWA track, then teaching. Each stage lists what it is made of today and its time; stages that are not built (the Lab's practice problems) show as coming, with no link. Progress is kept on the device only. Defaults pending Fortune's answers: where the hand check sits, no \u201cApply\u201d stage, and the public track names.",
+      "No route page (2026-11-25): the ordered page at /academy/route and its on-device ticks are removed before it ever reached production. The Academy offers its three “Start here” doors only.",
     rationale:
-      "A menu of three doors does not tell a newcomer what to do first. The route says it, and says what it does not promise: it gets you ready to practise for the CSWA, not to book it, because a timed mock is where that is decided and no free one exists. The design, its attack and the open decisions are in docs/academy-route.md.",
-    status: "proposed",
+      "Fortune reviewed it on the Deploy Preview and did not like it. The design record stays in docs/academy-route.md, marked as removed.",
+    status: "locked",
   },
 ];
 

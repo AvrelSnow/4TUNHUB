@@ -125,13 +125,6 @@ export const siteTree: SiteNode[] = [
         desc: "Branch 1 of the 4TUNHub Lab as a guided path: from a hanging load to a sized steel plate.",
       },
       {
-        key: "route",
-        label: "Your route",
-        href: "/academy/route",
-        status: "active",
-        desc: "The free Academy in order: a shared foundation, then LS-DYNA simulation or SolidWorks and the CSWA, with your progress kept on your device.",
-      },
-      {
         key: "free-resources",
         label: "Free resources",
         href: "/academy/free-resources",

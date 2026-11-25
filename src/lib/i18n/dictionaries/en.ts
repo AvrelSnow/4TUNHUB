@@ -36,7 +36,6 @@ const en = {
     cohort: "Cohort 0",
     lsdyna: "YouTube library",
     path: "Engineering Thinking",
-    route: "Your route",
     waitlist: "Waitlist",
     privacy: "Privacy",
     terms: "Terms",
@@ -702,7 +701,6 @@ const en = {
       title: "Pick what you want to do.",
       intro:
         "Three ways in, all free, none needs an account.",
-      routeCta: "See the whole route",
       items: {
         path: {
           goal: "I want to think like an engineer",
@@ -791,7 +789,7 @@ const en = {
     } as Record<string, { title: string; body: string }>,
     ctaTitle: "Want to learn it with us?",
     ctaSubtitle:
-      "These are free to take alone. For the Academy's own material, and a route through all of it in order, start at the Academy.",
+      "These are free to take alone. For the Academy's own material, start at the Academy.",
     ctaPrimary: "See the Academy",
     ctaSecondary: "YouTube library",
   },
@@ -806,126 +804,6 @@ const en = {
     learnTitle: "What it covers",
     length: "Length",
     roles: { hosted: "Hosted", cohosted: "Co-hosted", spoke: "Speaker" } as Record<string, string>,
-  },
-
-  /** The route: how someone moves through the free Academy, with a dashboard kept on the device. */
-  route: {
-    metaTitle: "Your route through the Academy",
-    metaDescription:
-      "A free, ordered route: a shared foundation, then LS-DYNA simulation or SolidWorks and the CSWA. What each stage is made of, how long it takes, and how you know you can move on.",
-    eyebrow: "Academy · Your route",
-    title: "Do these in this order.",
-    intro:
-      "One shared start, then two tracks. Each stage says what it is made of and how long it takes, and ends with something you can check. Everything here is free. What is not built yet says so.",
-    honesty:
-      "This route gets you ready to practise for the exam, not to book it. That is decided on a full timed mock, which this free route does not include.",
-    dashboard: {
-      title: "Your progress",
-      empty: "Nothing ticked yet. Start with the first lesson: it takes about five minutes.",
-      lessons: "Foundation lessons: {n} of {t}",
-      left: "About {m} min left in the foundation",
-      ticked: "Ticked on your own: {n}",
-      device: "Kept on this device only. Lessons tick themselves; videos and links are ticked by you.",
-      start: "Start the first lesson",
-      resume: "Continue the foundation",
-      foundationDone: "The foundation is done. Pick a track below.",
-    },
-    groups: {
-      foundation: {
-        title: "Start here: the foundation",
-        body: "Both tracks begin with Engineering Thinking: turn a load into a force, check a stress, choose a thickness. Physics first, software second.",
-      },
-      simulation: {
-        title: "Track A: simulation with LS-DYNA",
-        body: "From installing the software to a bracket under load, with the files used on camera.",
-      },
-      solidworks: {
-        title: "Track B: SolidWorks and the CSWA",
-        body: "From a first part to practising for the certification.",
-      },
-      tolerances: {
-        title: "Side branch: tolerances",
-        body: "Optional for both tracks. Reading and checking dimensions on a drawing.",
-      },
-      cohort: {
-        title: "Then: learn with someone checking your work",
-        body: "The timed mock, and feedback on your own work, come with teaching.",
-      },
-    } as Record<string, { title: string; body: string }>,
-    stages: {
-      foundation: {
-        title: "Engineering Thinking",
-        body: "Eleven short lessons, a check at every step, no account. In English for now.",
-      },
-      setup: {
-        title: "Set up",
-        body: "Install LS-PrePost, get past the first crashes, and find your way round before building anything.",
-      },
-      ballplate: {
-        title: "Ball-plate impact",
-        body: "One model built from the mesh to the result, then read, edited by hand and checked.",
-      },
-      checkA: {
-        title: "Check: before you press run",
-        body: "A hand check of the unit system on numbers of your own. LS-DYNA has no units: this is the mistake that costs a whole run.",
-      },
-      bracket: {
-        title: "Bracket, static load",
-        body: "A static answer from an explicit solver, done properly, starting with why a load needs a ramp.",
-      },
-      software: {
-        title: "Get SOLIDWORKS",
-        body: "The free student version, from SOLIDWORKS itself.",
-      },
-      basics: {
-        title: "The basics",
-        body: "SOLIDWORKS' own lessons: a part, an assembly, a drawing. Start here if you have never modelled a part.",
-      },
-      exam: {
-        title: "Know the exam",
-        body: "What the CSWA asks and how to approach it, from the user group, the official guide and SOLIDWORKS' practice problems.",
-      },
-      checkB: {
-        title: "Check: your own numbers",
-        body: "Model three parts and report their volume, mass and centre of mass. The answers are checked, with the exact slip named if you make one.",
-      },
-      tolerances: {
-        title: "Limits, fits and position",
-        body: "A French teaching document on ISO GPS tolerancing, then checks on limits and fits and on position at maximum material.",
-      },
-      cohort: {
-        title: "Join the list",
-        body: "For teaching, with a timed mock and someone looking at your model. No date is named.",
-      },
-    } as Record<string, { title: string; body: string }>,
-    items: {
-      getSolidworks: "Get SOLIDWORKS free (Resources page)",
-      p001: "Practice problem: a stepped block",
-      p002: "Practice problem: a stepped shaft",
-      p003: "Practice problem: a plate driven by an equation",
-      p004: "Practice problem: limits and fits",
-      p005: "Practice problem: before you press run",
-      p006: "Practice problem: position at maximum material",
-      cohort: "Join the list",
-    } as Record<string, string>,
-    labels: {
-      stage: "Stage",
-      check: "Check",
-      minutes: "{m} min",
-      content: "{m} min of lessons and videos",
-      work: "About {h} h of your own work (an estimate)",
-      comingBadge: "Coming",
-      comingNote: "Not built yet. It opens with the 4TUNHub Lab, no date yet.",
-      markDone: "Mark as done",
-      done: "Done",
-      open: "Open",
-      progress: "{n} of {t}",
-      lessonsEnglish: "The lessons and videos are in English.",
-    },
-    ctaTitle: "Not sure where to start?",
-    ctaSubtitle: "Start with the foundation. It is the same for both tracks.",
-    ctaPrimary: "Back to the Academy",
-    ctaSecondary: "Free places to learn",
   },
 
   /** The YouTube library: the YouTube tutorials, with their files. */
@@ -1980,13 +1858,6 @@ const en = {
           why: "Remembers which lessons of Engineering Thinking you finished and which checks you passed, so the path picks up where you stopped.",
           kept: "Your browser, on this device. It is never sent anywhere.",
           refuse: "It only exists once you open a lesson. Clearing your browser data removes it.",
-        },
-        {
-          what: "Your ticks on the route",
-          key: "4tun.route",
-          why: "Remembers which videos and links you ticked as done on the route page, so it shows where you are.",
-          kept: "Your browser, on this device. It is never sent anywhere.",
-          refuse: "It only exists once you tick something. Clearing your browser data removes it.",
         },
         {
           what: "Anonymous visit counting",

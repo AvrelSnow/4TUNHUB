@@ -1,5 +1,7 @@
 # The free route: how someone moves through the 4TUNHub Academy
 
+> **Removed 2026-11-25.** Fortune did not like the route page; it was taken out before reaching production. Kept as a record.
+
 Draft 1, 2026-11-24, written with `engineering-course-engine`. **On paper only:
 no page, no code.** Avrel validates every decision below before anything is
 built. Where something is an estimate or a guess, it says so.
