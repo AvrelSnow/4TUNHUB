@@ -5,9 +5,7 @@
  *
  * Rules that keep the list honest:
  *  - Only free resources are listed; paid courses are left out.
- *  - Most entries link to the owner's own page. The `folders` group is the
- *    exception: shared Google Drive folders that people collected. They are
- *    not published by their owners and not hosted by us; the page says so.
+ *  - Every entry links to the owner's own page.
  *  - `checked` is the date the page was last opened and read. A free offer
  *    can end, so re-open the links before each release.
  *  - The words about each resource are English, as the resources are; the
@@ -53,8 +51,7 @@ export type FreeResourceGroupKey =
   | "mechanics"
   | "drawing"
   | "cad"
-  | "code"
-  | "folders";
+  | "code";
 
 export type FreeResourceGroup = {
   key: FreeResourceGroupKey;
@@ -373,37 +370,6 @@ export const freeResourceGroups: FreeResourceGroup[] = [
         cost: "free",
         lang: "en",
         note: "Free courses on working with Claude and AI: Claude 101, AI Fluency.",
-        checked: "2026-11-19",
-      },
-    ],
-  },
-  {
-    key: "folders",
-    items: [
-      {
-        name: "SolidProfessor — shared folder",
-        by: "Shared Drive folder",
-        url: "https://drive.google.com/drive/folders/1-kzRnWRZVWNdLpqH4gHPv6EDGPjr2hZa",
-        cost: "free",
-        lang: "en",
-        note: "SOLIDWORKS course folders: paths, simulation, surfacing, CAM, tips and tricks, and a catalogue file. Study material for the CSWA and beyond.",
-        checked: "2026-11-19",
-      },
-      {
-        name: "SolidProfessor — 7. SolidWorks",
-        by: "Shared Drive folder",
-        url: "https://drive.google.com/drive/folders/1xV_oxCykgtAqLvuPvu1P6mi2-SGRADvQ",
-        cost: "free",
-        lang: "en",
-        note: "The SOLIDWORKS section of the same collection.",
-      },
-      {
-        name: "Mechanical engineering library",
-        by: "Shared Drive folder",
-        url: "https://drive.google.com/drive/folders/1Vle4L1sCT9XSmo-wNS3DIR7nakI9T6Pm",
-        cost: "free",
-        lang: "en",
-        note: "About 45 topic folders: mechanical basics, materials, pumps, turbines, vibration, welding, piping, safety, Excel for engineers, English learning.",
         checked: "2026-11-19",
       },
     ],

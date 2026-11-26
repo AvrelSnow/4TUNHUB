@@ -812,7 +812,7 @@ const fr: Dictionary = {
     eyebrow: "Academy · Ressources gratuites",
     title: "Où apprendre l'ingénierie gratuitement.",
     intro:
-      "Les meilleurs cours, logiciels et manuels gratuits que nous connaissons pour SolidWorks, la simulation et la mécanique. La plupart des liens mènent à la page de leur propriétaire ; nous n'hébergeons le cours de personne. La dernière section est différente : des dossiers d'étude partagés, rassemblés par d'autres. Nous ne les avons pas faits et ne pouvons pas nous en porter garants.",
+      "Les meilleurs cours, logiciels et manuels gratuits que nous connaissons pour SolidWorks, la simulation et la mécanique. Chaque lien mène à la page de son propriétaire ; nous n'hébergeons le cours de personne.",
     rule: "Les offres gratuites changent. Si un lien a bougé ou si une offre a pris fin, dites-le-nous et nous corrigerons.",
     open: "Ouvrir",
     langLabel: "Enseigné en",
@@ -850,10 +850,6 @@ const fr: Dictionary = {
       code: {
         title: "Code, calcul et IA",
         body: "Python et MATLAB pour ingénieurs, et des cours gratuits pour travailler avec l'IA.",
-      },
-      folders: {
-        title: "Dossiers d'étude partagés",
-        body: "Des dossiers Google Drive de cours et de supports, rassemblés par d'autres. Ils ne sont pas publiés par leurs propriétaires ni hébergés par 4TUNHub : ils peuvent changer ou disparaître, et certains contenus ne sont peut-être pas librement redistribuables.",
       },
     } as Record<string, { title: string; body: string }>,
     ctaTitle: "Envie d'apprendre avec nous ?",

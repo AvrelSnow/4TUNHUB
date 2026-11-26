@@ -832,7 +832,7 @@ const en = {
     eyebrow: "Academy · Free resources",
     title: "Free places to learn engineering.",
     intro:
-      "The best free courses, software and textbooks we know for SolidWorks, simulation and mechanics. Most links go to the owner's own page; we never host anyone's course. The last section is different: shared study folders that other people collected. We did not make them and cannot vouch for them.",
+      "The best free courses, software and textbooks we know for SolidWorks, simulation and mechanics. Every link goes to the owner's own page; we never host anyone's course.",
     rule: "Free offers change. If a link has moved or an offer has ended, tell us and we will fix it.",
     open: "Open",
     langLabel: "Taught in",
@@ -870,10 +870,6 @@ const en = {
       code: {
         title: "Code, computation and AI",
         body: "Python and MATLAB for engineers, and free courses on working with AI.",
-      },
-      folders: {
-        title: "Shared study folders",
-        body: "Google Drive folders of course files and study material that other people collected. They are not published by their owners and not hosted by 4TUNHub, so they can change or disappear, and some content may not be free to redistribute.",
       },
     } as Record<string, { title: string; body: string }>,
     ctaTitle: "Want to learn it with us?",
