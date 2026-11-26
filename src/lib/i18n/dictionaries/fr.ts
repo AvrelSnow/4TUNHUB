@@ -717,6 +717,13 @@ const fr: Dictionary = {
       },
     },
 
+    shelf: {
+      eyebrow: "L'étagère de l'ingénieur",
+      title: "Livres et cours, au même endroit.",
+      body: "Mécanique, électronique, maths, programmation et conception, en français et en anglais. Filtrez jusqu'à trouver le vôtre.",
+      cta: "Parcourir l'étagère",
+    },
+
     cta: {
       title: "Soyez prévenu à l'ouverture d'un cours.",
       subtitle:
@@ -724,6 +731,55 @@ const fr: Dictionary = {
       primary: "Rejoindre la liste d'attente",
       secondary: "Voir les projets",
     },
+  },
+
+  /** L'étagère de l'ingénieur : livres et cours, avec des filtres. */
+  shelf: {
+    metaTitle: "L'étagère de l'ingénieur : livres et cours d'ingénierie",
+    metaDescription:
+      "Livres et cours d'ingénierie en français et en anglais, filtrés par matière, langue et prix : mécanique, électronique, maths, programmation et conception.",
+    eyebrow: "Académie · L'étagère de l'ingénieur",
+    title: "Trouvez le livre qui vous débloque.",
+    intro:
+      "Des livres et des cours d'ingénierie, choisis selon ce que vous voulez faire ensuite. Filtrez par matière, langue et prix.",
+    rule: "Les livres d'autres auteurs s'ouvrent sur la page de leur propriétaire. Nous ne les hébergeons pas et ne les vendons pas.",
+    searchLabel: "Chercher sur l'étagère",
+    searchPlaceholder: "Chercher : statique, Python, circuits…",
+    all: "Tout",
+    results: "affichés",
+    reset: "Effacer les filtres",
+    empty: "Rien sur l'étagère ne correspond pour l'instant.",
+    noPaid: "Nos livres et cours payants ne sont pas encore sortis.",
+    joinList: "Prévenez-moi à l'ouverture",
+    start: "Commencer",
+    readFree: "Lire gratuitement",
+    buy: "Acheter",
+    preview: "Aperçu",
+    enlarge: "Agrandir l'aperçu",
+    close: "Fermer",
+    filters: {
+      kind: {
+        label: "Type",
+        options: { book: "Livres", course: "Cours" },
+        one: { book: "Livre", course: "Cours" },
+      },
+      subject: {
+        label: "Matière",
+        options: {
+          mechanical: "Mécanique",
+          electronics: "Électronique",
+          maths: "Maths et physique",
+          programming: "Programmation",
+          design: "Conception et dessin",
+        },
+      },
+      lang: { label: "Langue", options: { en: "English", fr: "Français" } },
+      price: { label: "Prix", options: { free: "Gratuit", paid: "Payant" } },
+    },
+    ctaTitle: "Vous ne savez pas par où commencer ?",
+    ctaSubtitle: "L'Académie propose un parcours guidé pour débuter et une liste de lieux pour apprendre gratuitement.",
+    ctaPrimary: "Retour à l'Académie",
+    ctaSecondary: "Apprendre gratuitement",
   },
 
   freeResources: {
