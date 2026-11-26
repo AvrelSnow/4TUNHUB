@@ -32,6 +32,8 @@ export type Project = {
   imageIllustrative?: boolean;
   /** Self-hosted animation (public/videos/…) and the still shown before it plays. */
   video?: { src: string; poster: string };
+  /** Drawings that are not published: only blurred stills, offered on request. */
+  lockedPlans?: string[];
   /** Design work not manufactured yet: stays off the home page's "built" rail. */
   onPaper?: boolean;
   /** Deep link to this project on the founder's personal portfolio. */
@@ -121,8 +123,9 @@ export const projects: Project[] = [
   },
   {
     /**
-     * A freelance project. Only the 3D assembly is shown: no 2D drawings, no
-     * sizing study, no CAD downloads, no client name or workshop photos.
+     * A freelance project. Only the 3D assembly is shown: no readable 2D
+     * drawing (the previews are blurred in the file itself), no sizing study,
+     * no CAD downloads, no client name or workshop photos.
      */
     slug: "helical-gear-reducer",
     category: "mechanical",
@@ -131,6 +134,7 @@ export const projects: Project[] = [
     image: `${IMG}/reducer-hero.webp`,
     gallery: Array.from({ length: 4 }, (_, i) => `${IMG}/reducer-${i + 1}.webp`),
     video: { src: "/videos/helical-gear-reducer.mp4", poster: `${IMG}/reducer-poster.webp` },
+    lockedPlans: Array.from({ length: 4 }, (_, i) => `${IMG}/reducer-plan-${i + 1}.webp`),
     onPaper: true,
   },
 ];

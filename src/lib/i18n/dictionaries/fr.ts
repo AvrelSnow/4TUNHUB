@@ -253,6 +253,9 @@ const fr: Dictionary = {
       illustrativeNote: "Illustration de référence — le travail de conception est en CAO et en analyse FEA/CFD.",
       zoom: "Voir en grand",
       close: "Fermer",
+      plansTitle: "Les plans",
+      plansHint: "Un aperçu flouté. Pour voir les plans, écrivez-moi.",
+      plansBadge: "Écrire pour voir",
       portfolio: "Voir plus sur le portfolio du fondateur",
     },
     items: {

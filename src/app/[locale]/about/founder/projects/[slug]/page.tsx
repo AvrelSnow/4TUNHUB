@@ -192,6 +192,39 @@ export default async function ProjectDetail({ params }: Params) {
         </section>
       )}
 
+      {/* LOCKED DRAWINGS — a fan of blurred previews; every card asks. */}
+      {project.lockedPlans && (
+        <section className="overflow-hidden py-24 sm:py-32">
+          <Container>
+            <h2 className="text-center text-display-sm text-foreground">{t.detail.plansTitle}</h2>
+            <p className="mx-auto mt-4 max-w-xl text-center text-muted">{t.detail.plansHint}</p>
+            <ul className="bouquet mt-14">
+              {project.lockedPlans.map((src, i) => (
+                <li key={src}>
+                  <Link
+                    href={localizeHref(locale, "/contact")}
+                    aria-label={`${t.detail.plansBadge} (${i + 1}/${project.lockedPlans?.length})`}
+                    className="relative block overflow-hidden rounded-2xl border border-border bg-white shadow-e2"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={src} alt="" width={480} height={340} loading="lazy" decoding="async" className="w-full" />
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-x-0 bottom-1.5 mx-auto flex w-max items-center gap-1.5 rounded-full bg-ink-900/80 p-1.5 text-2xs font-medium text-white sm:bottom-2 sm:px-3 sm:py-1"
+                    >
+                      <svg viewBox="0 0 20 20" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 9h10v8H5zM7 9V6.5a3 3 0 0 1 6 0V9" />
+                      </svg>
+                      <span className="hidden whitespace-nowrap sm:inline">{t.detail.plansBadge}</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </section>
+      )}
+
       <CtaPanel
         title={copy.ctaTitle ?? t.detail.ctaTitle}
         subtitle={copy.ctaBody ?? t.detail.ctaBody}

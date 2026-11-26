@@ -257,6 +257,9 @@ const en = {
       illustrativeNote: "Illustrative reference — the design work is CAD models and FEA/CFD analysis.",
       zoom: "View full size",
       close: "Close",
+      plansTitle: "The drawings",
+      plansHint: "A blurred preview. To see the drawings, write to me.",
+      plansBadge: "Write to see",
       portfolio: "See more on the founder's portfolio",
     },
     items: {
