@@ -397,9 +397,9 @@ export const phases: Phase[] = [
     goal:
       "Stop running the Lab as a separate site: a visitor arrives on 4tunhub.com, tries the exercises and learns, with no account and no new server.",
     items: [
-      "Step 1, every exercise works ✓ locally, on a branch: seven challenges, 13 lessons, 12 warm-up questions (not on the live site)",
-      "Step 2, it remembers ✓ locally: continue where you stopped, stamps, a first-visit question, save and restore progress",
-      "Step 3, it feels alive ✓ locally: the bracket assembling, the stamp, the load test",
+      "Step 1, every exercise works ✓: seven challenges, 13 lessons, 12 warm-up questions",
+      "Step 2, it remembers ✓: continue where you stopped, stamps, a first-visit question, save and restore progress",
+      "Step 3, it feels alive ✓: the bracket assembling, the stamp, the load test",
       "Not carried over: accounts, the STEP file check, the community; lab.4tunhub.com is untouched until Fortune decides",
     ],
   },
