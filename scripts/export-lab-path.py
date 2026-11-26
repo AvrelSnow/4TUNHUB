@@ -103,6 +103,8 @@ def main(argv=None):
             "need": list(t(n["need"], "en")),
             "able": [reword(x) for x in t(n["able"], "en")],
             "requires": list(n.get("requires", ())),
+            # The bracket steps this card teaches: its Proven stamp.
+            "feeds": list(n.get("feeds") or ()),
             "open": open_,
             "lessons": [],
         }

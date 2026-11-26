@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
-import { readNumber } from "@/lib/path-progress";
+import { readNumber, updateProgress, withToday } from "@/lib/path-progress";
 import {
   CLEARED,
   drawParams,
@@ -45,6 +45,11 @@ export function ChallengeRunner({ challenge, lang, t }: { challenge: ChallengeVi
       updateEntry(id, (e) => ({ ...e, run: freshRun(version) }));
     }
   }, [id, version, run]);
+
+  // The home board continues from here.
+  useEffect(() => {
+    updateProgress((p) => ({ ...p, last: { kind: "challenge", id } }));
+  }, [id]);
 
   const logic = LOGIC[id];
   const params = useMemo(
@@ -102,7 +107,14 @@ export function ChallengeRunner({ challenge, lang, t }: { challenge: ChallengeVi
       keys: again ? run.keys : [...run.keys, key],
     };
     const all = steps.every((s) => next.results[s.id] && CLEARED.includes(next.results[s.id].status));
-    updateEntry(id, (e) => ({ ...e, run: next, ...(all ? { cleared: true as const } : {}) }));
+    const passed = CLEARED.includes(verdict.status);
+    updateEntry(id, (e) => ({
+      ...e,
+      run: next,
+      ...(passed ? { proved: { ...e.proved, [step.id]: true as const } } : {}),
+      ...(all ? { cleared: true as const } : {}),
+    }));
+    if (passed) updateProgress(withToday);
   };
 
   return (

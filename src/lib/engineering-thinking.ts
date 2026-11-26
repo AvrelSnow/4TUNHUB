@@ -25,6 +25,8 @@ export type PathCard = {
   need: string[];
   able: string[];
   requires: string[];
+  /** The bracket steps this card teaches. */
+  feeds: string[];
   /** False for what still needs the Lab's checker. */
   open: boolean;
   lessons: { id: string; title: string; minutes: number }[];

@@ -4,7 +4,17 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { PathMap } from "@/components/PathMap";
 import { PathSwitch } from "@/components/practice/PathSwitch";
-import { BRACKET_ID, challengePath } from "@/lib/practice/data";
+import { HomeBoard } from "@/components/practice/HomeBoard";
+import { ProgressTools } from "@/components/practice/ProgressTools";
+import {
+  BRACKET_ID,
+  PRACTICE_ROOT,
+  challengeIds,
+  challengePath,
+  summaries,
+  warmupPath,
+  warmupUnits,
+} from "@/lib/practice/data";
 import { PATH_ROOT, lessonPath, path } from "@/lib/engineering-thinking";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -12,6 +22,22 @@ import { localizeHref } from "@/lib/i18n/routing";
 import { ACADEMY_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
+
+/** The check ids in a lesson's markup. */
+const checksIn = (steps: string[]) =>
+  Array.from(steps.join("").matchAll(/data-check="([^"]+)"/g), (m) => m[1]);
+
+/** The band a typed-number check accepts, from the lesson that asks it. */
+function band(lesson: string, id: string) {
+  const found = path.lessons[lesson].steps
+    .join("")
+    .match(new RegExp(`data-check="${id}" data-lo="([^"]+)" data-hi="([^"]+)"`));
+  if (!found) throw new Error(`The first-visit question's check "${id}" is gone from the lesson "${lesson}"`);
+  return { id, lo: Number(found[1]), hi: Number(found[2]) };
+}
+
+// The home board's first-visit question restates this check: an 18 kg mass.
+const TASTER = { lesson: "kilogram", check: "kilogram_faded" };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
@@ -40,10 +66,54 @@ export default async function PathPage({ params }: Params) {
   // French page leads with its own tagline and intro instead.
   const english = locale === "en";
 
+  const lessons = path.cards.flatMap((c) =>
+    c.open
+      ? c.lessons.map((l) => ({
+          id: l.id,
+          title: l.title,
+          href: hrefs[l.id],
+          parts: path.lessons[l.id].steps.length,
+        }))
+      : [],
+  );
+  const markCards = path.cards
+    .filter((c) => c.kind === "card")
+    .map((c) => ({
+      id: c.id,
+      number: c.number!,
+      feeds: c.feeds,
+      lessons: c.lessons.map((l) => ({ id: l.id, checks: checksIn(path.lessons[l.id].steps) })),
+    }));
+  const names = summaries(locale);
+
   return (
     <section className="pt-12 pb-24 sm:pt-16">
       <Container className="max-w-3xl">
         <PathSwitch locale={locale} here="path" t={dict.practice.switch} />
+        <div className="mb-10">
+          <HomeBoard
+            lessons={lessons}
+            warmups={Object.fromEntries(
+              warmupUnits(locale).map((u) => [
+                u.id,
+                { title: u.title, href: localizeHref(locale, warmupPath(u.id)), parts: u.steps.length },
+              ]),
+            )}
+            challenges={Object.fromEntries(
+              challengeIds.map((id) => [
+                id,
+                { title: names[id].title, href: localizeHref(locale, challengePath(id)) },
+              ]),
+            )}
+            cards={markCards}
+            bracketId={BRACKET_ID}
+            practiceHref={localizeHref(locale, PRACTICE_ROOT)}
+            taster={band(TASTER.lesson, TASTER.check)}
+            lang={locale}
+            t={dict.board}
+            check={dict.path.check}
+          />
+        </div>
         <div className="flex flex-wrap items-center gap-2">
           <p className="eyebrow">{t.eyebrow}</p>
           <Badge variant="amber">{t.free}</Badge>
@@ -77,9 +147,14 @@ export default async function PathPage({ params }: Params) {
             cards={path.cards.filter((c) => c.kind !== "checkpoint")}
             hrefs={hrefs}
             bossHref={localizeHref(locale, challengePath(BRACKET_ID))}
+            markCards={markCards}
+            bracketId={BRACKET_ID}
+            stamps={dict.board.stamps}
             t={t}
           />
         </div>
+
+        <ProgressTools t={dict.board.keep} />
       </Container>
     </section>
   );

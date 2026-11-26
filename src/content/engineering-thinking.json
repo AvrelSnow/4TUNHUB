@@ -27,6 +27,10 @@
     "Draw a cantilever's free-body diagram and find its root moment in N·mm"
    ],
    "requires": [],
+   "feeds": [
+    "load_force",
+    "root_moment"
+   ],
    "open": true,
    "lessons": [
     {
@@ -65,6 +69,9 @@
    "requires": [
     "card-1"
    ],
+   "feeds": [
+    "allowable_stress"
+   ],
    "open": true,
    "lessons": [
     {
@@ -93,6 +100,11 @@
    "requires": [
     "card-1",
     "card-2"
+   ],
+   "feeds": [
+    "section_modulus_req",
+    "thickness_req",
+    "thickness_stock"
    ],
    "open": true,
    "lessons": [
@@ -127,6 +139,10 @@
    "requires": [
     "card-3"
    ],
+   "feeds": [
+    "tip_deflection",
+    "thickness_final"
+   ],
    "open": true,
    "lessons": [
     {
@@ -155,6 +171,7 @@
    "requires": [
     "card-1"
    ],
+   "feeds": [],
    "open": true,
    "lessons": [
     {
@@ -185,6 +202,7 @@
     "card-2",
     "card-3"
    ],
+   "feeds": [],
    "open": false,
    "lessons": []
   },
@@ -207,6 +225,7 @@
     "card-5",
     "checkpoint"
    ],
+   "feeds": [],
    "open": false,
    "lessons": []
   }

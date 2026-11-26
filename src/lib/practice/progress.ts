@@ -32,7 +32,12 @@ export type Run = {
   keys: string[];
 };
 
-export type Entry = { run?: Run; cleared?: true };
+export type Entry = {
+  run?: Run;
+  cleared?: true;
+  /** Steps ever cleared, on any numbers: what the Proven stamp counts. */
+  proved?: Record<string, true>;
+};
 export type Practice = Record<string, Entry>;
 
 const EMPTY: Practice = {};
@@ -66,6 +71,17 @@ export function readPractice(): Practice {
 export function updateEntry(id: string, change: (e: Entry) => Entry) {
   const all = readPractice();
   const next = { ...all, [id]: change(all[id] ?? {}) };
+  inMemory = next;
+  try {
+    localStorage.setItem(PRACTICE_KEY, JSON.stringify(next));
+  } catch {
+    // Kept for this visit only.
+  }
+  window.dispatchEvent(new Event(EVENT));
+}
+
+/** Everything at once: a loaded backup, or starting over. */
+export function replacePractice(next: Practice) {
   inMemory = next;
   try {
     localStorage.setItem(PRACTICE_KEY, JSON.stringify(next));
