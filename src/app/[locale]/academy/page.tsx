@@ -14,6 +14,7 @@ import { talks, TALKS_ARCHIVE_URL } from "@/lib/talks";
 import { LIBRARY_PATH } from "@/lib/lsdyna";
 import { FREE_RESOURCES_PATH } from "@/lib/free-resources";
 import { PATH_ROOT } from "@/lib/engineering-thinking";
+import { SHELF_PATH } from "@/lib/shelf";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -117,6 +118,24 @@ export default async function AcademyPage({ params }: Params) {
             );
           })}
         </div>
+
+        {/* The shelf sits under the three ways in: one wide card. */}
+        <Reveal>
+          <div className="mt-5 flex flex-col gap-6 rounded-3xl bg-surface p-7 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="eyebrow">{t.shelf.eyebrow}</p>
+              <h3 className="mt-3 text-3xl leading-tight font-bold tracking-tight text-foreground">
+                {t.shelf.title}
+              </h3>
+              <p className="mt-3 text-muted">{t.shelf.body}</p>
+            </div>
+            <div className="shrink-0">
+              <Button as="a" href={localizeHref(locale, SHELF_PATH)}>
+                {t.shelf.cta}
+              </Button>
+            </div>
+          </div>
+        </Reveal>
       </Section>
 
       {/* 2b · HOSTED IN PUBLIC — each session as a card with its picture,

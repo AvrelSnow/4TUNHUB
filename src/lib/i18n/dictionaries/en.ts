@@ -726,6 +726,13 @@ const en = {
       },
     },
 
+    shelf: {
+      eyebrow: "The Engineer's Shelf",
+      title: "Books and courses, all in one place.",
+      body: "Mechanical, electronics, maths, programming and design, in English and French. Filter until you find yours.",
+      cta: "Browse the shelf",
+    },
+
     cta: {
       title: "Hear when a course opens.",
       subtitle:
@@ -733,6 +740,55 @@ const en = {
       primary: "Join the waitlist",
       secondary: "See the projects",
     },
+  },
+
+  /** The Engineer's Shelf: books and courses behind filters. */
+  shelf: {
+    metaTitle: "The Engineer's Shelf: engineering books and courses",
+    metaDescription:
+      "Engineering books and courses in English and French, filtered by subject, language and price: mechanical, electronics, maths, programming and design.",
+    eyebrow: "Academy · The Engineer's Shelf",
+    title: "Find the book that gets you unstuck.",
+    intro:
+      "Engineering books and courses, picked for what you want to do next. Filter by subject, language and price.",
+    rule: "Books by other authors open on their owner's own page. We do not host or sell them.",
+    searchLabel: "Search the shelf",
+    searchPlaceholder: "Search: statics, Python, circuits…",
+    all: "All",
+    results: "shown",
+    reset: "Clear filters",
+    empty: "Nothing on the shelf matches that yet.",
+    noPaid: "Our paid books and courses are not out yet.",
+    joinList: "Tell me when one opens",
+    start: "Start",
+    readFree: "Read it free",
+    buy: "Buy",
+    preview: "Preview",
+    enlarge: "Enlarge the preview",
+    close: "Close",
+    filters: {
+      kind: {
+        label: "Type",
+        options: { book: "Books", course: "Courses" },
+        one: { book: "Book", course: "Course" },
+      },
+      subject: {
+        label: "Subject",
+        options: {
+          mechanical: "Mechanical",
+          electronics: "Electronics",
+          maths: "Maths and physics",
+          programming: "Programming",
+          design: "Design and drawing",
+        },
+      },
+      lang: { label: "Language", options: { en: "English", fr: "Français" } },
+      price: { label: "Price", options: { free: "Free", paid: "Paid" } },
+    },
+    ctaTitle: "Not sure where to start?",
+    ctaSubtitle: "The Academy has a guided path for beginners and a list of free places to learn.",
+    ctaPrimary: "Back to the Academy",
+    ctaSecondary: "Free places to learn",
   },
 
   /** Free resources: other people's free courses, linked, never copied. */

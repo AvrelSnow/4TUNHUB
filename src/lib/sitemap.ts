@@ -125,6 +125,13 @@ export const siteTree: SiteNode[] = [
         desc: "Branch 1 of the 4TUNHub Lab as a guided path: from a hanging load to a sized steel plate.",
       },
       {
+        key: "shelf",
+        label: "The Engineer's Shelf",
+        href: "/academy/shelf",
+        status: "active",
+        desc: "Engineering books and courses, filtered by subject, language and price.",
+      },
+      {
         key: "free-resources",
         label: "Free resources",
         href: "/academy/free-resources",
