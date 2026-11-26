@@ -144,6 +144,26 @@ export default async function ProjectDetail({ params }: Params) {
         </Container>
       </section>
 
+      {/* ANIMATION — self-hosted, nothing is downloaded until play. */}
+      {project.video && (
+        <section className="pb-24 sm:pb-32">
+          <Container>
+            <h2 className="text-display-sm text-foreground">{t.videoTitle}</h2>
+            <video
+              controls
+              playsInline
+              preload="none"
+              poster={project.video.poster}
+              aria-label={copy.title}
+              className="mt-12 aspect-video w-full rounded-3xl bg-surface"
+            >
+              <source src={project.video.src} type="video/mp4" />
+            </video>
+            {copy.videoNote && <p className="readout mt-3 text-center">{copy.videoNote}</p>}
+          </Container>
+        </section>
+      )}
+
       {/* DOCUMENTATION — every real image, each zoomable. */}
       {project.gallery && project.gallery.length > 0 && (
         <section className="bg-surface py-24 sm:py-32">
@@ -173,9 +193,9 @@ export default async function ProjectDetail({ params }: Params) {
       )}
 
       <CtaPanel
-        title={t.detail.ctaTitle}
-        subtitle={t.detail.ctaBody}
-        primary={{ label: t.detail.cta, href: localizeHref(locale, "/contact") }}
+        title={copy.ctaTitle ?? t.detail.ctaTitle}
+        subtitle={copy.ctaBody ?? t.detail.ctaBody}
+        primary={{ label: copy.cta ?? t.detail.cta, href: localizeHref(locale, "/contact") }}
         secondary={
           project.portfolioUrl
             ? { label: t.detail.portfolio, href: project.portfolioUrl, external: true }

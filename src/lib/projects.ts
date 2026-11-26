@@ -30,6 +30,10 @@ export type Project = {
   gallery?: string[];
   /** True when `image` illustrates the subject but isn't the engineer's own output. */
   imageIllustrative?: boolean;
+  /** Self-hosted animation (public/videos/…) and the still shown before it plays. */
+  video?: { src: string; poster: string };
+  /** Design work not manufactured yet: stays off the home page's "built" rail. */
+  onPaper?: boolean;
   /** Deep link to this project on the founder's personal portfolio. */
   portfolioUrl?: string;
   featured?: boolean;
@@ -114,6 +118,20 @@ export const projects: Project[] = [
     image: `${IMG}/beans-hero.webp`,
     gallery: Array.from({ length: 10 }, (_, i) => `${IMG}/beans-${i + 1}.webp`),
     portfolioUrl: `${PORTFOLIO}/project-beans-unwrapping.html`,
+  },
+  {
+    /**
+     * A freelance project. Only the 3D assembly is shown: no 2D drawings, no
+     * sizing study, no CAD downloads, no client name or workshop photos.
+     */
+    slug: "helical-gear-reducer",
+    category: "mechanical",
+    year: "2026",
+    tools: ["Reverse engineering", "SolidWorks", "AutoCAD", "Blender", "Claude"],
+    image: `${IMG}/reducer-hero.webp`,
+    gallery: Array.from({ length: 4 }, (_, i) => `${IMG}/reducer-${i + 1}.webp`),
+    video: { src: "/videos/helical-gear-reducer.mp4", poster: `${IMG}/reducer-poster.webp` },
+    onPaper: true,
   },
 ];
 

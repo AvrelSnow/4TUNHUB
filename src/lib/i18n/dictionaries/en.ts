@@ -70,7 +70,7 @@ const en = {
       camrailDesc: "His work as a senior mechanical engineer at Cameroon's national railway.",
       contact: "Contact",
       contactDesc: "Tell us about the problem. Replies within 48 hours.",
-      projectsDesc: "Six machines designed, simulated and built: the proof.",
+      projectsDesc: "Seven engineering projects, from problem to result: the proof.",
       featured: "Featured project",
       featuredCta: "Read the case study",
       communityTitle: "The community is open",
@@ -326,13 +326,46 @@ const en = {
         results:
           "A machine that meets its performance targets and can genuinely be built and maintained where it's needed. Working with Nepitimbaye, Grace and Tatsinda drove home that engineering in constrained environments has to absorb real-world unpredictability — and that setting teammates up through patient onboarding beats shouldering every task alone.",
       },
+      "helical-gear-reducer": {
+        title: "Reverse engineering of a helical gear reducer",
+        outcome:
+          "A freelance project: a two-stage reducer that arrived in pieces, with no drawings, rebuilt in 3D, checked and redesigned.",
+        problem:
+          "A freelance client brought me an industrial speed reducer. It had already been taken apart: no drawings, no record of the assembly order and, at first, not even the motor power. What remained was a set of parts, workshop photos and hand sketches. The unit had to be understood, judged and corrected.",
+        approach:
+          "I took on the mechanical engineering. We modelled every part, rebuilt the assembly and audited it piece by piece: how each shaft is guided, how every part is held, how the unit is sealed and lubricated. Claude, an AI assistant, ran the CAD and calculation tools under my direction; the engineering decisions stayed mine. We recorded the existing version with its defects before changing anything, so the comparison stays honest.",
+        results:
+          "A redesigned reducer with the same gear teeth and overall ratio, where every shaft is properly guided, retained, sealed and lubricated, documented with a complete drawing set, a sizing study and an animation. It is a design-stage result: the improved version has not yet been manufactured or tested. The real lesson: you can keep the gears and still change everything that decides whether a machine survives.",
+        videoNote: "Animation of the redesigned assembly. On-screen labels are in French.",
+        ctaTitle: "Want the drawings?",
+        ctaBody:
+          "This was a freelance project, so the 2D drawings and the sizing study are not disclosed here. If you want them, write to me directly and we will agree on the payment.",
+        cta: "Write to me",
+      },
     } as Record<
       string,
-      { title: string; outcome: string; problem: string; approach: string; results: string }
+      {
+        title: string;
+        outcome: string;
+        problem: string;
+        approach: string;
+        results: string;
+        videoNote?: string;
+        ctaTitle?: string;
+        ctaBody?: string;
+        cta?: string;
+      }
     >,
 
+    videoTitle: "The assembly in motion",
     galleryTitle: "Technical documentation",
     galleries: {
+      "helical-gear-reducer": [
+        "The redesigned reducer, closed",
+        "Cutaway of the assembly: two helical stages, input and output on one axis",
+        "First stage in mesh",
+        "Second stage: the intermediate pinion and the output wheel",
+      ],
       "fsae-race-car": ["CFD pressure field — illustrative"],
       "banana-pseudostem-shredder": [
         "A2 technical drawing — component dimensions and assembly",
@@ -1079,7 +1112,7 @@ const en = {
       },
       "case-studies": {
         title: "Project case studies",
-        desc: "Six fully documented engineering projects — problem, approach, results, drawings and analysis. A working reference library.",
+        desc: "Seven engineering projects written up — problem, approach and results. A working reference library.",
       },
       ebooks: {
         title: "Engineering e-books & guides",

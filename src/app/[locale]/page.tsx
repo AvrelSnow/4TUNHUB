@@ -61,9 +61,10 @@ export default async function Home({
   const href = (key: string) => localizeHref(locale, byKey.get(key)?.href ?? "/");
 
   // Featured work first, then the rest. Reference photos (a project with no
-  // photograph of its own) stay on their case study, out of the proof rail.
+  // photograph of its own) and designs not manufactured yet stay on their case
+  // study, out of the proof rail.
   const ordered = [...featuredProjects, ...projects.filter((p) => !p.featured)].filter(
-    (p) => p.image && !p.imageIllustrative,
+    (p) => p.image && !p.imageIllustrative && !p.onPaper,
   );
 
   return (
