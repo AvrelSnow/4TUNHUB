@@ -69,7 +69,7 @@ const fr: Dictionary = {
       camrailDesc: "Son travail d'ingénieur mécanique principal au chemin de fer national du Cameroun.",
       contact: "Contact",
       contactDesc: "Parlez-nous du problème. Réponse sous 48 heures.",
-      projectsDesc: "Six machines conçues, simulées et construites : la preuve.",
+      projectsDesc: "Sept projets d'ingénierie, du problème au résultat : la preuve.",
       featured: "Projet à la une",
       featuredCta: "Lire l'étude de cas",
       communityTitle: "La communauté est ouverte",
@@ -322,10 +322,33 @@ const fr: Dictionary = {
         results:
           "Une machine qui atteint ses objectifs de performance et peut réellement être construite et entretenue là où elle est nécessaire. Travailler avec Nepitimbaye, Grace et Tatsinda m'a montré que l'ingénierie en milieu contraint doit absorber l'imprévu — et que préparer ses coéquipiers par un accompagnement patient vaut mieux que tout porter seul.",
       },
+      "helical-gear-reducer": {
+        title: "Rétro-conception d'un réducteur à engrenages hélicoïdaux",
+        outcome:
+          "Un projet en freelance : un réducteur à deux étages arrivé en pièces, sans plans, reconstruit en 3D, vérifié et reconçu.",
+        problem:
+          "En freelance, on m'a confié un réducteur de vitesse industriel. Il était déjà démonté : aucun plan, aucune trace de l'ordre de montage et, au début, même pas la puissance du moteur. Il restait des pièces, des photos d'atelier et des croquis à la main. Il fallait comprendre la machine, la juger et la corriger.",
+        approach:
+          "J'ai pris en charge la partie mécanique. Nous avons modélisé chaque pièce, reconstitué l'assemblage et l'avons audité élément par élément : comment chaque arbre est guidé, comment chaque pièce est maintenue, comment l'ensemble est étanche et lubrifié. Claude, un assistant d'IA, a piloté les outils de CAO et de calcul sous ma direction ; les décisions d'ingénierie sont restées les miennes. La version existante a été consignée avec ses défauts avant toute modification, pour que la comparaison reste honnête.",
+        results:
+          "Un réducteur reconçu, avec les mêmes dentures et le même rapport global, où chaque arbre est correctement guidé, arrêté, étanche et lubrifié, documenté par un jeu de plans complet, une note de dimensionnement et une animation. C'est un résultat d'étude : la version améliorée n'a pas encore été fabriquée ni essayée. La vraie leçon : on peut garder les engrenages et changer tout ce qui décide de la survie d'une machine.",
+        videoNote: "Animation de l'assemblage reconçu.",
+        ctaTitle: "Vous voulez les plans ?",
+        ctaBody:
+          "C'est un projet réalisé en freelance : les plans 2D et le dimensionnement ne sont pas divulgués ici. Si vous les voulez, écrivez-moi directement et nous conviendrons du paiement.",
+        cta: "M'écrire",
+      },
     },
 
+    videoTitle: "L'assemblage en mouvement",
     galleryTitle: "Documentation technique",
     galleries: {
+      "helical-gear-reducer": [
+        "Le réducteur reconçu, fermé",
+        "Coupe de l'assemblage : deux étages hélicoïdaux, entrée et sortie sur le même axe",
+        "L'engrènement du premier étage",
+        "Deuxième étage : le pignon intermédiaire et la roue de sortie",
+      ],
       "fsae-race-car": ["Champ de pression CFD — illustratif"],
       "banana-pseudostem-shredder": [
         "Plan technique A2 — cotes et assemblage des composants",
@@ -1287,7 +1310,7 @@ const fr: Dictionary = {
       },
       "case-studies": {
         title: "Études de cas des projets",
-        desc: "Six projets d'ingénierie entièrement documentés — problème, approche, résultats, plans et analyses. Une véritable bibliothèque de référence.",
+        desc: "Sept projets d'ingénierie racontés — problème, démarche et résultats. Une véritable bibliothèque de référence.",
       },
       ebooks: {
         title: "E-books et guides d'ingénierie",
