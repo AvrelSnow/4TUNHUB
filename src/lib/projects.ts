@@ -123,6 +123,7 @@ export const projects: Project[] = [
     image: `${IMG}/beans-hero.webp`,
     /** Sheets 5 and 6 were readable drawings: now offered on request. */
     gallery: [1, 2, 3, 4, 7, 8, 9, 10].map((n) => `${IMG}/beans-${n}.webp`),
+    video: { src: "/videos/beans-unwrapping-machine.mp4", poster: `${IMG}/beans-poster.webp` },
     lockedPlans: Array.from({ length: 4 }, (_, i) => `${IMG}/beans-plan-${i + 1}.webp`),
     portfolioUrl: `${PORTFOLIO}/project-beans-unwrapping.html`,
   },

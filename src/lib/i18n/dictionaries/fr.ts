@@ -329,6 +329,7 @@ const fr: Dictionary = {
           "J'ai construit des configurations de prototype concurrentes avant de trancher, en choisissant la conception finale selon la disponibilité des matériaux et la fabricabilité. Des lames à dimensions variables à intervalles de 120° et 5 cm d'espacement ont été réglées — vitesse de rotation contre couple moteur — pour décortiquer sans casser les grains, avec une poulie double gorge répartissant l'entraînement entre moteur, arbre et ventilateur. Le moteur de 1,1 kW prévu étant indisponible, j'ai adapté la conception à un modèle alternatif sans céder sur les objectifs, et équilibré l'épaisseur d'acier face au poids pour la portabilité.",
         results:
           "Une machine qui atteint ses objectifs de performance et peut réellement être construite et entretenue là où elle est nécessaire. Travailler avec Nepitimbaye, Grace et Tatsinda m'a montré que l'ingénierie en milieu contraint doit absorber l'imprévu — et que préparer ses coéquipiers par un accompagnement patient vaut mieux que tout porter seul.",
+        videoNote: "L'animation d'origine du projet. Les textes à l'écran sont en anglais.",
         ctaTitle: "Vous voulez les plans ?",
         ctaBody:
           "Les plans 2D ne sont pas publiés ici. Si vous les voulez, écrivez-moi directement et nous conviendrons du paiement.",

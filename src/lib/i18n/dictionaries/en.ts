@@ -333,6 +333,7 @@ const en = {
           "I built competing prototype configurations before committing, choosing the final design on material availability and manufacturability. Variable-dimension blades at 120° intervals with 5 cm spacing were tuned — rotation speed against motor torque — to unwrap beans without breaking them, with a double-groove pulley partitioning drive between motor, shaft and fan. When the specified 1.1 kW motor proved unavailable, I adapted the design to an alternative while holding every performance target, and balanced steel thickness against machine weight for portability.",
         results:
           "A machine that meets its performance targets and can genuinely be built and maintained where it's needed. Working with Nepitimbaye, Grace and Tatsinda drove home that engineering in constrained environments has to absorb real-world unpredictability — and that setting teammates up through patient onboarding beats shouldering every task alone.",
+        videoNote: "The project's own animation. On-screen text is in English.",
         ctaTitle: "Want the drawings?",
         ctaBody:
           "The 2D drawings are not published here. If you want them, write to me directly and we will agree on the payment.",
