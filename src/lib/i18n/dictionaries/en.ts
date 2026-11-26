@@ -1860,6 +1860,13 @@ const en = {
           refuse: "It only exists once you open a lesson. Clearing your browser data removes it.",
         },
         {
+          what: "The tour offer, once dealt with",
+          key: "4tun.tour",
+          why: "Remembers how you answered the question offering a video tour on the home page, so you are not asked again.",
+          kept: "Your browser, on this device. It is never sent anywhere.",
+          refuse: "It only exists once you answer the question. Clearing your browser data removes it.",
+        },
+        {
           what: "Anonymous visit counting",
           key: "Umami — no cookie, nothing stored on your device",
           why: "Which pages are read, from which country, on what kind of device and which site sent you — plus four events: a waitlist signup, an application, a message sent, a library file downloaded.",
@@ -1953,6 +1960,17 @@ const en = {
       },
     ],
     contact: "Questions about any of this \u2014 write to",
+  },
+
+  /** The narrated tour offered on the home page. */
+  tour: {
+    label: "A tour of the site",
+    question: "Would you like a free tour?",
+    body: "A 90-second walkthrough of what we do and how to use the platform.",
+    note: "With sound · about 6 MB",
+    yes: "Yes, show me",
+    no: "No, thanks",
+    close: "Close",
   },
 
   stub: {

@@ -1835,6 +1835,13 @@ const fr: Dictionary = {
           refuse: "Il n'existe qu'à partir du moment où vous ouvrez une leçon. Effacer les données de votre navigateur le supprime.",
         },
         {
+          what: "La proposition de visite, une fois traitée",
+          key: "4tun.tour",
+          why: "Retient votre réponse à la question proposant une visite vidéo sur la page d'accueil, pour ne pas vous la reposer.",
+          kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
+          refuse: "Il n'existe qu'à partir du moment où vous répondez à la question. Effacer les données de votre navigateur le supprime.",
+        },
+        {
           what: "Comptage anonyme des visites",
           key: "Umami — aucun cookie, rien sur votre appareil",
           why: "Quelles pages sont lues, depuis quel pays, sur quel type d'appareil et depuis quel site — ainsi que quatre événements : une inscription à la liste, une candidature, un message envoyé, un fichier de la bibliothèque téléchargé.",
@@ -1928,6 +1935,17 @@ const fr: Dictionary = {
       },
     ],
     contact: "Une question sur tout ceci \u2014 \u00e9crivez \u00e0",
+  },
+
+  /** La visite commentée proposée sur la page d'accueil. */
+  tour: {
+    label: "Visite du site",
+    question: "Voulez-vous une visite guidée gratuite ?",
+    body: "En 90 secondes : ce que nous faisons et comment utiliser la plateforme.",
+    note: "Avec le son · environ 6 Mo",
+    yes: "Oui, montrez-moi",
+    no: "Non, merci",
+    close: "Fermer",
   },
 
   stub: {

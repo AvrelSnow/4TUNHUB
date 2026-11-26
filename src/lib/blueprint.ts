@@ -727,6 +727,13 @@ export const decisions: Decision[] = [
       "Fortune reviewed it on the Deploy Preview and did not like it. The design record stays in docs/academy-route.md, marked as removed.",
     status: "locked",
   },
+  {
+    decision:
+      "The video tour is offered, not pushed (2026-11-26): on the home page, 4 seconds after the first scroll and once the privacy bar is answered, a small corner card asks, in the page's language, whether the visitor wants a free walkthrough (yes or no). The file (about 6 MB) loads only when pressed; either answer is remembered on the device (4tun.tour).",
+    rationale:
+      "Fortune wanted a walkthrough that appears as someone starts exploring. A video that starts by itself would be silenced by the browser, cost data nobody asked to spend, and cover the page being read. The videos show the pages of PR #7, so they must be recorded again when those pages change.",
+    status: "proposed",
+  },
 ];
 
 /* ============================================================
