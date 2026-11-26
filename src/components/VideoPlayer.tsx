@@ -16,14 +16,17 @@ export function VideoPlayer({
   videoId,
   title,
   chapters,
+  autoStart = false,
   t,
 }: {
   videoId: string;
   title: string;
   chapters?: Chapter[];
+  /** Mount the player at once, for a video the visitor has just asked to watch (a session card's pop-up). */
+  autoStart?: boolean;
   t: { play: string; playerNote: string; chaptersTitle: string; chaptersHint: string };
 }) {
-  const [start, setStart] = useState<number | null>(null);
+  const [start, setStart] = useState<number | null>(autoStart ? 0 : null);
   const playing = start !== null;
   const src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&start=${start ?? 0}`;
 

@@ -1,0 +1,86 @@
+# Practice problem P004 - limits and fits (ISO 286, hole basis).
+#
+# Lab topic: reading a tolerance class and turning it into limits,
+# clearances and the kind of fit. Not a CSWA topic: this is the arithmetic
+# half of GD&T, and the part of drawing practice with the least free help.
+#
+# Every deviation below is in MICROMETRES and comes from ISO 286-2. They were
+# read from two independent published tables (they agree on every entry) and
+# rebuilt from the ISO 286-1 formulas (docs/practice-problems/verify.py).
+# The student answers in MILLIMETRES, to 3 decimals: the engine has no
+# micrometre unit, and a half-micrometre band is exactly what the table's own
+# precision allows.
+id: p004-limits-and-fits
+version: 0.1.0
+
+title:
+  en: Limits and fits
+  fr: Ajustements
+
+constants:
+  um_to_mm: 0.001
+  # "over a, up to and including b", in mm. Same values on each side of the
+  # finer splits some tables print (10-14 / 14-18, 18-24 / 24-30, ...).
+  ranges: [[3, 6], [6, 10], [10, 18], [18, 30], [30, 50], [50, 80]]
+  # class: [[upper, lower] per range above], micrometres.
+  deviations:
+    H7: [[12, 0], [15, 0], [18, 0], [21, 0], [25, 0], [30, 0]]
+    f7: [[-10, -22], [-13, -28], [-16, -34], [-20, -41], [-25, -50], [-30, -60]]
+    g6: [[-4, -12], [-5, -14], [-6, -17], [-7, -20], [-9, -25], [-10, -29]]
+    h6: [[0, -8], [0, -9], [0, -11], [0, -13], [0, -16], [0, -19]]
+    k6: [[9, 1], [10, 1], [12, 1], [15, 2], [18, 2], [21, 2]]
+    m6: [[12, 4], [15, 6], [18, 7], [21, 8], [25, 9], [30, 11]]
+    n6: [[16, 8], [19, 10], [23, 12], [28, 15], [33, 17], [39, 20]]
+    p6: [[20, 12], [24, 15], [29, 18], [35, 22], [42, 26], [51, 32]]
+
+params:
+  # Any whole size from 4 to 80 mm: each lands in one of the six verified
+  # ranges, sizes on a range edge (6, 10, 18, 30, 50, 80) included.
+  D:   { min: 4, max: 80, step: 1, unit: mm }
+  fit: { values: [H7/f7, H7/g6, H7/h6, H7/k6, H7/m6, H7/n6, H7/p6], unit: "-" }
+
+steps:
+  - id: hole_max
+    screen: limits
+    unit: mm
+    quantity: length
+    tolerance: { type: abs, value: 0.0005 }
+
+  - id: shaft_max
+    screen: limits
+    unit: mm
+    quantity: length
+    tolerance: { type: abs, value: 0.0005 }
+
+  - id: shaft_min
+    screen: limits
+    unit: mm
+    quantity: length
+    tolerance: { type: abs, value: 0.0005 }
+
+  - id: max_clearance
+    screen: fit
+    unit: mm
+    quantity: length
+    signed: true
+    tolerance: { type: abs, value: 0.0005 }
+
+  - id: min_clearance
+    screen: fit
+    unit: mm
+    quantity: length
+    signed: true
+    tolerance: { type: abs, value: 0.0005 }
+
+  - id: fit_type
+    screen: fit
+    unit: "-"
+    quantity: choice
+    tolerance: { type: exact }
+
+screens:
+  limits: { en: The limits of size, fr: Les cotes limites }
+  fit:    { en: The fit, fr: L'ajustement }
+
+attempts:
+  per_step: 3

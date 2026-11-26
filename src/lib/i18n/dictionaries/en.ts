@@ -34,7 +34,7 @@ const en = {
     careers: "Careers",
     contact: "Contact",
     cohort: "Cohort 0",
-    lsdyna: "LS-DYNA library",
+    lsdyna: "YouTube library",
     path: "Engineering Thinking",
     waitlist: "Waitlist",
     privacy: "Privacy",
@@ -685,103 +685,46 @@ const en = {
     subtitle:
       "Practical training in CAD, simulation and energy systems — taught from real delivered projects, built for engineers and students across Cameroon and beyond.",
     primaryCta: "Join the waitlist",
-    secondaryCta: "Meet the instructor",
-
-    catalogEyebrow: "Catalog",
-    catalogTitle: "Tracks you can put to work immediately.",
-    catalogIntro:
-      "Every track is hands-on and ends in a skill you can show — a part modelled, a design validated, a component rebuilt — not just a video watched.",
-    levelLabel: "Level",
-    formatLabel: "Format",
-    proofLabel: "See it applied",
-    levels: {
-      beginner: "Beginner",
-      intermediate: "Intermediate",
-      advanced: "Advanced",
-      "all-levels": "All levels",
-    } as Record<string, string>,
-    formats: {
-      online: "Online",
-      "in-person": "In person",
-      hybrid: "Online + in person",
-      workshop: "Hands-on workshop",
-    } as Record<string, string>,
-    courses: {
-      "solidworks-cad": {
-        title: "SolidWorks & CAD fundamentals",
-        outcome:
-          "Model parts and assemblies and produce clean manufacturing drawings — the core skill behind every machine in the portfolio.",
-        who: "For students and junior engineers starting out in mechanical design.",
-      },
-      "fea-simulation": {
-        title: "FEA & design validation",
-        outcome:
-          "Run finite-element analysis to test strength and stress, and catch failure points on screen before anything is cut.",
-        who: "For designers who want confidence in a part before committing to fabrication.",
-      },
-      "reverse-engineering": {
-        title: "Reverse engineering & fabrication",
-        outcome:
-          "Rebuild accurate drawings of parts that have no documentation, and take them to a design that can be built locally.",
-        who: "For technicians and engineers keeping equipment running without spares.",
-      },
-      "energy-systems": {
-        title: "Renewable energy systems",
-        outcome:
-          "Size and analyse solar and off-grid systems for real, energy-scarce conditions.",
-        who: "For engineers and entrepreneurs working on off-grid and sustainable energy.",
-      },
-    } as Record<string, { title: string; outcome: string; who: string }>,
-
-    statuses: {
-      planned: "Planned, no date yet",
-    } as Record<string, string>,
-    plannedCta: "Tell me when it opens",
+    secondaryCta: "Start free",
 
     sessions: {
-      eyebrow: "Taught before",
-      title: "Sessions already taught, in public.",
+      eyebrow: "Hosted in public",
+      title: "Sessions we hosted, on video.",
       intro:
-        "Before any course opens, these live sessions were run for the Douala City SOLIDWORKS User Group. Each one links to its own event page, so you can check it.",
+        "Before any course opens, these live sessions were run for the Douala City SOLIDWORKS User Group: each led by a certified speaker, hosted by Donfack Fortune, and recorded. Press one to watch it here, with what it covers and its chapters.",
       open: "See the session",
       archive: "The full programme",
     },
 
-    library: {
-      eyebrow: "Free · on YouTube",
-      title: "The LS-DYNA library.",
-      body: "Every LS-DYNA tutorial from the channel, in order, with the keyword decks and model files used on camera. Build the model alongside the video.",
-      cta: "Open the library",
+    start: {
+      eyebrow: "Start here",
+      title: "Pick what you want to do.",
+      intro:
+        "Three ways in, all free, none needs an account.",
+      items: {
+        path: {
+          goal: "I want to think like an engineer",
+          title: "Engineering Thinking.",
+          body: "Thirteen short lessons from the 4TUNHub Lab: turn a hanging load into a force and a moment, then size a steel plate for strength and stiffness. A check at every step, then practice on numbers of your own.",
+          cta: "Start the path",
+          alt: "The first page of the Engineering Thinking path",
+        },
+        library: {
+          goal: "I want to learn LS-DYNA",
+          title: "The YouTube library.",
+          body: "Every tutorial from the channel, in order, with the keyword decks and model files used on camera. Build the model alongside the video.",
+          cta: "Open the library",
+          alt: "A thumbnail from the 4TUNHUB channel",
+        },
+        free: {
+          goal: "I want to go further, for free",
+          title: "Free places to learn.",
+          body: "The best free courses, software and textbooks for SolidWorks, simulation and mechanics, CSWA preparation included. Each links to its owner's own page.",
+          cta: "Open the list",
+          alt: "Covers of four of the resources on the list",
+        },
+      },
     },
-    pathCard: {
-      eyebrow: "Free · guided path",
-      title: "Engineering Thinking.",
-      body: "Eleven short lessons from the 4TUNHub Lab: turn a hanging load into a force and a moment, then size a steel plate for strength and stiffness. A check at every step, no account.",
-      cta: "Start the path",
-    },
-
-    formatsEyebrow: "How you learn",
-    formatsTitle: "Built around how engineers actually learn.",
-    formatsList: [
-      {
-        title: "Online courses",
-        desc: "Self-paced modules with real exercises you complete in CAD and simulation software.",
-      },
-      {
-        title: "Live workshops",
-        desc: "Hands-on, project-based sessions — in person where possible, remote where not.",
-      },
-      {
-        title: "Cohort mentoring",
-        desc: "Small groups guided from a brief to a finished, presentable engineering deliverable.",
-      },
-    ],
-
-    instructorEyebrow: "Who teaches",
-    instructorTitle: "Taught by a working engineer and accredited educator.",
-    instructorBody:
-      "Every track is led by Donfack Fortune — a mechanical engineer and state-accredited educator who has reached 300+ students and leads the Douala SolidWorks user group. You learn the methods behind real delivered projects, not textbook abstractions.",
-    instructorCta: "Meet the founder",
 
     cta: {
       title: "Hear when a course opens.",
@@ -792,13 +735,84 @@ const en = {
     },
   },
 
-  /** The LS-DYNA library: the YouTube tutorials, with their files. */
+  /** Free resources: other people's free courses, linked, never copied. */
+  freeResources: {
+    metaTitle: "Free places to learn engineering",
+    metaDescription:
+      "Free courses, software and textbooks for SolidWorks, LS-DYNA and simulation, mechanics, drawing and CAD, free only.",
+    eyebrow: "Academy · Free resources",
+    title: "Free places to learn engineering.",
+    intro:
+      "The best free courses, software and textbooks we know for SolidWorks, simulation and mechanics. Most links go to the owner's own page; we never host anyone's course. The last section is different: shared study folders that other people collected. We did not make them and cannot vouch for them.",
+    rule: "Free offers change. If a link has moved or an offer has ended, tell us and we will fix it.",
+    open: "Open",
+    langLabel: "Taught in",
+    costs: {
+      free: "Free",
+      account: "Free account",
+      audit: "Free to audit",
+    } as Record<string, string>,
+    langs: { en: "English", fr: "Français" } as Record<string, string>,
+    groups: {
+      solidworks: {
+        title: "SolidWorks and the CSWA exam",
+        body: "Start here. SOLIDWORKS made its whole training library free in July 2026, and its student software too.",
+      },
+      francais: {
+        title: "In French",
+        body: "Free courses and guides in French. Several French university courses now exist only as archived sessions, so check each one before you plan around it.",
+      },
+      simulation: {
+        title: "LS-DYNA and simulation",
+        body: "The solver's own tutorials, free student software, and the university courses behind the method.",
+      },
+      mechanics: {
+        title: "Mechanics, materials and physics",
+        body: "The theory the software cannot do for you. French options are marked.",
+      },
+      drawing: {
+        title: "Drawing and GD&T",
+        body: "Reading and writing the language of a drawing. Lighter than a full course, but free.",
+      },
+      cad: {
+        title: "Other CAD tools",
+        body: "No powerful PC, or no licence: tools that run in a browser or offline for free.",
+      },
+      code: {
+        title: "Code, computation and AI",
+        body: "Python and MATLAB for engineers, and free courses on working with AI.",
+      },
+      folders: {
+        title: "Shared study folders",
+        body: "Google Drive folders of course files and study material that other people collected. They are not published by their owners and not hosted by 4TUNHub, so they can change or disappear, and some content may not be free to redistribute.",
+      },
+    } as Record<string, { title: string; body: string }>,
+    ctaTitle: "Want to learn it with us?",
+    ctaSubtitle:
+      "These are free to take alone. For the Academy's own material, start at the Academy.",
+    ctaPrimary: "See the Academy",
+    ctaSecondary: "YouTube library",
+  },
+
+  /** Session cards: a session we hosted, with its picture, speaker and a pop-up player. */
+  session: {
+    with: "With",
+    watch: "Watch",
+    eventPage: "Event page",
+    onYoutube: "Open on YouTube",
+    close: "Close",
+    learnTitle: "What it covers",
+    length: "Length",
+    roles: { hosted: "Hosted", cohosted: "Co-hosted", spoke: "Speaker" } as Record<string, string>,
+  },
+
+  /** The YouTube library: the YouTube tutorials, with their files. */
   library: {
-    metaTitle: "LS-DYNA tutorials and files",
+    metaTitle: "YouTube library: tutorials and files",
     metaDescription:
       "Every LS-DYNA and LS-PrePost tutorial from the @4TUNHUB channel, in order, with the keyword decks and model files used on camera. Free.",
-    eyebrow: "Academy · LS-DYNA",
-    title: "LS-DYNA, from the first mesh to a result you can trust.",
+    eyebrow: "Academy · YouTube library",
+    title: "Every tutorial, with the files used on camera.",
     intro:
       "Every tutorial from the @4TUNHUB YouTube channel, in the order to take them, with the files used on camera so you can build the model alongside. Physics first, software second. Free.",
     languageNote: "",
@@ -820,7 +834,7 @@ const en = {
     } as Record<string, { title: string; body: string }>,
     episode: "Episode",
     withFiles: "Files",
-    back: "All LS-DYNA episodes",
+    back: "All episodes",
     play: "Play the video",
     playerNote: "The video loads from YouTube only when you press play.",
     watchOnYoutube: "Watch on YouTube",
@@ -864,13 +878,15 @@ const en = {
     able: "You will be able to",
     card: "Card",
     kinds: { checkpoint: "Checkpoint", boss: "Final challenge" } as Record<string, string>,
+    bossBody: "Size the wall bracket on numbers of your own: eight answers. Checking an uploaded part file is not available here yet.",
+    bossCta: "Open the final challenge",
     lessonsCount: "{n} lessons · ~{m} min",
     lessonsDone: "{n} of {t} lessons done",
     start: "Start the path",
     resume: "Continue where you stopped",
     coming: "Coming",
     comingBody:
-      "This part ends with the 4TUNHub Lab's checker, which reads the part you model. It opens here when the checker does.",
+      "This step is not built yet.",
     opensAfter: "Opens after",
     /** Translations of the cards' words, by id; English comes from the Lab. */
     cards: {} as Record<string, { title: string; able: string[] }>,
@@ -899,6 +915,123 @@ const en = {
       empty: "Type an answer first.",
       choose: "Pick one first.",
       stamp: "In tolerance",
+    },
+  },
+
+  practice: {
+    metaTitle: "Practice: Engineering Thinking",
+    metaDescription:
+      "Free practice on numbers of your own: limits and fits, position at MMC, a solver hand check, CAD mass properties and the wall bracket. Each answer is checked, and a known slip is named.",
+    switch: { label: "Engineering Thinking", path: "Path", practice: "Practice" },
+    title: "Practice",
+    intro:
+      "Every visitor gets their own numbers. Answer, and the page checks it. No account: your work stays in this browser.",
+    steps: "{n} steps",
+    state: { new: "New", cleared: "Cleared", progress: "{n} of {t}" },
+    finalEyebrow: "Final challenge",
+    finalBody: "Eight numbers, from a hanging load to the plate you would buy. A calculator is enough. Best after cards 1 to 4.",
+    finalCta: "Open the bracket",
+    groups: {
+      calculator: { title: "A calculator is enough", body: "Drawing-office and simulation arithmetic. Works on a phone." },
+      cad: { title: "Best with SOLIDWORKS", body: "Model the part, then read its numbers from the mass properties. Working them by hand is possible too." },
+    },
+    warmup: {
+      title: "Bracket warm-up",
+      body: "Twelve short questions on a practice bracket, with the method beside them.",
+      questions: "3 questions",
+      done: "Unit done",
+      allDone: "Warm-up finished",
+      next: "Next unit",
+    },
+    honesty: "Practice only. The answers are checked in your browser, so this proves nothing to anyone but you.",
+    back: "Practice",
+    load: {
+      eyebrow: "Load test",
+      holds: "Your {t} mm bracket holds",
+      fails: "Your {t} mm plate does not pass",
+      summary:
+        "Your bracket under {m} kg, {t} mm thick: stress {s} MPa of {sa} allowed, tip sag {d} mm of {dl} allowed.",
+      stress: "Bending stress at the root",
+      sag: "Sag at the load hole",
+      of: "{a} of {b} {u}",
+      within: "within",
+      over: "over",
+      scaleTop: "{s} MPa, allowed",
+      stamp: "Load test passed",
+      failBody:
+        "A step can follow correctly from an earlier slip. Fix the earlier answer, or draw new numbers, and test again.",
+      replay: "Load it again",
+      scaleNote: "The sag is drawn {k} times larger. The dashed line is as far as the load hole may drop.",
+      theory: "Beam theory, bending only: holes and bolts ignored, the plate's own weight left out as in the brief.",
+    },
+    run: {
+      preparing: "Preparing your numbers…",
+      needsScript: "This page needs JavaScript to draw your numbers and check your answers.",
+      toAnswers: "Go to the answer boxes",
+      newNumbers: "New numbers",
+      confirmNew: "Draw new numbers? Your answers on these ones are cleared.",
+      answers: "Your answers",
+      cleared: "{n} of {t} cleared",
+      rules: "{n} tries per step on these numbers. The same answer sent twice, or one that can't be read, costs nothing.",
+      checkButton: "Check",
+      hint: "Hint:",
+      left: "Tries left on this step: {n}",
+      spent: "No tries left on this step. New numbers give you a fresh start.",
+      allClear: "Challenge cleared",
+      allClearBody: "Every step is right on these numbers. New numbers let you prove it again.",
+    },
+  },
+
+  /** The home board of Engineering Thinking: first visit, return, stamps, backup. */
+  board: {
+    tryNow: "Try one now",
+    question: "An 18 kg motor hangs from a hook. How hard does it pull?",
+    given: "Take g = 9.81 m/s². A calculator is enough.",
+    answer: "Your answer",
+    check: "Check",
+    miss: "Not yet. A mass is not a force: what turns one into the other?",
+    right: "In tolerance.",
+    rightBody: "That was your first check. The lessons build from it to a real part.",
+    start: "Start the first lesson",
+    skip: "Or go straight to the first lesson",
+    welcome: "Continue where you stopped",
+    newStamp: "New stamp: {s}",
+    stampName: "Card {c}, {level}",
+    part: "Part {n} of {t}",
+    challenge: "Practice challenge in progress",
+    allRead: "Every lesson is read",
+    allReadBody: "Practise on numbers of your own.",
+    continue: "Continue",
+    nextStamp: "Next stamp",
+    oneLesson: "1 lesson to “Seen” on card {c}",
+    lessons: "{n} lessons to “Seen” on card {c}",
+    oneCheck: "1 check to “Practised” on card {c}",
+    checks: "{n} checks to “Practised” on card {c}",
+    allStamps: "All cards Practised",
+    stampsEarned: "Stamps earned",
+    of: "{n} of {t}",
+    days: "Days you worked here",
+    levels: { seen: "Seen", practised: "Practised", proven: "Proven" },
+    assembly: "Your bracket: {n} of {t} pieces fitted",
+    stamps: {
+      label: "Stamps",
+      seen: "Seen",
+      practised: "Practised",
+      proven: "Proven",
+      notYet: "not yet",
+    },
+    keep: {
+      title: "Keep your progress",
+      body: "Your work is kept in this browser only. Clearing its data, or using another device, starts from nothing: save a file to carry it with you.",
+      save: "Save my progress",
+      load: "Load a saved file",
+      startOver: "Start over",
+      saved: "A file with your progress was saved to your downloads.",
+      loaded: "Your saved progress is back.",
+      notOurs: "That is not a progress file from this page.",
+      confirmLoad: "Replace the progress on this device with the file's?",
+      confirmReset: "Erase your lessons, answers and stamps on this device? A saved file is not affected.",
+      reset: "Progress erased. You are starting fresh.",
     },
   },
 
@@ -1050,6 +1183,26 @@ const en = {
     primaryCta: "Read The REM",
     secondaryCta: "Join the community",
 
+    studentOffer: {
+      eyebrow: "Free for students",
+      title: "Get SOLIDWORKS free.",
+      body: "SOLIDWORKS now gives qualified students its Design Standard edition at no cost. The sign-up is on SOLIDWORKS' own site: you never pay and never download from us.",
+      cta: "Student sign-up, on solidworks.com",
+      steps: [
+        { n: "1", title: "Fill the form", body: "Your school name and a few details. Under a minute." },
+        { n: "2", title: "Receive your serial number", body: "With the download link and an installation guide." },
+        { n: "3", title: "Install it", body: "On a Windows PC. Access lasts 1 year, then you sign up again." },
+      ],
+      factsTitle: "Read before you plan around it",
+      facts: [
+        "For individual students. Proof of student status may be asked.",
+        "Parts, assemblies, drawings, sheet metal and weldments. No Simulation.",
+        "No CSWA or CSWP exam voucher: exams are $99 an attempt, unless you buy the paid Premium student plan.",
+        "Windows only.",
+      ],
+      legal: "*A Dassault Systèmes brand. SOLIDWORKS is a registered trademark of Dassault Systèmes. 4TUNHub is not affiliated with Dassault Systèmes and does not host the software.",
+    },
+
     availableEyebrow: "Available now",
     availableTitle: "Start with what's already open.",
     availableIntro: "Real, published material you can use today — no sign-up wall.",
@@ -1076,6 +1229,10 @@ const en = {
       grabcad: {
         title: "CAD models on GrabCAD",
         desc: "Public 3D models and assemblies from real projects — free to download, study and reuse.",
+      },
+      "grabcad-library": {
+        title: "The GrabCAD library",
+        desc: "Millions of free CAD models from engineers worldwide: open them, take them apart, learn how they were built. Check each model's licence before reusing it.",
       },
       "case-studies": {
         title: "Project case studies",
@@ -1673,7 +1830,7 @@ const en = {
           when: "Dates to come",
         },
         lsdyna: {
-          title: "LS-DYNA library",
+          title: "YouTube library",
           desc: "Each new LS-DYNA tutorial on the @4TUNHUB channel, with the keyword decks and model files to follow along.",
           when: "Running now",
         },
@@ -1752,13 +1909,13 @@ const en = {
 
   privacy: {
     title: "Privacy",
-    updated: "Last updated 22 October 2026",
+    updated: "Last updated 24 November 2026",
     intro:
       "This site collects personal details only when you send them through a form, and stores almost nothing in your browser. This note says what we keep, why, for how long, and how to have it removed.",
     sections: [
       {
         title: "What we collect",
-        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat. The waitlist asks for an email address, a name if you care to give one, and which subjects you want to hear about. The LS-DYNA library asks for an email address before its files download: it joins the same list, for new episodes only.",
+        body: "The contact form asks for your name, your email and your message. A Cohort 0 application also asks for your WhatsApp number, your school or employer, your SolidWorks version, and why you want a seat. The waitlist asks for an email address, a name if you care to give one, and which subjects you want to hear about. The YouTube library asks for an email address before its files download: it joins the same list, for new episodes only. If you pay for a seat, Fapshi handles the payment: we see your name, the Mobile Money number that paid, the amount, the date and the payment reference, never your PIN.",
       },
       {
         title: "Why",
@@ -1766,11 +1923,11 @@ const en = {
       },
       {
         title: "Where it goes",
-        body: "Three companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, and — only if you allow it — Umami counts anonymous visits. The LS-DYNA library's videos play from YouTube, which is contacted only when you press play. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
+        body: "Four companies handle any of it, and only to do a job we asked them to do: Resend delivers form submissions to our inbox, Netlify hosts the site and keeps ordinary server logs, Fapshi processes payments for paid seats under its own privacy terms, and — only if you allow it — Umami counts anonymous visits. The YouTube library's videos, and the recorded sessions on the Academy page, play from YouTube, which is contacted only when you press play or open a session. A Cohort 0 application is also seen by MKV Academy, which runs the cohort with us; both of us may write to you about later sessions and workshops, and either will stop if you ask. Beyond that we do not sell or share your details, and we never add you to a mailing list without asking.",
       },
       {
         title: "How long we keep it",
-        body: "Applications that are not selected are deleted within three months. Participants' details are kept while the cohort runs and for twelve months after it, unless you ask us to delete them sooner.",
+        body: "Applications that are not selected are deleted within three months. Participants' details are kept while the cohort runs and for twelve months after it, unless you ask us to delete them sooner. Payment records are the exception: we keep them for ten years, as OHADA accounting rules require, and use them for nothing else.",
       },
       {
         title: "Cookies",
@@ -1808,7 +1965,7 @@ const en = {
           refuse: "Without it we would have to ask the same question on every page. Clearing your browser data removes it.",
         },
         {
-          what: "LS-DYNA library",
+          what: "YouTube library",
           key: "4tun.library",
           why: "Remembers that you already gave an address for the library's files, so every episode's files stay open without asking again.",
           kept: "Your browser, on this device. It is never sent anywhere.",
@@ -1817,9 +1974,16 @@ const en = {
         {
           what: "Your place on the guided path",
           key: "4tun.path",
-          why: "Remembers which lessons of Engineering Thinking you finished and which checks you passed, so the path picks up where you stopped.",
+          why: "Remembers which lessons of Engineering Thinking you finished, which checks you passed, the page you were on, the days you worked and the stamps you were shown, so it picks up where you stopped.",
           kept: "Your browser, on this device. It is never sent anywhere.",
-          refuse: "It only exists once you open a lesson. Clearing your browser data removes it.",
+          refuse: "It only exists once you open a lesson or a challenge, or answer a question. “Start over” on that page, or clearing your browser data, removes its contents.",
+        },
+        {
+          what: "Your practice challenges",
+          key: "4tun.practice",
+          why: "Remembers the numbers each challenge gave you, your answers and which challenges you cleared, so they are there when you come back.",
+          kept: "Your browser, on this device. It is never sent anywhere.",
+          refuse: "It only exists once you open a challenge. Clearing your browser data removes it.",
         },
         {
           what: "Anonymous visit counting",
@@ -1853,7 +2017,7 @@ const en = {
 
   terms: {
     title: "Terms of use",
-    updated: "Last updated 20 September 2026",
+    updated: "Last updated 24 November 2026",
     intro:
       "The rules of this site and of the training we run. Written plainly, because terms nobody reads protect nobody.",
     sections: [
@@ -1868,6 +2032,18 @@ const en = {
       {
         title: "A Cohort 0 seat",
         body: "Seats are free and given by selection, not by order of arrival. A seat asks three things in return: attend at least 6 of the 8 sessions, hand in the weekly exercise, and sit the final mock exam, share your score and record a short video about it. Miss them and the seat passes to the waiting list \u2014 that is the whole of it, and there is nothing to pay at any point.",
+      },
+      {
+        title: "Paying for a seat",
+        body: "No paid training is on sale yet. When it is, it will be sold at the price shown on its page at the moment you pay, in CFA francs. Payment will be by MTN Mobile Money or Orange Money through Fapshi, a Cameroonian payment provider; we do not take cards yet. The seller is Donfack Fortune, trading as 4TUNHub in a personal capacity: 4TUNHub is not yet a registered company. Your seat is confirmed when we have matched your payment to your application and written to you, normally within two working days.",
+      },
+      {
+        title: "Refunds",
+        body: "Ask within 7 days of paying, and before the second live session, and we refund the full amount. After those 7 days and before the second session, we refund half. From the second session on, there is no refund. If we cancel or postpone a cohort, you choose: the full amount back, or a seat in the next one. Refunds go back by Mobile Money to the number that paid, within 7 days of your request.",
+      },
+      {
+        title: "Pay only through this site",
+        body: "When paid places open, we will take payment only through the payment link on this site, which opens a Fapshi page. We never ask you to send money to a personal Mobile Money number, by WhatsApp message, or to anyone who contacts you saying they are us. If someone does, do not pay, and tell us.",
       },
       {
         title: "The sessions are recorded",
@@ -1895,7 +2071,7 @@ const en = {
       },
       {
         title: "What we do not promise",
-        body: "The site is provided as it is. We keep it running and correct what we find, but we do not promise it is available at every moment or free of every error. Free training is given in good faith and carries no warranty; paid work is governed by the contract signed for it, not by this page.",
+        body: "The site is provided as it is. We keep it running and correct what we find, but we do not promise it is available at every moment or free of every error. Free training is given in good faith and carries no warranty. Paid training follows the sections on paying and refunds above; other paid work is governed by the contract signed for it, not by this page.",
       },
       {
         title: "Changes, and the law that applies",

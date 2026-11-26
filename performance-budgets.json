@@ -1,7 +1,7 @@
 {
-  "$comment": "R3 — performance budgets, single source of truth. The build gate (scripts/check-bundle-size.mjs) enforces the JS sizes on every build; Lighthouse CI (.lighthouserc.json) enforces the Web Vitals at deploy. Numbers are current + headroom: today passes, regressions fail.",
+  "$comment": "R3 — performance budgets, single source of truth. The build gate (scripts/check-bundle-size.mjs) enforces the JS sizes on every build; Lighthouse CI (.lighthouserc.json) enforces the Web Vitals at deploy. Numbers are current + headroom: today passes, regressions fail. 2026-11-25: total 220 to 232 for the practice challenges (grader, seven formula sets and the runner, about 10 KB, loaded only on practice and route pages).",
   "clientJs": {
-    "totalGzipKB": 220,
+    "totalGzipKB": 232,
     "largestChunkGzipKB": 90
   },
   "webVitals": {

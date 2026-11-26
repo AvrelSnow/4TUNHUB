@@ -4,7 +4,9 @@ import { useSyncExternalStore } from "react";
 
 /**
  * Where a learner is on the path, kept on this device only: lessons
- * finished, checks passed, how far into each lesson they got. No account,
+ * finished, checks passed, how far into each lesson they got, the page they
+ * were on last, the days they finished something and the stamps already
+ * announced to them. No account,
  * nothing sent anywhere. Listed in the privacy note's storage table under
  * this key; keep the two in step.
  *
@@ -23,9 +25,24 @@ export type Progress = {
   passed: Record<string, true>;
   /** How many parts of each lesson are open. */
   parts: Record<string, number>;
+  /** The page to continue from. */
+  last?: Place;
+  /** Local dates (YYYY-MM-DD) on which something was finished. */
+  days: string[];
+  /** Stamps the home board has already announced. */
+  noted: string[];
 };
 
-const EMPTY: Progress = { seen: {}, passed: {}, parts: {} };
+export type Place = { kind: "lesson" | "warmup" | "challenge"; id: string };
+
+const EMPTY: Progress = { seen: {}, passed: {}, parts: {}, days: [], noted: [] };
+
+/** `p` with today counted. A day is only ever added: nothing can be broken. */
+export function withToday(p: Progress): Progress {
+  // en-CA writes a date as YYYY-MM-DD, in the learner's own time zone.
+  const today = new Date().toLocaleDateString("en-CA");
+  return p.days.includes(today) ? p : { ...p, days: [...p.days, today] };
+}
 
 let inMemory: Progress = EMPTY;
 let cachedRaw: string | null | undefined;
@@ -46,7 +63,14 @@ export function readProgress(): Progress {
   cachedRaw = raw;
   try {
     const parsed = JSON.parse(raw) as Partial<Progress>;
-    cached = { seen: parsed.seen ?? {}, passed: parsed.passed ?? {}, parts: parsed.parts ?? {} };
+    cached = {
+      seen: parsed.seen ?? {},
+      passed: parsed.passed ?? {},
+      parts: parsed.parts ?? {},
+      last: parsed.last,
+      days: Array.isArray(parsed.days) ? parsed.days : [],
+      noted: Array.isArray(parsed.noted) ? parsed.noted : [],
+    };
   } catch {
     cached = EMPTY;
   }

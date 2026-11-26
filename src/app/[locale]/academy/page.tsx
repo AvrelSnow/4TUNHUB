@@ -4,22 +4,27 @@ import { Section } from "@/components/ui/Section";
 import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/Button";
 import { ArrowLink } from "@/components/ui/ArrowLink";
-import { Badge } from "@/components/ui/Badge";
 import { CtaPanel } from "@/components/ui/CtaPanel";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
 import { CohortFeature } from "@/components/CohortFeature";
+import { SessionCard } from "@/components/SessionCard";
 import { EmailCaptureBand } from "@/components/EmailCaptureBand";
-import { courses } from "@/lib/academy";
 import { talks, TALKS_ARCHIVE_URL } from "@/lib/talks";
 import { LIBRARY_PATH } from "@/lib/lsdyna";
+import { FREE_RESOURCES_PATH } from "@/lib/free-resources";
 import { PATH_ROOT } from "@/lib/engineering-thinking";
-import { projectDetailPath } from "@/lib/projects";
 import { COHORT_PATH, applicationsOpen } from "@/lib/cohort";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
 import { ACADEMY_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
+
+const startCards = [
+  { key: "path", href: PATH_ROOT, image: "/images/previews/engineering-thinking.webp" },
+  { key: "library", href: LIBRARY_PATH, image: "/images/previews/youtube-library.webp" },
+  { key: "free", href: FREE_RESOURCES_PATH, image: "/images/previews/free-places.webp" },
+] as const;
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -67,7 +72,7 @@ export default async function AcademyPage({ params }: Params) {
                 {t.primaryCta}
               </Button>
             )}
-            <ArrowLink href={localizeHref(locale, "/about/founder")}>{t.secondaryCta}</ArrowLink>
+            <ArrowLink href="#start">{t.secondaryCta}</ArrowLink>
           </>
         }
       >
@@ -75,87 +80,63 @@ export default async function AcademyPage({ params }: Params) {
 
       <CohortFeature locale={locale} dict={dict} />
 
-      {/* FREE, NOW — the two things already teaching: the guided path
-          and the LS-DYNA library. */}
-      <Section rhythm="compressed" className="pt-0 sm:pt-0 lg:pt-0">
-        <div className="grid gap-5 lg:grid-cols-2">
-          {[
-            { copy: t.pathCard, href: PATH_ROOT },
-            { copy: t.library, href: LIBRARY_PATH },
-          ].map(({ copy, href }, i) => (
-            <Reveal key={href} delay={i * 80}>
-              <div className="flex h-full flex-col rounded-3xl bg-surface p-8 sm:p-10">
-                <p className="eyebrow">{copy.eyebrow}</p>
-                <h2 className="mt-3 text-4xl leading-tight font-bold tracking-tight text-foreground">{copy.title}</h2>
-                <p className="mt-4 text-lead text-muted">{copy.body}</p>
-                <div className="mt-auto pt-8">
-                  <Button as="a" href={localizeHref(locale, href)} size="lg">
-                    {copy.cta}
-                  </Button>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      {/* 2 · CATALOG */}
-      <Section tone="surface" eyebrow={t.catalogEyebrow} title={t.catalogTitle} intro={t.catalogIntro}>
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
-          {courses.map((c, i) => {
-            const copy = t.courses[c.key];
-            if (!copy) return null;
+      {/* START HERE — three ways in, by what the visitor wants to do, each
+          with a real preview: our own page, a thumbnail from the channel,
+          covers of the resources on the list. Images are ours (the CSP
+          allows none from elsewhere, and a third-party image would tell
+          that third party who is reading). */}
+      <Section
+        id="start"
+        rhythm="compressed"
+        className="pt-0 sm:pt-0 lg:pt-0"
+        eyebrow={t.start.eyebrow}
+        title={t.start.title}
+        intro={t.start.intro}
+      >
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {startCards.map(({ key, href, image }, i) => {
+            const copy = t.start.items[key];
             return (
-              <Reveal key={c.key} delay={(i % 2) * 80}>
-                <article className="flex h-full flex-col rounded-3xl bg-surface-2 p-8 sm:p-10">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Badge variant="amber">{t.statuses[c.status]}</Badge>
-                    <Badge variant="outline">{t.levels[c.level]}</Badge>
-                    <Badge variant="outline">{t.formats[c.format]}</Badge>
+              <Reveal key={key} delay={i * 80} className="h-full">
+                <div className="flex h-full flex-col overflow-hidden rounded-3xl bg-surface">
+                  <Media src={image} alt={copy.alt} className="aspect-video w-full" />
+                  <div className="flex flex-1 flex-col p-7 sm:p-8">
+                    <p className="eyebrow">{copy.goal}</p>
+                    <h3 className="mt-3 text-3xl leading-tight font-bold tracking-tight text-foreground">
+                      {copy.title}
+                    </h3>
+                    <p className="mt-3 text-muted">{copy.body}</p>
+                    <div className="mt-auto pt-7">
+                      <Button as="a" href={localizeHref(locale, href)}>
+                        {copy.cta}
+                      </Button>
+                    </div>
                   </div>
-                  <h3 className="mt-5 text-3xl font-semibold tracking-tight text-foreground">{copy.title}</h3>
-                  <p className="mt-3 text-lead text-muted">{copy.outcome}</p>
-                  <p className="mt-4 border-t border-border pt-4 text-sm leading-6 text-foreground">
-                    {copy.who}
-                  </p>
-                  <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8">
-                    <Button as="a" href={localizeHref(locale, "/waitlist?track=academy")}>
-                      {t.plannedCta}
-                    </Button>
-                    {c.proof && (
-                      <ArrowLink href={localizeHref(locale, projectDetailPath(c.proof))}>
-                        {t.proofLabel}
-                      </ArrowLink>
-                    )}
-                  </div>
-                </article>
+                </div>
               </Reveal>
             );
           })}
         </div>
       </Section>
 
-      {/* 2b · TAUGHT BEFORE — real sessions, each with the page that proves it.
-          Dates are not shown: the event pages carry them, and a wrong year
-          is worse than none (see talks.ts). */}
+      {/* 2b · HOSTED IN PUBLIC — each session as a card with its picture,
+          its speaker and a pop-up player: the recording plays here, not on
+          YouTube. Only sessions with a recording appear here.
+          Dates, speakers and chapters are in talks.ts, taken from the event
+          pages and the recordings' own descriptions. */}
       <Section eyebrow={t.sessions.eyebrow} title={t.sessions.title} intro={t.sessions.intro}>
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {talks
-            .filter((talk) => talk.lesson)
+            .filter((talk) => talk.lesson && talk.recording)
             .map((talk, i) => (
               <li key={talk.href}>
                 <Reveal delay={(i % 3) * 80} className="h-full">
-                <div className="flex h-full flex-col rounded-3xl bg-surface p-6 sm:p-7">
-                  <p className="text-2xs font-semibold tracking-wide text-accent">{talk.org}</p>
-                  <h3 className="mt-3 text-lg font-semibold leading-snug tracking-tight text-foreground">
-                    {talk.title}
-                  </h3>
-                  <div className="mt-auto pt-6">
-                    <ArrowLink href={talk.href} external>
-                      {t.sessions.open}
-                    </ArrowLink>
-                  </div>
-                </div>
+                  <SessionCard
+                    talk={talk}
+                    roleLabel={dict.session.roles[talk.role]}
+                    labels={dict.session}
+                    playerLabels={dict.library}
+                  />
                 </Reveal>
               </li>
             ))}
@@ -165,44 +146,6 @@ export default async function AcademyPage({ params }: Params) {
             {t.sessions.archive}
           </ArrowLink>
         </div>
-      </Section>
-
-      {/* 3 · HOW YOU LEARN */}
-      <Section eyebrow={t.formatsEyebrow} title={t.formatsTitle}>
-        <div className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-3">
-          {t.formatsList.map((f) => (
-            <div key={f.title} className="border-t-2 border-hue pt-6">
-              <h3 className="text-headline text-foreground">{f.title}</h3>
-              <p className="mt-3 text-muted">{f.desc}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* 4 · WHO TEACHES */}
-      <Section className="pt-0 sm:pt-0 lg:pt-0">
-        <Reveal>
-          <div className="grid items-center overflow-hidden rounded-3xl bg-surface lg:grid-cols-[minmax(0,0.8fr)_1fr]">
-            <Media
-              src="/images/founder-portrait.webp"
-              alt="Donfack Fortune"
-              responsive
-              sizes="(min-width: 1024px) 40vw, 100vw"
-              position="50% 20%"
-              className="aspect-[4/3] w-full lg:aspect-auto lg:h-full lg:min-h-[24rem]"
-            />
-            <div className="p-8 sm:p-10 lg:p-12">
-              <p className="eyebrow">{t.instructorEyebrow}</p>
-              <h2 className="mt-3 text-4xl leading-tight font-bold tracking-tight text-foreground">
-                {t.instructorTitle}
-              </h2>
-              <p className="mt-4 text-lead text-muted">{t.instructorBody}</p>
-              <ArrowLink href={localizeHref(locale, "/about/founder")} className="mt-6">
-                {t.instructorCta}
-              </ArrowLink>
-            </div>
-          </div>
-        </Reveal>
       </Section>
 
       {/* 5 · THE LIST — most people who read this page are not ready to

@@ -88,14 +88,10 @@ are not part of this batch, so open item 4 applies only once they land.
    `4TUNHub <hello@4tunhub.com>`. Until then mail goes out from Resend's
    test sender, which only reaches the Resend account's own address and
    cannot be authenticated as 4TUNHub.
-2. **Shared rate-limit store.** The window lives in memory, per function
-   instance. Netlify runs several instances and recycles them, so a patient
-   attacker can get more than 5 submissions per 10 minutes. The next step is
-   a shared window in Netlify Blobs. Deferred because it adds a dependency
-   (`@netlify/blobs`) and a network call to every submission, while current
-   volume is low and the honeypot, size limits and the now-unforgeable IP key
-   already cover the likely abuse. Revisit when payments go live or if the
-   inbox shows form spam.
+2. ~~**Shared rate-limit store.**~~ Done (R-03, deployed 2026-11-11): the window
+   lives in Netlify Blobs, shared by every instance, and the burst test on Deploy
+   Preview #2 accepted exactly 5 of 9 posts, parallel ones included. See
+   `docs/security/07-remediation-log.md`.
 3. **CSP: `script-src` keeps `'unsafe-inline'`.** Nonces are the only way to
    drop it while keeping Next's inline scripts, and the Next.js docs are
    explicit that nonces require every page to be dynamically rendered: no

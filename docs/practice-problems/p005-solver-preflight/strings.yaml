@@ -1,0 +1,113 @@
+diagnosis:
+  FP_E_NOT_CONVERTED:
+    en: >-
+      The modulus is still in GPa. One GPa is how many MPa?
+    fr: >-
+      Le module est encore en GPa. Un GPa vaut combien de MPa ?
+  FP_E_IN_PA:
+    en: >-
+      That is the modulus in pascals. The system asks for MPa, which is a million times smaller a unit.
+    fr: >-
+      C'est le module en pascals. Le système demande des MPa, une unité un million de fois plus grande.
+  FP_RHO_NOT_CONVERTED:
+    en: >-
+      The density is still in kg per cubic metre. The system counts mass in tonnes and length in millimetres.
+    fr: >-
+      La masse volumique est encore en kg par mètre cube. Le système compte la masse en tonnes et la longueur en millimètres.
+  FP_RHO_TONNE_PER_M3:
+    en: >-
+      That is tonne per cubic metre. The system needs tonne per cubic millimetre: how many cubic millimetres in a cubic metre?
+    fr: >-
+      C'est la tonne par mètre cube. Le système demande la tonne par millimètre cube : combien de millimètres cubes dans un mètre cube ?
+  FP_SPEED_IN_MM_S:
+    en: >-
+      Check the unit of your speed against the unit the step asks for.
+    fr: >-
+      Vérifiez l'unité de votre vitesse par rapport à celle demandée.
+  FP_SPEED_MIXED_UNITS:
+    en: >-
+      The modulus and the density must be in the same system before you divide them. Which two of your values are not?
+    fr: >-
+      Le module et la masse volumique doivent être dans le même système avant de les diviser. Lesquelles de vos valeurs ne le sont pas ?
+  FP_STEP_IN_MS:
+    en: >-
+      Check the unit of your time step against the unit the step asks for.
+    fr: >-
+      Vérifiez l'unité de votre pas de temps par rapport à celle demandée.
+  FP_STEP_LENGTH_UNIT:
+    en: >-
+      A length in millimetres cannot be divided by a speed in metres per second as it is. Bring them to one length unit.
+    fr: >-
+      Une longueur en millimètres ne se divise pas telle quelle par une vitesse en mètres par seconde. Ramenez-les à une même unité de longueur.
+  FP_ENERGY_IN_J:
+    en: >-
+      Check the unit of your energy against the unit the step asks for.
+    fr: >-
+      Vérifiez l'unité de votre énergie par rapport à celle demandée.
+  FP_ENERGY_NO_HALF:
+    en: >-
+      Write the kinetic energy out in full before substituting. Which factor is missing?
+    fr: >-
+      Écrivez l'énergie cinétique en entier avant de substituer. Quel facteur manque ?
+  FP_DIAMETER_AS_RADIUS:
+    en: >-
+      The volume of a sphere is written with its radius. Check which dimension you put in the formula.
+    fr: >-
+      Le volume d'une sphère s'écrit avec son rayon. Vérifiez la dimension que vous avez mise dans la formule.
+  FP_STEPS_TIME_UNITS:
+    en: >-
+      The end time and the time step are in different units. Bring them to one unit before dividing.
+    fr: >-
+      L'instant final et le pas de temps sont dans des unités différentes. Ramenez-les à une même unité avant de diviser.
+
+step:
+  E_mpa:
+    en: "1 · The modulus on the material card"
+    fr: "1 · Le module sur la carte matériau"
+  rho_tmm3:
+    en: "2 · The density on the material card"
+    fr: "2 · La masse volumique sur la carte matériau"
+  wave_speed:
+    en: "3 · The speed of a stress wave"
+    fr: "3 · La vitesse d'une onde de contrainte"
+  time_step_us:
+    en: "4 · The stable time step"
+    fr: "4 · Le pas de temps stable"
+  ball_energy:
+    en: "5 · The ball's energy at impact"
+    fr: "5 · L'énergie de la bille à l'impact"
+  n_steps:
+    en: "6 · The number of steps in the run"
+    fr: "6 · Le nombre de pas du calcul"
+
+hint:
+  E_mpa.h1:
+    en: In the system mm, tonne, second, a stress is in MPa. What is a GPa in MPa?
+    fr: Dans le système mm, tonne, seconde, une contrainte est en MPa. Que vaut un GPa en MPa ?
+  rho_tmm3.h1:
+    en: Convert the mass first, from kilograms to tonnes, then the volume, from cubic metres to cubic millimetres.
+    fr: Convertissez d'abord la masse, des kilogrammes aux tonnes, puis le volume, des mètres cubes aux millimètres cubes.
+  rho_tmm3.h2:
+    en: A cubic metre is a thousand millimetres on each of three sides.
+    fr: Un mètre cube, c'est mille millimètres sur chacun de ses trois côtés.
+  wave_speed.h1:
+    en: Both of your material numbers must be in the mm-tonne-second system before you take the square root.
+    fr: Vos deux valeurs de matériau doivent être dans le système mm-tonne-seconde avant de prendre la racine.
+  wave_speed.h2:
+    en: The result of that division is in millimetres per second. What is it in metres per second?
+    fr: Le résultat de cette division est en millimètres par seconde. Que vaut-il en mètres par seconde ?
+  time_step_us.h1:
+    en: A wave must not cross more than one element in one step. How long does it take to cross one element?
+    fr: Une onde ne doit pas traverser plus d'un élément en un pas. Combien de temps met-elle à traverser un élément ?
+  time_step_us.h2:
+    en: Use one length unit for the element and for the speed, then convert the seconds you get to microseconds.
+    fr: Utilisez une seule unité de longueur pour l'élément et pour la vitesse, puis convertissez les secondes obtenues en microsecondes.
+  ball_energy.h1:
+    en: Mass first, from the density and the volume of a sphere, then the energy.
+    fr: D'abord la masse, à partir de la masse volumique et du volume d'une sphère, puis l'énergie.
+  ball_energy.h2:
+    en: In this system the speed must be in millimetres per second for the energy to come out in N.mm.
+    fr: Dans ce système, la vitesse doit être en millimètres par seconde pour que l'énergie sorte en N.mm.
+  n_steps.h1:
+    en: The run's length divided by the length of one step, both in the same unit.
+    fr: La durée du calcul divisée par la durée d'un pas, toutes deux dans la même unité.

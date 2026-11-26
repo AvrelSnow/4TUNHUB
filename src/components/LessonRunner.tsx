@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { readNumber, readProgress, updateProgress, useProgress } from "@/lib/path-progress";
+import { readNumber, readProgress, updateProgress, useProgress, withToday } from "@/lib/path-progress";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 
 /**
@@ -86,11 +86,15 @@ export function LessonRunner({
 
   useEffect(() => {
     if (!ready || review) return;
-    updateProgress((p) => ({
-      ...p,
-      parts: { ...p.parts, [id]: shown },
-      seen: done ? { ...p.seen, [id]: true } : p.seen,
-    }));
+    updateProgress((p) => {
+      const next = {
+        ...p,
+        parts: { ...p.parts, [id]: shown },
+        seen: done ? { ...p.seen, [id]: true as const } : p.seen,
+        last: { kind: id.startsWith("warmup-") ? ("warmup" as const) : ("lesson" as const), id },
+      };
+      return done && !p.seen[id] ? withToday(next) : next;
+    });
   }, [id, shown, done, ready, review]);
 
   // ------------------------------------------------------------ checks --
@@ -129,7 +133,9 @@ export function LessonRunner({
       const go = box.querySelector<HTMLButtonElement>(".check-go");
       if (go) go.disabled = true;
       if (!box.classList.contains("is-revealed")) {
-        updateProgress((p) => ({ ...p, passed: { ...p.passed, [cid]: true } }));
+        updateProgress((p) =>
+          p.passed[cid] ? p : withToday({ ...p, passed: { ...p.passed, [cid]: true } }),
+        );
       }
       box.querySelector<HTMLElement>(".reveal")?.removeAttribute("hidden");
       const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;

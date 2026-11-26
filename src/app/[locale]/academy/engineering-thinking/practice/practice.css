@@ -1,0 +1,26 @@
+/* A learner's sheet: the Lab's brief, rendered by its own Markdown subset
+   (scripts/export-lab-challenges.py), set in the site's type and tokens. */
+
+.sheet { color: var(--color-foreground); line-height: 1.65; overflow-wrap: break-word; }
+.sheet h2 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; margin: 2rem 0 0.5rem; }
+.sheet h3 { font-size: 1.05rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
+.sheet p { margin: 0.65rem 0; }
+.sheet ul, .sheet ol { margin: 0.65rem 0; padding-left: 1.35rem; }
+.sheet ul { list-style: disc; }
+.sheet ol { list-style: decimal; }
+.sheet li { margin: 0.3rem 0; }
+.sheet code { background: var(--color-surface); border-radius: 5px; padding: 0.05em 0.35em; font-size: 0.93em; }
+.sheet blockquote { margin: 1rem 0; padding: 0.35rem 1rem; background: var(--color-surface); border-left: 3px solid var(--color-primary); border-radius: 0 12px 12px 0; }
+.sheet hr { border: 0; border-top: 1px solid var(--color-border); margin: 1.75rem 0; }
+/* display: block, because the utility class of the same name says "table". */
+.sheet .table { display: block; overflow-x: auto; }
+.sheet table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.sheet th, .sheet td { border: 1px solid var(--color-border); padding: 0.4rem 0.55rem; text-align: left; vertical-align: top; }
+.sheet th { background: var(--color-surface); }
+.sheet figure { margin: 1.25rem 0; }
+.sheet .pan { overflow-x: auto; border: 1px solid var(--color-border); border-radius: 16px; background: #fff; }
+/* A dimensioned drawing keeps its labels legible: on a phone it is swiped. */
+.sheet .pan img { display: block; width: 100%; min-width: 640px; height: auto; }
+.sheet .pan-hint { display: none; font-size: 0.8rem; color: var(--color-muted); margin-top: 0.35rem; }
+.sheet .pic img { display: block; width: 100%; max-width: 440px; height: auto; margin: 0 auto; }
+@media (max-width: 719px) { .sheet .pan-hint { display: block; } }

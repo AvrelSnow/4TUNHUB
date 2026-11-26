@@ -47,6 +47,11 @@
 .lab .step { margin: 0 0 18px; animation: lab-rise 0.45s var(--ease); scroll-margin-top: 96px; }
 @keyframes lab-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
+/* The warm-up units' tables scroll inside their own box on a phone. */
+/* display: block, because the utility class of the same name says "table". */
+.lab .table { display: block; overflow-x: auto; }
+/* A stamp lands from twice its size: never widen a phone screen for it. */
+.lab { overflow-x: clip; }
 .lab h3 { font-size: 0.875rem; font-weight: 700; letter-spacing: -0.005em; color: var(--muted); margin: 0 0 8px; }
 .lab .icon { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor;
   stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }

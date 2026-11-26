@@ -12,10 +12,11 @@ copy of the physics. The browser only compares a typed number to a band.
 Writes src/content/engineering-thinking.json. Re-run it whenever a lesson
 changes in the Lab; never edit the JSON by hand.
 
-Only cards whose lessons need nothing but a calculator are exported as
-open. A card that ends in the Lab's file checker (Card 5: the drawing and
-the STEP export), the checkpoint and the final challenge are listed with
-their promise and marked as coming: the Academy has no checker.
+The five cards are exported as open. The checkpoint (never built in the
+Lab) and the final challenge (shown by export-lab-challenges.py, in
+Practice) carry no lessons. Card 5 teaches the STEP file the Lab's checker
+reads; the Academy has no checker, so the sentences promising one are
+replaced.
 """
 
 import argparse
@@ -28,7 +29,7 @@ HERE = Path(__file__).resolve().parents[1]
 OUT = HERE / "src" / "content" / "engineering-thinking.json"
 
 # Cards that need the Lab's checker or grader stay in the Lab for now.
-LAB_ONLY = {"card-5", "checkpoint", "boss"}
+LAB_ONLY = {"checkpoint", "boss"}
 
 # The lessons were written for the Lab. These few phrases name it as the
 # place the student is; in the Academy that place is the path.
@@ -36,7 +37,25 @@ WORDING = [
     ("this Lab", "this path"),
     ("This Lab", "This path"),
     ("The Lab accepts your answer", "The final challenge accepts your answer"),
+    # Nothing here reads an uploaded file.
+    ("Model the part and send a STEP file a checker accepts", "Model the part and export it as a STEP file"),
+    ("export a STEP file the checker reads", "export it as a STEP file"),
+    ("From CAD to a file the checker reads", "From CAD to a STEP file"),
 ]
+
+# Card 5 promises an upload the Academy does not have: these paragraphs are
+# replaced in the rendered lesson, and the export stops if one has moved.
+NO_UPLOAD = "<p><em>Uploading a file to be checked is not available here yet.</em></p>"
+PROMISES = {
+    "export": [
+        (r"<p><strong>What happens after you send it\.</strong>.*?</p>", NO_UPLOAD),
+        (r"\s*The proof is the part itself: send it with the challenge\.", ""),
+    ],
+}
+
+# Said at the top of each Card 5 lesson: they describe that checker.
+CHECKER_NOTE = ("<p><em>This lesson describes an automatic file checker. "
+                "It is not available here yet.</em></p>")
 
 # A lesson step: a <section> whose class list includes `step`. Steps never
 # nest a <section>, so the first closing tag ends one.
@@ -80,10 +99,12 @@ def main(argv=None):
             "id": n["id"],
             "kind": n["kind"],
             "number": number if n["kind"] == "card" else None,
-            "title": t(n["title"], "en"),
+            "title": reword(t(n["title"], "en")),
             "need": list(t(n["need"], "en")),
-            "able": list(t(n["able"], "en")),
+            "able": [reword(x) for x in t(n["able"], "en")],
             "requires": list(n.get("requires", ())),
+            # The bracket steps this card teaches: its Proven stamp.
+            "feeds": list(n.get("feeds") or ()),
             "open": open_,
             "lessons": [],
         }
@@ -99,10 +120,17 @@ def main(argv=None):
             if not open_:
                 continue
             page = r.lesson(lid)
+            for pattern, new in PROMISES.get(lid, ()):
+                page, n_found = re.subn(pattern, new, page, count=1, flags=re.S)
+                if not n_found:
+                    print("error: lesson %s: %r has moved" % (lid, pattern), file=sys.stderr)
+                    return 1
             steps = [reword(s) for s in STEP.findall(page)]
             if not steps:
                 print("error: lesson %s rendered no steps" % lid, file=sys.stderr)
                 return 1
+            if n["id"] == "card-5":
+                steps[0] = steps[0].replace(">", ">" + CHECKER_NOTE, 1)
             lessons[lid] = {
                 "title": reword(data["title"]),
                 "minutes": int(data.get("minutes", 5)),
@@ -111,12 +139,23 @@ def main(argv=None):
             }
         cards.append(entry)
 
+    # The wall bracket in pieces, one per card. It has no words but its label,
+    # which the site supplies in both languages.
+    drawing = (p.root / "pictures" / p.spec["assembly"]).read_text(encoding="utf-8")
+    drawing = re.sub(r"<!--.*?-->", "", drawing, flags=re.S)
+    drawing = re.sub(r'\s(?:role|aria-label)="[^"]*"', "", drawing)
+    drawing = re.sub(r"\n\s*", "", drawing.strip())
+    if "data-piece" not in drawing:
+        print("error: the assembly drawing has no pieces", file=sys.stderr)
+        return 1
+
     out = {
+        "assembly": drawing,
         "source": "4TUNHUB Lab, paths/%s v%s" % (args.path, p.version),
         "title": t(p.spec["title"], "en"),
         "tagline": t(p.spec["tagline"], "en"),
         "need": list(t(p.spec["need"], "en")),
-        "able": list(t(p.spec["able"], "en")),
+        "able": [reword(x) for x in t(p.spec["able"], "en")],
         "cards": cards,
         "lessons": lessons,
     }

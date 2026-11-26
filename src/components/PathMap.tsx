@@ -4,6 +4,9 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { useProgress } from "@/lib/path-progress";
+import { usePractice } from "@/lib/practice/progress";
+import { marks, type MarkCard } from "@/lib/marks";
+import { Stamps, type StampWords } from "@/components/practice/Stamps";
 import { cn } from "@/lib/cn";
 import type { PathCard } from "@/lib/engineering-thinking";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
@@ -20,14 +23,26 @@ const fmt = (text: string, vars: Record<string, string | number>) =>
 export function PathMap({
   cards,
   hrefs,
+  bossHref,
+  markCards,
+  bracketId,
+  stamps,
   t,
 }: {
   cards: PathCard[];
   /** Lesson id → localized URL. */
   hrefs: Record<string, string>;
+  /** The final challenge, in Practice. */
+  bossHref: string;
+  /** What each card's stamps are counted from. */
+  markCards: MarkCard[];
+  bracketId: string;
+  stamps: StampWords;
   t: Dictionary["path"];
 }) {
-  const { seen, parts } = useProgress();
+  const { seen, passed } = useProgress();
+  const proved = usePractice()[bracketId]?.proved;
+  const marked = new Map(marks(markCards, seen, passed, proved ?? {}).map((x) => [x.card.id, x]));
   const label = (c: PathCard) => (c.kind === "card" ? `${t.card} ${c.number}` : (t.kinds[c.kind] ?? c.kind));
   const name = (c: PathCard) => t.cards[c.id]?.title ?? c.title;
   const ables = (c: PathCard) => t.cards[c.id]?.able ?? c.able;
@@ -36,18 +51,9 @@ export function PathMap({
     return c ? label(c) : id;
   };
 
-  // The one next lesson: the first open one not yet read to the end.
-  const order = cards.flatMap((c) => (c.open ? c.lessons.map((l) => l.id) : []));
-  const nextId = order.find((id) => !seen[id]) ?? order[0];
-  const started = order.some((id) => seen[id] || (parts[id] ?? 0) > 1);
-
   return (
     <div>
-      <Button as="a" href={hrefs[nextId]} size="lg">
-        {started ? t.resume : t.start}
-      </Button>
-
-      <ol className="relative mt-12 space-y-5 before:absolute before:top-3 before:bottom-3 before:left-[11px] before:border-l-2 before:border-dashed before:border-hairline">
+      <ol className="relative space-y-5 before:absolute before:top-3 before:bottom-3 before:left-[11px] before:border-l-2 before:border-dashed before:border-hairline">
         {cards.map((c) => {
           const done = c.lessons.filter((l) => seen[l.id]).length;
           const cleared = c.open && c.lessons.length > 0 && done === c.lessons.length;
@@ -65,12 +71,12 @@ export function PathMap({
               <div
                 className={cn(
                   "rounded-3xl border border-border bg-surface-2 p-6 shadow-e1 sm:p-7",
-                  !c.open && "opacity-70",
+                  !c.open && c.kind !== "boss" && "opacity-70",
                 )}
               >
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="eyebrow">{label(c)}</span>
-                  {c.open ? (
+                  {c.kind === "boss" ? null : c.open ? (
                     c.lessons.length > 0 && (
                       <span className="readout">
                         {fmt(t.lessonsCount, { n: c.lessons.length, m: minutes })}
@@ -81,8 +87,18 @@ export function PathMap({
                   )}
                 </div>
                 <h2 className="mt-2 text-headline text-foreground">{name(c)}</h2>
+                {marked.has(c.id) && <Stamps mark={marked.get(c.id)!} t={stamps} className="mt-3" />}
 
-                {c.open ? (
+                {c.kind === "boss" ? (
+                  <>
+                    <p className="mt-2 text-muted">{t.bossBody}</p>
+                    <div className="mt-4">
+                      <Button as="a" href={bossHref}>
+                        {t.bossCta}
+                      </Button>
+                    </div>
+                  </>
+                ) : c.open ? (
                   <>
                     <p className="mt-2 text-muted">{ables(c).join(" ")}</p>
                     <div className="mt-4 flex items-center gap-3">

@@ -1,0 +1,48 @@
+# Practice problem P003 - a plate driven by an equation. CSWA topic: global
+# variables and equations, design intent, modifying a part and reading the
+# mass again.
+id: p003-driven-plate
+version: 0.1.0
+
+title:
+  en: Driven plate
+  fr: Plaque pilotée
+
+constants:
+  pi: 3.141592653589793
+  kg_m3_to_g_mm3: 0.000001
+
+params:
+  e:   { values: [15, 20, 25],       unit: mm }
+  s:   { values: [20, 25, 30],       unit: mm }
+  n:   { values: [4, 5, 6],          unit: "-" }
+  dn:  { values: [2, 3],             unit: "-" }
+  W:   { values: [50, 60, 70],       unit: mm }
+  t:   { values: [6, 8, 10],         unit: mm }
+  d:   { values: [8, 10, 12],        unit: mm }
+  rho: { values: [2700, 7800, 7850], unit: kg/m3 }
+
+steps:
+  - id: plate_length
+    screen: design
+    unit: mm
+    quantity: length
+    tolerance: { type: abs, value: 0.01 }
+
+  - id: mass_original
+    screen: design
+    unit: g
+    quantity: mass
+    tolerance: { type: rel, value: 0.001 }
+
+  - id: mass_changed
+    screen: design
+    unit: g
+    quantity: mass
+    tolerance: { type: rel, value: 0.001 }
+
+screens:
+  design: { en: Design intent, fr: Intention de conception }
+
+attempts:
+  per_step: 3

@@ -1,0 +1,105 @@
+diagnosis:
+  FP_MMC_IS_LARGEST:
+    en: >-
+      For a hole, the maximum material condition is the size with the most material around it. Is that the largest or the smallest hole?
+    fr: >-
+      Pour un trou, le maximum de matière est la dimension où il reste le plus de matière autour. Est-ce le plus grand ou le plus petit trou ?
+  FP_VC_PIN_FORMULA:
+    en: >-
+      That is the formula for a pin. A hole's virtual condition is the size of the gauge pin that must pass through it: smaller than its MMC, not larger.
+    fr: >-
+      C'est la formule d'un arbre. La condition virtuelle d'un trou est le diamètre du calibre qui doit y passer : plus petit que son maximum de matière, pas plus grand.
+  FP_VC_FROM_LMC:
+    en: >-
+      The virtual condition starts from the size at maximum material, not from the largest size.
+    fr: >-
+      La condition virtuelle part de la dimension au maximum de matière, pas de la plus grande dimension.
+  FP_BONUS_FROM_LMC:
+    en: >-
+      The bonus grows as the hole gets larger than its MMC. Which way did you measure the departure?
+    fr: >-
+      Le bonus croît quand le trou devient plus grand que son maximum de matière. Dans quel sens avez-vous mesuré l'écart ?
+  FP_BONUS_FULL_RANGE:
+    en: >-
+      The bonus depends on the size this hole actually measures, not on the whole size range.
+    fr: >-
+      Le bonus dépend de la dimension réellement mesurée sur ce trou, pas de toute la plage de dimensions.
+  FP_NO_BONUS:
+    en: >-
+      Your zone is the stated tolerance alone. What does the modifier M add to it?
+    fr: >-
+      Votre zone est la tolérance indiquée seule. Qu'ajoute le modificateur M ?
+  FP_ZONE_FULL_RANGE:
+    en: >-
+      The zone grows by the bonus this part earned, not by the whole size range.
+    fr: >-
+      La zone augmente du bonus que cette pièce a gagné, pas de toute la plage de dimensions.
+  FP_RADIUS_NOT_DIAMETER:
+    en: >-
+      That is the distance from the true position, a radius. The tolerance zone is a diameter: compare like with like.
+    fr: >-
+      C'est la distance à la position théorique, un rayon. La zone de tolérance est un diamètre : comparez des grandeurs de même nature.
+  FP_OFFSETS_ADDED:
+    en: >-
+      The two offsets are at right angles. Combine them as the sides of a right triangle.
+    fr: >-
+      Les deux décalages sont à angle droit. Combinez-les comme les côtés d'un triangle rectangle.
+  FP_VERDICT_NO_BONUS:
+    en: >-
+      Judge the position against the zone this part is allowed, tolerance and bonus together.
+    fr: >-
+      Jugez la position par rapport à la zone admise pour cette pièce, tolérance et bonus ensemble.
+  FP_VERDICT_NO_SIZE_CHECK:
+    en: >-
+      Check the size limits before the position. A hole outside its size limits is rejected whatever its position.
+    fr: >-
+      Vérifiez les limites de dimension avant la position. Un trou hors de ses limites de dimension est rejeté quelle que soit sa position.
+
+step:
+  mmc:
+    en: "1 · The maximum material condition"
+    fr: "1 · Le maximum de matière"
+  virtual_condition:
+    en: "2 · The virtual condition"
+    fr: "2 · La condition virtuelle"
+  bonus:
+    en: "3 · The bonus tolerance"
+    fr: "3 · La tolérance bonus"
+  allowed_zone:
+    en: "4 · The position zone allowed"
+    fr: "4 · La zone de position admise"
+  position_error:
+    en: "5 · The position the part has"
+    fr: "5 · La position de la pièce"
+  verdict:
+    en: "6 · The verdict"
+    fr: "6 · Le verdict"
+
+hint:
+  mmc.h1:
+    en: A hole has the most material when it is as small as it is allowed to be.
+    fr: Un trou a le plus de matière quand il est aussi petit que permis.
+  virtual_condition.h1:
+    en: The virtual condition is the worst-case size the mating part sees. A bigger position tolerance makes the hole behave as a smaller one.
+    fr: La condition virtuelle est la dimension du pire cas pour la pièce qui s'y engage. Une tolérance de position plus grande fait se comporter le trou comme un trou plus petit.
+  virtual_condition.h2:
+    en: Start from the MMC size and apply the position tolerance in the direction that tightens the hole.
+    fr: Partez du maximum de matière et appliquez la tolérance de position dans le sens qui resserre le trou.
+  bonus.h1:
+    en: The tolerance applies in full at MMC. As the hole grows, how much more room does the pin have?
+    fr: La tolérance s'applique en entier au maximum de matière. Quand le trou grossit, de combien la place du pin augmente-t-elle ?
+  bonus.h2:
+    en: The bonus is the actual size minus the MMC size.
+    fr: Le bonus est la dimension réelle moins la dimension au maximum de matière.
+  allowed_zone.h1:
+    en: Add what you found in the previous step to the stated tolerance.
+    fr: Ajoutez ce que vous avez trouvé à l'étape précédente à la tolérance indiquée.
+  position_error.h1:
+    en: The axis is off by a distance in a plane. Which distance, and is it a radius or a diameter?
+    fr: L'axe est décalé d'une distance dans un plan. Quelle distance, et est-ce un rayon ou un diamètre ?
+  position_error.h2:
+    en: The distance is the hypotenuse of the two offsets. Double it to get the diameter of the circle.
+    fr: La distance est l'hypoténuse des deux décalages. Doublez-la pour obtenir le diamètre du cercle.
+  verdict.h1:
+    en: Two questions in order. Is the size inside its limits? If so, is the position error inside the zone allowed?
+    fr: Deux questions dans l'ordre. La dimension est-elle dans ses limites ? Si oui, l'erreur de position est-elle dans la zone admise ?

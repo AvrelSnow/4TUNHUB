@@ -1,0 +1,1869 @@
+{
+ "source": "4TUNHUB Lab, challenges/",
+ "status": {
+  "correct": {
+   "en": "Correct",
+   "fr": "Correct"
+  },
+  "correct_method": {
+   "en": "Correct from your own earlier answer - fix the earlier step and this one follows",
+   "fr": "Correct à partir de votre réponse précédente - corrigez l'étape antérieure et celle-ci suivra"
+  },
+  "wrong": {
+   "en": "Not correct",
+   "fr": "Incorrect"
+  },
+  "not_attempted": {
+   "en": "Not answered",
+   "fr": "Sans réponse"
+  }
+ },
+ "noDiagnosis": {
+  "en": "This is not the expected result. Re-read your working for this step, then try again.",
+  "fr": "Ce n'est pas le résultat attendu. Relisez votre raisonnement pour cette étape, puis réessayez."
+ },
+ "challenges": {
+  "001-bracket": {
+   "id": "001-bracket",
+   "version": "1.1.0",
+   "title": {
+    "en": "Wall bracket",
+    "fr": "Console murale"
+   },
+   "constants": {
+    "g": 9.81,
+    "material": "S235",
+    "Re": 235.0,
+    "E": 210000.0,
+    "rho": 7850.0,
+    "deflection_denominator": 300,
+    "stock": [
+     6,
+     8,
+     10,
+     12,
+     15,
+     20
+    ],
+    "d_bolt": 11.0,
+    "d_load": 13.0,
+    "min_pitch_factor": 2.2,
+    "self_weight_max_share": 0.025,
+    "decision_margin": 0.01
+   },
+   "params": {
+    "m": {
+     "min": 40,
+     "max": 150,
+     "step": 5,
+     "unit": "kg"
+    },
+    "b": {
+     "values": [
+      60,
+      65,
+      70
+     ],
+     "unit": "mm"
+    },
+    "L": {
+     "min": 600,
+     "max": 800,
+     "step": 25,
+     "unit": "mm"
+    },
+    "n": {
+     "values": [
+      2.0,
+      2.5,
+      3.0
+     ],
+     "unit": "-"
+    },
+    "p_h": {
+     "min": 70,
+     "max": 90,
+     "step": 5,
+     "unit": "mm"
+    }
+   },
+   "attempts": 3,
+   "steps": [
+    {
+     "id": "load_force",
+     "unit": "N",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.01
+     }
+    },
+    {
+     "id": "root_moment",
+     "unit": "N.mm",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.03
+     }
+    },
+    {
+     "id": "allowable_stress",
+     "unit": "MPa",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.01
+     }
+    },
+    {
+     "id": "section_modulus_req",
+     "unit": "mm3",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.03
+     }
+    },
+    {
+     "id": "thickness_req",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.03
+     }
+    },
+    {
+     "id": "thickness_stock",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "exact"
+     }
+    },
+    {
+     "id": "tip_deflection",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.03
+     }
+    },
+    {
+     "id": "thickness_final",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "exact"
+     }
+    }
+   ],
+   "strings": {
+    "step": {
+     "load_force": {
+      "en": "1 · The force on the bracket",
+      "fr": "1 · La force sur la console"
+     },
+     "root_moment": {
+      "en": "2 · The bending moment at the wall",
+      "fr": "2 · Le moment de flexion à l'encastrement"
+     },
+     "allowable_stress": {
+      "en": "3 · The allowable stress",
+      "fr": "3 · La contrainte admissible"
+     },
+     "section_modulus_req": {
+      "en": "4 · The section modulus required",
+      "fr": "4 · Le module de flexion requis"
+     },
+     "thickness_req": {
+      "en": "5 · The thickness required",
+      "fr": "5 · L'épaisseur requise"
+     },
+     "thickness_stock": {
+      "en": "6 · The stock thickness for strength",
+      "fr": "6 · L'épaisseur du catalogue pour la résistance"
+     },
+     "tip_deflection": {
+      "en": "7 · The deflection at the free end",
+      "fr": "7 · La flèche à l'extrémité libre"
+     },
+     "thickness_final": {
+      "en": "8 · The thickness you will buy",
+      "fr": "8 · L'épaisseur que vous achèterez"
+     }
+    },
+    "diagnosis": {
+     "FP_MASS_AS_FORCE": {
+      "en": "You have given the mass, not the force it produces. A weight is a mass times the acceleration of gravity.",
+      "fr": "Vous avez donné la masse, et non la force qu'elle produit. Un poids est une masse multipliée par l'accélération de la pesanteur."
+     },
+     "FP_SF_APPLIED_TO_LOAD": {
+      "en": "You have applied the safety factor to the load. This brief applies it to the allowable stress in step 3. Both conventions are valid; use the one the brief asks for.",
+      "fr": "Vous avez appliqué le coefficient de sécurité à la charge. Cet énoncé l'applique à la contrainte admissible, à l'étape 3. Les deux conventions sont valables ; utilisez celle de l'énoncé."
+     },
+     "FP_HALF_LENGTH": {
+      "en": "You have used half the length as the lever arm. That is the lever arm of a load hanging at mid-span. Re-read where this brief puts the load.",
+      "fr": "Vous avez pris la moitié de la longueur comme bras de levier. C'est le bras de levier d'une charge suspendue à mi-portée. Relisez où l'énoncé place la charge."
+     },
+     "FP_SIMPLY_SUPPORTED": {
+      "en": "You have used the mid-span moment of a beam resting on two supports. This beam is held at one end only.",
+      "fr": "Vous avez utilisé le moment à mi-portée d'une poutre sur deux appuis. Cette poutre n'est tenue qu'à une seule extrémité."
+     },
+     "FP_UDL_CANTILEVER": {
+      "en": "You have treated the load as spread along the beam. The brief hangs it at one point.",
+      "fr": "Vous avez traité la charge comme répartie le long de la poutre. L'énoncé la suspend en un seul point."
+     },
+     "FP_SF_MULTIPLIED": {
+      "en": "You have multiplied the yield strength by the safety factor. A safety factor makes the allowable stress smaller than the yield strength, not larger.",
+      "fr": "Vous avez multiplié la limite élastique par le coefficient de sécurité. Un coefficient de sécurité rend la contrainte admissible inférieure à la limite élastique, et non supérieure."
+     },
+     "FP_SF_IGNORED": {
+      "en": "You have used the yield strength itself as the allowable stress. The brief gives a safety factor; step 3 is where it is applied.",
+      "fr": "Vous avez pris la limite élastique elle-même comme contrainte admissible. L'énoncé donne un coefficient de sécurité ; l'étape 3 est là où il s'applique."
+     },
+     "FP_Z_MULTIPLIED": {
+      "en": "You have multiplied the moment by the allowable stress. Check the units of what you obtained against the units asked for.",
+      "fr": "Vous avez multiplié le moment par la contrainte admissible. Comparez les unités de votre résultat à celles demandées."
+     },
+     "FP_Z_INVERTED": {
+      "en": "You have divided the allowable stress by the moment. Check the units of what you obtained against the units asked for.",
+      "fr": "Vous avez divisé la contrainte admissible par le moment. Comparez les unités de votre résultat à celles demandées."
+     },
+     "FP_WRONG_AXIS": {
+      "en": "You have bent the plate about the wrong axis - as if it were lying flat rather than standing on edge. Look again at which dimension is the depth of the beam and which is its thickness.",
+      "fr": "Vous avez fléchi la plaque autour du mauvais axe - comme si elle était posée à plat au lieu d'être sur chant. Regardez à nouveau quelle dimension est la hauteur de la poutre et laquelle est son épaisseur."
+     },
+     "FP_NO_FACTOR_6": {
+      "en": "A factor has been lost between the section modulus and the thickness. Write the formula for the section modulus of a rectangle and invert it symbolically before putting numbers in.",
+      "fr": "Un facteur s'est perdu entre le module de flexion et l'épaisseur. Écrivez la formule du module de flexion d'un rectangle et inversez-la symboliquement avant d'y mettre des nombres."
+     },
+     "FP_USED_I_AS_Z": {
+      "en": "You have inverted the second moment of area instead of the section modulus. They are not the same quantity - check which one the previous step produced.",
+      "fr": "Vous avez inversé le moment quadratique au lieu du module de flexion. Ce ne sont pas les mêmes grandeurs - vérifiez laquelle l'étape précédente a produite."
+     },
+     "FP_DEFL_SIMPLY_SUPPORTED": {
+      "en": "You have used the deflection formula for a beam resting on two supports. This beam is held at one end only.",
+      "fr": "Vous avez utilisé la formule de flèche d'une poutre sur deux appuis. Cette poutre n'est tenue qu'à une seule extrémité."
+     },
+     "FP_DEFL_UDL": {
+      "en": "You have used the deflection formula for a load spread along the beam. The brief hangs it at one point.",
+      "fr": "Vous avez utilisé la formule de flèche d'une charge répartie le long de la poutre. L'énoncé la suspend en un seul point."
+     },
+     "FP_DEFL_NO_3": {
+      "en": "A constant is missing from the denominator of your deflection formula. Write it out in full before substituting.",
+      "fr": "Une constante manque au dénominateur de votre formule de flèche. Écrivez-la en entier avant de substituer."
+     },
+     "FP_I_WRONG_AXIS": {
+      "en": "Your second moment of area is about the wrong axis - as if the plate were lying flat rather than standing on edge. Which dimension is cubed, and why?",
+      "fr": "Votre moment quadratique est pris autour du mauvais axe - comme si la plaque était posée à plat au lieu d'être sur chant. Quelle dimension est au cube, et pourquoi ?"
+     },
+     "FP_ROUNDED_DOWN": {
+      "en": "You have chosen a stock thickness below your own requirement. A plate thinner than required does not become adequate by being on the price list.",
+      "fr": "Vous avez choisi une épaisseur de stock inférieure à votre propre exigence. Une plaque plus mince que nécessaire ne devient pas suffisante parce qu'elle figure au catalogue."
+     },
+     "FP_IGNORED_DEFLECTION": {
+      "en": "Your final thickness is the one strength alone asked for. This bracket has a second requirement, and on these numbers it is the one that decides.",
+      "fr": "Votre épaisseur finale est celle qu'exigeait la résistance seule. Cette console a une seconde exigence, et avec ces valeurs c'est elle qui décide."
+     }
+    },
+    "hint": {
+     "load_force.h1": {
+      "en": "Read the brief again. What does it hang from the bracket, and what does that quantity weigh?",
+      "fr": "Relisez l'énoncé. Qu'est-ce qui est suspendu à la console, et combien cette quantité pèse-t-elle ?"
+     },
+     "load_force.h2": {
+      "en": "A mass and the force it exerts are different quantities with different units. Which of the two does this step ask for?",
+      "fr": "Une masse et la force qu'elle exerce sont deux grandeurs différentes, avec des unités différentes. Laquelle cette étape demande-t-elle ?"
+     },
+     "load_force.h3": {
+      "en": "A weight is a mass multiplied by the acceleration of gravity. The brief gives you both.",
+      "fr": "Un poids est une masse multipliée par l'accélération de la pesanteur. L'énoncé vous donne les deux."
+     },
+     "root_moment.h1": {
+      "en": "A bending moment is a force multiplied by a distance. Which distance does this brief give you?",
+      "fr": "Un moment de flexion est une force multipliée par une distance. Quelle distance l'énoncé vous donne-t-il ?"
+     },
+     "root_moment.h2": {
+      "en": "Look at where the load hangs and where the plate is held. The lever arm is the distance between those two places.",
+      "fr": "Regardez où la charge est suspendue et où la plaque est tenue. Le bras de levier est la distance entre ces deux endroits."
+     },
+     "root_moment.h3": {
+      "en": "For a beam held at one end and loaded at the other, the bending moment at the support is the load multiplied by the whole projection.",
+      "fr": "Pour une poutre tenue à une extrémité et chargée à l'autre, le moment de flexion à l'encastrement vaut la charge multipliée par toute la portée en porte-à-faux."
+     },
+     "allowable_stress.h1": {
+      "en": "What is a safety factor for, and which quantity does this brief apply it to?",
+      "fr": "À quoi sert un coefficient de sécurité, et à quelle grandeur l'énoncé l'applique-t-il ?"
+     },
+     "allowable_stress.h2": {
+      "en": "The allowable stress is what you permit the material to carry. It is not the stress at which the material yields.",
+      "fr": "La contrainte admissible est celle que vous autorisez dans le matériau. Ce n'est pas celle à laquelle il plastifie."
+     },
+     "allowable_stress.h3": {
+      "en": "Divide the yield strength by the safety factor. The brief fixes that convention in its given data, and says so.",
+      "fr": "Divisez la limite élastique par le coefficient de sécurité. L'énoncé fixe cette convention dans ses données, et le dit."
+     },
+     "section_modulus_req.h1": {
+      "en": "Write down the relationship between bending stress, bending moment and section modulus before you substitute anything into it.",
+      "fr": "Écrivez la relation entre contrainte de flexion, moment de flexion et module de flexion avant d'y substituer quoi que ce soit."
+     },
+     "section_modulus_req.h2": {
+      "en": "Bending stress is the moment divided by the section modulus. You know the moment, and you know the stress you are willing to allow.",
+      "fr": "La contrainte de flexion est le moment divisé par le module de flexion. Vous connaissez le moment, et la contrainte que vous vous autorisez."
+     },
+     "section_modulus_req.h3": {
+      "en": "Rearrange that relationship for the section modulus. Then check the units of your answer: a section modulus has the units of a volume.",
+      "fr": "Réarrangez cette relation pour isoler le module de flexion. Vérifiez ensuite les unités : un module de flexion a les unités d'un volume."
+     },
+     "thickness_req.h1": {
+      "en": "Which dimension of the plate resists this bending, and which one barely contributes? Look at how the plate is mounted.",
+      "fr": "Quelle dimension de la plaque résiste à cette flexion, et laquelle n'y contribue presque pas ? Regardez comment la plaque est montée."
+     },
+     "thickness_req.h2": {
+      "en": "The plate stands on edge. Its depth is the beam's depth and its thickness is the beam's breadth, and the section modulus does not treat those two the same way.",
+      "fr": "La plaque est montée sur chant. Sa hauteur est la hauteur de la poutre et son épaisseur en est la largeur : le module de flexion ne traite pas ces deux dimensions de la même façon."
+     },
+     "thickness_req.h3": {
+      "en": "For a rectangle bending about the axis across its depth, the section modulus is the breadth times the depth squared, over six. You know the depth, and you know the section modulus you need.",
+      "fr": "Pour un rectangle fléchi autour de l'axe perpendiculaire à sa hauteur, le module de flexion vaut la largeur par la hauteur au carré, divisé par six. Vous connaissez la hauteur, et le module qu'il vous faut."
+     },
+     "thickness_stock.h1": {
+      "en": "You cannot buy a plate of any thickness you like. Read the list of stock sizes in the brief.",
+      "fr": "On n'achète pas une plaque de l'épaisseur que l'on veut. Relisez la liste des épaisseurs disponibles dans l'énoncé."
+     },
+     "thickness_stock.h2": {
+      "en": "A plate thinner than your requirement does not become adequate by being on the price list. Which way do you round?",
+      "fr": "Une plaque plus mince que votre exigence ne devient pas suffisante parce qu'elle figure au catalogue. Dans quel sens arrondissez-vous ?"
+     },
+     "thickness_stock.h3": {
+      "en": "Take the smallest size on the stock list that is at least your required thickness.",
+      "fr": "Prenez la plus petite épaisseur du catalogue qui soit au moins égale à votre épaisseur requise."
+     },
+     "tip_deflection.h1": {
+      "en": "Several deflection formulas exist and they differ by a constant. Which one describes a beam held at one end, loaded at the free end?",
+      "fr": "Il existe plusieurs formules de flèche, et elles diffèrent par une constante. Laquelle décrit une poutre tenue à une extrémité et chargée à l'extrémité libre ?"
+     },
+     "tip_deflection.h2": {
+      "en": "The deflection depends on the second moment of area of the section you actually chose to buy, not of the thickness you calculated.",
+      "fr": "La flèche dépend du moment quadratique de la section que vous avez réellement choisie d'acheter, et non de l'épaisseur que vous aviez calculée."
+     },
+     "tip_deflection.h3": {
+      "en": "For this beam the free-end deflection is the load times the projection cubed, over three times the elastic modulus times the second moment of area - and that second moment is taken about the same axis you used for the section modulus.",
+      "fr": "Pour cette poutre, la flèche à l'extrémité libre vaut la charge par la portée au cube, divisée par trois fois le module d'élasticité fois le moment quadratique - ce moment étant pris autour du même axe que celui du module de flexion."
+     },
+     "thickness_final.h1": {
+      "en": "You have checked one condition. The brief asks for a second one: find it, and check it too.",
+      "fr": "Vous avez vérifié une condition. L'énoncé en demande une seconde : trouvez-la, et vérifiez-la aussi."
+     },
+     "thickness_final.h2": {
+      "en": "The plate you chose for strength is not automatically stiff enough. Compare the deflection it gives against the limit the brief sets.",
+      "fr": "La plaque choisie pour la résistance n'est pas automatiquement assez rigide. Comparez la flèche qu'elle donne à la limite fixée par l'énoncé."
+     },
+     "thickness_final.h3": {
+      "en": "The answer is the smallest stock size that satisfies both conditions at once. If the size you chose for strength does not pass the deflection limit, step up the list until one does.",
+      "fr": "La réponse est la plus petite épaisseur du catalogue qui satisfait les deux conditions à la fois. Si celle choisie pour la résistance ne respecte pas la limite de flèche, remontez la liste jusqu'à ce qu'une épaisseur convienne."
+     }
+    }
+   },
+   "brief": {
+    "en": "<blockquote><p><strong>These numbers are yours.</strong> Ask for new numbers and this sheet changes with them.</p></blockquote>\n<hr>\n<h2>1 · The job</h2>\n<p>A small machine shop is putting a chain hoist over its workbench, so that nobody has to lift gearbox housings and motors by hand any more. The hoist will hang from a steel bracket bolted to the face of a column. The heaviest thing it will ever lift is <strong>{{m}} kg</strong>.</p>\n<p>You are the engineer. The workshop will cut, drill and bolt up exactly what you tell them to.</p>\n<figure class=\"pic\" role=\"img\" aria-label=\"The situation: a steel column in a workshop, a flat steel plate bolted to its face, a chain hoist hanging near the plate&#x27;s free end and lifting a load of mass m, a person beside it for scale. L runs from the centre of the bolts to the load hole.\"><img data-drawing=\"pictures/situation.svg\" alt=\"The situation: a steel column in a workshop, a flat steel plate bolted to its face, a chain hoist hanging near the plate&#x27;s free end and lifting a load of mass m, a person beside it for scale. L runs from the centre of the bolts to the load hole.\"></figure>\n<p>The bracket is <strong>one flat steel plate</strong>, standing on edge in a vertical plane. Four bolts pass <strong>through the plate</strong> into the column. A fifth, larger hole near the free end takes the hoist's shackle.</p>\n<p>Too thin, and the plate bends for good, or sags until the hoist hangs crooked. Too thick, and it is heavier, dearer and harder to drill than it needs to be. Everything about the bracket is fixed except one thing: <strong>how thick the plate is.</strong> That is the engineering decision, and it is the one thing being assessed.</p>\n<blockquote><p><strong>You answer eight questions</strong> under this sheet. Modelling the part is good practice; checking an uploaded file is not available here yet.</p></blockquote>\n<hr>\n<h2>2 · The drawing</h2>\n<figure role=\"img\" aria-label=\"Dimensioned schematic of the bracket: front elevation and edge view\"><div class=\"pan\"><img data-drawing=\"drawing.svg\" alt=\"Dimensioned schematic of the bracket: front elevation and edge view\"></div><figcaption class=\"pan-hint\">Swipe sideways to see the whole drawing.</figcaption></figure>\n<p><strong>Not to scale.</strong> The proportions are drawn for legibility; the numbers govern.</p>\n<p><strong>The free end is deliberately vague.</strong> Everything beyond the load hole is drawn as a break, with one possible end shape ghosted in. That is your choice to make — see §8.</p>\n<hr>\n<h2>3 · Your numbers</h2>\n<div class=\"table\"><table><thead><tr><th></th><th>Symbol</th><th>Value</th></tr></thead><tbody><tr><td>Hanging mass</td><td><code>m</code></td><td><strong>{{m}} kg</strong></td></tr><tr><td>Projection, bolt-pattern centre to load-hole centre</td><td><code>L</code></td><td><strong>{{L}} mm</strong></td></tr><tr><td>Plate depth — the vertical dimension</td><td><code>b</code></td><td><strong>{{b}} mm</strong></td></tr><tr><td>Safety factor</td><td><code>n</code></td><td><strong>{{n}}</strong></td></tr><tr><td>Bolt pattern, horizontal pitch</td><td><code>p_h</code></td><td><strong>{{p_h}} mm</strong></td></tr><tr><td>Bolt pattern, vertical pitch</td><td><code>p_v</code></td><td><strong>{{p_v}} mm</strong></td></tr></tbody></table></div>\n<h2>4 · Fixed for everyone</h2>\n<div class=\"table\"><table><thead><tr><th></th><th>Symbol</th><th>Value</th></tr></thead><tbody><tr><td>Gravity</td><td><code>g</code></td><td>9.81 m/s²</td></tr><tr><td>Material</td><td>—</td><td>S235 structural steel</td></tr><tr><td>Yield strength</td><td><code>Re</code></td><td>235 MPa</td></tr><tr><td>Young's modulus</td><td><code>E</code></td><td>210 000 MPa</td></tr><tr><td>Density</td><td><code>ρ</code></td><td>7850 kg/m³</td></tr><tr><td>Maximum tip deflection</td><td><code>δ_limit</code></td><td><strong>L / 300</strong></td></tr><tr><td>Bolt hole diameter</td><td><code>d_bolt</code></td><td>⌀{{d_bolt}} mm</td></tr><tr><td>Load hole diameter</td><td><code>d_load</code></td><td>⌀{{d_load}} mm</td></tr><tr><td>Plate thicknesses you can buy</td><td>—</td><td>6, 8, 10, 12, 15, 20 mm</td></tr></tbody></table></div>\n<hr>\n<h2>5 · Where each dimension is measured from</h2>\n<p>Read this before you model anything. Most failed geometry checks are not bad modelling — they are a dimension measured from the wrong place.</p>\n<div class=\"table\"><table><thead><tr><th>Dimension</th><th>Measured from</th><th>Measured to</th></tr></thead><tbody><tr><td><code>L</code></td><td>the <strong>centre of the four-bolt pattern</strong> — datum <strong>B</strong> on the drawing</td><td>the <strong>centre of the load hole</strong></td></tr><tr><td><code>b</code></td><td>one long edge of the plate</td><td>the other long edge</td></tr><tr><td><code>t</code></td><td>one plate face</td><td>the other plate face</td></tr><tr><td><code>p_h</code></td><td>a bolt-hole centre</td><td>the <strong>horizontally</strong> adjacent bolt-hole centre</td></tr><tr><td><code>p_v</code></td><td>a bolt-hole centre</td><td>the <strong>vertically</strong> adjacent bolt-hole centre</td></tr></tbody></table></div>\n<p><strong><code>L</code> is not measured from the column face.</strong> The bolt pattern has a centre, and that centre is where the projection starts. This is the most common way to get the part wrong, and it costs nothing to get right — but only if you read it now rather than afterwards.</p>\n<p><strong>We measure distances between features, never positions in space.</strong> So it does not matter where your origin is, which way round you modelled the part, or which axis you called up. Model it however is comfortable.</p>\n<hr>\n<h2>6 · Two rules about method</h2>\n<p>Read these twice. They are the two places where a competent engineer can reasonably do something different from what we are asking, and we need everyone doing the same thing so the numbers can be checked.</p>\n<p><strong>1 · Apply the safety factor to the allowable stress, not to the load.</strong></p>\n<p>Use <code>σ_allow = Re / n</code>, with the real load <code>W = m·g</code>.</p>\n<p>Factoring the load instead and using the full yield strength gets you to the same thickness, and it is not wrong engineering — but it is not what this brief asks for, and your step-by-step answers will not match.</p>\n<p><strong>2 · Neglect the bracket's own weight.</strong></p>\n<p>Take the hanging mass as the only load. The plate's own weight accounts for at most 2.5% of the moment on your numbers, and we leave it out to keep the chain clean.</p>\n<p>If you include it anyway you will still pass. We would rather accept work that is more careful than we asked for than punish you for it.</p>\n<hr>\n<h2>7 · The eight questions</h2>\n<p>Work them on paper first, in order. Each is one line of arithmetic, and each answer feeds the next. The answer boxes call them steps 1 to 8. Under each group is the card of Branch 1 that teaches it, on the path.</p>\n<h3>Questions 1 and 2 · What the load does</h3>\n<figure class=\"pic\" role=\"img\" aria-label=\"Questions 1 and 2: the load W hangs at the tip, a distance L from the centre of the bolts, and tries to turn the bracket about its root with a moment M.\"><img data-drawing=\"pictures/step-load.svg\" alt=\"Questions 1 and 2: the load W hangs at the tip, a distance L from the centre of the bolts, and tries to turn the bracket about its root with a moment M.\"></figure>\n<p><strong>1 · How hard does the load pull down on the bracket?</strong> A force, in <strong>N</strong>.</p>\n<p><strong>2 · How hard does that force try to turn the bracket about its bolts?</strong> The bending moment at the root, where the plate meets the column, in <strong>N·mm</strong>.</p>\n<p><em>Learn it: Card 1, Forces and moments.</em></p>\n<h3>Questions 3 to 6 · How thick, to be strong enough</h3>\n<figure class=\"pic\" role=\"img\" aria-label=\"Questions 3 to 6: the plate&#x27;s section at the root stands on edge, b deep and t thick; bending stretches its top edge and squeezes its bottom edge. Beside it, the plate thicknesses a workshop can buy.\"><img data-drawing=\"pictures/step-section.svg\" alt=\"Questions 3 to 6: the plate&#x27;s section at the root stands on edge, b deep and t thick; bending stretches its top edge and squeezes its bottom edge. Beside it, the plate thicknesses a workshop can buy.\"></figure>\n<p><strong>3 · How much stress will you let the steel carry?</strong> The allowable stress, in <strong>MPa</strong>. §6, rule 1, says how.</p>\n<p><strong>4 · How much bending strength must the plate's section have?</strong> The section modulus it needs, in <strong>mm³</strong>.</p>\n<p><strong>5 · What thickness gives exactly that?</strong> In <strong>mm</strong>. It will not be a size you can buy.</p>\n<p><strong>6 · Which plate would you buy, on strength alone?</strong> A thickness from the list in §4, in <strong>mm</strong>.</p>\n<blockquote><p><strong>The section, stated once and plainly.</strong> The plate stands on edge. The depth <code>b</code> is the beam's depth; the thickness <code>t</code> is its breadth. Getting those the wrong way round changes the answer by about a factor of three, and it is the most common mistake on this challenge. The edge view on the drawing exists only to make this unambiguous.</p></blockquote>\n<p><em>Learn it: Card 2, Stress and strength; Card 3, Bending and shape.</em></p>\n<h3>Questions 7 and 8 · Strong is not enough</h3>\n<figure class=\"pic\" role=\"img\" aria-label=\"Questions 7 and 8: under the load the plate bends and its tip drops by delta; the tip may drop no further than the dashed line, delta limit.\"><img data-drawing=\"pictures/step-sag.svg\" alt=\"Questions 7 and 8: under the load the plate bends and its tip drops by delta; the tip may drop no further than the dashed line, delta limit.\"></figure>\n<p><strong>7 · At that thickness, how far does the tip sag under the load?</strong> The tip deflection, in <strong>mm</strong>.</p>\n<p><strong>8 · Which thickness will you actually use?</strong> The thinnest plate on the list that is strong enough <strong>and</strong> sags no more than <code>δ_limit</code>, in <strong>mm</strong>.</p>\n<p><strong>Question 8 is the real answer, and it is not always the same as question 6.</strong> Sometimes strength decides the thickness; sometimes the sag does. Which one governs depends on your numbers, so check both.</p>\n<p><em>Learn it: Card 4, Strong is not enough.</em></p>\n<hr>\n<h2>8 · The part (optional here)</h2>\n<p>To finish the job, model the bracket in any CAD program. Checking your file is not available here yet: your eight answers are what is checked.</p>\n<p><strong>Must match your numbers:</strong></p>\n<ul><li>plate depth <code>b</code></li><li>projection <code>L</code>, from the bolt-pattern centre to the load-hole centre</li><li>four bolt holes of ⌀<code>d_bolt</code> in a {{p_h}} × {{p_v}} mm rectangle</li><li>one load hole of ⌀<code>d_load</code></li><li><strong>five holes in total</strong></li><li>thickness equal to your answer to question 8</li><li>S235 steel</li></ul>\n<p><strong>Yours to choose:</strong></p>\n<ul><li>the shape of the free end beyond the load hole — square, radiused, chamfered</li><li>any fillets, chamfers or edge breaks</li><li>how much material you leave beyond the holes, within reason</li></ul>\n<p>The ghosted outline on the drawing is <em>one</em> valid answer, not <em>the</em> answer. A square end passes. A radiused end passes. Copying the ghost exactly passes too — it just tells us less about you.</p>\n<p>You do not need to model the bolts, the column or the shackle. <strong>One part, one solid.</strong></p>\n<p><strong>Exporting, program by program.</strong> Set the model's units to <strong>millimetres</strong> before you start. A part modelled in inches measures about twenty-five times too small. Menus move a little between versions; the words to look for do not.</p>\n<div class=\"table\"><table><thead><tr><th>Program</th><th>Units</th><th>Export</th></tr></thead><tbody><tr><td>SolidWorks</td><td><em>Tools → Options → Document Properties → Units</em>: MMGS</td><td><em>File → Save As</em>, type <em>STEP AP214</em></td></tr><tr><td>Fusion</td><td>the document's units, in the browser tree: mm</td><td><em>File → Export</em>, type <em>STEP</em></td></tr><tr><td>FreeCAD</td><td><em>Edit → Preferences → General → Units</em>: millimetres</td><td>select the solid, <em>File → Export</em>, type <em>STEP</em></td></tr><tr><td>Onshape</td><td><em>Workspace units</em>: millimetre</td><td>right-click the part, <em>Export</em>, format <em>STEP</em></td></tr><tr><td>Inventor</td><td><em>Tools → Document Settings → Units</em>: mm</td><td><em>File → Export → CAD Format</em>, type <em>STEP</em>, options <em>AP214</em></td></tr></tbody></table></div>\n<p><em>Learn it: Card 5, From numbers to a part.</em></p>",
+    "fr": "<blockquote><p><strong>Ces valeurs sont les vôtres.</strong> Demandez de nouvelles valeurs et cette feuille change avec elles.</p></blockquote>\n<p>Dans vos réponses, le point et la virgule sont acceptés tous les deux.</p>\n<hr>\n<h2>1 · Le travail</h2>\n<p>Un petit atelier d'usinage installe un palan à chaîne au-dessus de son établi, pour que plus personne n'ait à soulever à la main les carters de boîte de vitesses et les moteurs. Le palan sera suspendu à une console en acier boulonnée sur la face d'un poteau. La charge la plus lourde qu'il soulèvera jamais est de <strong>{{m}} kg</strong>.</p>\n<p>L'ingénieur, c'est vous. L'atelier découpera, percera et boulonnera exactement ce que vous lui direz.</p>\n<figure class=\"pic\" role=\"img\" aria-label=\"La situation : un poteau en acier dans un atelier, une plaque d&#x27;acier plate boulonnée sur sa face, un palan à chaîne suspendu près de l&#x27;extrémité libre de la plaque et soulevant une charge de masse m, une personne à côté pour l&#x27;échelle. L va du centre des boulons au trou de charge.\"><img data-drawing=\"pictures/situation.svg\" alt=\"La situation : un poteau en acier dans un atelier, une plaque d&#x27;acier plate boulonnée sur sa face, un palan à chaîne suspendu près de l&#x27;extrémité libre de la plaque et soulevant une charge de masse m, une personne à côté pour l&#x27;échelle. L va du centre des boulons au trou de charge.\"></figure>\n<p>La console est <strong>une seule plaque d'acier plate</strong>, montée sur chant dans un plan vertical. Quatre boulons traversent <strong>la plaque</strong> et entrent dans le poteau. Un cinquième trou, plus grand, près de l'extrémité libre, reçoit la manille du palan.</p>\n<p>Trop mince, la plaque se déforme pour de bon, ou fléchit jusqu'à ce que le palan pende de travers. Trop épaisse, elle est plus lourde, plus chère et plus difficile à percer qu'il ne faut. Tout est fixé sur cette console, sauf une chose : <strong>l'épaisseur de la plaque.</strong> C'est la décision d'ingénierie, et c'est la seule chose évaluée.</p>\n<blockquote><p><strong>Vous répondez à huit questions</strong> sous cette feuille. Modéliser la pièce est un bon exercice ; la vérification d'un fichier envoyé n'est pas encore disponible ici.</p></blockquote>\n<hr>\n<h2>2 · Le dessin</h2>\n<figure role=\"img\" aria-label=\"Schéma coté de la console : vue de face et vue de chant\"><div class=\"pan\"><img data-drawing=\"drawing.svg\" alt=\"Schéma coté de la console : vue de face et vue de chant\"></div><figcaption class=\"pan-hint\">Faites glisser latéralement pour voir tout le dessin.</figcaption></figure>\n<p><strong>Pas à l'échelle.</strong> Les proportions sont dessinées pour être lisibles ; ce sont les nombres qui font foi.</p>\n<p><strong>L'extrémité libre est volontairement imprécise.</strong> Tout ce qui dépasse le trou de charge est dessiné comme une coupure, avec une forme d'extrémité possible en pointillés. Ce choix vous appartient — voir §8.</p>\n<hr>\n<h2>3 · Vos valeurs</h2>\n<div class=\"table\"><table><thead><tr><th></th><th>Symbole</th><th>Valeur</th></tr></thead><tbody><tr><td>Masse suspendue</td><td><code>m</code></td><td><strong>{{m}} kg</strong></td></tr><tr><td>Porte-à-faux, du centre du groupe de boulons au centre du trou de charge</td><td><code>L</code></td><td><strong>{{L}} mm</strong></td></tr><tr><td>Hauteur de la plaque — la dimension verticale</td><td><code>b</code></td><td><strong>{{b}} mm</strong></td></tr><tr><td>Coefficient de sécurité</td><td><code>n</code></td><td><strong>{{n}}</strong></td></tr><tr><td>Entraxe horizontal des boulons</td><td><code>p_h</code></td><td><strong>{{p_h}} mm</strong></td></tr><tr><td>Entraxe vertical des boulons</td><td><code>p_v</code></td><td><strong>{{p_v}} mm</strong></td></tr></tbody></table></div>\n<h2>4 · Fixé pour tout le monde</h2>\n<div class=\"table\"><table><thead><tr><th></th><th>Symbole</th><th>Valeur</th></tr></thead><tbody><tr><td>Pesanteur</td><td><code>g</code></td><td>9,81 m/s²</td></tr><tr><td>Matériau</td><td>—</td><td>acier de construction S235</td></tr><tr><td>Limite élastique</td><td><code>Re</code></td><td>235 MPa</td></tr><tr><td>Module d'Young</td><td><code>E</code></td><td>210 000 MPa</td></tr><tr><td>Masse volumique</td><td><code>ρ</code></td><td>7850 kg/m³</td></tr><tr><td>Flèche maximale en bout</td><td><code>δ_limit</code></td><td><strong>L / 300</strong></td></tr><tr><td>Diamètre des trous de boulon</td><td><code>d_bolt</code></td><td>⌀{{d_bolt}} mm</td></tr><tr><td>Diamètre du trou de charge</td><td><code>d_load</code></td><td>⌀{{d_load}} mm</td></tr><tr><td>Épaisseurs de plaque disponibles</td><td>—</td><td>6, 8, 10, 12, 15, 20 mm</td></tr></tbody></table></div>\n<hr>\n<h2>5 · D'où se mesure chaque cote</h2>\n<p>Lisez ceci avant de modéliser quoi que ce soit. La plupart des contrôles géométriques échoués ne viennent pas d'une mauvaise modélisation — mais d'une cote mesurée depuis le mauvais endroit.</p>\n<div class=\"table\"><table><thead><tr><th>Cote</th><th>Mesurée depuis</th><th>Mesurée jusqu'à</th></tr></thead><tbody><tr><td><code>L</code></td><td>le <strong>centre du groupe de quatre boulons</strong> — la référence <strong>B</strong> du dessin</td><td>le <strong>centre du trou de charge</strong></td></tr><tr><td><code>b</code></td><td>un grand bord de la plaque</td><td>l'autre grand bord</td></tr><tr><td><code>t</code></td><td>une face de la plaque</td><td>l'autre face</td></tr><tr><td><code>p_h</code></td><td>le centre d'un trou de boulon</td><td>le centre du trou voisin <strong>horizontalement</strong></td></tr><tr><td><code>p_v</code></td><td>le centre d'un trou de boulon</td><td>le centre du trou voisin <strong>verticalement</strong></td></tr></tbody></table></div>\n<p><strong><code>L</code> ne se mesure pas depuis la face du poteau.</strong> Le groupe de boulons a un centre, et c'est de ce centre que part le porte-à-faux. C'est la façon la plus courante de rater la pièce, et il ne coûte rien de bien faire — à condition de le lire maintenant plutôt qu'après.</p>\n<p><strong>Nous mesurons des distances entre éléments, jamais des positions dans l'espace.</strong> Peu importe donc où se trouve votre origine, dans quel sens vous avez modélisé la pièce, ou quel axe vous avez choisi vers le haut. Modélisez comme cela vous convient.</p>\n<hr>\n<h2>6 · Deux règles de méthode</h2>\n<p>Lisez-les deux fois. Ce sont les deux endroits où un ingénieur compétent peut raisonnablement faire autrement que ce que nous demandons, et il faut que tout le monde fasse pareil pour que les nombres puissent être vérifiés.</p>\n<p><strong>1 · Appliquez le coefficient de sécurité à la contrainte admissible, pas à la charge.</strong></p>\n<p>Utilisez <code>σ_allow = Re / n</code>, avec la charge réelle <code>W = m·g</code>.</p>\n<p>Majorer plutôt la charge et garder toute la limite élastique mène à la même épaisseur, et ce n'est pas une erreur d'ingénierie — mais ce n'est pas ce que demande cet énoncé, et vos réponses étape par étape ne correspondront pas.</p>\n<p><strong>2 · Négligez le poids propre de la console.</strong></p>\n<p>Prenez la masse suspendue comme seule charge. Le poids propre de la plaque représente au plus 2,5 % du moment avec vos valeurs, et nous l'omettons pour garder la chaîne de calcul nette.</p>\n<p>Si vous l'incluez quand même, vous serez tout de même validé. Nous préférons accepter un travail plus soigné que demandé plutôt que de le pénaliser.</p>\n<hr>\n<h2>7 · Les huit questions</h2>\n<p>Faites-les d'abord sur papier, dans l'ordre. Chacune tient en une ligne de calcul, et chaque réponse alimente la suivante. Les cases de réponse les appellent étapes 1 à 8. Sous chaque groupe figure la carte de la branche 1 qui l'enseigne, sur le parcours. Ces leçons sont pour l'instant en anglais ; les questions d'échauffement de la page Pratique couvrent les mêmes étapes en français.</p>\n<h3>Questions 1 et 2 · Ce que fait la charge</h3>\n<figure class=\"pic\" role=\"img\" aria-label=\"Questions 1 et 2 : la charge W est suspendue en bout, à une distance L du centre des boulons, et tend à faire tourner la console autour de son encastrement avec un moment M.\"><img data-drawing=\"pictures/step-load.svg\" alt=\"Questions 1 et 2 : la charge W est suspendue en bout, à une distance L du centre des boulons, et tend à faire tourner la console autour de son encastrement avec un moment M.\"></figure>\n<p><strong>1 · Avec quelle force la charge tire-t-elle la console vers le bas ?</strong> Une force, en <strong>N</strong>.</p>\n<p><strong>2 · Avec quelle intensité cette force tend-elle à faire tourner la console autour de ses boulons ?</strong> Le moment de flexion à l'encastrement, là où la plaque rejoint le poteau, en <strong>N·mm</strong>.</p>\n<p><em>Pour apprendre : carte 1, Forces et moments.</em></p>\n<h3>Questions 3 à 6 · Quelle épaisseur, pour résister</h3>\n<figure class=\"pic\" role=\"img\" aria-label=\"Questions 3 à 6 : la section de la plaque à l&#x27;encastrement est sur chant, de hauteur b et d&#x27;épaisseur t ; la flexion étire son bord supérieur et comprime son bord inférieur. À côté, les épaisseurs de plaque qu&#x27;un atelier peut acheter.\"><img data-drawing=\"pictures/step-section.svg\" alt=\"Questions 3 à 6 : la section de la plaque à l&#x27;encastrement est sur chant, de hauteur b et d&#x27;épaisseur t ; la flexion étire son bord supérieur et comprime son bord inférieur. À côté, les épaisseurs de plaque qu&#x27;un atelier peut acheter.\"></figure>\n<p><strong>3 · Quelle contrainte laisserez-vous porter à l'acier ?</strong> La contrainte admissible, en <strong>MPa</strong>. Le §6, règle 1, dit comment.</p>\n<p><strong>4 · Quelle résistance à la flexion la section de la plaque doit-elle avoir ?</strong> Le module de flexion nécessaire, en <strong>mm³</strong>.</p>\n<p><strong>5 · Quelle épaisseur donne exactement cela ?</strong> En <strong>mm</strong>. Ce ne sera pas une épaisseur que l'on peut acheter.</p>\n<p><strong>6 · Quelle plaque achèteriez-vous, sur la seule résistance ?</strong> Une épaisseur de la liste du §4, en <strong>mm</strong>.</p>\n<blockquote><p><strong>La section, dite une fois et simplement.</strong> La plaque est montée sur chant. La hauteur <code>b</code> est la hauteur de la poutre ; l'épaisseur <code>t</code> en est la largeur. Les intervertir change la réponse d'environ un facteur trois, et c'est l'erreur la plus fréquente sur ce défi. La vue de chant du dessin n'existe que pour lever toute ambiguïté.</p></blockquote>\n<p><em>Pour apprendre : carte 2, Contrainte et résistance ; carte 3, Flexion et forme.</em></p>\n<h3>Questions 7 et 8 · Résister ne suffit pas</h3>\n<figure class=\"pic\" role=\"img\" aria-label=\"Questions 7 et 8 : sous la charge, la plaque fléchit et son extrémité descend de delta ; elle ne doit pas descendre plus bas que la ligne en pointillés, delta limit.\"><img data-drawing=\"pictures/step-sag.svg\" alt=\"Questions 7 et 8 : sous la charge, la plaque fléchit et son extrémité descend de delta ; elle ne doit pas descendre plus bas que la ligne en pointillés, delta limit.\"></figure>\n<p><strong>7 · Avec cette épaisseur, de combien l'extrémité fléchit-elle sous la charge ?</strong> La flèche en bout, en <strong>mm</strong>.</p>\n<p><strong>8 · Quelle épaisseur utiliserez-vous réellement ?</strong> La plaque la plus mince de la liste qui résiste <strong>et</strong> ne fléchit pas plus que <code>δ_limit</code>, en <strong>mm</strong>.</p>\n<p><strong>La question 8 est la vraie réponse, et elle n'est pas toujours égale à la question 6.</strong> Tantôt c'est la résistance qui fixe l'épaisseur, tantôt c'est la flèche. Laquelle des deux gouverne dépend de vos valeurs : vérifiez les deux.</p>\n<p><em>Pour apprendre : carte 4, Résister ne suffit pas.</em></p>\n<hr>\n<h2>8 · La pièce (facultatif ici)</h2>\n<p>Pour terminer le travail, modélisez la console dans n'importe quel logiciel de CAO. La vérification de votre fichier n'est pas encore disponible ici : ce sont vos huit réponses qui sont vérifiées.</p>\n<p><strong>Doit correspondre à vos valeurs :</strong></p>\n<ul><li>la hauteur de plaque <code>b</code></li><li>le porte-à-faux <code>L</code>, du centre du groupe de boulons au centre du trou de charge</li><li>quatre trous de boulon de ⌀<code>d_bolt</code> disposés en rectangle de {{p_h}} × {{p_v}} mm</li><li>un trou de charge de ⌀<code>d_load</code></li><li><strong>cinq trous au total</strong></li><li>une épaisseur égale à votre réponse à la question 8</li><li>acier S235</li></ul>\n<p><strong>À votre choix :</strong></p>\n<ul><li>la forme de l'extrémité libre au-delà du trou de charge — droite, arrondie, chanfreinée</li><li>les congés, chanfreins ou cassés d'arête</li><li>la quantité de matière laissée au-delà des trous, dans la limite du raisonnable</li></ul>\n<p>Le contour en pointillés du dessin est <em>une</em> réponse valable, pas <em>la</em> réponse. Une extrémité droite est validée. Une extrémité arrondie aussi. Copier exactement le pointillé est validé également — cela nous en apprend simplement moins sur vous.</p>\n<p>Vous n'avez pas à modéliser les boulons, le poteau ni la manille. <strong>Une seule pièce, un seul solide.</strong></p>\n<p><strong>Exporter, logiciel par logiciel.</strong> Réglez les unités du modèle en <strong>millimètres</strong> avant de commencer. Une pièce modélisée en pouces mesure environ vingt-cinq fois trop petit. Les menus changent un peu d'une version à l'autre ; les mots à chercher, non.</p>\n<div class=\"table\"><table><thead><tr><th>Logiciel</th><th>Unités</th><th>Export</th></tr></thead><tbody><tr><td>SolidWorks</td><td><em>Outils → Options → Propriétés du document → Unités</em> : MMGS</td><td><em>Fichier → Enregistrer sous</em>, type <em>STEP AP214</em></td></tr><tr><td>Fusion</td><td>les unités du document, dans l'arborescence : mm</td><td><em>Fichier → Exporter</em>, type <em>STEP</em></td></tr><tr><td>FreeCAD</td><td><em>Édition → Préférences → Général → Unités</em> : millimètres</td><td>sélectionnez le solide, <em>Fichier → Exporter</em>, type <em>STEP</em></td></tr><tr><td>Onshape</td><td><em>Unités de l'espace de travail</em> : millimètre</td><td>clic droit sur la pièce, <em>Exporter</em>, format <em>STEP</em></td></tr><tr><td>Inventor</td><td><em>Outils → Paramètres du document → Unités</em> : mm</td><td><em>Fichier → Exporter → Format CAO</em>, type <em>STEP</em>, options <em>AP214</em></td></tr></tbody></table></div>\n<p><em>Pour apprendre : carte 5, Des nombres à la pièce.</em></p>"
+   },
+   "drawings": {
+    "en": {
+     "pictures/situation.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 480 300\" role=\"img\" aria-label=\"The situation: a steel column in a workshop; a flat steel plate bolted to its face by four bolts; a chain hoist hanging from a shackle near the plate's free end, lifting a load of mass m; a person standing beside it for scale. L runs from the centre of the bolts to the load hole.\">\n  \n  <g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <line x1=\"0\" y1=\"286\" x2=\"480\" y2=\"286\"/>\n    <path d=\"M12 286 l-10 12 M40 286 l-10 12 M68 286 l-10 12 M96 286 l-10 12 M124 286 l-10 12 M152 286 l-10 12 M180 286 l-10 12 M208 286 l-10 12 M236 286 l-10 12 M264 286 l-10 12 M292 286 l-10 12 M320 286 l-10 12 M348 286 l-10 12 M376 286 l-10 12 M404 286 l-10 12 M432 286 l-10 12 M460 286 l-10 12\" stroke-width=\"1\" opacity=\".45\"/>\n    <rect x=\"40\" y=\"16\" width=\"44\" height=\"262\" fill=\"currentColor\" fill-opacity=\".08\"/>\n    <path d=\"M50 16 V278 M74 16 V278\" stroke-width=\"1\" opacity=\".4\"/>\n    <rect x=\"30\" y=\"278\" width=\"64\" height=\"8\"/>\n    <path d=\"M84 78 H308 Q324 78 324 95 Q324 112 308 112 H84\" fill=\"currentColor\" fill-opacity=\".14\"/>\n    <circle cx=\"100\" cy=\"87\" r=\"3.5\"/>\n    <circle cx=\"126\" cy=\"87\" r=\"3.5\"/>\n    <circle cx=\"100\" cy=\"103\" r=\"3.5\"/>\n    <circle cx=\"126\" cy=\"103\" r=\"3.5\"/>\n    <circle cx=\"304\" cy=\"95\" r=\"5\"/>\n    <path d=\"M113 89 V101 M107 95 H119\" stroke-width=\"1\" stroke-dasharray=\"2 2\" opacity=\".7\"/>\n    <path d=\"M298 95 V113 A6 6 0 0 0 310 113 V95\"/>\n    <line x1=\"304\" y1=\"119\" x2=\"304\" y2=\"132\"/>\n    <rect x=\"288\" y=\"132\" width=\"32\" height=\"30\" rx=\"6\" fill=\"currentColor\" fill-opacity=\".2\"/>\n    <path d=\"M316 162 C 336 196 334 228 322 240 C 312 228 310 196 312 162\" stroke-width=\"1.2\" stroke-dasharray=\"2 3\"/>\n    <line x1=\"304\" y1=\"162\" x2=\"304\" y2=\"198\"/>\n    <path d=\"M304 198 q-8 0 -8 7 q0 7 8 7\"/>\n    <path d=\"M304 212 L270 220 M304 212 L338 220\"/>\n    <rect x=\"262\" y=\"220\" width=\"84\" height=\"52\" rx=\"6\" fill=\"currentColor\" fill-opacity=\".1\" stroke=\"#c27c0e\" stroke-width=\"2.5\"/>\n    <path d=\"M113 72 V46 M304 88 V46\" stroke-width=\"1\" opacity=\".6\"/>\n    <line x1=\"113\" y1=\"54\" x2=\"304\" y2=\"54\" stroke-width=\"1.5\"/>\n    <g opacity=\".6\">\n      <circle cx=\"424\" cy=\"150\" r=\"10\"/>\n      <path d=\"M424 160 V222 M424 176 L406 204 M424 176 L442 202 M424 222 L410 284 M424 222 L438 284\"/>\n    </g>\n  </g>\n  <polygon points=\"113,54 125,49 125,59\" fill=\"currentColor\"/>\n  <polygon points=\"304,54 292,49 292,59\" fill=\"currentColor\"/>\n  <g font-size=\"18\" font-weight=\"700\" font-style=\"italic\" fill=\"currentColor\">\n    <text x=\"208\" y=\"46\" text-anchor=\"middle\">L</text>\n    <text x=\"304\" y=\"252\" text-anchor=\"middle\">m</text>\n  </g>\n</svg>",
+     "drawing.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 880 660\" width=\"880\" height=\"660\"\n     role=\"img\" aria-labelledby=\"ttl desc\">\n<title id=\"ttl\">Challenge 001 wall bracket: dimensioned schematic</title>\n<desc id=\"desc\">Front elevation of a flat steel plate bracket bolted to a column\nface, with four bolt holes in a rectangular pattern and one larger load hole\ntoward the free end, plus an edge view showing the plate thickness. The free end\nbeyond the load hole is drawn as a break because its shape is the student's\nchoice.</desc>\n\n<style>\n  :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; --free:#8a94a0; --paper:none; }\n  \n  /* Paper is white whatever the screen is: a dark-mode laptop must not\n     print light ink. Placed after the dark rule so it wins in print. */\n  @media print{\n    :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; --free:#8a94a0; }\n  }\n  .part   { fill:none; stroke:var(--ink); stroke-width:2.2; }\n  .hole   { fill:none; stroke:var(--ink); stroke-width:2; }\n  .centre { stroke:var(--thin); stroke-width:.9; stroke-dasharray:9 3 2 3; }\n  .ext    { stroke:var(--thin); stroke-width:.9; }\n  .dim    { stroke:var(--thin); stroke-width:1.1; marker-start:url(#a); marker-end:url(#a); }\n  .lead   { stroke:var(--thin); stroke-width:1.1; fill:none; marker-start:url(#a); }\n  .free   { fill:none; stroke:var(--free); stroke-width:1.8; stroke-dasharray:7 5; }\n  .hatch  { stroke:var(--thin); stroke-width:1.2; }\n  text    { font-family:ui-monospace,\"SF Mono\",Menlo,Consolas,monospace; fill:var(--ink); }\n  .d      { font-size:15px; }\n  .sym    { font-size:15px; font-weight:600; }\n  .val    { font-size:15px; fill:var(--accent); font-weight:600; }\n  .note   { font-size:12.5px; fill:var(--thin); }\n  .vw     { font-size:12.5px; fill:var(--thin); letter-spacing:.14em; }\n  .dat    { font-size:13px; font-weight:700; fill:var(--ink); }\n  .datbox { fill:none; stroke:var(--ink); stroke-width:1.4; }\n</style>\n\n<defs>\n  <marker id=\"a\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\">\n    <path d=\"M0,1 L10,5 L0,9 z\" fill=\"var(--thin)\"/>\n  </marker>\n</defs>\n\n\n<text class=\"vw\" x=\"150\" y=\"72\">FRONT ELEVATION — the plate face</text>\n\n\n<line class=\"part\" x1=\"150\" y1=\"96\" x2=\"150\" y2=\"300\"/>\n<g class=\"hatch\">\n  <line x1=\"150\" y1=\"108\" x2=\"136\" y2=\"122\"/><line x1=\"150\" y1=\"132\" x2=\"136\" y2=\"146\"/>\n  <line x1=\"150\" y1=\"156\" x2=\"136\" y2=\"170\"/><line x1=\"150\" y1=\"180\" x2=\"136\" y2=\"194\"/>\n  <line x1=\"150\" y1=\"204\" x2=\"136\" y2=\"218\"/><line x1=\"150\" y1=\"228\" x2=\"136\" y2=\"242\"/>\n  <line x1=\"150\" y1=\"252\" x2=\"136\" y2=\"266\"/><line x1=\"150\" y1=\"276\" x2=\"136\" y2=\"290\"/>\n</g>\n<text class=\"note\" x=\"86\" y=\"316\">column</text>\n\n\n<path class=\"part\" d=\"M150,130 L672,130 M150,262 L672,262 M150,130 L150,262\"/>\n\n<path class=\"part\" d=\"M672,130 L680,146 L664,162 L680,178 L664,194 L680,210 L664,226 L680,242 L672,262\"/>\n\n<path class=\"free\" d=\"M672,132 L742,132 A66,66 0 0 1 742,260 L672,260\"/>\n<text class=\"note\" x=\"700\" y=\"284\">your choice</text>\n\n\n<line class=\"centre\" x1=\"124\" y1=\"196\" x2=\"800\" y2=\"196\"/>\n\n\n<g class=\"hole\">\n  <circle cx=\"171\" cy=\"164\" r=\"9\"/><circle cx=\"261\" cy=\"164\" r=\"9\"/>\n  <circle cx=\"171\" cy=\"228\" r=\"9\"/><circle cx=\"261\" cy=\"228\" r=\"9\"/>\n</g>\n<g class=\"centre\">\n  <line x1=\"171\" y1=\"148\" x2=\"171\" y2=\"244\"/><line x1=\"261\" y1=\"148\" x2=\"261\" y2=\"244\"/>\n  <line x1=\"155\" y1=\"164\" x2=\"277\" y2=\"164\"/><line x1=\"155\" y1=\"228\" x2=\"277\" y2=\"228\"/>\n</g>\n\n\n<circle class=\"hole\" cx=\"616\" cy=\"196\" r=\"15\"/>\n<line class=\"centre\" x1=\"616\" y1=\"170\" x2=\"616\" y2=\"222\"/>\n\n\n<g class=\"centre\"><line x1=\"216\" y1=\"176\" x2=\"216\" y2=\"216\"/><line x1=\"196\" y1=\"196\" x2=\"236\" y2=\"196\"/></g>\n<circle cx=\"216\" cy=\"196\" r=\"3.4\" fill=\"var(--accent)\" stroke=\"none\"/>\n<rect class=\"datbox\" x=\"196\" y=\"308\" width=\"40\" height=\"22\"/>\n<text class=\"dat\" x=\"210\" y=\"324\">B</text>\n<line class=\"ext\" x1=\"216\" y1=\"200\" x2=\"216\" y2=\"308\"/>\n<text class=\"note\" x=\"244\" y=\"324\">bolt-pattern centre: L starts here, not at the column</text>\n\n\n<line class=\"ext\" x1=\"616\" y1=\"200\" x2=\"616\" y2=\"360\"/>\n<line class=\"ext\" x1=\"216\" y1=\"334\" x2=\"216\" y2=\"360\"/>\n<line class=\"dim\" x1=\"216\" y1=\"352\" x2=\"616\" y2=\"352\"/>\n<text class=\"sym\" x=\"386\" y=\"345\">L =</text><text class=\"val\" x=\"424\" y=\"345\">{{L}}</text>\n<text class=\"d\"   x=\"474\" y=\"345\">mm</text>\n\n\n<line class=\"ext\" x1=\"146\" y1=\"130\" x2=\"82\" y2=\"130\"/>\n<line class=\"ext\" x1=\"146\" y1=\"262\" x2=\"82\" y2=\"262\"/>\n<line class=\"dim\" x1=\"92\" y1=\"130\" x2=\"92\" y2=\"262\"/>\n<text class=\"sym\" x=\"28\" y=\"190\">b =</text><text class=\"val\" x=\"26\" y=\"208\">{{b}}</text>\n<text class=\"d\"   x=\"62\" y=\"208\">mm</text>\n\n\n<line class=\"ext\" x1=\"171\" y1=\"160\" x2=\"171\" y2=\"104\"/>\n<line class=\"ext\" x1=\"261\" y1=\"160\" x2=\"261\" y2=\"104\"/>\n<line class=\"dim\" x1=\"171\" y1=\"112\" x2=\"261\" y2=\"112\"/>\n<text class=\"sym\" x=\"178\" y=\"104\">p_h =</text><text class=\"val\" x=\"232\" y=\"104\">{{p_h}}</text>\n\n\n<line class=\"ext\" x1=\"167\" y1=\"164\" x2=\"120\" y2=\"164\"/>\n<line class=\"ext\" x1=\"167\" y1=\"228\" x2=\"120\" y2=\"228\"/>\n<line class=\"dim\" x1=\"128\" y1=\"164\" x2=\"128\" y2=\"228\"/>\n<text class=\"sym\" x=\"96\" y=\"186\">p_v</text><text class=\"val\" x=\"104\" y=\"204\">{{p_v}}</text>\n\n\n<path class=\"lead\" d=\"M268,158 L320,96 L404,96\"/>\n<text class=\"sym\" x=\"330\" y=\"90\">4 × &#8709;</text><text class=\"val\" x=\"378\" y=\"90\">{{d_bolt}}</text>\n<text class=\"d\"   x=\"412\" y=\"90\">mm  through</text>\n\n<path class=\"lead\" d=\"M626,186 L668,108 L720,108\"/>\n<text class=\"sym\" x=\"666\" y=\"102\">&#8709;</text><text class=\"val\" x=\"682\" y=\"102\">{{d_load}}</text>\n<text class=\"d\"   x=\"716\" y=\"102\">mm</text>\n\n\n<text class=\"vw\" x=\"28\" y=\"400\">EDGE VIEW</text>\n<text class=\"note\" x=\"28\" y=\"418\">looking along the length</text>\n\n<rect class=\"part\" x=\"180\" y=\"452\" width=\"26\" height=\"132\"/>\n<line class=\"centre\" x1=\"160\" y1=\"518\" x2=\"226\" y2=\"518\"/>\n\n<line class=\"ext\" x1=\"180\" y1=\"448\" x2=\"180\" y2=\"424\"/>\n<line class=\"ext\" x1=\"206\" y1=\"448\" x2=\"206\" y2=\"424\"/>\n<line class=\"dim\" x1=\"134\" y1=\"428\" x2=\"180\" y2=\"428\"/>\n<line class=\"dim\" x1=\"206\" y1=\"428\" x2=\"252\" y2=\"428\"/>\n<text class=\"sym\" x=\"262\" y=\"434\">t = the thickness you choose (step 8)</text>\n\n<line class=\"ext\" x1=\"210\" y1=\"452\" x2=\"288\" y2=\"452\"/>\n<line class=\"ext\" x1=\"210\" y1=\"584\" x2=\"288\" y2=\"584\"/>\n<line class=\"dim\" x1=\"280\" y1=\"452\" x2=\"280\" y2=\"584\"/>\n<text class=\"sym\" x=\"298\" y=\"512\">b =</text><text class=\"val\" x=\"336\" y=\"512\">{{b}}</text>\n<text class=\"d\"   x=\"370\" y=\"512\">mm  — the same b as above</text>\n\n<text class=\"note\" x=\"298\" y=\"544\">The plate stands on edge: b is the beam's depth,</text>\n<text class=\"note\" x=\"298\" y=\"562\">t is its breadth. Swapping them changes the answer</text>\n<text class=\"note\" x=\"298\" y=\"580\">by about a factor of three.</text>\n\n\n<line class=\"ext\" x1=\"24\" y1=\"612\" x2=\"856\" y2=\"612\"/>\n<text class=\"note\" x=\"24\" y=\"632\">CHALLENGE 001 · WALL BRACKET · S235 · ALL DIMS mm · NOT TO SCALE</text>\n\n</svg>",
+     "pictures/step-load.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 170\" role=\"img\" aria-label=\"Questions 1 and 2: the load W hangs at the tip, a distance L from the centre of the bolts, and tries to turn the bracket about its root with a moment M.\">\n  <g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\">\n    <rect x=\"16\" y=\"30\" width=\"14\" height=\"120\" fill=\"currentColor\" fill-opacity=\".15\" stroke=\"none\"/>\n    <line x1=\"30\" y1=\"30\" x2=\"30\" y2=\"150\"/>\n    <rect x=\"30\" y=\"70\" width=\"262\" height=\"24\" fill=\"currentColor\" fill-opacity=\".1\"/>\n    <circle cx=\"46\" cy=\"82\" r=\"4\"/>\n    <circle cx=\"70\" cy=\"82\" r=\"4\"/>\n    <path d=\"M58 66 V22 M290 66 V22\" stroke-width=\"1\" opacity=\".6\"/>\n    <line x1=\"58\" y1=\"30\" x2=\"290\" y2=\"30\" stroke-width=\"1.5\"/>\n    <path d=\"M104 118 A 34 34 0 0 1 104 50\" stroke-width=\"2.5\"/>\n    <line x1=\"290\" y1=\"96\" x2=\"290\" y2=\"138\" stroke=\"#c27c0e\" stroke-width=\"3\"/>\n  </g>\n  <polygon points=\"58,30 70,25 70,35\" fill=\"currentColor\"/>\n  <polygon points=\"290,30 278,25 278,35\" fill=\"currentColor\"/>\n  <polygon points=\"97,56 111,54 106,40\" fill=\"currentColor\"/>\n  <polygon points=\"281,132 299,132 290,150\" fill=\"#c27c0e\"/>\n  <g font-size=\"18\" font-weight=\"700\" font-style=\"italic\" fill=\"currentColor\">\n    <text x=\"174\" y=\"22\" text-anchor=\"middle\">L</text>\n    <text x=\"116\" y=\"52\">M</text>\n    <text x=\"302\" y=\"140\">W</text>\n  </g>\n</svg>",
+     "pictures/step-section.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 180\" role=\"img\" aria-label=\"Questions 3 to 6: the plate's section at the root stands on edge, b deep and t thick. Bending stretches its top edge and squeezes its bottom edge, the stress sigma growing from zero in the middle. Beside it, the plate thicknesses a workshop can buy, from 6 to 20 mm.\">\n  <g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\">\n    <rect x=\"40\" y=\"30\" width=\"24\" height=\"120\" fill=\"currentColor\" fill-opacity=\".14\"/>\n    <path d=\"M36 30 H18 M36 150 H18 M40 26 V12 M64 26 V12\" stroke-width=\"1\" opacity=\".6\"/>\n    <line x1=\"24\" y1=\"30\" x2=\"24\" y2=\"150\" stroke-width=\"1.5\"/>\n    <line x1=\"40\" y1=\"18\" x2=\"64\" y2=\"18\" stroke-width=\"1.5\"/>\n    <line x1=\"120\" y1=\"24\" x2=\"120\" y2=\"156\" stroke-width=\"1\" opacity=\".6\"/>\n    <line x1=\"30\" y1=\"90\" x2=\"176\" y2=\"90\" stroke-width=\"1\" stroke-dasharray=\"5 4\" opacity=\".6\"/>\n    <path d=\"M120 30 H170 L120 90 Z M120 90 V150 H70 Z\" fill=\"currentColor\" fill-opacity=\".12\" stroke-width=\"1.5\"/>\n    <g stroke-width=\"1.5\">\n      <rect x=\"204\" y=\"40\" width=\"9\" height=\"100\"/>\n      <rect x=\"219\" y=\"40\" width=\"12\" height=\"100\"/>\n      <rect x=\"237\" y=\"40\" width=\"15\" height=\"100\"/>\n      <rect x=\"258\" y=\"40\" width=\"18\" height=\"100\"/>\n      <rect x=\"282\" y=\"40\" width=\"22.5\" height=\"100\"/>\n      <rect x=\"311\" y=\"40\" width=\"30\" height=\"100\"/>\n    </g>\n  </g>\n  <polygon points=\"24,30 19,42 29,42\" fill=\"currentColor\"/>\n  <polygon points=\"24,150 19,138 29,138\" fill=\"currentColor\"/>\n  <polygon points=\"40,18 50,13 50,23\" fill=\"currentColor\"/>\n  <polygon points=\"64,18 54,13 54,23\" fill=\"currentColor\"/>\n  <g font-size=\"18\" font-weight=\"700\" font-style=\"italic\" fill=\"currentColor\">\n    <text x=\"2\" y=\"96\">b</text>\n    <text x=\"72\" y=\"16\">t</text>\n    <text x=\"176\" y=\"40\">σ</text>\n    <text x=\"54\" y=\"170\">σ</text>\n  </g>\n  <g font-size=\"13\" font-weight=\"600\" fill=\"currentColor\" text-anchor=\"middle\">\n    <text x=\"208.5\" y=\"160\">6</text>\n    <text x=\"225\" y=\"160\">8</text>\n    <text x=\"244.5\" y=\"160\">10</text>\n    <text x=\"267\" y=\"160\">12</text>\n    <text x=\"293\" y=\"160\">15</text>\n    <text x=\"326\" y=\"160\">20</text>\n    <text x=\"344\" y=\"176\" text-anchor=\"end\">mm</text>\n  </g>\n</svg>",
+     "pictures/step-sag.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 170\" role=\"img\" aria-label=\"Questions 7 and 8: under the load the plate bends and its tip drops by delta. The tip may drop no further than the dashed line, delta limit.\">\n  <g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\">\n    <rect x=\"16\" y=\"24\" width=\"14\" height=\"120\" fill=\"currentColor\" fill-opacity=\".15\" stroke=\"none\"/>\n    <line x1=\"30\" y1=\"24\" x2=\"30\" y2=\"144\"/>\n    <path d=\"M30 60 H296 V72 H30\" stroke-width=\"1.2\" stroke-dasharray=\"5 4\" opacity=\".6\"/>\n    <path d=\"M30 60 Q 186 60 296 100 L 296 112 Q 186 72 30 72 Z\" fill=\"currentColor\" fill-opacity=\".12\"/>\n    <line x1=\"236\" y1=\"124\" x2=\"350\" y2=\"124\" stroke=\"#c27c0e\" stroke-width=\"2.5\" stroke-dasharray=\"8 6\"/>\n    <path d=\"M300 66 H330 M300 106 H330\" stroke-width=\"1\" opacity=\".6\"/>\n    <line x1=\"322\" y1=\"66\" x2=\"322\" y2=\"106\" stroke-width=\"1.5\"/>\n    <line x1=\"296\" y1=\"114\" x2=\"296\" y2=\"146\" stroke=\"#c27c0e\" stroke-width=\"3\"/>\n    <path d=\"M214 124 L234 124\" stroke-width=\"1\" stroke-dasharray=\"2 3\" opacity=\".7\"/>\n  </g>\n  <polygon points=\"322,66 317,76 327,76\" fill=\"currentColor\"/>\n  <polygon points=\"322,106 317,96 327,96\" fill=\"currentColor\"/>\n  <polygon points=\"287,140 305,140 296,158\" fill=\"#c27c0e\"/>\n  <g font-size=\"18\" font-weight=\"700\" font-style=\"italic\" fill=\"currentColor\">\n    <text x=\"330\" y=\"124\">δ</text>\n    <text x=\"142\" y=\"130\">δ_limit</text>\n  </g>\n</svg>"
+    },
+    "fr": {
+     "pictures/situation.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 480 300\" role=\"img\" aria-label=\"The situation: a steel column in a workshop; a flat steel plate bolted to its face by four bolts; a chain hoist hanging from a shackle near the plate's free end, lifting a load of mass m; a person standing beside it for scale. L runs from the centre of the bolts to the load hole.\">\n  \n  <g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <line x1=\"0\" y1=\"286\" x2=\"480\" y2=\"286\"/>\n    <path d=\"M12 286 l-10 12 M40 286 l-10 12 M68 286 l-10 12 M96 286 l-10 12 M124 286 l-10 12 M152 286 l-10 12 M180 286 l-10 12 M208 286 l-10 12 M236 286 l-10 12 M264 286 l-10 12 M292 286 l-10 12 M320 286 l-10 12 M348 286 l-10 12 M376 286 l-10 12 M404 286 l-10 12 M432 286 l-10 12 M460 286 l-10 12\" stroke-width=\"1\" opacity=\".45\"/>\n    <rect x=\"40\" y=\"16\" width=\"44\" height=\"262\" fill=\"currentColor\" fill-opacity=\".08\"/>\n    <path d=\"M50 16 V278 M74 16 V278\" stroke-width=\"1\" opacity=\".4\"/>\n    <rect x=\"30\" y=\"278\" width=\"64\" height=\"8\"/>\n    <path d=\"M84 78 H308 Q324 78 324 95 Q324 112 308 112 H84\" fill=\"currentColor\" fill-opacity=\".14\"/>\n    <circle cx=\"100\" cy=\"87\" r=\"3.5\"/>\n    <circle cx=\"126\" cy=\"87\" r=\"3.5\"/>\n    <circle cx=\"100\" cy=\"103\" r=\"3.5\"/>\n    <circle cx=\"126\" cy=\"103\" r=\"3.5\"/>\n    <circle cx=\"304\" cy=\"95\" r=\"5\"/>\n    <path d=\"M113 89 V101 M107 95 H119\" stroke-width=\"1\" stroke-dasharray=\"2 2\" opacity=\".7\"/>\n    <path d=\"M298 95 V113 A6 6 0 0 0 310 113 V95\"/>\n    <line x1=\"304\" y1=\"119\" x2=\"304\" y2=\"132\"/>\n    <rect x=\"288\" y=\"132\" width=\"32\" height=\"30\" rx=\"6\" fill=\"currentColor\" fill-opacity=\".2\"/>\n    <path d=\"M316 162 C 336 196 334 228 322 240 C 312 228 310 196 312 162\" stroke-width=\"1.2\" stroke-dasharray=\"2 3\"/>\n    <line x1=\"304\" y1=\"162\" x2=\"304\" y2=\"198\"/>\n    <path d=\"M304 198 q-8 0 -8 7 q0 7 8 7\"/>\n    <path d=\"M304 212 L270 220 M304 212 L338 220\"/>\n    <rect x=\"262\" y=\"220\" width=\"84\" height=\"52\" rx=\"6\" fill=\"currentColor\" fill-opacity=\".1\" stroke=\"#c27c0e\" stroke-width=\"2.5\"/>\n    <path d=\"M113 72 V46 M304 88 V46\" stroke-width=\"1\" opacity=\".6\"/>\n    <line x1=\"113\" y1=\"54\" x2=\"304\" y2=\"54\" stroke-width=\"1.5\"/>\n    <g opacity=\".6\">\n      <circle cx=\"424\" cy=\"150\" r=\"10\"/>\n      <path d=\"M424 160 V222 M424 176 L406 204 M424 176 L442 202 M424 222 L410 284 M424 222 L438 284\"/>\n    </g>\n  </g>\n  <polygon points=\"113,54 125,49 125,59\" fill=\"currentColor\"/>\n  <polygon points=\"304,54 292,49 292,59\" fill=\"currentColor\"/>\n  <g font-size=\"18\" font-weight=\"700\" font-style=\"italic\" fill=\"currentColor\">\n    <text x=\"208\" y=\"46\" text-anchor=\"middle\">L</text>\n    <text x=\"304\" y=\"252\" text-anchor=\"middle\">m</text>\n  </g>\n</svg>",
+     "drawing.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 880 660\" width=\"880\" height=\"660\"\n     role=\"img\" aria-labelledby=\"ttl desc\">\n<title id=\"ttl\">Défi 001, console murale : schéma coté</title>\n<desc id=\"desc\">Vue de face d'une console en plaque d'acier plate boulonnée sur la face\nd'un poteau, avec quatre trous de boulon disposés en rectangle et un trou de\ncharge plus grand vers l'extrémité libre, plus une vue de chant montrant\nl'épaisseur de la plaque. L'extrémité au-delà du trou de charge est dessinée\ncomme une coupure, car sa forme est le choix de l'étudiant.</desc>\n\n<style>\n  :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; --free:#8a94a0; --paper:none; }\n  \n  /* Paper is white whatever the screen is: a dark-mode laptop must not\n     print light ink. Placed after the dark rule so it wins in print. */\n  @media print{\n    :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; --free:#8a94a0; }\n  }\n  .part   { fill:none; stroke:var(--ink); stroke-width:2.2; }\n  .hole   { fill:none; stroke:var(--ink); stroke-width:2; }\n  .centre { stroke:var(--thin); stroke-width:.9; stroke-dasharray:9 3 2 3; }\n  .ext    { stroke:var(--thin); stroke-width:.9; }\n  .dim    { stroke:var(--thin); stroke-width:1.1; marker-start:url(#a); marker-end:url(#a); }\n  .lead   { stroke:var(--thin); stroke-width:1.1; fill:none; marker-start:url(#a); }\n  .free   { fill:none; stroke:var(--free); stroke-width:1.8; stroke-dasharray:7 5; }\n  .hatch  { stroke:var(--thin); stroke-width:1.2; }\n  text    { font-family:ui-monospace,\"SF Mono\",Menlo,Consolas,monospace; fill:var(--ink); }\n  .d      { font-size:15px; }\n  .sym    { font-size:15px; font-weight:600; }\n  .val    { font-size:15px; fill:var(--accent); font-weight:600; }\n  .note   { font-size:12.5px; fill:var(--thin); }\n  .vw     { font-size:12.5px; fill:var(--thin); letter-spacing:.14em; }\n  .dat    { font-size:13px; font-weight:700; fill:var(--ink); }\n  .datbox { fill:none; stroke:var(--ink); stroke-width:1.4; }\n</style>\n\n<defs>\n  <marker id=\"a\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\">\n    <path d=\"M0,1 L10,5 L0,9 z\" fill=\"var(--thin)\"/>\n  </marker>\n</defs>\n\n\n<text class=\"vw\" x=\"150\" y=\"72\">VUE DE FACE — la face de la plaque</text>\n\n\n<line class=\"part\" x1=\"150\" y1=\"96\" x2=\"150\" y2=\"300\"/>\n<g class=\"hatch\">\n  <line x1=\"150\" y1=\"108\" x2=\"136\" y2=\"122\"/><line x1=\"150\" y1=\"132\" x2=\"136\" y2=\"146\"/>\n  <line x1=\"150\" y1=\"156\" x2=\"136\" y2=\"170\"/><line x1=\"150\" y1=\"180\" x2=\"136\" y2=\"194\"/>\n  <line x1=\"150\" y1=\"204\" x2=\"136\" y2=\"218\"/><line x1=\"150\" y1=\"228\" x2=\"136\" y2=\"242\"/>\n  <line x1=\"150\" y1=\"252\" x2=\"136\" y2=\"266\"/><line x1=\"150\" y1=\"276\" x2=\"136\" y2=\"290\"/>\n</g>\n<text class=\"note\" x=\"86\" y=\"316\">poteau</text>\n\n\n<path class=\"part\" d=\"M150,130 L672,130 M150,262 L672,262 M150,130 L150,262\"/>\n\n<path class=\"part\" d=\"M672,130 L680,146 L664,162 L680,178 L664,194 L680,210 L664,226 L680,242 L672,262\"/>\n\n<path class=\"free\" d=\"M672,132 L742,132 A66,66 0 0 1 742,260 L672,260\"/>\n<text class=\"note\" x=\"700\" y=\"284\">à votre choix</text>\n\n\n<line class=\"centre\" x1=\"124\" y1=\"196\" x2=\"800\" y2=\"196\"/>\n\n\n<g class=\"hole\">\n  <circle cx=\"171\" cy=\"164\" r=\"9\"/><circle cx=\"261\" cy=\"164\" r=\"9\"/>\n  <circle cx=\"171\" cy=\"228\" r=\"9\"/><circle cx=\"261\" cy=\"228\" r=\"9\"/>\n</g>\n<g class=\"centre\">\n  <line x1=\"171\" y1=\"148\" x2=\"171\" y2=\"244\"/><line x1=\"261\" y1=\"148\" x2=\"261\" y2=\"244\"/>\n  <line x1=\"155\" y1=\"164\" x2=\"277\" y2=\"164\"/><line x1=\"155\" y1=\"228\" x2=\"277\" y2=\"228\"/>\n</g>\n\n\n<circle class=\"hole\" cx=\"616\" cy=\"196\" r=\"15\"/>\n<line class=\"centre\" x1=\"616\" y1=\"170\" x2=\"616\" y2=\"222\"/>\n\n\n<g class=\"centre\"><line x1=\"216\" y1=\"176\" x2=\"216\" y2=\"216\"/><line x1=\"196\" y1=\"196\" x2=\"236\" y2=\"196\"/></g>\n<circle cx=\"216\" cy=\"196\" r=\"3.4\" fill=\"var(--accent)\" stroke=\"none\"/>\n<rect class=\"datbox\" x=\"196\" y=\"308\" width=\"40\" height=\"22\"/>\n<text class=\"dat\" x=\"210\" y=\"324\">B</text>\n<line class=\"ext\" x1=\"216\" y1=\"200\" x2=\"216\" y2=\"308\"/>\n<text class=\"note\" x=\"244\" y=\"324\">centre des boulons — L se mesure d'ici, pas du poteau</text>\n\n\n<line class=\"ext\" x1=\"616\" y1=\"200\" x2=\"616\" y2=\"360\"/>\n<line class=\"ext\" x1=\"216\" y1=\"334\" x2=\"216\" y2=\"360\"/>\n<line class=\"dim\" x1=\"216\" y1=\"352\" x2=\"616\" y2=\"352\"/>\n<text class=\"sym\" x=\"386\" y=\"345\">L =</text><text class=\"val\" x=\"424\" y=\"345\">{{L}}</text>\n<text class=\"d\"   x=\"474\" y=\"345\">mm</text>\n\n\n<line class=\"ext\" x1=\"146\" y1=\"130\" x2=\"82\" y2=\"130\"/>\n<line class=\"ext\" x1=\"146\" y1=\"262\" x2=\"82\" y2=\"262\"/>\n<line class=\"dim\" x1=\"92\" y1=\"130\" x2=\"92\" y2=\"262\"/>\n<text class=\"sym\" x=\"28\" y=\"190\">b =</text><text class=\"val\" x=\"26\" y=\"208\">{{b}}</text>\n<text class=\"d\"   x=\"62\" y=\"208\">mm</text>\n\n\n<line class=\"ext\" x1=\"171\" y1=\"160\" x2=\"171\" y2=\"104\"/>\n<line class=\"ext\" x1=\"261\" y1=\"160\" x2=\"261\" y2=\"104\"/>\n<line class=\"dim\" x1=\"171\" y1=\"112\" x2=\"261\" y2=\"112\"/>\n<text class=\"sym\" x=\"178\" y=\"104\">p_h =</text><text class=\"val\" x=\"232\" y=\"104\">{{p_h}}</text>\n\n\n<line class=\"ext\" x1=\"167\" y1=\"164\" x2=\"120\" y2=\"164\"/>\n<line class=\"ext\" x1=\"167\" y1=\"228\" x2=\"120\" y2=\"228\"/>\n<line class=\"dim\" x1=\"128\" y1=\"164\" x2=\"128\" y2=\"228\"/>\n<text class=\"sym\" x=\"96\" y=\"186\">p_v</text><text class=\"val\" x=\"104\" y=\"204\">{{p_v}}</text>\n\n\n<path class=\"lead\" d=\"M268,158 L320,96 L404,96\"/>\n<text class=\"sym\" x=\"330\" y=\"90\">4 × &#8709;</text><text class=\"val\" x=\"378\" y=\"90\">{{d_bolt}}</text>\n<text class=\"d\"   x=\"412\" y=\"90\">mm  débouchants</text>\n\n<path class=\"lead\" d=\"M626,186 L668,108 L720,108\"/>\n<text class=\"sym\" x=\"666\" y=\"102\">&#8709;</text><text class=\"val\" x=\"682\" y=\"102\">{{d_load}}</text>\n<text class=\"d\"   x=\"716\" y=\"102\">mm</text>\n\n\n<text class=\"vw\" x=\"28\" y=\"400\">VUE DE CHANT</text>\n<text class=\"note\" x=\"28\" y=\"418\">vue dans le sens de la longueur</text>\n\n<rect class=\"part\" x=\"180\" y=\"452\" width=\"26\" height=\"132\"/>\n<line class=\"centre\" x1=\"160\" y1=\"518\" x2=\"226\" y2=\"518\"/>\n\n<line class=\"ext\" x1=\"180\" y1=\"448\" x2=\"180\" y2=\"424\"/>\n<line class=\"ext\" x1=\"206\" y1=\"448\" x2=\"206\" y2=\"424\"/>\n<line class=\"dim\" x1=\"134\" y1=\"428\" x2=\"180\" y2=\"428\"/>\n<line class=\"dim\" x1=\"206\" y1=\"428\" x2=\"252\" y2=\"428\"/>\n<text class=\"sym\" x=\"262\" y=\"434\">t = l'épaisseur que vous choisissez (étape 8)</text>\n\n<line class=\"ext\" x1=\"210\" y1=\"452\" x2=\"288\" y2=\"452\"/>\n<line class=\"ext\" x1=\"210\" y1=\"584\" x2=\"288\" y2=\"584\"/>\n<line class=\"dim\" x1=\"280\" y1=\"452\" x2=\"280\" y2=\"584\"/>\n<text class=\"sym\" x=\"298\" y=\"512\">b =</text><text class=\"val\" x=\"336\" y=\"512\">{{b}}</text>\n<text class=\"d\"   x=\"370\" y=\"512\">mm  — le même b qu'au-dessus</text>\n\n<text class=\"note\" x=\"298\" y=\"544\">La plaque est sur chant : b est la hauteur de la poutre,</text>\n<text class=\"note\" x=\"298\" y=\"562\">t en est la largeur. Les intervertir change la réponse</text>\n<text class=\"note\" x=\"298\" y=\"580\">d'environ un facteur trois.</text>\n\n\n<line class=\"ext\" x1=\"24\" y1=\"612\" x2=\"856\" y2=\"612\"/>\n<text class=\"note\" x=\"24\" y=\"632\">DÉFI 001 · CONSOLE MURALE · S235 · COTES EN mm · PAS À L'ÉCHELLE</text>\n\n</svg>",
+     "pictures/step-load.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 170\" role=\"img\" aria-label=\"Questions 1 and 2: the load W hangs at the tip, a distance L from the centre of the bolts, and tries to turn the bracket about its root with a moment M.\">\n  <g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\">\n    <rect x=\"16\" y=\"30\" width=\"14\" height=\"120\" fill=\"currentColor\" fill-opacity=\".15\" stroke=\"none\"/>\n    <line x1=\"30\" y1=\"30\" x2=\"30\" y2=\"150\"/>\n    <rect x=\"30\" y=\"70\" width=\"262\" height=\"24\" fill=\"currentColor\" fill-opacity=\".1\"/>\n    <circle cx=\"46\" cy=\"82\" r=\"4\"/>\n    <circle cx=\"70\" cy=\"82\" r=\"4\"/>\n    <path d=\"M58 66 V22 M290 66 V22\" stroke-width=\"1\" opacity=\".6\"/>\n    <line x1=\"58\" y1=\"30\" x2=\"290\" y2=\"30\" stroke-width=\"1.5\"/>\n    <path d=\"M104 118 A 34 34 0 0 1 104 50\" stroke-width=\"2.5\"/>\n    <line x1=\"290\" y1=\"96\" x2=\"290\" y2=\"138\" stroke=\"#c27c0e\" stroke-width=\"3\"/>\n  </g>\n  <polygon points=\"58,30 70,25 70,35\" fill=\"currentColor\"/>\n  <polygon points=\"290,30 278,25 278,35\" fill=\"currentColor\"/>\n  <polygon points=\"97,56 111,54 106,40\" fill=\"currentColor\"/>\n  <polygon points=\"281,132 299,132 290,150\" fill=\"#c27c0e\"/>\n  <g font-size=\"18\" font-weight=\"700\" font-style=\"italic\" fill=\"currentColor\">\n    <text x=\"174\" y=\"22\" text-anchor=\"middle\">L</text>\n    <text x=\"116\" y=\"52\">M</text>\n    <text x=\"302\" y=\"140\">W</text>\n  </g>\n</svg>",
+     "pictures/step-section.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 180\" role=\"img\" aria-label=\"Questions 3 to 6: the plate's section at the root stands on edge, b deep and t thick. Bending stretches its top edge and squeezes its bottom edge, the stress sigma growing from zero in the middle. Beside it, the plate thicknesses a workshop can buy, from 6 to 20 mm.\">\n  <g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\">\n    <rect x=\"40\" y=\"30\" width=\"24\" height=\"120\" fill=\"currentColor\" fill-opacity=\".14\"/>\n    <path d=\"M36 30 H18 M36 150 H18 M40 26 V12 M64 26 V12\" stroke-width=\"1\" opacity=\".6\"/>\n    <line x1=\"24\" y1=\"30\" x2=\"24\" y2=\"150\" stroke-width=\"1.5\"/>\n    <line x1=\"40\" y1=\"18\" x2=\"64\" y2=\"18\" stroke-width=\"1.5\"/>\n    <line x1=\"120\" y1=\"24\" x2=\"120\" y2=\"156\" stroke-width=\"1\" opacity=\".6\"/>\n    <line x1=\"30\" y1=\"90\" x2=\"176\" y2=\"90\" stroke-width=\"1\" stroke-dasharray=\"5 4\" opacity=\".6\"/>\n    <path d=\"M120 30 H170 L120 90 Z M120 90 V150 H70 Z\" fill=\"currentColor\" fill-opacity=\".12\" stroke-width=\"1.5\"/>\n    <g stroke-width=\"1.5\">\n      <rect x=\"204\" y=\"40\" width=\"9\" height=\"100\"/>\n      <rect x=\"219\" y=\"40\" width=\"12\" height=\"100\"/>\n      <rect x=\"237\" y=\"40\" width=\"15\" height=\"100\"/>\n      <rect x=\"258\" y=\"40\" width=\"18\" height=\"100\"/>\n      <rect x=\"282\" y=\"40\" width=\"22.5\" height=\"100\"/>\n      <rect x=\"311\" y=\"40\" width=\"30\" height=\"100\"/>\n    </g>\n  </g>\n  <polygon points=\"24,30 19,42 29,42\" fill=\"currentColor\"/>\n  <polygon points=\"24,150 19,138 29,138\" fill=\"currentColor\"/>\n  <polygon points=\"40,18 50,13 50,23\" fill=\"currentColor\"/>\n  <polygon points=\"64,18 54,13 54,23\" fill=\"currentColor\"/>\n  <g font-size=\"18\" font-weight=\"700\" font-style=\"italic\" fill=\"currentColor\">\n    <text x=\"2\" y=\"96\">b</text>\n    <text x=\"72\" y=\"16\">t</text>\n    <text x=\"176\" y=\"40\">σ</text>\n    <text x=\"54\" y=\"170\">σ</text>\n  </g>\n  <g font-size=\"13\" font-weight=\"600\" fill=\"currentColor\" text-anchor=\"middle\">\n    <text x=\"208.5\" y=\"160\">6</text>\n    <text x=\"225\" y=\"160\">8</text>\n    <text x=\"244.5\" y=\"160\">10</text>\n    <text x=\"267\" y=\"160\">12</text>\n    <text x=\"293\" y=\"160\">15</text>\n    <text x=\"326\" y=\"160\">20</text>\n    <text x=\"344\" y=\"176\" text-anchor=\"end\">mm</text>\n  </g>\n</svg>",
+     "pictures/step-sag.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 170\" role=\"img\" aria-label=\"Questions 7 and 8: under the load the plate bends and its tip drops by delta. The tip may drop no further than the dashed line, delta limit.\">\n  <g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\">\n    <rect x=\"16\" y=\"24\" width=\"14\" height=\"120\" fill=\"currentColor\" fill-opacity=\".15\" stroke=\"none\"/>\n    <line x1=\"30\" y1=\"24\" x2=\"30\" y2=\"144\"/>\n    <path d=\"M30 60 H296 V72 H30\" stroke-width=\"1.2\" stroke-dasharray=\"5 4\" opacity=\".6\"/>\n    <path d=\"M30 60 Q 186 60 296 100 L 296 112 Q 186 72 30 72 Z\" fill=\"currentColor\" fill-opacity=\".12\"/>\n    <line x1=\"236\" y1=\"124\" x2=\"350\" y2=\"124\" stroke=\"#c27c0e\" stroke-width=\"2.5\" stroke-dasharray=\"8 6\"/>\n    <path d=\"M300 66 H330 M300 106 H330\" stroke-width=\"1\" opacity=\".6\"/>\n    <line x1=\"322\" y1=\"66\" x2=\"322\" y2=\"106\" stroke-width=\"1.5\"/>\n    <line x1=\"296\" y1=\"114\" x2=\"296\" y2=\"146\" stroke=\"#c27c0e\" stroke-width=\"3\"/>\n    <path d=\"M214 124 L234 124\" stroke-width=\"1\" stroke-dasharray=\"2 3\" opacity=\".7\"/>\n  </g>\n  <polygon points=\"322,66 317,76 327,76\" fill=\"currentColor\"/>\n  <polygon points=\"322,106 317,96 327,96\" fill=\"currentColor\"/>\n  <polygon points=\"287,140 305,140 296,158\" fill=\"#c27c0e\"/>\n  <g font-size=\"18\" font-weight=\"700\" font-style=\"italic\" fill=\"currentColor\">\n    <text x=\"330\" y=\"124\">δ</text>\n    <text x=\"142\" y=\"130\">δ_limit</text>\n  </g>\n</svg>"
+    }
+   }
+  },
+  "p001-stepped-block": {
+   "id": "p001-stepped-block",
+   "version": "0.1.0",
+   "title": {
+    "en": "Stepped block",
+    "fr": "Bloc à épaulement"
+   },
+   "constants": {
+    "pi": 3.141592653589793,
+    "kg_m3_to_g_mm3": 1e-06
+   },
+   "params": {
+    "L": {
+     "min": 80,
+     "max": 120,
+     "step": 10,
+     "unit": "mm"
+    },
+    "W": {
+     "values": [
+      50,
+      60,
+      70
+     ],
+     "unit": "mm"
+    },
+    "H": {
+     "values": [
+      15,
+      20,
+      25
+     ],
+     "unit": "mm"
+    },
+    "Db": {
+     "values": [
+      30,
+      35,
+      40
+     ],
+     "unit": "mm"
+    },
+    "hb": {
+     "min": 10,
+     "max": 20,
+     "step": 5,
+     "unit": "mm"
+    },
+    "dh": {
+     "values": [
+      10,
+      12,
+      14
+     ],
+     "unit": "mm"
+    },
+    "rho": {
+     "values": [
+      2700,
+      7800,
+      7850
+     ],
+     "unit": "kg/m3"
+    }
+   },
+   "attempts": 3,
+   "steps": [
+    {
+     "id": "volume",
+     "unit": "mm3",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.001
+     }
+    },
+    {
+     "id": "mass",
+     "unit": "g",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.001
+     }
+    },
+    {
+     "id": "com_height",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.01
+     }
+    }
+   ],
+   "strings": {
+    "step": {
+     "volume": {
+      "en": "1 · The volume of the part",
+      "fr": "1 · Le volume de la pièce"
+     },
+     "mass": {
+      "en": "2 · The mass",
+      "fr": "2 · La masse"
+     },
+     "com_height": {
+      "en": "3 · The height of the centre of mass",
+      "fr": "3 · La hauteur du centre de masse"
+     }
+    },
+    "diagnosis": {
+     "FP_HOLE_IGNORED": {
+      "en": "Your volume still contains the hole. Which feature removes material?",
+      "fr": "Votre volume contient encore le trou. Quelle fonction retire de la matière ?"
+     },
+     "FP_BOSS_IGNORED": {
+      "en": "Your volume has no boss in it. Count the features you modelled.",
+      "fr": "Votre volume ne contient pas le bossage. Comptez les fonctions modélisées."
+     },
+     "FP_HOLE_STOPS_AT_BASE": {
+      "en": "Check how deep the hole goes: through the block only, or through the boss too?",
+      "fr": "Vérifiez la profondeur du trou : le bloc seul, ou aussi le bossage ?"
+     },
+     "FP_MASS_IN_KG": {
+      "en": "Check the unit your mass is in against the unit the step asks for.",
+      "fr": "Vérifiez l'unité de votre masse par rapport à celle demandée."
+     },
+     "FP_DENSITY_NOT_CONVERTED": {
+      "en": "The density is in kg per cubic metre and the volume is in cubic millimetres. Bring them to one system first.",
+      "fr": "La masse volumique est en kg par mètre cube et le volume en millimètres cubes. Ramenez-les d'abord à un même système."
+     },
+     "FP_DIAMETER_AS_RADIUS": {
+      "en": "A circle's area is written with its radius. Check which dimension you put in.",
+      "fr": "L'aire d'un cercle s'écrit avec son rayon. Vérifiez la dimension que vous avez utilisée."
+     },
+     "FP_COM_AT_MIDHEIGHT": {
+      "en": "The middle of the part's height is not where its mass is balanced. Where is most of the material?",
+      "fr": "Le milieu de la hauteur n'est pas l'endroit où la masse est équilibrée. Où se trouve l'essentiel de la matière ?"
+     }
+    },
+    "hint": {
+     "volume.h1": {
+      "en": "List the features in the order you modelled them, and say whether each adds or removes material.",
+      "fr": "Listez les fonctions dans l'ordre de modélisation, et dites si chacune ajoute ou retire de la matière."
+     },
+     "volume.h2": {
+      "en": "Read the volume from the SOLIDWORKS mass properties, then rebuild it by hand from the three features.",
+      "fr": "Lisez le volume dans les propriétés de masse SOLIDWORKS, puis reconstruisez-le à la main à partir des trois fonctions."
+     },
+     "volume.h3": {
+      "en": "The hole passes through the boss and the block. How long is that hole in total?",
+      "fr": "Le trou traverse le bossage et le bloc. Quelle est sa longueur totale ?"
+     },
+     "mass.h1": {
+      "en": "Which two quantities does a mass depend on?",
+      "fr": "De quelles deux grandeurs une masse dépend-elle ?"
+     },
+     "mass.h2": {
+      "en": "Check the units before the arithmetic. One cubic metre is a thousand million cubic millimetres.",
+      "fr": "Vérifiez les unités avant l'arithmétique. Un mètre cube vaut un milliard de millimètres cubes."
+     },
+     "com_height.h1": {
+      "en": "Which piece holds most of the material, and where is its own centre?",
+      "fr": "Quelle pièce contient l'essentiel de la matière, et où est son propre centre ?"
+     },
+     "com_height.h2": {
+      "en": "Weigh each piece by its volume, from the bottom face. A hole counts as negative material.",
+      "fr": "Pondérez chaque pièce par son volume, depuis la face inférieure. Un trou compte comme de la matière négative."
+     }
+    }
+   },
+   "brief": {
+    "en": "<figure role=\"img\" aria-label=\"Dimensioned schematic of the stepped block\"><div class=\"pan\"><img data-drawing=\"drawing.svg\" alt=\"Dimensioned schematic of the stepped block\"></div><figcaption class=\"pan-hint\">Swipe sideways to see the whole drawing.</figcaption></figure>\n<p>Model this part in SOLIDWORKS, in millimetres, with the origin at the middle of the base's bottom face.</p>\n<ol><li>A rectangular block, <strong>{{L}} x {{W}} x {{H}} mm</strong> (height {{H}}).</li><li>A round boss on the centre of the top face: diameter <strong>{{Db}} mm</strong>, height <strong>{{hb}} mm</strong>.</li><li>One round hole, diameter <strong>{{dh}} mm</strong>, through boss and block together, on the boss's axis.</li></ol>\n<p>Material: density <strong>{{rho}} kg/m3</strong>.</p>\n<p>Read the mass properties and give: the <strong>volume</strong> (mm3), the <strong>mass</strong> (g), and the height of the <strong>centre of mass</strong> above the bottom face (mm).</p>",
+    "fr": "<figure role=\"img\" aria-label=\"Schéma coté du bloc étagé\"><div class=\"pan\"><img data-drawing=\"drawing.svg\" alt=\"Schéma coté du bloc étagé\"></div><figcaption class=\"pan-hint\">Faites glisser latéralement pour voir tout le dessin.</figcaption></figure>\n<p>Modélisez cette pièce dans SOLIDWORKS, en millimètres, l'origine au milieu de la face inférieure du bloc.</p>\n<ol><li>Un bloc rectangulaire, <strong>{{L}} x {{W}} x {{H}} mm</strong> (hauteur {{H}}).</li><li>Un bossage cylindrique au centre de la face supérieure : diamètre <strong>{{Db}} mm</strong>, hauteur <strong>{{hb}} mm</strong>.</li><li>Un trou de diamètre <strong>{{dh}} mm</strong>, traversant le bossage et le bloc, sur l'axe du bossage.</li></ol>\n<p>Matériau : masse volumique <strong>{{rho}} kg/m3</strong>.</p>\n<p>Lisez les propriétés de masse et donnez : le <strong>volume</strong> (mm3), la <strong>masse</strong> (g), et la hauteur du <strong>centre de masse</strong> au-dessus de la face inférieure (mm).</p>"
+   },
+   "drawings": {
+    "en": {
+     "drawing.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 330\" width=\"640\" height=\"330\" role=\"img\" aria-labelledby=\"ttl\">\n<title id=\"ttl\">P001 stepped block: dimensioned schematic, not to scale</title>\n<style>\n  :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; }\n  \n  @media print{ :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; } }\n  .part{fill:none;stroke:var(--ink);stroke-width:2.2}\n  .hid{fill:none;stroke:var(--thin);stroke-width:1.3;stroke-dasharray:6 4}\n  .ctr{stroke:var(--thin);stroke-width:.9;stroke-dasharray:9 3 2 3}\n  .ext{stroke:var(--thin);stroke-width:.9}\n  .dim{stroke:var(--thin);stroke-width:1.1;marker-start:url(#a);marker-end:url(#a)}\n  text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:var(--ink);font-size:14px}\n  .val{fill:var(--accent);font-weight:600}\n  .note{font-size:12px;fill:var(--thin)}\n  .vw{font-size:12px;fill:var(--thin);letter-spacing:.12em}\n</style>\n<defs><marker id=\"a\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,1 L10,5 L0,9 z\" fill=\"var(--thin)\"/></marker></defs>\n<text class=\"vw\" x=\"40\" y=\"26\">FRONT VIEW</text>\n<rect class=\"part\" x=\"40\" y=\"130\" width=\"220\" height=\"60\"/><rect class=\"part\" x=\"110\" y=\"90\" width=\"80\" height=\"40\"/><line class=\"hid\" x1=\"140\" y1=\"90\" x2=\"140\" y2=\"190\"/><line class=\"hid\" x1=\"160\" y1=\"90\" x2=\"160\" y2=\"190\"/><line class=\"ctr\" x1=\"150\" y1=\"78\" x2=\"150\" y2=\"202\"/>\n<line class=\"ext\" x1=\"40\" y1=\"190\" x2=\"40\" y2=\"230\"/><line class=\"ext\" x1=\"260\" y1=\"190\" x2=\"260\" y2=\"230\"/><line class=\"dim\" x1=\"40\" y1=\"226\" x2=\"260\" y2=\"226\"/><text class=\"val\" x=\"150\" y=\"220\" text-anchor=\"middle\">{{L}}</text>\n<line class=\"ext\" x1=\"40\" y1=\"130\" x2=\"18\" y2=\"130\"/><line class=\"ext\" x1=\"40\" y1=\"190\" x2=\"18\" y2=\"190\"/><line class=\"dim\" x1=\"22\" y1=\"130\" x2=\"22\" y2=\"190\"/><text class=\"val\" x=\"16\" y=\"165\" text-anchor=\"end\">{{H}}</text>\n<line class=\"ext\" x1=\"190\" y1=\"90\" x2=\"294\" y2=\"90\"/><line class=\"ext\" x1=\"190\" y1=\"130\" x2=\"294\" y2=\"130\"/><line class=\"dim\" x1=\"290\" y1=\"90\" x2=\"290\" y2=\"130\"/><text class=\"val\" x=\"296\" y=\"115\" text-anchor=\"start\">{{hb}}</text>\n<line class=\"ext\" x1=\"110\" y1=\"90\" x2=\"110\" y2=\"70\"/><line class=\"ext\" x1=\"190\" y1=\"90\" x2=\"190\" y2=\"70\"/><line class=\"dim\" x1=\"110\" y1=\"66\" x2=\"190\" y2=\"66\"/><text class=\"val\" x=\"150\" y=\"60\" text-anchor=\"middle\">&#8960; {{Db}}</text>\n<text class=\"val\" x=\"150\" y=\"262\" text-anchor=\"middle\">hole &#8960; {{dh}}, through boss and block</text>\n<text class=\"vw\" x=\"340\" y=\"26\">PLAN VIEW</text>\n<rect class=\"part\" x=\"340\" y=\"60\" width=\"240\" height=\"130\"/><circle class=\"part\" cx=\"460\" cy=\"125\" r=\"40\"/><circle class=\"hid\" cx=\"460\" cy=\"125\" r=\"12\"/><line class=\"ctr\" x1=\"330\" y1=\"125\" x2=\"590\" y2=\"125\"/><line class=\"ctr\" x1=\"460\" y1=\"50\" x2=\"460\" y2=\"200\"/>\n<line class=\"ext\" x1=\"340\" y1=\"190\" x2=\"340\" y2=\"230\"/><line class=\"ext\" x1=\"580\" y1=\"190\" x2=\"580\" y2=\"230\"/><line class=\"dim\" x1=\"340\" y1=\"226\" x2=\"580\" y2=\"226\"/><text class=\"val\" x=\"460\" y=\"220\" text-anchor=\"middle\">{{L}}</text>\n<line class=\"ext\" x1=\"580\" y1=\"60\" x2=\"614\" y2=\"60\"/><line class=\"ext\" x1=\"580\" y1=\"190\" x2=\"614\" y2=\"190\"/><line class=\"dim\" x1=\"610\" y1=\"60\" x2=\"610\" y2=\"190\"/><text class=\"val\" x=\"616\" y=\"130\" text-anchor=\"start\">{{W}}</text>\n<text class=\"note\" x=\"40\" y=\"300\">Origin: middle of the base bottom face. Millimetres. Shape and proportions are schematic.</text>\n</svg>"
+    },
+    "fr": {
+     "drawing.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 330\" width=\"640\" height=\"330\" role=\"img\" aria-labelledby=\"ttl\">\n<title id=\"ttl\">P001 bloc étagé : schéma coté, hors échelle</title>\n<style>\n  :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; }\n  \n  @media print{ :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; } }\n  .part{fill:none;stroke:var(--ink);stroke-width:2.2}\n  .hid{fill:none;stroke:var(--thin);stroke-width:1.3;stroke-dasharray:6 4}\n  .ctr{stroke:var(--thin);stroke-width:.9;stroke-dasharray:9 3 2 3}\n  .ext{stroke:var(--thin);stroke-width:.9}\n  .dim{stroke:var(--thin);stroke-width:1.1;marker-start:url(#a);marker-end:url(#a)}\n  text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:var(--ink);font-size:14px}\n  .val{fill:var(--accent);font-weight:600}\n  .note{font-size:12px;fill:var(--thin)}\n  .vw{font-size:12px;fill:var(--thin);letter-spacing:.12em}\n</style>\n<defs><marker id=\"a\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,1 L10,5 L0,9 z\" fill=\"var(--thin)\"/></marker></defs>\n<text class=\"vw\" x=\"40\" y=\"26\">VUE DE FACE</text>\n<rect class=\"part\" x=\"40\" y=\"130\" width=\"220\" height=\"60\"/><rect class=\"part\" x=\"110\" y=\"90\" width=\"80\" height=\"40\"/><line class=\"hid\" x1=\"140\" y1=\"90\" x2=\"140\" y2=\"190\"/><line class=\"hid\" x1=\"160\" y1=\"90\" x2=\"160\" y2=\"190\"/><line class=\"ctr\" x1=\"150\" y1=\"78\" x2=\"150\" y2=\"202\"/>\n<line class=\"ext\" x1=\"40\" y1=\"190\" x2=\"40\" y2=\"230\"/><line class=\"ext\" x1=\"260\" y1=\"190\" x2=\"260\" y2=\"230\"/><line class=\"dim\" x1=\"40\" y1=\"226\" x2=\"260\" y2=\"226\"/><text class=\"val\" x=\"150\" y=\"220\" text-anchor=\"middle\">{{L}}</text>\n<line class=\"ext\" x1=\"40\" y1=\"130\" x2=\"18\" y2=\"130\"/><line class=\"ext\" x1=\"40\" y1=\"190\" x2=\"18\" y2=\"190\"/><line class=\"dim\" x1=\"22\" y1=\"130\" x2=\"22\" y2=\"190\"/><text class=\"val\" x=\"16\" y=\"165\" text-anchor=\"end\">{{H}}</text>\n<line class=\"ext\" x1=\"190\" y1=\"90\" x2=\"294\" y2=\"90\"/><line class=\"ext\" x1=\"190\" y1=\"130\" x2=\"294\" y2=\"130\"/><line class=\"dim\" x1=\"290\" y1=\"90\" x2=\"290\" y2=\"130\"/><text class=\"val\" x=\"296\" y=\"115\" text-anchor=\"start\">{{hb}}</text>\n<line class=\"ext\" x1=\"110\" y1=\"90\" x2=\"110\" y2=\"70\"/><line class=\"ext\" x1=\"190\" y1=\"90\" x2=\"190\" y2=\"70\"/><line class=\"dim\" x1=\"110\" y1=\"66\" x2=\"190\" y2=\"66\"/><text class=\"val\" x=\"150\" y=\"60\" text-anchor=\"middle\">&#8960; {{Db}}</text>\n<text class=\"val\" x=\"150\" y=\"262\" text-anchor=\"middle\">trou &#8960; {{dh}}, traversant bossage et bloc</text>\n<text class=\"vw\" x=\"340\" y=\"26\">VUE DE DESSUS</text>\n<rect class=\"part\" x=\"340\" y=\"60\" width=\"240\" height=\"130\"/><circle class=\"part\" cx=\"460\" cy=\"125\" r=\"40\"/><circle class=\"hid\" cx=\"460\" cy=\"125\" r=\"12\"/><line class=\"ctr\" x1=\"330\" y1=\"125\" x2=\"590\" y2=\"125\"/><line class=\"ctr\" x1=\"460\" y1=\"50\" x2=\"460\" y2=\"200\"/>\n<line class=\"ext\" x1=\"340\" y1=\"190\" x2=\"340\" y2=\"230\"/><line class=\"ext\" x1=\"580\" y1=\"190\" x2=\"580\" y2=\"230\"/><line class=\"dim\" x1=\"340\" y1=\"226\" x2=\"580\" y2=\"226\"/><text class=\"val\" x=\"460\" y=\"220\" text-anchor=\"middle\">{{L}}</text>\n<line class=\"ext\" x1=\"580\" y1=\"60\" x2=\"614\" y2=\"60\"/><line class=\"ext\" x1=\"580\" y1=\"190\" x2=\"614\" y2=\"190\"/><line class=\"dim\" x1=\"610\" y1=\"60\" x2=\"610\" y2=\"190\"/><text class=\"val\" x=\"616\" y=\"130\" text-anchor=\"start\">{{W}}</text>\n<text class=\"note\" x=\"40\" y=\"300\">Origine : milieu de la face inférieure du bloc. Millimètres. Formes et proportions schématiques.</text>\n</svg>"
+    }
+   }
+  },
+  "p002-stepped-shaft": {
+   "id": "p002-stepped-shaft",
+   "version": "0.1.0",
+   "title": {
+    "en": "Stepped shaft",
+    "fr": "Arbre étagé"
+   },
+   "constants": {
+    "pi": 3.141592653589793,
+    "kg_m3_to_g_mm3": 1e-06
+   },
+   "params": {
+    "d1": {
+     "values": [
+      20,
+      25,
+      30
+     ],
+     "unit": "mm"
+    },
+    "l1": {
+     "min": 40,
+     "max": 60,
+     "step": 10,
+     "unit": "mm"
+    },
+    "d2": {
+     "values": [
+      40,
+      45,
+      50
+     ],
+     "unit": "mm"
+    },
+    "l2": {
+     "min": 30,
+     "max": 50,
+     "step": 10,
+     "unit": "mm"
+    },
+    "d3": {
+     "values": [
+      25,
+      30,
+      35
+     ],
+     "unit": "mm"
+    },
+    "l3": {
+     "min": 30,
+     "max": 50,
+     "step": 10,
+     "unit": "mm"
+    },
+    "bore": {
+     "values": [
+      8,
+      10,
+      12
+     ],
+     "unit": "mm"
+    },
+    "rho": {
+     "values": [
+      2700,
+      7800,
+      7850
+     ],
+     "unit": "kg/m3"
+    }
+   },
+   "attempts": 3,
+   "steps": [
+    {
+     "id": "volume",
+     "unit": "mm3",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.001
+     }
+    },
+    {
+     "id": "mass",
+     "unit": "g",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.001
+     }
+    },
+    {
+     "id": "com_x",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.01
+     }
+    }
+   ],
+   "strings": {
+    "step": {
+     "volume": {
+      "en": "1 · The volume of the shaft",
+      "fr": "1 · Le volume de l'arbre"
+     },
+     "mass": {
+      "en": "2 · The mass",
+      "fr": "2 · La masse"
+     },
+     "com_x": {
+      "en": "3 · The centre of mass along the axis",
+      "fr": "3 · Le centre de masse le long de l'axe"
+     }
+    },
+    "diagnosis": {
+     "FP_BORE_IGNORED": {
+      "en": "Your volume still contains the bore. Which feature removes material, and over what length?",
+      "fr": "Votre volume contient encore l'alésage. Quelle fonction retire de la matière, et sur quelle longueur ?"
+     },
+     "FP_MASS_IN_KG": {
+      "en": "Check the unit your mass is in against the unit the step asks for.",
+      "fr": "Vérifiez l'unité de votre masse par rapport à celle demandée."
+     },
+     "FP_DENSITY_NOT_CONVERTED": {
+      "en": "The density is in kg per cubic metre and the volume is in cubic millimetres. Bring them to one system first.",
+      "fr": "La masse volumique est en kg par mètre cube et le volume en millimètres cubes. Ramenez-les d'abord à un même système."
+     },
+     "FP_DIAMETER_AS_RADIUS": {
+      "en": "A circle's area is written with its radius. Check which dimension you put in.",
+      "fr": "L'aire d'un cercle s'écrit avec son rayon. Vérifiez la dimension que vous avez utilisée."
+     },
+     "FP_COM_AT_HALF_LENGTH": {
+      "en": "Half the length is where a uniform bar would balance. Is this shaft uniform?",
+      "fr": "La moitié de la longueur est le point d'équilibre d'une barre uniforme. Cet arbre est-il uniforme ?"
+     }
+    },
+    "hint": {
+     "volume.h1": {
+      "en": "A revolved solid is a stack of cylinders. Find the volume of each one.",
+      "fr": "Un solide de révolution est un empilement de cylindres. Trouvez le volume de chacun."
+     },
+     "volume.h2": {
+      "en": "The bore removes material over the whole length, not just one section.",
+      "fr": "L'alésage retire de la matière sur toute la longueur, pas sur une seule section."
+     },
+     "mass.h1": {
+      "en": "Which two quantities does a mass depend on?",
+      "fr": "De quelles deux grandeurs une masse dépend-elle ?"
+     },
+     "mass.h2": {
+      "en": "Check the units before the arithmetic. One cubic metre is a thousand million cubic millimetres.",
+      "fr": "Vérifiez les unités avant l'arithmétique. Un mètre cube vaut un milliard de millimètres cubes."
+     },
+     "com_x.h1": {
+      "en": "Each section's own centre is at the middle of that section. Which section is heaviest?",
+      "fr": "Le centre de chaque section est au milieu de cette section. Quelle section est la plus lourde ?"
+     },
+     "com_x.h2": {
+      "en": "Weigh each section's centre by its volume, measured from the left end.",
+      "fr": "Pondérez le centre de chaque section par son volume, mesuré depuis l'extrémité gauche."
+     }
+    }
+   },
+   "brief": {
+    "en": "<figure role=\"img\" aria-label=\"Dimensioned schematic of the stepped shaft\"><div class=\"pan\"><img data-drawing=\"drawing.svg\" alt=\"Dimensioned schematic of the stepped shaft\"></div><figcaption class=\"pan-hint\">Swipe sideways to see the whole drawing.</figcaption></figure>\n<p>Model this shaft in SOLIDWORKS with one revolved profile. Millimetres, origin at the middle of the left end face, the axis along X.</p>\n<p>Three cylinders in line, left to right:</p>\n<div class=\"table\"><table><thead><tr><th>Section</th><th>Diameter</th><th>Length</th></tr></thead><tbody><tr><td>1</td><td><strong>{{d1}} mm</strong></td><td><strong>{{l1}} mm</strong></td></tr><tr><td>2</td><td><strong>{{d2}} mm</strong></td><td><strong>{{l2}} mm</strong></td></tr><tr><td>3</td><td><strong>{{d3}} mm</strong></td><td><strong>{{l3}} mm</strong></td></tr></tbody></table></div>\n<p>A round bore, diameter <strong>{{bore}} mm</strong>, runs through the whole length on the axis.</p>\n<p>Material: density <strong>{{rho}} kg/m3</strong>.</p>\n<p>Give the <strong>volume</strong> (mm3), the <strong>mass</strong> (g), and the distance of the <strong>centre of mass</strong> from the left end face, along the axis (mm).</p>",
+    "fr": "<figure role=\"img\" aria-label=\"Schéma coté de l&#x27;arbre étagé\"><div class=\"pan\"><img data-drawing=\"drawing.svg\" alt=\"Schéma coté de l&#x27;arbre étagé\"></div><figcaption class=\"pan-hint\">Faites glisser latéralement pour voir tout le dessin.</figcaption></figure>\n<p>Modélisez cet arbre dans SOLIDWORKS avec un seul profil révolutionné. Millimètres, origine au milieu de la face gauche, axe selon X.</p>\n<p>Trois cylindres alignés, de gauche à droite :</p>\n<div class=\"table\"><table><thead><tr><th>Section</th><th>Diamètre</th><th>Longueur</th></tr></thead><tbody><tr><td>1</td><td><strong>{{d1}} mm</strong></td><td><strong>{{l1}} mm</strong></td></tr><tr><td>2</td><td><strong>{{d2}} mm</strong></td><td><strong>{{l2}} mm</strong></td></tr><tr><td>3</td><td><strong>{{d3}} mm</strong></td><td><strong>{{l3}} mm</strong></td></tr></tbody></table></div>\n<p>Un alésage de diamètre <strong>{{bore}} mm</strong> traverse toute la longueur, sur l'axe.</p>\n<p>Matériau : masse volumique <strong>{{rho}} kg/m3</strong>.</p>\n<p>Donnez le <strong>volume</strong> (mm3), la <strong>masse</strong> (g), et la distance du <strong>centre de masse</strong> à la face gauche, le long de l'axe (mm).</p>"
+   },
+   "drawings": {
+    "en": {
+     "drawing.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 250\" width=\"640\" height=\"250\" role=\"img\" aria-labelledby=\"ttl\">\n<title id=\"ttl\">P002 stepped shaft: dimensioned schematic, not to scale</title>\n<style>\n  :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; }\n  \n  @media print{ :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; } }\n  .part{fill:none;stroke:var(--ink);stroke-width:2.2}\n  .hid{fill:none;stroke:var(--thin);stroke-width:1.3;stroke-dasharray:6 4}\n  .ctr{stroke:var(--thin);stroke-width:.9;stroke-dasharray:9 3 2 3}\n  .ext{stroke:var(--thin);stroke-width:.9}\n  .dim{stroke:var(--thin);stroke-width:1.1;marker-start:url(#a);marker-end:url(#a)}\n  text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:var(--ink);font-size:14px}\n  .val{fill:var(--accent);font-weight:600}\n  .note{font-size:12px;fill:var(--thin)}\n  .vw{font-size:12px;fill:var(--thin);letter-spacing:.12em}\n</style>\n<defs><marker id=\"a\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,1 L10,5 L0,9 z\" fill=\"var(--thin)\"/></marker></defs>\n<text class=\"vw\" x=\"40\" y=\"26\">SIDE VIEW, AXIS ALONG X</text>\n<path class=\"part\" d=\"M40,95 L170,95 L170,75 L290,75 L290,88 L420,88 L420,152 L290,152 L290,165 L170,165 L170,145 L40,145 Z\"/><rect class=\"hid\" x=\"40\" y=\"112\" width=\"380\" height=\"16\"/><line class=\"ctr\" x1=\"28\" y1=\"120\" x2=\"432\" y2=\"120\"/>\n<line class=\"ext\" x1=\"40\" y1=\"145\" x2=\"40\" y2=\"200\"/><line class=\"ext\" x1=\"170\" y1=\"145\" x2=\"170\" y2=\"200\"/><line class=\"dim\" x1=\"40\" y1=\"196\" x2=\"170\" y2=\"196\"/><text class=\"val\" x=\"105\" y=\"190\" text-anchor=\"middle\">{{l1}}</text>\n<line class=\"ext\" x1=\"170\" y1=\"165\" x2=\"170\" y2=\"200\"/><line class=\"ext\" x1=\"290\" y1=\"165\" x2=\"290\" y2=\"200\"/><line class=\"dim\" x1=\"170\" y1=\"196\" x2=\"290\" y2=\"196\"/><text class=\"val\" x=\"230\" y=\"190\" text-anchor=\"middle\">{{l2}}</text>\n<line class=\"ext\" x1=\"290\" y1=\"152\" x2=\"290\" y2=\"200\"/><line class=\"ext\" x1=\"420\" y1=\"152\" x2=\"420\" y2=\"200\"/><line class=\"dim\" x1=\"290\" y1=\"196\" x2=\"420\" y2=\"196\"/><text class=\"val\" x=\"355\" y=\"190\" text-anchor=\"middle\">{{l3}}</text>\n<text class=\"val\" x=\"105\" y=\"88\" text-anchor=\"middle\">&#8960; {{d1}}</text><text class=\"val\" x=\"230\" y=\"64\" text-anchor=\"middle\">&#8960; {{d2}}</text><text class=\"val\" x=\"355\" y=\"80\" text-anchor=\"middle\">&#8960; {{d3}}</text>\n<text class=\"val\" x=\"230\" y=\"108\" text-anchor=\"middle\" style=\"font-size:12px\">bore &#8960; {{bore}}, full length</text>\n<text class=\"note\" x=\"40\" y=\"232\">Origin: middle of the left end face. Millimetres. Proportions are schematic.</text>\n</svg>"
+    },
+    "fr": {
+     "drawing.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 250\" width=\"640\" height=\"250\" role=\"img\" aria-labelledby=\"ttl\">\n<title id=\"ttl\">P002 arbre étagé : schéma coté, hors échelle</title>\n<style>\n  :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; }\n  \n  @media print{ :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; } }\n  .part{fill:none;stroke:var(--ink);stroke-width:2.2}\n  .hid{fill:none;stroke:var(--thin);stroke-width:1.3;stroke-dasharray:6 4}\n  .ctr{stroke:var(--thin);stroke-width:.9;stroke-dasharray:9 3 2 3}\n  .ext{stroke:var(--thin);stroke-width:.9}\n  .dim{stroke:var(--thin);stroke-width:1.1;marker-start:url(#a);marker-end:url(#a)}\n  text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:var(--ink);font-size:14px}\n  .val{fill:var(--accent);font-weight:600}\n  .note{font-size:12px;fill:var(--thin)}\n  .vw{font-size:12px;fill:var(--thin);letter-spacing:.12em}\n</style>\n<defs><marker id=\"a\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,1 L10,5 L0,9 z\" fill=\"var(--thin)\"/></marker></defs>\n<text class=\"vw\" x=\"40\" y=\"26\">VUE DE CÔTÉ, AXE SUIVANT X</text>\n<path class=\"part\" d=\"M40,95 L170,95 L170,75 L290,75 L290,88 L420,88 L420,152 L290,152 L290,165 L170,165 L170,145 L40,145 Z\"/><rect class=\"hid\" x=\"40\" y=\"112\" width=\"380\" height=\"16\"/><line class=\"ctr\" x1=\"28\" y1=\"120\" x2=\"432\" y2=\"120\"/>\n<line class=\"ext\" x1=\"40\" y1=\"145\" x2=\"40\" y2=\"200\"/><line class=\"ext\" x1=\"170\" y1=\"145\" x2=\"170\" y2=\"200\"/><line class=\"dim\" x1=\"40\" y1=\"196\" x2=\"170\" y2=\"196\"/><text class=\"val\" x=\"105\" y=\"190\" text-anchor=\"middle\">{{l1}}</text>\n<line class=\"ext\" x1=\"170\" y1=\"165\" x2=\"170\" y2=\"200\"/><line class=\"ext\" x1=\"290\" y1=\"165\" x2=\"290\" y2=\"200\"/><line class=\"dim\" x1=\"170\" y1=\"196\" x2=\"290\" y2=\"196\"/><text class=\"val\" x=\"230\" y=\"190\" text-anchor=\"middle\">{{l2}}</text>\n<line class=\"ext\" x1=\"290\" y1=\"152\" x2=\"290\" y2=\"200\"/><line class=\"ext\" x1=\"420\" y1=\"152\" x2=\"420\" y2=\"200\"/><line class=\"dim\" x1=\"290\" y1=\"196\" x2=\"420\" y2=\"196\"/><text class=\"val\" x=\"355\" y=\"190\" text-anchor=\"middle\">{{l3}}</text>\n<text class=\"val\" x=\"105\" y=\"88\" text-anchor=\"middle\">&#8960; {{d1}}</text><text class=\"val\" x=\"230\" y=\"64\" text-anchor=\"middle\">&#8960; {{d2}}</text><text class=\"val\" x=\"355\" y=\"80\" text-anchor=\"middle\">&#8960; {{d3}}</text>\n<text class=\"val\" x=\"230\" y=\"108\" text-anchor=\"middle\" style=\"font-size:12px\">alésage &#8960; {{bore}}, sur toute la longueur</text>\n<text class=\"note\" x=\"40\" y=\"232\">Origine : milieu de la face d'extrémité gauche. Millimètres. Proportions schématiques.</text>\n</svg>"
+    }
+   }
+  },
+  "p003-driven-plate": {
+   "id": "p003-driven-plate",
+   "version": "0.1.0",
+   "title": {
+    "en": "Driven plate",
+    "fr": "Plaque pilotée"
+   },
+   "constants": {
+    "pi": 3.141592653589793,
+    "kg_m3_to_g_mm3": 1e-06
+   },
+   "params": {
+    "e": {
+     "values": [
+      15,
+      20,
+      25
+     ],
+     "unit": "mm"
+    },
+    "s": {
+     "values": [
+      20,
+      25,
+      30
+     ],
+     "unit": "mm"
+    },
+    "n": {
+     "values": [
+      4,
+      5,
+      6
+     ],
+     "unit": "-"
+    },
+    "dn": {
+     "values": [
+      2,
+      3
+     ],
+     "unit": "-"
+    },
+    "W": {
+     "values": [
+      50,
+      60,
+      70
+     ],
+     "unit": "mm"
+    },
+    "t": {
+     "values": [
+      6,
+      8,
+      10
+     ],
+     "unit": "mm"
+    },
+    "d": {
+     "values": [
+      8,
+      10,
+      12
+     ],
+     "unit": "mm"
+    },
+    "rho": {
+     "values": [
+      2700,
+      7800,
+      7850
+     ],
+     "unit": "kg/m3"
+    }
+   },
+   "attempts": 3,
+   "steps": [
+    {
+     "id": "plate_length",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "abs",
+      "value": 0.01
+     }
+    },
+    {
+     "id": "mass_original",
+     "unit": "g",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.001
+     }
+    },
+    {
+     "id": "mass_changed",
+     "unit": "g",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.001
+     }
+    }
+   ],
+   "strings": {
+    "step": {
+     "plate_length": {
+      "en": "1 · The plate's length",
+      "fr": "1 · La longueur de la plaque"
+     },
+     "mass_original": {
+      "en": "2 · The mass as drawn",
+      "fr": "2 · La masse telle que dessinée"
+     },
+     "mass_changed": {
+      "en": "3 · The mass after the change",
+      "fr": "3 · La masse après la modification"
+     }
+    },
+    "diagnosis": {
+     "FP_N_TIMES_S": {
+      "en": "Between n holes there are fewer gaps than holes. Count them on a sketch.",
+      "fr": "Entre n trous il y a moins d'intervalles que de trous. Comptez-les sur une esquisse."
+     },
+     "FP_NO_END_INSET": {
+      "en": "Your length covers the gaps between holes only. What is at each end?",
+      "fr": "Votre longueur ne couvre que les intervalles entre les trous. Que trouve-t-on à chaque extrémité ?"
+     },
+     "FP_LENGTH_NOT_UPDATED": {
+      "en": "You added holes but kept the old length. The length was meant to follow the number of holes.",
+      "fr": "Vous avez ajouté des trous mais gardé l'ancienne longueur. La longueur devait suivre le nombre de trous."
+     },
+     "FP_HOLES_NOT_ADDED": {
+      "en": "The length has grown, but the old number of holes is still in your mass. How many are in the plate now?",
+      "fr": "La longueur a augmenté, mais l'ancien nombre de trous figure encore dans votre masse. Combien y en a-t-il maintenant ?"
+     }
+    },
+    "hint": {
+     "plate_length.h1": {
+      "en": "Sketch the plate with its holes and mark the two end insets and the gaps between holes.",
+      "fr": "Esquissez la plaque avec ses trous et repérez les deux retraits d'extrémité et les intervalles entre les trous."
+     },
+     "plate_length.h2": {
+      "en": "With n holes in a row, count the gaps between them.",
+      "fr": "Avec n trous en rangée, comptez les intervalles entre eux."
+     },
+     "mass_original.h1": {
+      "en": "Volume of the plain plate, minus the volume of each hole, then times the density.",
+      "fr": "Volume de la plaque pleine, moins le volume de chaque trou, puis fois la masse volumique."
+     },
+     "mass_changed.h1": {
+      "en": "When n changes, what else changes with it?",
+      "fr": "Quand n change, qu'est-ce qui change avec lui ?"
+     },
+     "mass_changed.h2": {
+      "en": "Update the variable in SOLIDWORKS and read the mass properties again, then check it by hand.",
+      "fr": "Modifiez la variable dans SOLIDWORKS et relisez les propriétés de masse, puis vérifiez à la main."
+     }
+    }
+   },
+   "brief": {
+    "en": "<figure role=\"img\" aria-label=\"Dimensioned schematic of the plate (its length is not given)\"><div class=\"pan\"><img data-drawing=\"drawing.svg\" alt=\"Dimensioned schematic of the plate (its length is not given)\"></div><figcaption class=\"pan-hint\">Swipe sideways to see the whole drawing.</figcaption></figure>\n<p>A flat plate, <strong>{{W}} mm</strong> wide and <strong>{{t}} mm</strong> thick, carries a row of <strong>{{n}}</strong> round holes of diameter <strong>{{d}} mm</strong> on its centre line. The holes are <strong>{{s}} mm</strong> apart. The first and last holes sit <strong>{{e}} mm</strong> from the plate's two ends.</p>\n<p>Do not type the plate's length. In SOLIDWORKS, create global variables for e, s and n, and drive the length with an equation so that it follows the number of holes.</p>\n<p>Material: density <strong>{{rho}} kg/m3</strong>.</p>\n<ol><li>What is the plate's <strong>length</strong> (mm)?</li><li>What is its <strong>mass</strong> (g)?</li><li>Now increase the number of holes by <strong>{{dn}}</strong> and let the part rebuild. What is the <strong>new mass</strong> (g)?</li></ol>",
+    "fr": "<figure role=\"img\" aria-label=\"Schéma coté de la plaque (sa longueur n&#x27;est pas donnée)\"><div class=\"pan\"><img data-drawing=\"drawing.svg\" alt=\"Schéma coté de la plaque (sa longueur n&#x27;est pas donnée)\"></div><figcaption class=\"pan-hint\">Faites glisser latéralement pour voir tout le dessin.</figcaption></figure>\n<p>Une plaque plane, de <strong>{{W}} mm</strong> de large et <strong>{{t}} mm</strong> d'épaisseur, porte une rangée de <strong>{{n}}</strong> trous de diamètre <strong>{{d}} mm</strong> sur sa ligne médiane. Les trous sont espacés de <strong>{{s}} mm</strong>. Le premier et le dernier trou sont à <strong>{{e}} mm</strong> des deux extrémités de la plaque.</p>\n<p>Ne saisissez pas la longueur de la plaque. Dans SOLIDWORKS, créez des variables globales pour e, s et n, et pilotez la longueur par une équation pour qu'elle suive le nombre de trous.</p>\n<p>Matériau : masse volumique <strong>{{rho}} kg/m3</strong>.</p>\n<ol><li>Quelle est la <strong>longueur</strong> de la plaque (mm) ?</li><li>Quelle est sa <strong>masse</strong> (g) ?</li><li>Augmentez maintenant le nombre de trous de <strong>{{dn}}</strong> et laissez la pièce se reconstruire. Quelle est la <strong>nouvelle masse</strong> (g) ?</li></ol>"
+   },
+   "drawings": {
+    "en": {
+     "drawing.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 250\" width=\"640\" height=\"250\" role=\"img\" aria-labelledby=\"ttl\">\n<title id=\"ttl\">P003 driven plate: dimensioned schematic, not to scale</title>\n<style>\n  :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; }\n  \n  @media print{ :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; } }\n  .part{fill:none;stroke:var(--ink);stroke-width:2.2}\n  .hid{fill:none;stroke:var(--thin);stroke-width:1.3;stroke-dasharray:6 4}\n  .ctr{stroke:var(--thin);stroke-width:.9;stroke-dasharray:9 3 2 3}\n  .ext{stroke:var(--thin);stroke-width:.9}\n  .dim{stroke:var(--thin);stroke-width:1.1;marker-start:url(#a);marker-end:url(#a)}\n  text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:var(--ink);font-size:14px}\n  .val{fill:var(--accent);font-weight:600}\n  .note{font-size:12px;fill:var(--thin)}\n  .vw{font-size:12px;fill:var(--thin);letter-spacing:.12em}\n</style>\n<defs><marker id=\"a\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,1 L10,5 L0,9 z\" fill=\"var(--thin)\"/></marker></defs>\n<text class=\"vw\" x=\"40\" y=\"26\">PLAN VIEW</text>\n<rect class=\"part\" x=\"40\" y=\"60\" width=\"500\" height=\"100\"/><line class=\"ctr\" x1=\"28\" y1=\"110\" x2=\"552\" y2=\"110\"/>\n<circle class=\"part\" cx=\"90\" cy=\"110\" r=\"16\"/><line class=\"ctr\" x1=\"90\" y1=\"94\" x2=\"90\" y2=\"126\"/>\n<circle class=\"part\" cx=\"190\" cy=\"110\" r=\"16\"/><line class=\"ctr\" x1=\"190\" y1=\"94\" x2=\"190\" y2=\"126\"/>\n<circle class=\"part\" cx=\"290\" cy=\"110\" r=\"16\"/><line class=\"ctr\" x1=\"290\" y1=\"94\" x2=\"290\" y2=\"126\"/>\n<circle class=\"part\" cx=\"390\" cy=\"110\" r=\"16\"/><line class=\"ctr\" x1=\"390\" y1=\"94\" x2=\"390\" y2=\"126\"/>\n<circle class=\"part\" cx=\"490\" cy=\"110\" r=\"16\"/><line class=\"ctr\" x1=\"490\" y1=\"94\" x2=\"490\" y2=\"126\"/>\n<line class=\"ext\" x1=\"40\" y1=\"160\" x2=\"40\" y2=\"196\"/><line class=\"ext\" x1=\"90\" y1=\"160\" x2=\"90\" y2=\"196\"/><line class=\"dim\" x1=\"40\" y1=\"192\" x2=\"90\" y2=\"192\"/><text class=\"val\" x=\"65\" y=\"186\" text-anchor=\"middle\">{{e}}</text>\n<line class=\"ext\" x1=\"90\" y1=\"160\" x2=\"90\" y2=\"196\"/><line class=\"ext\" x1=\"190\" y1=\"160\" x2=\"190\" y2=\"196\"/><line class=\"dim\" x1=\"90\" y1=\"192\" x2=\"190\" y2=\"192\"/><text class=\"val\" x=\"140\" y=\"186\" text-anchor=\"middle\">{{s}}</text>\n<line class=\"ext\" x1=\"490\" y1=\"160\" x2=\"490\" y2=\"196\"/><line class=\"ext\" x1=\"540\" y1=\"160\" x2=\"540\" y2=\"196\"/><line class=\"dim\" x1=\"490\" y1=\"192\" x2=\"540\" y2=\"192\"/><text class=\"val\" x=\"515\" y=\"186\" text-anchor=\"middle\">{{e}}</text>\n<text class=\"note\" x=\"340\" y=\"192\" text-anchor=\"middle\">&#8230;</text>\n<line class=\"ext\" x1=\"40\" y1=\"60\" x2=\"20\" y2=\"60\"/><line class=\"ext\" x1=\"40\" y1=\"160\" x2=\"20\" y2=\"160\"/><line class=\"dim\" x1=\"24\" y1=\"60\" x2=\"24\" y2=\"160\"/><text class=\"val\" x=\"18\" y=\"115\" text-anchor=\"end\">{{W}}</text>\n<text class=\"val\" x=\"290\" y=\"48\" text-anchor=\"middle\">{{n}} holes &#8960; {{d}}, thickness {{t}}</text>\n<text class=\"note\" x=\"40\" y=\"228\">The length is not given: it follows from e, s and n. The picture shows five holes whatever n is.</text>\n</svg>"
+    },
+    "fr": {
+     "drawing.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 250\" width=\"640\" height=\"250\" role=\"img\" aria-labelledby=\"ttl\">\n<title id=\"ttl\">P003 plaque pilotée : schéma coté, hors échelle</title>\n<style>\n  :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; }\n  \n  @media print{ :root{ --ink:#1b1f24; --thin:#5b6672; --accent:#a8710a; } }\n  .part{fill:none;stroke:var(--ink);stroke-width:2.2}\n  .hid{fill:none;stroke:var(--thin);stroke-width:1.3;stroke-dasharray:6 4}\n  .ctr{stroke:var(--thin);stroke-width:.9;stroke-dasharray:9 3 2 3}\n  .ext{stroke:var(--thin);stroke-width:.9}\n  .dim{stroke:var(--thin);stroke-width:1.1;marker-start:url(#a);marker-end:url(#a)}\n  text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:var(--ink);font-size:14px}\n  .val{fill:var(--accent);font-weight:600}\n  .note{font-size:12px;fill:var(--thin)}\n  .vw{font-size:12px;fill:var(--thin);letter-spacing:.12em}\n</style>\n<defs><marker id=\"a\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,1 L10,5 L0,9 z\" fill=\"var(--thin)\"/></marker></defs>\n<text class=\"vw\" x=\"40\" y=\"26\">VUE DE DESSUS</text>\n<rect class=\"part\" x=\"40\" y=\"60\" width=\"500\" height=\"100\"/><line class=\"ctr\" x1=\"28\" y1=\"110\" x2=\"552\" y2=\"110\"/>\n<circle class=\"part\" cx=\"90\" cy=\"110\" r=\"16\"/><line class=\"ctr\" x1=\"90\" y1=\"94\" x2=\"90\" y2=\"126\"/>\n<circle class=\"part\" cx=\"190\" cy=\"110\" r=\"16\"/><line class=\"ctr\" x1=\"190\" y1=\"94\" x2=\"190\" y2=\"126\"/>\n<circle class=\"part\" cx=\"290\" cy=\"110\" r=\"16\"/><line class=\"ctr\" x1=\"290\" y1=\"94\" x2=\"290\" y2=\"126\"/>\n<circle class=\"part\" cx=\"390\" cy=\"110\" r=\"16\"/><line class=\"ctr\" x1=\"390\" y1=\"94\" x2=\"390\" y2=\"126\"/>\n<circle class=\"part\" cx=\"490\" cy=\"110\" r=\"16\"/><line class=\"ctr\" x1=\"490\" y1=\"94\" x2=\"490\" y2=\"126\"/>\n<line class=\"ext\" x1=\"40\" y1=\"160\" x2=\"40\" y2=\"196\"/><line class=\"ext\" x1=\"90\" y1=\"160\" x2=\"90\" y2=\"196\"/><line class=\"dim\" x1=\"40\" y1=\"192\" x2=\"90\" y2=\"192\"/><text class=\"val\" x=\"65\" y=\"186\" text-anchor=\"middle\">{{e}}</text>\n<line class=\"ext\" x1=\"90\" y1=\"160\" x2=\"90\" y2=\"196\"/><line class=\"ext\" x1=\"190\" y1=\"160\" x2=\"190\" y2=\"196\"/><line class=\"dim\" x1=\"90\" y1=\"192\" x2=\"190\" y2=\"192\"/><text class=\"val\" x=\"140\" y=\"186\" text-anchor=\"middle\">{{s}}</text>\n<line class=\"ext\" x1=\"490\" y1=\"160\" x2=\"490\" y2=\"196\"/><line class=\"ext\" x1=\"540\" y1=\"160\" x2=\"540\" y2=\"196\"/><line class=\"dim\" x1=\"490\" y1=\"192\" x2=\"540\" y2=\"192\"/><text class=\"val\" x=\"515\" y=\"186\" text-anchor=\"middle\">{{e}}</text>\n<text class=\"note\" x=\"340\" y=\"192\" text-anchor=\"middle\">&#8230;</text>\n<line class=\"ext\" x1=\"40\" y1=\"60\" x2=\"20\" y2=\"60\"/><line class=\"ext\" x1=\"40\" y1=\"160\" x2=\"20\" y2=\"160\"/><line class=\"dim\" x1=\"24\" y1=\"60\" x2=\"24\" y2=\"160\"/><text class=\"val\" x=\"18\" y=\"115\" text-anchor=\"end\">{{W}}</text>\n<text class=\"val\" x=\"290\" y=\"48\" text-anchor=\"middle\">{{n}} trous &#8960; {{d}}, épaisseur {{t}}</text>\n<text class=\"note\" x=\"40\" y=\"228\">La longueur n'est pas donnée : elle découle de e, s et n. Le dessin montre cinq trous quel que soit n.</text>\n</svg>"
+    }
+   }
+  },
+  "p004-limits-and-fits": {
+   "id": "p004-limits-and-fits",
+   "version": "0.1.0",
+   "title": {
+    "en": "Limits and fits",
+    "fr": "Ajustements"
+   },
+   "constants": {
+    "um_to_mm": 0.001,
+    "ranges": [
+     [
+      3,
+      6
+     ],
+     [
+      6,
+      10
+     ],
+     [
+      10,
+      18
+     ],
+     [
+      18,
+      30
+     ],
+     [
+      30,
+      50
+     ],
+     [
+      50,
+      80
+     ]
+    ],
+    "deviations": {
+     "H7": [
+      [
+       12,
+       0
+      ],
+      [
+       15,
+       0
+      ],
+      [
+       18,
+       0
+      ],
+      [
+       21,
+       0
+      ],
+      [
+       25,
+       0
+      ],
+      [
+       30,
+       0
+      ]
+     ],
+     "f7": [
+      [
+       -10,
+       -22
+      ],
+      [
+       -13,
+       -28
+      ],
+      [
+       -16,
+       -34
+      ],
+      [
+       -20,
+       -41
+      ],
+      [
+       -25,
+       -50
+      ],
+      [
+       -30,
+       -60
+      ]
+     ],
+     "g6": [
+      [
+       -4,
+       -12
+      ],
+      [
+       -5,
+       -14
+      ],
+      [
+       -6,
+       -17
+      ],
+      [
+       -7,
+       -20
+      ],
+      [
+       -9,
+       -25
+      ],
+      [
+       -10,
+       -29
+      ]
+     ],
+     "h6": [
+      [
+       0,
+       -8
+      ],
+      [
+       0,
+       -9
+      ],
+      [
+       0,
+       -11
+      ],
+      [
+       0,
+       -13
+      ],
+      [
+       0,
+       -16
+      ],
+      [
+       0,
+       -19
+      ]
+     ],
+     "k6": [
+      [
+       9,
+       1
+      ],
+      [
+       10,
+       1
+      ],
+      [
+       12,
+       1
+      ],
+      [
+       15,
+       2
+      ],
+      [
+       18,
+       2
+      ],
+      [
+       21,
+       2
+      ]
+     ],
+     "m6": [
+      [
+       12,
+       4
+      ],
+      [
+       15,
+       6
+      ],
+      [
+       18,
+       7
+      ],
+      [
+       21,
+       8
+      ],
+      [
+       25,
+       9
+      ],
+      [
+       30,
+       11
+      ]
+     ],
+     "n6": [
+      [
+       16,
+       8
+      ],
+      [
+       19,
+       10
+      ],
+      [
+       23,
+       12
+      ],
+      [
+       28,
+       15
+      ],
+      [
+       33,
+       17
+      ],
+      [
+       39,
+       20
+      ]
+     ],
+     "p6": [
+      [
+       20,
+       12
+      ],
+      [
+       24,
+       15
+      ],
+      [
+       29,
+       18
+      ],
+      [
+       35,
+       22
+      ],
+      [
+       42,
+       26
+      ],
+      [
+       51,
+       32
+      ]
+     ]
+    }
+   },
+   "params": {
+    "D": {
+     "min": 4,
+     "max": 80,
+     "step": 1,
+     "unit": "mm"
+    },
+    "fit": {
+     "values": [
+      "H7/f7",
+      "H7/g6",
+      "H7/h6",
+      "H7/k6",
+      "H7/m6",
+      "H7/n6",
+      "H7/p6"
+     ],
+     "unit": "-"
+    }
+   },
+   "attempts": 3,
+   "steps": [
+    {
+     "id": "hole_max",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "abs",
+      "value": 0.0005
+     }
+    },
+    {
+     "id": "shaft_max",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "abs",
+      "value": 0.0005
+     }
+    },
+    {
+     "id": "shaft_min",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "abs",
+      "value": 0.0005
+     }
+    },
+    {
+     "id": "max_clearance",
+     "unit": "mm",
+     "signed": true,
+     "tolerance": {
+      "type": "abs",
+      "value": 0.0005
+     }
+    },
+    {
+     "id": "min_clearance",
+     "unit": "mm",
+     "signed": true,
+     "tolerance": {
+      "type": "abs",
+      "value": 0.0005
+     }
+    },
+    {
+     "id": "fit_type",
+     "unit": "-",
+     "signed": false,
+     "tolerance": {
+      "type": "exact"
+     }
+    }
+   ],
+   "strings": {
+    "step": {
+     "hole_max": {
+      "en": "1 · The hole's upper limit",
+      "fr": "1 · La cote maximale de l'alésage"
+     },
+     "shaft_max": {
+      "en": "2 · The shaft's upper limit",
+      "fr": "2 · La cote maximale de l'arbre"
+     },
+     "shaft_min": {
+      "en": "3 · The shaft's lower limit",
+      "fr": "3 · La cote minimale de l'arbre"
+     },
+     "max_clearance": {
+      "en": "4 · The maximum clearance",
+      "fr": "4 · Le jeu maximal"
+     },
+     "min_clearance": {
+      "en": "5 · The minimum clearance",
+      "fr": "5 · Le jeu minimal"
+     },
+     "fit_type": {
+      "en": "6 · The kind of fit",
+      "fr": "6 · Le type d'ajustement"
+     }
+    },
+    "diagnosis": {
+     "FP_HOLE_WITHOUT_TOLERANCE": {
+      "en": "Your upper limit is the nominal size. A hole has a tolerance zone above its nominal size: where does the class H put it?",
+      "fr": "Votre cote maximale est la cote nominale. Un alésage a une zone de tolérance au-dessus de sa cote nominale : où la classe H la place-t-elle ?"
+     },
+     "FP_HOLE_WITH_SHAFT_GRADE": {
+      "en": "The hole's grade is the number in its own class. Check which grade you used for the hole.",
+      "fr": "La qualité de l'alésage est le nombre de sa propre classe. Vérifiez la qualité utilisée pour l'alésage."
+     },
+     "FP_SHAFT_DEVIATION_SIGN": {
+      "en": "Check the sign of the shaft's upper deviation in the table: it is added as it is written.",
+      "fr": "Vérifiez le signe de l'écart supérieur de l'arbre dans le tableau : il s'ajoute tel qu'il est écrit."
+     },
+     "FP_SHAFT_WITH_HOLE_GRADE": {
+      "en": "The shaft's tolerance width comes from the shaft's own class, not the hole's.",
+      "fr": "La largeur de tolérance de l'arbre vient de la classe de l'arbre, pas de celle de l'alésage."
+     },
+     "FP_LIMITS_NOT_CROSSED": {
+      "en": "The largest gap between the parts pairs the largest hole with the smallest shaft. Which two limits did you subtract?",
+      "fr": "Le plus grand jeu associe le plus grand alésage au plus petit arbre. Quelles deux cotes avez-vous soustraites ?"
+     },
+     "FP_MAX_GIVEN_AS_MIN": {
+      "en": "This is the maximum clearance. The minimum pairs the smallest hole with the largest shaft.",
+      "fr": "Ceci est le jeu maximal. Le jeu minimal associe le plus petit alésage au plus grand arbre."
+     },
+     "FP_TRANSITION_MISSED": {
+      "en": "Look at both clearances. A fit can have a positive maximum and a negative minimum.",
+      "fr": "Regardez les deux jeux. Un ajustement peut avoir un jeu maximal positif et un jeu minimal négatif."
+     }
+    },
+    "hint": {
+     "hole_max.h1": {
+      "en": "A class is a letter and a number. What does the letter fix, and what does the number fix?",
+      "fr": "Une classe est une lettre et un nombre. Que fixe la lettre, et que fixe le nombre ?"
+     },
+     "hole_max.h2": {
+      "en": "Find your nominal size's range in the table, then read the row of the hole's class.",
+      "fr": "Trouvez la plage de votre cote nominale dans le tableau, puis lisez la ligne de la classe de l'alésage."
+     },
+     "hole_max.h3": {
+      "en": "The upper limit is the nominal size plus the upper deviation, in millimetres.",
+      "fr": "La cote maximale est la cote nominale plus l'écart supérieur, en millimètres."
+     },
+     "shaft_max.h1": {
+      "en": "Use the shaft's class row, in the same size range as for the hole.",
+      "fr": "Utilisez la ligne de la classe de l'arbre, dans la même plage de cotes que pour l'alésage."
+     },
+     "shaft_max.h2": {
+      "en": "Convert micrometres to millimetres before adding.",
+      "fr": "Convertissez les micromètres en millimètres avant d'additionner."
+     },
+     "shaft_min.h1": {
+      "en": "The lower limit uses the lower deviation of the shaft's class.",
+      "fr": "La cote minimale utilise l'écart inférieur de la classe de l'arbre."
+     },
+     "max_clearance.h1": {
+      "en": "The widest gap happens when the hole is as big and the shaft as small as the limits allow.",
+      "fr": "Le jeu le plus grand survient quand l'alésage est aussi grand et l'arbre aussi petit que les cotes le permettent."
+     },
+     "min_clearance.h1": {
+      "en": "The tightest case is the smallest hole with the largest shaft. A negative result means interference.",
+      "fr": "Le cas le plus serré est le plus petit alésage avec le plus grand arbre. Un résultat négatif signifie un serrage."
+     },
+     "fit_type.h1": {
+      "en": "Clearance if the parts always have a gap, interference if they never do, transition if it depends on the pair.",
+      "fr": "Avec jeu si les pièces ont toujours un jeu, serré si elles n'en ont jamais, incertain si cela dépend du couple."
+     }
+    }
+   },
+   "brief": {
+    "en": "<p>A shaft of nominal size <strong>{{D}} mm</strong> runs in a hole. The fit is <strong>{{fit}}</strong> (ISO 286, hole basis: the first class is the hole, the second the shaft).</p>\n<p>Using the reference table below, give, <strong>in millimetres to three decimals</strong>:</p>\n<ol><li>the hole's <strong>upper limit</strong>;</li><li>the shaft's <strong>upper limit</strong> and <strong>lower limit</strong>;</li><li>the <strong>maximum clearance</strong> and the <strong>minimum clearance</strong> (a negative number means the parts must be forced together);</li><li>the <strong>kind of fit</strong>: type <strong>1</strong> for a clearance fit, <strong>2</strong> for a transition fit, <strong>3</strong> for an interference fit.</li></ol>\n<p><strong>Reference: ISO 286-2 deviations</strong> in micrometres, written upper / lower. A size is in the range \"over a, up to and including b\" (so 10 mm is in 6-10).</p>\n<div class=\"table\"><table><thead><tr><th>Class</th><th>3-6</th><th>6-10</th><th>10-18</th><th>18-30</th><th>30-50</th><th>50-80</th></tr></thead><tbody><tr><td>H7</td><td>+12 / 0</td><td>+15 / 0</td><td>+18 / 0</td><td>+21 / 0</td><td>+25 / 0</td><td>+30 / 0</td></tr><tr><td>f7</td><td>-10 / -22</td><td>-13 / -28</td><td>-16 / -34</td><td>-20 / -41</td><td>-25 / -50</td><td>-30 / -60</td></tr><tr><td>g6</td><td>-4 / -12</td><td>-5 / -14</td><td>-6 / -17</td><td>-7 / -20</td><td>-9 / -25</td><td>-10 / -29</td></tr><tr><td>h6</td><td>0 / -8</td><td>0 / -9</td><td>0 / -11</td><td>0 / -13</td><td>0 / -16</td><td>0 / -19</td></tr><tr><td>k6</td><td>+9 / +1</td><td>+10 / +1</td><td>+12 / +1</td><td>+15 / +2</td><td>+18 / +2</td><td>+21 / +2</td></tr><tr><td>m6</td><td>+12 / +4</td><td>+15 / +6</td><td>+18 / +7</td><td>+21 / +8</td><td>+25 / +9</td><td>+30 / +11</td></tr><tr><td>n6</td><td>+16 / +8</td><td>+19 / +10</td><td>+23 / +12</td><td>+28 / +15</td><td>+33 / +17</td><td>+39 / +20</td></tr><tr><td>p6</td><td>+20 / +12</td><td>+24 / +15</td><td>+29 / +18</td><td>+35 / +22</td><td>+42 / +26</td><td>+51 / +32</td></tr></tbody></table></div>\n<p>1 micrometre = 0.001 mm.</p>",
+    "fr": "<p>Un arbre de cote nominale <strong>{{D}} mm</strong> tourne dans un alésage. L'ajustement est <strong>{{fit}}</strong> (ISO 286, système de l'alésage normal : la première classe est l'alésage, la seconde l'arbre).</p>\n<p>À l'aide du tableau de référence ci-dessous, donnez, <strong>en millimètres avec trois décimales</strong> :</p>\n<ol><li>la <strong>cote maximale</strong> de l'alésage ;</li><li>les cotes <strong>maximale</strong> et <strong>minimale</strong> de l'arbre ;</li><li>le <strong>jeu maximal</strong> et le <strong>jeu minimal</strong> (un nombre négatif signifie que les pièces doivent être emmanchées de force) ;</li><li>le <strong>type d'ajustement</strong> : tapez <strong>1</strong> pour un ajustement avec jeu, <strong>2</strong> pour un ajustement incertain, <strong>3</strong> pour un ajustement serré.</li></ol>\n<p><strong>Référence : écarts ISO 286-2</strong> en micromètres, écrits supérieur / inférieur. Une cote appartient à la plage « au-dessus de a, jusqu'à b inclus » (10 mm est donc dans 6-10).</p>\n<div class=\"table\"><table><thead><tr><th>Class</th><th>3-6</th><th>6-10</th><th>10-18</th><th>18-30</th><th>30-50</th><th>50-80</th></tr></thead><tbody><tr><td>H7</td><td>+12 / 0</td><td>+15 / 0</td><td>+18 / 0</td><td>+21 / 0</td><td>+25 / 0</td><td>+30 / 0</td></tr><tr><td>f7</td><td>-10 / -22</td><td>-13 / -28</td><td>-16 / -34</td><td>-20 / -41</td><td>-25 / -50</td><td>-30 / -60</td></tr><tr><td>g6</td><td>-4 / -12</td><td>-5 / -14</td><td>-6 / -17</td><td>-7 / -20</td><td>-9 / -25</td><td>-10 / -29</td></tr><tr><td>h6</td><td>0 / -8</td><td>0 / -9</td><td>0 / -11</td><td>0 / -13</td><td>0 / -16</td><td>0 / -19</td></tr><tr><td>k6</td><td>+9 / +1</td><td>+10 / +1</td><td>+12 / +1</td><td>+15 / +2</td><td>+18 / +2</td><td>+21 / +2</td></tr><tr><td>m6</td><td>+12 / +4</td><td>+15 / +6</td><td>+18 / +7</td><td>+21 / +8</td><td>+25 / +9</td><td>+30 / +11</td></tr><tr><td>n6</td><td>+16 / +8</td><td>+19 / +10</td><td>+23 / +12</td><td>+28 / +15</td><td>+33 / +17</td><td>+39 / +20</td></tr><tr><td>p6</td><td>+20 / +12</td><td>+24 / +15</td><td>+29 / +18</td><td>+35 / +22</td><td>+42 / +26</td><td>+51 / +32</td></tr></tbody></table></div>\n<p>1 micromètre = 0,001 mm.</p>"
+   },
+   "drawings": {
+    "en": {},
+    "fr": {}
+   }
+  },
+  "p005-solver-preflight": {
+   "id": "p005-solver-preflight",
+   "version": "0.1.0",
+   "title": {
+    "en": "Before you press run",
+    "fr": "Avant de lancer le calcul"
+   },
+   "constants": {
+    "pi": 3.141592653589793,
+    "materials": {
+     "steel": [
+      210,
+      7850
+     ],
+     "aluminium": [
+      72,
+      2700
+     ],
+     "titanium": [
+      110,
+      4500
+     ],
+     "copper": [
+      120,
+      8900
+     ]
+    }
+   },
+   "params": {
+    "mat": {
+     "values": [
+      "steel",
+      "aluminium",
+      "titanium",
+      "copper"
+     ],
+     "unit": "-"
+    },
+    "L": {
+     "values": [
+      1,
+      2,
+      3,
+      5
+     ],
+     "unit": "mm"
+    },
+    "r": {
+     "values": [
+      4,
+      5,
+      6,
+      8
+     ],
+     "unit": "mm"
+    },
+    "v": {
+     "values": [
+      5,
+      8,
+      10,
+      15
+     ],
+     "unit": "m/s"
+    },
+    "t_end": {
+     "values": [
+      1,
+      2,
+      5
+     ],
+     "unit": "ms"
+    }
+   },
+   "attempts": 3,
+   "steps": [
+    {
+     "id": "E_mpa",
+     "unit": "MPa",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.002
+     }
+    },
+    {
+     "id": "rho_tmm3",
+     "unit": "-",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.002
+     }
+    },
+    {
+     "id": "wave_speed",
+     "unit": "-",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.002
+     }
+    },
+    {
+     "id": "time_step_us",
+     "unit": "-",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.002
+     }
+    },
+    {
+     "id": "ball_energy",
+     "unit": "N.mm",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.002
+     }
+    },
+    {
+     "id": "n_steps",
+     "unit": "-",
+     "signed": false,
+     "tolerance": {
+      "type": "rel",
+      "value": 0.002
+     }
+    }
+   ],
+   "strings": {
+    "step": {
+     "E_mpa": {
+      "en": "1 · The modulus on the material card",
+      "fr": "1 · Le module sur la carte matériau"
+     },
+     "rho_tmm3": {
+      "en": "2 · The density on the material card",
+      "fr": "2 · La masse volumique sur la carte matériau"
+     },
+     "wave_speed": {
+      "en": "3 · The speed of a stress wave",
+      "fr": "3 · La vitesse d'une onde de contrainte"
+     },
+     "time_step_us": {
+      "en": "4 · The stable time step",
+      "fr": "4 · Le pas de temps stable"
+     },
+     "ball_energy": {
+      "en": "5 · The ball's energy at impact",
+      "fr": "5 · L'énergie de la bille à l'impact"
+     },
+     "n_steps": {
+      "en": "6 · The number of steps in the run",
+      "fr": "6 · Le nombre de pas du calcul"
+     }
+    },
+    "diagnosis": {
+     "FP_E_NOT_CONVERTED": {
+      "en": "The modulus is still in GPa. One GPa is how many MPa?",
+      "fr": "Le module est encore en GPa. Un GPa vaut combien de MPa ?"
+     },
+     "FP_E_IN_PA": {
+      "en": "That is the modulus in pascals. The system asks for MPa, which is a million times smaller a unit.",
+      "fr": "C'est le module en pascals. Le système demande des MPa, une unité un million de fois plus grande."
+     },
+     "FP_RHO_NOT_CONVERTED": {
+      "en": "The density is still in kg per cubic metre. The system counts mass in tonnes and length in millimetres.",
+      "fr": "La masse volumique est encore en kg par mètre cube. Le système compte la masse en tonnes et la longueur en millimètres."
+     },
+     "FP_RHO_TONNE_PER_M3": {
+      "en": "That is tonne per cubic metre. The system needs tonne per cubic millimetre: how many cubic millimetres in a cubic metre?",
+      "fr": "C'est la tonne par mètre cube. Le système demande la tonne par millimètre cube : combien de millimètres cubes dans un mètre cube ?"
+     },
+     "FP_SPEED_IN_MM_S": {
+      "en": "Check the unit of your speed against the unit the step asks for.",
+      "fr": "Vérifiez l'unité de votre vitesse par rapport à celle demandée."
+     },
+     "FP_SPEED_MIXED_UNITS": {
+      "en": "The modulus and the density must be in the same system before you divide them. Which two of your values are not?",
+      "fr": "Le module et la masse volumique doivent être dans le même système avant de les diviser. Lesquelles de vos valeurs ne le sont pas ?"
+     },
+     "FP_STEP_IN_MS": {
+      "en": "Check the unit of your time step against the unit the step asks for.",
+      "fr": "Vérifiez l'unité de votre pas de temps par rapport à celle demandée."
+     },
+     "FP_STEP_LENGTH_UNIT": {
+      "en": "A length in millimetres cannot be divided by a speed in metres per second as it is. Bring them to one length unit.",
+      "fr": "Une longueur en millimètres ne se divise pas telle quelle par une vitesse en mètres par seconde. Ramenez-les à une même unité de longueur."
+     },
+     "FP_ENERGY_IN_J": {
+      "en": "Check the unit of your energy against the unit the step asks for.",
+      "fr": "Vérifiez l'unité de votre énergie par rapport à celle demandée."
+     },
+     "FP_ENERGY_NO_HALF": {
+      "en": "Write the kinetic energy out in full before substituting. Which factor is missing?",
+      "fr": "Écrivez l'énergie cinétique en entier avant de substituer. Quel facteur manque ?"
+     },
+     "FP_DIAMETER_AS_RADIUS": {
+      "en": "The volume of a sphere is written with its radius. Check which dimension you put in the formula.",
+      "fr": "Le volume d'une sphère s'écrit avec son rayon. Vérifiez la dimension que vous avez mise dans la formule."
+     },
+     "FP_STEPS_TIME_UNITS": {
+      "en": "The end time and the time step are in different units. Bring them to one unit before dividing.",
+      "fr": "L'instant final et le pas de temps sont dans des unités différentes. Ramenez-les à une même unité avant de diviser."
+     }
+    },
+    "hint": {
+     "E_mpa.h1": {
+      "en": "In the system mm, tonne, second, a stress is in MPa. What is a GPa in MPa?",
+      "fr": "Dans le système mm, tonne, seconde, une contrainte est en MPa. Que vaut un GPa en MPa ?"
+     },
+     "rho_tmm3.h1": {
+      "en": "Convert the mass first, from kilograms to tonnes, then the volume, from cubic metres to cubic millimetres.",
+      "fr": "Convertissez d'abord la masse, des kilogrammes aux tonnes, puis le volume, des mètres cubes aux millimètres cubes."
+     },
+     "rho_tmm3.h2": {
+      "en": "A cubic metre is a thousand millimetres on each of three sides.",
+      "fr": "Un mètre cube, c'est mille millimètres sur chacun de ses trois côtés."
+     },
+     "wave_speed.h1": {
+      "en": "Both of your material numbers must be in the mm-tonne-second system before you take the square root.",
+      "fr": "Vos deux valeurs de matériau doivent être dans le système mm-tonne-seconde avant de prendre la racine."
+     },
+     "wave_speed.h2": {
+      "en": "The result of that division is in millimetres per second. What is it in metres per second?",
+      "fr": "Le résultat de cette division est en millimètres par seconde. Que vaut-il en mètres par seconde ?"
+     },
+     "time_step_us.h1": {
+      "en": "A wave must not cross more than one element in one step. How long does it take to cross one element?",
+      "fr": "Une onde ne doit pas traverser plus d'un élément en un pas. Combien de temps met-elle à traverser un élément ?"
+     },
+     "time_step_us.h2": {
+      "en": "Use one length unit for the element and for the speed, then convert the seconds you get to microseconds.",
+      "fr": "Utilisez une seule unité de longueur pour l'élément et pour la vitesse, puis convertissez les secondes obtenues en microsecondes."
+     },
+     "ball_energy.h1": {
+      "en": "Mass first, from the density and the volume of a sphere, then the energy.",
+      "fr": "D'abord la masse, à partir de la masse volumique et du volume d'une sphère, puis l'énergie."
+     },
+     "ball_energy.h2": {
+      "en": "In this system the speed must be in millimetres per second for the energy to come out in N.mm.",
+      "fr": "Dans ce système, la vitesse doit être en millimètres par seconde pour que l'énergie sorte en N.mm."
+     },
+     "n_steps.h1": {
+      "en": "The run's length divided by the length of one step, both in the same unit.",
+      "fr": "La durée du calcul divisée par la durée d'un pas, toutes deux dans la même unité."
+     }
+    }
+   },
+   "brief": {
+    "en": "<p>You are about to run an explicit LS-DYNA job: a <strong>{{mat}}</strong> ball of radius <strong>{{r}} mm</strong> hits a plate of the same metal at <strong>{{v}} m/s</strong>. The smallest element is <strong>{{L}} mm</strong> long, and the run is set to end at <strong>{{t_end}} ms</strong>.</p>\n<p>The material is <strong>{{mat}}</strong>: Young's modulus <strong>{{E_GPa}} GPa</strong>, density <strong>{{rho_kgm3}} kg/m3</strong>.</p>\n<p>LS-DYNA has no units. You will use the system <strong>mm, tonne, second</strong>, in which forces are in N, stresses in MPa and energy in N.mm (1 tonne = 1000 kg). Do these hand checks before you open the solver. Type plain numbers; scientific notation such as 7.85e-9 is fine.</p>\n<ol><li>The modulus for the material card, in <strong>MPa</strong>.</li><li>The density for the material card, in <strong>tonne/mm3</strong>.</li><li>The speed of a stress wave in the metal, c = sqrt(E / density), as a number in <strong>m/s</strong>.</li><li>The stable time step, element length / c, as a number in <strong>microseconds</strong> (ignore the safety factor the solver applies).</li><li>The ball's kinetic energy at impact, in <strong>N.mm</strong>.</li><li>How many time steps the run needs to reach its end time.</li></ol>",
+    "fr": "<p>Vous allez lancer un calcul LS-DYNA explicite : une bille en <strong>{{mat}}</strong> de rayon <strong>{{r}} mm</strong> frappe une plaque du même métal à <strong>{{v}} m/s</strong>. Le plus petit élément mesure <strong>{{L}} mm</strong>, et le calcul s'arrête à <strong>{{t_end}} ms</strong>.</p>\n<p>Le matériau est le <strong>{{mat}}</strong> : module d'Young <strong>{{E_GPa}} GPa</strong>, masse volumique <strong>{{rho_kgm3}} kg/m3</strong>.</p>\n<p>LS-DYNA n'a pas d'unités. Vous utiliserez le système <strong>mm, tonne, seconde</strong>, où les forces sont en N, les contraintes en MPa et l'énergie en N.mm (1 tonne = 1000 kg). Faites ces vérifications à la main avant d'ouvrir le solveur. Tapez des nombres simples ; la notation scientifique comme 7.85e-9 convient.</p>\n<ol><li>Le module pour la carte matériau, en <strong>MPa</strong>.</li><li>La masse volumique pour la carte matériau, en <strong>tonne/mm3</strong>.</li><li>La vitesse d'une onde de contrainte dans le métal, c = racine(E / masse volumique), comme un nombre en <strong>m/s</strong>.</li><li>Le pas de temps stable, longueur d'élément / c, comme un nombre en <strong>microsecondes</strong> (ignorez le coefficient de sécurité du solveur).</li><li>L'énergie cinétique de la bille à l'impact, en <strong>N.mm</strong>.</li><li>Le nombre de pas de temps nécessaires pour atteindre l'instant final.</li></ol>"
+   },
+   "drawings": {
+    "en": {},
+    "fr": {}
+   }
+  },
+  "p006-position-at-mmc": {
+   "id": "p006-position-at-mmc",
+   "version": "0.1.0",
+   "title": {
+    "en": "Position at MMC",
+    "fr": "Position au maximum de matière"
+   },
+   "constants": {
+    "um_to_mm": 0.001,
+    "quarters": 4
+   },
+   "params": {
+    "Dmin_um": {
+     "values": [
+      6000,
+      8000,
+      10000,
+      12000,
+      16000
+     ],
+     "unit": "um"
+    },
+    "W_um": {
+     "values": [
+      100,
+      200,
+      300
+     ],
+     "unit": "um"
+    },
+    "T_um": {
+     "values": [
+      100,
+      200,
+      300,
+      400
+     ],
+     "unit": "um"
+    },
+    "f_q": {
+     "values": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "unit": "-"
+    },
+    "dx_um": {
+     "values": [
+      0,
+      30,
+      50,
+      80,
+      100,
+      120,
+      150
+     ],
+     "unit": "um"
+    },
+    "dy_um": {
+     "values": [
+      0,
+      30,
+      50,
+      80,
+      100,
+      120,
+      150
+     ],
+     "unit": "um"
+    }
+   },
+   "attempts": 3,
+   "steps": [
+    {
+     "id": "mmc",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "abs",
+      "value": 0.0005
+     }
+    },
+    {
+     "id": "virtual_condition",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "abs",
+      "value": 0.0005
+     }
+    },
+    {
+     "id": "bonus",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "abs",
+      "value": 0.0005
+     }
+    },
+    {
+     "id": "allowed_zone",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "abs",
+      "value": 0.0005
+     }
+    },
+    {
+     "id": "position_error",
+     "unit": "mm",
+     "signed": false,
+     "tolerance": {
+      "type": "abs",
+      "value": 0.001
+     }
+    },
+    {
+     "id": "verdict",
+     "unit": "-",
+     "signed": false,
+     "tolerance": {
+      "type": "exact"
+     }
+    }
+   ],
+   "strings": {
+    "step": {
+     "mmc": {
+      "en": "1 · The maximum material condition",
+      "fr": "1 · Le maximum de matière"
+     },
+     "virtual_condition": {
+      "en": "2 · The virtual condition",
+      "fr": "2 · La condition virtuelle"
+     },
+     "bonus": {
+      "en": "3 · The bonus tolerance",
+      "fr": "3 · La tolérance bonus"
+     },
+     "allowed_zone": {
+      "en": "4 · The position zone allowed",
+      "fr": "4 · La zone de position admise"
+     },
+     "position_error": {
+      "en": "5 · The position the part has",
+      "fr": "5 · La position de la pièce"
+     },
+     "verdict": {
+      "en": "6 · The verdict",
+      "fr": "6 · Le verdict"
+     }
+    },
+    "diagnosis": {
+     "FP_MMC_IS_LARGEST": {
+      "en": "For a hole, the maximum material condition is the size with the most material around it. Is that the largest or the smallest hole?",
+      "fr": "Pour un trou, le maximum de matière est la dimension où il reste le plus de matière autour. Est-ce le plus grand ou le plus petit trou ?"
+     },
+     "FP_VC_PIN_FORMULA": {
+      "en": "That is the formula for a pin. A hole's virtual condition is the size of the gauge pin that must pass through it: smaller than its MMC, not larger.",
+      "fr": "C'est la formule d'un arbre. La condition virtuelle d'un trou est le diamètre du calibre qui doit y passer : plus petit que son maximum de matière, pas plus grand."
+     },
+     "FP_VC_FROM_LMC": {
+      "en": "The virtual condition starts from the size at maximum material, not from the largest size.",
+      "fr": "La condition virtuelle part de la dimension au maximum de matière, pas de la plus grande dimension."
+     },
+     "FP_BONUS_FROM_LMC": {
+      "en": "The bonus grows as the hole gets larger than its MMC. Which way did you measure the departure?",
+      "fr": "Le bonus croît quand le trou devient plus grand que son maximum de matière. Dans quel sens avez-vous mesuré l'écart ?"
+     },
+     "FP_BONUS_FULL_RANGE": {
+      "en": "The bonus depends on the size this hole actually measures, not on the whole size range.",
+      "fr": "Le bonus dépend de la dimension réellement mesurée sur ce trou, pas de toute la plage de dimensions."
+     },
+     "FP_NO_BONUS": {
+      "en": "Your zone is the stated tolerance alone. What does the modifier M add to it?",
+      "fr": "Votre zone est la tolérance indiquée seule. Qu'ajoute le modificateur M ?"
+     },
+     "FP_ZONE_FULL_RANGE": {
+      "en": "The zone grows by the bonus this part earned, not by the whole size range.",
+      "fr": "La zone augmente du bonus que cette pièce a gagné, pas de toute la plage de dimensions."
+     },
+     "FP_RADIUS_NOT_DIAMETER": {
+      "en": "That is the distance from the true position, a radius. The tolerance zone is a diameter: compare like with like.",
+      "fr": "C'est la distance à la position théorique, un rayon. La zone de tolérance est un diamètre : comparez des grandeurs de même nature."
+     },
+     "FP_OFFSETS_ADDED": {
+      "en": "The two offsets are at right angles. Combine them as the sides of a right triangle.",
+      "fr": "Les deux décalages sont à angle droit. Combinez-les comme les côtés d'un triangle rectangle."
+     },
+     "FP_VERDICT_NO_BONUS": {
+      "en": "Judge the position against the zone this part is allowed, tolerance and bonus together.",
+      "fr": "Jugez la position par rapport à la zone admise pour cette pièce, tolérance et bonus ensemble."
+     },
+     "FP_VERDICT_NO_SIZE_CHECK": {
+      "en": "Check the size limits before the position. A hole outside its size limits is rejected whatever its position.",
+      "fr": "Vérifiez les limites de dimension avant la position. Un trou hors de ses limites de dimension est rejeté quelle que soit sa position."
+     }
+    },
+    "hint": {
+     "mmc.h1": {
+      "en": "A hole has the most material when it is as small as it is allowed to be.",
+      "fr": "Un trou a le plus de matière quand il est aussi petit que permis."
+     },
+     "virtual_condition.h1": {
+      "en": "The virtual condition is the worst-case size the mating part sees. A bigger position tolerance makes the hole behave as a smaller one.",
+      "fr": "La condition virtuelle est la dimension du pire cas pour la pièce qui s'y engage. Une tolérance de position plus grande fait se comporter le trou comme un trou plus petit."
+     },
+     "virtual_condition.h2": {
+      "en": "Start from the MMC size and apply the position tolerance in the direction that tightens the hole.",
+      "fr": "Partez du maximum de matière et appliquez la tolérance de position dans le sens qui resserre le trou."
+     },
+     "bonus.h1": {
+      "en": "The tolerance applies in full at MMC. As the hole grows, how much more room does the pin have?",
+      "fr": "La tolérance s'applique en entier au maximum de matière. Quand le trou grossit, de combien la place du pin augmente-t-elle ?"
+     },
+     "bonus.h2": {
+      "en": "The bonus is the actual size minus the MMC size.",
+      "fr": "Le bonus est la dimension réelle moins la dimension au maximum de matière."
+     },
+     "allowed_zone.h1": {
+      "en": "Add what you found in the previous step to the stated tolerance.",
+      "fr": "Ajoutez ce que vous avez trouvé à l'étape précédente à la tolérance indiquée."
+     },
+     "position_error.h1": {
+      "en": "The axis is off by a distance in a plane. Which distance, and is it a radius or a diameter?",
+      "fr": "L'axe est décalé d'une distance dans un plan. Quelle distance, et est-ce un rayon ou un diamètre ?"
+     },
+     "position_error.h2": {
+      "en": "The distance is the hypotenuse of the two offsets. Double it to get the diameter of the circle.",
+      "fr": "La distance est l'hypoténuse des deux décalages. Doublez-la pour obtenir le diamètre du cercle."
+     },
+     "verdict.h1": {
+      "en": "Two questions in order. Is the size inside its limits? If so, is the position error inside the zone allowed?",
+      "fr": "Deux questions dans l'ordre. La dimension est-elle dans ses limites ? Si oui, l'erreur de position est-elle dans la zone admise ?"
+     }
+    }
+   },
+   "brief": {
+    "en": "<p>A drawing calls out a hole of diameter <strong>{{D_min}} to {{D_max}} mm</strong>, with a position tolerance of diameter <strong>{{T}} mm at MMC</strong> (the modifier M in the feature control frame), to datums A, B and C.</p>\n<p>The inspection report for one part says:</p>\n<ul><li>the hole's <strong>actual size</strong> is diameter <strong>{{d}} mm</strong>;</li><li>its axis is <strong>{{dx}} mm</strong> off the true position in X and <strong>{{dy}} mm</strong> off in Y.</li></ul>\n<p>Give, in <strong>millimetres to three decimals</strong>:</p>\n<ol><li>the hole's <strong>maximum material condition</strong> (its MMC size);</li><li>its <strong>virtual condition</strong>;</li><li>the <strong>bonus tolerance</strong> this part earns;</li><li>the <strong>position tolerance zone</strong> this part is allowed (a diameter);</li><li>the <strong>position error</strong> the part has (the diameter of the circle around the true position that holds the axis);</li><li>the <strong>verdict</strong>: type <strong>1</strong> to accept the part, <strong>2</strong> to reject it for position, <strong>3</strong> to reject it for size.</li></ol>",
+    "fr": "<p>Un plan prescrit un trou de diamètre <strong>{{D_min}} à {{D_max}} mm</strong>, avec une tolérance de position de diamètre <strong>{{T}} mm au maximum de matière</strong> (le modificateur M dans le cadre de tolérancement), par rapport aux références A, B et C.</p>\n<p>Le rapport de contrôle d'une pièce indique :</p>\n<ul><li>la <strong>dimension réelle</strong> du trou est un diamètre de <strong>{{d}} mm</strong> ;</li><li>son axe est décalé de <strong>{{dx}} mm</strong> en X et de <strong>{{dy}} mm</strong> en Y par rapport à la position théorique.</li></ul>\n<p>Donnez, en <strong>millimètres avec trois décimales</strong> :</p>\n<ol><li>le <strong>maximum de matière</strong> du trou (sa dimension au maximum de matière) ;</li><li>sa <strong>condition virtuelle</strong> ;</li><li>la <strong>tolérance bonus</strong> que cette pièce gagne ;</li><li>la <strong>zone de tolérance de position</strong> admise pour cette pièce (un diamètre) ;</li><li>l'<strong>erreur de position</strong> de la pièce (le diamètre du cercle centré sur la position théorique qui contient l'axe) ;</li><li>le <strong>verdict</strong> : tapez <strong>1</strong> pour accepter la pièce, <strong>2</strong> pour la rejeter pour sa position, <strong>3</strong> pour la rejeter pour sa dimension.</li></ol>"
+   },
+   "drawings": {
+    "en": {},
+    "fr": {}
+   }
+  }
+ }
+}

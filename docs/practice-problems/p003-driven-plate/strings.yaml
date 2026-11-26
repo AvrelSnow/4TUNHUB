@@ -1,0 +1,49 @@
+diagnosis:
+  FP_N_TIMES_S:
+    en: >-
+      Between n holes there are fewer gaps than holes. Count them on a sketch.
+    fr: >-
+      Entre n trous il y a moins d'intervalles que de trous. Comptez-les sur une esquisse.
+  FP_NO_END_INSET:
+    en: >-
+      Your length covers the gaps between holes only. What is at each end?
+    fr: >-
+      Votre longueur ne couvre que les intervalles entre les trous. Que trouve-t-on à chaque extrémité ?
+  FP_LENGTH_NOT_UPDATED:
+    en: >-
+      You added holes but kept the old length. The length was meant to follow the number of holes.
+    fr: >-
+      Vous avez ajouté des trous mais gardé l'ancienne longueur. La longueur devait suivre le nombre de trous.
+  FP_HOLES_NOT_ADDED:
+    en: >-
+      The length has grown, but the old number of holes is still in your mass. How many are in the plate now?
+    fr: >-
+      La longueur a augmenté, mais l'ancien nombre de trous figure encore dans votre masse. Combien y en a-t-il maintenant ?
+
+step:
+  plate_length:
+    en: "1 · The plate's length"
+    fr: "1 · La longueur de la plaque"
+  mass_original:
+    en: "2 · The mass as drawn"
+    fr: "2 · La masse telle que dessinée"
+  mass_changed:
+    en: "3 · The mass after the change"
+    fr: "3 · La masse après la modification"
+
+hint:
+  plate_length.h1:
+    en: Sketch the plate with its holes and mark the two end insets and the gaps between holes.
+    fr: Esquissez la plaque avec ses trous et repérez les deux retraits d'extrémité et les intervalles entre les trous.
+  plate_length.h2:
+    en: With n holes in a row, count the gaps between them.
+    fr: Avec n trous en rangée, comptez les intervalles entre eux.
+  mass_original.h1:
+    en: Volume of the plain plate, minus the volume of each hole, then times the density.
+    fr: Volume de la plaque pleine, moins le volume de chaque trou, puis fois la masse volumique.
+  mass_changed.h1:
+    en: When n changes, what else changes with it?
+    fr: Quand n change, qu'est-ce qui change avec lui ?
+  mass_changed.h2:
+    en: Update the variable in SOLIDWORKS and read the mass properties again, then check it by hand.
+    fr: Modifiez la variable dans SOLIDWORKS et relisez les propriétés de masse, puis vérifiez à la main.

@@ -374,6 +374,35 @@ export const phases: Phase[] = [
       "Results, testimonials, then Cohort 1 on evidence",
     ],
   },
+  {
+    id: "9",
+    name: "Paid Cohort 1 — taking payments",
+    status: "next",
+    goal:
+      "Take the first payment safely: a provider-hosted Mobile Money link, honest terms of sale, and nothing on 4tunhub.com that ever holds a buyer's money or PIN.",
+    items: [
+      "Payment-readiness gap review ✓ (docs/security/09-payment-readiness.md)",
+      "Provider compared and chosen: Fapshi first ✓",
+      "Terms of sale, refunds and privacy update approved ✓ (draft PR #3, EN + FR)",
+      "Allow-listed payment link in commerce.ts ✓ (https on fapshi.com only)",
+      "Fapshi account opened, 2FA on, test payment and refund (Fortune)",
+      "Cohort 1 price, the link and a Pay button with the scam warning on the cohort page",
+      "Register an établissement, then move to CinetPay or Notch Pay for cards and lower fees",
+    ],
+  },
+  {
+    id: "10",
+    name: "The Lab inside Engineering Thinking",
+    status: "active",
+    goal:
+      "Stop running the Lab as a separate site: a visitor arrives on 4tunhub.com, tries the exercises and learns, with no account and no new server.",
+    items: [
+      "Step 1, every exercise works ✓: seven challenges, 13 lessons, 12 warm-up questions",
+      "Step 2, it remembers ✓: continue where you stopped, stamps, a first-visit question, save and restore progress",
+      "Step 3, it feels alive ✓: the bracket assembling, the stamp, the load test",
+      "Not carried over: accounts, the STEP file check, the community; lab.4tunhub.com is untouched until Fortune decides",
+    ],
+  },
 ];
 
 /* ---------------- Decisions log ---------------- */
@@ -668,6 +697,55 @@ export const decisions: Decision[] = [
     rationale:
       "Fortune's direction: the cohort should carry no obligation to, or claim about, a community group it is not formally tied to, so nothing on it can become a dispute later. The screenshots were already the real selection filter, so they are now said plainly, three times: in the steps, in an amber 'No screenshots, no seat' band under them, and on the screenshots page with one card per follow. The voucher promise is kept on his word that the vouchers can be obtained without the group; the terms still say we will announce it publicly if the supply fails. The platform reads 'online, link sent to you' until he and MKV pick one (Jitsi Meet is the likely choice, clause 5). The 4TUNHub LinkedIn link moved from a guessed numeric ID to the page's public address, linkedin.com/company/4tunhub, now that following it is a condition of a seat.",
     status: "proposed",
+  },
+  {
+    decision:
+      "Payments start with a provider-hosted payment link, and Fapshi is the first provider (2026-11-11): an individual account, MTN MoMo and Orange Money, 3% per payment. 4tunhub.com only links to the payment page; it gets no webhook, no order store and no payment code. Registering an établissement and moving to CinetPay or Notch Pay come later.",
+    rationale:
+      "4TUNHub is not a registered business yet, and the providers that need a trade register (CinetPay asks for a tax ID and bank details; Notch Pay's docs ask for registration documents) cannot open before the January pre-sale. Fapshi is the only one of the four compared whose own pages accept a seller who is 'Not Legally Registered'. For 10–20 seats the fee difference between providers is about 10,000 FCFA in total, so it does not decide anything. A hosted link adds no attack surface to the site and keeps card and wallet data off our servers, as the security contract already required; an integrated checkout (webhook, signatures, order store) is deferred until volume asks for it. The link can only point at fapshi.com: paymentUrl() refuses anything else, so a slipped-in personal number or look-alike page cannot receive a buyer's money. Full comparison and the gap list in docs/security/09-payment-readiness.md.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Terms of sale (2026-11-11, approved as drafted): the price lives on the cohort page, not in the terms; payment by Mobile Money through Fapshi, no cards; the seller is Donfack Fortune trading as 4TUNHub in a personal capacity. Refunds: in full within 7 days of paying and before the second session, half after that until the second session, nothing from the second session on; if we cancel or postpone, the buyer chooses a full refund or a seat in the next cohort. A 'pay only through this site' warning sits in the terms and will sit next to the Pay button. The privacy note names Fapshi and keeps payment records ten years (OHADA).",
+    rationale:
+      "Keeping the price off the terms means a price change is never a terms change. Saying plainly that 4TUNHub is not yet a registered company is truer than implying otherwise, and buyers' Mobile Money receipts will show a person's name. The refund rule gives a buyer a real week to change their mind but stops a seat being taken through the sessions that matter and then refunded. Cohort announcements are easy to clone in WhatsApp groups, so the cheapest defence against someone collecting money in our name is to say, where buyers read it, that we only take payment through the site.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Academy restructure (2026-11-24): the Academy page shows only what exists. The empty course catalogue, the \u201cHow you learn\u201d block and the instructor block are gone (the founder page carries the founder). In their place: \u201cStart here\u201d, three goal cards (Engineering Thinking, the YouTube library, Free places to learn), each with a real preview, then the sessions we hosted.",
+    rationale:
+      "Fortune's direction: a visitor should find their way, and a card should show what is behind it, not a bare link. Previews are our own files, never hot-linked: the CSP allows images only from this site, and a third-party image would tell that third party who is reading. The page and the founder page each keep to their own subject: the session cards are on the Academy page only, and the founder page's talks list is unchanged. Previews exist on five Free places cards; the rest stay text on purpose, because the page is read on slow phones.",
+    status: "locked",
+  },
+  {
+    decision:
+      "The LS-DYNA library is now the YouTube library, at /academy/youtube (2026-11-24). The old address, with or without a language prefix and for every episode, redirects permanently.",
+    rationale:
+      "The channel will not stay about LS-DYNA, and the name should say where the material comes from. The files under /library/ls-dyna/ did not move, because video descriptions already link to them.",
+    status: "locked",
+  },
+  {
+    decision:
+      "Sessions we hosted are cards that play here (2026-11-24): a picture, the date, the speaker, and a pop-up player with what the session covers and its chapters. Five recordings from the Douala City SWUG channel; a session with no recording is not shown on the Academy page (2026-11-25).",
+    rationale:
+      "Fortune asked for a visual of what was taught, played on 4TUNHub rather than by sending the visitor to YouTube. The pop-up loads YouTube's no-cookie player only when a session is opened, so nothing is contacted before. The event pages and recordings name Fortune as host and someone else as the speaker, so the cards say both and the heading says \u201chosted\u201d, not \u201ctaught\u201d. Dates, speakers, chapters and the \u201cwhat it covers\u201d lines are taken from those pages, never written by us. Full record: docs/sessions.md.",
+    status: "locked",
+  },
+  {
+    decision:
+      "No route page (2026-11-25): the ordered page at /academy/route and its on-device ticks are removed before it ever reached production. The Academy offers its three “Start here” doors only.",
+    rationale:
+      "Fortune reviewed it on the Deploy Preview and did not like it. The design record stays in docs/academy-route.md, marked as removed.",
+    status: "locked",
+  },
+  {
+    decision:
+      "The Lab moves inside Engineering Thinking and runs in the visitor's browser (2026-11-25): numbers are drawn and answers checked on the device, progress is kept there, and nothing new is hosted.",
+    rationale:
+      "Fortune wants to stop continuing the Lab separately and asked for no server and nothing complicated. The formulas are rewritten for the browser and held to the Lab's Python engine by scripts/check-lab-parity.mjs. The accepted cost: answers can be found by someone who looks, so a cleared challenge proves nothing to a third party, and no certificate or ranking may rest on it. The Lab's three tries per step are kept.",
+    status: "locked",
   },
 ];
 
@@ -1015,7 +1093,7 @@ export const securityRules: Rule[] = [
   },
   {
     t: "Future auth & commerce",
-    d: "When accounts/payments arrive: authorization checked server-side per request, least privilege, payments via a hosted provider (Stripe-class) — card data never touches our servers.",
+    d: "When accounts/payments arrive: authorization checked server-side per request, least privilege, payments via a hosted provider (Fapshi first, Mobile Money) — card and wallet data never touch our servers, and payment links are allow-listed to the provider's domain (paymentUrl() in lib/commerce.ts).",
   },
 ];
 
@@ -1088,5 +1166,5 @@ export const scorecard: Score[] = [
   { aspect: "Privacy & consent", current: 93, target: 97, note: "NEW 2026-09-20, after Fortune asked where the site told people about cookies \u2014 it did not, beyond a paragraph. Shipped: a one-time bottom bar (Accept and Decline identical in size and weight, neither amber, no X because not answering is not consent), a real gate that renders no analytics script until a yes, a permanent switch at /privacy#storage linked from every footer, a table naming all three stored items, Global Privacy Control honoured as a refusal, and a versioned record so a new category re-asks everyone. Verified end to end with a provider configured locally. Terms of use added 2026-09-20 in both languages: the conditions of a free seat, the recorded sessions, the voucher and what happens if its supply fails, whose work is whose, and the Dassault non-affiliation line a CSWA bootcamp needs before the user group reads it. Remaining: the controller line depends on the open business-entity question, and the published retention promises have to actually happen in February." },
   { aspect: "Security", current: 96, target: 96, note: "AT TARGET. Headers verified live (CSP without unsafe-eval, frame-ancestors none, HSTS, nosniff), leak-free branded 404/500, no secrets in the repo, /.well-known/security.txt shipped 2026-09-20. All four forms: server-side validation, honeypot, per-IP rate limit (in-memory, so per instance on serverless: accepted), generic error codes, framework origin checks, and a loud failure instead of a silent drop." },
   { aspect: "Content depth", current: 94, target: 95, note: "Every primary pillar ships, bilingual, plus Resources, Community and Store. Three named testimonials with photographs on the home page, and twelve public talks on the founder page, each linked to its own event. Remaining: deeper per-item copy, a post per talk (the SEO lever), and Blog and Careers, which are still honest placeholders." },
-  { aspect: "Documentation", current: 99, target: 99, note: "AT TARGET. v1.8 (2026-09-20, after the Flovet review) \u2014 three of its five points adopted and two rejected with the reasoning kept, so neither half can be quietly re-litigated. Previously v1.7 (after the consent build) \u2014 docs/launch-blueprint.md gained B5 (consent), the seven-item wider sweep (DMARC, account 2FA and domain lock, an application backup, uptime monitoring, testimonial permissions, a link check, security.txt) and a re-weighted scorecard whose change is argued in the document rather than silently applied. Previously v1.6 (after the live launch audit) — docs/launch-blueprint.md is now the permission to go public: five blockers, a frozen scorecard out of 100, the launch-day runbook, the rollback procedure and the deploy budget through mid-November. Previously v1.5 (after the review and the first real testimonials) — current with every locked decision and verified number. Phases 6 and 7 closed out; Cohort 0 opened as phase 8. The launch, the partnership, the ambassador programme and the revised window are in the decision log; the campaign itself is docs/cohort-0-campaign.md, the plan of record docs/launch-plan.md." },
+  { aspect: "Documentation", current: 99, target: 99, note: "AT TARGET. v1.9 (2026-11-11, payment readiness): phase 9 opened and two payment decisions locked (Fapshi first through a hosted link; the terms of sale and refund rule), with the provider comparison in docs/security/09-payment-readiness.md. Previously v1.8 (2026-09-20, after the Flovet review) \u2014 three of its five points adopted and two rejected with the reasoning kept, so neither half can be quietly re-litigated. Previously v1.7 (after the consent build) \u2014 docs/launch-blueprint.md gained B5 (consent), the seven-item wider sweep (DMARC, account 2FA and domain lock, an application backup, uptime monitoring, testimonial permissions, a link check, security.txt) and a re-weighted scorecard whose change is argued in the document rather than silently applied. Previously v1.6 (after the live launch audit) — docs/launch-blueprint.md is now the permission to go public: five blockers, a frozen scorecard out of 100, the launch-day runbook, the rollback procedure and the deploy budget through mid-November. Previously v1.5 (after the review and the first real testimonials) — current with every locked decision and verified number. Phases 6 and 7 closed out; Cohort 0 opened as phase 8. The launch, the partnership, the ambassador programme and the revised window are in the decision log; the campaign itself is docs/cohort-0-campaign.md, the plan of record docs/launch-plan.md." },
 ];

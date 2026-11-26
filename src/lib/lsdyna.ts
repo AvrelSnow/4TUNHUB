@@ -18,7 +18,7 @@
  *    one used on camera.
  */
 
-export const LIBRARY_PATH = "/academy/ls-dyna";
+export const LIBRARY_PATH = "/academy/youtube";
 
 export const episodePath = (slug: string) => `${LIBRARY_PATH}/${slug}`;
 
