@@ -109,7 +109,10 @@ export const projects: Project[] = [
     year: "2023",
     tools: ["SolidWorks weldment", "FEA", "Electronics"],
     image: `${IMG}/pedal-hero.webp`,
-    gallery: Array.from({ length: 15 }, (_, i) => `${IMG}/pedal-${i + 1}.webp`),
+    /** Sheets 3–5 were readable drawings: now offered on request. */
+    gallery: [1, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((n) => `${IMG}/pedal-${n}.webp`),
+    video: { src: "/videos/pedal-power-charger.mp4", poster: `${IMG}/pedal-poster.webp` },
+    lockedPlans: Array.from({ length: 4 }, (_, i) => `${IMG}/pedal-plan-${i + 1}.webp`),
     portfolioUrl: `${PORTFOLIO}/project-pedal-power.html`,
   },
   {
@@ -118,7 +121,9 @@ export const projects: Project[] = [
     year: "2023",
     tools: ["SolidWorks", "Power transmission", "Mechanical design"],
     image: `${IMG}/beans-hero.webp`,
-    gallery: Array.from({ length: 10 }, (_, i) => `${IMG}/beans-${i + 1}.webp`),
+    /** Sheets 5 and 6 were readable drawings: now offered on request. */
+    gallery: [1, 2, 3, 4, 7, 8, 9, 10].map((n) => `${IMG}/beans-${n}.webp`),
+    lockedPlans: Array.from({ length: 4 }, (_, i) => `${IMG}/beans-plan-${i + 1}.webp`),
     portfolioUrl: `${PORTFOLIO}/project-beans-unwrapping.html`,
   },
   {

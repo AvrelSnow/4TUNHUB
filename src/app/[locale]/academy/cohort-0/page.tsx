@@ -185,7 +185,7 @@ export default async function CohortPage({ params }: Params) {
             <Reveal delay={80}>
               <Media
                 src="/images/projects/beans-7.webp"
-                alt={dict.projects.galleries["beans-unwrapping-machine"]?.[6] ?? ""}
+                alt={dict.projects.galleries["beans-unwrapping-machine"]?.[4] ?? ""}
                 doc
                 className="aspect-[4/3] rounded-3xl"
               />

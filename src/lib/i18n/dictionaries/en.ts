@@ -317,6 +317,11 @@ const en = {
           "We worked to Design-for-Manufacturing and an Empathize–Define–Ideate–Prototype–Test loop; I taught myself advanced SolidWorks weldment and FEA in a week to hold the deadline. Most of the effort went into the frame — a double-groove pulley transmission and all the electronics packaged inside the structure. When FEA exposed stress concentrations at critical joints above 800 N, I added strategic gusset reinforcements against fatigue, and chose hollow steel tubing for its strength-to-weight ratio.",
         results:
           "A working prototype presented at the HTTTC Festival, proving human-powered charging as a viable answer for energy-scarce settings. The simulation-driven approach caught structural weaknesses before fabrication and cut costly physical iterations. It's also where a principle stuck: designing for anthropometric diversity isn't a constraint — it's the measure of a design's real-world value.",
+        videoNote: "The project's own animation. On-screen text is in English.",
+        ctaTitle: "Want the drawings?",
+        ctaBody:
+          "The 2D drawings are not published here. If you want them, write to me directly and we will agree on the payment.",
+        cta: "Write to me",
       },
       "beans-unwrapping-machine": {
         title: "Beans unwrapping machine",
@@ -328,6 +333,10 @@ const en = {
           "I built competing prototype configurations before committing, choosing the final design on material availability and manufacturability. Variable-dimension blades at 120° intervals with 5 cm spacing were tuned — rotation speed against motor torque — to unwrap beans without breaking them, with a double-groove pulley partitioning drive between motor, shaft and fan. When the specified 1.1 kW motor proved unavailable, I adapted the design to an alternative while holding every performance target, and balanced steel thickness against machine weight for portability.",
         results:
           "A machine that meets its performance targets and can genuinely be built and maintained where it's needed. Working with Nepitimbaye, Grace and Tatsinda drove home that engineering in constrained environments has to absorb real-world unpredictability — and that setting teammates up through patient onboarding beats shouldering every task alone.",
+        ctaTitle: "Want the drawings?",
+        ctaBody:
+          "The 2D drawings are not published here. If you want them, write to me directly and we will agree on the payment.",
+        cta: "Write to me",
       },
       "helical-gear-reducer": {
         title: "Reverse engineering of a helical gear reducer",
@@ -404,9 +413,6 @@ const en = {
       "pedal-power-charger": [
         "Power-transmission calculations and gear-ratio optimisation",
         "Electrical circuit diagram and component layout",
-        "Full CAD assembly",
-        "Frame structural design",
-        "Exploded view — all components",
         "Simplified CAD model prepared for FEA",
         "Load conditions applied to the frame in FEA",
         "Support structure — critical load-bearing components",
@@ -423,8 +429,6 @@ const en = {
         "Explanation drawing — power transmission and shaft",
         "Kinematic scheme of the drive",
         "Kinematic scheme — component legend",
-        "Complete 2D frame assembly drawing",
-        "Complete 2D shaft assembly drawing",
         "3D CAD assembly — alternate perspective",
         "3D CAD assembly — perspective view",
         "Shaft 3D CAD assembly — alternate perspective",

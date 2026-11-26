@@ -193,7 +193,7 @@ export default async function Home({
                 </div>
                 <Media
                   src="/images/projects/pedal-9.webp"
-                  alt={dict.projects.galleries["pedal-power-charger"]?.[8] ?? ""}
+                  alt={dict.projects.galleries["pedal-power-charger"]?.[5] ?? ""}
                   doc
                   zoom
                   className="aspect-[4/3] lg:aspect-auto lg:h-full"
@@ -208,7 +208,7 @@ export default async function Home({
               body={t.pillars.academy}
               cta={t.learnMore}
               image="/images/projects/beans-8.webp"
-              alt={dict.projects.galleries["beans-unwrapping-machine"]?.[7] ?? ""}
+              alt={dict.projects.galleries["beans-unwrapping-machine"]?.[5] ?? ""}
             />
             <PillarTile
               href={href("research")}

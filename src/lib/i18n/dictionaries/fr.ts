@@ -313,6 +313,11 @@ const fr: Dictionary = {
           "Nous avons travaillé selon le Design-for-Manufacturing et une boucle Empathize–Define–Ideate–Prototype–Test ; j'ai appris seul, en une semaine, la mécano-soudure avancée sous SolidWorks et la FEA pour tenir le délai. L'essentiel de l'effort a porté sur le châssis — une transmission par poulie à double gorge et toute l'électronique intégrée dans la structure. Lorsque la FEA a révélé des concentrations de contraintes aux jonctions critiques au-delà de 800 N, j'ai ajouté des goussets de renfort stratégiques contre la fatigue, et retenu du tube acier creux pour son rapport résistance/poids.",
         results:
           "Un prototype fonctionnel présenté au Festival de l'HTTTC, prouvant la recharge à énergie humaine comme réponse viable en milieu à faible accès énergétique. L'approche pilotée par la simulation a détecté les faiblesses structurelles avant fabrication et réduit les itérations physiques coûteuses. C'est aussi là qu'un principe s'est ancré : concevoir pour la diversité anthropométrique n'est pas une contrainte — c'est la mesure de la valeur réelle d'une conception.",
+        videoNote: "L'animation d'origine du projet. Les textes à l'écran sont en anglais.",
+        ctaTitle: "Vous voulez les plans ?",
+        ctaBody:
+          "Les plans 2D ne sont pas publiés ici. Si vous les voulez, écrivez-moi directement et nous conviendrons du paiement.",
+        cta: "M'écrire",
       },
       "beans-unwrapping-machine": {
         title: "Machine à décortiquer les haricots",
@@ -324,6 +329,10 @@ const fr: Dictionary = {
           "J'ai construit des configurations de prototype concurrentes avant de trancher, en choisissant la conception finale selon la disponibilité des matériaux et la fabricabilité. Des lames à dimensions variables à intervalles de 120° et 5 cm d'espacement ont été réglées — vitesse de rotation contre couple moteur — pour décortiquer sans casser les grains, avec une poulie double gorge répartissant l'entraînement entre moteur, arbre et ventilateur. Le moteur de 1,1 kW prévu étant indisponible, j'ai adapté la conception à un modèle alternatif sans céder sur les objectifs, et équilibré l'épaisseur d'acier face au poids pour la portabilité.",
         results:
           "Une machine qui atteint ses objectifs de performance et peut réellement être construite et entretenue là où elle est nécessaire. Travailler avec Nepitimbaye, Grace et Tatsinda m'a montré que l'ingénierie en milieu contraint doit absorber l'imprévu — et que préparer ses coéquipiers par un accompagnement patient vaut mieux que tout porter seul.",
+        ctaTitle: "Vous voulez les plans ?",
+        ctaBody:
+          "Les plans 2D ne sont pas publiés ici. Si vous les voulez, écrivez-moi directement et nous conviendrons du paiement.",
+        cta: "M'écrire",
       },
       "helical-gear-reducer": {
         title: "Rétro-conception d'un réducteur à engrenages hélicoïdaux",
@@ -387,9 +396,6 @@ const fr: Dictionary = {
       "pedal-power-charger": [
         "Calculs de transmission et optimisation du rapport de démultiplication",
         "Schéma du circuit électrique et implantation des composants",
-        "Assemblage CAO complet",
-        "Conception structurelle du châssis",
-        "Vue éclatée — tous les composants",
         "Modèle CAO simplifié préparé pour la FEA",
         "Conditions de charge appliquées au châssis en FEA",
         "Structure de support — composants porteurs critiques",
@@ -406,8 +412,6 @@ const fr: Dictionary = {
         "Plan explicatif — transmission de puissance et arbre",
         "Schéma cinématique de l'entraînement",
         "Schéma cinématique — légende des composants",
-        "Plan d'assemblage 2D complet du châssis",
-        "Plan d'assemblage 2D complet de l'arbre",
         "Assemblage CAO 3D — autre perspective",
         "Assemblage CAO 3D — vue en perspective",
         "Assemblage CAO 3D de l'arbre — autre perspective",
