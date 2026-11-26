@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { LoadTest } from "@/components/practice/LoadTest";
 import { cn } from "@/lib/cn";
 import { readNumber, updateProgress, withToday } from "@/lib/path-progress";
 import {
@@ -34,7 +35,18 @@ const fmt = (text: string, vars: Record<string, string | number>) =>
 
 const UNIT: Record<string, string> = { "N.mm": "N·mm", mm3: "mm³", "-": "" };
 
-export function ChallengeRunner({ challenge, lang, t }: { challenge: ChallengeView; lang: string; t: T }) {
+export function ChallengeRunner({
+  challenge,
+  lang,
+  t,
+  load,
+}: {
+  challenge: ChallengeView;
+  lang: string;
+  t: T;
+  /** The words of the load test, on the challenge that ends with one. */
+  load?: Dictionary["practice"]["load"];
+}) {
   const { id, version, steps, constants } = challenge;
   const entry = usePractice()[id];
   const run = entry?.run?.version === version ? entry.run : undefined;
@@ -98,23 +110,33 @@ export function ChallengeRunner({ challenge, lang, t }: { challenge: ChallengeVi
         hint = challenge.strings.hint[`${step.id}.h${rung}`] ? `${step.id}.h${rung}` : null;
       }
     }
+    const results: Run["results"] = { ...run.results, [step.id]: { ...verdict, hint } };
+    // An answer that was right only because it followed from an earlier one
+    // is judged again against the answers as they now stand, free of charge:
+    // once the earlier slip is fixed, it may no longer hold.
+    for (const other of steps) {
+      if (other.id === step.id || results[other.id]?.status !== "correct_method") continue;
+      const again = gradeStep(other, steps, logic, params, constants, given[other.id], given);
+      results[other.id] = { ...again, hint: null };
+    }
     const next: Run = {
       ...run,
       text: { ...run.text, [step.id]: text },
       answers: given,
-      results: { ...run.results, [step.id]: { ...verdict, hint } },
+      results,
       used: { ...run.used, [step.id]: used },
       keys: again ? run.keys : [...run.keys, key],
     };
     const all = steps.every((s) => next.results[s.id] && CLEARED.includes(next.results[s.id].status));
-    const passed = CLEARED.includes(verdict.status);
     updateEntry(id, (e) => ({
       ...e,
       run: next,
-      ...(passed ? { proved: { ...e.proved, [step.id]: true as const } } : {}),
+      // The Proven stamp counts true answers only: one that merely follows
+      // from a slip may be judged wrong once the slip is fixed.
+      ...(verdict.status === "correct" ? { proved: { ...e.proved, [step.id]: true as const } } : {}),
       ...(all ? { cleared: true as const } : {}),
     }));
-    if (passed) updateProgress(withToday);
+    if (CLEARED.includes(verdict.status)) updateProgress(withToday);
   };
 
   return (
@@ -152,6 +174,16 @@ export function ChallengeRunner({ challenge, lang, t }: { challenge: ChallengeVi
             />
           ))}
         </ol>
+
+        {cleared === steps.length && load && (
+          <LoadTest
+            params={params}
+            constants={constants}
+            thickness={run.answers.thickness_final}
+            lang={lang}
+            t={load}
+          />
+        )}
 
         {cleared === steps.length && (
           <div role="status" className="mt-6 rounded-3xl bg-surface p-7 text-center shadow-e2">

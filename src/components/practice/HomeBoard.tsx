@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { earned, marks, type Level, type MarkCard } from "@/lib/marks";
 import {
   readNumber,
@@ -31,6 +31,8 @@ export type BoardProps = {
   cards: MarkCard[];
   bracketId: string;
   practiceHref: string;
+  /** The bracket drawing, one piece per card. */
+  assembly: string;
   /** The first-visit question: a check of the first lesson, with its band. */
   taster: { id: string; lo: number; hi: number };
   lang: string;
@@ -200,13 +202,40 @@ function Welcome(props: BoardProps & { progress: Progress; practice: Practice })
           c: next.card.number,
         });
 
+  // The highest stamp among the new ones is the one pressed.
+  const rank = (s: string) => ["seen", "practised", "proven"].indexOf(s.split(":")[1]);
+  const newest = [...fresh].sort((a, b) => rank(b) - rank(a))[0];
+  // A card's piece lands on the bracket when the card is Practised.
+  const lit = all.filter((m) => m.practised).map((m) => m.card.id);
+  const landed = fresh.filter((s) => s.endsWith(":practised")).map((s) => s.split(":")[0]);
+  // The drawing is made once: a new object would restart its animation.
+  const drawing = useMemo(() => ({ __html: props.assembly }), [props.assembly]);
+
   return (
     <>
-      <p className="text-sm font-semibold text-brand-500">
-        {fresh.length ? fmt(t.newStamp, { s: name(fresh[fresh.length - 1]) }) : t.welcome}
-      </p>
+      <p className="text-sm font-semibold text-brand-500">{t.welcome}</p>
       <h2 className="mt-1 text-headline">{to.title}</h2>
       <p className="mt-2 text-sm text-white/70">{to.detail}</p>
+      <figure className="mt-5">
+        <div
+          role="img"
+          aria-label={fmt(t.assembly, { n: lit.length, t: cards.length })}
+          className="assembly"
+          data-lit={lit.join(" ")}
+          data-new={landed.join(" ")}
+          dangerouslySetInnerHTML={drawing}
+        />
+        <figcaption className="mt-2 text-center text-2xs text-white/60">
+          {fmt(t.assembly, { n: lit.length, t: cards.length })}
+        </figcaption>
+      </figure>
+      {newest && (
+        <p role="status" className="mt-4 text-center">
+          <span className="stamp-new inline-block rounded-md border-4 border-double border-brand-500 px-4 py-1 font-extrabold text-brand-500">
+            {fmt(t.newStamp, { s: name(newest) })}
+          </span>
+        </p>
+      )}
       <Link href={to.href} className={`${ACTION} mt-5`}>
         {t.continue}
       </Link>

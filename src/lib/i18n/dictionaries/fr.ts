@@ -940,6 +940,25 @@ const fr: Dictionary = {
     },
     honesty: "Pour s'entraîner. Les réponses sont vérifiées dans votre navigateur : cela ne prouve rien à personne d'autre que vous.",
     back: "Pratique",
+    load: {
+      eyebrow: "Essai de charge",
+      holds: "Votre console de {t} mm tient",
+      fails: "Votre plaque de {t} mm ne passe pas",
+      summary:
+        "Votre console sous {m} kg, épaisseur {t} mm : contrainte {s} MPa sur {sa} admissibles, flèche en bout {d} mm sur {dl} admissibles.",
+      stress: "Contrainte de flexion à l'encastrement",
+      sag: "Flèche au trou de charge",
+      of: "{a} sur {b} {u}",
+      within: "dans la limite",
+      over: "au-dessus",
+      scaleTop: "{s} MPa, admissible",
+      stamp: "Essai réussi",
+      failBody:
+        "Une étape peut découler correctement d'une erreur précédente. Corrigez la réponse antérieure, ou tirez de nouvelles valeurs, puis recommencez l'essai.",
+      replay: "Recharger",
+      scaleNote: "La flèche est dessinée {k} fois plus grande. Le trait pointillé marque la descente maximale du trou de charge.",
+      theory: "Théorie des poutres, flexion seule : trous et boulons ignorés, poids propre de la plaque négligé comme dans l'énoncé.",
+    },
     run: {
       preparing: "Préparation de vos valeurs…",
       needsScript: "Cette page a besoin de JavaScript pour tirer vos valeurs et vérifier vos réponses.",
@@ -988,6 +1007,7 @@ const fr: Dictionary = {
     of: "{n} sur {t}",
     days: "Jours de travail ici",
     levels: { seen: "Vu", practised: "Pratiqué", proven: "Prouvé" },
+    assembly: "Votre console : {n} pièces sur {t} en place",
     stamps: {
       label: "Tampons",
       seen: "Vu",

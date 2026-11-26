@@ -41,6 +41,8 @@ export type PathLesson = {
 };
 
 export const path = data as {
+  /** The bracket drawing, one `data-piece` per card. */
+  assembly: string;
   source: string;
   title: string;
   tagline: string;

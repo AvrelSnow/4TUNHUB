@@ -945,6 +945,25 @@ const en = {
     },
     honesty: "Practice only. The answers are checked in your browser, so this proves nothing to anyone but you.",
     back: "Practice",
+    load: {
+      eyebrow: "Load test",
+      holds: "Your {t} mm bracket holds",
+      fails: "Your {t} mm plate does not pass",
+      summary:
+        "Your bracket under {m} kg, {t} mm thick: stress {s} MPa of {sa} allowed, tip sag {d} mm of {dl} allowed.",
+      stress: "Bending stress at the root",
+      sag: "Sag at the load hole",
+      of: "{a} of {b} {u}",
+      within: "within",
+      over: "over",
+      scaleTop: "{s} MPa, allowed",
+      stamp: "Load test passed",
+      failBody:
+        "A step can follow correctly from an earlier slip. Fix the earlier answer, or draw new numbers, and test again.",
+      replay: "Load it again",
+      scaleNote: "The sag is drawn {k} times larger. The dashed line is as far as the load hole may drop.",
+      theory: "Beam theory, bending only: holes and bolts ignored, the plate's own weight left out as in the brief.",
+    },
     run: {
       preparing: "Preparing your numbers…",
       needsScript: "This page needs JavaScript to draw your numbers and check your answers.",
@@ -993,6 +1012,7 @@ const en = {
     of: "{n} of {t}",
     days: "Days you worked here",
     levels: { seen: "Seen", practised: "Practised", proven: "Proven" },
+    assembly: "Your bracket: {n} of {t} pieces fitted",
     stamps: {
       label: "Stamps",
       seen: "Seen",

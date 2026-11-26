@@ -139,7 +139,18 @@ def main(argv=None):
             }
         cards.append(entry)
 
+    # The wall bracket in pieces, one per card. It has no words but its label,
+    # which the site supplies in both languages.
+    drawing = (p.root / "pictures" / p.spec["assembly"]).read_text(encoding="utf-8")
+    drawing = re.sub(r"<!--.*?-->", "", drawing, flags=re.S)
+    drawing = re.sub(r'\s(?:role|aria-label)="[^"]*"', "", drawing)
+    drawing = re.sub(r"\n\s*", "", drawing.strip())
+    if "data-piece" not in drawing:
+        print("error: the assembly drawing has no pieces", file=sys.stderr)
+        return 1
+
     out = {
+        "assembly": drawing,
         "source": "4TUNHUB Lab, paths/%s v%s" % (args.path, p.version),
         "title": t(p.spec["title"], "en"),
         "tagline": t(p.spec["tagline"], "en"),

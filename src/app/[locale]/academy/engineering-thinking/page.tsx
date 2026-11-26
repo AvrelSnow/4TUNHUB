@@ -21,6 +21,8 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
 import { ACADEMY_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 
+import "./alive.css";
+
 type Params = { params: Promise<{ locale: string }> };
 
 /** The check ids in a lesson's markup. */
@@ -108,6 +110,7 @@ export default async function PathPage({ params }: Params) {
             cards={markCards}
             bracketId={BRACKET_ID}
             practiceHref={localizeHref(locale, PRACTICE_ROOT)}
+            assembly={path.assembly}
             taster={band(TASTER.lesson, TASTER.check)}
             lang={locale}
             t={dict.board}

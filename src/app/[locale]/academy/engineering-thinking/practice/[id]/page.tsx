@@ -3,12 +3,13 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ChallengeRunner } from "@/components/practice/ChallengeRunner";
-import { PRACTICE_ROOT, challengeIds, challengePath, challengeView } from "@/lib/practice/data";
+import { BRACKET_ID, PRACTICE_ROOT, challengeIds, challengePath, challengeView } from "@/lib/practice/data";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizeHref } from "@/lib/i18n/routing";
 import { ACADEMY_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 import "../practice.css";
+import "../../alive.css";
 
 type Params = { params: Promise<{ locale: string; id: string }> };
 
@@ -48,7 +49,12 @@ export default async function ChallengePage({ params }: Params) {
         </Link>
         <p className="eyebrow mt-6">{id.slice(0, 1) === "p" ? id.slice(0, 4).toUpperCase() : t.finalEyebrow}</p>
         <h1 className="mt-2 text-display-sm text-foreground">{challenge.title}</h1>
-        <ChallengeRunner challenge={challenge} lang={locale} t={{ ...t.run, check: dict.path.check }} />
+        <ChallengeRunner
+          challenge={challenge}
+          lang={locale}
+          t={{ ...t.run, check: dict.path.check }}
+          load={id === BRACKET_ID ? t.load : undefined}
+        />
       </Container>
     </article>
   );
