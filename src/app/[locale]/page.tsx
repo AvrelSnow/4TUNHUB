@@ -13,6 +13,7 @@ import { SectionHeader } from "@/components/ui/Section";
 import { CohortFeature } from "@/components/CohortFeature";
 import { Testimonials } from "@/components/Testimonials";
 import { BeamLab } from "@/components/BeamLab";
+import { TourCard } from "@/components/TourCard";
 import { flattenTree } from "@/lib/sitemap";
 import { projects, featuredProjects, projectDetailPath } from "@/lib/projects";
 import { WHATSAPP_COMMUNITY_URL } from "@/lib/site";
@@ -366,6 +367,8 @@ export default async function Home({
         secondary={{ label: t.conversion.secondaryCta, href: localizeHref(locale, "/services") }}
         quote={false}
       />
+
+      <TourCard locale={locale} t={dict.tour} />
     </>
   );
 }

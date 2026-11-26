@@ -747,6 +747,13 @@ export const decisions: Decision[] = [
       "Fortune wants to stop continuing the Lab separately and asked for no server and nothing complicated. The formulas are rewritten for the browser and held to the Lab's Python engine by scripts/check-lab-parity.mjs. The accepted cost: answers can be found by someone who looks, so a cleared challenge proves nothing to a third party, and no certificate or ranking may rest on it. The Lab's three tries per step are kept.",
     status: "locked",
   },
+  {
+    decision:
+      "The video tour is offered, not pushed (2026-11-26): on the home page, 4 seconds after the first scroll and once the privacy bar is answered, a small corner card asks, in the page's language, whether the visitor wants a free walkthrough (yes or no). The file (about 6 MB) loads only when pressed; either answer is remembered on the device (4tun.tour).",
+    rationale:
+      "Fortune wanted a walkthrough that appears as someone starts exploring. A video that starts by itself would be silenced by the browser, cost data nobody asked to spend, and cover the page being read. The videos show the pages of PR #7, so they must be recorded again when those pages change.",
+    status: "proposed",
+  },
 ];
 
 /* ============================================================
