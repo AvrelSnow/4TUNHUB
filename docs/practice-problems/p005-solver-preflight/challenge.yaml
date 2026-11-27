@@ -1,0 +1,79 @@
+# Practice problem P005 - the hand check before you press run.
+#
+# Lab topic: an explicit LS-DYNA job in the unit system mm - tonne - second
+# (forces in N, stresses in MPa, energy in N.mm). LS-DYNA has no units: it
+# does the arithmetic on whatever numbers the deck holds, so the unit system
+# is the engineer's job. This is the check done by hand BEFORE the run, on
+# the numbers the deck will contain: the material cards, the stable time
+# step, the impact energy and the cost of the run.
+#
+# It follows the channel's own thesis (Episode 13: "E = 72 instead of 72e9
+# makes aluminium a billion times too soft") and is independent of any one
+# model: the numbers are the student's own.
+id: p005-solver-preflight
+version: 0.1.0
+
+title:
+  en: Before you press run
+  fr: Avant de lancer le calcul
+
+constants:
+  pi: 3.141592653589793
+  # name: [E in GPa, density in kg/m3]. Aluminium is 72 GPa, as in the
+  # bracket series.
+  materials:
+    steel: [210, 7850]
+    aluminium: [72, 2700]
+    titanium: [110, 4500]
+    copper: [120, 8900]
+
+params:
+  mat:   { values: [steel, aluminium, titanium, copper], unit: "-" }
+  L:     { values: [1, 2, 3, 5],          unit: mm }
+  r:     { values: [4, 5, 6, 8],          unit: mm }
+  v:     { values: [5, 8, 10, 15],        unit: "m/s" }
+  t_end: { values: [1, 2, 5],             unit: ms }
+
+steps:
+  - id: E_mpa
+    screen: cards
+    unit: MPa
+    quantity: stress
+    tolerance: { type: rel, value: 0.002 }
+
+  - id: rho_tmm3
+    screen: cards
+    unit: "-"
+    quantity: density
+    tolerance: { type: rel, value: 0.002 }
+
+  - id: wave_speed
+    screen: run
+    unit: "-"
+    quantity: speed
+    tolerance: { type: rel, value: 0.002 }
+
+  - id: time_step_us
+    screen: run
+    unit: "-"
+    quantity: time
+    tolerance: { type: rel, value: 0.002 }
+
+  - id: ball_energy
+    screen: run
+    unit: N.mm
+    quantity: energy
+    tolerance: { type: rel, value: 0.002 }
+
+  - id: n_steps
+    screen: run
+    unit: "-"
+    quantity: count
+    tolerance: { type: rel, value: 0.002 }
+
+screens:
+  cards: { en: The material card, fr: La carte matériau }
+  run:   { en: The run, fr: Le calcul }
+
+attempts:
+  per_step: 3

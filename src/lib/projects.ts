@@ -30,6 +30,12 @@ export type Project = {
   gallery?: string[];
   /** True when `image` illustrates the subject but isn't the engineer's own output. */
   imageIllustrative?: boolean;
+  /** Self-hosted animation (public/videos/…) and the still shown before it plays. */
+  video?: { src: string; poster: string };
+  /** Drawings that are not published: only blurred stills, offered on request. */
+  lockedPlans?: string[];
+  /** Design work not manufactured yet: stays off the home page's "built" rail. */
+  onPaper?: boolean;
   /** Deep link to this project on the founder's personal portfolio. */
   portfolioUrl?: string;
   featured?: boolean;
@@ -103,7 +109,10 @@ export const projects: Project[] = [
     year: "2023",
     tools: ["SolidWorks weldment", "FEA", "Electronics"],
     image: `${IMG}/pedal-hero.webp`,
-    gallery: Array.from({ length: 15 }, (_, i) => `${IMG}/pedal-${i + 1}.webp`),
+    /** Sheets 3–5 were readable drawings: now offered on request. */
+    gallery: [1, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((n) => `${IMG}/pedal-${n}.webp`),
+    video: { src: "/videos/pedal-power-charger.mp4", poster: `${IMG}/pedal-poster.webp` },
+    lockedPlans: Array.from({ length: 4 }, (_, i) => `${IMG}/pedal-plan-${i + 1}.webp`),
     portfolioUrl: `${PORTFOLIO}/project-pedal-power.html`,
   },
   {
@@ -112,8 +121,27 @@ export const projects: Project[] = [
     year: "2023",
     tools: ["SolidWorks", "Power transmission", "Mechanical design"],
     image: `${IMG}/beans-hero.webp`,
-    gallery: Array.from({ length: 10 }, (_, i) => `${IMG}/beans-${i + 1}.webp`),
+    /** Sheets 5 and 6 were readable drawings: now offered on request. */
+    gallery: [1, 2, 3, 4, 7, 8, 9, 10].map((n) => `${IMG}/beans-${n}.webp`),
+    video: { src: "/videos/beans-unwrapping-machine.mp4", poster: `${IMG}/beans-poster.webp` },
+    lockedPlans: Array.from({ length: 4 }, (_, i) => `${IMG}/beans-plan-${i + 1}.webp`),
     portfolioUrl: `${PORTFOLIO}/project-beans-unwrapping.html`,
+  },
+  {
+    /**
+     * A freelance project. Only the 3D assembly is shown: no readable 2D
+     * drawing (the previews are blurred in the file itself), no sizing study,
+     * no CAD downloads, no client name or workshop photos.
+     */
+    slug: "helical-gear-reducer",
+    category: "mechanical",
+    year: "2026",
+    tools: ["Reverse engineering", "SolidWorks", "AutoCAD", "Blender", "Claude"],
+    image: `${IMG}/reducer-hero.webp`,
+    gallery: Array.from({ length: 4 }, (_, i) => `${IMG}/reducer-${i + 1}.webp`),
+    video: { src: "/videos/helical-gear-reducer.mp4", poster: `${IMG}/reducer-poster.webp` },
+    lockedPlans: Array.from({ length: 4 }, (_, i) => `${IMG}/reducer-plan-${i + 1}.webp`),
+    onPaper: true,
   },
 ];
 

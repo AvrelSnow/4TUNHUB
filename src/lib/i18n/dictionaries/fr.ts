@@ -34,7 +34,7 @@ const fr: Dictionary = {
     careers: "Carrières",
     contact: "Contact",
     cohort: "Cohorte 0",
-    lsdyna: "Bibliothèque LS-DYNA",
+    lsdyna: "Bibliothèque YouTube",
     path: "Raisonner en ingénieur",
     waitlist: "Liste d'attente",
     privacy: "Confidentialité",
@@ -69,7 +69,7 @@ const fr: Dictionary = {
       camrailDesc: "Son travail d'ingénieur mécanique principal au chemin de fer national du Cameroun.",
       contact: "Contact",
       contactDesc: "Parlez-nous du problème. Réponse sous 48 heures.",
-      projectsDesc: "Six machines conçues, simulées et construites : la preuve.",
+      projectsDesc: "Sept projets d'ingénierie, du problème au résultat : la preuve.",
       featured: "Projet à la une",
       featuredCta: "Lire l'étude de cas",
       communityTitle: "La communauté est ouverte",
@@ -253,6 +253,9 @@ const fr: Dictionary = {
       illustrativeNote: "Illustration de référence — le travail de conception est en CAO et en analyse FEA/CFD.",
       zoom: "Voir en grand",
       close: "Fermer",
+      plansTitle: "Les plans",
+      plansHint: "Un aperçu flouté. Pour voir les plans, écrivez-moi.",
+      plansBadge: "Écrire pour voir",
       portfolio: "Voir plus sur le portfolio du fondateur",
     },
     items: {
@@ -310,6 +313,11 @@ const fr: Dictionary = {
           "Nous avons travaillé selon le Design-for-Manufacturing et une boucle Empathize–Define–Ideate–Prototype–Test ; j'ai appris seul, en une semaine, la mécano-soudure avancée sous SolidWorks et la FEA pour tenir le délai. L'essentiel de l'effort a porté sur le châssis — une transmission par poulie à double gorge et toute l'électronique intégrée dans la structure. Lorsque la FEA a révélé des concentrations de contraintes aux jonctions critiques au-delà de 800 N, j'ai ajouté des goussets de renfort stratégiques contre la fatigue, et retenu du tube acier creux pour son rapport résistance/poids.",
         results:
           "Un prototype fonctionnel présenté au Festival de l'HTTTC, prouvant la recharge à énergie humaine comme réponse viable en milieu à faible accès énergétique. L'approche pilotée par la simulation a détecté les faiblesses structurelles avant fabrication et réduit les itérations physiques coûteuses. C'est aussi là qu'un principe s'est ancré : concevoir pour la diversité anthropométrique n'est pas une contrainte — c'est la mesure de la valeur réelle d'une conception.",
+        videoNote: "L'animation d'origine du projet. Les textes à l'écran sont en anglais.",
+        ctaTitle: "Vous voulez les plans ?",
+        ctaBody:
+          "Les plans 2D ne sont pas publiés ici. Si vous les voulez, écrivez-moi directement et nous conviendrons du paiement.",
+        cta: "M'écrire",
       },
       "beans-unwrapping-machine": {
         title: "Machine à décortiquer les haricots",
@@ -321,11 +329,39 @@ const fr: Dictionary = {
           "J'ai construit des configurations de prototype concurrentes avant de trancher, en choisissant la conception finale selon la disponibilité des matériaux et la fabricabilité. Des lames à dimensions variables à intervalles de 120° et 5 cm d'espacement ont été réglées — vitesse de rotation contre couple moteur — pour décortiquer sans casser les grains, avec une poulie double gorge répartissant l'entraînement entre moteur, arbre et ventilateur. Le moteur de 1,1 kW prévu étant indisponible, j'ai adapté la conception à un modèle alternatif sans céder sur les objectifs, et équilibré l'épaisseur d'acier face au poids pour la portabilité.",
         results:
           "Une machine qui atteint ses objectifs de performance et peut réellement être construite et entretenue là où elle est nécessaire. Travailler avec Nepitimbaye, Grace et Tatsinda m'a montré que l'ingénierie en milieu contraint doit absorber l'imprévu — et que préparer ses coéquipiers par un accompagnement patient vaut mieux que tout porter seul.",
+        videoNote: "L'animation d'origine du projet. Les textes à l'écran sont en anglais.",
+        ctaTitle: "Vous voulez les plans ?",
+        ctaBody:
+          "Les plans 2D ne sont pas publiés ici. Si vous les voulez, écrivez-moi directement et nous conviendrons du paiement.",
+        cta: "M'écrire",
+      },
+      "helical-gear-reducer": {
+        title: "Rétro-conception d'un réducteur à engrenages hélicoïdaux",
+        outcome:
+          "Un projet en freelance : un réducteur à deux étages arrivé en pièces, sans plans, reconstruit en 3D, vérifié et reconçu.",
+        problem:
+          "En freelance, on m'a confié un réducteur de vitesse industriel. Il était déjà démonté : aucun plan, aucune trace de l'ordre de montage et, au début, même pas la puissance du moteur. Il restait des pièces, des photos d'atelier et des croquis à la main. Il fallait comprendre la machine, la juger et la corriger.",
+        approach:
+          "J'ai pris en charge la partie mécanique. Nous avons modélisé chaque pièce, reconstitué l'assemblage et l'avons audité élément par élément : comment chaque arbre est guidé, comment chaque pièce est maintenue, comment l'ensemble est étanche et lubrifié. Claude, un assistant d'IA, a piloté les outils de CAO et de calcul sous ma direction ; les décisions d'ingénierie sont restées les miennes. La version existante a été consignée avec ses défauts avant toute modification, pour que la comparaison reste honnête.",
+        results:
+          "Un réducteur reconçu, avec les mêmes dentures et le même rapport global, où chaque arbre est correctement guidé, arrêté, étanche et lubrifié, documenté par un jeu de plans complet, une note de dimensionnement et une animation. C'est un résultat d'étude : la version améliorée n'a pas encore été fabriquée ni essayée. La vraie leçon : on peut garder les engrenages et changer tout ce qui décide de la survie d'une machine.",
+        videoNote: "Animation de l'assemblage reconçu.",
+        ctaTitle: "Vous voulez les plans ?",
+        ctaBody:
+          "C'est un projet réalisé en freelance : les plans 2D et le dimensionnement ne sont pas divulgués ici. Si vous les voulez, écrivez-moi directement et nous conviendrons du paiement.",
+        cta: "M'écrire",
       },
     },
 
+    videoTitle: "L'assemblage en mouvement",
     galleryTitle: "Documentation technique",
     galleries: {
+      "helical-gear-reducer": [
+        "Le réducteur reconçu, fermé",
+        "Coupe de l'assemblage : deux étages hélicoïdaux, entrée et sortie sur le même axe",
+        "L'engrènement du premier étage",
+        "Deuxième étage : le pignon intermédiaire et la roue de sortie",
+      ],
       "fsae-race-car": ["Champ de pression CFD — illustratif"],
       "banana-pseudostem-shredder": [
         "Plan technique A2 — cotes et assemblage des composants",
@@ -361,9 +397,6 @@ const fr: Dictionary = {
       "pedal-power-charger": [
         "Calculs de transmission et optimisation du rapport de démultiplication",
         "Schéma du circuit électrique et implantation des composants",
-        "Assemblage CAO complet",
-        "Conception structurelle du châssis",
-        "Vue éclatée — tous les composants",
         "Modèle CAO simplifié préparé pour la FEA",
         "Conditions de charge appliquées au châssis en FEA",
         "Structure de support — composants porteurs critiques",
@@ -380,8 +413,6 @@ const fr: Dictionary = {
         "Plan explicatif — transmission de puissance et arbre",
         "Schéma cinématique de l'entraînement",
         "Schéma cinématique — légende des composants",
-        "Plan d'assemblage 2D complet du châssis",
-        "Plan d'assemblage 2D complet de l'arbre",
         "Assemblage CAO 3D — autre perspective",
         "Assemblage CAO 3D — vue en perspective",
         "Assemblage CAO 3D de l'arbre — autre perspective",
@@ -676,103 +707,53 @@ const fr: Dictionary = {
     subtitle:
       "Une formation pratique en CAO, simulation et systèmes énergétiques — enseignée à partir de projets réellement livrés, pour les ingénieurs et les étudiants au Cameroun et au-delà.",
     primaryCta: "Rejoindre la liste d'attente",
-    secondaryCta: "Rencontrer le formateur",
-
-    catalogEyebrow: "Catalogue",
-    catalogTitle: "Des parcours immédiatement applicables.",
-    catalogIntro:
-      "Chaque parcours est pratique et aboutit à une compétence démontrable — une pièce modélisée, une conception validée, un composant reconstruit — pas seulement une vidéo regardée.",
-    levelLabel: "Niveau",
-    formatLabel: "Format",
-    proofLabel: "Voir l'application",
-    levels: {
-      beginner: "Débutant",
-      intermediate: "Intermédiaire",
-      advanced: "Avancé",
-      "all-levels": "Tous niveaux",
-    } as Record<string, string>,
-    formats: {
-      online: "En ligne",
-      "in-person": "En présentiel",
-      hybrid: "En ligne + présentiel",
-      workshop: "Atelier pratique",
-    } as Record<string, string>,
-    courses: {
-      "solidworks-cad": {
-        title: "SolidWorks & fondamentaux de la CAO",
-        outcome:
-          "Modéliser des pièces et des assemblages et produire des plans de fabrication propres — la compétence centrale derrière chaque machine du portfolio.",
-        who: "Pour les étudiants et jeunes ingénieurs qui débutent en conception mécanique.",
-      },
-      "fea-simulation": {
-        title: "FEA & validation de conception",
-        outcome:
-          "Réaliser des analyses par éléments finis pour tester la résistance et les contraintes, et repérer les points de rupture à l'écran avant toute découpe.",
-        who: "Pour les concepteurs qui veulent valider une pièce avant de s'engager dans la fabrication.",
-      },
-      "reverse-engineering": {
-        title: "Rétro-ingénierie & fabrication",
-        outcome:
-          "Reconstituer des plans précis de pièces sans documentation, et les amener vers une conception constructible localement.",
-        who: "Pour les techniciens et ingénieurs qui maintiennent des équipements sans pièces de rechange.",
-      },
-      "energy-systems": {
-        title: "Systèmes d'énergie renouvelable",
-        outcome:
-          "Dimensionner et analyser des systèmes solaires et hors réseau pour des conditions réelles de pénurie d'énergie.",
-        who: "Pour les ingénieurs et entrepreneurs travaillant sur l'énergie hors réseau et durable.",
-      },
-    } as Record<string, { title: string; outcome: string; who: string }>,
-
-    statuses: {
-      planned: "Prévu, sans date pour l'instant",
-    } as Record<string, string>,
-    plannedCta: "Prévenez-moi à l'ouverture",
+    secondaryCta: "Commencer gratuitement",
 
     sessions: {
-      eyebrow: "Déjà enseigné",
-      title: "Des sessions déjà enseignées, en public.",
+      eyebrow: "Organisé en public",
+      title: "Des séances que nous avons organisées, en vidéo.",
       intro:
-        "Avant l'ouverture d'un cours, ces sessions en direct ont été animées pour le Douala City SOLIDWORKS User Group. Chacune renvoie à sa propre page d'événement : vous pouvez le vérifier.",
+        "Avant l'ouverture d'un cours, ces sessions en direct ont été animées pour le Douala City SOLIDWORKS User Group : chacune par un intervenant certifié, organisée par Donfack Fortune et enregistrée. Appuyez sur l'une d'elles pour la regarder ici, avec ce qu'elle couvre et ses chapitres.",
       open: "Voir la session",
       archive: "Le programme complet",
     },
 
-    library: {
-      eyebrow: "Gratuit · sur YouTube",
-      title: "La bibliothèque LS-DYNA.",
-      body: "Tous les tutoriels LS-DYNA de la chaîne, dans l'ordre, avec les fichiers keyword et les modèles utilisés à l'écran. Construisez le modèle en même temps que la vidéo (en anglais).",
-      cta: "Ouvrir la bibliothèque",
-    },
-    pathCard: {
-      eyebrow: "Gratuit · parcours guidé",
-      title: "Raisonner en ingénieur.",
-      body: "Onze leçons courtes du 4TUNHub Lab : transformer une charge suspendue en force et en moment, puis dimensionner une plaque d'acier en résistance et en rigidité. Un exercice à chaque étape, sans compte (en anglais pour l'instant).",
-      cta: "Commencer le parcours",
+    start: {
+      eyebrow: "Par où commencer",
+      title: "Choisissez ce que vous voulez faire.",
+      intro:
+        "Trois portes d'entrée, toutes gratuites, sans compte.",
+      items: {
+        path: {
+          goal: "Je veux penser en ingénieur",
+          title: "Raisonner en ingénieur.",
+          body: "Treize courtes leçons issues du Lab 4TUNHub : transformer une charge suspendue en une force et un moment, puis dimensionner une plaque d'acier en résistance et en rigidité. Une vérification à chaque étape (en anglais pour l'instant).",
+          cta: "Commencer le parcours",
+          alt: "La première page du parcours Engineering Thinking",
+        },
+        library: {
+          goal: "Je veux apprendre LS-DYNA",
+          title: "La bibliothèque YouTube.",
+          body: "Tous les tutoriels de la chaîne, dans l'ordre, avec les fichiers keyword et les modèles utilisés à l'écran. Construisez le modèle en même temps que la vidéo.",
+          cta: "Ouvrir la bibliothèque",
+          alt: "Une vignette de la chaîne 4TUNHUB",
+        },
+        free: {
+          goal: "Je veux aller plus loin, gratuitement",
+          title: "Des endroits gratuits pour apprendre.",
+          body: "Les meilleurs cours, logiciels et manuels gratuits pour SolidWorks, la simulation et la mécanique, préparation au CSWA comprise. Chacun renvoie vers la page de son auteur.",
+          cta: "Ouvrir la liste",
+          alt: "Les couvertures de quatre des ressources de la liste",
+        },
+      },
     },
 
-    formatsEyebrow: "Comment vous apprenez",
-    formatsTitle: "Conçu selon la façon dont les ingénieurs apprennent vraiment.",
-    formatsList: [
-      {
-        title: "Cours en ligne",
-        desc: "Des modules à votre rythme avec de vrais exercices réalisés dans des logiciels de CAO et de simulation.",
-      },
-      {
-        title: "Ateliers en direct",
-        desc: "Des séances pratiques par projet — en présentiel quand c'est possible, à distance sinon.",
-      },
-      {
-        title: "Mentorat en cohorte",
-        desc: "De petits groupes guidés d'un cahier des charges jusqu'à un livrable d'ingénierie présentable.",
-      },
-    ],
-
-    instructorEyebrow: "Qui enseigne",
-    instructorTitle: "Enseigné par un ingénieur en exercice et éducateur accrédité.",
-    instructorBody:
-      "Chaque parcours est animé par Donfack Fortune — ingénieur mécanicien et éducateur accrédité par l'État, qui a touché plus de 300 étudiants et anime le groupe SolidWorks de Douala. Vous apprenez les méthodes derrière de vrais projets livrés, pas des abstractions de manuel.",
-    instructorCta: "Rencontrer le fondateur",
+    shelf: {
+      eyebrow: "L'étagère de l'ingénieur",
+      title: "Livres et cours, au même endroit.",
+      body: "Mécanique, électronique, maths, programmation et conception, en français et en anglais. Filtrez jusqu'à trouver le vôtre.",
+      cta: "Parcourir l'étagère",
+    },
 
     cta: {
       title: "Soyez prévenu à l'ouverture d'un cours.",
@@ -783,12 +764,127 @@ const fr: Dictionary = {
     },
   },
 
+  /** L'étagère de l'ingénieur : livres et cours, avec des filtres. */
+  shelf: {
+    metaTitle: "L'étagère de l'ingénieur : livres et cours d'ingénierie",
+    metaDescription:
+      "Livres et cours d'ingénierie en français et en anglais, filtrés par matière, langue et prix : mécanique, électronique, maths, programmation et conception.",
+    eyebrow: "Académie · L'étagère de l'ingénieur",
+    title: "Trouvez le livre qui vous débloque.",
+    intro:
+      "Des livres et des cours d'ingénierie, choisis selon ce que vous voulez faire ensuite. Filtrez par matière, langue et prix.",
+    rule: "Les livres d'autres auteurs s'ouvrent sur la page de leur propriétaire. Nous ne les hébergeons pas et ne les vendons pas.",
+    searchLabel: "Chercher sur l'étagère",
+    searchPlaceholder: "Chercher : statique, Python, circuits…",
+    all: "Tout",
+    results: "affichés",
+    reset: "Effacer les filtres",
+    empty: "Rien sur l'étagère ne correspond pour l'instant.",
+    noPaid: "Nos livres et cours payants ne sont pas encore sortis.",
+    joinList: "Prévenez-moi à l'ouverture",
+    start: "Commencer",
+    readFree: "Lire gratuitement",
+    buy: "Acheter",
+    preview: "Aperçu",
+    enlarge: "Agrandir l'aperçu",
+    close: "Fermer",
+    filters: {
+      kind: {
+        label: "Type",
+        options: { book: "Livres", course: "Cours" },
+        one: { book: "Livre", course: "Cours" },
+      },
+      subject: {
+        label: "Matière",
+        options: {
+          mechanical: "Mécanique",
+          electronics: "Électronique",
+          maths: "Maths et physique",
+          programming: "Programmation",
+          design: "Conception et dessin",
+        },
+      },
+      lang: { label: "Langue", options: { en: "English", fr: "Français" } },
+      price: { label: "Prix", options: { free: "Gratuit", paid: "Payant" } },
+    },
+    ctaTitle: "Vous ne savez pas par où commencer ?",
+    ctaSubtitle: "L'Académie propose un parcours guidé pour débuter et une liste de lieux pour apprendre gratuitement.",
+    ctaPrimary: "Retour à l'Académie",
+    ctaSecondary: "Apprendre gratuitement",
+  },
+
+  freeResources: {
+    metaTitle: "Où apprendre l'ingénierie gratuitement",
+    metaDescription:
+      "Cours, logiciels et manuels gratuits pour SolidWorks, LS-DYNA et la simulation, la mécanique, le dessin et la CAO, gratuits uniquement.",
+    eyebrow: "Academy · Ressources gratuites",
+    title: "Où apprendre l'ingénierie gratuitement.",
+    intro:
+      "Les meilleurs cours, logiciels et manuels gratuits que nous connaissons pour SolidWorks, la simulation et la mécanique. Chaque lien mène à la page de son propriétaire ; nous n'hébergeons le cours de personne.",
+    rule: "Les offres gratuites changent. Si un lien a bougé ou si une offre a pris fin, dites-le-nous et nous corrigerons.",
+    open: "Ouvrir",
+    langLabel: "Enseigné en",
+    costs: {
+      free: "Gratuit",
+      account: "Compte gratuit",
+      audit: "Gratuit en auditeur libre",
+    } as Record<string, string>,
+    langs: { en: "English", fr: "Français" } as Record<string, string>,
+    groups: {
+      solidworks: {
+        title: "SolidWorks et l'examen CSWA",
+        body: "Commencez ici. SOLIDWORKS a rendu toute sa bibliothèque de formation gratuite en juillet 2026, ainsi que son logiciel pour étudiants.",
+      },
+      francais: {
+        title: "En français",
+        body: "Des cours et guides gratuits en français. Plusieurs cours universitaires français n'existent plus qu'en sessions archivées : vérifiez chacun avant de vous organiser autour.",
+      },
+      simulation: {
+        title: "LS-DYNA et simulation",
+        body: "Les tutoriels du solveur lui-même, des logiciels étudiants gratuits, et les cours universitaires derrière la méthode.",
+      },
+      mechanics: {
+        title: "Mécanique, matériaux et physique",
+        body: "La théorie que le logiciel ne fait pas à votre place. Les options en français sont indiquées.",
+      },
+      drawing: {
+        title: "Dessin et GD&T",
+        body: "Lire et écrire le langage d'un plan. Plus léger qu'un cours complet, mais gratuit.",
+      },
+      cad: {
+        title: "Autres outils de CAO",
+        body: "Pas de PC puissant, ou pas de licence : des outils gratuits, dans le navigateur ou hors ligne.",
+      },
+      code: {
+        title: "Code, calcul et IA",
+        body: "Python et MATLAB pour ingénieurs, et des cours gratuits pour travailler avec l'IA.",
+      },
+    } as Record<string, { title: string; body: string }>,
+    ctaTitle: "Envie d'apprendre avec nous ?",
+    ctaSubtitle:
+      "Tout cela se suit seul, gratuitement. Pour le contenu de l'Academy, commencez par l'Academy.",
+    ctaPrimary: "Voir l'Academy",
+    ctaSecondary: "Bibliothèque YouTube",
+  },
+
+  /** Cartes de séance : une séance que nous avons organisée, avec son image, son intervenant et un lecteur en fenêtre. */
+  session: {
+    with: "Avec",
+    watch: "Regarder",
+    eventPage: "Page de l'événement",
+    onYoutube: "Ouvrir sur YouTube",
+    close: "Fermer",
+    learnTitle: "Ce que la séance couvre",
+    length: "Durée",
+    roles: { hosted: "Organisée", cohosted: "Co-organisée", spoke: "Intervenant" } as Record<string, string>,
+  },
+
   library: {
-    metaTitle: "Tutoriels et fichiers LS-DYNA",
+    metaTitle: "Bibliothèque YouTube : tutoriels et fichiers",
     metaDescription:
       "Tous les tutoriels LS-DYNA et LS-PrePost de la chaîne @4TUNHUB, dans l'ordre, avec les fichiers keyword et les modèles utilisés à l'écran. Gratuit.",
-    eyebrow: "Académie · LS-DYNA",
-    title: "LS-DYNA, du premier maillage à un résultat fiable.",
+    eyebrow: "Académie · Bibliothèque YouTube",
+    title: "Chaque tutoriel, avec les fichiers utilisés à l'écran.",
     intro:
       "Tous les tutoriels de la chaîne YouTube @4TUNHUB, dans l'ordre où les suivre, avec les fichiers utilisés à l'écran pour construire le modèle en même temps. La physique d'abord, le logiciel ensuite. Gratuit.",
     languageNote: "Les vidéos sont en anglais.",
@@ -810,7 +906,7 @@ const fr: Dictionary = {
     } as Record<string, { title: string; body: string }>,
     episode: "Épisode",
     withFiles: "Fichiers",
-    back: "Tous les épisodes LS-DYNA",
+    back: "Tous les épisodes",
     play: "Lire la vidéo",
     playerNote: "La vidéo ne se charge depuis YouTube que lorsque vous appuyez sur lecture.",
     watchOnYoutube: "Voir sur YouTube",
@@ -853,22 +949,24 @@ const fr: Dictionary = {
     able: "Vous saurez",
     card: "Carte",
     kinds: { checkpoint: "Point d'étape", boss: "Défi final" } as Record<string, string>,
+    bossBody: "Dimensionnez la console murale sur vos propres valeurs : huit réponses. La vérification d'un fichier de pièce envoyé n'est pas encore disponible ici.",
+    bossCta: "Ouvrir le défi final",
     lessonsCount: "{n} leçons · ~{m} min",
     lessonsDone: "{n} sur {t} leçons terminées",
     start: "Commencer le parcours",
     resume: "Reprendre où vous en étiez",
     coming: "Bientôt",
     comingBody:
-      "Cette étape se termine par le correcteur du 4TUNHub Lab, qui lit la pièce que vous modélisez. Elle ouvrira ici en même temps que le correcteur.",
+      "Cette étape n\'est pas encore construite.",
     opensAfter: "Ouvre après",
     cards: {
       "card-1": { title: "Forces et moments", able: ["Tracer le schéma d'une console et trouver son moment à l'encastrement en N·mm"] },
       "card-2": { title: "Contrainte et résistance", able: ["Dire ce qu'est une contrainte admissible, et la calculer avec un coefficient de sécurité"] },
       "card-3": { title: "Flexion et forme", able: ["Dimensionner une section rectangulaire pour un moment, et dire pourquoi sa hauteur est au carré"] },
       "card-4": { title: "Résister ne suffit pas", able: ["Vérifier une flèche en bout par rapport à sa limite, et dire qui décide : la résistance ou la rigidité"] },
-      "card-5": { title: "Des chiffres à la pièce", able: ["Lire un dessin coté et ses références, puis modéliser la plaque et exporter un fichier STEP que le correcteur lit"] },
+      "card-5": { title: "Des chiffres à la pièce", able: ["Lire un dessin coté et ses références, puis modéliser la plaque et l'exporter en fichier STEP"] },
       checkpoint: { title: "La poutre d'échauffement", able: ["Franchir une courte chaîne de calculs sur des valeurs que personne d'autre n'a"] },
-      boss: { title: "L'équerre murale", able: ["Mener une vraie pièce d'une charge à un fichier STEP vérifié, avec une revue de fabrication et un coût en FCFA"] },
+      boss: { title: "La console murale", able: ["Mener une vraie pièce d'une charge à l'épaisseur que vous achèteriez"] },
     } as Record<string, { title: string; able: string[] }>,
     lesson: {
       back: "Le parcours",
@@ -895,6 +993,123 @@ const fr: Dictionary = {
       empty: "Tapez d'abord une réponse.",
       choose: "Choisissez d'abord une réponse.",
       stamp: "Conforme",
+    },
+  },
+
+  practice: {
+    metaTitle: "Pratique : Raisonner en ingénieur",
+    metaDescription:
+      "Des exercices gratuits sur vos propres valeurs : ajustements, position au maximum de matière, vérification manuelle avant calcul, propriétés de masse en CAO et la console murale. Chaque réponse est vérifiée.",
+    switch: { label: "Raisonner en ingénieur", path: "Parcours", practice: "Pratique" },
+    title: "Pratique",
+    intro:
+      "Chaque visiteur reçoit ses propres valeurs. Répondez, la page vérifie. Sans compte : votre travail reste dans ce navigateur.",
+    steps: "{n} étapes",
+    state: { new: "Nouveau", cleared: "Réussi", progress: "{n} sur {t}" },
+    finalEyebrow: "Défi final",
+    finalBody: "Huit nombres, d'une charge suspendue à la plaque que vous achèteriez. Une calculatrice suffit. Idéal après les cartes 1 à 4.",
+    finalCta: "Ouvrir la console",
+    groups: {
+      calculator: { title: "Une calculatrice suffit", body: "Calculs de bureau d'études et de simulation. Fonctionne sur téléphone." },
+      cad: { title: "De préférence avec SOLIDWORKS", body: "Modélisez la pièce, puis lisez ses valeurs dans les propriétés de masse. Le calcul à la main est possible aussi." },
+    },
+    warmup: {
+      title: "Échauffement pour la console",
+      body: "Douze questions courtes sur une console d'entraînement, avec la méthode à côté.",
+      questions: "3 questions",
+      done: "Unité terminée",
+      allDone: "Échauffement terminé",
+      next: "Unité suivante",
+    },
+    honesty: "Pour s'entraîner. Les réponses sont vérifiées dans votre navigateur : cela ne prouve rien à personne d'autre que vous.",
+    back: "Pratique",
+    load: {
+      eyebrow: "Essai de charge",
+      holds: "Votre console de {t} mm tient",
+      fails: "Votre plaque de {t} mm ne passe pas",
+      summary:
+        "Votre console sous {m} kg, épaisseur {t} mm : contrainte {s} MPa sur {sa} admissibles, flèche en bout {d} mm sur {dl} admissibles.",
+      stress: "Contrainte de flexion à l'encastrement",
+      sag: "Flèche au trou de charge",
+      of: "{a} sur {b} {u}",
+      within: "dans la limite",
+      over: "au-dessus",
+      scaleTop: "{s} MPa, admissible",
+      stamp: "Essai réussi",
+      failBody:
+        "Une étape peut découler correctement d'une erreur précédente. Corrigez la réponse antérieure, ou tirez de nouvelles valeurs, puis recommencez l'essai.",
+      replay: "Recharger",
+      scaleNote: "La flèche est dessinée {k} fois plus grande. Le trait pointillé marque la descente maximale du trou de charge.",
+      theory: "Théorie des poutres, flexion seule : trous et boulons ignorés, poids propre de la plaque négligé comme dans l'énoncé.",
+    },
+    run: {
+      preparing: "Préparation de vos valeurs…",
+      needsScript: "Cette page a besoin de JavaScript pour tirer vos valeurs et vérifier vos réponses.",
+      toAnswers: "Aller aux cases de réponse",
+      newNumbers: "Nouvelles valeurs",
+      confirmNew: "Tirer de nouvelles valeurs ? Vos réponses sur celles-ci seront effacées.",
+      answers: "Vos réponses",
+      cleared: "{n} sur {t} validées",
+      rules: "{n} essais par étape sur ces valeurs. La même réponse envoyée deux fois, ou une réponse illisible, ne coûte rien.",
+      checkButton: "Vérifier",
+      hint: "Indice :",
+      left: "Essais restants sur cette étape : {n}",
+      spent: "Plus d'essai sur cette étape. De nouvelles valeurs vous font repartir de zéro.",
+      allClear: "Défi réussi",
+      allClearBody: "Toutes les étapes sont justes sur ces valeurs. De nouvelles valeurs permettent de le prouver encore.",
+    },
+  },
+
+  /** Le tableau de bord de « Raisonner en ingénieur » : première visite, retour, tampons, sauvegarde. */
+  board: {
+    tryNow: "Essayez tout de suite",
+    question: "Un moteur de 18 kg pend à un crochet. Avec quelle force tire-t-il ?",
+    given: "Prenez g = 9,81 m/s². Une calculatrice suffit.",
+    answer: "Votre réponse",
+    check: "Vérifier",
+    miss: "Pas encore. Une masse n'est pas une force : qu'est-ce qui transforme l'une en l'autre ?",
+    right: "Dans la tolérance.",
+    rightBody: "C'était votre premier exercice. Les leçons partent de là et vont jusqu'à une vraie pièce.",
+    start: "Commencer la première leçon",
+    skip: "Ou aller directement à la première leçon",
+    welcome: "Reprendre où vous en étiez",
+    newStamp: "Nouveau tampon : {s}",
+    stampName: "Carte {c}, {level}",
+    part: "Partie {n} sur {t}",
+    challenge: "Défi pratique en cours",
+    allRead: "Toutes les leçons sont lues",
+    allReadBody: "Exercez-vous sur vos propres valeurs.",
+    continue: "Continuer",
+    nextStamp: "Prochain tampon",
+    oneLesson: "1 leçon avant « Vu » sur la carte {c}",
+    lessons: "{n} leçons avant « Vu » sur la carte {c}",
+    oneCheck: "1 exercice avant « Pratiqué » sur la carte {c}",
+    checks: "{n} exercices avant « Pratiqué » sur la carte {c}",
+    allStamps: "Toutes les cartes sont pratiquées",
+    stampsEarned: "Tampons obtenus",
+    of: "{n} sur {t}",
+    days: "Jours de travail ici",
+    levels: { seen: "Vu", practised: "Pratiqué", proven: "Prouvé" },
+    assembly: "Votre console : {n} pièces sur {t} en place",
+    stamps: {
+      label: "Tampons",
+      seen: "Vu",
+      practised: "Pratiqué",
+      proven: "Prouvé",
+      notYet: "pas encore",
+    },
+    keep: {
+      title: "Gardez votre progression",
+      body: "Votre travail est gardé dans ce navigateur seulement. Effacer ses données, ou changer d'appareil, repart de zéro : enregistrez un fichier pour l'emporter.",
+      save: "Enregistrer ma progression",
+      load: "Charger un fichier enregistré",
+      startOver: "Tout recommencer",
+      saved: "Un fichier avec votre progression a été enregistré dans vos téléchargements.",
+      loaded: "Votre progression enregistrée est de retour.",
+      notOurs: "Ce n'est pas un fichier de progression de cette page.",
+      confirmLoad: "Remplacer la progression de cet appareil par celle du fichier ?",
+      confirmReset: "Effacer vos leçons, réponses et tampons sur cet appareil ? Un fichier enregistré n'est pas touché.",
+      reset: "Progression effacée. Vous repartez de zéro.",
     },
   },
 
@@ -1046,7 +1261,27 @@ const fr: Dictionary = {
     primaryCta: "Lire The REM",
     secondaryCta: "Rejoindre la communauté",
 
-    availableEyebrow: "Disponibles maintenant",
+    studentOffer: {
+      eyebrow: "Gratuit pour les étudiants",
+      title: "Obtenez SOLIDWORKS gratuitement.",
+      body: "SOLIDWORKS offre désormais son édition Design Standard aux étudiants éligibles, sans frais. L'inscription se fait sur le site même de SOLIDWORKS : vous ne payez rien et ne téléchargez rien chez nous.",
+      cta: "Inscription étudiant, sur solidworks.com",
+      steps: [
+        { n: "1", title: "Remplissez le formulaire", body: "Le nom de votre école et quelques informations. Moins d'une minute." },
+        { n: "2", title: "Recevez votre numéro de série", body: "Avec le lien de téléchargement et un guide d'installation." },
+        { n: "3", title: "Installez-le", body: "Sur un PC Windows. L'accès dure 1 an, puis vous vous réinscrivez." },
+      ],
+      factsTitle: "À lire avant d'en dépendre",
+      facts: [
+        "Pour les étudiants à titre individuel. Une preuve de statut étudiant peut être demandée.",
+        "Pièces, assemblages, mises en plan, tôlerie et mécano-soudure. Pas de Simulation.",
+        "Pas de bon d'examen CSWA ou CSWP : 99 $ par tentative, sauf achat de l'offre étudiante Premium, payante.",
+        "Windows uniquement.",
+      ],
+      legal: "*Une marque de Dassault Systèmes. SOLIDWORKS est une marque déposée de Dassault Systèmes. 4TUNHub n'est pas affilié à Dassault Systèmes et n'héberge pas le logiciel.",
+    },
+
+    availableEyebrow: "Disponible maintenant",
     availableTitle: "Commencez par ce qui est déjà ouvert.",
     availableIntro: "Du matériel réel et publié, utilisable dès aujourd'hui — sans inscription.",
     plannedEyebrow: "À venir",
@@ -1073,9 +1308,13 @@ const fr: Dictionary = {
         title: "Modèles CAO sur GrabCAD",
         desc: "Modèles 3D et assemblages publics issus de projets réels — libres de téléchargement, d'étude et de réutilisation.",
       },
+      "grabcad-library": {
+        title: "La bibliothèque GrabCAD",
+        desc: "Des millions de modèles CAO gratuits d'ingénieurs du monde entier : ouvrez-les, démontez-les, apprenez comment ils ont été construits. Vérifiez la licence de chaque modèle avant de le réutiliser.",
+      },
       "case-studies": {
         title: "Études de cas des projets",
-        desc: "Six projets d'ingénierie entièrement documentés — problème, approche, résultats, plans et analyses. Une véritable bibliothèque de référence.",
+        desc: "Sept projets d'ingénierie racontés — problème, démarche et résultats. Une véritable bibliothèque de référence.",
       },
       ebooks: {
         title: "E-books et guides d'ingénierie",
@@ -1653,7 +1892,7 @@ const fr: Dictionary = {
           when: "Dates à venir",
         },
         lsdyna: {
-          title: "Bibliothèque LS-DYNA",
+          title: "Bibliothèque YouTube",
           desc: "Chaque nouveau tutoriel LS-DYNA de la chaîne @4TUNHUB, avec les fichiers keyword et les modèles pour suivre pas à pas.",
           when: "En cours",
         },
@@ -1728,13 +1967,13 @@ const fr: Dictionary = {
 
   privacy: {
     title: "Confidentialité",
-    updated: "Dernière mise à jour : 22 octobre 2026",
+    updated: "Dernière mise à jour : 24 novembre 2026",
     intro:
       "Ce site ne recueille de données personnelles que lorsque vous les transmettez par un formulaire, et n'enregistre presque rien dans votre navigateur. Cette note indique ce que nous conservons, pourquoi, combien de temps, et comment le faire effacer.",
     sections: [
       {
         title: "Ce que nous recueillons",
-        body: "Le formulaire de contact demande votre nom, votre adresse e-mail et votre message. Une candidature à la Cohorte 0 demande en outre votre numéro WhatsApp, votre école ou votre employeur, votre version de SolidWorks et les raisons de votre candidature. La liste d'attente demande une adresse e-mail, un nom si vous souhaitez le donner, et les sujets qui vous intéressent. La bibliothèque LS-DYNA demande une adresse e-mail avant le téléchargement de ses fichiers : elle rejoint la même liste, pour les nouveaux épisodes seulement.",
+        body: "Le formulaire de contact demande votre nom, votre adresse e-mail et votre message. Une candidature à la Cohorte 0 demande en outre votre numéro WhatsApp, votre école ou votre employeur, votre version de SolidWorks et les raisons de votre candidature. La liste d'attente demande une adresse e-mail, un nom si vous souhaitez le donner, et les sujets qui vous intéressent. La bibliothèque LS-DYNA demande une adresse e-mail avant le téléchargement de ses fichiers : elle rejoint la même liste, pour les nouveaux épisodes seulement. Si vous payez une place, Fapshi traite le paiement : nous voyons votre nom, le numéro Mobile Money qui a payé, le montant, la date et la référence du paiement, jamais votre code secret.",
       },
       {
         title: "Pourquoi",
@@ -1742,11 +1981,11 @@ const fr: Dictionary = {
       },
       {
         title: "Où elles vont",
-        body: "Trois prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Les vidéos de la bibliothèque LS-DYNA sont lues depuis YouTube, qui n'est contacté que lorsque vous appuyez sur lecture. Une candidature à la Cohorte 0 est aussi vue par MKV Academy, qui organise la cohorte avec nous ; l'un comme l'autre peut vous écrire au sujet de sessions et d'ateliers ultérieurs, et cesse sur simple demande. Au-delà, nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
+        body: "Quatre prestataires y ont accès, et uniquement pour la tâche que nous leur avons confiée : Resend achemine les formulaires vers notre boîte de réception, Netlify héberge le site et conserve des journaux de serveur ordinaires, Fapshi traite les paiements des places payantes selon ses propres conditions de confidentialité, et — seulement si vous l'autorisez — Umami compte les visites anonymes. Les vidéos de la bibliothèque YouTube, et les séances enregistrées de la page Académie, sont lues depuis YouTube, qui n'est contacté que lorsque vous appuyez sur lecture ou ouvrez une séance. Une candidature à la Cohorte 0 est aussi vue par MKV Academy, qui organise la cohorte avec nous ; l'un comme l'autre peut vous écrire au sujet de sessions et d'ateliers ultérieurs, et cesse sur simple demande. Au-delà, nous ne vendons ni ne partageons vos coordonnées, et nous ne vous inscrivons à aucune liste de diffusion sans vous le demander.",
       },
       {
         title: "Durée de conservation",
-        body: "Les candidatures non retenues sont supprimées sous trois mois. Les coordonnées des participants sont conservées pendant la cohorte et douze mois après, sauf demande de suppression anticipée de votre part.",
+        body: "Les candidatures non retenues sont supprimées sous trois mois. Les coordonnées des participants sont conservées pendant la cohorte et douze mois après, sauf demande de suppression anticipée de votre part. Les traces de paiement font exception : nous les conservons dix ans, comme l'exigent les règles comptables OHADA, et ne nous en servons pour rien d'autre.",
       },
       {
         title: "Cookies",
@@ -1784,7 +2023,7 @@ const fr: Dictionary = {
           refuse: "Sans lui, il faudrait reposer la même question à chaque page. Effacer les données de votre navigateur le supprime.",
         },
         {
-          what: "Bibliothèque LS-DYNA",
+          what: "Bibliothèque YouTube",
           key: "4tun.library",
           why: "Retient que vous avez déjà donné une adresse pour les fichiers de la bibliothèque, pour que les fichiers de chaque épisode restent ouverts sans vous la redemander.",
           kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
@@ -1793,9 +2032,23 @@ const fr: Dictionary = {
         {
           what: "Votre place dans le parcours guidé",
           key: "4tun.path",
-          why: "Retient les leçons de « Raisonner en ingénieur » que vous avez terminées et les exercices réussis, pour que le parcours reprenne où vous en étiez.",
+          why: "Retient les leçons de « Raisonner en ingénieur » terminées, les exercices réussis, la page où vous étiez, vos jours de travail et les tampons déjà montrés, pour reprendre où vous en étiez.",
           kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
-          refuse: "Il n'existe qu'à partir du moment où vous ouvrez une leçon. Effacer les données de votre navigateur le supprime.",
+          refuse: "N'existe qu'une fois une leçon ou un défi ouvert, ou une question répondue. « Tout recommencer » sur cette page, ou l'effacement des données du navigateur, en vide le contenu.",
+        },
+        {
+          what: "Vos exercices pratiques",
+          key: "4tun.practice",
+          why: "Mémorise les valeurs que chaque défi vous a données, vos réponses et les défis réussis, pour les retrouver à votre retour.",
+          kept: "Votre navigateur, sur cet appareil. Rien n'est envoyé nulle part.",
+          refuse: "N'existe qu'une fois un défi ouvert. Effacer les données du navigateur le supprime.",
+        },
+        {
+          what: "La proposition de visite, une fois traitée",
+          key: "4tun.tour",
+          why: "Retient votre réponse à la question proposant une visite vidéo sur la page d'accueil, pour ne pas vous la reposer.",
+          kept: "Votre navigateur, sur cet appareil. Rien n'est transmis.",
+          refuse: "Il n'existe qu'à partir du moment où vous répondez à la question. Effacer les données de votre navigateur le supprime.",
         },
         {
           what: "Comptage anonyme des visites",
@@ -1829,7 +2082,7 @@ const fr: Dictionary = {
 
   terms: {
     title: "Conditions d'utilisation",
-    updated: "Derni\u00e8re mise \u00e0 jour : 20 septembre 2026",
+    updated: "Dernière mise à jour : 24 novembre 2026",
     intro:
       "Les r\u00e8gles de ce site et des formations que nous conduisons. \u00c9crites simplement, car des conditions que personne ne lit ne prot\u00e8gent personne.",
     sections: [
@@ -1844,6 +2097,18 @@ const fr: Dictionary = {
       {
         title: "Une place en Cohorte 0",
         body: "Les places sont gratuites et attribu\u00e9es sur s\u00e9lection, non par ordre d'arriv\u00e9e. Une place demande trois choses en retour : assister \u00e0 au moins 6 des 8 s\u00e9ances, rendre l'exercice hebdomadaire, puis passer l'examen blanc final, partager son r\u00e9sultat et enregistrer une courte vid\u00e9o. \u00c0 d\u00e9faut, la place revient \u00e0 la liste d'attente \u2014 c'est tout, et il n'y a rien \u00e0 payer \u00e0 aucun moment.",
+      },
+      {
+        title: "Payer une place",
+        body: "Aucune formation payante n'est encore en vente. Quand ce sera le cas, elle sera vendue au prix affiché sur sa page au moment du paiement, en francs CFA. Le paiement se fera par MTN Mobile Money ou Orange Money via Fapshi, un prestataire de paiement camerounais ; nous n'acceptons pas encore les cartes. Le vendeur est Donfack Fortune, qui exerce sous le nom 4TUNHub à titre personnel : 4TUNHub n'est pas encore une société immatriculée. Votre place est confirmée lorsque nous avons rapproché votre paiement de votre candidature et vous avons écrit, en général sous deux jours ouvrés.",
+      },
+      {
+        title: "Remboursements",
+        body: "Demandez-le dans les 7 jours suivant votre paiement, et avant la deuxième séance en direct : nous remboursons la totalité. Passé ces 7 jours et avant la deuxième séance, nous remboursons la moitié. À partir de la deuxième séance, il n'y a plus de remboursement. Si nous annulons ou reportons une cohorte, vous choisissez : le remboursement intégral, ou une place dans la suivante. Les remboursements sont versés par Mobile Money au numéro qui a payé, sous 7 jours après votre demande.",
+      },
+      {
+        title: "Ne payez que par ce site",
+        body: "Quand des places payantes ouvriront, nous n'encaisserons que par le lien de paiement de ce site, qui ouvre une page Fapshi. Nous ne vous demandons jamais d'envoyer de l'argent à un numéro Mobile Money personnel, par message WhatsApp, ni à quelqu'un qui vous contacte en se présentant comme nous. Si cela arrive, ne payez pas, et prévenez-nous.",
       },
       {
         title: "Les s\u00e9ances sont enregistr\u00e9es",
@@ -1871,7 +2136,7 @@ const fr: Dictionary = {
       },
       {
         title: "Ce que nous ne promettons pas",
-        body: "Le site est fourni tel quel. Nous l'entretenons et corrigeons ce que nous trouvons, mais nous ne promettons ni une disponibilit\u00e9 de tous les instants ni l'absence de toute erreur. La formation gratuite est donn\u00e9e de bonne foi et sans garantie ; les prestations payantes rel\u00e8vent du contrat sign\u00e9 pour elles, non de cette page.",
+        body: "Le site est fourni tel quel. Nous l'entretenons et corrigeons ce que nous trouvons, mais nous ne promettons ni une disponibilit\u00e9 de tous les instants ni l'absence de toute erreur. La formation gratuite est donnée de bonne foi et sans garantie. Les formations payantes suivent les sections sur le paiement et les remboursements ci-dessus ; les autres prestations payantes relèvent du contrat signé pour elles, non de cette page.",
       },
       {
         title: "Modifications, et le droit applicable",
@@ -1879,6 +2144,17 @@ const fr: Dictionary = {
       },
     ],
     contact: "Une question sur tout ceci \u2014 \u00e9crivez \u00e0",
+  },
+
+  /** La visite commentée proposée sur la page d'accueil. */
+  tour: {
+    label: "Visite du site",
+    question: "Voulez-vous une visite guidée gratuite ?",
+    body: "En 90 secondes : ce que nous faisons et comment utiliser la plateforme.",
+    note: "Avec le son · environ 6 Mo",
+    yes: "Oui, montrez-moi",
+    no: "Non, merci",
+    close: "Fermer",
   },
 
   stub: {

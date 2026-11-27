@@ -1,0 +1,50 @@
+# Practice problem P001 - stepped block. A mini challenge in the Lab's own
+# format (see docs/practice-problems.md): data only, logic in solution.py.
+#
+# CSWA topic: basic part creation, extrude + cut, mass properties.
+# The part is built in SOLIDWORKS; the NUMBERS are the student's own, drawn
+# from a seed, so no two students share an answer.
+id: p001-stepped-block
+version: 0.1.0
+
+title:
+  en: Stepped block
+  fr: Bloc à épaulement
+
+constants:
+  pi: 3.141592653589793
+  kg_m3_to_g_mm3: 0.000001      # density in kg/m^3 -> g per mm^3
+
+params:
+  L:   { min: 80, max: 120, step: 10, unit: mm }
+  W:   { values: [50, 60, 70],        unit: mm }
+  H:   { values: [15, 20, 25],        unit: mm }
+  Db:  { values: [30, 35, 40],        unit: mm }
+  hb:  { min: 10, max: 20, step: 5,   unit: mm }
+  dh:  { values: [10, 12, 14],        unit: mm }
+  rho: { values: [2700, 7800, 7850],  unit: kg/m3 }
+
+steps:
+  - id: volume
+    screen: mass
+    unit: mm3
+    quantity: volume
+    tolerance: { type: rel, value: 0.001 }
+
+  - id: mass
+    screen: mass
+    unit: g
+    quantity: mass
+    tolerance: { type: rel, value: 0.001 }
+
+  - id: com_height
+    screen: mass
+    unit: mm
+    quantity: length
+    tolerance: { type: rel, value: 0.01 }
+
+screens:
+  mass: { en: Mass properties, fr: Propriétés de masse }
+
+attempts:
+  per_step: 3

@@ -2,6 +2,7 @@
 
 import { useCallback, useId, useMemo, useRef, useState } from "react";
 import { detent, warn } from "@/lib/sound";
+import { stressColour } from "@/lib/stress-colour";
 
 /**
  * "Load the beam" — the hand calculation behind every FEA check, live.
@@ -106,22 +107,12 @@ export function BeamLab({ t, locale }: { t: BeamStrings; locale: string }) {
   const tipY = Y0 + dMax * PX_PER_MM * SCALE;
   const arrowLen = 24 + (force / F_MAX) * 70;
 
-  // Stress colour on the classic von Mises contour scale an FEA plot uses:
-  // blue (no stress) → cyan → green → yellow → red (yield). Each stop along
-  // the beam is coloured by the LOCAL stress ratio, which falls linearly
-  // from the wall to zero at the tip, so the hot zone visibly grows from
-  // the wall as the load rises. Mixing only neighbouring stops keeps the
-  // ramp clean.
-  const SCALE_HUES = ["var(--color-fea-0)", "var(--color-fea-1)", "var(--color-fea-2)", "var(--color-fea-3)", "var(--color-fea-4)"];
-  const colourAt = (r: number) => {
-    const p = Math.max(0, Math.min(1, r)) * 4;
-    const k = Math.min(3, Math.floor(p));
-    const f = Math.round((p - k) * 100);
-    return `color-mix(in srgb, ${SCALE_HUES[k + 1]} ${f}%, ${SCALE_HUES[k]})`;
-  };
+  // Each stop along the beam is coloured by the LOCAL stress ratio, which
+  // falls linearly from the wall to zero at the tip, so the hot zone visibly
+  // grows from the wall as the load rises (lib/stress-colour).
   const stops = Array.from({ length: 9 }, (_, j) => {
     const x = j / 8;
-    return { offset: x, colour: colourAt(ratio * (1 - x)) };
+    return { offset: x, colour: stressColour(ratio * (1 - x)) };
   });
 
   const fromPointer = useCallback((clientY: number) => {

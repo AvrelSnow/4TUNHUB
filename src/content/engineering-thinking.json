@@ -1,4 +1,5 @@
 {
+ "assembly": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 180\"><rect class=\"column\" x=\"16\" y=\"20\" width=\"22\" height=\"140\" rx=\"2\"/><g data-piece=\"card-3\"><rect class=\"plate\" x=\"38\" y=\"62\" width=\"272\" height=\"38\" rx=\"4\"/></g><g data-piece=\"card-2\"><rect class=\"stress\" x=\"40\" y=\"64\" width=\"120\" height=\"34\" rx=\"3\"/></g><g data-piece=\"card-5\"><circle class=\"hole\" cx=\"58\" cy=\"72\" r=\"4.5\"/><circle class=\"hole\" cx=\"58\" cy=\"90\" r=\"4.5\"/><circle class=\"hole\" cx=\"84\" cy=\"72\" r=\"4.5\"/><circle class=\"hole\" cx=\"84\" cy=\"90\" r=\"4.5\"/><circle class=\"hole\" cx=\"290\" cy=\"81\" r=\"7\"/><path class=\"dimx\" d=\"M71 58 V34 M290 58 V34\"/><line class=\"dimline\" x1=\"71\" y1=\"40\" x2=\"290\" y2=\"40\"/><polygon class=\"tick\" points=\"71,40 81,36 81,44\"/><polygon class=\"tick\" points=\"290,40 280,36 280,44\"/></g><g data-piece=\"card-1\"><line class=\"force\" x1=\"290\" y1=\"104\" x2=\"290\" y2=\"146\"/><polygon class=\"force-head\" points=\"282,140 298,140 290,156\"/><path class=\"force\" d=\"M 104 112 A 32 32 0 0 1 104 50\"/><polygon class=\"force-head\" points=\"97,56 111,54 106,40\"/></g><g data-piece=\"card-4\"><path class=\"sag\" d=\"M 40 81 C 150 83, 240 92, 312 104\"/></g></svg>",
  "source": "4TUNHUB Lab, paths/branch-1 v0.1.0",
  "title": "Engineering Thinking",
  "tagline": "From a load to a part",
@@ -12,7 +13,7 @@
   "Size a steel plate for strength and for stiffness, with a safety factor",
   "Choose a plate thickness you can actually buy",
   "Read a dimensioned drawing and its datums",
-  "Model the part and send a STEP file a checker accepts"
+  "Model the part and export it as a STEP file"
  ],
  "cards": [
   {
@@ -27,6 +28,10 @@
     "Draw a cantilever's free-body diagram and find its root moment in N·mm"
    ],
    "requires": [],
+   "feeds": [
+    "load_force",
+    "root_moment"
+   ],
    "open": true,
    "lessons": [
     {
@@ -65,6 +70,9 @@
    "requires": [
     "card-1"
    ],
+   "feeds": [
+    "allowable_stress"
+   ],
    "open": true,
    "lessons": [
     {
@@ -93,6 +101,11 @@
    "requires": [
     "card-1",
     "card-2"
+   ],
+   "feeds": [
+    "section_modulus_req",
+    "thickness_req",
+    "thickness_stock"
    ],
    "open": true,
    "lessons": [
@@ -127,6 +140,10 @@
    "requires": [
     "card-3"
    ],
+   "feeds": [
+    "tip_deflection",
+    "thickness_final"
+   ],
    "open": true,
    "lessons": [
     {
@@ -150,12 +167,13 @@
     "Card 1"
    ],
    "able": [
-    "Read a dimensioned drawing and its datums, then model the plate and export a STEP file the checker reads"
+    "Read a dimensioned drawing and its datums, then model the plate and export it as a STEP file"
    ],
    "requires": [
     "card-1"
    ],
-   "open": false,
+   "feeds": [],
+   "open": true,
    "lessons": [
     {
      "id": "datums",
@@ -164,7 +182,7 @@
     },
     {
      "id": "export",
-     "title": "From CAD to a file the checker reads",
+     "title": "From CAD to a STEP file",
      "minutes": 6
     }
    ]
@@ -185,6 +203,7 @@
     "card-2",
     "card-3"
    ],
+   "feeds": [],
    "open": false,
    "lessons": []
   },
@@ -207,6 +226,7 @@
     "card-5",
     "checkpoint"
    ],
+   "feeds": [],
    "open": false,
    "lessons": []
   }
@@ -412,6 +432,34 @@
     "<section class=\"part part-yours step\"><div class=\"check\" data-check=\"limit_yours\" data-lo=\"11.999999999\" data-hi=\"12.000000001\">\n<p class=\"check-label\"><svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"8.5\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3\"/></svg><span>Your turn</span></p>\n<div class=\"check-prompt\"><p><strong>The card's final.</strong> A bracket 48 mm deep carries 650 N at 560 mm. Strength alone needs 7.2 mm of thickness. The stock is 6, 8, 10, 12, 15 and 20 mm.</p>\n<p>Walk up the list from the first plate strong enough: which thickness do you use?</p></div>\n<div class=\"answer-row\"><input class=\"answer\" inputmode=\"decimal\" autocomplete=\"off\" aria-label=\"Your answer\"><span class=\"answer-unit\">mm</span></div>\n<div class=\"check-actions\"><button type=\"button\" class=\"pill check-go\">Check</button></div>\n<p class=\"feedback\" role=\"status\" aria-live=\"polite\"></p>\n<div class=\"reveal\" hidden><p><code>δ_limit</code> = 560 / 300 mm. Strength says 8 mm; at 8 mm and at 10 mm the tip sags past the limit, and at <strong>12 mm</strong> it does not. Stiffness decided.</p></div>\n</div></section>",
     "<section class=\"step\"><div class=\"check\" data-check=\"limit_choice\" data-answer=\"c\">\n<p class=\"check-label\"><svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"8.5\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3\"/></svg><span>Check yourself</span></p>\n<div class=\"check-prompt\"><p>For one bracket, strength asks for 8 mm and stiffness for 12 mm. Which plate goes on the column?</p></div>\n<div class=\"options\" role=\"radiogroup\">\n<label class=\"option\"><input type=\"radio\" name=\"limit_choice\" value=\"a\"><span class=\"option-key\">a</span><span>8 mm: strength is what keeps it up</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"limit_choice\" value=\"b\"><span class=\"option-key\">b</span><span>10 mm, in between</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"limit_choice\" value=\"c\"><span class=\"option-key\">c</span><span>12 mm: it has to pass both</span></label>\n</div>\n<div class=\"check-actions\"><button type=\"button\" class=\"pill check-go\">Check</button></div>\n<p class=\"feedback\" role=\"status\" aria-live=\"polite\"></p>\n<div class=\"reveal\" hidden><p><strong>12 mm.</strong> A plate is used only if it passes <strong>both</strong> checks. 8 mm is strong but bendy; 10 mm is not a compromise, it simply fails the stiffness check.</p></div>\n</div></section>",
     "<section class=\"prose step\"><p><strong>What you can do now:</strong> say what a deflection limit is for, and pick the thinnest stock plate that is both strong and stiff enough. That is steps 7 and 8, and the whole calculation of the wall bracket challenge.</p></section>"
+   ]
+  },
+  "datums": {
+   "title": "Reading the drawing, and where every dimension starts",
+   "minutes": 6,
+   "card": "card-5",
+   "steps": [
+    "<section class=\"prose step\"><p><em>This lesson describes an automatic file checker. It is not available here yet.</em></p><p>A drawing is a contract. The workshop makes exactly what it says, and the checker measures exactly what it says, so the only question that matters is: <strong>measured from where?</strong></p>\n<p>Every dimension on an engineering drawing runs between two <strong>features</strong>: a hole's centre, an edge, a face. The features a drawing measures from are its <strong>datums</strong>, and they are marked with a letter in a box.</p></section>",
+    "<section class=\"prose step\"><figure class=\"pic sheet\" role=\"img\" aria-label=\"The bracket&#x27;s front elevation: the column face, four bolt holes in a rectangle p_h by p_v with their centre marked datum B, the load hole, L from datum B to the load hole&#x27;s centre, and the depth b\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 240\" role=\"img\" aria-label=\"The bracket's front elevation: the column face on the left, four bolt holes in a rectangle p_h by p_v, their centre marked as datum B, and the load hole. L runs from datum B to the centre of the load hole, not from the column face. The plate is b deep\">\n  \n  <g class=\"ink\">\n    <line x1=\"30\" y1=\"40\" x2=\"30\" y2=\"200\"/>\n    <path class=\"dim\" d=\"M30 50 l-10 10 M30 72 l-10 10 M30 94 l-10 10 M30 116 l-10 10 M30 138 l-10 10 M30 160 l-10 10 M30 182 l-10 10\"/>\n    <path class=\"solid\" d=\"M30 80 H302 Q316 80 316 94 V146 Q316 160 302 160 H30 Z\"/>\n    <circle class=\"bolt\" cx=\"58\" cy=\"100\" r=\"6\"/>\n    <circle class=\"bolt\" cx=\"98\" cy=\"100\" r=\"6\"/>\n    <circle class=\"bolt\" cx=\"58\" cy=\"140\" r=\"6\"/>\n    <circle class=\"bolt\" cx=\"98\" cy=\"140\" r=\"6\"/>\n    <circle class=\"bolt\" cx=\"286\" cy=\"120\" r=\"8\"/>\n    <path class=\"dim\" d=\"M70 120 h16 M78 112 v16 M278 120 h16 M286 112 v16\" stroke-dasharray=\"3 2\"/>\n    <rect x=\"66\" y=\"166\" width=\"24\" height=\"22\" rx=\"2\" stroke-width=\"1.5\"/>\n    <line class=\"dim\" x1=\"78\" y1=\"128\" x2=\"78\" y2=\"166\"/>\n  </g>\n  <text class=\"unit strong\" x=\"78\" y=\"182\" text-anchor=\"middle\">B</text>\n  <g data-sym=\"L\" class=\"dimension\">\n    <path class=\"dim\" d=\"M78 76 v-34 M286 110 v-68\"/>\n    <line class=\"dimline\" x1=\"78\" y1=\"50\" x2=\"286\" y2=\"50\"/>\n    <polygon class=\"tick\" points=\"78,50 90,45 90,55\"/>\n    <polygon class=\"tick\" points=\"286,50 274,45 274,55\"/>\n    <text class=\"lbl\" x=\"182\" y=\"42\" text-anchor=\"middle\">L</text>\n  </g>\n  <g class=\"dimension\">\n    <path class=\"dim\" d=\"M58 146 v44 M98 146 v44\"/>\n    <line class=\"dimline\" x1=\"58\" y1=\"206\" x2=\"98\" y2=\"206\"/>\n    <polygon class=\"tick\" points=\"58,206 68,202 68,210\"/>\n    <polygon class=\"tick\" points=\"98,206 88,202 88,210\"/>\n    <text class=\"unit strong\" x=\"78\" y=\"228\" text-anchor=\"middle\">p_h</text>\n    <path class=\"dim\" d=\"M104 100 h26 M104 140 h26\"/>\n    <line class=\"dimline\" x1=\"124\" y1=\"100\" x2=\"124\" y2=\"140\"/>\n    <polygon class=\"tick\" points=\"124,100 120,110 128,110\"/>\n    <polygon class=\"tick\" points=\"124,140 120,130 128,130\"/>\n    <text class=\"unit strong\" x=\"132\" y=\"126\">p_v</text>\n    <path class=\"dim\" d=\"M320 80 h18 M320 160 h18\"/>\n    <line class=\"dimline\" x1=\"330\" y1=\"80\" x2=\"330\" y2=\"160\"/>\n    <polygon class=\"tick\" points=\"330,80 326,90 334,90\"/>\n    <polygon class=\"tick\" points=\"330,160 326,150 334,150\"/>\n    <text class=\"lbl\" x=\"338\" y=\"127\">b</text>\n  </g>\n</svg><figcaption class=\"title-block\"><span class=\"tb-fig\">Fig. 5.1</span><span class=\"tb-eq\"></span><span class=\"tb-house\">4TUNHUB Lab</span></figcaption></figure></section>",
+    "<section class=\"prose step\"><p><strong>Reading the wall bracket's drawing:</strong></p>\n<ul><li><strong><code>L</code> starts at datum B</strong>, the centre of the four-bolt pattern: the point halfway between the bolt columns and halfway between the rows. It ends at the <strong>centre</strong> of the load hole. Not the column face, not the nearest bolt, not the edge of a hole.</li><li><strong><code>p_h</code> and <code>p_v</code> run centre to centre</strong>: from one bolt hole's centre to the next one's, across and up.</li><li><strong><code>b</code> runs edge to edge</strong>: the plate's full depth.</li><li><strong><code>t</code> lives in the edge view</strong>, the narrow drawing beside the front elevation. It is drawn as a letter, not a number, because it is the one thing you decide.</li></ul>\n<p><strong>Fixed and free.</strong> Everything dimensioned is fixed. The free end beyond the load hole is drawn as a break with a ghosted shape: that end is yours to choose, square, round or chamfered. The drawing tells you so by not dimensioning it.</p></section>",
+    "<section class=\"step\"><div class=\"check\" data-check=\"datums_choice\" data-answer=\"b\">\n<p class=\"check-label\"><svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"8.5\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3\"/></svg><span>Check yourself</span></p>\n<div class=\"check-prompt\"><p>Where does the projection <code>L</code> start?</p></div>\n<div class=\"options\" role=\"radiogroup\">\n<label class=\"option\"><input type=\"radio\" name=\"datums_choice\" value=\"a\"><span class=\"option-key\">a</span><span>At the column face, where the plate meets the column</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"datums_choice\" value=\"b\"><span class=\"option-key\">b</span><span>At datum B, the centre of the four-bolt pattern</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"datums_choice\" value=\"c\"><span class=\"option-key\">c</span><span>At the bolt hole nearest the load</span></label>\n</div>\n<div class=\"check-actions\"><button type=\"button\" class=\"pill check-go\">Check</button></div>\n<p class=\"feedback\" role=\"status\" aria-live=\"polite\"></p>\n<div class=\"reveal\" hidden><p><strong>At datum B.</strong> The bracket turns about its bolt group, so the lever arm is measured from the group's centre. Measuring from the column face is the most common way to fail the geometry check.</p></div>\n</div></section>",
+    "<section class=\"step\"><div class=\"check\" data-check=\"datums_centre\" data-answer=\"c\">\n<p class=\"check-label\"><svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"8.5\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3\"/></svg><span>Check yourself</span></p>\n<div class=\"check-prompt\"><p>In your CAD sketch you place the load hole by a dimension from the <strong>bolt column nearest to it</strong>. What must that dimension be?</p></div>\n<div class=\"options\" role=\"radiogroup\">\n<label class=\"option\"><input type=\"radio\" name=\"datums_centre\" value=\"a\"><span class=\"option-key\">a</span><span>L</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"datums_centre\" value=\"b\"><span class=\"option-key\">b</span><span>L + p_h</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"datums_centre\" value=\"c\"><span class=\"option-key\">c</span><span>L − p_h / 2</span></label>\n</div>\n<div class=\"check-actions\"><button type=\"button\" class=\"pill check-go\">Check</button></div>\n<p class=\"feedback\" role=\"status\" aria-live=\"polite\"></p>\n<div class=\"reveal\" hidden><p><strong><code>L − p_h / 2</code>.</strong> Datum B is halfway between the two bolt columns, so the nearer column is <code>p_h / 2</code> closer to the load hole than B is. Any dimension scheme is fine in CAD, as long as the part it makes has <code>L</code> from B to the load hole.</p></div>\n</div></section>",
+    "<section class=\"step\"><div class=\"check\" data-check=\"datums_view\" data-answer=\"a\">\n<p class=\"check-label\"><svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"8.5\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3\"/></svg><span>Check yourself</span></p>\n<div class=\"check-prompt\"><p>Which view of the drawing shows the plate's thickness <code>t</code>?</p></div>\n<div class=\"options\" role=\"radiogroup\">\n<label class=\"option\"><input type=\"radio\" name=\"datums_view\" value=\"a\"><span class=\"option-key\">a</span><span>The edge view</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"datums_view\" value=\"b\"><span class=\"option-key\">b</span><span>The front elevation</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"datums_view\" value=\"c\"><span class=\"option-key\">c</span><span>Neither: it is not on the drawing</span></label>\n</div>\n<div class=\"check-actions\"><button type=\"button\" class=\"pill check-go\">Check</button></div>\n<p class=\"feedback\" role=\"status\" aria-live=\"polite\"></p>\n<div class=\"reveal\" hidden><p><strong>The edge view</strong>, as a letter. The front elevation looks at the plate's face and cannot show how thick it is. The edge view shows <code>t</code> as a symbol because its value is your step 8.</p></div>\n</div></section>",
+    "<section class=\"prose step\"><p><strong>What you can do now:</strong> read the wall bracket's drawing, say which feature each dimension starts from, and tell what is fixed from what is yours to choose.</p></section>"
+   ]
+  },
+  "export": {
+   "title": "From CAD to a STEP file",
+   "minutes": 6,
+   "card": "card-5",
+   "steps": [
+    "<section class=\"prose step\"><p><em>This lesson describes an automatic file checker. It is not available here yet.</em></p><p>Your model is only as good as the file that leaves your computer. The checker never sees your CAD program: it sees one <strong>STEP file</strong>, a neutral format every CAD program can write, and it measures the solid inside it.</p>\n<p><strong>Three things decide whether it can:</strong></p>\n<ol><li><strong>Millimetres.</strong> Set the model's units to mm before you model, and check them again before you export. A plate modelled in inches measures about twenty-five times too small. The checker spots that and tells you, without charging an attempt, but it is a wasted round trip.</li><li><strong>One part, one solid.</strong> Export the bracket alone: not an assembly with bolts and a column, not two bodies that happen to touch.</li><li><strong>STEP, AP214 or AP203.</strong> Any of the usual STEP variants reads; if your program asks, choose AP214.</li></ol></section>",
+    "<section class=\"prose step\"><p><strong>Program by program.</strong> Menus move a little between versions; the words to look for do not.</p>\n<div class=\"table\"><table><thead><tr><th>Program</th><th>Units</th><th>Export</th></tr></thead><tbody><tr><td>SolidWorks</td><td><em>Tools → Options → Document Properties → Units</em>: MMGS</td><td><em>File → Save As</em>, type <em>STEP AP214</em></td></tr><tr><td>Fusion</td><td>the document's units, in the browser tree: mm</td><td><em>File → Export</em>, type <em>STEP</em></td></tr><tr><td>FreeCAD</td><td><em>Edit → Preferences → General → Units</em>: millimetres</td><td>select the solid, <em>File → Export</em>, type <em>STEP</em></td></tr><tr><td>Onshape</td><td><em>Workspace units</em>: millimetre</td><td>right-click the part, <em>Export</em>, format <em>STEP</em></td></tr><tr><td>Inventor</td><td><em>Tools → Document Settings → Units</em>: mm</td><td><em>File → Export → CAD Format</em>, type <em>STEP</em>, options <em>AP214</em></td></tr></tbody></table></div></section>",
+    "<section class=\"prose step\"><p><strong>What the checker measures.</strong> Distances between features, never positions in space: so it does not matter where your origin is, which way round you modelled the plate, or which axis you called up. It counts the holes (five), measures their diameters, the bolt pattern, <code>L</code> from datum B, the depth <code>b</code>, and the thickness, which must be the one you gave at step 8 and a size on the stock list. If your file carries a mass, it checks that the mass fits steel.</p>\n<p><em>Uploading a file to be checked is not available here yet.</em></p></section>",
+    "<section class=\"step\"><div class=\"check\" data-check=\"export_units\" data-answer=\"a\">\n<p class=\"check-label\"><svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"8.5\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3\"/></svg><span>Check yourself</span></p>\n<div class=\"check-prompt\"><p>The checker reports that your plate measures about twenty-five times too small in every direction. What happened?</p></div>\n<div class=\"options\" role=\"radiogroup\">\n<label class=\"option\"><input type=\"radio\" name=\"export_units\" value=\"a\"><span class=\"option-key\">a</span><span>The model or the export was in inches</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"export_units\" value=\"b\"><span class=\"option-key\">b</span><span>The plate is too thin</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"export_units\" value=\"c\"><span class=\"option-key\">c</span><span>The file was AP203 instead of AP214</span></label>\n</div>\n<div class=\"check-actions\"><button type=\"button\" class=\"pill check-go\">Check</button></div>\n<p class=\"feedback\" role=\"status\" aria-live=\"polite\"></p>\n<div class=\"reveal\" hidden><p><strong>Inches.</strong> One inch is about twenty-five millimetres, so a part drawn in inches reads that many times too small in mm. Every direction at once is the giveaway: a design mistake would change one dimension, not all of them.</p></div>\n</div></section>",
+    "<section class=\"step\"><div class=\"check\" data-check=\"export_one\" data-answer=\"b\">\n<p class=\"check-label\"><svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"8.5\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3\"/></svg><span>Check yourself</span></p>\n<div class=\"check-prompt\"><p>Your file holds the bracket, four bolts and a piece of the column, as an assembly. What do you send?</p></div>\n<div class=\"options\" role=\"radiogroup\">\n<label class=\"option\"><input type=\"radio\" name=\"export_one\" value=\"a\"><span class=\"option-key\">a</span><span>The assembly: it shows how the bracket fits</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"export_one\" value=\"b\"><span class=\"option-key\">b</span><span>The bracket alone: one part, one solid</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"export_one\" value=\"c\"><span class=\"option-key\">c</span><span>A PDF of the drawing</span></label>\n</div>\n<div class=\"check-actions\"><button type=\"button\" class=\"pill check-go\">Check</button></div>\n<p class=\"feedback\" role=\"status\" aria-live=\"polite\"></p>\n<div class=\"reveal\" hidden><p><strong>The bracket alone.</strong> The checker counts holes and measures one solid. Bolts and a column are extra solids, and it cannot know which one you meant.</p></div>\n</div></section>",
+    "<section class=\"step\"><div class=\"check\" data-check=\"export_measure\" data-answer=\"c\">\n<p class=\"check-label\"><svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"8.5\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3\"/></svg><span>Check yourself</span></p>\n<div class=\"check-prompt\"><p>Which of these does the checker <strong>not</strong> look at?</p></div>\n<div class=\"options\" role=\"radiogroup\">\n<label class=\"option\"><input type=\"radio\" name=\"export_measure\" value=\"a\"><span class=\"option-key\">a</span><span>The distances between your holes</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"export_measure\" value=\"b\"><span class=\"option-key\">b</span><span>The plate's thickness</span></label>\n<label class=\"option\"><input type=\"radio\" name=\"export_measure\" value=\"c\"><span class=\"option-key\">c</span><span>Where your origin is and which axis points up</span></label>\n</div>\n<div class=\"check-actions\"><button type=\"button\" class=\"pill check-go\">Check</button></div>\n<p class=\"feedback\" role=\"status\" aria-live=\"polite\"></p>\n<div class=\"reveal\" hidden><p><strong>Your origin and axes.</strong> It measures distances between features, so a part modelled upside down, sideways or far from the origin passes just the same.</p></div>\n</div></section>",
+    "<section class=\"prose step\"><p><strong>What you can do now:</strong> set up a model in millimetres, export one solid as STEP from your CAD program, and say what the checker will measure.</p></section>"
    ]
   }
  }

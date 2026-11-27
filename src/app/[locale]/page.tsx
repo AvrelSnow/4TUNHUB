@@ -13,6 +13,7 @@ import { SectionHeader } from "@/components/ui/Section";
 import { CohortFeature } from "@/components/CohortFeature";
 import { Testimonials } from "@/components/Testimonials";
 import { BeamLab } from "@/components/BeamLab";
+import { TourCard } from "@/components/TourCard";
 import { flattenTree } from "@/lib/sitemap";
 import { projects, featuredProjects, projectDetailPath } from "@/lib/projects";
 import { WHATSAPP_COMMUNITY_URL } from "@/lib/site";
@@ -61,9 +62,10 @@ export default async function Home({
   const href = (key: string) => localizeHref(locale, byKey.get(key)?.href ?? "/");
 
   // Featured work first, then the rest. Reference photos (a project with no
-  // photograph of its own) stay on their case study, out of the proof rail.
+  // photograph of its own) and designs not manufactured yet stay on their case
+  // study, out of the proof rail.
   const ordered = [...featuredProjects, ...projects.filter((p) => !p.featured)].filter(
-    (p) => p.image && !p.imageIllustrative,
+    (p) => p.image && !p.imageIllustrative && !p.onPaper,
   );
 
   return (
@@ -191,7 +193,7 @@ export default async function Home({
                 </div>
                 <Media
                   src="/images/projects/pedal-9.webp"
-                  alt={dict.projects.galleries["pedal-power-charger"]?.[8] ?? ""}
+                  alt={dict.projects.galleries["pedal-power-charger"]?.[5] ?? ""}
                   doc
                   zoom
                   className="aspect-[4/3] lg:aspect-auto lg:h-full"
@@ -206,7 +208,7 @@ export default async function Home({
               body={t.pillars.academy}
               cta={t.learnMore}
               image="/images/projects/beans-8.webp"
-              alt={dict.projects.galleries["beans-unwrapping-machine"]?.[7] ?? ""}
+              alt={dict.projects.galleries["beans-unwrapping-machine"]?.[5] ?? ""}
             />
             <PillarTile
               href={href("research")}
@@ -366,6 +368,8 @@ export default async function Home({
         secondary={{ label: t.conversion.secondaryCta, href: localizeHref(locale, "/services") }}
         quote={false}
       />
+
+      <TourCard locale={locale} t={dict.tour} />
     </>
   );
 }

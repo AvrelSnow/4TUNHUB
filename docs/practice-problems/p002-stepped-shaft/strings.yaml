@@ -1,0 +1,57 @@
+diagnosis:
+  FP_BORE_IGNORED:
+    en: >-
+      Your volume still contains the bore. Which feature removes material, and over what length?
+    fr: >-
+      Votre volume contient encore l'alésage. Quelle fonction retire de la matière, et sur quelle longueur ?
+  FP_MASS_IN_KG:
+    en: >-
+      Check the unit your mass is in against the unit the step asks for.
+    fr: >-
+      Vérifiez l'unité de votre masse par rapport à celle demandée.
+  FP_DENSITY_NOT_CONVERTED:
+    en: >-
+      The density is in kg per cubic metre and the volume is in cubic millimetres. Bring them to one system first.
+    fr: >-
+      La masse volumique est en kg par mètre cube et le volume en millimètres cubes. Ramenez-les d'abord à un même système.
+  FP_DIAMETER_AS_RADIUS:
+    en: >-
+      A circle's area is written with its radius. Check which dimension you put in.
+    fr: >-
+      L'aire d'un cercle s'écrit avec son rayon. Vérifiez la dimension que vous avez utilisée.
+  FP_COM_AT_HALF_LENGTH:
+    en: >-
+      Half the length is where a uniform bar would balance. Is this shaft uniform?
+    fr: >-
+      La moitié de la longueur est le point d'équilibre d'une barre uniforme. Cet arbre est-il uniforme ?
+
+step:
+  volume:
+    en: "1 · The volume of the shaft"
+    fr: "1 · Le volume de l'arbre"
+  mass:
+    en: "2 · The mass"
+    fr: "2 · La masse"
+  com_x:
+    en: "3 · The centre of mass along the axis"
+    fr: "3 · Le centre de masse le long de l'axe"
+
+hint:
+  volume.h1:
+    en: A revolved solid is a stack of cylinders. Find the volume of each one.
+    fr: Un solide de révolution est un empilement de cylindres. Trouvez le volume de chacun.
+  volume.h2:
+    en: The bore removes material over the whole length, not just one section.
+    fr: L'alésage retire de la matière sur toute la longueur, pas sur une seule section.
+  mass.h1:
+    en: Which two quantities does a mass depend on?
+    fr: De quelles deux grandeurs une masse dépend-elle ?
+  mass.h2:
+    en: Check the units before the arithmetic. One cubic metre is a thousand million cubic millimetres.
+    fr: Vérifiez les unités avant l'arithmétique. Un mètre cube vaut un milliard de millimètres cubes.
+  com_x.h1:
+    en: Each section's own centre is at the middle of that section. Which section is heaviest?
+    fr: Le centre de chaque section est au milieu de cette section. Quelle section est la plus lourde ?
+  com_x.h2:
+    en: Weigh each section's centre by its volume, measured from the left end.
+    fr: Pondérez le centre de chaque section par son volume, mesuré depuis l'extrémité gauche.

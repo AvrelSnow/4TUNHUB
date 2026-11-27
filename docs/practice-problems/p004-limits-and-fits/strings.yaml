@@ -1,0 +1,85 @@
+diagnosis:
+  FP_HOLE_WITHOUT_TOLERANCE:
+    en: >-
+      Your upper limit is the nominal size. A hole has a tolerance zone above its nominal size: where does the class H put it?
+    fr: >-
+      Votre cote maximale est la cote nominale. Un alésage a une zone de tolérance au-dessus de sa cote nominale : où la classe H la place-t-elle ?
+  FP_HOLE_WITH_SHAFT_GRADE:
+    en: >-
+      The hole's grade is the number in its own class. Check which grade you used for the hole.
+    fr: >-
+      La qualité de l'alésage est le nombre de sa propre classe. Vérifiez la qualité utilisée pour l'alésage.
+  FP_SHAFT_DEVIATION_SIGN:
+    en: >-
+      Check the sign of the shaft's upper deviation in the table: it is added as it is written.
+    fr: >-
+      Vérifiez le signe de l'écart supérieur de l'arbre dans le tableau : il s'ajoute tel qu'il est écrit.
+  FP_SHAFT_WITH_HOLE_GRADE:
+    en: >-
+      The shaft's tolerance width comes from the shaft's own class, not the hole's.
+    fr: >-
+      La largeur de tolérance de l'arbre vient de la classe de l'arbre, pas de celle de l'alésage.
+  FP_LIMITS_NOT_CROSSED:
+    en: >-
+      The largest gap between the parts pairs the largest hole with the smallest shaft. Which two limits did you subtract?
+    fr: >-
+      Le plus grand jeu associe le plus grand alésage au plus petit arbre. Quelles deux cotes avez-vous soustraites ?
+  FP_MAX_GIVEN_AS_MIN:
+    en: >-
+      This is the maximum clearance. The minimum pairs the smallest hole with the largest shaft.
+    fr: >-
+      Ceci est le jeu maximal. Le jeu minimal associe le plus petit alésage au plus grand arbre.
+  FP_TRANSITION_MISSED:
+    en: >-
+      Look at both clearances. A fit can have a positive maximum and a negative minimum.
+    fr: >-
+      Regardez les deux jeux. Un ajustement peut avoir un jeu maximal positif et un jeu minimal négatif.
+
+step:
+  hole_max:
+    en: "1 · The hole's upper limit"
+    fr: "1 · La cote maximale de l'alésage"
+  shaft_max:
+    en: "2 · The shaft's upper limit"
+    fr: "2 · La cote maximale de l'arbre"
+  shaft_min:
+    en: "3 · The shaft's lower limit"
+    fr: "3 · La cote minimale de l'arbre"
+  max_clearance:
+    en: "4 · The maximum clearance"
+    fr: "4 · Le jeu maximal"
+  min_clearance:
+    en: "5 · The minimum clearance"
+    fr: "5 · Le jeu minimal"
+  fit_type:
+    en: "6 · The kind of fit"
+    fr: "6 · Le type d'ajustement"
+
+hint:
+  hole_max.h1:
+    en: A class is a letter and a number. What does the letter fix, and what does the number fix?
+    fr: Une classe est une lettre et un nombre. Que fixe la lettre, et que fixe le nombre ?
+  hole_max.h2:
+    en: Find your nominal size's range in the table, then read the row of the hole's class.
+    fr: Trouvez la plage de votre cote nominale dans le tableau, puis lisez la ligne de la classe de l'alésage.
+  hole_max.h3:
+    en: The upper limit is the nominal size plus the upper deviation, in millimetres.
+    fr: La cote maximale est la cote nominale plus l'écart supérieur, en millimètres.
+  shaft_max.h1:
+    en: Use the shaft's class row, in the same size range as for the hole.
+    fr: Utilisez la ligne de la classe de l'arbre, dans la même plage de cotes que pour l'alésage.
+  shaft_max.h2:
+    en: Convert micrometres to millimetres before adding.
+    fr: Convertissez les micromètres en millimètres avant d'additionner.
+  shaft_min.h1:
+    en: The lower limit uses the lower deviation of the shaft's class.
+    fr: La cote minimale utilise l'écart inférieur de la classe de l'arbre.
+  max_clearance.h1:
+    en: The widest gap happens when the hole is as big and the shaft as small as the limits allow.
+    fr: Le jeu le plus grand survient quand l'alésage est aussi grand et l'arbre aussi petit que les cotes le permettent.
+  min_clearance.h1:
+    en: The tightest case is the smallest hole with the largest shaft. A negative result means interference.
+    fr: Le cas le plus serré est le plus petit alésage avec le plus grand arbre. Un résultat négatif signifie un serrage.
+  fit_type.h1:
+    en: Clearance if the parts always have a gap, interference if they never do, transition if it depends on the pair.
+    fr: Avec jeu si les pièces ont toujours un jeu, serré si elles n'en ont jamais, incertain si cela dépend du couple.

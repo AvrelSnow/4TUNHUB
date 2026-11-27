@@ -144,6 +144,26 @@ export default async function ProjectDetail({ params }: Params) {
         </Container>
       </section>
 
+      {/* ANIMATION — self-hosted, nothing is downloaded until play. */}
+      {project.video && (
+        <section className="pb-24 sm:pb-32">
+          <Container>
+            <h2 className="text-display-sm text-foreground">{t.videoTitle}</h2>
+            <video
+              controls
+              playsInline
+              preload="none"
+              poster={project.video.poster}
+              aria-label={copy.title}
+              className="mt-12 aspect-video w-full rounded-3xl bg-surface"
+            >
+              <source src={project.video.src} type="video/mp4" />
+            </video>
+            {copy.videoNote && <p className="readout mt-3 text-center">{copy.videoNote}</p>}
+          </Container>
+        </section>
+      )}
+
       {/* DOCUMENTATION — every real image, each zoomable. */}
       {project.gallery && project.gallery.length > 0 && (
         <section className="bg-surface py-24 sm:py-32">
@@ -172,10 +192,43 @@ export default async function ProjectDetail({ params }: Params) {
         </section>
       )}
 
+      {/* LOCKED DRAWINGS — a fan of blurred previews; every card asks. */}
+      {project.lockedPlans && (
+        <section className="overflow-hidden py-24 sm:py-32">
+          <Container>
+            <h2 className="text-center text-display-sm text-foreground">{t.detail.plansTitle}</h2>
+            <p className="mx-auto mt-4 max-w-xl text-center text-muted">{t.detail.plansHint}</p>
+            <ul className="bouquet mt-14">
+              {project.lockedPlans.map((src, i) => (
+                <li key={src}>
+                  <Link
+                    href={localizeHref(locale, "/contact")}
+                    aria-label={`${t.detail.plansBadge} (${i + 1}/${project.lockedPlans?.length})`}
+                    className="relative block overflow-hidden rounded-2xl border border-border bg-white shadow-e2"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={src} alt="" width={480} height={340} loading="lazy" decoding="async" className="w-full" />
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-x-0 bottom-1.5 mx-auto flex w-max items-center gap-1.5 rounded-full bg-ink-900/80 p-1.5 text-2xs font-medium text-white sm:bottom-2 sm:px-3 sm:py-1"
+                    >
+                      <svg viewBox="0 0 20 20" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 9h10v8H5zM7 9V6.5a3 3 0 0 1 6 0V9" />
+                      </svg>
+                      <span className="hidden whitespace-nowrap sm:inline">{t.detail.plansBadge}</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </section>
+      )}
+
       <CtaPanel
-        title={t.detail.ctaTitle}
-        subtitle={t.detail.ctaBody}
-        primary={{ label: t.detail.cta, href: localizeHref(locale, "/contact") }}
+        title={copy.ctaTitle ?? t.detail.ctaTitle}
+        subtitle={copy.ctaBody ?? t.detail.ctaBody}
+        primary={{ label: copy.cta ?? t.detail.cta, href: localizeHref(locale, "/contact") }}
         secondary={
           project.portfolioUrl
             ? { label: t.detail.portfolio, href: project.portfolioUrl, external: true }
